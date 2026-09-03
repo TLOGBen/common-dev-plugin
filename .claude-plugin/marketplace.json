@@ -1,0 +1,45 @@
+{
+  "name": "common-dev",
+  "owner": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "metadata": {
+    "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
+    "version": "1.35.2"
+  },
+  "plugins": [
+    {
+      "name": "test-utils",
+      "source": "./plugins/test-utils",
+      "description": "E2E and browser-debugging utilities (enabled by default): gen-e2e-test authors self-contained Playwright tests with API reports, gen-e2e-record turns codegen recordings into tests, and dev-browser provides agent-side UI debugging.",
+      "displayName": "Test Utilities",
+      "version": "1.2.2",
+      "defaultEnabled": true
+    },
+    {
+      "name": "analysis-estimation",
+      "source": "./plugins/analysis-estimation",
+      "description": "Analysis & estimation suite (enabled by default): estimate evaluates unfamiliar existing systems from customer outcomes and evidence; rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation estimates greenfield scope; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
+      "displayName": "分析與評估 (Analysis & Estimation)",
+      "version": "1.1.2",
+      "defaultEnabled": true
+    },
+    {
+      "name": "common",
+      "source": "./plugins/common",
+      "description": "Common utilities (enabled by default): better-prompts — optimize prompts: audit, rewrite, draft, or migrate system prompts, agent instructions, tool descriptions, and CLAUDE.md files against official Claude and GPT-5.x prompting guidance (outcome-first structure, stopping conditions, autonomy boundaries, lean-prompt diet); delegate — goal-oriented delegation of bounded execution slices to native sub-agents, Codex CLI, or Claude CLI (worth-it gate, live model-catalog lookup, supervised long-task patrols, native-first Luna Max with exact-profile CLI fallback, evidence-based acceptance); define-goal — turn a fuzzy intention into a concrete, measurable goal with explicit validators and scope bounds before work starts; strategic-advance — keep an already-locked objective moving through long-running, cross-tool execution with one main effort, evidence-backed moves, a stateless campaign scribe that owns state bookkeeping and re-probes gating evidence, context protection, dynamic reassessment, and conditional human takeover; wait-what — stop and re-pitch the last explanation in plain Traditional Chinese by default, or another explicitly requested language, when the user didn't follow: identify the audience (--as role/age/free text, else inferred), climb a shallow-to-deep ladder (one sentence → ten-year-old analogy → adult concepts → the one part that matters most to that role → why I decided this) that never skips the bottom rungs, with a visuals-first HTML companion under .claude/wait-what/ when tooling allows; wayfinder — chart an effort too big for one session as a local-markdown map of decision tickets (blocking, frontier, fog of war) with an interactive HTML map view, resolved one ticket per session, backed by companion skills grilling, domain-modeling, research, and prototype, with an operator posture (the lead session judges and intervenes while execution slices route through delegate) and a drain mode that auto-resolves AFK tickets in parallel and stops hard at the human-decision boundary, plus optional routing to the baransu suite (think/read/learn/design/contract/seal/hunt/review/ship) when installed. User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Enabled by default; disable with `claude plugin disable common` if unwanted.",
+      "displayName": "Common",
+      "version": "1.35.2",
+      "defaultEnabled": true
+    },
+    {
+      "name": "linkstart",
+      "source": "./plugins/linkstart",
+      "description": "LinkStart v1 Preview integration (enabled by default): one link-start workflow reconnects an interactive HTML or localhost app to the same Claude Code session or Codex thread through the exact bundled Runtime, private session context, and one-call arm/respond monitor flow.",
+      "displayName": "LinkStart",
+      "version": "0.4.1",
+      "defaultEnabled": true
+    }
+  ]
+}

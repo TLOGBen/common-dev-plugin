@@ -1,0 +1,38 @@
+{
+  "artifacts": [
+    {
+      "path": "bin/linux-x64-musl/linkstart",
+      "sha256": "3a3413bcb935704fdaeb12e6528044c80f44a20a0d127b61af6336ee0dc0a4bd",
+      "size": 5828864,
+      "sourceCommit": "dcec343dc8e0d5c19a702f4517acaedc9e7d3ec0",
+      "sourceRepository": "https://github.com/TLOGBen/LinkStart",
+      "sourceTag": "v0.1.5",
+      "target": "linux-x64-musl",
+      "workflowRun": "https://github.com/TLOGBen/LinkStart/actions/runs/33059893376/attempts/1"
+    },
+    {
+      "path": "bin/macos-universal/linkstart",
+      "sha256": "74e9947ea044bbae29d20b5fce2feee11be1c0d949c247ffa09f4536d60d3887",
+      "size": 10065872,
+      "sourceCommit": "dcec343dc8e0d5c19a702f4517acaedc9e7d3ec0",
+      "sourceRepository": "https://github.com/TLOGBen/LinkStart",
+      "sourceTag": "v0.1.5",
+      "target": "macos-universal",
+      "workflowRun": "https://github.com/TLOGBen/LinkStart/actions/runs/33059893376/attempts/1"
+    },
+    {
+      "path": "bin/windows-x64/linkstart.exe",
+      "sha256": "15e8246f096db075e96f5c07d19eb4cc0038c28039acdb969d19118a9bc6c958",
+      "size": 4577792,
+      "sourceCommit": "dcec343dc8e0d5c19a702f4517acaedc9e7d3ec0",
+      "sourceRepository": "https://github.com/TLOGBen/LinkStart",
+      "sourceTag": "v0.1.5",
+      "target": "windows-x64",
+      "workflowRun": "https://github.com/TLOGBen/LinkStart/actions/runs/33059893376/attempts/1"
+    }
+  ],
+  "protocolMajor": "v1",
+  "releaseTag": "v0.1.5",
+  "runtimeVersion": "0.1.5",
+  "schemaVersion": 1
+}

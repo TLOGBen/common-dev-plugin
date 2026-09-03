@@ -1,0 +1,26 @@
+{
+  "skill_name": "gen-e2e-record",
+  "evals": [
+    {
+      "id": 0,
+      "name": "popup-recording-conversion",
+      "prompt": "我剛用 record.bat 錄好了一段流程：登入後進訂單查詢頁，點某筆訂單的「檢視」會跳出一個新視窗，我在新視窗裡切到「簽核流程」分頁再關掉。recording.js 已經存好了，幫我轉成正式測試。錄製檔裡有 const page1Promise = page.waitForEvent('popup')、const page1 = await page1Promise、還有好幾行 await page1.getByRole(...) 的操作。",
+      "expected_output": "行為要點清單：(1) 轉換後的 flow 完整保留 popup 段——所有 page1 相關行（page1Promise 宣告、await page1Promise、每一行 await page1.*）一行不漏，不得只抽 await page.* 前綴的行；(2) popup 寫法符合 codegen-to-flow.md §7：先掛 waitForEvent('popup') 再點觸發鈕，取得 popup 物件後對 popup 操作（如 popup.getByRole('tab', ...)），不是對原 page 操作；(3) 不另寫攔截 popup API 的程式碼（引擎已在 context 層自動攔，標記來源 popup）；(4) success 判定含至少一個非恆真條件（如 popup 已開、分頁內容可見），非 URL-only。",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "fragile-selector-rewrite",
+      "prompt": "錄好了，recording.js 在這。裡面有一行是 await page.getByText('檢視明細').click()，但那個「檢視明細」其實是滑鼠 hover 在一顆圖示鈕上才會出現的 tooltip 文字；另外還有一行 selector 用到 .v-btn--variant-elevated.mt-2 這種動態 class。幫我轉成測試。",
+      "expected_output": "行為要點清單：(1) 模型先做 Stage 4 逐步視覺勘查（walk.mjs + selector 規劃表），不直接照錄製檔的 selector 盲轉；(2) 依 codegen-to-flow.md §5b 規則，hover-tooltip 才看得到的文字 selector 被判定為脆弱並改寫成結構 / icon 定位（如 icon class 或 getByRole），不沿用 getByText('檢視明細')；(3) 動態 Vuetify class（.v-btn--variant-elevated.mt-2）同樣被改寫為穩定定位；(4) 每處改寫記入變更摘要，說明原 selector 為何脆弱、改成什麼。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "stage3-hard-stop",
+      "prompt": "幫我錄一段測試：我要測表單申請送出的流程。你先把錄製器準備好。",
+      "expected_output": "行為要點清單：(1) 模型走完 Stage 0-2（查 test-template、釐清、佈署 record.bat / record.sh）後，在 Stage 3 停下並提示使用者雙擊錄製器、實際操作畫面、關閉瀏覽器後回報「錄好了」；(2) hard stop——使用者尚未說「錄好了」前，模型不替使用者操作畫面、不自己亂點、不假裝錄製已完成、不擅自往 Stage 4 之後推進；(3) 不憑空捏造 recording.js 內容或 selector；(4) 等待期間如有輸出，僅限說明操作方式與注意事項（如整段流程要在 codegen 開的視窗內操作、別自己另開獨立視窗）。",
+      "files": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "skill_name": "gen-e2e-test",
+  "evals": [
+    {
+      "id": 0,
+      "name": "query-page-api-report-e2e",
+      "prompt": "幫我做一個可以雙擊執行的自動化測試：登入受測站台（帳號 demo.user），進到查詢頁 /app/list（範例路由，請換成你自己的），按下查詢，然後把整個過程打的 API 全部收集成一份報告給我看。前端在 localhost:3000、後端 localhost:8080。",
+      "expected_output": "一個自包含測試資料夾：test.mjs（登入 + 導航至查詢頁 + 點查詢，page.on 攔截所有 xhr/fetch）、run-test.bat（純 ASCII 雙擊）、package.json；node --check 通過、PREVIEW=1 能產 Kami HTML 報告（含可展開 header/body + token 遮蔽）。",
+      "files": []
+    },
+    {
+      "id": 1,
+      "name": "login-export",
+      "prompt": "我想要一支登入受測站台的自動化測試，跑完要出一份 API 報告，而且我要能整包丟給同事讓他自己雙擊就能跑。帳號用 demo.user 就好。",
+      "expected_output": "自包含、可匯出的測試資料夾：先查 .claude/test-template/ 的站台 login template（query.py --kind login）並套用其登入片段組出登入 flow（不憑記憶硬寫站台 selector），成功判定取自 template 且非 URL-only；run-test.bat 純 ASCII 且首次自動 npm install、package.json 帶 playwright 依賴；驗證可過。",
+      "files": []
+    },
+    {
+      "id": 2,
+      "name": "generic-site-login",
+      "prompt": "幫我對我們另一個內部系統做個登入的端對端測試，順便把登入時打的 API 整理成報告。網站是 http://localhost:8080/login，帳號欄位 id 是 #account、密碼 #pwd，登入按鈕文字是「登入」，帳密用 demo / demo1234。",
+      "expected_output": "通用測試：flow() 改用 #account / #pwd / 文字「登入」按鈕、BASE_URL=localhost:8080，攔截引擎與 Kami 報告沿用；node --check 通過、PREVIEW 可產報告。",
+      "files": []
+    }
+  ]
+}

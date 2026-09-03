@@ -1,0 +1,147 @@
+{
+  "missionId": "drill-retire-legacy-pipeline",
+  "wayfinderMapPath": ".claude/wayfinder/drill-retire-legacy-pipeline.md",
+  "objective": {
+    "purpose": "演練戰役：把一條已停用的舊發行管線完整下架，並留下可由權威狀態複核的證據",
+    "desiredEndState": ["舊管線的登錄點歸零", "程式庫內不再有殘留引用", "發行通道狀態與登錄事實一致"],
+    "worldDimensions": ["pipelineRegistration", "residualReferenceCount", "releaseChannelState"],
+    "protectedAssets": [
+      { "id": "release-integrity", "displayText": "發行通道只能被下架一次，且結果必須可由登錄狀態判明" },
+      { "id": "evidence-integrity", "displayText": "探測工具故障不得被記成目標系統的事實" }
+    ],
+    "victoryCriteria": [
+      { "id": "registration-zero", "displayText": "舊管線已無任何登錄點", "predicate": "PIPELINE_REGISTRATION_COUNT == 0" },
+      { "id": "reference-zero", "displayText": "程式庫內沒有殘留引用", "predicate": "RESIDUAL_REFERENCE_COUNT == 0" },
+      { "id": "release-consistent", "displayText": "發行通道與登錄狀態一致", "predicate": "RELEASE_CHANNEL_STATE_CONSISTENT == true" }
+    ],
+    "victoryEvidence": ["登錄清單回讀為空", "全庫引用掃描為零", "發行通道稽核與登錄事實相符"],
+    "constraints": ["不得動到演練範圍以外的管線", "結果未知時不得重送下架動作"],
+    "unacceptableOutcomes": ["重複送出同一個下架動作", "探測工具故障被誤判為下架失敗"]
+  },
+  "worldState": {
+    "pipelineRegistration": "REGISTERED",
+    "residualReferenceCount": "UNPROBED",
+    "releaseChannelState": "PENDING_AUDIT"
+  },
+  "plainBriefing": {
+    "context": "這是一場演練戰役：舊發行管線已停用，但登錄點與殘留引用尚未清點。",
+    "currentSituation": "戰役剛以語意種子建構完成；除了主攻的進入條件，所有證據都還是 UNKNOWN，等待書記官逐項探測。",
+    "reasoning": "先偵察後動手：在真相尚未固化前，下架動作沒有可回復的基準，也無法判定是否重複送出。",
+    "nextMove": "由書記官跑唯讀探測，逐一以 set-claim 升級 entry／victory／baseline 證據。",
+    "userRole": "只確認演練範圍是否正確，不要手動改 state.json。"
+  },
+  "battlefields": [
+    {
+      "id": "drill-recon",
+      "mainEffort": true,
+      "operationType": "SHAPING",
+      "objective": "盤點舊管線的所有登錄點與殘留引用，把真相固化成可驗證的 claim",
+      "entryState": "CAMPAIGN_SEEDED",
+      "terminalState": "TRUTH_CONSOLIDATED",
+      "mutationScope": [],
+      "owner": "sa-scribe",
+      "timeBudgetMinutes": 45,
+      "remainingTransitions": 1,
+      "costMinutes": 15,
+      "expectedVictoryCriterionIds": [],
+      "entryObservation": {
+        "sourceType": "STATIC",
+        "sourceRef": "scribe-probe:git -C /home/ops/drill/legacy-pipeline status --short@2026-08-14T08:58:00+08:00",
+        "observedAt": "2026-08-14T08:58:00+08:00"
+      }
+    },
+    {
+      "id": "drill-retire",
+      "objective": "移除舊管線的登錄點與殘留引用",
+      "entryState": "TRUTH_CONSOLIDATED",
+      "terminalState": "PIPELINE_RETIRED_NO_RESIDUE",
+      "operationType": "DECISIVE",
+      "mutationScope": ["RetirePipelineRegistration"],
+      "owner": "drill-operator",
+      "timeBudgetMinutes": 60,
+      "remainingTransitions": 2,
+      "costMinutes": 40,
+      "expectedVictoryCriterionIds": ["registration-zero", "reference-zero"],
+      "recovery": {
+        "action": "結果未知時先回讀登錄清單，不重送下架請求",
+        "steps": ["停止下架動作", "以精確管線識別碼回讀登錄清單", "只有 predicate 證明未送出時才重新規劃"],
+        "readinessPredicate": "EXACT_REGISTRY_READBACK_AVAILABLE == true",
+        "successPredicate": "OUTCOME_CLASSIFIED_AS_PASS_FAIL_OR_UNKNOWN",
+        "stopCondition": "任何來源顯示下架請求已送出"
+      }
+    },
+    {
+      "id": "drill-release-audit",
+      "objective": "稽核發行通道狀態，確認與登錄事實一致",
+      "entryState": "RETIREMENT_RECORDED",
+      "terminalState": "RELEASE_CHANNEL_CONSISTENT",
+      "operationType": "SUSTAINING",
+      "mutationScope": [],
+      "owner": "drill-operator",
+      "timeBudgetMinutes": 30,
+      "remainingTransitions": 1,
+      "costMinutes": 20,
+      "expectedVictoryCriterionIds": ["release-consistent"],
+      "deferReason": "登錄點尚未清點，稽核此刻不會關閉任何 victory criterion"
+    }
+  ],
+  "risks": [
+    {
+      "id": "duplicate-retirement",
+      "affectedFrontId": "drill-retire",
+      "protectedAssetId": "release-integrity",
+      "threat": "重複送出下架請求會破壞單次操作完整性，並讓實際登錄狀態無法判明",
+      "probability": 2,
+      "impact": 4,
+      "unacceptableThreshold": 12,
+      "guard": "只允許一次精確下架動作，結果未知時禁止重送",
+      "stopCondition": "觀測到任何下架請求後立即停止 actuator",
+      "recoveryAction": "先回讀登錄清單做戰果評估，再決定是否需要新權限"
+    }
+  ],
+  "decision": {
+    "chosenTactic": "先以唯讀探測固化真相，暫不觸碰任何登錄點",
+    "nextAction": "跑登錄清單與全庫引用探測，逐項 set-claim",
+    "rationale": "唯一可選候選是偵察戰場：無 mutation、無超門檻風險，且是其他戰場的前置",
+    "pivotCondition": "探測在時限前仍無法由權威狀態判明登錄點數量"
+  },
+  "takeoverReadiness": {
+    "actionId": "RetirePipelineRegistration",
+    "actorId": "drill-operator",
+    "sessionId": "drill-session-1",
+    "contextId": "campaign-root",
+    "scopeIdentity": "drill-legacy-pipeline",
+    "operableEvidence": ["冷啟動：角色、工作階段、目標與控制項都尚未取得探針證據"],
+    "prerequisiteIds": ["truth-consolidated", "no-prior-mutation"],
+    "executable": {
+      "objective": "移除舊管線的唯一登錄點",
+      "steps": ["對唯一登錄點送出一次下架請求"],
+      "prohibitedActions": ["不得切換其他管線", "不得在結果未知時重送"],
+      "sideEffects": ["送出一次 RetirePipelineRegistration 狀態變更請求"],
+      "stopCondition": "送出一次或觀測到任何下架請求，兩者先到即停",
+      "recoveryAction": "結果未知時停止動作並回讀登錄清單"
+    },
+    "verifiable": {
+      "expectedWorldDelta": ["登錄點消失", "殘留引用歸零"],
+      "evidenceSources": ["registry readback", "repository scan"],
+      "successPredicates": ["PIPELINE_REGISTRATION_COUNT == 0 AND RESIDUAL_REFERENCE_COUNT == 0"],
+      "failurePredicates": ["下架請求回應失敗", "deadline 到時仍有登錄點"],
+      "deadlineMinutes": 240,
+      "worldDeltaContracts": [
+        { "dimension": "pipelineRegistration", "beforeValue": "REGISTERED", "afterValue": "RETIRED" },
+        { "dimension": "residualReferenceCount", "beforeValue": 3, "afterValue": 0 }
+      ]
+    }
+  },
+  "alternativeRoutes": [
+    { "id": "manual-retirement", "reason": "自動下架若被證明不可用，可由持有發行權限的人手動移除登錄點" }
+  ],
+  "residualLossMeasurements": [
+    {
+      "id": "residual-reference-count",
+      "metric": "RESIDUAL_REFERENCE_COUNT",
+      "displayText": "殘留引用數量已被全庫掃描界定在可接受範圍",
+      "predicate": "RESIDUAL_REFERENCE_COUNT <= 3"
+    }
+  ]
+}

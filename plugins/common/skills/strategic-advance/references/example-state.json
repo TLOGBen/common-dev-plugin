@@ -1,0 +1,855 @@
+{
+  "schemaVersion": 6,
+  "missionId": "example-browser-takeover-cleanup",
+  "updatedAt": "2026-08-14T09:30:00+08:00",
+  "strategicObjective": {
+    "revision": 1,
+    "approvedAt": "2026-08-14T09:00:00+08:00",
+    "purpose": "完成一項沙盒操作，並清除仍在運作的暫存執行資料",
+    "desiredEndState": [
+      "目標沙盒操作完成",
+      "所有活動中的任務與執行紀錄歸零",
+      "畫面、服務回應與權威狀態一致"
+    ],
+    "worldDimensions": ["operationStatus", "activeTaskCount", "activeRunCount", "sandboxResourceState"],
+    "protectedAssets": [
+      {
+        "id": "operation-integrity",
+        "displayText": "沙盒操作只能完成一次，而且完成結果必須可由權威狀態判明"
+      },
+      {
+        "id": "evidence-integrity",
+        "displayText": "UI、服務回應與權威狀態不能被觀測器故障混為一談"
+      }
+    ],
+    "victoryCriteria": [
+      {
+        "id": "no-active-task",
+        "displayText": "沒有活動中的任務",
+        "predicate": "ACTIVE_TASK_COUNT == 0",
+        "status": "UNKNOWN",
+        "evidenceClaimIds": ["claim-no-active-task"]
+      },
+      {
+        "id": "run-terminal",
+        "displayText": "沒有活動中的執行紀錄",
+        "predicate": "ACTIVE_RUN_COUNT == 0",
+        "status": "UNKNOWN",
+        "evidenceClaimIds": ["claim-no-active-run"]
+      },
+      {
+        "id": "cross-layer-consistent",
+        "displayText": "畫面、服務回應與權威狀態顯示相同的終態",
+        "predicate": "UI_SERVICE_STATE_TERMINAL_CONSISTENT == true",
+        "status": "UNKNOWN",
+        "evidenceClaimIds": ["claim-cross-layer-terminal"]
+      }
+    ],
+    "victoryEvidence": [
+      "服務回應成功",
+      "權威狀態來源完成終態回讀",
+      "戰略推進沙盤不再顯示待清理事項"
+    ],
+    "constraints": [
+      "不得碰沙盒範圍以外的資料",
+      "狀態變更結果未知時不得盲目重送"
+    ],
+    "unacceptableOutcomes": [
+      "重複送出相同操作",
+      "觀測工具故障被誤判為目標系統失敗"
+    ]
+  },
+  "plainBriefing": {
+    "context": "我們正在把一項沙盒操作完整收尾。前一個自動步驟已完成，現在只差最後確認，以免留下仍在運作的暫存任務。",
+    "currentSituation": "唯一目標任務、授權操作角色與確認視窗都已確認。自動化連續兩次在送出前被同一個畫面遮罩擋住；沒有狀態變更請求送出，權威狀態也沒有改變。",
+    "reasoning": "固定評分只留下完成沙盒操作這個唯一最低分候選；其進入條件已成立、恢復路徑已備妥，也沒有超過門檻的未控制風險。",
+    "nextMove": "使用者在目前的確認視窗按一次「確定」，Agent 隨即進行戰果評估；成功後原任務應消失，而且不再有活動中的任務或執行紀錄。",
+    "userRole": "只按目前視窗的「確定」，不要切換目標或繼續操作；完成後只回覆「點了」。"
+  },
+  "currentTruth": {
+    "worldState": {
+      "resource": "SANDBOX_READY",
+      "operation": "AWAITING_FINAL_CONFIRMATION",
+      "task": "FINAL_CONFIRMATION_READY",
+      "actor": "authorized-operator",
+      "ui": "CONFIRM_DIALOG_OPEN"
+    },
+    "evidenceClaims": [
+      {
+        "id": "claim-final-task-exact",
+        "sourceType": "DB",
+        "sourceRef": "所選沙盒操作的權威狀態儲存區回讀",
+        "observedAt": "2026-08-14T09:28:00+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTION[\"FinalizeOperation\"].REQUIREMENT[\"target-ready\"].SATISFIED == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-operator-session",
+        "sourceType": "UI",
+        "sourceRef": "目前瀏覽器工作階段的身分指示",
+        "observedAt": "2026-08-14T09:28:10+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "ACTOR[\"authorized-operator\"].VERIFIED == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-session-context",
+        "sourceType": "UI",
+        "sourceRef": "目前瀏覽器頁籤與登入工作階段",
+        "observedAt": "2026-08-14T09:28:15+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "SESSION[\"browser-session-1\"].CONTEXT[\"final-confirmation\"].READY == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-action-authority",
+        "sourceType": "API",
+        "sourceRef": "所選操作的授權檢查",
+        "observedAt": "2026-08-14T09:28:16+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTOR[\"authorized-operator\"].AUTHORIZED_FOR[\"FinalizeOperation\"] == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-confirm-dialog-exact",
+        "sourceType": "UI",
+        "sourceRef": "最終確認視窗",
+        "observedAt": "2026-08-14T09:28:20+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "TARGET[\"selected-sandbox-operation\"].CARDINALITY == 1",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-confirm-control-ready",
+        "sourceType": "UI",
+        "sourceRef": "最終確認控制項",
+        "observedAt": "2026-08-14T09:28:30+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "CONTROL[\"selected-sandbox-operation\"].VISIBLE_ENABLED_UNOBSTRUCTED == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-no-finalize-mutation",
+        "sourceType": "API",
+        "sourceRef": "請求觀測紀錄",
+        "observedAt": "2026-08-14T09:28:40+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "FINALIZE_MUTATION_COUNT == 0",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-no-prior-mutation-requirement",
+        "sourceType": "API",
+        "sourceRef": "執行動作前的 mutation 守衛",
+        "observedAt": "2026-08-14T09:28:40+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTION[\"FinalizeOperation\"].REQUIREMENT[\"no-prior-mutation\"].SATISFIED == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-duplicate-guard-controlled",
+        "sourceType": "STATIC",
+        "sourceRef": "單一動作、停止條件與禁止重送守衛的配置檢查",
+        "observedAt": "2026-08-14T09:28:41+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "RISK[\"duplicate-finalization\"]@FRONT[\"finalize-sample-operation\"].STATUS == \"CONTROLLED\"",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-duplicate-risk-accepted",
+        "sourceType": "STATIC",
+        "sourceRef": "重複送出風險尚未被明確接受",
+        "observedAt": "2026-08-14T09:28:42+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "RISK[\"duplicate-finalization\"]@FRONT[\"finalize-sample-operation\"].STATUS == \"ACCEPTED\"",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-duplicate-risk-closed",
+        "sourceType": "DB",
+        "sourceRef": "重複送出風險尚未因終態而關閉",
+        "observedAt": "2026-08-14T09:28:43+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "RISK[\"duplicate-finalization\"]@FRONT[\"finalize-sample-operation\"].STATUS == \"CLOSED\"",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-no-world-change",
+        "sourceType": "DB",
+        "sourceRef": "嘗試後的權威狀態回讀",
+        "observedAt": "2026-08-14T09:28:50+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD_STATE_CHANGED_AFTER_ATTEMPT == false",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-world-unchanged-requirement",
+        "sourceType": "DB",
+        "sourceRef": "執行動作前的世界狀態守衛",
+        "observedAt": "2026-08-14T09:28:50+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTION[\"FinalizeOperation\"].REQUIREMENT[\"world-unchanged-after-attempt\"].SATISFIED == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-operation-status-before-takeover",
+        "sourceType": "DB",
+        "sourceRef": "接管前的操作狀態權威回讀",
+        "observedAt": "2026-08-14T09:27:55+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD[\"selected-sandbox-operation\"].DIMENSION[\"operationStatus\"] == \"AWAITING_FINAL_CONFIRMATION\"",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-active-task-count-before",
+        "sourceType": "DB",
+        "sourceRef": "接管前的活動任務數權威回讀",
+        "observedAt": "2026-08-14T09:27:56+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD[\"selected-sandbox-operation\"].DIMENSION[\"activeTaskCount\"] == 1",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-active-run-count-before",
+        "sourceType": "DB",
+        "sourceRef": "接管前的活動執行數權威回讀",
+        "observedAt": "2026-08-14T09:27:57+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD[\"selected-sandbox-operation\"].DIMENSION[\"activeRunCount\"] == 1",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-state-readback-ready",
+        "sourceType": "DB",
+        "sourceRef": "唯讀權威狀態探針",
+        "observedAt": "2026-08-14T09:27:30+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "EXACT_STATE_READBACK_AVAILABLE == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-main-entry",
+        "sourceType": "DB",
+        "sourceRef": "所選操作與授權角色的關係",
+        "observedAt": "2026-08-14T09:27:40+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "BATTLEFIELD[\"finalize-sample-operation\"].ENTRY[\"FINAL_CONFIRMATION_READY\"] == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-main-exit",
+        "sourceType": "DB",
+        "sourceRef": "尚未執行的權威終態回讀",
+        "observedAt": "2026-08-14T09:29:00+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "BATTLEFIELD[\"finalize-sample-operation\"].EXIT[\"FINALIZED_NO_ACTIVE_RESIDUE\"] == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-main-pivot-not-triggered",
+        "sourceType": "DB",
+        "sourceRef": "目前主攻的 pivot trigger 權威判定",
+        "observedAt": "2026-08-14T09:29:00+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "BATTLEFIELD[\"finalize-sample-operation\"].PIVOT_TRIGGERED == true",
+        "status": "FAIL"
+      },
+      {
+        "id": "claim-no-active-task",
+        "sourceType": "DB",
+        "sourceRef": "活動任務終態回讀尚未完成",
+        "observedAt": "2026-08-14T09:29:01+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTIVE_TASK_COUNT == 0",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-no-active-run",
+        "sourceType": "DB",
+        "sourceRef": "活動執行紀錄終態回讀尚未完成",
+        "observedAt": "2026-08-14T09:29:02+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTIVE_RUN_COUNT == 0",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-cross-layer-terminal",
+        "sourceType": "API",
+        "sourceRef": "跨 UI、服務與權威狀態的終態比對尚未完成",
+        "observedAt": "2026-08-14T09:29:03+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "UI_SERVICE_STATE_TERMINAL_CONSISTENT == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-support-entry",
+        "sourceType": "STATIC",
+        "sourceRef": "請求細節觀測契約",
+        "observedAt": "2026-08-14T09:00:00+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 3,
+        "predicate": "BATTLEFIELD[\"request-detail-observer\"].ENTRY[\"REQUEST_DETAIL_UNAVAILABLE\"] == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-support-exit",
+        "sourceType": "UI",
+        "sourceRef": "請求細節觀測器尚不可用",
+        "observedAt": "2026-08-14T09:29:00+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "BATTLEFIELD[\"request-detail-observer\"].EXIT[\"REQUEST_DETAIL_EVIDENCE_AVAILABLE\"] == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-request-detail",
+        "sourceType": "API",
+        "sourceRef": "請求觀測追蹤",
+        "observedAt": "2026-08-14T09:15:00+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "REQUEST_DETAIL_AVAILABLE == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-mask-failure",
+        "sourceType": "UI",
+        "sourceRef": "兩次相同的送出前失敗指紋",
+        "observedAt": "2026-08-14T09:26:00+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "PRE_SUBMIT_OVERLAY_FAILURE_COUNT >= 2",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-route-closed",
+        "sourceType": "STATIC",
+        "sourceRef": "戰術接管替代路線尚未關閉",
+        "observedAt": "2026-08-14T09:29:10+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "TACTICAL_TAKEOVER_ROUTE_CLOSED == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-route-unsafe",
+        "sourceType": "STATIC",
+        "sourceRef": "戰術接管替代路線的安全性判定尚未失敗",
+        "observedAt": "2026-08-14T09:29:11+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "TACTICAL_TAKEOVER_ROUTE_UNSAFE == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-route-authority-required",
+        "sourceType": "STATIC",
+        "sourceRef": "戰術接管替代路線的新權限判定尚未成立",
+        "observedAt": "2026-08-14T09:29:12+08:00",
+        "validUntil": "2026-08-14T10:00:00+08:00",
+        "authorityRank": 2,
+        "predicate": "TACTICAL_TAKEOVER_ROUTE_REQUIRES_NEW_AUTHORITY == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-operation-preparing-before",
+        "sourceType": "DB",
+        "sourceRef": "狀態轉換前的權威操作狀態回讀",
+        "observedAt": "2026-08-14T09:19:30+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD[\"sample-operation-001\"].DIMENSION[\"operationStatus\"] == \"PREPARING\"",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-operation-ready",
+        "sourceType": "DB",
+        "sourceRef": "狀態轉換後的權威操作狀態回讀",
+        "observedAt": "2026-08-14T09:20:00+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "WORLD[\"sample-operation-001\"].DIMENSION[\"operationStatus\"] == \"AWAITING_FINAL_CONFIRMATION\"",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-victory-unattainable",
+        "sourceType": "DB",
+        "sourceRef": "戰略勝利可達性的權威回讀尚未完成",
+        "observedAt": "2026-08-14T09:29:20+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "STRATEGIC_VICTORY_UNATTAINABLE_UNDER_CURRENT_CONSTRAINTS == true",
+        "status": "UNKNOWN"
+      },
+      {
+        "id": "claim-observer-failure-contained",
+        "sourceType": "LOG",
+        "sourceRef": "將觀測器退化與目標狀態分開記錄的決策紀錄",
+        "observedAt": "2026-08-14T09:29:25+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "OBSERVER_FAILURE_NOT_CLASSIFIED_AS_TARGET_FAILURE == true",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-residual-sandbox-count",
+        "sourceType": "DB",
+        "sourceRef": "沙盒殘留資源數量的權威回讀",
+        "observedAt": "2026-08-14T09:29:30+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTIVE_SANDBOX_RESIDUE_COUNT == 1",
+        "status": "PASS"
+      },
+      {
+        "id": "claim-loss-cleanup-closed",
+        "sourceType": "DB",
+        "sourceRef": "損失終局的清理狀態權威回讀尚未完成",
+        "observedAt": "2026-08-14T09:29:35+08:00",
+        "validUntil": "2026-08-14T12:00:00+08:00",
+        "authorityRank": 1,
+        "predicate": "ACTIVE_TASK_COUNT == 0 AND ACTIVE_RUN_COUNT == 0",
+        "status": "UNKNOWN"
+      }
+    ],
+    "observerHealth": [
+      {
+        "name": "browser",
+        "status": "HEALTHY",
+        "requiredClaimIds": [
+          "claim-operator-session",
+          "claim-confirm-dialog-exact",
+          "claim-confirm-control-ready",
+          "claim-mask-failure"
+        ],
+        "decisionCriticalClaimIds": [
+          "claim-operator-session",
+          "claim-confirm-dialog-exact",
+          "claim-confirm-control-ready"
+        ],
+        "deadlineExceeded": false,
+        "evidence": "操作角色、目標與控制項皆有新鮮證據"
+      },
+      {
+        "name": "authoritative-state",
+        "status": "DEGRADED",
+        "requiredClaimIds": [
+          "claim-final-task-exact",
+          "claim-no-world-change",
+          "claim-main-exit"
+        ],
+        "decisionCriticalClaimIds": [
+          "claim-final-task-exact",
+          "claim-no-world-change"
+        ],
+        "deadlineExceeded": false,
+        "evidence": "前置狀態與未變更已確認；終態回讀尚未到時"
+      },
+      {
+        "name": "request-detail-capture",
+        "status": "DEGRADED",
+        "requiredClaimIds": ["claim-request-detail"],
+        "decisionCriticalClaimIds": [],
+        "deadlineExceeded": false,
+        "evidence": "請求細節尚不可用，但不阻擋目前主攻"
+      }
+    ],
+    "cleanupDebt": [
+      {
+        "id": "cleanup-final-task",
+        "residue": "一筆仍在活動中的沙盒收尾任務",
+        "severity": "BLOCKING",
+        "blocksVictory": true,
+        "owner": "operator",
+        "cleanupAction": "FinalizeOperation",
+        "verificationPredicate": "ACTIVE_TASK_COUNT == 0 AND ACTIVE_RUN_COUNT == 0",
+        "status": "OPEN",
+        "evidenceClaimIds": ["claim-loss-cleanup-closed"]
+      }
+    ]
+  },
+  "riskRegister": [
+    {
+      "id": "duplicate-finalization",
+      "affectedFrontId": "finalize-sample-operation",
+      "protectedAssetId": "operation-integrity",
+      "threat": "重複送出完成請求會破壞單次操作完整性，並讓實際終態無法判明",
+      "status": "CONTROLLED",
+      "probability": 2,
+      "impact": 5,
+      "score": 10,
+      "unacceptableThreshold": 12,
+      "guard": "只允許一次精確操作，結果未知時禁止重複點擊",
+      "stopCondition": "觀測到任何完成請求後立即停止 actuator",
+      "recoveryAction": "先做 UI、服務回應與權威狀態的戰果評估，再決定是否需要新權限",
+      "statusChecks": {
+        "CONTROLLED": {
+          "evidenceClaimIds": ["claim-duplicate-guard-controlled"]
+        },
+        "ACCEPTED": {
+          "evidenceClaimIds": ["claim-duplicate-risk-accepted"]
+        },
+        "CLOSED": {
+          "evidenceClaimIds": ["claim-duplicate-risk-closed"]
+        }
+      }
+    }
+  ],
+  "blockers": [],
+  "battlefields": [
+    {
+      "id": "finalize-sample-operation",
+      "operationType": "DECISIVE",
+      "effort": "MAIN",
+      "status": "ACTIVE",
+      "objective": "完成單一沙盒操作並清除執行殘留",
+      "entryState": "FINAL_CONFIRMATION_READY",
+      "terminalState": "FINALIZED_NO_ACTIVE_RESIDUE",
+      "entryClaimId": "claim-main-entry",
+      "exitClaimId": "claim-main-exit",
+      "evidenceClaimIds": [
+        "claim-main-entry",
+        "claim-main-exit",
+        "claim-final-task-exact"
+      ],
+      "mutationScope": ["FinalizeOperation"],
+      "recovery": {
+        "status": "READY",
+        "action": "結果未知時先查權威狀態，不重送完成請求",
+        "steps": [
+          "停止 UI actuator",
+          "依精確目標識別碼查任務、執行紀錄與沙盒資源",
+          "只有 predicate 證明未送出時才重新規劃"
+        ],
+        "readinessPredicate": "EXACT_STATE_READBACK_AVAILABLE == true",
+        "successPredicate": "OUTCOME_CLASSIFIED_AS_PASS_FAIL_OR_UNKNOWN",
+        "stopCondition": "任何來源顯示 mutation 已送出",
+        "evidenceClaimIds": ["claim-state-readback-ready"]
+      },
+      "allowedNextStatuses": ["COMPLETE", "BLOCKED"],
+      "deferReason": "",
+      "owner": "user-tactical-reserve",
+      "timeBudgetMinutes": 30
+    },
+    {
+      "id": "request-detail-observer",
+      "operationType": "SHAPING",
+      "effort": "SUPPORT",
+      "status": "DEFERRED",
+      "objective": "補齊瀏覽器端的請求細節證據",
+      "entryState": "REQUEST_DETAIL_UNAVAILABLE",
+      "terminalState": "REQUEST_DETAIL_EVIDENCE_AVAILABLE",
+      "entryClaimId": "claim-support-entry",
+      "exitClaimId": "claim-support-exit",
+      "evidenceClaimIds": ["claim-support-entry", "claim-support-exit"],
+      "mutationScope": [],
+      "recovery": {
+        "status": "NOT_REQUIRED",
+        "action": "不執行目標狀態變更，另案修復 observer",
+        "steps": [],
+        "readinessPredicate": "NO_MUTATION_RECOVERY_REQUIRED == true",
+        "successPredicate": "TARGET_WORLD_STATE_UNCHANGED",
+        "stopCondition": "任何修正開始影響主戰場",
+        "evidenceClaimIds": []
+      },
+      "allowedNextStatuses": ["ACTIVE", "COMPLETE"],
+      "deferReason": "完成後不會關閉目前任何 victory criterion，也不解除 active blocker",
+      "owner": "instrumentation-worker",
+      "timeBudgetMinutes": 60
+    }
+  ],
+  "decision": {
+    "activeFrontId": "finalize-sample-operation",
+    "chosenTactic": "由使用者接管最後一個已確認的 UI 點擊，Agent 保留決策與戰果評估",
+    "nextAction": "使用者按一次最終確認，Agent 立即做 BDA",
+    "contribution": "DIRECT_ADVANCE",
+    "rationale": "固定公式得出唯一最低分候選，entry、風險與 recovery 均符合執行條件",
+    "pivotCondition": "終態 predicate 在 deadline 前仍無法由權威狀態判明",
+    "pivotClaimId": "claim-main-pivot-not-triggered",
+    "candidates": [
+      {
+        "frontId": "finalize-sample-operation",
+        "eligible": true,
+        "expectedVictoryCriterionIds": [
+          "no-active-task",
+          "run-terminal",
+          "cross-layer-consistent"
+        ],
+        "unmetVictoryCriteria": 0,
+        "remainingTransitions": 1,
+        "riskScore": 10,
+        "costMinutes": 2,
+        "blockingRiskIds": [],
+        "totalScore": 62,
+        "ineligibilityReason": ""
+      },
+      {
+        "frontId": "request-detail-observer",
+        "eligible": false,
+        "expectedVictoryCriterionIds": [],
+        "unmetVictoryCriteria": 3,
+        "remainingTransitions": 2,
+        "riskScore": 0,
+        "costMinutes": 60,
+        "blockingRiskIds": [],
+        "totalScore": 380,
+        "ineligibilityReason": "戰場已 DEFERRED，完成後不改變 victory criterion"
+      }
+    ]
+  },
+  "strategicClarity": {
+    "status": "CLEAR",
+    "candidateMainEffortIds": ["finalize-sample-operation"],
+    "unresolvedDecisions": [],
+    "unclearCauses": [],
+    "route": "EXECUTION_READY",
+    "wayfinderMapPath": ""
+  },
+  "progress": {
+    "lastWorldStateChangeAt": "2026-08-14T09:20:00+08:00",
+    "activeFrontStartedAt": "2026-08-14T08:56:00+08:00",
+    "sameFailureFingerprintCount": 2,
+    "alternateReady": true,
+    "culminationPolicy": {
+      "reanalysisMinutes": 30,
+      "highRiskMinutes": 90,
+      "repeatFailureLimit": 2
+    },
+    "culminationRisk": "MEDIUM"
+  },
+  "executionAssessment": {
+    "mode": "TACTICAL_TAKEOVER",
+    "automationActuatorStatus": "UNRELIABLE",
+    "outcomeStatus": "NO_CHANGE",
+    "targetIdentity": "EXACT_ONE",
+    "actorIdentity": "VERIFIED",
+    "actionContract": "VERIFIED",
+    "mutationObserved": false,
+    "worldStateChanged": false,
+    "attemptCount": 2,
+    "sameFailureFingerprintCount": 2,
+    "deadlineSeconds": 30,
+    "deadlineExceeded": false,
+    "failureFingerprint": "FINAL_CONFIRM_BLOCKED_BEFORE_REQUEST"
+  },
+  "takeoverReadiness": {
+    "actionId": "FinalizeOperation",
+    "actorId": "authorized-operator",
+    "sessionId": "browser-session-1",
+    "contextId": "final-confirmation",
+    "scopeIdentity": "selected-sandbox-operation",
+    "operable": {
+      "status": "PASS",
+      "evidence": [
+        "授權操作角色已在正確頁籤登入",
+        "目標任務與最終確認視窗都是唯一且精確的目標",
+        "「確定」按鈕可見且可用"
+      ],
+      "actorCheck": {
+        "evidenceClaimIds": ["claim-operator-session"]
+      },
+      "sessionCheck": {
+        "evidenceClaimIds": ["claim-session-context"]
+      },
+      "targetCheck": {
+        "evidenceClaimIds": ["claim-confirm-dialog-exact"]
+      },
+      "controlCheck": {
+        "requiredConditions": ["VISIBLE", "ENABLED", "UNOBSTRUCTED"],
+        "evidenceClaimIds": ["claim-confirm-control-ready"]
+      }
+    },
+    "executable": {
+      "status": "PASS",
+      "objective": "完成唯一的沙盒操作",
+      "authorizedActor": "authorized-operator",
+      "authorityCheck": {
+        "evidenceClaimIds": ["claim-action-authority"]
+      },
+      "prerequisiteChecks": [
+        {
+          "requirementId": "target-ready",
+          "evidenceClaimIds": ["claim-final-task-exact"]
+        },
+        {
+          "requirementId": "no-prior-mutation",
+          "evidenceClaimIds": ["claim-no-prior-mutation-requirement"]
+        },
+        {
+          "requirementId": "world-unchanged-after-attempt",
+          "evidenceClaimIds": ["claim-world-unchanged-requirement"]
+        }
+      ],
+      "steps": ["在目前的最終確認視窗按一次「確定」"],
+      "prohibitedActions": [
+        "不得切換其他目標",
+        "不得重複點擊",
+        "不得在點擊後繼續操作"
+      ],
+      "sideEffects": ["送出一次 FinalizeOperation 狀態變更請求"],
+      "timeoutSeconds": 30,
+      "stopCondition": "點擊一次或觀測到任何完成請求，兩者先到即停",
+      "recoveryAction": "結果未知時停止操作並執行精確的權威狀態回讀"
+    },
+    "verifiable": {
+      "status": "PASS",
+      "expectedWorldDelta": [
+        "原收尾任務消失",
+        "不再有活動中的任務或執行紀錄"
+      ],
+      "evidenceSources": ["UI", "service response", "authoritative state"],
+      "baselineChecks": [
+        {
+          "id": "operation-status-before",
+          "evidenceClaimIds": ["claim-operation-status-before-takeover"]
+        },
+        {
+          "id": "active-task-count-before",
+          "evidenceClaimIds": ["claim-active-task-count-before"]
+        },
+        {
+          "id": "active-run-count-before",
+          "evidenceClaimIds": ["claim-active-run-count-before"]
+        }
+      ],
+      "expectedWorldDeltaContracts": [
+        {
+          "scopeIdentity": "selected-sandbox-operation",
+          "dimension": "operationStatus",
+          "beforeValue": "AWAITING_FINAL_CONFIRMATION",
+          "afterValue": "FINALIZED",
+          "baselineCheckId": "operation-status-before"
+        },
+        {
+          "scopeIdentity": "selected-sandbox-operation",
+          "dimension": "activeTaskCount",
+          "beforeValue": 1,
+          "afterValue": 0,
+          "baselineCheckId": "active-task-count-before"
+        },
+        {
+          "scopeIdentity": "selected-sandbox-operation",
+          "dimension": "activeRunCount",
+          "beforeValue": 1,
+          "afterValue": 0,
+          "baselineCheckId": "active-run-count-before"
+        }
+      ],
+      "successPredicates": [
+        "FinalizeOperation 服務回應成功",
+        "ACTIVE_TASK_COUNT == 0 AND ACTIVE_RUN_COUNT == 0"
+      ],
+      "failurePredicates": [
+        "服務回應失敗",
+        "deadline 到時仍有活動任務或執行紀錄"
+      ],
+      "unknownOutcomeRule": "NO_DECISIVE_EVIDENCE_BY_DEADLINE",
+      "deadlineAt": "2026-08-14T09:35:00+08:00"
+    },
+    "result": "TACTICAL_ACTION_READY"
+  },
+  "intervention": {
+    "status": "REQUESTED",
+    "mode": "TACTICAL_TAKEOVER",
+    "phase": "TAKEOVER_REQUESTED",
+    "requestedAction": "在目前的最終確認視窗按一次「確定」",
+    "reason": "自動化已連續兩次在送出前被同一個非目標邏輯遮罩攔截，但尚未送出任何完成請求",
+    "returnOfControl": "完成後只回覆「點了」，不要繼續操作；Agent 會接手戰果評估"
+  },
+  "lossMinimizationAssessment": {
+    "victoryUnattainable": {
+      "predicate": "STRATEGIC_VICTORY_UNATTAINABLE_UNDER_CURRENT_CONSTRAINTS == true",
+      "evidenceClaimIds": ["claim-victory-unattainable"]
+    },
+    "unacceptableOutcomeChecks": [
+      {
+        "outcome": "重複送出相同操作",
+        "predicate": "FINALIZE_MUTATION_COUNT == 0",
+        "evidenceClaimIds": ["claim-no-finalize-mutation"]
+      },
+      {
+        "outcome": "觀測工具故障被誤判為目標系統失敗",
+        "predicate": "OBSERVER_FAILURE_NOT_CLASSIFIED_AS_TARGET_FAILURE == true",
+        "evidenceClaimIds": ["claim-observer-failure-contained"]
+      }
+    ],
+    "residualLossMeasurements": [
+      {
+        "id": "residual-sandbox-count",
+        "metric": "ACTIVE_SANDBOX_RESIDUE_COUNT",
+        "displayText": "仍有一筆沙盒殘留，且範圍已被權威狀態界定",
+        "predicate": "ACTIVE_SANDBOX_RESIDUE_COUNT == 1",
+        "evidenceClaimIds": ["claim-residual-sandbox-count"]
+      }
+    ],
+    "preservedGains": []
+  },
+  "terminalAssessment": {
+    "status": "IN_PROGRESS",
+    "requiredAuthority": "",
+    "alternativeRoutes": [
+      {
+        "id": "human-tactical-takeover",
+        "status": "OPEN",
+        "reason": "三道行動門已通過，可由使用者完成單一 exact action",
+        "statusChecks": {
+          "CLOSED": {
+            "predicate": "TACTICAL_TAKEOVER_ROUTE_CLOSED == true",
+            "evidenceClaimIds": ["claim-route-closed"]
+          },
+          "UNSAFE": {
+            "predicate": "TACTICAL_TAKEOVER_ROUTE_UNSAFE == true",
+            "evidenceClaimIds": ["claim-route-unsafe"]
+          },
+          "REQUIRES_AUTHORITY": {
+            "predicate": "TACTICAL_TAKEOVER_ROUTE_REQUIRES_NEW_AUTHORITY == true",
+            "evidenceClaimIds": ["claim-route-authority-required"]
+          }
+        }
+      }
+    ]
+  },
+  "latestVerifiedAdvance": {
+    "at": "2026-08-14T09:20:00+08:00",
+    "scopeIdentity": "sample-operation-001",
+    "dimension": "operationStatus",
+    "from": "PREPARING",
+    "to": "AWAITING_FINAL_CONFIRMATION",
+    "beforeValue": "PREPARING",
+    "afterValue": "AWAITING_FINAL_CONFIRMATION",
+    "beforeClaimId": "claim-operation-preparing-before",
+    "afterClaimId": "claim-operation-ready",
+    "strategicEffect": "ENABLES_NEXT_TRANSITION",
+    "effectTargetId": "finalize-sample-operation",
+    "evidence": [
+      "前一個自動步驟送出成功",
+      "原本的準備任務已消失",
+      "新的最終確認任務只有一筆"
+    ],
+    "evidenceClaimIds": ["claim-operation-preparing-before", "claim-operation-ready"]
+  }
+}

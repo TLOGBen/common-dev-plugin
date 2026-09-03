@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="292" viewBox="0 0 1120 430" role="img" aria-labelledby="title desc">
+  <title id="title">RFP three-stage pipeline</title>
+  <desc id="desc">The RFP pipeline flows from requirement analysis to architecture design to SA BDD, with cold estimation and quality orchestration available as supporting skills.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
+      <path d="M2 1 L8 5 L2 9" fill="none" stroke="#64748b" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+    </marker>
+    <style>
+      .stage { fill: #ffffff; stroke: #2563eb; stroke-width: 2; }
+      .stage-title { fill: #111827; font: 700 18px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .stage-output { fill: #475569; font: 500 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .support { fill: #ffffff; stroke: #64748b; stroke-width: 2; stroke-dasharray: 7 6; }
+      .support-title { fill: #111827; font: 700 17px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .support-output { fill: #475569; font: 500 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .arrow { stroke: #64748b; stroke-width: 2.4; fill: none; }
+      .label { fill: #64748b; font: 700 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; letter-spacing: 0; }
+      .caption { fill: #64748b; font: 500 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#f8fafc" rx="8" />
+  <text class="label" x="88" y="64">RFP CHAIN</text>
+
+  <rect class="stage" x="82" y="92" width="280" height="128" rx="8" />
+  <text class="stage-title" x="222" y="138" text-anchor="middle">rfp-requirement-analysis</text>
+  <text class="stage-output" x="222" y="172" text-anchor="middle">產物：需求分析報告</text>
+  <text class="caption" x="222" y="197" text-anchor="middle">逐模組功能 / API 分析</text>
+
+  <path class="arrow" d="M374 156h86" marker-end="url(#arrow)" />
+
+  <rect class="stage" x="478" y="92" width="280" height="128" rx="8" />
+  <text class="stage-title" x="618" y="138" text-anchor="middle">rfp-architecture-design</text>
+  <text class="stage-output" x="618" y="172" text-anchor="middle">產物：架構文件</text>
+  <text class="caption" x="618" y="197" text-anchor="middle">總覽 / 分層 / ER 模型</text>
+
+  <path class="arrow" d="M770 156h86" marker-end="url(#arrow)" />
+
+  <rect class="stage" x="874" y="92" width="164" height="128" rx="8" />
+  <text class="stage-title" x="956" y="138" text-anchor="middle">rfp-sa-bdd</text>
+  <text class="stage-output" x="956" y="172" text-anchor="middle">產物：BDD</text>
+  <text class="caption" x="956" y="197" text-anchor="middle">驗收規格</text>
+
+  <text class="label" x="88" y="282">SUPPORTING SKILLS</text>
+
+  <rect class="support" x="82" y="306" width="430" height="74" rx="8" />
+  <text class="support-title" x="124" y="338">cold-estimation</text>
+  <text class="support-output" x="124" y="363">可獨立執行：冷啟動功能盤點與人天估算</text>
+
+  <rect class="support" x="608" y="306" width="430" height="74" rx="8" />
+  <text class="support-title" x="650" y="338">quality-orchestrator</text>
+  <text class="support-output" x="650" y="363">審查迴圈：writer → reviewer → fixer → PASS</text>
+</svg>

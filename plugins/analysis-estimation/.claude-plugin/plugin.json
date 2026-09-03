@@ -1,0 +1,22 @@
+{
+  "name": "analysis-estimation",
+  "displayName": "分析與評估 (Analysis & Estimation)",
+  "version": "1.1.2",
+  "description": "Project-agnostic analysis & estimation suite: evaluate unfamiliar existing systems from customer outcomes and evidence (estimate); turn a cold RFP/SOW into traceable requirement analysis (rfp-requirement-analysis), architecture design (rfp-architecture-design), and BDD acceptance specs (rfp-sa-bdd); estimate greenfield scope in person-days (cold-estimation); and run a writer→reviewer→fixer quality loop (quality-orchestrator).",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "keywords": [
+    "rfp",
+    "requirement-analysis",
+    "architecture",
+    "bdd",
+    "estimation",
+    "orchestration",
+    "legacy-modernization"
+  ],
+  "defaultEnabled": true
+}

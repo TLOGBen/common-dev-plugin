@@ -1,0 +1,40 @@
+# --- Claude Code local working artifacts (never committed) ---
+.claude/evolve/
+.claude/design/
+.claude/worktrees/
+.claude/jobs/
+.claude/archived/
+.claude/wait-what/
+/.codex/wait-what/
+.claude/.tmp/
+.agent-workspace/
+.strategic-advance/
+/.scratch/
+/.codex/archived/
+
+# --- baransu design-system artifacts (local visual-spec output) ---
+/DESIGN.md
+/DESIGN.html
+/tokens.css
+/design-cores/
+/slide-cores/
+/紙-sanity.sh
+
+# --- Generated test runtime (from gen-e2e-* skill output, and any local test run) ---
+node_modules/
+reports/
+
+# --- Live auth captures from gen-e2e-test — equal to credentials, NEVER commit ---
+auth.json
+auth.session.json
+
+# --- Recording output from gen-e2e-record ---
+recording.js
+
+# --- Python ---
+__pycache__/
+*.pyc
+
+# --- Misc ---
+*.log
+.DS_Store

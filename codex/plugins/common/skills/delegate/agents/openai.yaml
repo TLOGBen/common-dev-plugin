@@ -1,0 +1,4 @@
+interface:
+  display_name: "Delegate"
+  short_description: "Delegate bounded work to a sidekick model"
+  default_prompt: "Use $delegate --fast to hand a bounded task to a Codex sidekick with Fast service tier."

@@ -1,0 +1,15 @@
+{
+  "name": "e2e-record",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Playwright 錄製 → 自動產生測試（gen-e2e-record / gen-e2e-test）",
+  "type": "module",
+  "scripts": {
+    "record": "playwright codegen --target javascript --channel chrome -o recording.js",
+    "test": "node test.mjs",
+    "install-browser": "playwright install chromium"
+  },
+  "dependencies": {
+    "playwright": "^1.49.0"
+  }
+}

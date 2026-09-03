@@ -1,0 +1,56 @@
+{
+  "name": "common-dev",
+  "interface": {
+    "displayName": "Common Dev"
+  },
+  "plugins": [
+    {
+      "name": "test-utils",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/test-utils"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "analysis-estimation",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/analysis-estimation"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "common",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/common"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
+      "name": "linkstart",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/linkstart"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

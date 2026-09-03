@@ -1,0 +1,32 @@
+{
+  "name": "common",
+  "version": "1.35.2",
+  "description": "General-purpose Codex utilities for prompt work, measurable goals, bounded delegation, strategic execution, plain-language recovery, and large decision maps. Skill instructions stay in English; user-facing prose and newly generated human-readable artifacts default to Traditional Chinese unless the user explicitly requests another language.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Common",
+    "shortDescription": "Developer workflows with Traditional Chinese output by default",
+    "longDescription": "Common bundles better-prompts, define-goal, delegate, strategic-advance, wait-what, and Wayfinder with grilling, domain-modeling, research, and prototype. It helps improve prompts, pin measurable outcomes, delegate verifiable slices, keep long-running cross-tool work advancing, recover explanations that did not land, and chart multi-session decisions. Skill instructions remain English; user-facing prose and new human-readable artifacts default to Traditional Chinese unless another language is explicitly requested.",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [],
+    "defaultPrompt": "Use $better-prompts to improve this prompt while preserving its intent and constraints."
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "keywords": [
+    "prompts",
+    "prompt-engineering",
+    "gpt-5.6",
+    "agents",
+    "tools",
+    "delegation",
+    "sidekick",
+    "multi-model",
+    "strategic-execution"
+  ]
+}

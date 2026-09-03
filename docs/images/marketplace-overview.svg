@@ -1,0 +1,91 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="760" height="1426" viewBox="0 0 760 1426" role="img" aria-labelledby="title desc">
+  <title id="title">common-dev marketplace structure</title>
+  <desc id="desc">common-dev marketplace contains three plugins: test-utils with three skills (opt-in), analysis-estimation with five skills (opt-in), and common with ten skills (enabled by default).</desc>
+  <defs>
+    <style>
+      .root { fill: #111827; }
+      .root-text { fill: #ffffff; font: 700 24px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .root-sub { fill: #cbd5e1; font: 500 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .plugin { fill: #ffffff; stroke: #64748b; stroke-width: 2; stroke-dasharray: 8 7; }
+      .plugin-title { fill: #111827; font: 700 22px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .plugin-sub { fill: #475569; font: 500 14px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .skill { fill: #f1f5f9; stroke: #cbd5e1; stroke-width: 1.5; }
+      .skill-text { fill: #1f2937; font: 600 15px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .label { fill: #fef3c7; stroke: #d97706; stroke-width: 1.3; }
+      .label-text { fill: #92400e; font: 700 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .label-on { fill: #dcfce7; stroke: #16a34a; stroke-width: 1.3; }
+      .label-on-text { fill: #166534; font: 700 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+      .line { stroke: #94a3b8; stroke-width: 2; fill: none; }
+      .caption { fill: #64748b; font: 500 13px system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    </style>
+  </defs>
+
+  <rect width="100%" height="100%" fill="#f8fafc" rx="8" />
+
+  <rect class="root" x="140" y="40" width="480" height="88" rx="8" />
+  <text class="root-text" x="380" y="80" text-anchor="middle">common-dev marketplace</text>
+  <text class="root-sub" x="380" y="108" text-anchor="middle">generic developer toolkit · project-agnostic</text>
+
+  <path class="line" d="M380 128v52" />
+  <path class="line" d="M380 430v36" />
+
+  <rect class="plugin" x="80" y="180" width="600" height="250" rx="8" />
+  <rect class="label" x="560" y="204" width="82" height="30" rx="6" />
+  <text class="label-text" x="601" y="224" text-anchor="middle">opt-in</text>
+  <text class="plugin-title" x="116" y="224">test-utils</text>
+  <text class="plugin-sub" x="116" y="252">E2E testing and browser debugging</text>
+
+  <rect class="skill" x="116" y="286" width="528" height="38" rx="6" />
+  <text class="skill-text" x="380" y="311" text-anchor="middle">gen-e2e-test</text>
+  <rect class="skill" x="116" y="336" width="528" height="38" rx="6" />
+  <text class="skill-text" x="380" y="361" text-anchor="middle">gen-e2e-record</text>
+  <rect class="skill" x="116" y="386" width="528" height="38" rx="6" />
+  <text class="skill-text" x="380" y="411" text-anchor="middle">dev-browser</text>
+  <rect class="plugin" x="80" y="466" width="600" height="326" rx="8" />
+  <rect class="label" x="560" y="490" width="82" height="30" rx="6" />
+  <text class="label-text" x="601" y="510" text-anchor="middle">opt-in</text>
+  <text class="plugin-title" x="116" y="510">analysis-estimation</text>
+  <text class="plugin-sub" x="116" y="538">RFP analysis, BDD specs, estimation</text>
+
+  <rect class="skill" x="116" y="570" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="592" text-anchor="middle">rfp-requirement-analysis</text>
+  <rect class="skill" x="116" y="614" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="636" text-anchor="middle">rfp-architecture-design</text>
+  <rect class="skill" x="116" y="658" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="680" text-anchor="middle">rfp-sa-bdd</text>
+  <rect class="skill" x="116" y="702" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="724" text-anchor="middle">cold-estimation</text>
+  <rect class="skill" x="116" y="746" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="768" text-anchor="middle">quality-orchestrator</text>
+
+  <path class="line" d="M380 792v36" />
+
+  <rect class="plugin" x="80" y="828" width="600" height="546" rx="8" />
+  <rect class="label-on" x="560" y="852" width="82" height="30" rx="6" />
+  <text class="label-on-text" x="601" y="872" text-anchor="middle">default</text>
+  <text class="plugin-title" x="116" y="872">common</text>
+  <text class="plugin-sub" x="116" y="900">prompting, delegation, goals, strategic advance, and planning</text>
+
+  <rect class="skill" x="116" y="932" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="954" text-anchor="middle">better-prompts</text>
+  <rect class="skill" x="116" y="976" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="998" text-anchor="middle">delegate</text>
+  <rect class="skill" x="116" y="1020" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1042" text-anchor="middle">define-goal</text>
+  <rect class="skill" x="116" y="1064" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1086" text-anchor="middle">strategic-advance</text>
+  <rect class="skill" x="116" y="1108" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1130" text-anchor="middle">wait-what</text>
+  <rect class="skill" x="116" y="1152" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1174" text-anchor="middle">wayfinder</text>
+  <rect class="skill" x="116" y="1196" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1218" text-anchor="middle">grilling</text>
+  <rect class="skill" x="116" y="1240" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1262" text-anchor="middle">domain-modeling</text>
+  <rect class="skill" x="116" y="1284" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1306" text-anchor="middle">research</text>
+  <rect class="skill" x="116" y="1328" width="528" height="34" rx="6" />
+  <text class="skill-text" x="380" y="1350" text-anchor="middle">prototype</text>
+
+  <text class="caption" x="380" y="1400" text-anchor="middle">3 plugins · 18 skills · common enabled by default, others opt-in</text>
+</svg>

@@ -1,0 +1,37 @@
+{
+  "name": "linkstart",
+  "displayName": "LinkStart",
+  "version": "0.4.1",
+  "description": "LinkStart v1 Preview integration: reconnect an interactive HTML or localhost app to the same Claude Code session or Codex thread, with persistent Claude channel/monitor and Codex host leases plus foreground compatibility.",
+  "mcpServers": {
+    "linkstart": {
+      "command": "python3",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/skills/link-start/scripts/claude_adapter.py",
+        "serve"
+      ]
+    }
+  },
+  "channels": [
+    {
+      "server": "linkstart"
+    }
+  ],
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io",
+    "url": "https://github.com/TLOGBen"
+  },
+  "homepage": "https://github.com/TLOGBen/LinkStart",
+  "repository": "https://github.com/TLOGBen/LinkStart",
+  "license": "MIT",
+  "keywords": [
+    "linkstart",
+    "html",
+    "local-app",
+    "claude-code",
+    "codex",
+    "agent-session"
+  ],
+  "defaultEnabled": true
+}
