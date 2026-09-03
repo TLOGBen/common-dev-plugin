@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## marketplace `common-dev` 1.35.3 — Estimate PM 確認報告下鑽與主動發現
+
+- `analysis-estimation` 1.1.3／`estimate` 3.1.0 將 Gate 5 報告改為 PM-first 確認台：第一層先顯示本次摘要與七個評估項目的低／基準／高人天及原項目說明；點擊項目後以原生 dialog 開啟修改明細，關閉時回到原列與捲動位置。額外發現只跟隨所屬項目，不再脫離上下文獨立陳列。
+- 案件 schema 升至 8。Discovery 一次建立唯一 `detailCatalogs` 工作集合，Wayfinder、work item 計價與 Gate 5 只引用相同 stable ID；`direct-touch` 必須完整逐項列名且數量相符，`generated` 說明重新產製與核對方式，`evidence-only` 明示不作人工乘數。另以 `scopeDelta` 阻擋確認數與逐名清單不一致。
+- HTML 由 `assessment-state.json` 經 generator 套用內建 `assets/assessment-report-template.html` 產生。圖解只在 `package.visuals` 能回答明確問題時出現；PM 文字遵守「直接陳述，不用文字表演」，先說結論、人天影響與 PM 注意事項，再把算法與技術證據放進展開層。
+- 兩個既有案件型態完成實際瀏覽器回歸：CR 案驗證 4→6 六畫面、查詢點與 4.5／6.5 人天說明；四包升版案驗證 87 個 QueryDSL 使用檔完整清單、136 個 Q 類重新產製摘要及 13 類整合表。測試價值稽核將 57 項收斂為 44 項：保留 41 項有效行為，刪除 13 項文件字串或無 deterministic surface 的測試，並將 3 項改為直接驗證 state／HTML 行為。
+
 ## marketplace `common-dev` 1.35.2 — repository 遷移至個人 GitHub
 
 - README 與 `analysis-estimation` / `common` / `test-utils` 的 Claude、Codex manifests 改指 `https://github.com/TLOGBen/common-dev-plugin`；新 repository 採乾淨 snapshot，不攜帶舊 repository 的 commit ancestry。

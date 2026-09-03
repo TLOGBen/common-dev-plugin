@@ -108,24 +108,34 @@ class CaseStateTests(unittest.TestCase):
 
         self.assertTrue(any("開發人天.high 必須是 0.5 日倍數" in error for error in errors))
 
-    def test_external_summary_is_required_single_paragraph_and_information_bearing(self) -> None:
+    def test_external_summary_validation_distinguishes_allow_warn_and_block(self) -> None:
+        short_summary = "調整共用機制並維持功能正常"
         state = load(self.root)
-        state["clientPackages"][0]["externalSummary"] = "第一段\n第二段"
+        state["clientPackages"][0]["externalSummary"] = short_summary
 
-        errors, _ = validate_state(state)
+        warned = commit(self.root, state, expected_revision=8)
 
-        self.assertTrue(any("對外功能說明應為 220 字內的單段說明" in error for error in errors))
+        self.assertEqual(9, warned["revision"])
+        self.assertTrue(any("對外功能說明可能過短" in warning for warning in warned["warnings"]))
+        self.assertEqual(short_summary, load(self.root)["clientPackages"][0]["externalSummary"])
 
+        valid_summary = complete_state()["clientPackages"][0]["externalSummary"]
         state = load(self.root)
-        state["clientPackages"][0]["externalSummary"] = "調整共用機制並維持功能正常"
-        errors, warnings = validate_state(state)
-        self.assertFalse(any("對外功能說明" in error for error in errors))
-        self.assertTrue(any("對外功能說明可能過短" in warning for warning in warnings))
+        state["clientPackages"][0]["externalSummary"] = valid_summary
 
-        state = load(self.root)
-        state["clientPackages"][0]["externalSummary"] = "調整" * 111
-        errors, _ = validate_state(state)
-        self.assertTrue(any("對外功能說明應為 220 字內的單段說明" in error for error in errors))
+        allowed = commit(self.root, state, expected_revision=9)
+
+        self.assertEqual(10, allowed["revision"])
+        self.assertFalse(any("對外功能說明" in warning for warning in allowed["warnings"]))
+
+        for blocked_summary in ("第一段\n第二段", "調整" * 111):
+            state = load(self.root)
+            state["clientPackages"][0]["externalSummary"] = blocked_summary
+            with self.assertRaises(CaseError):
+                commit(self.root, state, expected_revision=10)
+            persisted = load(self.root)
+            self.assertEqual(10, persisted["revision"])
+            self.assertEqual(valid_summary, persisted["clientPackages"][0]["externalSummary"])
 
     def test_explicit_pricing_units_drive_totals_instead_of_kind_guessing(self) -> None:
         state = load(self.root)
@@ -325,6 +335,74 @@ class CaseStateTests(unittest.TestCase):
 
         self.assertTrue(any("實際改法" in error for error in errors))
         self.assertTrue(any("引用不存在 client package" in error for error in errors))
+
+    def test_formal_state_requires_pm_drilldown_and_estimation_review(self) -> None:
+        state = complete_state()
+        state["outcome"]["pmCurrentState"] = ""
+        state["workItems"][0]["pmChangeSummary"] = ""
+        state["workItems"][0]["changeTargets"] = {}
+        state["workItems"][0]["baselineRationale"] = ""
+        state["estimationReview"] = {}
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("PM 現況結論" in error for error in errors))
+        self.assertTrue(any("80～160 字修改重點" in error for error in errors))
+        self.assertTrue(any("changeTargets.pages" in error for error in errors))
+        self.assertTrue(any("基準人天理由" in error for error in errors))
+        self.assertTrue(any("估算模型反證" in error for error in errors))
+
+    def test_critical_finding_must_trace_to_evidence_and_package(self) -> None:
+        state = complete_state()
+        finding = state["estimationReview"]["criticalFindings"][0]
+        finding["clientPackageIds"] = ["missing-package"]
+        finding["evidenceIds"] = ["missing-evidence"]
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("引用不存在 client package" in error for error in errors))
+        self.assertTrue(any("引用不存在 evidence" in error for error in errors))
+
+    def test_scope_delta_count_must_match_the_named_target_list(self) -> None:
+        state = complete_state()
+        state["detailCatalogs"][1]["items"].pop()
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("證據確認 3 項，但 canonical direct-touch 清單只有 2 項" in error for error in errors))
+
+    def test_direct_touch_catalog_blocks_gate_five_when_claimed_count_does_not_match(self) -> None:
+        state = complete_state()
+        state["detailCatalogs"][1]["items"].pop()
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("claimedCount 3 與完整 items 2 不一致" in error for error in errors))
+
+    def test_formal_state_requires_referenced_unique_canonical_catalogs(self) -> None:
+        state = complete_state()
+        state["workItems"][0]["detailCatalogIds"] = []
+        state["detailCatalogs"][1]["items"][0]["id"] = "catalog-actions-direct"
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("缺少 canonical detailCatalogIds" in error for error in errors))
+        self.assertTrue(any("detail catalog catalog-foundation-scope 沒有 work item 引用" in error for error in errors))
+        self.assertTrue(any("canonical detail id 重複" in error for error in errors))
+
+    def test_generated_catalog_requires_one_reproducible_generation_contract(self) -> None:
+        state = complete_state()
+        generated = {
+            "id": "catalog-generated-models", "name": "產生模型", "treatment": "generated",
+            "origin": "discovery", "completeness": "summary", "claimedCount": 136,
+            "pricingRole": "scope-evidence", "generation": {"source": "Entity", "method": "", "verification": "編譯通過"},
+        }
+        state["detailCatalogs"].append(generated)
+        state["workItems"][0]["detailCatalogIds"].append(generated["id"])
+
+        errors, _ = validate_state(state)
+
+        self.assertTrue(any("缺少產製方式" in error for error in errors))
 
     def test_upgrade_near_historical_build_requires_rebuild_outcome_explanation(self) -> None:
         state = complete_state()

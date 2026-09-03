@@ -8,7 +8,7 @@
 
 ## 核心區域
 
-- `outcome`：客戶成果、驗收、保留行為與責任邊界。
+- `outcome`：客戶成果、驗收、保留行為與責任邊界。`pmCurrentState` 保存可直接轉述的現況結論，技術證據另存 `evidence`。
 - `evidence`：命題、來源定位、取得方式、強度、信心與決策影響。
 - `dependencyCoverage`：實際依賴全集的來源、發現方法、元件數、盤點邊界、證據與會改變方案的 dependency ID。
 - `dependencies`：會影響方案的元件；保存上游來源／維護者、內部責任、生命週期、完整 footprint、目標相容性主張、採用策略、語意斷點與 probe。
@@ -16,11 +16,15 @@
 - `scenarios`：候選結果、成功條件、成本／風險特性、前置與未知。
 - `selectedScenarioId`：PM 明確選定的方案；必須能回到帶有相同 scenario ID 的決策紀錄。
 - `successChain.nodes`：所選成果成立的能力、外部責任、相依與完成證據。
-- `workItems`：由成功鏈推導的互斥工作、影響數量、明確 `pricingUnits`、費率與追溯。`effortSplit.development/testing` 以每個計價單位保存低／基準／高，兩者逐層相加必須等於 `unitDays`。影響數量回答「碰到多少」，計價單位回答「真正獨立做幾次」。
+- `workItems`：由成功鏈推導的互斥工作、影響數量、明確 `pricingUnits`、費率與追溯。`effortSplit.development/testing` 以每個計價單位保存低／基準／高，兩者逐層相加必須等於 `unitDays`。`pmChangeSummary` 保存 80～160 字修改重點；`changeTargets.pages/apis/files` 保存摘要落點；`detailCatalogIds` 綁定 Discovery 建立的 canonical 工作集合；`baselineRationale` 解釋基準單價與乘數。
+- `detailCatalogs`：全案唯一的 canonical 工作集合。`direct-touch` 必須以 stable item ID 完整列出 `claimedCount` 項名稱／路徑、用途、處置、修改與驗證；`generated` 保存產製來源、方法、核對及輸出數，不把輸出數當人工修改次數；`evidence-only` 說明覆蓋證據及其計價角色。`origin` 標示 `discovery` 或既有案件一次性的 `legacy-migration`。
 - `clientPackages`：PM 對外說明的客戶成果包；每個 work item 唯一歸入一包，包人天由工程工作加總。`name` 是對外「系統功能」，`externalSummary` 是單段、可由 PM 轉述的「功能說明」，需保留改造範圍、主要動作與完成結果；完整算法與技術證據留在內部欄位。
+- `estimationReview`：主動反證需求表面範圍、施工樣態、依賴路線與計價乘數。`conclusion` 與 `checkedPatterns` 證明已檢查替代解釋；`criticalFindings` 只保存會改變範圍、方案、責任、人天或驗收的隱性發現，並連回成果包與證據。`scopeDelta` 保存人工初判數、證據確認數、落點類別及 work item，validator 會核對確認數是否等於逐名清單筆數。
 - `calibration`：歷史建置報價、相似案或完成樣本的合理性對照；無資料時保留原因。
 - `currentDecision`：PM 現在需要做的唯一承諾；答案可由 Agent 查明、只是進度狀態，或先前已明確回答時為空。
 - `gates`：PM 進度投影，不規定 Agent 的探索順序。
+
+Schema 8 正式要求上述 PM 確認欄位。任一 `direct-touch` 的 `claimedCount` 與完整 items 筆數不一致、work item 未綁工作集合、工作集合未被引用或 canonical ID 重複，都會阻擋 Gate 5。完整呈現契約見 [PM 確認報告設計](pm-report-design.md)。
 
 ## 更新方式
 
@@ -72,6 +76,7 @@ Gate 4 選案時，`currentDecision` 使用 `id: "select-scenario"`，並以 `sc
 - 成功鏈的計價節點恰好被一項 work item 承接。
 - 每項 work item 都有 PM 可轉述的工作名稱、技術／PM 說明、包含／排除範圍、責任人、完成證據、成功鏈與 evidence 追溯。
 - 每項 work item 都完成方法卡：現況限制、實際改法、客戶成果、規模證據、明確計價單位、計價理由、代表費率依據與去重邊界。
+- 每項 work item 以 `detailCatalogIds` 綁定至少一個 canonical 工作集合；所有集合皆被引用，direct-touch 清單完整，generated 與 evidence-only 明確說明其計價角色。
 - 每項 work item 唯一歸入一個存在的 `clientPackage`；成果包說明必要性、處理方式、客戶成果、範圍證據與責任。
 - `calibration.referenceAvailable` 明確說明是否有歷史對照；有資料時記錄範圍、來源與合理性結論。純升版高值達歷史建置成本 80% 時，另說明客戶取得的重建型成果。
 - 外部責任與不異動節點有 0 人天原因；未知數量若存在，必須有明確可估算的未知邊界。

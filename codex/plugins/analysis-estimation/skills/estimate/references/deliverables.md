@@ -20,6 +20,8 @@ python scripts/generate_outputs.py <case-root> --json
 
 CSV 使用 UTF-8 with BOM，便於 Windows Excel 直接開啟；它仍是標準 CSV，不依賴 Office。Markdown 與靜態 `assessment-report.html` 來自同一 state revision，避免手改造成數量漂移。
 
+`assessment-report.html` 是 Gate 5 的主要確認介面。第一層固定為本次摘要、低／基準／高估算列與折疊技術附錄；每列以原生 dialog 顯示逐工項修改重點、基準公式、理由及 `detailCatalogs` 工作集合。巢狀 `<details>` 只投影 state：不重掃 repository，不另建平行細項清單。
+
 ## 對外內容
 
 對外主表模仿公司實際報價明細的閱讀密度，只保留五欄，順序固定：
@@ -109,4 +111,8 @@ Word、PDF 仍是案件選配；使用環境已有的受控轉換工具，保留
 - external CSV 的開發＋測試人天等於 internal CSV 的高值總計；兩者都由同一份 `effortSplit` 計算。
 - Excel 的對外估算、PM 摘要、工作方法高值與 internal CSV 高值相同；公式、文字標示與快取值不互相矛盾。
 - HTML 可在 Chrome 桌面與窄寬度閱讀。
+- HTML 每個成果包可用滑鼠與鍵盤展開；頁面、API、檔案標題筆數與逐項清單一致，基準公式可由 state 重算。
+- HTML 的主動發現逐項呈現「原本怎麼算／後來查到什麼／所以人天怎麼看／PM 現在要注意什麼」，並留在受影響成果包 dialog。
+- HTML 的 direct-touch 工作集合列數等於 `claimedCount`；generated 只說明產製來源、方法、輸出數與核對，不把輸出數渲染成人工逐項清單。
+- 每個成果包的圖解具有唯一可存取名稱與描述，所選繪圖工具與資料關係相符。
 - 重新執行只改寫列出的 managed outputs，不刪除案件其他檔案。

@@ -18,7 +18,7 @@ from pathlib import Path
 from typing import Any
 
 
-SCHEMA_VERSION = 6
+SCHEMA_VERSION = 8
 STATE_FILE = "assessment-state.json"
 LOCK_FILE = ".assessment-state.lock"
 MODES = {"undetermined", "upgrade", "cr", "mixed"}
@@ -41,9 +41,16 @@ MAINTENANCE_STATUSES = {"active", "limited", "stale", "eol", "unknown"}
 COMPATIBILITY_STATUSES = {"supported", "conditional", "unsupported", "unknown"}
 DEPENDENCY_RESOLUTION_STATUSES = {"accepted", "conditional", "unresolved"}
 DEPENDENCY_STRATEGIES = {"keep", "fork", "replace", "self-maintain", "stay", "vendor", "not-applicable", "unresolved"}
+CRITICAL_FINDING_CATEGORIES = {"scope-gap", "feasibility", "responsibility", "estimation-model", "acceptance"}
+DETAIL_CATALOG_TREATMENTS = {"direct-touch", "generated", "evidence-only"}
+DETAIL_CATALOG_COMPLETENESS = {"complete", "summary", "partial"}
+DETAIL_CATALOG_ORIGINS = {"discovery", "legacy-migration"}
+DETAIL_CATALOG_PRICING_ROLES = {"pricing-unit", "scope-evidence"}
+DETAIL_ITEM_ACTIONS = {"no-change", "batch-change", "manual-change", "high-risk-verify"}
 ALLOWED_MERGE_KEYS = {
     "name", "mode", "status", "outcome", "currentDecision", "gates",
-    "selectedScenarioId", "successChain", "outputs", "calibration", "dependencyCoverage",
+    "selectedScenarioId", "successChain", "outputs", "calibration", "dependencyCoverage", "estimationReview",
+    "detailCatalogs",
 }
 COLLECTION_PATHS = {
     "dependencies": ("dependencies",),
@@ -53,6 +60,7 @@ COLLECTION_PATHS = {
     "nodes": ("successChain", "nodes"),
     "workItems": ("workItems",),
     "clientPackages": ("clientPackages",),
+    "detailCatalogs": ("detailCatalogs",),
     "decisions": ("decisions",),
 }
 
@@ -188,6 +196,7 @@ def default_state(case_id: str, name: str, goal: str, mode: str) -> dict[str, An
             "acceptance": [],
             "preserve": [],
             "responsibilityBoundary": "待 PM 確認",
+            "pmCurrentState": "",
         },
         "evidence": [],
         "dependencyCoverage": {
@@ -205,7 +214,13 @@ def default_state(case_id: str, name: str, goal: str, mode: str) -> dict[str, An
         "selectedScenarioId": None,
         "successChain": {"destination": goal, "nodes": []},
         "workItems": [],
+        "detailCatalogs": [],
         "clientPackages": [],
+        "estimationReview": {
+            "conclusion": "",
+            "checkedPatterns": [],
+            "criticalFindings": [],
+        },
         "calibration": {
             "referenceAvailable": False,
             "unavailableReason": "尚未取得可比較的原建置報價、相似案實績或完成樣本",
@@ -282,6 +297,129 @@ def ids(items: list[Any], label: str, errors: list[str]) -> set[str]:
 def _text(value: Any) -> bool:
     """Whether a value contains human-readable content."""
     return isinstance(value, str) and bool(value.strip())
+
+
+def validate_detail_catalogs(
+    detail_catalogs: list[Any],
+    work_items: list[Any],
+    errors: list[str],
+    formal: bool,
+) -> None:
+    """Validate the one canonical workset inventory shared by pricing and reports."""
+    catalog_ids = ids(detail_catalogs, "detailCatalogs", errors)
+    canonical_ids = set(catalog_ids)
+    usage = {catalog_id: 0 for catalog_id in catalog_ids}
+
+    for catalog in detail_catalogs:
+        if not isinstance(catalog, dict):
+            continue
+        catalog_id = catalog.get("id")
+        treatment = catalog.get("treatment")
+        for key, label in (("name", "名稱"), ("origin", "來源"), ("pricingRole", "計價角色")):
+            if formal and not _text(catalog.get(key)):
+                errors.append(f"detail catalog {catalog_id} 缺少{label}")
+        if treatment not in DETAIL_CATALOG_TREATMENTS:
+            errors.append(f"detail catalog {catalog_id} treatment 無效")
+        if catalog.get("origin") not in DETAIL_CATALOG_ORIGINS:
+            errors.append(f"detail catalog {catalog_id} origin 無效")
+        if catalog.get("pricingRole") not in DETAIL_CATALOG_PRICING_ROLES:
+            errors.append(f"detail catalog {catalog_id} pricingRole 無效")
+        completeness = catalog.get("completeness")
+        if completeness not in DETAIL_CATALOG_COMPLETENESS:
+            errors.append(f"detail catalog {catalog_id} completeness 無效")
+        claimed_count = catalog.get("claimedCount")
+        if not isinstance(claimed_count, int) or claimed_count < 0:
+            errors.append(f"detail catalog {catalog_id} claimedCount 必須是非負整數")
+            claimed_count = None
+
+        items = catalog.get("items")
+        if treatment == "direct-touch":
+            if formal and completeness != "complete":
+                errors.append(f"direct-touch detail catalog {catalog_id} 必須宣告 complete")
+            if not isinstance(items, list):
+                if formal:
+                    errors.append(f"direct-touch detail catalog {catalog_id} 必須提供完整 items")
+                items = []
+            if formal and claimed_count is not None and claimed_count != len(items):
+                errors.append(
+                    f"direct-touch detail catalog {catalog_id} claimedCount {claimed_count} "
+                    f"與完整 items {len(items)} 不一致；Gate 5 前必須回到 discovery"
+                )
+            for index, item in enumerate(items):
+                if not isinstance(item, dict):
+                    errors.append(f"detail catalog {catalog_id} items[{index}] 必須是 object")
+                    continue
+                item_id = item.get("id")
+                if not _text(item_id):
+                    errors.append(f"detail catalog {catalog_id} items[{index}] 缺少 stable id")
+                elif item_id in canonical_ids:
+                    errors.append(f"canonical detail id 重複：{item_id}")
+                else:
+                    canonical_ids.add(str(item_id))
+                for key, label in (
+                    ("name", "名稱或路徑"), ("purpose", "用途"),
+                    ("changeDetail", "修改重點"), ("verification", "驗證方式"),
+                ):
+                    if not _text(item.get(key)):
+                        errors.append(f"detail item {item_id} 缺少{label}")
+                if item.get("action") not in DETAIL_ITEM_ACTIONS:
+                    errors.append(f"detail item {item_id} action 無效")
+        elif treatment == "generated":
+            if isinstance(items, list) and items:
+                errors.append(f"generated detail catalog {catalog_id} 不應建立逐產物 items 清單")
+            generation = catalog.get("generation")
+            if not isinstance(generation, dict):
+                errors.append(f"generated detail catalog {catalog_id} 缺少 generation")
+            else:
+                for key, label in (("source", "產製來源"), ("method", "產製方式"), ("verification", "核對方式")):
+                    if not _text(generation.get(key)):
+                        errors.append(f"generated detail catalog {catalog_id} 缺少{label}")
+        elif treatment == "evidence-only":
+            if not _text(catalog.get("explanation")):
+                errors.append(f"evidence-only detail catalog {catalog_id} 缺少用途說明")
+            if completeness == "complete":
+                if not isinstance(items, list):
+                    errors.append(f"complete evidence-only detail catalog {catalog_id} 必須提供 items")
+                elif claimed_count is not None and claimed_count != len(items):
+                    errors.append(f"evidence-only detail catalog {catalog_id} claimedCount 與 items 不一致")
+            if isinstance(items, list):
+                for index, item in enumerate(items):
+                    if not isinstance(item, dict):
+                        errors.append(f"detail catalog {catalog_id} items[{index}] 必須是 object")
+                        continue
+                    item_id = item.get("id")
+                    if not _text(item_id):
+                        errors.append(f"detail catalog {catalog_id} items[{index}] 缺少 stable id")
+                    elif item_id in canonical_ids:
+                        errors.append(f"canonical detail id 重複：{item_id}")
+                    else:
+                        canonical_ids.add(str(item_id))
+                    if not _text(item.get("name")):
+                        errors.append(f"detail item {item_id} 缺少名稱或路徑")
+
+    for work_item in work_items:
+        if not isinstance(work_item, dict):
+            continue
+        work_item_id = work_item.get("id")
+        references = work_item.get("detailCatalogIds")
+        if not isinstance(references, list) or not references or not all(_text(value) for value in references):
+            if formal:
+                errors.append(f"work item {work_item_id} 缺少 canonical detailCatalogIds")
+            continue
+        if len(references) != len(set(references)):
+            errors.append(f"work item {work_item_id} detailCatalogIds 不可重複")
+        for catalog_id in references:
+            if catalog_id not in catalog_ids:
+                errors.append(f"work item {work_item_id} 引用不存在 detail catalog：{catalog_id}")
+            else:
+                usage[catalog_id] += 1
+
+    if formal:
+        if not detail_catalogs:
+            errors.append("正式狀態必須建立 canonical detailCatalogs")
+        for catalog_id, count in usage.items():
+            if count == 0:
+                errors.append(f"detail catalog {catalog_id} 沒有 work item 引用")
 
 
 def _dependency_is_blocking(item: Any) -> bool:
@@ -363,6 +501,8 @@ def _formal_readiness_errors(
             errors.append("正式狀態必須列出至少一項可驗收成果")
         if not _text(outcome.get("responsibilityBoundary")) or outcome.get("responsibilityBoundary") in {"待 PM 確認", "待確認"}:
             errors.append("正式狀態必須明確寫出責任邊界")
+        if not _text(outcome.get("pmCurrentState")):
+            errors.append("正式狀態必須提供可直接轉述的 PM 現況結論")
 
     chain = state.get("successChain")
     if not isinstance(chain, dict) or not _text(chain.get("destination")):
@@ -541,7 +681,8 @@ def _formal_readiness_errors(
         ("owner", "責任人"), ("currentConstraint", "現況限制"),
         ("changeMethod", "實際改法"), ("customerOutcome", "客戶成果"),
         ("scaleEvidence", "規模證據"), ("countingRationale", "計價理由"),
-        ("rateBasis", "費率依據"), ("dedupeBoundary", "去重邊界"),
+        ("rateBasis", "費率依據"), ("baselineRationale", "基準人天理由"),
+        ("dedupeBoundary", "去重邊界"),
         ("clientPackageId", "客戶成果包歸屬"),
     )
     if not work_items:
@@ -553,6 +694,24 @@ def _formal_readiness_errors(
         for key, label in required_work_fields:
             if not _text(item.get(key)):
                 errors.append(f"work item {item_id} 缺少 PM 可說明的{label}")
+        pm_change_summary = item.get("pmChangeSummary")
+        if not _text(pm_change_summary) or not 80 <= len(pm_change_summary.strip()) <= 160 or "\n" in pm_change_summary:
+            errors.append(f"work item {item_id} 必須提供 80～160 字修改重點")
+        change_targets = item.get("changeTargets")
+        if not isinstance(change_targets, dict):
+            errors.append(f"work item {item_id} 缺少頁面／API／檔案落點")
+        else:
+            target_values: list[str] = []
+            targets_valid = True
+            for key in ("pages", "apis", "files"):
+                values = change_targets.get(key)
+                if not isinstance(values, list) or not all(_text(value) for value in values):
+                    errors.append(f"work item {item_id} changeTargets.{key} 必須是文字陣列")
+                    targets_valid = False
+                elif isinstance(values, list):
+                    target_values.extend(values)
+            if targets_valid and not target_values and not _text(change_targets.get("notes")):
+                errors.append(f"work item {item_id} 頁面／API／檔案皆不涉及時必須說明原因")
         pricing_units = item.get("pricingUnits")
         if not isinstance(pricing_units, int) or pricing_units < 1:
             errors.append(f"work item {item_id} 必須明確提供至少 1 個計價單位")
@@ -586,6 +745,113 @@ def _formal_readiness_errors(
         external_summary = external_summary.strip()
         if "\n" in external_summary or len(external_summary) > 220:
             errors.append(f"client package {package_id} 對外功能說明應為 220 字內的單段說明")
+
+    estimation_review = state.get("estimationReview")
+    if not isinstance(estimation_review, dict):
+        errors.append("正式狀態必須完成估算模型反證")
+    else:
+        if not _text(estimation_review.get("conclusion")):
+            errors.append("正式狀態的估算模型反證缺少白話結論")
+        checked_patterns = estimation_review.get("checkedPatterns")
+        if not isinstance(checked_patterns, list) or not checked_patterns or not all(_text(value) for value in checked_patterns):
+            errors.append("正式狀態的估算模型反證必須列出已檢查的替代解釋")
+        findings = estimation_review.get("criticalFindings")
+        if not isinstance(findings, list):
+            errors.append("estimationReview.criticalFindings 必須是 array")
+        else:
+            finding_ids: set[str] = set()
+            package_ids = {str(item.get("id")) for item in client_packages if isinstance(item, dict)}
+            known_evidence_ids = {str(item.get("id")) for item in evidence if isinstance(item, dict)}
+            work_item_by_id = {
+                str(item.get("id")): item for item in work_items
+                if isinstance(item, dict) and _text(item.get("id"))
+            }
+            detail_catalog_by_id = {
+                str(item.get("id")): item for item in state.get("detailCatalogs", [])
+                if isinstance(item, dict) and _text(item.get("id"))
+            }
+            required_finding_fields = (
+                ("title", "標題"), ("statedAssumption", "原本以為"),
+                ("evidenceConclusion", "證據結論"), ("whyItMatters", "重要性"),
+                ("estimateImpact", "估算影響"), ("treatment", "目前處理方式"),
+            )
+            for finding in findings:
+                if not isinstance(finding, dict):
+                    errors.append("critical finding 必須是 object")
+                    continue
+                finding_id = finding.get("id")
+                if not _text(finding_id):
+                    errors.append("critical finding 缺少 id")
+                elif finding_id in finding_ids:
+                    errors.append(f"critical finding id 重複：{finding_id}")
+                else:
+                    finding_ids.add(finding_id)
+                for key, label in required_finding_fields:
+                    if not _text(finding.get(key)):
+                        errors.append(f"critical finding {finding_id} 缺少{label}")
+                if finding.get("category") not in CRITICAL_FINDING_CATEGORIES:
+                    errors.append(f"critical finding {finding_id} category 無效")
+                if finding.get("category") == "scope-gap":
+                    delta = finding.get("scopeDelta")
+                    if not isinstance(delta, dict):
+                        errors.append(f"critical finding {finding_id} 範圍落差缺少 scopeDelta")
+                    else:
+                        subject = delta.get("subject")
+                        assumed = delta.get("assumed")
+                        confirmed = delta.get("confirmed")
+                        target_key = delta.get("targetKey")
+                        work_item_ids = delta.get("workItemIds")
+                        detail_catalog_ids = delta.get("detailCatalogIds")
+                        if not _text(subject):
+                            errors.append(f"critical finding {finding_id} scopeDelta 缺少比較對象")
+                        if not isinstance(assumed, int) or assumed < 0 or not isinstance(confirmed, int) or confirmed < 0:
+                            errors.append(f"critical finding {finding_id} scopeDelta 數量必須是非負整數")
+                        elif assumed == confirmed:
+                            errors.append(f"critical finding {finding_id} scopeDelta 必須真的存在數量落差")
+                        if target_key not in {"pages", "apis", "files"}:
+                            errors.append(f"critical finding {finding_id} scopeDelta.targetKey 無效")
+                        if not isinstance(work_item_ids, list) or not work_item_ids or not all(_text(value) for value in work_item_ids):
+                            errors.append(f"critical finding {finding_id} scopeDelta 缺少 work item 追溯")
+                        else:
+                            for work_item_id in work_item_ids:
+                                work_item = work_item_by_id.get(work_item_id)
+                                if work_item is None:
+                                    errors.append(f"critical finding {finding_id} 引用不存在 work item：{work_item_id}")
+                        if not isinstance(detail_catalog_ids, list) or not detail_catalog_ids or not all(_text(value) for value in detail_catalog_ids):
+                            errors.append(f"critical finding {finding_id} scopeDelta 缺少 canonical detail catalog 追溯")
+                        else:
+                            named_count = 0
+                            countable = True
+                            for catalog_id in detail_catalog_ids:
+                                catalog = detail_catalog_by_id.get(catalog_id)
+                                if catalog is None:
+                                    errors.append(f"critical finding {finding_id} 引用不存在 detail catalog：{catalog_id}")
+                                    countable = False
+                                    continue
+                                if catalog.get("treatment") != "direct-touch":
+                                    errors.append(f"critical finding {finding_id} 的範圍落差必須引用 direct-touch detail catalog：{catalog_id}")
+                                    countable = False
+                                    continue
+                                named_count += len(catalog.get("items", [])) if isinstance(catalog.get("items"), list) else 0
+                            if countable and isinstance(confirmed, int) and named_count != confirmed:
+                                errors.append(
+                                    f"critical finding {finding_id} 證據確認 {confirmed} 項，"
+                                    f"但 canonical direct-touch 清單只有 {named_count} 項；Gate 5 前必須回到 discovery 補齊"
+                                )
+                linked_packages = finding.get("clientPackageIds")
+                if not isinstance(linked_packages, list) or not linked_packages or not all(_text(value) for value in linked_packages):
+                    errors.append(f"critical finding {finding_id} 缺少 client package 追溯")
+                else:
+                    for package_id in linked_packages:
+                        if package_id not in package_ids:
+                            errors.append(f"critical finding {finding_id} 引用不存在 client package：{package_id}")
+                linked_evidence = finding.get("evidenceIds")
+                if not isinstance(linked_evidence, list) or not linked_evidence or not all(_text(value) for value in linked_evidence):
+                    errors.append(f"critical finding {finding_id} 缺少 evidence 追溯")
+                else:
+                    for evidence_id in linked_evidence:
+                        if evidence_id not in known_evidence_ids:
+                            errors.append(f"critical finding {finding_id} 引用不存在 evidence：{evidence_id}")
 
     calibration = state.get("calibration")
     if not isinstance(calibration, dict) or not isinstance(calibration.get("referenceAvailable"), bool):
@@ -690,8 +956,9 @@ def validate_state(state: dict[str, Any]) -> tuple[list[str], list[str]]:
     scenarios = state.get("scenarios", [])
     nodes = (state.get("successChain") or {}).get("nodes", [])
     work_items = state.get("workItems", [])
+    detail_catalogs = state.get("detailCatalogs", [])
     client_packages = state.get("clientPackages", [])
-    for value, label in ((evidence, "evidence"), (dependencies, "dependencies"), (fogs, "fogs"), (scenarios, "scenarios"), (nodes, "successChain.nodes"), (work_items, "workItems"), (client_packages, "clientPackages")):
+    for value, label in ((evidence, "evidence"), (dependencies, "dependencies"), (fogs, "fogs"), (scenarios, "scenarios"), (nodes, "successChain.nodes"), (work_items, "workItems"), (detail_catalogs, "detailCatalogs"), (client_packages, "clientPackages")):
         if not isinstance(value, list):
             errors.append(f"{label} 必須是 array")
 
@@ -726,6 +993,7 @@ def validate_state(state: dict[str, Any]) -> tuple[list[str], list[str]]:
     ids(fogs, "fogs", errors)
     ids(work_items, "workItems", errors)
     client_package_ids = ids(client_packages, "clientPackages", errors)
+    validate_detail_catalogs(detail_catalogs, work_items, errors, state.get("status") in FORMAL_STATUSES)
     for package in client_packages:
         if not isinstance(package, dict):
             continue

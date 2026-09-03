@@ -51,9 +51,15 @@
 | `scaleEvidence` | 影響總數、需處理數、例外與代表案例來自哪裡？ |
 | `countingRationale` | 為何計一次、計一批，或必須逐件計價？ |
 | `rateBasis` | 低／基準／高費率由哪個實際切片、歷史資料或可解釋步驟得到？ |
+| `baselineRationale` | 基準單價包含哪些理解、修改、除錯與驗證，為何目前乘數最可能？ |
 | `dedupeBoundary` | 本列包含哪些共用操作，與相鄰工作如何互斥？ |
+| `pmChangeSummary` | 用 80～160 字說清楚實際改法、數量驅動與完成結果。 |
+| `changeTargets` | 逐項列出影響頁面、API 與 repository-relative 檔案；不涉及時明說。 |
+| `detailCatalogIds` | 綁定 Discovery 已建立的 canonical 工作集合；不得另建估價用平行清單。 |
 
 方法卡證明的是施工方式，不是增加文件工作。若多列使用同一改法、同一完成證據且沒有獨立目的，先合併成共用或批次工作，再把真正例外獨立列出。
+
+`detailCatalogs.pricingRole` 明確區分該集合是 `pricing-unit` 或 `scope-evidence`。direct-touch 不代表一定逐項乘價：若 87 個檔案依同一批次規則處理，它仍可完整列出 87 項並標為 scope evidence；若 13 類通道各需獨立端點、資料與完成證據，才標為 pricing unit 並讓 `pricingUnits` 對應 13。
 
 ## 單位費率
 
@@ -118,6 +124,12 @@
 - `scopeEvidence` 用數量與代表案例證明規模，同時說明它是否為計價乘數。
 - 每個 work item 先用 `effortSplit` 拆出開發／測試的低、基準、高；包人天只由所屬 work item 的高值加總，主表不另填人天。
 
+### 估算模型反證與主動發現
+
+Gate 5 前不要只問「目前公式能不能算」，另以 `estimationReview` 主動檢查目前施工樣態與乘數是否被需求表面文字誤導：需求列出的功能數是否小於共用元件實際擴散面、共用一次是否其實要逐頁施工、逐檔估算是否可批次降低，以及升版依賴是否迫使方案改採維護分支或替代元件。
+
+只有會改變範圍、方案、責任、人天或驗收的落差才進 `criticalFindings`。例如「需求初看 4 個功能，證據確認 6 個實際修改面」或「目標框架下查詢元件不能原路沿用，需改採受維護分支並驗證查詢語意」。每項都保存原先假設、證據結論、重要性、估算影響、處理方式及成果包／證據追溯；數量落差再以 `scopeDelta` 把初判數、確認數及 work item 的逐名清單機械對帳。一般套件資訊留在依賴附錄。
+
 ### Gate 5 的成果包白話說明卡
 
 在詢問 PM 是否確認總人天之前，依 `clientPackages` 的順序逐包呈現一張短卡。每張約 100 字，通常 80～160 字即可；這個範圍只用來控制閱讀密度，是否完整回答下列四題才是完成判準：
@@ -140,6 +152,8 @@ PG 會盤點受升版影響的查詢寫法，整批調整共同規則，再逐�
 ```
 
 短卡的人天直接取該成果包所屬 work item 的高值加總。內容從 `deliveryApproach`、`scopeEvidence`、`countingRationale`、`rateBasis`、`effortSplit` 與 `customerOutcome` 整理；若這些資料不足以解釋人天，回到工作方法卡補證據，而不是另寫一套合理化文案。
+
+正式 HTML 的成果包使用點擊展開。展開後每個 work item 顯示 `pmChangeSummary`、頁面／API／檔案完整清單、基準公式、`baselineRationale` 與關聯的主動發現。數量詞必須能由清單重算：寫「六個既有畫面」就列出六個畫面名稱；只有約數或代表案例時不能宣稱已完成最終確認。呈現細節見 [PM 確認報告設計](pm-report-design.md)。
 
 工程工作可有數十列；對外主表固定只顯示序號、系統功能、功能說明、開發人天、測試人天。`whyRequired`、`deliveryApproach`、`customerOutcome`、`scopeEvidence` 與方法卡細節由 PM 摘要、工作方法及證據附表承接。
 

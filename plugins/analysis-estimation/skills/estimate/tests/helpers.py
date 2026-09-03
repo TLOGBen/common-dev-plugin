@@ -20,6 +20,7 @@ def complete_state() -> dict:
         "acceptance": ["代表性契約驗證通過"],
         "preserve": ["既有網址與回應契約"],
         "responsibilityBoundary": "我方負責應用改造；客戶負責部署與 UAT",
+        "pmCurrentState": "目前系統仍由舊框架承接啟動、登入狀態與功能入口。程式盤點已確認共用底座只需建立一次，但四支入口中有三支必須逐一調整；客戶仍需提供部署環境與正式驗收資料。",
     })
     state["evidence"] = [
         {
@@ -133,7 +134,16 @@ def complete_state() -> dict:
             "scaleEvidence": "1 組應用底座，承接全部功能入口。",
             "countingRationale": "所有入口共用同一底座，因此只計一次。",
             "rateBasis": "以建立設定、啟動 smoke 與共用契約檢查的代表切片估算。",
+            "baselineRationale": "基準值以一位工程師完成共用設定、啟動排錯與主要契約核對所需的正常工期估算；不按入口數重複收費。",
+            "pmChangeSummary": "PG 會先建立新版應用共同使用的啟動、輸入輸出與登入狀態設定，再用一個代表入口確認共用行為正確。這項工作只做一次，不會按四支入口重複計價；完成後新版應用應可建置、啟動，並讓後續功能共用同一套承接方式。",
+            "changeTargets": {
+                "pages": [],
+                "apis": ["共用應用啟動與 Session 契約"],
+                "files": ["src/main/resources/application.yml", "src/main/java/app/config/WebConfig.java"],
+                "notes": "本項建立共用底座，不直接修改個別業務頁面。",
+            },
             "dedupeBoundary": "包含共用啟動與 Session；逐支功能接回由下一列承接。",
+            "detailCatalogIds": ["catalog-foundation-scope"],
             "clientPackageId": "package-runtime",
         },
         {
@@ -153,8 +163,49 @@ def complete_state() -> dict:
             "scaleEvidence": "共 4 支，證據確認 3 支需處理、1 支不異動。",
             "countingRationale": "每支入口的參數與例外需獨立確認，因此以 3 支乘單價。",
             "rateBasis": "以一支一般入口的理解、修改與局部驗證作為代表切片。",
+            "baselineRationale": "每支基準 1 天，包含讀懂原參數、接回新底座、處理一輪例外並完成局部驗證；三支各有自己的輸入輸出，因此以三支計價。",
+            "pmChangeSummary": "PG 會逐支核對三個受影響入口的網址、輸入參數、回應內容與錯誤處理，再接到新版共用底座。工作量按三支計算，因為每支都要獨立理解與驗證；完成後使用者仍可沿用原網址與操作方式，代表入口的正常與失敗情境都要通過。",
+            "changeTargets": {
+                "pages": ["查詢首頁", "資料維護頁"],
+                "apis": ["GET /legacy/search", "POST /legacy/save", "POST /legacy/approve"],
+                "files": ["src/main/java/app/web/SearchAction.java", "src/main/java/app/web/SaveAction.java", "src/main/java/app/web/ApproveAction.java"],
+                "notes": "四支入口中一支已由新底座承接，不需修改。",
+            },
             "dedupeBoundary": "不重複計共用底座，也不包含正式 UAT。",
+            "detailCatalogIds": ["catalog-actions-direct"],
             "clientPackageId": "package-entry",
+        },
+    ]
+    state["detailCatalogs"] = [
+        {
+            "id": "catalog-foundation-scope",
+            "name": "共用底座落點",
+            "treatment": "evidence-only",
+            "origin": "discovery",
+            "completeness": "summary",
+            "claimedCount": 2,
+            "pricingRole": "scope-evidence",
+            "explanation": "兩個設定落點用來證明底座範圍；共用底座仍只計一個施工單位。",
+        },
+        {
+            "id": "catalog-actions-direct",
+            "name": "需逐項接回的功能入口",
+            "treatment": "direct-touch",
+            "origin": "discovery",
+            "completeness": "complete",
+            "claimedCount": 3,
+            "pricingRole": "pricing-unit",
+            "items": [
+                {
+                    "id": f"detail-action-{index}",
+                    "name": path,
+                    "purpose": "保留既有功能入口契約",
+                    "action": "manual-change",
+                    "changeDetail": "接回新版共用底座並核對輸入輸出。",
+                    "verification": "正常與錯誤情境皆維持原契約。",
+                }
+                for index, path in enumerate(("GET /legacy/search", "POST /legacy/save", "POST /legacy/approve"), 1)
+            ],
         },
     ]
     state["clientPackages"] = [
@@ -165,6 +216,13 @@ def complete_state() -> dict:
             "customerOutcome": "取得可建置、可啟動且共同行為一致的新版應用。",
             "externalSummary": "建立新版應用啟動、共用輸入輸出與 Session 承接機制，調整必要設定並完成建置及啟動驗證。",
             "scopeEvidence": "1 組共用底座，涵蓋全部入口。", "owner": "我方",
+            "visuals": [{
+                "type": "flow",
+                "title": "共用底座如何承接既有入口",
+                "question": "為什麼底座只做一次，功能入口仍要逐支接回？",
+                "nodes": ["舊框架共用行為", "新版共用底座", "既有功能入口"],
+                "caption": "共用底座承接一次；每支入口的參數與回應仍由下一個成果包處理。",
+            }],
         },
         {
             "id": "package-entry", "name": "既有功能入口可延續使用",
@@ -175,6 +233,36 @@ def complete_state() -> dict:
             "scopeEvidence": "共 4 支，需處理 3 支、不異動 1 支。", "owner": "我方",
         },
     ]
+    state["estimationReview"] = {
+        "conclusion": "主動比對需求描述、程式使用點與估算乘數後，找到一項會改變人天的範圍落差；相容性路線已另由依賴證據收斂。",
+        "checkedPatterns": [
+            "需求列出的功能數是否小於實際共用頁面與入口數",
+            "看似可沿用的套件是否會因目標版本改變方案或維護責任",
+            "原估為共用一次的工作是否其實需要逐頁、逐 API 或逐檔處理",
+        ],
+        "criticalFindings": [
+            {
+                "id": "finding-entry-count",
+                "title": "功能入口比需求初看多一支",
+                "category": "scope-gap",
+                "statedAssumption": "需求初看只列出兩支需要處理的入口。",
+                "evidenceConclusion": "沿路由與共用處理流程追查後，確認三支入口都要獨立修改與驗證。",
+                "whyItMatters": "若仍用兩支估算，會少算一支入口的理解、修改與回歸工作。",
+                "estimateImpact": "基準人天改以三支乘代表單價計算，已納入目前估算。",
+                "treatment": "已納入基準與高值，Gate 5 請 PM 連同範圍一起確認。",
+                "scopeDelta": {
+                    "subject": "功能入口",
+                    "assumed": 2,
+                    "confirmed": 3,
+                    "targetKey": "apis",
+                    "workItemIds": ["work-actions"],
+                    "detailCatalogIds": ["catalog-actions-direct"],
+                },
+                "clientPackageIds": ["package-entry"],
+                "evidenceIds": ["ev-runtime"],
+            }
+        ],
+    }
     state["currentDecision"] = {
         "id": "confirm-estimate", "title": "確認工作內容與對外人天", "whyHuman": "這會形成對客戶的範圍承諾。",
         "factsTitle": "做決定前值得看的資訊", "facts": ["外部人天採同一範圍的合理高值。"],

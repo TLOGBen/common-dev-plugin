@@ -78,6 +78,7 @@ codex plugin add linkstart@common-dev
 
 | Skill | 做什麼 | 什麼時候用 |
 |-------|--------|-----------|
+| `estimate` | 盤點既有系統的升版／CR，從成果與證據形成方案及人天；HTML 可逐包展開頁面、API、檔案、基準公式與會改變估算的主動發現。 | PM 要確認陌生既有系統「改什麼、為何是這些人天」時。 |
 | `rfp-requirement-analysis` | 把 RFP / 需求規格書展成「需求分析報告 + 逐模組功能/API 分析」，全程可追溯。**鏈的第 1 段。** | 手上有原始 RFP/SOW，要先盤出可機械比對的功能清單。 |
 | `rfp-architecture-design` | 把第 1 段輸出落成架構文件（總覽 + 請求生命週期、前端、後端分層、命名規範、ER 模型）。**第 2 段。** 預設 Vue3/Spring Boot，可覆寫。 | 已有需求分析，要出系統架構。 |
 | `rfp-sa-bdd` | 把每個功能展成 BDD 驗收規格（Goal／三段式 REQ 編號／繁中 Gherkin），銜接下游 TDD 的 `requirement.md`。**第 3 段。** | 要可機械驗收的驗收條件。 |

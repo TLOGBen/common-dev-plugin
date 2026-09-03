@@ -41,6 +41,16 @@
 
 每項可用結論至少保存：命題、來源定位、取得方式、commit／版本／環境、強度、信心、仍未知部分，以及它會改變哪個決定。不同統計視角使用穩定 dedupe key；頁面、route、Action 與 endpoint 若描述同一能力，不因數字不同就重複計價。
 
+## 工作集合只盤一次
+
+Discovery 在 `detailCatalogs` 建立全案唯一的 canonical 工作集合，並一次分類施工性質：
+
+- `direct-touch`：每項可能需要獨立理解、修改或驗證，完整保存 stable ID、名稱／repository-relative path、用途、處置、修改重點與驗證。
+- `generated`：由 Entity、schema、規格或其他來源可重現產生；保存輸出數、產製來源、方法與核對，不展開成 N 筆人工修改。
+- `evidence-only`：只證明覆蓋範圍，不作人工乘數；說明完整性邊界與計價角色。
+
+盤點後不在 Wayfinder、估算或 generator 重掃。Wayfinder 只有在 treatment 分類會改變候選方案、計價方式或責任時才開決策票；否則直接引用同一 stable workset ID。
+
 ## 足夠條件
 
 當剩餘未知已不會改變方案，或能以明確條件、上限與責任表達時，停止廣泛探索並建立成功鏈。若下一項查證只增加知識量、不能改善決策品質，把它留在技術附錄而不是繼續消耗案件時間。
