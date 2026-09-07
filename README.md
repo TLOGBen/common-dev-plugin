@@ -2,7 +2,7 @@
 
 > 通用、與專案無關的開發工具箱，以 Claude Code marketplace（`common-dev`）形式發佈，並附 Codex 變體。所有 skill 都不綁定特定專案、路由或帳號，可混搭進任何 repo。
 
-通用工具與三組情境型工具各自拆成獨立 plugin；四個 plugin 都設為 `defaultEnabled: true`，加入 marketplace 後即可使用，不需要的套件可個別停用。
+四個穩定 plugin 都設為 `defaultEnabled: true`；Codex 主 marketplace 另提供需自行安裝的 `Common Lab（實驗性）`，不會取代穩定版 Common。
 
 ## 安裝
 
@@ -30,14 +30,15 @@ codex plugin marketplace add https://github.com/TLOGBen/common-dev-plugin.git
 codex plugin add test-utils@common-dev
 codex plugin add analysis-estimation@common-dev
 codex plugin add common@common-dev
+codex plugin add common-lab@common-dev
 codex plugin add linkstart@common-dev
 ```
 
 ## 內容一覽
 
-### Skills Lab：獨立實驗版
+### Skills Lab：實驗版
 
-另提供 **Common Lab、Baransu Lab、Estimate Lab 0.2.0**。三個獨立實驗 marketplace 不加入下表四個穩定套件、不替換現有安裝；本版以「指引優先，針對反覆失誤設置控制」重新檢視全部 15 個技能，不以全面瘦身為目標。
+另提供 **Common Lab 0.2.2、Baransu Lab 0.2.0、Estimate Lab 0.2.0**。Common Lab 已列入 Codex 主 marketplace，仍需自行選擇安裝；Baransu Lab 與 Estimate Lab 維持獨立實驗 marketplace。三者都不替換現有穩定安裝；本版以「指引優先，針對反覆失誤設置控制」重新檢視技能，不以全面瘦身為目標。
 
 - [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
 - [三個實驗包與試用入口](docs/experiments/README.md)
@@ -45,18 +46,19 @@ codex plugin add linkstart@common-dev
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-本版凍結包位於 `experiments/common-lab-v0.2.0/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。Git 只保留這三份最新版套件；舊版與候選包不再追蹤，本機副本保留並忽略。歷史版本可由 Git 歷史取回，實驗紀錄不代表目前套件。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。暫存安裝驗證不代表目前 App 已載入新版。
+最新版套件位於 `experiments/common-lab/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。Git 只保留最新版套件；舊版與候選包不再追蹤。歷史版本可由 Git 歷史取回，實驗紀錄不代表目前套件。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。暫存安裝驗證不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
 | [`common`](#common--通用工具) | 10 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
+| `common-lab` | 11 | 🧪 自行安裝 | Common 的實驗性替代技能，包含新版 Wait What、Show Me 與長程戰役控制 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
 | [`analysis-estimation`](#analysis-estimation--分析與評估) | 6 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
 | [`linkstart`](#linkstart--htmlapp-回連-origin-session-preview) | 1 | ✅ 預設啟用 | 用單一入口把 agent 產出的互動 HTML／localhost App 接回產出它的同一條 Claude Code session 或 Codex thread |
 
 <img src="docs/images/marketplace-overview.svg" alt="common-dev marketplace 結構" width="100%">
 
-> Claude 與 Codex 各提供四個 plugin。Claude marketplace 的四個 plugin 都預設啟用；Claude skill 以 `/<plugin>:<skill>` 呼叫，Codex skill 以 `$<skill>` 呼叫。
+> Claude marketplace 提供四個預設啟用的穩定 plugin；Codex 主 marketplace 另提供需自行安裝的 `common-lab`。Claude skill 以 `/<plugin>:<skill>` 呼叫，Codex skill 以 `$<skill>` 呼叫。
 
 ## `test-utils` — E2E 測試工具
 

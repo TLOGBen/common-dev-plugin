@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Codex 主 marketplace — Common Lab 0.2.2
+
+- 將 `Common Lab（實驗性）` 的 11 個 `lab-*` skills 與兩個 package-local agent definitions 加入 Codex Layout A／B catalogs，安裝識別為 `common-lab@common-dev`。
+- 套件由 Claude source 經既有 transfer 與 UI metadata overlay 重新產生，內容與已驗證的獨立 0.2.2 實驗包逐檔一致；維持 `AVAILABLE`，不自動安裝，也不替換穩定 `common`。
+- Claude 穩定 marketplace 仍維持四個預設啟用 plugin；本次只提升 Codex App 的可見與安裝入口。
+
 ## Lab 發布範圍修正
 
 - Git 僅保留 Common Lab、Baransu Lab、Estimate Lab 的 0.2.0 凍結包；13 個舊版／候選目錄移出追蹤並忽略，本機檔案與 Git 歷史保留，未重寫已發布歷史。

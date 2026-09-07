@@ -41,6 +41,18 @@
       "category": "Productivity"
     },
     {
+      "name": "common-lab",
+      "source": {
+        "source": "local",
+        "path": "./codex/plugins/common-lab"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    },
+    {
       "name": "linkstart",
       "source": {
         "source": "local",
