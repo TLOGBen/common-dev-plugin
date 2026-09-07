@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.36.0"
+    "version": "1.36.1"
   },
   "plugins": [
     {
@@ -36,10 +36,10 @@
     {
       "name": "common-lab",
       "source": "./plugins/common-lab",
-      "description": "Common Lab (experimental, opt-in): 16 lab-variant skills — think (full deliberation chain: grilling-style opening → falsifiable stance → premise verification → self-attack → five-section plan left on disk for review, never routing to implementation), grilling, contract, seal, review, wayfinder, delegate, strategic-advance, define-goal, domain-modeling, prototype, research, better-prompts, wait-what, show-me, estimate — plus 4 bundled agents. Coexists with the stable plugins; invoke as /common-lab:<skill>. Disabled by default; enable with `claude plugin enable common-lab`.",
+      "description": "Common Lab (experimental): 16 lab-variant skills — think (full deliberation chain: grilling-style opening → falsifiable stance → premise verification → self-attack → five-section plan left on disk for review, never routing to implementation), grilling, contract, seal, review, wayfinder, delegate, strategic-advance, define-goal, domain-modeling, prototype, research, better-prompts, wait-what, show-me, estimate — plus 4 bundled agents. Coexists with the stable plugins; invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.4.0",
-      "defaultEnabled": false
+      "version": "0.4.1",
+      "defaultEnabled": true
     },
     {
       "name": "linkstart",

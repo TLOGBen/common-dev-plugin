@@ -2,6 +2,10 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.4.1 — 安裝後預設啟用
+
+- `common-lab` 改為 `defaultEnabled: true`（Claude marketplace 條目與兩份 plugin.json）：安裝完即出現在技能選單，不再需要手動 enable；不需要者可 `claude plugin disable common-lab`。marketplace 1.36.1。
+
 ## Common Lab 0.4.0 — Think Lab 回復完整審議脈絡
 
 - `think` 從單純判決機改回完整審議鏈：對焦 → 表態（附可推翻條件）→ 查證前提 → 自我攻擊 → 五段計畫落檔（`.baransu-lab/think/<slug>.md`）。
