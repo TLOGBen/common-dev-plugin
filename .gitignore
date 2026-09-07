@@ -15,12 +15,12 @@
 /.common-lab/
 /output/
 
-# --- Lab publication allowlist: only the latest frozen packages are tracked ---
-# Older exports/candidates remain local. Update these exceptions when promoting a release.
-/experiments/common-lab*/
+# --- Lab publication allowlist: stable experiment entry plus current frozen packages ---
+# Common Lab keeps a stable path and changes its manifest version; old exports/candidates stay local.
+/experiments/common-lab-v*/
+/experiments/common-lab-candidate*/
 /experiments/baransu-lab*/
 /experiments/estimate-lab*/
-!/experiments/common-lab-v0.2.0/
 !/experiments/baransu-lab-v0.2.0/
 !/experiments/estimate-lab-v0.2.0/
 

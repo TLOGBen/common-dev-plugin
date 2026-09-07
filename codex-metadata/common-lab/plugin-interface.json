@@ -1,5 +1,5 @@
 {
-  "displayName": "Common Lab",
+  "displayName": "Common Lab（實驗性）",
   "shortDescription": "指引優先，對反覆失誤設置控制的實驗包",
   "longDescription": "依任務規模與失敗模式調整工作指引。長程複合任務保留獨立校準、成果與活動分離；小任務不套戰役流程。成果回到人的理解與決策，不取代穩定 Common。",
   "developerName": "ben.tsai",

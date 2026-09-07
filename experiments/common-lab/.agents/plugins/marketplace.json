@@ -1,7 +1,7 @@
 {
   "name": "common-lab",
   "interface": {
-    "displayName": "Common Lab"
+    "displayName": "Common Lab（實驗性）"
   },
   "plugins": [
     {

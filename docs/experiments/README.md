@@ -1,6 +1,6 @@
 # Skills Lab：下一週實戰入口
 
-> **目前試用版：三包均為 0.2.0。** 請先看 [全部 15 個技能的新版改動與驗證](lab-v0.2.0/README.md)。Git 只保留最新版套件；以下 0.1.x 測量與原始紀錄仍是歷史批次，不代表 0.2.0 的用量、測試或結論。
+> **目前試用版：Common Lab 0.2.2；Baransu Lab 與 Estimate Lab 0.2.0。** 請先看 [0.2.0 基線的 15 個技能改動與驗證](lab-v0.2.0/README.md)。Common Lab 0.2.2 另納入新版 Wait What 與 MIT 授權的 Show Me Lab。Git 只保留各包最新版套件；歷史測量與原始紀錄不代表新版本的用量、測試或結論。
 
 這次強化的是技能本身：讓 agent 有判斷空間，也讓成果、限制與下一個人的決定能清楚交接。正式插件、既有案件、隔壁 Baransu 與全域安裝均未變更。
 
@@ -8,7 +8,7 @@
 
 | 實驗包 | 現在可試什麼 | 已驗證／尚不能推論 |
 |---|---|---|
-| [Common Lab 0.2.0](lab-v0.2.0/README.md) | 10 個 `lab-*` 技能；長程戰役補回獨立校準，保留小任務的有界執行 | 導出、暫存安裝與短情境控制差異有紀錄；尚未證明 16–24 小時實戰收益 |
+| [Common Lab 0.2.2](lab-v0.2.0/README.md) | 11 個 `lab-*` 技能；加入新版 Wait What 與 Show Me Lab，長程戰役仍保留獨立校準 | 0.2.0 基線已有短情境證據；0.2.2 的新增呈現技能仍待實戰驗證 |
 | [Baransu Lab 0.2.0](lab-v0.2.0/README.md) | think、contract、review、seal；合約先落檔，驗證按風險設有限額度 | 套件驗證與短情境紀錄可查；不是原版完整封緘或 hook 替代品 |
 | [Estimate Lab 0.2.0](lab-v0.2.0/README.md) | `$lab-estimate`；保留唯一計價與 PM 核准，長程跨包按需獨立核對 | 導出、暫存安裝及回歸紀錄可查；情境回應不等於實際案件或真人 PM 驗收 |
 
@@ -17,7 +17,7 @@
 以下命令在此 repository 根目錄執行；這輪實際驗證的是 Ubuntu WSL 的 Codex CLI，未修改 Windows App 的全域安裝。
 
 ```sh
-codex plugin marketplace add ./experiments/common-lab-v0.2.0
+codex plugin marketplace add ./experiments/common-lab
 codex plugin add common-lab@common-lab
 
 codex plugin marketplace add ./experiments/baransu-lab-v0.2.0
@@ -27,7 +27,7 @@ codex plugin marketplace add ./experiments/estimate-lab-v0.2.0
 codex plugin add estimate-lab@estimate-lab
 ```
 
-Lab 的 0.2.0 是獨立套件版號，不與正式 Common 的 1.x 比大小，也不覆蓋正式版。三包可分別選用，不必一次全裝。安裝後用 `codex plugin list --json` 核對實際版本；重新開啟對話後，也要確認載入的技能名稱與版本。暫存 CLI 安裝成功不代表另一個 App／Host 已載入新版。
+Lab 的版本是獨立套件版號，不與正式 Common 的 1.x 比大小，也不覆蓋正式版。三包可分別選用，不必一次全裝。安裝後用 `codex plugin list --json` 核對實際版本；重新開啟對話後，也要確認載入的技能名稱與版本。暫存 CLI 安裝成功不代表另一個 App／Host 已載入新版。
 
 不要把正在使用的正式 Estimate 案件直接交給 Lab runtime。新案例預設放 `.estimate-lab/<case>`；跨版遷移另以明確範圍的副本試驗。回到原流程時選原技能與原案件，保留實驗證據，不需要刪除原始資料。
 

@@ -21,7 +21,7 @@ REPO = Path(__file__).resolve().parent.parent
 ROOT_TOKEN = "${CLAUDE_PLUGIN_ROOT}"
 RESOURCE_TOKEN = "${LAB_SKILL_DIR}"
 PLUGIN_SPECS = {
-    "common-lab": {"skills": 10, "explicit": ["lab-wait-what"],
+    "common-lab": {"skills": 11, "explicit": ["lab-wait-what"],
                    "roles": {"lab-executor": ["lab-delegate", "lab-strategic-advance"],
                              "lab-calibrator": ["lab-strategic-advance"]}},
     "baransu-lab": {"skills": 4, "explicit": [],
@@ -272,6 +272,10 @@ def export(args):
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     manifest.setdefault("interface", {}).update(json.loads(overlay.read_text(encoding="utf-8")))
     manifest_path.write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    catalog_path = staging / ".agents/plugins/marketplace.json"
+    catalog = json.loads(catalog_path.read_text(encoding="utf-8"))
+    catalog.setdefault("interface", {})["displayName"] = manifest["interface"]["displayName"]
+    catalog_path.write_text(json.dumps(catalog, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     followups = []
     for report in reports:
         require(not report.skipped, "Skipped skill content requires review")
