@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.8.0",
-  "description": "Unified opt-in laboratory: 5 experimental skills for delegation, strategic execution, goal definition, prompt audits, and existing-system estimates.",
+  "version": "0.9.0",
+  "description": "Unified opt-in laboratory: 2 experimental skills for delegation and strategic execution.",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"

@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.9.0 — 淘汰 estimate、define-goal、better-prompts 三個 Lab 變體
+
+- 從 Lab 移除 estimate（含 `agents/estimate-auditor.md`、Codex 的 `estimate-auditor.toml`）、define-goal、better-prompts 三個技能（Claude 與 Codex 兩載體）。estimate 的 Lab 版使用體驗過差；define-goal 與 better-prompts 的 Lab 版在低階模型上無法正常運作，原版可以。三者一律改用穩定版：`analysis-estimation:estimate`、`common:define-goal`、`common:better-prompts`。既有 `.estimate-lab/<case>` 資料不遷移。
+- Lab 剩 2 個技能（delegate、strategic-advance）與 2 個 bundled agents（calibrator、executor）。marketplace 1.42.0。
+
 ## Common 1.36.2 — show-me 開啟 HTML 改為一句意圖
 
 - 拿掉寫死的 `wslview || xdg-open || open` 指令鏈（錯誤全導向 /dev/null，機器上沒裝 wslu 時會靜默失敗，HTML 寫出來卻沒打開），改為「用當前環境有的工具在使用者預設瀏覽器打開，不要只印路徑」，並舉 WSL2 的 `wslview`／`pwsh.exe Start-Process` 為例。Claude 與 Codex 兩載體同步。marketplace 1.41.1。

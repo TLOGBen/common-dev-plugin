@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.41.1"
+    "version": "1.42.0"
   },
   "plugins": [
     {
@@ -36,9 +36,9 @@
     {
       "name": "common-lab",
       "source": "./plugins/common-lab",
-      "description": "Common Lab (experimental): 5 lab-variant skills — delegate, strategic-advance, define-goal, better-prompts, estimate — plus 3 bundled agents (calibrator, executor, estimate-auditor). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu 5.5.0. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
+      "description": "Common Lab (experimental): 2 lab-variant skills — delegate, strategic-advance — plus 2 bundled agents (calibrator, executor). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu 5.5.0. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0; use analysis-estimation:estimate, common:define-goal and common:better-prompts. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.8.0",
+      "version": "0.9.0",
       "defaultEnabled": true
     },
     {

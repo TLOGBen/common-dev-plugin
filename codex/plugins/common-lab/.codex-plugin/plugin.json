@@ -1,12 +1,12 @@
 {
   "name": "common-lab",
-  "version": "0.8.0",
-  "description": "Unified opt-in laboratory: 5 experimental skills for delegation, strategic execution, goal definition, prompt audits, and existing-system estimates.",
+  "version": "0.9.0",
+  "description": "Unified opt-in laboratory: 2 experimental skills for delegation and strategic execution.",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "統一收納派工、戰略推進、目標定義、prompt 審核與估算的 5 個實驗技能",
-    "longDescription": "整合 Common、Baransu 與 Estimate 的實驗技能，以單一 Common Lab 套件提供指引、派工、戰略推進、視覺說明、驗收與既有系統估算。正式版與歷史實驗快照維持獨立。",
+    "shortDescription": "統一收納派工與戰略推進的 2 個實驗技能",
+    "longDescription": "整合 Common 的實驗技能，以單一 Common Lab 套件提供派工與戰略推進。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [
@@ -15,8 +15,7 @@
     ],
     "defaultPrompt": [
       "用 Common Lab 的 strategic-advance 推進已確認的目標。",
-      "用 Common Lab 的 show-me 圖解目前的問題。",
-      "用 Common Lab 的 estimate 評估既有系統改動。"
+      "用 Common Lab 的 delegate 把這個有界任務派給便宜模型。"
     ]
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
