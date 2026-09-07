@@ -1,11 +1,11 @@
 {
   "name": "common-lab",
-  "version": "0.6.0",
-  "description": "Unified opt-in laboratory: 16 skills for developer workflows, visual explanations, independent verification, and existing-system estimates.",
+  "version": "0.8.0",
+  "description": "Unified opt-in laboratory: 5 experimental skills for delegation, strategic execution, goal definition, prompt audits, and existing-system estimates.",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "統一收納開發、驗收與估算的 16 個實驗技能",
+    "shortDescription": "統一收納派工、戰略推進、目標定義、prompt 審核與估算的 5 個實驗技能",
     "longDescription": "整合 Common、Baransu 與 Estimate 的實驗技能，以單一 Common Lab 套件提供指引、派工、戰略推進、視覺說明、驗收與既有系統估算。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",

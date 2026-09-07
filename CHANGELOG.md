@@ -2,6 +2,19 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.8.0 — think／contract／seal／review 回歸 baransu 穩定版
+
+- 四個源自 baransu 的實驗技能定稿後直接更新進 baransu 5.5.0（輸出目錄回歸 `.claude/think/`、根目錄 `CONTRACT.md`、`.claude/seal/`、`.claude/review/`），Lab 不再保留副本；`agents/verifier.md` 隨之移入 baransu。Lab 剩 5 個技能（delegate、strategic-advance、define-goal、better-prompts、estimate）與 3 個 bundled agents。marketplace 1.41.0。
+
+## Common 1.36.1 — wait-what 與 show-me 加入「Say what you mean」
+
+- 兩個技能各加一段：不用比喻與修辭代替直述，有字面說法就用字面說法，技術散文亦然；清單與條列只在被要求或內容確實多面時使用，使用者要求極簡格式時不用條列、標題、粗體，對話式交流維持平鋪散文。
+
+## Common Lab 0.7.0 — 已畢業的技能回歸 common
+
+- 從 Lab 移除 grilling、domain-modeling、research、prototype、wait-what、wayfinder、show-me 七個技能（Claude 與 Codex 兩載體）：它們的定稿已在 common 1.36.0，Lab 不再保留副本。Lab 剩 9 個技能：think、contract、seal、review、delegate、strategic-advance、define-goal、better-prompts、estimate，4 個 bundled agents 不變。
+- think 的 show-me 與 wayfinder 交接改指穩定版 `common:show-me`／`common:wayfinder`。marketplace 1.40.0。
+
 ## Common 1.36.0 — 六個 Matt Pocock 技能回到原版，show-me 進穩定版
 
 - `grilling`、`domain-modeling`、`research`、`prototype`、`wait-what` 改以 Matt Pocock skills（3cca18b）現行原文為本體，只保留輸出語言段與 `${CLAUDE_PLUGIN_ROOT}` 內建檔案引用；`research` 加一段：偵測到 baransu 時用 `/baransu:read` 取件，引用可指向 `.claude/read/` 的存檔；`wait-what` 改採 Lab 版：從斷掉的連結開始、按困惑種類挑講法、簡化細節不簡化真相、受眾從對話推斷、純文字不產 HTML（圖另叫 show-me）；移除受眾旗標、五階梯與 HTML 伴讀。

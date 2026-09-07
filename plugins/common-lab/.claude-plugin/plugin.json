@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.6.0",
-  "description": "Unified opt-in laboratory: 16 skills for developer workflows, visual explanations, independent verification, and existing-system estimates.",
+  "version": "0.8.0",
+  "description": "Unified opt-in laboratory: 5 experimental skills for delegation, strategic execution, goal definition, prompt audits, and existing-system estimates.",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
