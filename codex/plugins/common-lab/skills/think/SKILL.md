@@ -1,9 +1,9 @@
 ---
 name: think
-description: Deliberate before building when the user has an undecided idea, feature, refactor, or direction and asks how to design it, which way to go, or whether it is worth doing (想一下, 幫我想, 怎麼設計, 值不值得). Aligns on what they actually want, then leaves a falsifiable stance and a plan file for review; never code, never a handoff. Not for debugging (hunt), grilling a settled decision, or pinning acceptance (contract).
+description: Deliberate before building when the user has an undecided idea, feature, refactor, or direction and asks how to design it, which way to go, or whether it is worth doing (想一下, 幫我想, 怎麼設計, 值不值得). Also takes a decision already made when the user wants it tested (拷問我, grill me). Aligns on what they actually want, then leaves a stance with its bets named and a plan file for review; never code, never a handoff. Not for debugging (hunt) or pinning acceptance (contract).
 compatibility: Designed for Claude Code; ported to Codex.
 metadata:
-  version: 0.3.0-codex
+  version: 0.4.0-codex
 ---
 
 ## Lab Resource Resolution
@@ -35,13 +35,13 @@ Every phrase in the restatement you had to guess is a candidate question. Ask it
 
 Find facts yourself. Read the repo, docs, and prior decisions to answer any question that has an answer, and never turn research into a question for the user. Reading code to settle a fact is allowed; forming or showing a solution before the restatement is confirmed is not. During alignment the user sees exactly two things: the current restatement with the changed phrase marked, and the question.
 
-Alignment ends when the user confirms the restatement, or when a round of answers leaves it unchanged; then stop asking. If the restatement cannot fit in a few sentences because the effort has several independent destinations, say so and point to wayfinder instead of stretching it.
+When the user arrives with a decision already made and wants it tested (拷問我, 壓力測試這個決定, grill me), the restatement is that decision; confirm it in one round and go straight to the attack. Alignment ends when the user confirms the restatement, or when a round of answers leaves it unchanged; then stop asking. If the restatement cannot fit in a few sentences because the effort has several independent destinations, say so and point to wayfinder instead of stretching it.
 
 ## Take a stance
 
-State the recommendation in one sentence with its decisive reason. It answers the restatement and nothing beyond it. Lay out the credible alternatives, always including the minimal one (do nothing, reuse existing Z) and the framework-native or official solution when it genuinely fits — as a real candidate, not an automatic winner. Then name one to three concrete pieces of evidence that would overturn the recommendation. Delete "it depends on your priorities", "both have trade-offs", "this is your decision to make": the user asked for a lead, not a survey. If the remaining choice is genuinely the user's (a value, a budget, an authority boundary), explain its consequence and wait; a missing question tool does not permit inventing the answer.
+State the recommendation in one sentence with its decisive reason. It answers the restatement and nothing beyond it. Lay out the credible alternatives, always including the minimal one (do nothing, reuse existing Z) and the framework-native or official solution when it genuinely fits — as a real candidate, not an automatic winner. Then say what the recommendation is betting on, in one to three conditions, each as a sentence a person can act on: what it assumes, what happens if that assumption is wrong, and which alternative it switches to. Never write a bare "this would be overturned by Z". Delete "it depends on your priorities", "both have trade-offs", "this is your decision to make": the user asked for a lead, not a survey. If the remaining choice is genuinely the user's (a value, a budget, an authority boundary), explain its consequence and wait; a missing question tool does not permit inventing the answer.
 
-Judge existence too. If the honest stance is "do not build this" or "build something else", say Kill or Pivot with reasons grounded in the user's actual constraints — time, motivation, maintenance cost, business model — never generic trade-offs. A verdict ends the skill; it needs no plan file.
+Judge existence too. If the honest stance is "do not build this" or "build something else", say Kill or Pivot with reasons grounded in the user's actual constraints — time, motivation, maintenance cost, business model — never generic trade-offs. A verdict ends the skill; it needs no plan file, but it still goes through the presentation step below.
 
 ## Verify the premises the stance leans on
 
@@ -55,7 +55,7 @@ Attack for excess: for each part of the proposal, ask what the restatement would
 
 ## Present it so a person can follow
 
-Before the file, show the result the way a person absorbs it: the whole shape first, then the part that matters to this user; the smallest view that makes the key point clear — a before/after diff, one flow, a side-by-side comparison — and plain words, with each technical term explained where it first appears. The conversation is the understanding version; the file is the durable version. Do not make the user read five sections to find out what you recommend.
+Before the file, hand the result to show-me: the whole shape first, then the part that matters to this user, in the smallest view that makes the key point clear — a before/after diff, one flow, a side-by-side comparison, or one focused HTML page when the shape is too dense for text — with each technical term explained where it first appears. If show-me is not available, do the same inline. The user should also be able to see which questions were asked and what each answer changed, so the decisions are traceable, not just the conclusion. The conversation is the understanding version; the file is the durable version. Do not make the user read five sections to find out what you recommend.
 
 ## Leave a plan on disk, then stop
 

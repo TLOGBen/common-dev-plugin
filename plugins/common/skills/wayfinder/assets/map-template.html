@@ -30,6 +30,7 @@
   h1{font-size:34px;font-weight:400;letter-spacing:.01em;margin:10px 0 6px}
   .dest{border-left:2px solid var(--beacon);padding:6px 0 6px 18px;margin:22px 0 8px;font-size:18px;font-style:italic;color:var(--ink)}
   .meta{font:12px var(--mono);color:var(--muted);margin-top:10px}
+  .status-boundary{font-size:14px;line-height:1.65;color:var(--muted);margin-top:12px}
 
   section{margin-top:52px}
   h2{font-size:13px;font-weight:400;font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
@@ -101,6 +102,16 @@
   .oos li{color:var(--faint)}
   .oos li::before{content:"✕";font-family:var(--mono);font-size:11px}
   footer{margin-top:70px;font:11px var(--mono);color:#41566417;color:var(--faint);opacity:.7}
+  .overview{margin-top:32px}
+  .overview>summary{border:1px solid #33505F;border-radius:6px;color:var(--charted);padding:12px 16px}
+  .overview>summary::before{content:'▸';margin-right:6px}
+  .overview[open]>summary::before{content:'▾'}
+  .focus-body{border:1px solid #66502B;border-left:3px solid var(--beacon);border-radius:6px;background:#211C10;padding:18px 22px}
+  .focus-body h3{font-size:21px;font-weight:400;margin-bottom:14px}
+  .focus-body h4{font-size:15px;font-weight:400;color:var(--beacon);margin:18px 0 6px}
+  .focus-body p{margin:8px 0}
+  .focus-body a{color:var(--charted)}
+  .focus-missing{color:var(--muted);font-style:italic}
 </style>
 </head>
 <body>
@@ -110,8 +121,16 @@
     <h1 id="effort-name"></h1>
     <div class="dest" id="destination"></div>
     <div class="meta" id="meta"></div>
+    <p class="status-boundary" id="status-boundary"></p>
   </header>
 
+  <section id="current-focus" aria-labelledby="focus-title" hidden>
+    <h2 id="focus-title"></h2>
+    <div id="focus-content" class="focus-body"></div>
+  </section>
+
+  <details id="map-overview" class="overview" open>
+  <summary id="map-overview-summary"></summary>
   <section aria-label="__WF_ROUTE_CHART_ARIA__">
     <h2>__WF_ROUTE_CHART__</h2>
     <div class="chart">
@@ -148,6 +167,7 @@
     </div>
   </section>
 
+  </details>
   <footer id="foot"></footer>
 </div>
 
@@ -175,10 +195,52 @@ const byId = {}; DATA.tickets.forEach(t=>byId[t.id]=t);
 function status(t){
   if(t.status==='resolved') return 'resolved';
   if(t.status==='claimed') return 'claimed';
-  const blocked = t.blockedBy.some(b => byId[b] && byId[b].status!=='resolved');
+  const blocked = t.blockedBy.some(b => !byId[b] || byId[b].status!=='resolved');
   return blocked ? 'blocked' : 'frontier';
 }
 DATA.tickets.forEach(t=>t.s=status(t));
+
+function dependencySummary(ticket){
+  const resolved=ticket.blockedBy.filter(id=>byId[id]&&byId[id].status==='resolved');
+  const pending=ticket.blockedBy.filter(id=>byId[id]&&byId[id].status!=='resolved');
+  const missing=ticket.blockedBy.filter(id=>!byId[id]);
+  return [[resolved,L.prerequisiteResolved,''],[pending,L.prerequisitePending,'⛔ '],[missing,L.prerequisiteMissing,'⛔ ']]
+    .filter(([ids])=>ids.length)
+    .map(([ids,label,icon])=>`<span class="blockline">${icon}${esc(label)}: ${ids.map(esc).join(', ')}</span>`).join(' ');
+}
+
+/* ---------- explicit human-decision view; ticket remains the source ---------- */
+const overview = document.getElementById('map-overview');
+document.getElementById('map-overview-summary').textContent = L.fullMap;
+if(DATA.focus){
+  const focusSection=document.getElementById('current-focus');
+  const focusTitle=document.getElementById('focus-title');
+  const focusContent=document.getElementById('focus-content');
+  focusSection.hidden=false;
+  if(DATA.focus.problem){
+    focusTitle.textContent=L.focusWarning;
+    focusContent.textContent=L.focusProblems[DATA.focus.problem];
+    overview.open=true;
+  } else {
+    const ticket=byId[DATA.focus.ticketId];
+    focusTitle.textContent=L.currentFocus;
+    const heading=document.createElement('h3');
+    heading.textContent=ticket.title;
+    focusContent.appendChild(heading);
+    let hasContent=false;
+    for(const [key,label] of [['question',L.question],['context',L.context],['evidence',L.evidence],['options',L.options],['recommendation',L.recommendation],['comments',L.comments]]){
+      if(!ticket[key]) continue;
+      hasContent=true;
+      const h=document.createElement('h4'); h.textContent=label; focusContent.appendChild(h);
+      const body=document.createElement('div');
+      body.innerHTML=mdBlock(ticket[key]);
+      focusContent.appendChild(body);
+    }
+    if(!hasContent){const missing=document.createElement('p'); missing.className='focus-missing'; missing.textContent=L.missingField; focusContent.appendChild(missing);}
+    const sourceLink=document.createElement('a'); sourceLink.href=ticket.file; sourceLink.textContent=L.openTicket; focusContent.appendChild(sourceLink);
+    overview.open=false;
+  }
+}
 
 /* ---------- header ---------- */
 document.getElementById('effort-name').textContent = DATA.effort;
@@ -186,6 +248,7 @@ document.getElementById('destination').innerHTML = md(DATA.destination);
 const n = s => DATA.tickets.filter(t=>t.s===s).length;
 document.getElementById('meta').textContent =
   format(L.metaTemplate,{total:DATA.tickets.length,resolved:n('resolved'),frontier:n('frontier'),claimed:n('claimed'),blocked:n('blocked')});
+document.getElementById('status-boundary').textContent = L.statusBoundary;
 document.getElementById('foot').textContent = `${L.generated} ${DATA.generatedAt} · ${L.source}: ${DATA.source}`;
 document.title = `${L.documentTitle} — ${DATA.effort}`;
 
@@ -276,10 +339,13 @@ const cardsEl=document.getElementById('cards');
 [...DATA.tickets].sort((a,b)=>order.indexOf(a.s)-order.indexOf(b.s)||a.id.localeCompare(b.id)).forEach(t=>{
   const dts=document.createElement('details');
   dts.className='card'; dts.id='card-'+t.id; dts.dataset.s=t.s;
-  const blk=t.blockedBy.length?`<span class="blockline">⛔ ${L.prerequisite}: ${t.blockedBy.map(esc).join(', ')}</span>`:'';
+  const blk=dependencySummary(t);
   dts.innerHTML=`<summary><span class="tid">${esc(t.id)}</span><span class="ttitle">${esc(t.title)}</span>${blk}
     <span class="badge t">${esc(TYPE_LABEL[t.type]||t.type)}</span><span class="badge s-${t.s}">${STATUS_LABEL[t.s]}</span></summary>
     <div class="card-body"><h4>${L.question}</h4>${mdBlock(t.question)}
+    ${t.evidence?`<h4>${L.evidence}</h4>${mdBlock(t.evidence)}`:''}
+    ${t.options?`<h4>${L.options}</h4>${mdBlock(t.options)}`:''}
+    ${t.recommendation?`<h4>${L.recommendation}</h4>${mdBlock(t.recommendation)}`:''}
     ${t.answer?`<h4>${L.answer}</h4>${mdBlock(t.answer)}`:''}
     ${t.comments?`<h4>${L.comments}</h4>${mdBlock(t.comments)}`:''}
     <h4><a href="${esc(t.file)}">${L.openTicket} →</a></h4></div>`;

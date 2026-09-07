@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.37.0"
+    "version": "1.39.0"
   },
   "plugins": [
     {
@@ -28,9 +28,9 @@
     {
       "name": "common",
       "source": "./plugins/common",
-      "description": "Common utilities (enabled by default): better-prompts — optimize prompts: audit, rewrite, draft, or migrate system prompts, agent instructions, tool descriptions, and CLAUDE.md files against official Claude and GPT-5.x prompting guidance (outcome-first structure, stopping conditions, autonomy boundaries, lean-prompt diet); delegate — goal-oriented delegation of bounded execution slices to native sub-agents, Codex CLI, or Claude CLI (worth-it gate, live model-catalog lookup, supervised long-task patrols, native-first Luna Max with exact-profile CLI fallback, evidence-based acceptance); define-goal — turn a fuzzy intention into a concrete, measurable goal with explicit validators and scope bounds before work starts; strategic-advance — keep an already-locked objective moving through long-running, cross-tool execution with one main effort, evidence-backed moves, a stateless campaign scribe that owns state bookkeeping and re-probes gating evidence, context protection, dynamic reassessment, and conditional human takeover; wait-what — stop and re-pitch the last explanation in plain Traditional Chinese by default, or another explicitly requested language, when the user didn't follow: identify the audience (--as role/age/free text, else inferred), climb a shallow-to-deep ladder (one sentence → ten-year-old analogy → adult concepts → the one part that matters most to that role → why I decided this) that never skips the bottom rungs, with a visuals-first HTML companion under .claude/wait-what/ when tooling allows; wayfinder — chart an effort too big for one session as a local-markdown map of decision tickets (blocking, frontier, fog of war) with an interactive HTML map view, resolved one ticket per session, backed by companion skills grilling, domain-modeling, research, and prototype, with an operator posture (the lead session judges and intervenes while execution slices route through delegate) and a drain mode that auto-resolves AFK tickets in parallel and stops hard at the human-decision boundary, plus optional routing to the baransu suite (think/read/learn/design/contract/seal/hunt/review/ship) when installed. User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Enabled by default; disable with `claude plugin disable common` if unwanted.",
+      "description": "Common utilities (enabled by default): better-prompts — audit, rewrite, draft, or migrate prompts and agent instructions against official Claude and GPT-5.x guidance; delegate — hand bounded, verifiable execution slices to native sub-agents, Codex CLI, or Claude CLI with a worth-it gate and live model-catalog lookup; define-goal — turn a fuzzy intention into a measurable goal with explicit validators; strategic-advance — keep a locked objective moving through long-running, cross-tool execution with a stateless campaign scribe; wayfinder — Matt Pocock's wayfinder on a local-markdown tracker with a bundled self-contained HTML map renderer (manual /wayfinder invocation); grilling, domain-modeling, research, prototype, wait-what — Matt Pocock's originals with Traditional Chinese output; show-me — HumanLayer's visual explainer (diagrams, code-shape sketches, focused HTML). User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Disable with `claude plugin disable common` if unwanted.",
       "displayName": "Common",
-      "version": "1.35.2",
+      "version": "1.36.0",
       "defaultEnabled": true
     },
     {
@@ -38,7 +38,7 @@
       "source": "./plugins/common-lab",
       "description": "Common Lab (experimental): 16 lab-variant skills — think (full deliberation chain: grilling-style opening → falsifiable stance → premise verification → self-attack → five-section plan left on disk for review, never routing to implementation), grilling, contract, seal, review, wayfinder, delegate, strategic-advance, define-goal, domain-modeling, prototype, research, better-prompts, wait-what, show-me, estimate — plus 4 bundled agents. Coexists with the stable plugins; invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.5.0",
+      "version": "0.6.0",
       "defaultEnabled": true
     },
     {

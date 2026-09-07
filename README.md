@@ -39,7 +39,7 @@ codex plugin add linkstart@common-dev
 
 ### Skills Lab：實驗版
 
-實驗技能統一由 **Common Lab 0.5.0** 提供，已列入 Claude 與 Codex marketplace，需自行選擇安裝。原 Common、Baransu、Estimate Lab 合併成單一套件；以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。
+實驗技能統一由 **Common Lab 0.6.0** 提供，已列入 Claude 與 Codex marketplace，需自行選擇安裝。原 Common、Baransu、Estimate Lab 合併成單一套件；以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。
 
 - [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
 - [三個實驗包的歷史紀錄](docs/experiments/README.md)
@@ -47,11 +47,11 @@ codex plugin add linkstart@common-dev
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.5.0，整合 16 個技能與 4 個 bundled agents。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `show-me`、`strategic-advance`、`estimate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。既有 `experiments/` 與 `docs/experiments/` 保留為歷史快照／測量，不能代表目前套件；暫存安裝驗證也不代表目前 App 已載入新版。
+目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.6.0，整合 16 個技能與 4 個 bundled agents。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `show-me`、`strategic-advance`、`estimate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。`docs/experiments/` 保留為歷史測量紀錄，不能代表目前套件；舊版凍結包已移出工作樹，需要時從 Git 歷史取回；暫存安裝驗證也不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
-| [`common`](#common--通用工具) | 10 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
+| [`common`](#common--通用工具) | 11 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
 | `common-lab` | 16 | 🧪 自行安裝 | 統一 Common、Baransu、Estimate 實驗技能：指引、派工、視覺說明、戰略推進、驗收與估算 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
 | [`analysis-estimation`](#analysis-estimation--分析與評估) | 6 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
@@ -114,9 +114,10 @@ codex plugin add linkstart@common-dev
 | `delegate` | 將邊界清楚、可驗證的工作派給 native sub-agent、Codex CLI 或 Claude CLI；Codex 可原生 pin model／effort，Fast 與精確 profile 另保留 CLI fallback。 |
 | `define-goal` | 把模糊意圖整理成有驗證證據、明確邊界與停止條件的可驗收目標。 |
 | `strategic-advance` | 鎖定可驗收的戰略目標，以即時情報、單一主攻與可驗證的一動持續推進長期任務；內建自含 HTML 沙盤 renderer，直接 render，不另設環境 preflight 或 legacy mode。 |
-| `wait-what` | 讓模型停下目前工作，預設以繁體中文補齊脈絡並白話重講；只在使用者明確叫用時觸發。 |
-| `wayfinder` | 把一個 session 裝不下的大工作畫成決策票地圖，逐票或以 drain 模式推進到路線清楚；內建自含 HTML 地圖 renderer。 |
-| `grilling` | 以分輪訪談壓力測試計畫或決策，持續追問到設計樹不再藏有未確認假設。 |
+| `wait-what` | 停下目前工作，從斷掉的那個連結開始，按「哪裡沒懂」挑講法重講；純文字，圖另叫 show-me；只在明確叫用時觸發。 |
+| `wayfinder` | Matt Pocock 原版流程（目的地、霧、前線、四種決策票、一 session 一票）落在本地 markdown；內建自含 HTML 地圖 renderer（含 Current focus 檢視）。只在明確叫用時觸發。 |
+| `show-me` | HumanLayer 原版：用最小的視圖（pseudocode、call tree、diff、mermaid，必要時一頁 HTML）把當前話題講清楚。 |
+| `grilling` | Matt Pocock 原版：以設計樹分輪訪談，事實模型自查、決定由人下，直到前線為空。 |
 | `domain-modeling` | 釐清專案領域語言，將共識寫入 `CONTEXT.md`，必要時記錄 ADR。 |
 | `research` | 派背景 agent 查證一手來源，將附引用的發現整理成 repo 內的 Markdown。 |
 | `prototype` | 用可拋棄的邏輯 demo 或 UI variants 快速回答設計問題，再把驗證結果折回正式實作。 |
@@ -172,7 +173,7 @@ common-dev-plugin/
 │   ├── common/
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/               # luna-max-sidekick
-│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder（+ grilling/domain-modeling/research/prototype）
+│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me（+ grilling/domain-modeling/research/prototype）
 │   ├── test-utils/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/               # gen-e2e-test, gen-e2e-record, dev-browser

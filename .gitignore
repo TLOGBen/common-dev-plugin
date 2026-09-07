@@ -17,12 +17,6 @@
 
 # --- Lab publication allowlist: stable experiment entry plus current frozen packages ---
 # Common Lab keeps a stable path and changes its manifest version; old exports/candidates stay local.
-/experiments/common-lab-v*/
-/experiments/common-lab-candidate*/
-/experiments/baransu-lab*/
-/experiments/estimate-lab*/
-!/experiments/baransu-lab-v0.2.0/
-!/experiments/estimate-lab-v0.2.0/
 
 # --- baransu design-system artifacts (local visual-spec output) ---
 /DESIGN.md

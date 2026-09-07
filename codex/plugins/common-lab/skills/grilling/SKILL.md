@@ -1,25 +1,36 @@
 ---
 name: grilling
-description: Stress-test a plan or decision when the user asks for a skeptical challenge
-  to their reasoning.
+description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
 compatibility: Designed for Claude Code; ported to Codex.
 metadata:
-  version: 0.1.0-codex
+  version: 0.2.0-codex
 ---
 
-# Grilling Lab
 
-Expose the assumption most likely to overturn the decision.
-Default user-facing output to Traditional Chinese.
+## Output language
 
-Start from the user's actual claim, evidence, constraints, and alternatives. Investigate answerable facts yourself when tools and scope allow; do not turn research work into questions for the user.
+Keep these skill instructions in English. Default every user-facing question, recommendation, and recap to Traditional Chinese. If the user explicitly requests another language, use it instead. Preserve code, identifiers, commands, quoted source text, and established project terminology.
 
-Distinguish the user's stated claim and necessary task conditions from the proposed method under review. Change a method that confounds the claim; do not reopen an already explicit goal merely to preserve that method. If recommending a different or stricter claim, explain what it would measure instead of silently substituting it.
+Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.
 
-Ask the highest-value unresolved question, explain why it matters, and let the user answer before adding a new branch. If they request an asynchronous review, deliver the ranked objections together instead.
+Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
 
-Use counterexamples, failure conditions, and opportunity cost. Challenge the reasoning without performing hostility or repeatedly relitigating a defensible choice.
+Format a round like so:
 
-Keep the user's strongest actual claim distinct from your reconstruction. New objections should expose a different consequential failure or new evidence, not merely restate the same doubt. If the user corrects the scenario or scale, reassess the affected objection explicitly; do not preserve a verdict built on the superseded scenario.
+```
+❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
 
-Stop when the decision is supported at the requested risk level, a decisive uncertainty needs evidence, or the user asks to stop. Summarize what survived, what changed, and the remaining uncertainty; do not convert every discussion into a mandatory approval process.
+➡️ <your recommended answer>
+
+---
+
+❓ **Q2** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
+
+➡️ <your recommended answer>
+```
+
+Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
+
+Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
+
+The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.

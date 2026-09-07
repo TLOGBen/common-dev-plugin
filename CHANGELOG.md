@@ -2,6 +2,23 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.36.0 — 六個 Matt Pocock 技能回到原版，show-me 進穩定版
+
+- `grilling`、`domain-modeling`、`research`、`prototype`、`wait-what` 改以 Matt Pocock skills（3cca18b）現行原文為本體，只保留輸出語言段與 `${CLAUDE_PLUGIN_ROOT}` 內建檔案引用；`research` 加一段：偵測到 baransu 時用 `/baransu:read` 取件，引用可指向 `.claude/read/` 的存檔；`wait-what` 改採 Lab 版：從斷掉的連結開始、按困惑種類挑講法、簡化細節不簡化真相、受眾從對話推斷、純文字不產 HTML（圖另叫 show-me）；移除受眾旗標、五階梯與 HTML 伴讀。
+- `wayfinder` 改以 Matt 原版流程為本體，tracker 細節獨立成 `references/tracker.md`（`.claude/wayfinder/`），採用 Lab 的 HTML 渲染器（含 Current focus 檢視）；移除 operator 原則、baransu 路由表與 strategic-advance 條件交棒；保留 drain 模式（自動推進所有 AFK 票，HITL 邊界硬停）；保留一段「Make the route legible」（每題先講在路上的位置、為何現在、牽動什麼，地圖前進時交代問了什麼、怎麼解）；`disable-model-invocation: true` 照原版，只能手動叫用。
+- 新增 `show-me`（HumanLayer 原文，開檔指令改為 wslview → xdg-open → open）。common 共 11 個技能。
+- Codex 鏡像同步；六個 Matt 技能與 show-me 皆附上游 MIT LICENSE。marketplace 1.39.0。
+
+## Common Lab 0.6.0 — Wayfinder／Grilling 回到 Matt Pocock 原版，Think 表態改為「押注」寫法
+
+- `wayfinder` 改以 Matt Pocock `skills/engineering/wayfinder` 原文（3216582）為本體：只把 issue tracker 用語換成本地 markdown（`Type:`／`Status:`／`Blocked by:`），tracker 細節與 HTML 檢視獨立成 `references/tracker.md`；`disable-model-invocation: true` 照原版保留。移除 Lab 版的自訂節奏條文與 `map-format.md`；保留既有 HTML 渲染器（含 Current focus 檢視指標）。地圖目錄仍為 `.common-lab/wayfinder/`。
+- `grilling` 改為 Matt Pocock 原版（設計樹＋前線＋事實／決定分工），只加輸出語言段；Lab 反證版退場，其能力由 think 的「已定決定入口」承接。
+- `think`：表態的可推翻條件改為三段條件句（押在什麼上／押錯會怎樣／改走哪條）；新增已定決定入口（拷問我、grill me）；判決也經 show-me 呈現；description 精簡。
+- 六個源自 Matt Pocock skills 的技能（grilling、domain-modeling、research、prototype、wait-what、wayfinder）在 `common` 與 `common-lab` 兩套件、Claude 與 Codex 兩載體的 skill 目錄補上 MIT LICENSE。common 1.35.3，marketplace 1.38.0。
+- `wait-what`（Lab）：移除 `--as` 與 `--mode` 旗標，受眾一律從對話推斷；只用文字，不產 HTML 或圖，需要圖時由使用者另叫 show-me。
+- `show-me`（Lab）：開啟 HTML 的指令改為 wslview → xdg-open → open 依序嘗試，WSL2 也能自動開；其餘維持 HumanLayer 上游原文。`wait-what`（Lab）比喻改為「先講清楚，只有貼切時才加比喻」，不再強行說故事。
+- 移除 `experiments/`（common-lab、baransu-lab-v0.2.0、estimate-lab-v0.2.0 三個 0.2.0 凍結包與本機忽略的舊版目錄）：內容與現行 Lab 相同或更舊，Git 歷史（8a83b69／49a7e4c／087c3f1）保留；`.gitignore` 對應規則一併移除。`docs/experiments/` 的量測紀錄不動，其中指向 `experiments/` 的路徑為歷史紀錄。
+
 ## Common Lab 0.5.0 — Think Lab 實驗版：以復述對焦
 
 - 開場改為「復述對焦」：先用幾句話復述使用者要的結果、目的、不能動的東西與規模，缺的欄位標「未知，先不問」；樹的節點是復述裡猜的詞，只問會改變答案形狀的題，選項須種類不同並附推薦；收斂條件是使用者確認復述，或一輪回答後復述不變。對焦期間使用者只看到復述與一題，模型可讀 code 查事實但不得展示方案；復述裝不下的大題目指向 wayfinder。
