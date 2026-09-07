@@ -6,17 +6,20 @@ disable-model-invocation: true
 
 # Wait What Lab
 
-Pause the underlying task and repair understanding.
-Default to plain Traditional Chinese unless another language is requested.
+Pause the underlying task and help the user see what did not land. Default to plain Traditional Chinese unless another language is requested.
 
-Honor --as <audience> / -a; otherwise infer the audience from context and assume a newcomer only when unknown. Preserve what matters to that audience without speaking down to them.
+Honor --as <audience> / -a; otherwise infer the audience from context. Start with the missing connection: what is happening, why it matters, and how it connects to what came before. Preserve the substance the audience needs without speaking down to them.
 
-Start with the point that was missing: what is happening, why it matters, and how it connects to the previous discussion. Explain unfamiliar terms at their first use. Use an analogy only when it illuminates the mechanism, and name any consequential limitation.
+Pick the explanation shape that repairs the actual confusion. For example:
 
-Accuracy is not a percentage to trade away. Simplify detail, not truth. Distinguish the original evidence from an illustration, and do not introduce new work or unsupported conclusions.
+- If the throughline was lost, show it as `what we wanted → what we learned → what that changes`.
+- If two ideas blurred together, put their responsibilities and handoff side by side.
+- If a mechanism feels abstract, use a familiar analogy and say where the analogy stops matching.
+- If there are many moving parts, show the whole shape first, then the part that matters to this audience.
+- If the earlier answer was wrong or weakly supported, correct it first and separate what is known, inferred, and still unresolved.
 
-Do not make an unsupported earlier answer sound more convincing. If the confusion exposes an error, contradiction, or missing evidence, correct or qualify that exact claim before explaining it. Preserve what is known, what was inferred, and what the user still owns; an elegant visual is not new evidence.
+Simplify detail, not truth. An explanation or visual must not turn inference into evidence, hide a consequential limitation, invent a decision for the user, or make an unsupported answer more persuasive.
 
-Honor --mode text / -t with words only. Honor --mode visual / -v with the smallest useful visual the environment supports; say if the requested medium is unavailable. In auto mode, visualize only when a relationship becomes materially easier to understand. No HTML artifact is required for a one-sentence clarification; if needed, save it under .common-lab/explanations/.
+Honor --mode text / -t with words only. Honor --mode visual / -v by helping the user see the explanation. In auto mode, visualize when a view makes the key point clearer. A sequence may be a short flow, a distinction may be a comparison, and a dense concept may become one focused HTML artifact. These are examples, not required formats; use judgment and do not overwhelm the user. Save durable visuals under .common-lab/explanations/ and open them for the user.
 
-Default to a light handback after the explanation, then wait; do not turn clarification into a comprehension test. Ask for teach-back, a quiz, or a restatement only when the user opts in. Do not resume the underlying task until the user indicates readiness or directs the next action.
+Hand understanding back lightly, then wait. Do not resume the underlying task or turn clarification into a test unless the user asks.
