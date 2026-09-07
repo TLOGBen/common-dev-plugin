@@ -2,6 +2,10 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.37.0 — wayfinder 回歸 1.36.0 之前的自訂版
+
+- 實測 1.36.0 改成 Matt Pocock 原版流程的 wayfinder 後體驗不如舊版，整包回歸 b84a6b7 之前的版本（Claude 與 Codex 兩載體）：SKILL.md 恢復 operator 原則、baransu 路由表、strategic-advance 條件交棒、Speak plainly 與 drain 模式；tracker 說明回到 `TRACKER.md`（刪除 `references/tracker.md`）；`render_map.py` 與 `map-template.html` 回到舊版 renderer（無 Current focus 檢視）；移除 `disable-model-invocation: true`，恢復自動觸發。skill 目錄的 MIT LICENSE 保留。marketplace 1.43.0。
+
 ## Common Lab 0.9.0 — 淘汰 estimate、define-goal、better-prompts 三個 Lab 變體
 
 - 從 Lab 移除 estimate（含 `agents/estimate-auditor.md`、Codex 的 `estimate-auditor.toml`）、define-goal、better-prompts 三個技能（Claude 與 Codex 兩載體）。estimate 的 Lab 版使用體驗過差；define-goal 與 better-prompts 的 Lab 版在低階模型上無法正常運作，原版可以。三者一律改用穩定版：`analysis-estimation:estimate`、`common:define-goal`、`common:better-prompts`。既有 `.estimate-lab/<case>` 資料不遷移。

@@ -115,7 +115,7 @@ codex plugin add linkstart@common-dev
 | `define-goal` | 把模糊意圖整理成有驗證證據、明確邊界與停止條件的可驗收目標。 |
 | `strategic-advance` | 鎖定可驗收的戰略目標，以即時情報、單一主攻與可驗證的一動持續推進長期任務；內建自含 HTML 沙盤 renderer，直接 render，不另設環境 preflight 或 legacy mode。 |
 | `wait-what` | 停下目前工作，從斷掉的那個連結開始，按「哪裡沒懂」挑講法重講；純文字，圖另叫 show-me；只在明確叫用時觸發。 |
-| `wayfinder` | Matt Pocock 原版流程（目的地、霧、前線、四種決策票、一 session 一票）落在本地 markdown；內建自含 HTML 地圖 renderer（含 Current focus 檢視）。只在明確叫用時觸發。 |
+| `wayfinder` | 把一個 session 裝不下的大工作畫成決策票地圖，逐票或以 drain 模式推進到路線清楚；內建自含 HTML 地圖 renderer。 |
 | `show-me` | HumanLayer 原版：用最小的視圖（pseudocode、call tree、diff、mermaid，必要時一頁 HTML）把當前話題講清楚。 |
 | `grilling` | Matt Pocock 原版：以設計樹分輪訪談，事實模型自查、決定由人下，直到前線為空。 |
 | `domain-modeling` | 釐清專案領域語言，將共識寫入 `CONTEXT.md`，必要時記錄 ADR。 |
