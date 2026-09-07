@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Lab 發布範圍修正
+
+- Git 僅保留 Common Lab、Baransu Lab、Estimate Lab 的 0.2.0 凍結包；13 個舊版／候選目錄移出追蹤並忽略，本機檔案與 Git 歷史保留，未重寫已發布歷史。
+- 試用入口與安裝驗證工具的預設路徑改用 0.2.0；歷史測量與測試腳本仍對應原批次，重測舊版需先從 Git 歷史取回。最新版套件位元、正式來源、正式 catalogs 與目前 App 安裝皆不變。
+
 ## 實驗包 — Common Lab／Baransu Lab／Estimate Lab 0.2.0
 
 - 重新檢視全部 15 個 Lab 技能：以原目的、模型失敗模式、適用規模、證據和摩擦決定指引或機制；不再把縮短指令本身視為成效，也不以強模型或短測試推定長程風險消失。

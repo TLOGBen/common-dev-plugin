@@ -12,8 +12,8 @@ import time
 
 ROOT = Path(__file__).resolve().parent.parent
 PACKAGES = [
-    ("common-lab", "0.1.3", "experiments/common-lab-v0.1.3"),
-    ("estimate-lab", "0.1.1", "experiments/estimate-lab-v0.1.1"),
+    ("common-lab", "0.2.0", "experiments/common-lab-v0.2.0"),
+    ("estimate-lab", "0.2.0", "experiments/estimate-lab-v0.2.0"),
 ]
 
 
@@ -38,7 +38,7 @@ def main():
     packages = []
     selections = list(zip(PACKAGES, (args.common_export, args.estimate_export)))
     if args.baransu_export:
-        selections.append((("baransu-lab", "0.1.0", "experiments/baransu-lab"), args.baransu_export))
+        selections.append((("baransu-lab", "0.2.0", "experiments/baransu-lab-v0.2.0"), args.baransu_export))
     for (name, default_version, default_source), selected in selections:
         source = (ROOT / selected).resolve()
         assert source.is_relative_to(ROOT / "experiments") and source != ROOT / "experiments", "Unexpected export root"

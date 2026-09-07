@@ -11,6 +11,18 @@
 .strategic-advance/
 /.scratch/
 /.codex/archived/
+/.codex/presentation-pilot/
+/.common-lab/
+/output/
+
+# --- Lab publication allowlist: only the latest frozen packages are tracked ---
+# Older exports/candidates remain local. Update these exceptions when promoting a release.
+/experiments/common-lab*/
+/experiments/baransu-lab*/
+/experiments/estimate-lab*/
+!/experiments/common-lab-v0.2.0/
+!/experiments/baransu-lab-v0.2.0/
+!/experiments/estimate-lab-v0.2.0/
 
 # --- baransu design-system artifacts (local visual-spec output) ---
 /DESIGN.md

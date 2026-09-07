@@ -41,11 +41,11 @@ codex plugin add linkstart@common-dev
 
 - [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
 - [三個實驗包與試用入口](docs/experiments/README.md)
-- [Common 實驗說明與使用方式](docs/experiments/common-lab/README.md)
+- [Common 0.1.x 歷史實驗說明](docs/experiments/common-lab/README.md)
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-本版凍結包位於 `experiments/common-lab-v0.2.0/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。舊實驗版本保留供重測，不覆寫。暫存安裝驗證不代表目前 App 已載入新版。
+本版凍結包位於 `experiments/common-lab-v0.2.0/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。Git 只保留這三份最新版套件；舊版與候選包不再追蹤，本機副本保留並忽略。歷史版本可由 Git 歷史取回，實驗紀錄不代表目前套件。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。暫存安裝驗證不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|

@@ -1,6 +1,6 @@
 # Skills Lab：下一週實戰入口
 
-> **後續修訂：三包 0.2.0 已另行凍結。** 請先看 [全部 15 個技能的新版改動與驗證](lab-v0.2.0/README.md)。以下 0.1.x 與凌晨測量保留為歷史批次，不代表 0.2.0 的用量、測試或結論。
+> **目前試用版：三包均為 0.2.0。** 請先看 [全部 15 個技能的新版改動與驗證](lab-v0.2.0/README.md)。Git 只保留最新版套件；以下 0.1.x 測量與原始紀錄仍是歷史批次，不代表 0.2.0 的用量、測試或結論。
 
 這次強化的是技能本身：讓 agent 有判斷空間，也讓成果、限制與下一個人的決定能清楚交接。正式插件、既有案件、隔壁 Baransu 與全域安裝均未變更。
 
@@ -8,26 +8,26 @@
 
 | 實驗包 | 現在可試什麼 | 已驗證／尚不能推論 |
 |---|---|---|
-| [Common Lab 0.1.8](common-lab/README.md) | 10 個 `lab-*` 技能；尤其目標、派工、決策地圖、戰略推進、白話解釋 | 已導出、暫存安裝、分輪行為與實際工件測試；不是所有真實專案都已驗收 |
-| [Baransu Lab 0.1.1](baransu-lab/README.md) | think、contract、review、seal 按需沿用同份驗收記錄；verifier 原規則分組 | 4 個核心技能、封存題目與暫存安裝已驗證；效果未分高下，不是原版完整封緘或 hook 替代品 |
-| Estimate Lab 0.1.3 | `$lab-estimate`；從證據到 PM 選擇、可說明人天及交付 | 已導出、暫存安裝，套件內 64 項 Python 與 5 項事件測試通過；兩欄位核准保護及鍵盤修正有實際回歸證據 |
+| [Common Lab 0.2.0](lab-v0.2.0/README.md) | 10 個 `lab-*` 技能；長程戰役補回獨立校準，保留小任務的有界執行 | 導出、暫存安裝與短情境控制差異有紀錄；尚未證明 16–24 小時實戰收益 |
+| [Baransu Lab 0.2.0](lab-v0.2.0/README.md) | think、contract、review、seal；合約先落檔，驗證按風險設有限額度 | 套件驗證與短情境紀錄可查；不是原版完整封緘或 hook 替代品 |
+| [Estimate Lab 0.2.0](lab-v0.2.0/README.md) | `$lab-estimate`；保留唯一計價與 PM 核准，長程跨包按需獨立核對 | 導出、暫存安裝及回歸紀錄可查；情境回應不等於實際案件或真人 PM 驗收 |
 
 ## 安裝所選實驗包
 
 以下命令在此 repository 根目錄執行；這輪實際驗證的是 Ubuntu WSL 的 Codex CLI，未修改 Windows App 的全域安裝。
 
 ```sh
-codex plugin marketplace add ./experiments/common-lab-v0.1.8
+codex plugin marketplace add ./experiments/common-lab-v0.2.0
 codex plugin add common-lab@common-lab
 
-codex plugin marketplace add ./experiments/baransu-lab-v0.1.1
+codex plugin marketplace add ./experiments/baransu-lab-v0.2.0
 codex plugin add baransu-lab@baransu-lab
 
-codex plugin marketplace add ./experiments/estimate-lab-v0.1.3
+codex plugin marketplace add ./experiments/estimate-lab-v0.2.0
 codex plugin add estimate-lab@estimate-lab
 ```
 
-Lab 的 0.1.x 是獨立套件版號，不與正式 Common 的 1.x 比大小，也不覆蓋正式版。三包可分別選用，不必一次全裝。安裝後用 `codex plugin list --json` 核對實際版本；重新開啟對話後，也要確認載入的技能名稱與版本。暫存 CLI 安裝成功不代表另一個 App／Host 已載入新版。
+Lab 的 0.2.0 是獨立套件版號，不與正式 Common 的 1.x 比大小，也不覆蓋正式版。三包可分別選用，不必一次全裝。安裝後用 `codex plugin list --json` 核對實際版本；重新開啟對話後，也要確認載入的技能名稱與版本。暫存 CLI 安裝成功不代表另一個 App／Host 已載入新版。
 
 不要把正在使用的正式 Estimate 案件直接交給 Lab runtime。新案例預設放 `.estimate-lab/<case>`；跨版遷移另以明確範圍的副本試驗。回到原流程時選原技能與原案件，保留實驗證據，不需要刪除原始資料。
 
@@ -53,4 +53,4 @@ Lab 的 0.1.x 是獨立套件版號，不與正式 Common 的 1.x 比大小，�
 - [Baransu 0.1.0／Common 0.1.2 先前安裝收據](install-verification-20260906-a/result.json)
 - [show-me／wait-what 一手來源研究](human-handoff-web-research-20260906.md)
 
-每次導出使用新目錄，舊包與失敗測試保留。生成物和模型回應不會自行變成授權、真人理解或實際產品完成證據。
+每次導出使用新目錄；發布清單只保留各包最新版，舊包與候選包僅保留本機副本並忽略。需要重跑歷史測試時，請從 Git 歷史中的 `49a7e4c7094efdaa5215886f5ef03849fcb835a3` 在獨立 checkout 取回當時版本；不要把歷史腳本的固定路徑直接換成新版後沿用舊結論。原始報告與收據維持當時內容。生成物和模型回應不會自行變成授權、真人理解或實際產品完成證據。
