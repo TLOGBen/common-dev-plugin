@@ -1,7 +1,7 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Unified opt-in laboratory: 16 skills for developer workflows, visual explanations, independent verification, and existing-system estimates.",
   "author": {
     "name": "ben.tsai",

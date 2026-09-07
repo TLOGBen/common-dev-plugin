@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.4.0 — Think Lab 回復完整審議脈絡
+
+- `think` 從單純判決機改回完整審議鏈：對焦 → 表態（附可推翻條件）→ 查證前提 → 自我攻擊 → 五段計畫落檔（`.baransu-lab/think/<slug>.md`）。
+- 開場改採 Grilling 方式：從使用者實際主張出發、自己查可查的事實、一次只問最能改變推薦的一題；能表態就停止發問，剩餘不確定轉為可推翻條件。不再要求固定三輪對焦，成功條件與範圍改為計畫產物而非開場輸入。
+- 落檔後即結束：不實作、不挑下游 skill、不開核准關卡；後續由使用者或呼叫端（wayfinder／contract）決定，檔案可直接交給 review。不復活舊版的 HTML 工作日誌與多重停頓。
+- `common-lab` 補列入 Claude marketplace 目錄（`.claude-plugin/marketplace.json`，`defaultEnabled: false`），Claude 端可用 `claude plugin install common-lab@common-dev` 安裝；先前只列在 Codex 目錄。marketplace 1.36.0。
+- Codex 鏡像同步，`request_user_input` 互動點改為單題提問、使用者專屬抉擇與計畫被推翻後的「哪一節錯了」。
+
 ## Common Lab 0.3.0 — 統一 Lab 套件與完整 Show Me
 
 - 將 Common、Baransu、Estimate 的 Lab source 與 UI metadata 合併至 `common-lab`，共 16 個技能與 4 個 bundled agents；正式版及歷史實驗快照保留。

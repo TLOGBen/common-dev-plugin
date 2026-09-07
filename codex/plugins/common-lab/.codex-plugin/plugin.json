@@ -1,6 +1,6 @@
 {
   "name": "common-lab",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "Unified opt-in laboratory: 16 skills for developer workflows, visual explanations, independent verification, and existing-system estimates.",
   "skills": "./skills/",
   "interface": {
