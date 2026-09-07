@@ -1,0 +1,14 @@
+[
+  {
+    "label": "U1",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 28.46041124803014, \"usage\": {\"input_tokens\": 32392, \"cached_input_tokens\": 27008, \"output_tokens\": 601, \"uncached_input_tokens\": 5384, \"total_tokens\": 32993}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  },
+  {
+    "label": "U2",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 30.001514550996944, \"usage\": {\"input_tokens\": 30727, \"cached_input_tokens\": 25216, \"output_tokens\": 1101, \"uncached_input_tokens\": 5511, \"total_tokens\": 31828}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,30 @@
+{
+  "observed_at_utc": "2026-09-06T03:10:22.274061+00:00",
+  "kind": "actual-renderer-output-data-reproduction",
+  "scope": "Read generated HTML data; no browser comprehension or model behavior claim.",
+  "source": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-heading-repro-v0.1.1/fixture/map.md",
+  "source_sha256": "499f949955d1f0fceb70702efffc72fca12a10843f8a5614da59718e1cb7fb1c",
+  "rendered_html": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-heading-repro-v0.1.1/fixture/map.html",
+  "rendered_html_sha256": "6a3a25b68db0d415c0b5a46fd903c7a71788f83f3392c3b99089b70469c05ca2",
+  "source_heading_spelling": [
+    "Decisions-so-far",
+    "Not-yet-specified",
+    "Out-of-scope"
+  ],
+  "renderer_expected_heading_spelling": [
+    "Decisions so far",
+    "Not yet specified",
+    "Out of scope"
+  ],
+  "expected_items_per_section": 1,
+  "actual": {
+    "decisions": [],
+    "fog": [],
+    "outOfScope": []
+  },
+  "information_loss_reproduced": true,
+  "control": {
+    "ticket_count": 2,
+    "destination_present": true
+  }
+}

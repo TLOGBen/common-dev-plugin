@@ -1,0 +1,502 @@
+{
+  "episode_id": "worker-fit-v1-W4",
+  "case_id": "event-projection",
+  "arm": "none",
+  "status": "lead_finished",
+  "started_utc": "2026-09-06T14:33:23.262168+00:00",
+  "ended_utc": "2026-09-06T14:39:02.298866+00:00",
+  "elapsed_wall_seconds": 339.0358264929964,
+  "actual_cli_calls": 3,
+  "calls": [
+    {
+      "exit_code": 0,
+      "os_error": null,
+      "timed_out": false,
+      "started_utc": "2026-09-06T14:33:23.262775+00:00",
+      "ended_utc": "2026-09-06T14:34:00.416009+00:00",
+      "wall_seconds": 37.15392794896616,
+      "messages": [
+        "我會先讀取 TASK.md 與專案規範，確認範圍後選擇合適的 worker 實作，再由我驗收並交接結果。\n",
+        "現有實作缺少輸入驗證、重送與衝突檢查，也會跳過 revision 缺口直接套用事件。這是範圍明確的純 Python 任務，我會派給 `implementation`（gpt-5.6-luna，high），並在收回後獨立檢查邊界案例。\n",
+        "{\"action\":\"dispatch\",\"message\":\"已讀取 TASK.md 與全部程式、測試；將實作及回歸測試交給 implementation，主手收回後獨立驗收。\",\"requests\":[{\"role\":\"implementation\",\"brief\":\"完成 TASK.md 全部契約，先讀 TASK.md、src/projector.py、src/normalization.py、tests/test_projector.py。僅可修改 src/、tests/，不新增依賴或設定、不用網路、不 commit。保留原有測試意義。請實作完整輸入驗證（參數為 list、每筆資料有效、整數拒絕 bool、ID 非空字串、snapshot ID 不重複）；所有帳戶與歷史事件也必須驗證。全域 event_id 語意去重並計數，額外欄位不影響；不同內容同 event_id 或不同 event_id 占同帳戶 revision 一律 ValueError。先完整驗證再查詢。以快照為基準排序套用連續事件，遇缺口 balance=None 並回報第一個缺少 revision，大 revision 不枚舉缺少值；無快照維持 missing；輸出欄位精確且 requested_ids 去重排序；完全不修改輸入。可自行決定 normalization 內部 API。補上有意義的測試，涵蓋亂序與重送、全域衝突（含歷史/未知/未選中帳戶）、缺口及巨大 revision、驗證矩陣、額外欄位、輸入不變性和輸出契約。執行 python3 -B -m unittest discover -s tests -v，回報修改摘要、實際測試結果與限制。你負責實作，主手會独立驗收；不要啟動其他 agent 或模型。\",\"write_paths\":[\"src/\",\"tests/\"]}]}"
+      ],
+      "final_message": "{\"action\":\"dispatch\",\"message\":\"已讀取 TASK.md 與全部程式、測試；將實作及回歸測試交給 implementation，主手收回後獨立驗收。\",\"requests\":[{\"role\":\"implementation\",\"brief\":\"完成 TASK.md 全部契約，先讀 TASK.md、src/projector.py、src/normalization.py、tests/test_projector.py。僅可修改 src/、tests/，不新增依賴或設定、不用網路、不 commit。保留原有測試意義。請實作完整輸入驗證（參數為 list、每筆資料有效、整數拒絕 bool、ID 非空字串、snapshot ID 不重複）；所有帳戶與歷史事件也必須驗證。全域 event_id 語意去重並計數，額外欄位不影響；不同內容同 event_id 或不同 event_id 占同帳戶 revision 一律 ValueError。先完整驗證再查詢。以快照為基準排序套用連續事件，遇缺口 balance=None 並回報第一個缺少 revision，大 revision 不枚舉缺少值；無快照維持 missing；輸出欄位精確且 requested_ids 去重排序；完全不修改輸入。可自行決定 normalization 內部 API。補上有意義的測試，涵蓋亂序與重送、全域衝突（含歷史/未知/未選中帳戶）、缺口及巨大 revision、驗證矩陣、額外欄位、輸入不變性和輸出契約。執行 python3 -B -m unittest discover -s tests -v，回報修改摘要、實際測試結果與限制。你負責實作，主手會独立驗收；不要啟動其他 agent 或模型。\",\"write_paths\":[\"src/\",\"tests/\"]}]}",
+      "usage": {
+        "input_tokens": 69201,
+        "cached_input_tokens": 50432,
+        "output_tokens": 726,
+        "reasoning_output_tokens": 16,
+        "cache_write_input_tokens": 0,
+        "uncached_input_tokens": 18769,
+        "total_tokens": 69927
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"pwd; rg --files -g 'TASK.md' -g 'AGENTS.md' -g 'package.json' -g 'pyproject.toml' -g 'README*'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat TASK.md; rg --files'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat src/projector.py src/normalization.py tests/test_projector.py'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true,
+      "turn_completed_usage": [
+        {
+          "input_tokens": 69201,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 726,
+          "reasoning_output_tokens": 16
+        }
+      ],
+      "status": "completed",
+      "role": "lead",
+      "number": 1,
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/astra-worker-fit-v1-r46pwud2/W4",
+        "--skip-git-repo-check",
+        "--output-schema",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/control-schema.json",
+        "-"
+      ],
+      "session_id": "01a07723-65bf-7d52-8e20-1dba61ca4b6b",
+      "resume_of": null,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "effective_model": null,
+      "model_basis": "explicit CLI arguments; no silent fallback configured",
+      "usage_basis": "exact-session token_count total delta",
+      "raw_turn_completed_usage": [
+        {
+          "input_tokens": 69201,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 726,
+          "reasoning_output_tokens": 16
+        }
+      ],
+      "session_before": null,
+      "native_session_usage_delta": {
+        "input_tokens": 69201,
+        "cached_input_tokens": 50432,
+        "output_tokens": 726,
+        "reasoning_output_tokens": 16,
+        "cache_write_input_tokens": 0,
+        "uncached_input_tokens": 18769,
+        "total_tokens": 69927
+      },
+      "turn_usage_matches_session_delta": true,
+      "session_after": {
+        "path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T22-33-23-01a07723-65bf-7d52-8e20-1dba61ca4b6b.jsonl",
+        "sha256": "0465e230db2d1c740b7c1c230f1057ce50444d4a35756200bd7a97df63e476f1",
+        "total_token_usage": {
+          "input_tokens": 69201,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 726,
+          "reasoning_output_tokens": 16,
+          "total_tokens": 69927
+        }
+      },
+      "write_paths": [],
+      "changed_paths": [],
+      "read_only_delivered_files": {},
+      "scope_violations": [],
+      "package_drift": [],
+      "observation_error": null,
+      "fixture_before": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+        "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+        "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+      },
+      "fixture_after": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+        "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+        "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+      },
+      "reported_cost_usd": null,
+      "evidence_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/001-lead"
+    },
+    {
+      "exit_code": 0,
+      "os_error": null,
+      "timed_out": false,
+      "started_utc": "2026-09-06T14:34:00.422145+00:00",
+      "ended_utc": "2026-09-06T14:37:22.383119+00:00",
+      "wall_seconds": 201.95923801301979,
+      "messages": [
+        "我會先讀取 `TASK.md` 與指定的實作/測試檔，整理契約後只修改 `src/`、`tests/`，最後執行完整 unittest 指令並回報證據。",
+        "契約重點已確認：事件去重/衝突必須在全域、且先完成所有輸入驗證；投影則只對有快照帳戶按 revision 連續套用。接下來會集中修改 normalization 與 projector，並補測試覆蓋亂序、缺口、衝突及驗證邊界。",
+        "核心實作與新增測試已完成；目前 10 個 unittest 全部通過。接著我會做一次契約導向的靜態複核，特別確認輸入不變性、重送計數、歷史/未知帳戶衝突，以及缺口處理沒有枚舉巨大 revision。",
+        "已完成 TASK.md 契約，僅修改：\n\n- [src/projector.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/src/projector.py)\n- [src/normalization.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/src/normalization.py)\n- [tests/test_projector.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/tests/test_projector.py)\n\n涵蓋完整輸入驗證、全域事件去重/衝突、亂序事件、歷史事件、缺口與巨大 revision、精確輸出、不變性及額外欄位。\n\n實際測試：\n\n```text\npython3 -B -m unittest discover -s tests -v\nRan 11 tests ... OK\n```\n\n限制：未使用網路或新增依賴；未執行不可見的隱藏驗收測試。"
+      ],
+      "final_message": "已完成 TASK.md 契約，僅修改：\n\n- [src/projector.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/src/projector.py)\n- [src/normalization.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/src/normalization.py)\n- [tests/test_projector.py](/tmp/astra-worker-fit-v1-r46pwud2/W4/tests/test_projector.py)\n\n涵蓋完整輸入驗證、全域事件去重/衝突、亂序事件、歷史事件、缺口與巨大 revision、精確輸出、不變性及額外欄位。\n\n實際測試：\n\n```text\npython3 -B -m unittest discover -s tests -v\nRan 11 tests ... OK\n```\n\n限制：未使用網路或新增依賴；未執行不可見的隱藏驗收測試。",
+      "usage": {
+        "input_tokens": 226412,
+        "cached_input_tokens": 196864,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9996,
+        "reasoning_output_tokens": 4323,
+        "uncached_input_tokens": 29548,
+        "total_tokens": 236408
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"pwd && rg --files -g 'TASK.md' -g 'src/projector.py' -g 'src/normalization.py' -g 'tests/test_projector.py' -g '\"'!**/.git/**'\"'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,260p' TASK.md && sed -n '1,320p' src/projector.py && sed -n '1,320p' src/normalization.py && sed -n '1,420p' tests/test_projector.py\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'rg --files src tests && git status --short'",
+          "status": "failed",
+          "exit_code": 128
+        },
+        {
+          "type": "file_change",
+          "command": null,
+          "status": "completed",
+          "exit_code": null
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'python3 -B -m unittest discover -s tests -v'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "file_change",
+          "command": null,
+          "status": "completed",
+          "exit_code": null
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'python3 -B -m unittest discover -s tests -v'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,280p' src/normalization.py && sed -n '1,360p' src/projector.py && sed -n '1,360p' tests/test_projector.py\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "file_change",
+          "command": null,
+          "status": "completed",
+          "exit_code": null
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'python3 -B -m unittest discover -s tests -v'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true,
+      "turn_completed_usage": [
+        {
+          "input_tokens": 226412,
+          "cached_input_tokens": 196864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9996,
+          "reasoning_output_tokens": 4323
+        }
+      ],
+      "status": "completed",
+      "role": "implementation",
+      "number": 2,
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-luna",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "workspace-write",
+        "-C",
+        "/tmp/astra-worker-fit-v1-r46pwud2/W4",
+        "--skip-git-repo-check",
+        "--ephemeral",
+        "-"
+      ],
+      "session_id": "01a07723-f6df-7162-8cc4-cf8fbfe47365",
+      "resume_of": null,
+      "requested_model": "gpt-5.6-luna",
+      "requested_effort": "high",
+      "effective_model": null,
+      "model_basis": "explicit CLI arguments; no silent fallback configured",
+      "usage_basis": "one turn.completed in fresh invocation; no history replay",
+      "raw_turn_completed_usage": [
+        {
+          "input_tokens": 226412,
+          "cached_input_tokens": 196864,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9996,
+          "reasoning_output_tokens": 4323
+        }
+      ],
+      "session_before": null,
+      "native_session_usage_delta": null,
+      "turn_usage_matches_session_delta": null,
+      "session_after": null,
+      "write_paths": [
+        "src/",
+        "tests/"
+      ],
+      "changed_paths": [
+        "src/normalization.py",
+        "src/projector.py",
+        "tests/test_projector.py"
+      ],
+      "read_only_delivered_files": {},
+      "scope_violations": [],
+      "package_drift": [],
+      "observation_error": null,
+      "fixture_before": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+        "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+        "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+      },
+      "fixture_after": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "2377be88baf13d82d33484d06f1b9ddb190edc1aff0e0fe352d5ef7f04458723",
+        "src/projector.py": "60c541c8d3d090a936965cb0b5b2415c9fde7c6b23307a6e08d9dd2ec2f49e16",
+        "tests/test_projector.py": "8a6b8b4586a49d8b72ea462a9dcb7c462ee907115ba79b26199028fd43f2ae14"
+      },
+      "reported_cost_usd": null,
+      "evidence_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/002-implementation"
+    },
+    {
+      "exit_code": 0,
+      "os_error": null,
+      "timed_out": false,
+      "started_utc": "2026-09-06T14:37:22.392717+00:00",
+      "ended_utc": "2026-09-06T14:39:02.292313+00:00",
+      "wall_seconds": 99.8998229719582,
+      "messages": [
+        "Worker 已交回三個檔案。我會檢閱實作、重跑測試，再用獨立案例驗證事件順序、全域衝突與缺口處理。\n",
+        "{\"action\":\"final\",\"message\":\"已完成 TASK.md，修改限於 src/、tests/。補齊完整驗證、全域去重與衝突檢查、亂序事件投影、缺口及巨大 revision 處理，並保持輸入不變。\\n\\n主手驗收通過：\\n- 11 項回歸測試。\\n- 1,000 組生成案例，各測 3 種排列。\\n- 123 組無效輸入／衝突案例。\\n- 201 位數 revision 的連續投影。\\n\\n使用 1 次 gpt-5.6-luna worker 實作，主手檢閱及獨立驗收，無須返工。未取得包含 supervision 的實際費用資料，不估報金額。未執行不可見的隱藏測試；未發現剩餘阻礙。\",\"requests\":[]}"
+      ],
+      "final_message": "{\"action\":\"final\",\"message\":\"已完成 TASK.md，修改限於 src/、tests/。補齊完整驗證、全域去重與衝突檢查、亂序事件投影、缺口及巨大 revision 處理，並保持輸入不變。\\n\\n主手驗收通過：\\n- 11 項回歸測試。\\n- 1,000 組生成案例，各測 3 種排列。\\n- 123 組無效輸入／衝突案例。\\n- 201 位數 revision 的連續投影。\\n\\n使用 1 次 gpt-5.6-luna worker 實作，主手檢閱及獨立驗收，無須返工。未取得包含 supervision 的實際費用資料，不估報金額。未執行不可見的隱藏測試；未發現剩餘阻礙。\",\"requests\":[]}",
+      "usage": null,
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat src/projector.py src/normalization.py tests/test_projector.py'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'python3 -B -m unittest discover -s tests -v'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 -B -c 'import copy\nimport random\nfrom src.projector import project_accounts\n\nrng = random.Random(8021)\nfor case in range(1000):\n    snapshots = [{'\\\\''account_id'\\\\'': a, '\\\\''revision'\\\\'': rng.randrange(6), '\\\\''balance'\\\\'': rng.randrange(-50, 51), '\\\\''extra'\\\\'': {'\\\\''nested'\\\\'': [1, 2]}} for a in ['\\\\''A'\\\\'', '\\\\''B'\\\\'', '\\\\''中'\\\\''] if rng.randrange(2)]\n    events = []\n    canonical = {}\n    for a in ['\\\\''A'\\\\'', '\\\\''B'\\\\'', '\\\\''中'\\\\'', '\\\\''unknown'\\\\'']:\n        canonical[a] = {}\n        for revision in range(1, 13):\n            if rng.randrange(3) == 0:\n                delta = rng.randrange(-10, 11)\n                canonical[a][revision] = delta\n                event = dict(event_id=f'\\\\''{a}/{revision}'\\\\'', account_id=a, revision=revision, delta=delta)\n                events.append(event)\n                for repeat in range(rng.randrange(4)):\n                    events.append(dict(event, extra={'\\\\''repeat'\\\\'': [repeat]}))\n    requested = [rng.choice(['\\\\''A'\\\\'', '\\\\''B'\\\\'', '\\\\''中'\\\\'', '\\\\''unknown'\\\\'', '\\\\''absent'\\\\'']) for _ in range(rng.randrange(9))]\n    expected = []\n    by_id = {s['\\\\''account_id'\\\\'']: s for s in snapshots}\n    for a in sorted(set(requested)):\n        if a not in by_id:\n            expected.append(dict(account_id=a, status='\\\\''missing'\\\\'', revision=None, balance=None, first_missing_revision=None))\n            continue\n        revision, balance = by_id[a]['\\\\''revision'\\\\''], by_id[a]['\\\\''balance'\\\\'']\n        while revision + 1 in canonical[a]:\n            revision += 1\n            balance += canonical[a][revision]\n        incomplete = any(r > revision for r in canonical[a])\n        expected.append(dict(account_id=a, status='\\\\''incomplete'\\\\'' if incomplete else '\\\\''complete'\\\\'', revision=revision, balance=None if incomplete else balance, first_missing_revision=revision + 1 if incomplete else None))\n    expected = dict(accounts=expected, duplicates_ignored=len(events)-sum(map(len, canonical.values())))\n    for permutation in range(3):\n        rng.shuffle(events)\n        rng.shuffle(snapshots)\n        before = copy.deepcopy((snapshots, events, requested))\n        assert project_accounts(snapshots, events, requested) == expected, case\n        assert (snapshots, events, requested) == before, case\nprint('\\\\''PASS: 1000 generated cases, 3 permutations each; exact output and nested input immutability'\\\\'')\n\nchecks = 0\ndef rejects(args):\n    global checks\n    before = copy.deepcopy(args)\n    try:\n        project_accounts(*args)\n    except ValueError:\n        pass\n    else:\n        raise AssertionError(args)\n    assert args == before\n    checks += 1\n\nsnapshot = dict(account_id='\\\\''A'\\\\'', revision=3, balance=-10)\nevent = dict(event_id='\\\\''e'\\\\'', account_id='\\\\''A'\\\\'', revision=1, delta=0)\nfor position in range(3):\n    for bad in [None, (), {}, '\\\\'''\\\\'', 0, False]:\n        args = [[], [], []]\n        args[position] = bad\n        rejects(args)\nfor position, row in [(0, snapshot), (1, event)]:\n    for bad in [None, [], '\\\\'''\\\\'', 0, False]:\n        args = [[], [], []]\n        args[position] = [bad]\n        rejects(args)\n    for field in row:\n        invalid_values = [None, True, False, [], {}, 1.5]\n        invalid_values += [0, 1, '\\\\'''\\\\''] if field.endswith('\\\\''_id'\\\\'') else ['\\\\''1'\\\\'']\n        if field == '\\\\''revision'\\\\'':\n            invalid_values += [-1] + ([0] if position == 1 else [])\n        for bad in invalid_values:\n            args = [[], [], []]\n            args[position] = [dict(row, **{field: bad})]\n            rejects(args)\n        args = [[], [], []]\n        args[position] = [{key: value for key, value in row.items() if key \"'!= field}]\n        rejects(args)\nfor field, value in [('\"'\\\\''account_id'\\\\'', '\\\\''B'\\\\''), ('\\\\''revision'\\\\'', 2), ('\\\\''delta'\\\\'', 1), ('\\\\''event_id'\\\\'', '\\\\''different'\\\\'')]:\n    conflicting = dict(event, **{field: value})\n    for query in [[], ['\\\\''A'\\\\''], ['\\\\''unknown'\\\\'']]:\n        for pair in [[event, conflicting], [conflicting, event]]:\n            rejects([[snapshot], pair, query])\nfor bad in [None, True, [], {}, 2, '\\\\'''\\\\'']:\n    rejects([[], [], ['\\\\''valid'\\\\'', bad]])\nprint(f'\\\\''PASS: {checks} invalid-input/conflict cases; ValueError and unchanged inputs'\\\\'')\n\nhuge = 10**200\nassert project_accounts([dict(account_id='\\\\''A'\\\\'', revision=huge, balance=0)], [dict(event_id='\\\\''x'\\\\'', account_id='\\\\''A'\\\\'', revision=huge+1, delta=-9)], ['\\\\''A'\\\\''])['\\\\''accounts'\\\\''][0] == dict(account_id='\\\\''A'\\\\'', status='\\\\''complete'\\\\'', revision=huge+1, balance=-9, first_missing_revision=None)\nprint('\\\\''PASS: contiguous projection at a 201-digit revision'\\\\'')\n'\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true,
+      "turn_completed_usage": [
+        {
+          "input_tokens": 96716,
+          "cached_input_tokens": 87168,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2842,
+          "reasoning_output_tokens": 136
+        }
+      ],
+      "status": "completed",
+      "role": "lead",
+      "number": 3,
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/astra-worker-fit-v1-r46pwud2/W4",
+        "--skip-git-repo-check",
+        "--output-schema",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/control-schema.json",
+        "resume",
+        "01a07723-65bf-7d52-8e20-1dba61ca4b6b",
+        "-"
+      ],
+      "session_id": "01a07723-65bf-7d52-8e20-1dba61ca4b6b",
+      "resume_of": "01a07723-65bf-7d52-8e20-1dba61ca4b6b",
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "effective_model": null,
+      "model_basis": "explicit CLI arguments; no silent fallback configured",
+      "usage_basis": "invalid cache/input relationship",
+      "raw_turn_completed_usage": [
+        {
+          "input_tokens": 96716,
+          "cached_input_tokens": 87168,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2842,
+          "reasoning_output_tokens": 136
+        }
+      ],
+      "session_before": {
+        "path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T22-33-23-01a07723-65bf-7d52-8e20-1dba61ca4b6b.jsonl",
+        "sha256": "0465e230db2d1c740b7c1c230f1057ce50444d4a35756200bd7a97df63e476f1",
+        "total_token_usage": {
+          "input_tokens": 69201,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 726,
+          "reasoning_output_tokens": 16,
+          "total_tokens": 69927
+        }
+      },
+      "native_session_usage_delta": null,
+      "turn_usage_matches_session_delta": null,
+      "session_after": {
+        "path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T22-33-23-01a07723-65bf-7d52-8e20-1dba61ca4b6b.jsonl",
+        "sha256": "ec0040e3eb21ca98f65c13b0d00fdbb6dc0591a05abd0bdf51a9c5aaeb073683",
+        "total_token_usage": {
+          "input_tokens": 96716,
+          "cached_input_tokens": 87168,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 2842,
+          "reasoning_output_tokens": 136,
+          "total_tokens": 99558
+        }
+      },
+      "write_paths": [],
+      "changed_paths": [],
+      "read_only_delivered_files": {
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/002-implementation/prompt.txt": "71741d923f1a32f5ab3a59fc6ec79227d8e90b141053af4d96e40e8715bfd806",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/002-implementation/stdout.jsonl": "466ce86a42331384bc8945d41f910bb459bc9bd9ffe477762df3a267ea5cbf1a",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/002-implementation/stderr.txt": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/002-implementation/result.json": "5fbc868007a971c25dca4c375259957b3649cf4aa72caccda33269b060d8ed0d"
+      },
+      "scope_violations": [],
+      "package_drift": [],
+      "observation_error": null,
+      "fixture_before": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "2377be88baf13d82d33484d06f1b9ddb190edc1aff0e0fe352d5ef7f04458723",
+        "src/projector.py": "60c541c8d3d090a936965cb0b5b2415c9fde7c6b23307a6e08d9dd2ec2f49e16",
+        "tests/test_projector.py": "8a6b8b4586a49d8b72ea462a9dcb7c462ee907115ba79b26199028fd43f2ae14"
+      },
+      "fixture_after": {
+        "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+        "src/normalization.py": "2377be88baf13d82d33484d06f1b9ddb190edc1aff0e0fe352d5ef7f04458723",
+        "src/projector.py": "60c541c8d3d090a936965cb0b5b2415c9fde7c6b23307a6e08d9dd2ec2f49e16",
+        "tests/test_projector.py": "8a6b8b4586a49d8b72ea462a9dcb7c462ee907115ba79b26199028fd43f2ae14"
+      },
+      "reported_cost_usd": null,
+      "evidence_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run/calls/003-lead"
+    }
+  ],
+  "totals_by_role": {
+    "implementation": {
+      "calls": 1,
+      "known_usage_calls": 1,
+      "unknown_usage_calls": 0,
+      "known_usage_subtotal": {
+        "input_tokens": 226412,
+        "cached_input_tokens": 196864,
+        "output_tokens": 9996,
+        "uncached_input_tokens": 29548,
+        "total_tokens": 236408
+      },
+      "complete_usage": true,
+      "wall_seconds_sum": 201.95923801301979
+    },
+    "lead": {
+      "calls": 2,
+      "known_usage_calls": 1,
+      "unknown_usage_calls": 1,
+      "known_usage_subtotal": {
+        "input_tokens": 69201,
+        "cached_input_tokens": 50432,
+        "output_tokens": 726,
+        "uncached_input_tokens": 18769,
+        "total_tokens": 69927
+      },
+      "complete_usage": false,
+      "wall_seconds_sum": 137.05375092092436
+    }
+  },
+  "lead_session_id": "01a07723-65bf-7d52-8e20-1dba61ca4b6b",
+  "lead_handoff": "已完成 TASK.md，修改限於 src/、tests/。補齊完整驗證、全域去重與衝突檢查、亂序事件投影、缺口及巨大 revision 處理，並保持輸入不變。\n\n主手驗收通過：\n- 11 項回歸測試。\n- 1,000 組生成案例，各測 3 種排列。\n- 123 組無效輸入／衝突案例。\n- 201 位數 revision 的連續投影。\n\n使用 1 次 gpt-5.6-luna worker 實作，主手檢閱及獨立驗收，無須返工。未取得包含 supervision 的實際費用資料，不估報金額。未執行不可見的隱藏測試；未發現剩餘阻礙。",
+  "implementation_dispatched": true,
+  "lead_returned_after_worker": true,
+  "failure_handoffs": [],
+  "suspended_requests": [],
+  "semantic_acceptance": null,
+  "actual_business_completion": null,
+  "cost_usd": null,
+  "unexecuted_requests": [],
+  "limits": "Serial request/resume adapter; write allowlists are behavioral plus post-hoc checks, not a file-level sandbox. Completion requires external oracle and lead review. Resume usage is unknown without exact session-total deltas. No automatic retries.",
+  "worker_profile_choices": [
+    {
+      "call_number": 2,
+      "role": "implementation",
+      "profile": "luna-high",
+      "requested_model": "gpt-5.6-luna",
+      "requested_effort": "high"
+    }
+  ],
+  "profile_choice_limit": "Profiles were selected by the lead; selection is not proof of optimal cost or capability. Existing failure, scope and budget rules remain in force."
+}

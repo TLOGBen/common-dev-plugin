@@ -1,0 +1,77 @@
+{
+  "started_utc": "2026-09-06T10:01:27.204489+00:00",
+  "ended_utc": "2026-09-06T10:01:27.207700+00:00",
+  "wall_seconds": 0.0031950389966368675,
+  "model_calls": 0,
+  "fixture": "/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab",
+  "source_sha256": {
+    "/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/catalog.py": "71801c4c91c1cc1bae4efa206d1383d270099d442520fb9a204937853207bd85",
+    "/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/search_index.py": "02f9cb9deff51b23d74add8d31f12e210866075f9f54bc67857bdfd0c406977b",
+    "/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/tests/test_build.py": "3d1e10221b0273b626a9500e851e4163807a38de9b3c05386a4da127dda6dded",
+    "/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/data/services.json": "e5f4ff6bf6c5e659cf0606c87bfebb214e891db501e37a81d5c06500e30775c3"
+  },
+  "fixture_unchanged": true,
+  "original_tests": {
+    "tests_run": 5,
+    "successful": true,
+    "failures": [],
+    "errors": [],
+    "output": "test_empty_catalog_produces_empty_indexes (observed_worker_tests.CatalogV3RegressionTests.test_empty_catalog_produces_empty_indexes) ... ok\ntest_filters_and_preserves_exact_fields_in_id_order (observed_worker_tests.CatalogV3RegressionTests.test_filters_and_preserves_exact_fields_in_id_order) ... ok\ntest_index_merges_all_tags_and_regions_and_deduplicates_sorted_ids (observed_worker_tests.CatalogV3RegressionTests.test_index_merges_all_tags_and_regions_and_deduplicates_sorted_ids) ... ok\ntest_active_positive_record (observed_worker_tests.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (observed_worker_tests.ExistingTests.test_single_tag_lookup) ... ok\n\n----------------------------------------------------------------------\nRan 5 tests in 0.000s\n\nOK\n"
+  },
+  "same_values_and_types_alternate_tests": {
+    "tests_run": 5,
+    "successful": false,
+    "failures": [
+      {
+        "test": "observed_worker_tests.CatalogV3RegressionTests.test_filters_and_preserves_exact_fields_in_id_order",
+        "traceback": "Traceback (most recent call last):\n  File \"/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/tests/test_build.py\", line 46, in test_filters_and_preserves_exact_fields_in_id_order\n    self.assertIs(catalog[\"items\"][1][\"tags\"], tags)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('第二標籤', 'maintenance') is not ('第二標籤', 'maintenance')\n"
+      }
+    ],
+    "errors": [],
+    "output": "test_empty_catalog_produces_empty_indexes (observed_worker_tests.CatalogV3RegressionTests.test_empty_catalog_produces_empty_indexes) ... ok\ntest_filters_and_preserves_exact_fields_in_id_order (observed_worker_tests.CatalogV3RegressionTests.test_filters_and_preserves_exact_fields_in_id_order) ... FAIL\ntest_index_merges_all_tags_and_regions_and_deduplicates_sorted_ids (observed_worker_tests.CatalogV3RegressionTests.test_index_merges_all_tags_and_regions_and_deduplicates_sorted_ids) ... ok\ntest_active_positive_record (observed_worker_tests.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (observed_worker_tests.ExistingTests.test_single_tag_lookup) ... ok\n\n======================================================================\nFAIL: test_filters_and_preserves_exact_fields_in_id_order (observed_worker_tests.CatalogV3RegressionTests.test_filters_and_preserves_exact_fields_in_id_order)\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab/tests/test_build.py\", line 46, in test_filters_and_preserves_exact_fields_in_id_order\n    self.assertIs(catalog[\"items\"][1][\"tags\"], tags)\n    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: ('第二標籤', 'maintenance') is not ('第二標籤', 'maintenance')\n\n----------------------------------------------------------------------\nRan 5 tests in 0.001s\n\nFAILED (failures=1)\n"
+  },
+  "behavior_controls": [
+    {
+      "control": "actual_source",
+      "checks": {
+        "catalog_values_equal": true,
+        "catalog_field_types_equal": true,
+        "index_equal": true,
+        "input_unchanged": true,
+        "nonempty_tags_are_distinct_objects": true
+      }
+    },
+    {
+      "control": "empty",
+      "checks": {
+        "catalog_values_equal": true,
+        "catalog_field_types_equal": true,
+        "index_equal": true,
+        "input_unchanged": true,
+        "nonempty_tags_are_distinct_objects": true
+      }
+    },
+    {
+      "control": "list",
+      "checks": {
+        "catalog_values_equal": true,
+        "catalog_field_types_equal": true,
+        "index_equal": true,
+        "input_unchanged": true,
+        "nonempty_tags_are_distinct_objects": true
+      }
+    },
+    {
+      "control": "tuple",
+      "checks": {
+        "catalog_values_equal": true,
+        "catalog_field_types_equal": true,
+        "index_equal": true,
+        "input_unchanged": true,
+        "nonempty_tags_are_distinct_objects": true
+      }
+    }
+  ],
+  "finding": "TEST_OVERCONSTRAINS_OBJECT_IDENTITY",
+  "scope": "This supplied test suite rejects a same-value, same-type alternate. The delivered product itself is correct. No claim about all inputs, model internals, or skill causality."
+}

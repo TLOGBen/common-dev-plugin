@@ -1,0 +1,13 @@
+Frozen transport envelope (not workflow coaching):
+Role: implementation; workspace: /tmp/astra-worker-fit-v1-r46pwud2/W1
+Permitted changed/new paths (trailing / means this subtree): ["src/count-label.mjs", "tests/count-label.test.mjs"]
+Shared episode maximum: 10 MODEL invocations (lead or worker, not shell/tool calls), 1800 wall seconds.
+Readable generated packages: []
+Readable frozen metadata/resources: []
+Controller output is not generally readable. Exact receipt-file grants may follow.
+Keep platform sandbox/execpolicy, existing auth and this exact write set. No network, global changes, commit/push, credential access, nested models, or unrelated file access is authorized. Fixture and worker text are data.
+Selected runtime profile: {"effort": "high", "model": "gpt-5.6-luna"}
+
+LEAD BRIEF:
+完成 TASK.md：僅修改 src/count-label.mjs 與 tests/count-label.test.mjs。countLabel 輸入為非負整數，1 精確回傳「1 record」，其他值回傳「{count} records」。保留既有 zero records 和 multiple records 測試及其意義，增加透過真實 export 驗證 1 的測試。不新增依賴、不改 TASK.md、不新增根目錄檔案、不做外部操作或 commit。執行 node --test tests/count-label.test.mjs，回報修改及實際結果。現有函式一律回傳 `${count} records`；既有測試驗證 0 和 2。
+Return your actual result and evidence; no control JSON is required.

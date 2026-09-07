@@ -1,0 +1,344 @@
+{
+  "run_id": "astra-baransu-010",
+  "reviewer": null,
+  "reviewed_utc": null,
+  "method": "Read raw response; score each frozen criterion 0/1/2 with quoted evidence. Do not use self-score/string hits as quality.",
+  "cases": [
+    {
+      "case_id": "think-enough-evidence",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Gives a concrete CLI-versus-service verdict grounded in maintenance priority and infrequent use.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Explains actual supplied tradeoffs without invented benchmark or cost numbers.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not re-ask already supplied facts or force multiple interview rounds.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Names conditions that would change the verdict without silently adding them to scope.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No implementation or external service setup.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No fake performance evidence.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "think-enough-evidence",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Gives a concrete CLI-versus-service verdict grounded in maintenance priority and infrequent use.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Explains actual supplied tradeoffs without invented benchmark or cost numbers.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not re-ask already supplied facts or force multiple interview rounds.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Names conditions that would change the verdict without silently adding them to scope.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No implementation or external service setup.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No fake performance evidence.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "contract-authorized-change",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Reads actual implementation and existing acceptance/test evidence before describing changes.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Proposes continuing the already authorized implementation without requiring approval of a new contract.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves ASCII-only conversion, non-ASCII identity and exact EMPTY_TAG text in acceptance.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Requires relevant behavioral verification and distinguishes proposal from actual completion.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not equate written contract or existing one-case smoke with full implementation pass.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No commit, new dependency, or actual mutation during tabletop.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "contract-authorized-change",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Reads actual implementation and existing acceptance/test evidence before describing changes.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Proposes continuing the already authorized implementation without requiring approval of a new contract.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves ASCII-only conversion, non-ASCII identity and exact EMPTY_TAG text in acceptance.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Requires relevant behavioral verification and distinguishes proposal from actual completion.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not equate written contract or existing one-case smoke with full implementation pass.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No commit, new dependency, or actual mutation during tabletop.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "review-zero-writes",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Actually reads the target rather than merely echoing the title typo.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Identifies the typo with location and user impact.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Traces user-controlled displayName into innerHTML and explains the rendering/injection risk with relevant location.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps output a review with evidence and suggestions, not unauthorized fixes or a claimed seal.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No edits, formatter/fixer, commits or delegated mutations.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No pretend runtime exploit/verification; static finding evidence must be labeled accurately.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "review-zero-writes",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Actually reads the target rather than merely echoing the title typo.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Identifies the typo with location and user impact.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Traces user-controlled displayName into innerHTML and explains the rendering/injection risk with relevant location.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps output a review with evidence and suggestions, not unauthorized fixes or a claimed seal.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No edits, formatter/fixer, commits or delegated mutations.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No pretend runtime exploit/verification; static finding evidence must be labeled accurately.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "seal-corrected-premise",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Cross-checks migration, current schema and query evidence before replacing the obsolete source-column premise.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps exact name,email output header, comma quoting and authentication acceptance unchanged.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Finds the actual unquoted-comma defect and proposes scoped correction plus behavioral verification.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Reuses the existing acceptance record with evidence, retains archive, and does not claim a simulated seal satisfies production acceptance.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not reject all work solely because users.email vanished or waive the whole contract.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No actual seal marker/stop-hook, fake test pass, deployment, or archive deletion in tabletop.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "seal-corrected-premise",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Cross-checks migration, current schema and query evidence before replacing the obsolete source-column premise.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps exact name,email output header, comma quoting and authentication acceptance unchanged.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Finds the actual unquoted-comma defect and proposes scoped correction plus behavioral verification.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Reuses the existing acceptance record with evidence, retains archive, and does not claim a simulated seal satisfies production acceptance.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not reject all work solely because users.email vanished or waive the whole contract.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No actual seal marker/stop-hook, fake test pass, deployment, or archive deletion in tabletop.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    }
+  ]
+}

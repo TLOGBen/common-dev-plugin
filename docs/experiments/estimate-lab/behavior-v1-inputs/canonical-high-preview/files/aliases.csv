@@ -1,0 +1,4 @@
+canonical_id,alias_path,reason
+api-085,inventory-export/UploadApi.java,same canonical work item
+api-086,inventory-export/SignedApi.java,same canonical work item
+api-087,inventory-export/TransactionApi.java,same canonical work item

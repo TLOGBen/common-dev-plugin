@@ -1,0 +1,216 @@
+{
+  "arm": "B",
+  "kind": "fresh_role_local_verification",
+  "started_utc": "2026-09-06T07:04:47.139500+00:00",
+  "ended_utc": "2026-09-06T07:07:24.392790+00:00",
+  "wall_seconds": 157.237,
+  "status": "completed",
+  "process_launched": true,
+  "process_id": 823128,
+  "exit_code": 0,
+  "os_error": null,
+  "timeout_seconds": 600,
+  "timed_out": false,
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "model_metadata_basis": "Exact CLI request; no fallback. Resolved runtime model is claimed only if the raw event stream supplies it.",
+  "prompt_sha256": "7b9e7c5700197dc5592d2442687935e5720c63059091e6441ff183f0e5f635cf",
+  "raw_jsonl_sha256": "412401a8ae580d07d007b7f8c672b3759006a78e2b0126b379346c0c6e2ce4b3",
+  "raw_jsonl_bytes": 46794,
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "stderr_bytes": 0,
+  "messages": [
+    "我已完整讀取指定的凍結角色定義與驗收合約；接下來會只在授權範圍內核對 payload、目標身分、差異與原始測試證據，不會修改產品或建立收據。",
+    "目前靜態差異與聲稱一致：產品程式只改 `normalizeTag`，測試由 2 個增至 5 個，另新增交接並附加 acceptance 記錄。接著我會重跑 payload 指定的完整測試檔，並執行獨立邊界檢查，特別覆蓋所有 ASCII 大寫、Unicode trim 邊界、內部控制字元、非 ASCII 保留及精確錯誤型別／訊息。未選用 mutation probe，因直接行為檢查已能否證這些常見錯誤實作。",
+    "行為面目前沒有發現規格違反：獨立 7 組邊界檢查全數通過，直接執行測試檔可見 5 個個別測試全數通過。另有一項證據敘述不一致需要保留：作者的原始 `actor-last-suite.stdout.txt` 與我重跑 payload 中的 `node --test …` 都只計為「1 個測試檔層級 test」通過；handoff／acceptance 卻寫成「5 tests passed」。我會把這列為交接證據精確性的缺陷，而不混同為函式行為失敗。",
+    "結論：函式行為 A1–A5 均獲支持；A6 違反，原因是交接與 acceptance 附錄誤述測試計數。整體結果為「不完整」，不是完整通過。\n\n## 各條文結果\n\n| 條文 | 結果 | 證據 |\n|---|---|---|\n| A1 | supported | 前後 Unicode 空白依 `String.trim()` 移除；內部空格、tab、LF、CRLF、VT、FF 均保持。 |\n| A2 | supported | 全部 ASCII `A–Z` 正確轉小寫；`İıÉéΩωÄäＡ` 等非 ASCII 字元保持不變。 |\n| A3 | supported | 空字串及 Unicode 空白字串均拋出 `Error`，message 精確為 `EMPTY_TAG`。 |\n| A4 | supported | 原有兩個測試仍存在；測試直接 import 真實 export，沒有 mock。直接執行測試檔時，5 個個別測試全部通過。 |\n| A5 | supported | 固定 diff 顯示唯一產品程式變更為指定函式，另有相關測試與要求的文件；未新增依賴、外部操作或擴張輸入領域。非 string 值仍以 `TypeError` 拒絕。 |\n| A6 | violated | [handoff.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/handoff.md>) 與 [acceptance.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/acceptance.md>) 宣稱 `node --test tests/normalize-tag.test.mjs` 得到「5 tests passed」，但作者原始輸出及本次相同命令都只報告「1 個測試檔層級 test」通過。 |\n\n## 實際檢查\n\n- 在 payload 指定 cwd 執行 `node --test tests/normalize-tag.test.mjs`：exit 0；`1 test`（測試檔層級）通過，0 failed/cancelled/skipped。\n- 執行 `node tests/normalize-tag.test.mjs`：可見 5 個個別測試，全部通過。\n- 執行 7 組獨立行為檢查：全部通過，涵蓋所有 ASCII 大寫、Unicode trim 邊界、內部空白控制字元、非 ASCII 保留、兩類空值錯誤及非 string 輸入。\n- 供應的 supplemental oracle 顯示原始唯讀 fixture 為 8/8 cases 通過、`mutation: false`。\n- 未選用 mutation probe；沒有修改任何檔案。\n\n計數差異可能源於 Node 測試執行／隔離模式將整個檔案彙總為一個頂層 test；這不推翻五項內部測試的行為結果，但原始作者輸出仍不能支持交接中所寫的計數與執行範圍。\n\n## 目標身分\n\n最終重新核對下列四個 target artifact，全部與 `target-identity.json` 相符：\n\n- `acceptance.md`: `4e3bd05d…c14af`\n- `handoff.md`: `922eec9f…78675`\n- `src/normalize-tag.mjs`: `ecaf5531…72828`\n- `tests/normalize-tag.test.mjs`: `31f29a8a…0840`\n\n固定 diff、三個 baseline artifact 的雜湊也全部相符。\n\n限制：這只是合成局部 fixture 的獨立角色驗證；未驗證部署、外部系統、真人核准、stable seal、telemetry、Stop hook 或商務完成，亦未建立 receipt。"
+  ],
+  "final_message": "結論：函式行為 A1–A5 均獲支持；A6 違反，原因是交接與 acceptance 附錄誤述測試計數。整體結果為「不完整」，不是完整通過。\n\n## 各條文結果\n\n| 條文 | 結果 | 證據 |\n|---|---|---|\n| A1 | supported | 前後 Unicode 空白依 `String.trim()` 移除；內部空格、tab、LF、CRLF、VT、FF 均保持。 |\n| A2 | supported | 全部 ASCII `A–Z` 正確轉小寫；`İıÉéΩωÄäＡ` 等非 ASCII 字元保持不變。 |\n| A3 | supported | 空字串及 Unicode 空白字串均拋出 `Error`，message 精確為 `EMPTY_TAG`。 |\n| A4 | supported | 原有兩個測試仍存在；測試直接 import 真實 export，沒有 mock。直接執行測試檔時，5 個個別測試全部通過。 |\n| A5 | supported | 固定 diff 顯示唯一產品程式變更為指定函式，另有相關測試與要求的文件；未新增依賴、外部操作或擴張輸入領域。非 string 值仍以 `TypeError` 拒絕。 |\n| A6 | violated | [handoff.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/handoff.md>) 與 [acceptance.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/acceptance.md>) 宣稱 `node --test tests/normalize-tag.test.mjs` 得到「5 tests passed」，但作者原始輸出及本次相同命令都只報告「1 個測試檔層級 test」通過。 |\n\n## 實際檢查\n\n- 在 payload 指定 cwd 執行 `node --test tests/normalize-tag.test.mjs`：exit 0；`1 test`（測試檔層級）通過，0 failed/cancelled/skipped。\n- 執行 `node tests/normalize-tag.test.mjs`：可見 5 個個別測試，全部通過。\n- 執行 7 組獨立行為檢查：全部通過，涵蓋所有 ASCII 大寫、Unicode trim 邊界、內部空白控制字元、非 ASCII 保留、兩類空值錯誤及非 string 輸入。\n- 供應的 supplemental oracle 顯示原始唯讀 fixture 為 8/8 cases 通過、`mutation: false`。\n- 未選用 mutation probe；沒有修改任何檔案。\n\n計數差異可能源於 Node 測試執行／隔離模式將整個檔案彙總為一個頂層 test；這不推翻五項內部測試的行為結果，但原始作者輸出仍不能支持交接中所寫的計數與執行範圍。\n\n## 目標身分\n\n最終重新核對下列四個 target artifact，全部與 `target-identity.json` 相符：\n\n- `acceptance.md`: `4e3bd05d…c14af`\n- `handoff.md`: `922eec9f…78675`\n- `src/normalize-tag.mjs`: `ecaf5531…72828`\n- `tests/normalize-tag.test.mjs`: `31f29a8a…0840`\n\n固定 diff、三個 baseline artifact 的雜湊也全部相符。\n\n限制：這只是合成局部 fixture 的獨立角色驗證；未驗證部署、外部系統、真人核准、stable seal、telemetry、Stop hook 或商務完成，亦未建立 receipt。",
+  "usage": {
+    "input_tokens": 219058,
+    "cached_input_tokens": 195712,
+    "output_tokens": 7086,
+    "uncached_input_tokens": 23346,
+    "total_tokens": 226144
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/B/.codex-agents/lab-verifier.toml && cat /home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/B/skills/lab-contract/references/acceptance.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat payload.json'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'rg --files . | sort'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'for f in target-identity.json baseline-result.json change.diff target/acceptance.md target/handoff.md target/src/normalize-tag.mjs target/tests/normalize-tag.test.mjs baseline/acceptance.md baseline/src/normalize-tag.mjs baseline/tests/normalize-tag.test.mjs baseline-suite.stdout.txt baseline-suite.stderr.txt actor-last-suite.stdout.txt ../../B-oracle.stdout.txt; do print -r -- \"===== $f =====\"; sed -n '\"'1,\"'$p'\"' \\\"\"'$f\"; done'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'node --test tests/normalize-tag.test.mjs'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"node --input-type=module <<'NODE'\nimport assert from 'node:assert/strict';\nimport { normalizeTag } from './src/normalize-tag.mjs';\n\nconst observations = [];\nfunction check(id, fn) {\n  try {\n    fn();\n    observations.push({ id, pass: true });\n  } catch (error) {\n    observations.push({ id, pass: false, error: \"'`${error.name}: ${error.message}` });\n  }\n}\n\ncheck('\"'all-ASCII-uppercase', () => {\n  assert.equal(normalizeTag(' ABCDEFGHIJKLMNOPQRSTUVWXYZ '), 'abcdefghijklmnopqrstuvwxyz');\n});\ncheck('internal-whitespace-byte-preservation', () => {\n  assert.equal(normalizeTag('\\\\tA  B\\\\tC\\\\nD\\\\r\\\\nE\\\\vF\\\\f'), 'a  b\\\\tc\\\\nd\\\\r\\\\ne\\\\vf');\n});\ncheck('unicode-trim-boundaries', () => {\n  assert.equal(normalizeTag('\\\\uFEFF\\\\u00A0\\\\u2003TAG\\\\u3000\\\\u202F'), 'tag');\n});\ncheck('non-ASCII-case-preservation', () => {\n  assert.equal(normalizeTag(' İIı Éé Ωω Ää ＡＡ Z '), 'İiı Éé Ωω Ää ＡＡ z');\n});\ncheck('empty-string-error', () => {\n  assert.throws(() => normalizeTag(''), (error) => error instanceof Error && error.message === 'EMPTY_TAG');\n});\ncheck('unicode-whitespace-only-error', () => {\n  assert.throws(() => normalizeTag('\\\\uFEFF\\\\u00A0\\\\u3000'), (error) => error instanceof Error && error.message === 'EMPTY_TAG');\n});\ncheck('non-string-domain-remains-rejected', () => {\n  for (const value of [null, undefined, 42, true, Symbol('x')]) {\n    assert.throws(() => normalizeTag(value), TypeError);\n  }\n});\n\nconsole.log(JSON.stringify(observations, null, 2));\nif (observations.some(({ pass }) => \"'!pass)) process.exitCode = 1;\nNODE'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"node --version && env | rg '\"'^NODE(_|$)|''^NODE_OPTIONS='\"' || true\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'node tests/normalize-tag.test.mjs'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nroot = Path('.')\nidentity = json.loads((root / 'target-identity.json').read_text(encoding='utf-8'))\nrows = []\nfor rel, expected in identity['artifact_sha256'].items():\n    path = root / 'target' / rel\n    actual = hashlib.sha256(path.read_bytes()).hexdigest()\n    rows.append({'path': str(path), 'expected': expected, 'actual': actual, 'match': actual == expected})\nfor rel, expected in identity['baseline_artifact_sha256'].items():\n    path = root / 'baseline' / rel\n    actual = hashlib.sha256(path.read_bytes()).hexdigest()\n    rows.append({'path': str(path), 'expected': expected, 'actual': actual, 'match': actual == expected})\ndiff_expected = identity['change_diff_sha256']\ndiff_actual = hashlib.sha256((root / 'change.diff').read_bytes()).hexdigest()\nrows.append({'path': 'change.diff', 'expected': diff_expected, 'actual': diff_actual, 'match': diff_actual == diff_expected})\nprint(json.dumps(rows, indent=2))\nif not all(row['match'] for row in rows):\n    raise SystemExit(1)\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true,
+  "usage_events_complete": [
+    {
+      "line": 25,
+      "json_pointer": "/usage",
+      "value": {
+        "input_tokens": 219058,
+        "cached_input_tokens": 195712,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7086,
+        "reasoning_output_tokens": 4012
+      }
+    }
+  ],
+  "model_metadata_observed": [],
+  "observed_turn_started_count": 1,
+  "observed_turn_completed_count": 1,
+  "provider_request_count": null,
+  "provider_request_count_basis": "Internal provider requests are not exposed by this CLI event stream; CLI invocations and observed turn events are recorded separately.",
+  "target_before_sha256": {
+    "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+    "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+    "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+    "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+  },
+  "target_after_sha256": {
+    "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+    "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+    "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+    "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+  },
+  "target_residue_paths": [],
+  "reported_revert_failure": false,
+  "preparation_changed_paths": [],
+  "changes_outside_authorized_probe_locations": [],
+  "scratch_inventory": {},
+  "original_fixture_drift": {
+    "A": [],
+    "B": []
+  },
+  "original_fixtures_after": {
+    "A": {
+      "acceptance.md": {
+        "type": "file",
+        "bytes": 2432,
+        "sha256": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b"
+      },
+      "handoff.md": {
+        "type": "file",
+        "bytes": 1580,
+        "sha256": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83"
+      },
+      "src/": {
+        "type": "directory"
+      },
+      "src/normalize-tag.mjs": {
+        "type": "file",
+        "bytes": 210,
+        "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+      },
+      "tests/": {
+        "type": "directory"
+      },
+      "tests/normalize-tag.test.mjs": {
+        "type": "file",
+        "bytes": 722,
+        "sha256": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+      }
+    },
+    "B": {
+      "acceptance.md": {
+        "type": "file",
+        "bytes": 3074,
+        "sha256": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af"
+      },
+      "handoff.md": {
+        "type": "file",
+        "bytes": 1258,
+        "sha256": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675"
+      },
+      "src/": {
+        "type": "directory"
+      },
+      "src/normalize-tag.mjs": {
+        "type": "file",
+        "bytes": 227,
+        "sha256": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828"
+      },
+      "tests/": {
+        "type": "directory"
+      },
+      "tests/normalize-tag.test.mjs": {
+        "type": "file",
+        "bytes": 834,
+        "sha256": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+      }
+    }
+  },
+  "quality_acceptance": null,
+  "quality_review_status": "PENDING_MAIN_REVIEW",
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "full_seal_lifecycle": false,
+  "no_cleanup_performed": true
+}

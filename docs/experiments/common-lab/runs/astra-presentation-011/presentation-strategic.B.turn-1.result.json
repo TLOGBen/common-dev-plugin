@@ -1,0 +1,80 @@
+{
+  "case_id": "presentation-strategic",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:11:32.511992+00:00",
+  "ended_utc": "2026-09-06T03:12:10.318587+00:00",
+  "wall_seconds": 37.808,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-presentation-strategic-612qffw0",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "8dfc675569451f0438e41956d441413a7193002bc8f540803e5c26f69d456a78",
+  "fixture_dir": "/tmp/common-lab-ab-presentation-strategic-612qffw0",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定技能與情境紀錄，再依據證據整理目標差距與擬議的下一步；本回合僅作模擬說明。\n",
+    "依情境紀錄，**10 個試點帳號中，6 個已完整達標，4 個仍有缺口**。完成條件維持為：每個帳號都能匯出、CSV 繁體中文正確，且未登入匯出會遭拒絕。\n\n| 帳號 | 已有成果與剩餘差距 |\n|---|---|\n| A01–A06 | 三項條件均有證據，已達標。 |\n| A07 | 可匯出且未登入會遭拒絕，但中文亂碼，仍未達標。 |\n| A08 | 可匯出且中文正確；未登入拒絕測試尚未執行，不能判定完整達標。 |\n| A09–A10 | 缺少試點角色，三項條件均未驗證；需環境管理員授權才能解除存取測試阻礙。 |\n\n**擬議主攻是修復 A07 中文亂碼**：使用既有重現資料定位問題，在報表匯出模組內修正，並以隔離測試驗證。預期可觀察成果是 A07 匯出的中文字元正確，且匯出與未登入拒絕兩項行為仍通過。取得 CSV 與請求／回應證據後，重新判定 A07 是否完整達標。\n\n接著補跑 A08 已獲授權的隔離負向測試；若未登入請求確實遭拒絕，即可補齊驗收。兩步都成功時，完整達標帳號才可由 **6 個提升至 8 個**。\n\nA09–A10 的角色需求留待管理員處理，不阻擋 A07、A08 的範圍內工作；角色補齊後，仍須逐帳號驗證全部三項條件。\n\n截圖工具修復不列入推進重點，因驗收接受 CSV 與請求／回應證據。手冊修改、34 項無關測試通過與截圖工具修復嘗試，也不計入目標進展。\n\n本回合僅呈現成果與擬議行動，未執行修改、測試或權限操作。"
+  ],
+  "final_message": "依情境紀錄，**10 個試點帳號中，6 個已完整達標，4 個仍有缺口**。完成條件維持為：每個帳號都能匯出、CSV 繁體中文正確，且未登入匯出會遭拒絕。\n\n| 帳號 | 已有成果與剩餘差距 |\n|---|---|\n| A01–A06 | 三項條件均有證據，已達標。 |\n| A07 | 可匯出且未登入會遭拒絕，但中文亂碼，仍未達標。 |\n| A08 | 可匯出且中文正確；未登入拒絕測試尚未執行，不能判定完整達標。 |\n| A09–A10 | 缺少試點角色，三項條件均未驗證；需環境管理員授權才能解除存取測試阻礙。 |\n\n**擬議主攻是修復 A07 中文亂碼**：使用既有重現資料定位問題，在報表匯出模組內修正，並以隔離測試驗證。預期可觀察成果是 A07 匯出的中文字元正確，且匯出與未登入拒絕兩項行為仍通過。取得 CSV 與請求／回應證據後，重新判定 A07 是否完整達標。\n\n接著補跑 A08 已獲授權的隔離負向測試；若未登入請求確實遭拒絕，即可補齊驗收。兩步都成功時，完整達標帳號才可由 **6 個提升至 8 個**。\n\nA09–A10 的角色需求留待管理員處理，不阻擋 A07、A08 的範圍內工作；角色補齊後，仍須逐帳號驗證全部三項條件。\n\n截圖工具修復不列入推進重點，因驗收接受 CSV 與請求／回應證據。手冊修改、34 項無關測試通過與截圖工具修復嘗試，也不計入目標進展。\n\n本回合僅呈現成果與擬議行動，未執行修改、測試或權限操作。",
+  "usage": {
+    "input_tokens": 49968,
+    "cached_input_tokens": 38528,
+    "output_tokens": 819,
+    "uncached_input_tokens": 11440,
+    "total_tokens": 50787
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"date '+%Y-%m-%d %H:%M:%S %Z %z'; rg --files -g 'campaign-observations.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/references/campaign.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /tmp/common-lab-ab-presentation-strategic-612qffw0/campaign-observations.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

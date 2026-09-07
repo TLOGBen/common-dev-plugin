@@ -1,0 +1,41 @@
+{
+  "shared": {
+    "source_unchanged": {
+      "public": true,
+      "lab": true
+    },
+    "public_same": true,
+    "roles_same": true,
+    "none_packages": [],
+    "common_task_tail_same": true,
+    "budgets": [
+      [
+        24,
+        3600,
+        600
+      ],
+      [
+        24,
+        3600,
+        600
+      ]
+    ]
+  },
+  "preflights": [
+    {
+      "episode": "01-campaign-none",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-noextra-v1-plan/01-campaign-none.json --out /tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-noextra-20260906-a/workspaces/01-campaign-none\", \"new_output\": \"/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none\", \"generated_packages\": [], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 24}\n",
+      "stderr": ""
+    },
+    {
+      "episode": "02-campaign-lab",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-noextra-v1-plan/02-campaign-lab.json --out /tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-noextra-20260906-a/workspaces/02-campaign-lab\", \"new_output\": \"/tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab\", \"generated_packages\": [\"/tmp/astra-lead-noextra-20260906-a/packages/lab\"], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 24}\n",
+      "stderr": ""
+    }
+  ],
+  "model_calls": 0
+}

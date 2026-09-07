@@ -1,0 +1,84 @@
+{
+  "exported_at": "2026-09-06T03:01:57.150139+00:00",
+  "preflight": {
+    "verdict": "TARGET_MATCH",
+    "source": "/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab",
+    "output": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab",
+    "staging": "/tmp/baransu-lab-export-010-b",
+    "report_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/export-v0.1.0",
+    "transfer": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py",
+    "plugin": "baransu-lab",
+    "version": "0.1.0",
+    "interface": "/home/vakarve/projects/common-dev-plugin/codex-metadata/baransu-lab/plugin-interface.json",
+    "interface_sha256": "5508c4408dd6588691eac8ab7f75ac38aa58e67e18a2c342be3ec7d8592b1249",
+    "validator": "/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py",
+    "output_exists": false,
+    "staging_exists": false,
+    "source_files": {
+      ".claude-plugin/plugin.json": "6c2a53fb595e3b08a6ae2e37e27505e2aba8fb2a79ac82e45f93d42eb0960c3e",
+      "agents/lab-verifier.md": "2ef72f9af3047c06035c1dc37396482f8435d7cfebb458e40e297a511461dd9c",
+      "skills/lab-contract/SKILL.md": "f73fd590e17cc1d9b085b5f0a9e60b3f3d61565d18ed1ab7b2dd86b677ac2851",
+      "skills/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e",
+      "skills/lab-review/SKILL.md": "591e90b08cacf5cad49efc8e1ed60c41e83818e3fc5db9339ea2099f873c2383",
+      "skills/lab-seal/SKILL.md": "070657c464aabaddcf6892fa7ce57e4cc8dc97fd714a52b16e3b4eb442a5a461",
+      "skills/lab-think/SKILL.md": "89c15e312404010debff8496dd3f6db6c0b4e1b09da9cbb5263cc5aa87b3a2ab"
+    },
+    "source_sha256": "e5ed1a8a1f5a7f4210fd6e2a6592aad3a2bb276e845b5ab79e0a639fe620ac4c",
+    "recovery": "Existing state untouched; new staging retained for reproducibility."
+  },
+  "transfer_sha256": "571c7cdaa2ebef2bf5330da0e9a7b87155f13ca8e9e490460dc00ab9e6e62c64",
+  "source_sha256": "e5ed1a8a1f5a7f4210fd6e2a6592aad3a2bb276e845b5ab79e0a639fe620ac4c",
+  "output_sha256": "c18ff025eef522e3e189ec5a2646d8107b1a70bbc08165007226652bfa34075b",
+  "interface_source": "/home/vakarve/projects/common-dev-plugin/codex-metadata/baransu-lab/plugin-interface.json",
+  "interface_sha256": "5508c4408dd6588691eac8ab7f75ac38aa58e67e18a2c342be3ec7d8592b1249",
+  "output_files": {
+    ".agents/plugins/marketplace.json": "1db13fa22f6f754ad35a4b5489ee0cc808ff543f4e4d3e34eb8388534c37aafd",
+    "plugins/baransu-lab/.codex-agents/lab-verifier.toml": "e06bf4d4ea19218a7e901204d2f39678cdc4a1c46e2f308664abdb1b64da73d1",
+    "plugins/baransu-lab/.codex-plugin/plugin.json": "67a3c4f4fd01c5a7ee2d479933eaee71f7c52549b8c901503681a52872a31344",
+    "plugins/baransu-lab/skills/lab-contract/SKILL.md": "b04f8684f7aab2af129a4baab99013b905d988a3adab8dfde86cb67693d8ceb2",
+    "plugins/baransu-lab/skills/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e",
+    "plugins/baransu-lab/skills/lab-review/SKILL.md": "58528a53dde11ec5293388943e0b477d595c17a64fc7a4431ca30e904bfc3d6f",
+    "plugins/baransu-lab/skills/lab-seal/SKILL.md": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77",
+    "plugins/baransu-lab/skills/lab-think/SKILL.md": "c0bcddc486e3bed4d35b958f34bb252e74c3a9a6f9f8df2d78d39ed6a0c9a92e"
+  },
+  "adapted_files": [
+    "skills/lab-contract/SKILL.md",
+    "skills/lab-review/SKILL.md",
+    "skills/lab-seal/SKILL.md",
+    "skills/lab-think/SKILL.md"
+  ],
+  "checks": {
+    "skill_count": 4,
+    "explicit_only_skills": [],
+    "bundled_agent_resolver": true,
+    "unchanged_scripts_assets": [],
+    "plugin_validator": "Plugin validation passed: /tmp/baransu-lab-export-010-b/plugins/baransu-lab"
+  },
+  "followups": [
+    {
+      "skill": "lab-contract",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-review",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-seal",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-think",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    }
+  ],
+  "staging_retained": "/tmp/baransu-lab-export-010-b"
+}

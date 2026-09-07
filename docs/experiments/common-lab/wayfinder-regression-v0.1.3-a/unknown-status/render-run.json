@@ -1,0 +1,7 @@
+{
+  "exit_code": 1,
+  "stdout": "",
+  "stderr": "[FAIL] WAYFINDER_UNKNOWN_TICKET_STATUS id=23 status='mystery'\n",
+  "independent_variable": "known-status-validation",
+  "before_evidence": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-regression-v0.1.3-repro/receipt.json"
+}

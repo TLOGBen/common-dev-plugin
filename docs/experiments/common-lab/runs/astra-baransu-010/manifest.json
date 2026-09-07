@@ -1,0 +1,67 @@
+{
+  "run_id": "astra-baransu-010",
+  "kind": "behavioral_tabletop",
+  "cli_version": "codex-cli 0.153.0",
+  "git_head": "765c47a047a26fba691d29a4c73d2025c8ee680d",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "max_concurrent_calls": 2,
+  "revision": "baransu-lab-0.1.0",
+  "plugin_versions": {
+    "A": "5.4.1",
+    "B": "0.1.0"
+  },
+  "repeats": 1,
+  "case_source_path": "/home/vakarve/projects/common-dev-plugin/scripts/common_lab_ab_cases_baransu.json",
+  "arms": {
+    "A": {
+      "root": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills",
+      "prefix": ""
+    },
+    "B": {
+      "root": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/skills",
+      "prefix": "lab-"
+    }
+  },
+  "resource_sha256": {
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/think/SKILL.md": "03be1c9e0dbc5dba2c6b5ddaa17c4abc1be5138bc8ed21fd2e4b23893d6c638e",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/think/evals/evals.json": "7e3fdfd844df165db7d9f84bda3f51933b809fc34925124451e6c9d8e914edf2",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/think/references/loop-pauses.md": "23b94237ce95d3f35ed052bb9280c6d4b34dc620c191dcf1484b18deb836cdab",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/contract/SKILL.md": "f446589868b46fc0756ca4232846097a3e523ad706d6ce539fd76abeb0276b2f",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/contract/evals/evals.json": "51e24c9d558850057159c04149fcdda67df20bc700ff4e5e7d96d46b97c8428b",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/contract/references/loop-pauses.md": "9782830576e2889a375e2fed30cb51dd32d5ff0e80552a769d6727981758b5cd",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/review/SKILL.md": "1eab659c2855fba2ad63bfb54deadccf36fe269aeb4d60728d3954ca463dcf3f",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/review/evals/evals.json": "992fe49e8b01131c0a036ee8f8ffcdce7752f1ccfc64435799eab78ff60ab49f",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/review/references/loop-pauses.md": "9bada00455884e6d620696140018b2e24944a32e561b9fde6779c2ba630e0f57",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/review/references/orchestration-interface.md": "54b58fb8da1f14461ffbbb937168c7bdcbced9a294d95b86c34850f060016862",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/SKILL.md": "4f57ba51461b7a95a3c84609c629bf57b46ddf66602a944ca86e4c1e2f8608b9",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/evals/evals.json": "4471765458be222f06348a8e66dfd75096d8a3de03dbc422ff71ce87b4058dcb",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/references/loop-pauses.md": "c70e6b37374001c5ccb404aa6b4b45638acda36d77f0b8f599426b877f9df89a",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/references/seal-guard-hook.md": "48c126dd620ee4c8d17e0c4d045b500fb3d316ec01f61d351e1f4906c474344c",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/architecture-reviewer.toml": "eff58dba3ebd8661c792a8904d43572ac3f8731684b1d2acbfa9b5b2d917eeb9",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/domain-reviewer.toml": "7c0adae77445d25b0e331c9883a585e47b36a9ff136ca94dc30e030f9fa8dcd6",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/evolve-diagnostician.toml": "988eff3cb5f1c3762f6ec0203e4317df536d3e7a7f028db0a8430543a2211ee1",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/evolve-judge.toml": "b7d68a23446f1e7cc31d769538f1d3a34074e04109a684e2f7be31bbe2bb2893",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/health-inspector-context.toml": "c159ece2a6957a265af907cb38109e25d65401e1073a2b5d81cbcb8396c7662a",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/health-inspector-control.toml": "343a55fb71535019505da83e16d70addab530c4f82c70ef84efe2424b2163681",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/health-inspector-maintainability.toml": "5bd06204206c942b54aba900ac309cbd873bb6d8b9c75be3da92b21b05af94ce",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/quality-reviewer.toml": "fe3303febce27adbc6a1f48752d9d20b5f91e8e6503baf65e0a7a5f26169a2a0",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/seal-agent.toml": "c64e1f792d5197a4eab1f9d0d6fc10dcabb65f0014ca68c47c665df5ca8de1cb",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/security-reviewer.toml": "2b487a7a91da47554bb7ce108e283d3a830d8ef6ed7e88ad1a2fbfa309ef5432",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-agents/style-reviewer.toml": "c810113f40399f8699ca8d6ea4957190fabe0dd1af5dabb503539d70d55368d1",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/.codex-plugin/plugin.json": "9a488ec5741e4a772c6a5a988ecf38424857cd60e990bae9d24d3a24023b6c62",
+    "experiments/baransu-lab/plugins/baransu-lab/skills/lab-think/SKILL.md": "c0bcddc486e3bed4d35b958f34bb252e74c3a9a6f9f8df2d78d39ed6a0c9a92e",
+    "experiments/baransu-lab/plugins/baransu-lab/skills/lab-contract/SKILL.md": "b04f8684f7aab2af129a4baab99013b905d988a3adab8dfde86cb67693d8ceb2",
+    "experiments/baransu-lab/plugins/baransu-lab/skills/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e",
+    "experiments/baransu-lab/plugins/baransu-lab/skills/lab-review/SKILL.md": "58528a53dde11ec5293388943e0b477d595c17a64fc7a4431ca30e904bfc3d6f",
+    "experiments/baransu-lab/plugins/baransu-lab/skills/lab-seal/SKILL.md": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77",
+    "experiments/baransu-lab/plugins/baransu-lab/.codex-agents/lab-verifier.toml": "e06bf4d4ea19218a7e901204d2f39678cdc4a1c46e2f308664abdb1b64da73d1",
+    "experiments/baransu-lab/plugins/baransu-lab/.codex-plugin/plugin.json": "67a3c4f4fd01c5a7ee2d479933eaee71f7c52549b8c901503681a52872a31344"
+  },
+  "frozen_cases_sha256": "e5c0170862530926d546c6e8e48217c69108d33a65f813dfad9fda3eb6922802",
+  "case_source_sha256": "ba23768b981674371e361b0533cad8e3c12b734eb3ced2207a478ef0e54f2981",
+  "harness_sha256": "86a32a5b09732489c289e6803e26c9bab277e03bd74741d168aa899d36602706",
+  "runtime_model_resolution": "requested exact ID; no deliberate fallback configured",
+  "isolation": "ephemeral; ignore-user-config; read-only sandbox; execpolicy retained; no network authorized",
+  "limits": "Only the correct next action and evidence interpretation are tested. This does not fulfill implementation/seal acceptance; a separate write-isolated integration run is required."
+}

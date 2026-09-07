@@ -1,0 +1,229 @@
+--- before/plugins/common-lab/.claude-plugin/plugin.json
++++ after/plugins/common-lab/.claude-plugin/plugin.json
+@@ -1,7 +1,7 @@
+ {
+   "name": "common-lab",
+   "displayName": "Common Lab",
+-  "version": "0.1.2",
++  "version": "0.1.3",
+   "description": "Opt-in experiments in lean, outcome-led skills: goal ownership, human decision pacing, and evidence-backed strategic progress. User-facing output defaults to Traditional Chinese.",
+   "author": {"name": "ben.tsai", "email": "vakarve@csie.io"},
+   "repository": "https://github.com/TLOGBen/common-dev-plugin",
+--- before/plugins/common-lab/skills/lab-wayfinder/SKILL.md
++++ after/plugins/common-lab/skills/lab-wayfinder/SKILL.md
+@@ -20,4 +20,4 @@
+ 
+ After an answer, record it and continue to the next useful frontier. There is no one-ticket-per-session limit. A missing human choice blocks its dependents, not unrelated fact-finding.
+ 
+-Show the current destination, what became clearer, and the next meaningful decision. At a human handoff, make the immediate choice and its consequences understandable without reading the whole map; a durable map can use the explicit Current focus view pointer. Render the map when it helps orientation or at handoff, not after every file edit.
++Show the current destination, what became clearer, and the next meaningful decision. Distinguish this round's completed work from remaining product work and say whether human input is needed. At a human handoff, make the immediate choice and its consequences understandable without reading the whole map; a durable map can use the explicit Current focus view pointer. Do not turn a dependency-ready, out-of-scope execution ticket into a supposed pending human decision. Render the map when it helps orientation or at handoff, not after every file edit.
+--- before/plugins/common-lab/skills/lab-wayfinder/assets/map-template.html
++++ after/plugins/common-lab/skills/lab-wayfinder/assets/map-template.html
+@@ -30,6 +30,7 @@
+   h1{font-size:34px;font-weight:400;letter-spacing:.01em;margin:10px 0 6px}
+   .dest{border-left:2px solid var(--beacon);padding:6px 0 6px 18px;margin:22px 0 8px;font-size:18px;font-style:italic;color:var(--ink)}
+   .meta{font:12px var(--mono);color:var(--muted);margin-top:10px}
++  .status-boundary{font-size:14px;line-height:1.65;color:var(--muted);margin-top:12px}
+ 
+   section{margin-top:52px}
+   h2{font-size:13px;font-weight:400;font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+@@ -120,6 +121,7 @@
+     <h1 id="effort-name"></h1>
+     <div class="dest" id="destination"></div>
+     <div class="meta" id="meta"></div>
++    <p class="status-boundary" id="status-boundary"></p>
+   </header>
+ 
+   <section id="current-focus" aria-labelledby="focus-title" hidden>
+@@ -246,6 +248,7 @@
+ const n = s => DATA.tickets.filter(t=>t.s===s).length;
+ document.getElementById('meta').textContent =
+   format(L.metaTemplate,{total:DATA.tickets.length,resolved:n('resolved'),frontier:n('frontier'),claimed:n('claimed'),blocked:n('blocked')});
++document.getElementById('status-boundary').textContent = L.statusBoundary;
+ document.getElementById('foot').textContent = `${L.generated} ${DATA.generatedAt} · ${L.source}: ${DATA.source}`;
+ document.title = `${L.documentTitle} — ${DATA.effort}`;
+ 
+--- before/plugins/common-lab/skills/lab-wayfinder/references/map-format.md
++++ after/plugins/common-lab/skills/lab-wayfinder/references/map-format.md
+@@ -16,9 +16,9 @@
+ 
+ Claim a ticket before assigning concurrent work. Resolve only after an evidence-backed answer or the user's actual decision; record it under ## Answer and add its pointer to the map. Append material follow-up under ## Comments. Never invent agreement.
+ 
+-The frontier consists of open tickets whose dependencies are resolved. Choose the one most useful to current understanding, not simply the lowest number. Preserve stable IDs when priorities change.
++The frontier consists of open tickets whose dependencies are resolved. This means dependency-ready, not authorized to execute; even all tickets resolved does not establish product completion. Choose the one most useful to current understanding, not simply the lowest number. Preserve stable IDs when priorities change.
+ 
+-When one real human choice should lead the handoff, optionally add ## Current focus to map.md with only that existing ticket ID on the next line. This is a view pointer, not a decision, status, or authorization. The renderer shows that ticket's existing question and meaningful body first, with the full map expandable and the original ticket linked. Only genuinely empty content gets a missing-content message; absent optional headings do not imply absent evidence or options. Unknown, resolved, or dependency-blocked focus IDs produce a warning and leave the full map open; it never substitutes another ticket. Omit the section when no human choice needs focus; existing maps remain fully visible.
++When one real human choice should lead the handoff, optionally add ## Current focus to map.md with only that existing ticket ID on the next line. This is a view pointer, not a decision, status, or authorization. A merely dependency-ready execution ticket, especially outside the current scope, is not itself a pending human choice. The renderer shows that ticket's existing question and meaningful body first, with the full map expandable and the original ticket linked. Only genuinely empty content gets a missing-content message; absent optional headings do not imply absent evidence or options. Unknown, resolved, or dependency-blocked focus IDs produce a warning and leave the full map open; it never substitutes another ticket. Omit the section when no human choice needs focus; existing maps remain fully visible.
+ 
+ Render with:
+ 
+@@ -26,4 +26,4 @@
+ 
+ Remove --no-open when showing the view to the user is useful; interface defaults to zh-TW. Use --language en only when requested. Edit Markdown, not the generated map.html.
+ 
+-The bundled renderer rejects duplicate IDs and dependency cycles, escapes metadata, and atomically replaces its output. Those integrity checks are retained from the stable implementation. Existing user-state stewardship rules still apply to replacing an existing output.
++The bundled renderer rejects duplicate IDs, unrecognized status values, and dependency cycles, escapes metadata, and atomically replaces its output. It does not infer authorization from Out of scope prose. Existing user-state stewardship rules still apply to replacing an existing output.
+--- before/plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py
++++ after/plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py
+@@ -29,7 +29,7 @@
+         "routeChartAria": "決策路線圖",
+         "routeChart": "決策路線圖",
+         "graphAria": "票券阻擋關係圖",
+-        "legendFrontier": "前線 — 現在可處理",
++        "legendFrontier": "前線 — 前置就緒",
+         "legendClaimed": "已認領",
+         "legendResolved": "已解決",
+         "legendBlocked": "受阻",
+@@ -40,9 +40,10 @@
+         "decisions": "目前已定案",
+         "fog": "尚未釐清",
+         "outOfScope": "範圍外",
+-        "status": {"frontier": "可處理", "claimed": "已認領", "blocked": "受阻", "resolved": "已解決"},
++        "status": {"frontier": "前置就緒", "claimed": "已認領", "blocked": "受阻", "resolved": "已解決"},
+         "type": {"research": "研究", "prototype": "原型", "grilling": "決策釐清", "task": "任務"},
+-        "metaTemplate": "{total} 張票券 — {resolved} 張已解決 · {frontier} 張現在可處理 · {claimed} 張已認領 · {blocked} 張受阻",
++        "metaTemplate": "{total} 張票券 — {resolved} 張已解決 · {frontier} 張前置就緒 · {claimed} 張已認領 · {blocked} 張受阻",
++        "statusBoundary": "票券狀態只表示問題與前置進度，不代表產品完成或已獲執行授權。",
+         "generated": "產生時間",
+         "source": "來源",
+         "documentTitle": "Wayfinder 共識地圖",
+@@ -79,7 +80,7 @@
+         "routeChartAria": "Route chart",
+         "routeChart": "Route chart",
+         "graphAria": "Ticket blocking graph",
+-        "legendFrontier": "frontier — takeable now",
++        "legendFrontier": "frontier — dependency-ready",
+         "legendClaimed": "claimed",
+         "legendResolved": "resolved",
+         "legendBlocked": "blocked",
+@@ -90,9 +91,10 @@
+         "decisions": "Decisions so far",
+         "fog": "Not yet specified",
+         "outOfScope": "Out of scope",
+-        "status": {"frontier": "frontier", "claimed": "claimed", "blocked": "blocked", "resolved": "resolved"},
++        "status": {"frontier": "dependency-ready", "claimed": "claimed", "blocked": "blocked", "resolved": "resolved"},
+         "type": {"research": "research", "prototype": "prototype", "grilling": "grilling", "task": "task"},
+-        "metaTemplate": "{total} tickets — {resolved} resolved · {frontier} on the frontier · {claimed} claimed · {blocked} in the blocked interior",
++        "metaTemplate": "{total} tickets — {resolved} resolved · {frontier} dependency-ready · {claimed} claimed · {blocked} blocked",
++        "statusBoundary": "Ticket status tracks questions and prerequisites, not product completion or permission to execute.",
+         "generated": "generated",
+         "source": "source",
+         "documentTitle": "Wayfinder",
+@@ -212,12 +214,14 @@
+ 
+ 
+ def validate_tickets(tickets):
+-    """Reject ambiguous identities and blocking cycles before browser render."""
++    """Reject ambiguous identities, unknown states, and cycles before browser render."""
+     by_id = {}
+     for ticket in tickets:
+         ticket_id = ticket["id"]
+         if ticket_id in by_id:
+             raise ValueError(f"WAYFINDER_DUPLICATE_TICKET_ID id={ticket_id}")
++        if ticket["status"] not in ("open", "claimed", "resolved"):
++            raise ValueError(f"WAYFINDER_UNKNOWN_TICKET_STATUS id={ticket_id} status={ticket['status']!r}")
+         by_id[ticket_id] = ticket
+ 
+     visiting = []
+--- before/scripts/test_common_lab_wayfinder.py
++++ after/scripts/test_common_lab_wayfinder.py
+@@ -41,7 +41,7 @@
+     return f"# {title}\n\nType: grilling\nStatus: {status}\n{dependency}\n{body}\n"
+ 
+ 
+-def fixture(name, focus=None, status="open", prerequisite="resolved", body=None, extra=None):
++def fixture(name, focus=None, status="open", prerequisite="resolved", body=None, extra=None, language="zh-TW"):
+     root = artifact_root / name
+     (root / "issues").mkdir(parents=True)
+     map_text = "# Map: 客服查詢試點\n\n## Destination\n讓客服看懂現況並只處理眼前取捨。\n\n## Decisions so far\n- 只做查詢；沿用驗證方式。\n\n## Not yet specified\n- 完整姓名或遮蔽姓名，尚待本人選擇。\n\n## Out of scope\n- 正式退款及權限異動。\n"
+@@ -59,7 +59,7 @@
+     files.update(extra or {})
+     for name, content in files.items():
+         (root / "issues" / name).write_text(content, encoding="utf-8")
+-    run = subprocess.run([sys.executable, "-B", str(renderer), str(root), "--no-open"], capture_output=True, text=True)
++    run = subprocess.run([sys.executable, "-B", str(renderer), str(root), "--no-open", "--language", language], capture_output=True, text=True)
+     return root, run
+ 
+ 
+@@ -73,11 +73,13 @@
+ def focus_dom(html):
+     # Execute the actual template's markdown, state, and focus code, not a reimplementation.
+     # A minimal DOM stub checks content and disclosure state; real browser QA is separate.
+-    prefix = html.split("<script>\n", 1)[1].split("/* ---------- header ---------- */", 1)[0]
++    prefix = html.split("<script>\n", 1)[1].split("/* ---------- graph layout:", 1)[0]
++    cards = html.split("/* ---------- cards + filters ---------- */", 1)[1].split("/* ---------- map sections ---------- */", 1)[0]
+     dom = """
+ class Element {
+-  constructor(tag) { this.tag=tag; this.children=[]; this.hidden=false; this.open=true; this.textContent=''; this.innerHTML=''; this.className=''; }
++  constructor(tag) { this.tag=tag; this.children=[]; this.hidden=false; this.open=true; this.textContent=''; this.innerHTML=''; this.className=''; this.dataset={}; }
+   appendChild(child) { this.children.push(child); return child; }
++  setAttribute(key,value) { this[key]=value; }
+ }
+ const elements={};
+ const document={
+@@ -85,7 +87,7 @@
+   createElement(tag) { return new Element(tag); }
+ };
+ """
+-    code = dom + prefix + "\nconsole.log(JSON.stringify({elements,statuses:DATA.tickets.map(t=>({id:t.id,status:t.s})),dependencies:DATA.tickets.map(t=>({id:t.id,markup:dependencySummary(t)})),pwned:globalThis.PWNED===true}));"
++    code = dom + prefix + cards + "\nconsole.log(JSON.stringify({elements,statuses:DATA.tickets.map(t=>({id:t.id,status:t.s})),dependencies:DATA.tickets.map(t=>({id:t.id,markup:dependencySummary(t)})),pwned:globalThis.PWNED===true}));"
+     run = subprocess.run([node, "-e", code], capture_output=True, text=True)
+     check(run.returncode == 0, "actual focus JavaScript executes")
+     return json.loads(run.stdout)
+@@ -107,6 +109,15 @@
+ check("前置已解: 01" in dependency_text["23"] and "⛔" not in dependency_text["23"], "resolved prerequisite is a dependency fact, not a stop signal")
+ check("⛔ 未解前置阻擋: 23" in dependency_text["24"], "unresolved prerequisite is clearly identified as blocking")
+ check(next(t for t in data["tickets"] if t["id"] == "23")["blockedBy"] == ["01"] and next(t for t in data["tickets"] if t["id"] == "23")["status"] == "open", "dependency presentation does not change IDs or ticket business status")
++check(next(t["status"] for t in dom["statuses"] if t["id"] == "23") == "frontier", "legitimate ready focus remains ready, not universally blocked")
++check("前置就緒" in dom["elements"]["meta"]["textContent"] and "前置就緒" in data["labels"]["legendFrontier"], "header and legend say dependency readiness")
++check(any("前置就緒" in chip["textContent"] for chip in dom["elements"]["chips"]["children"]) and any("前置就緒" in card["innerHTML"] for card in dom["elements"]["cards"]["children"]), "actual filters and card summaries use the same readiness wording")
++check("不代表產品完成或已獲執行授權" in dom["elements"]["status-boundary"]["textContent"], "visible header boundary separates prerequisites, completion and authority")
++
++root, run = fixture("english-readiness", "23", language="en")
++html, data = rendered(root, run)
++dom = focus_dom(html)
++check("dependency-ready" in dom["elements"]["meta"]["textContent"] and "dependency-ready" in data["labels"]["legendFrontier"] and any("dependency-ready" in chip["textContent"] for chip in dom["elements"]["chips"]["children"]), "English header, legend and filter consistently say dependency-ready")
+ 
+ for name, focus, status, prerequisite, problem in (
+     ("invalid-focus", "99", "open", "resolved", "invalid"),
+@@ -158,6 +169,40 @@
+ check(data["focus"]["problem"] == "blocked" and dom["elements"]["map-overview"]["open"], "missing prerequisite keeps focus warning and map visible")
+ check(next(item["status"] for item in dom["statuses"] if item["id"] == "23") == "blocked", "full-map status does not contradict missing-prerequisite focus warning")
+ check("⛔ 缺失前置阻擋: 99" in next(item["markup"] for item in dom["dependencies"] if item["id"] == "23"), "missing prerequisite is labelled distinctly and remains blocking")
++
++# Replay immutable actual A/B inputs. A resolves the scoped discussion ticket;
++# B keeps future implementation open. Neither authorizes or completes the product.
++repro = repo / "docs/experiments/common-lab/wayfinder-regression-v0.1.3-repro"
++for arm in ("A", "B"):
++    original = repro / "before" / arm / ".common-lab/wayfinder/privacy-rollout"
++    replay = artifact_root / ("actual-" + arm)
++    shutil.copytree(original, replay)
++    output = replay / "map.after.html"
++    run = subprocess.run([sys.executable, "-B", str(renderer), str(replay), str(output), "--no-open"], capture_output=True, text=True)
++    check(run.returncode == 0, f"actual {arm}: same frozen input renders successfully")
++    html = output.read_text(encoding="utf-8")
++    data = json.loads(re.search(r"const DATA = (.*);\nconst L =", html).group(1))
++    dom = focus_dom(html)
++    check(all((replay / p.relative_to(original)).read_bytes() == p.read_bytes() for p in original.rglob("*") if p.is_file()), f"actual {arm}: no fixture truth or business state changed")
++    check("不代表產品完成或已獲執行授權" in dom["elements"]["status-boundary"]["textContent"], f"actual {arm}: status boundary remains visible even when the full map is optional")
++    if arm == "B":
++        check(next(t["status"] for t in dom["statuses"] if t["id"] == "24") == "frontier" and "1 張前置就緒" in dom["elements"]["meta"]["textContent"], "out-of-scope independent ticket remains dependency-ready without a false execution claim")
++        check(any("不在本回合授權內" in item for item in data["outOfScope"]) and "現在可處理" not in dom["elements"]["meta"]["textContent"], "out-of-scope truth is retained without inferring new permission fields")
++    else:
++        check(all(t["status"] == "resolved" for t in dom["statuses"]) and "3 張已解決" in dom["elements"]["meta"]["textContent"], "all resolved discussion tickets remain resolved without becoming a product-completion claim")
++
++# Separate proven defect: 0.1.2 accepts Status:mystery as frontier. Do not conflate
++# this data-validation guard with the terminology/authority presentation change.
++root, run = fixture("unknown-status", status="mystery")
++check(run.returncode != 0 and "WAYFINDER_UNKNOWN_TICKET_STATUS" in run.stderr and not (root / "map.html").exists(), "unknown status fails closed instead of generating a ready ticket")
++with (root / "render-run.json").open("x", encoding="utf-8") as stream:
++    json.dump({"exit_code": run.returncode, "stdout": run.stdout, "stderr": run.stderr, "independent_variable": "known-status-validation", "before_evidence": str(repro / "receipt.json")}, stream, indent=2)
++
++# Observation only: claimed remains ownership state even with unresolved deps.
++root, run = fixture("claimed-blocked-observation", "23", status="claimed", prerequisite="open")
++html, data = rendered(root, run)
++dom = focus_dom(html)
++check(next(t["status"] for t in dom["statuses"] if t["id"] == "23") == "claimed" and data["focus"]["problem"] == "blocked", "claimed-with-blocked-dependency observation is preserved, not silently redesigned")
+ 
+ atomic_target = artifact_root / "atomic-probe.html"
+ original_replace = module.os.replace

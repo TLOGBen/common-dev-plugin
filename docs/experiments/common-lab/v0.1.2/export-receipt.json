@@ -1,0 +1,120 @@
+{
+  "exported_at": "2026-09-06T03:47:40.820337+00:00",
+  "preflight": {
+    "verdict": "TARGET_MATCH",
+    "source": "/home/vakarve/projects/common-dev-plugin/plugins/common-lab",
+    "output": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.2",
+    "staging": "/tmp/common-lab-export-012-a",
+    "report_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/v0.1.2",
+    "transfer": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py",
+    "plugin": "common-lab",
+    "version": "0.1.2",
+    "interface": "/home/vakarve/projects/common-dev-plugin/codex-metadata/common-lab/plugin-interface.json",
+    "interface_sha256": "281194f94a5118c218533546827f53107ddd6f62497d186c9e255ea365731282",
+    "validator": "/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py",
+    "output_exists": false,
+    "staging_exists": false,
+    "source_files": {
+      ".claude-plugin/plugin.json": "ece707fb6f2271c5de6e5d7169850efd5bc683b93bc60df0bfde99ec19875c54",
+      "agents/lab-executor.md": "f8739a7858bbc4f57418d59ce54f28cffd24aee6fc1258ea077fa42bc8f294bd",
+      "skills/lab-better-prompts/SKILL.md": "8a9f76535e1940309770043e2ceeb73fdc906a6074d5e8e482871e5e909172a9",
+      "skills/lab-define-goal/SKILL.md": "e0e8033f92cfc32fe668b42980e1d533832a17c31ac69a3f9fd6539c0a2dcb1b",
+      "skills/lab-delegate/SKILL.md": "a2afe479bd779d1776a0057bb2fec20bd855926fa96efcd1251d5c7f8ab7b819",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "4ac05fdb6374f10284da267092deaccb646789513877170fa6e4cfc5beb7f1bb",
+      "skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+      "skills/lab-prototype/SKILL.md": "eb46e1818b25f1352a719db97d70491a1bff4e83339ebdcbb1732c95716c1e42",
+      "skills/lab-research/SKILL.md": "015008f344f711a6abae91af0f68a5807f52e7ccf558b61b822c910ec4c729e0",
+      "skills/lab-strategic-advance/SKILL.md": "e0b7e11e71c7206382b59d4475b2d687deaaf8697c3b7d6c4b76ec6afb13c277",
+      "skills/lab-strategic-advance/references/campaign.md": "12d17bbf244abd1f2f16bbe9d0aa99a92016700e8893ef3009f7510fe707c31c",
+      "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+      "skills/lab-wait-what/SKILL.md": "2151da59ef74a9c5db7cf71a8cfb9b4b37b492f86e39cff86fd1f7b73af7b494",
+      "skills/lab-wayfinder/SKILL.md": "f292c5f854e9245791cd6f0f8a180b7c29d43dcd887598ab0713d95b701ff42f",
+      "skills/lab-wayfinder/assets/map-template.html": "43f68aa3f418d2a841bec07174e84c79fde5e0ba8e4f221f73d2b3cfe974ffda",
+      "skills/lab-wayfinder/references/map-format.md": "eafe60686939c605dc8876ef8da877216aed4d5db79e2f8d9b0ca958cebf4007",
+      "skills/lab-wayfinder/scripts/render_map.py": "37653a66b9b330203a6ce3724b6f5f510f1da0d621c8b37c59a7d2ff5a1a0c47"
+    },
+    "source_sha256": "fc21fe3239264f9520b733321e70657f1741c7a801f442af44168cf872e7741d",
+    "recovery": "Existing state untouched; new staging retained for reproducibility."
+  },
+  "transfer_sha256": "571c7cdaa2ebef2bf5330da0e9a7b87155f13ca8e9e490460dc00ab9e6e62c64",
+  "source_sha256": "fc21fe3239264f9520b733321e70657f1741c7a801f442af44168cf872e7741d",
+  "output_sha256": "208261ba54fb57ddf1600c983d1e9b42613cad1d9b7682adb5f43afd6e5bd751",
+  "interface_source": "/home/vakarve/projects/common-dev-plugin/codex-metadata/common-lab/plugin-interface.json",
+  "interface_sha256": "281194f94a5118c218533546827f53107ddd6f62497d186c9e255ea365731282",
+  "output_files": {
+    ".agents/plugins/marketplace.json": "e306a4d9c08085ba2bb201e9299778692cf10cb9c361fb7f7238d9122b02bdba",
+    "plugins/common-lab/.codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+    "plugins/common-lab/.codex-plugin/plugin.json": "9b07afc9fcce95eea32fdbd19dad6dc264e61c7334c9e7f3dc88410df913f138",
+    "plugins/common-lab/skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+    "plugins/common-lab/skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+    "plugins/common-lab/skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+    "plugins/common-lab/skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+    "plugins/common-lab/skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+    "plugins/common-lab/skills/lab-grilling/SKILL.md": "182020d2197261ede6d0b360179eea8c08b2b7d81c7ca1096c50c6a337aeba58",
+    "plugins/common-lab/skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+    "plugins/common-lab/skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+    "plugins/common-lab/skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+    "plugins/common-lab/skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+    "plugins/common-lab/skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+    "plugins/common-lab/skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+    "plugins/common-lab/skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+    "plugins/common-lab/skills/lab-wayfinder/SKILL.md": "46e9403bc610f607e637d88cbf42f96927e6e147272b9e9d2a4f151eb5955eb1",
+    "plugins/common-lab/skills/lab-wayfinder/assets/map-template.html": "43f68aa3f418d2a841bec07174e84c79fde5e0ba8e4f221f73d2b3cfe974ffda",
+    "plugins/common-lab/skills/lab-wayfinder/references/map-format.md": "2d3ad4c35e0e1b669bfca95e182d1cddf6a068394e12441c21a5489e9dec0682",
+    "plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py": "37653a66b9b330203a6ce3724b6f5f510f1da0d621c8b37c59a7d2ff5a1a0c47"
+  },
+  "adapted_files": [
+    "skills/lab-delegate/SKILL.md",
+    "skills/lab-strategic-advance/SKILL.md",
+    "skills/lab-strategic-advance/references/campaign.md",
+    "skills/lab-wayfinder/SKILL.md",
+    "skills/lab-wayfinder/references/map-format.md"
+  ],
+  "checks": {
+    "skill_count": 10,
+    "explicit_only_skills": [
+      "lab-wait-what"
+    ],
+    "bundled_agent_resolver": true,
+    "unchanged_scripts_assets": [
+      "skills/lab-strategic-advance/scripts/campaign.py",
+      "skills/lab-wayfinder/scripts/render_map.py",
+      "skills/lab-wayfinder/assets/map-template.html"
+    ],
+    "plugin_validator": "Plugin validation passed: /tmp/common-lab-export-012-a/plugins/common-lab"
+  },
+  "followups": [
+    {
+      "skill": "lab-delegate",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-strategic-advance",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-strategic-advance",
+      "item": "`references/campaign.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-wayfinder",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-wayfinder",
+      "item": "`references/map-format.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    }
+  ],
+  "staging_retained": "/tmp/common-lab-export-012-a"
+}

@@ -1,0 +1,11 @@
+{
+  "status": "OUTPUT_VERIFIED_AFTER_CAPTURE_BUFFER_ERROR",
+  "process_report": "ERR_CHILD_PROCESS_STDIO_MAXBUFFER (maxBuffer=2000)",
+  "actual_receipt_present": true,
+  "actual_output_files": 20,
+  "all_output_files_match_receipt": true,
+  "source_sha256": "51de676e88d3d1d404100fbaad0cee8a4eb78f2c2c4f3b29bbc5f6297b7278b8",
+  "output_sha256": "3f64deec3e96e7923560242c6bd9af07bb9f417d05dbfa18dfad6d9680e99a9b",
+  "no_retry_or_replacement": true,
+  "meaning": "The process output capture failed after receiving its inventory. Existing complete receipt and every generated file were independently read and hashed; no assumption from process error alone."
+}

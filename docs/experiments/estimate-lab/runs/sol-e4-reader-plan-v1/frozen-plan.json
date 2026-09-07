@@ -1,0 +1,129 @@
+{
+  "design": "estimate-e4-v1",
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "human_tested": false,
+  "limits": "Eight artificial reader calls: four calibration packets plus two real E2 CSV-only and two real E2 handoff packets. No actual human or production acceptance. Truth never included in actor prompt.",
+  "rows": [
+    {
+      "label": "reader-1",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "sufficient_approved"
+    },
+    {
+      "label": "reader-2",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "pending"
+    },
+    {
+      "label": "reader-3",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/estimate-external.csv"
+      ],
+      "private_truth": "missing_csv"
+    },
+    {
+      "label": "reader-4",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "vague"
+    },
+    {
+      "label": "reader-5",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv"
+      ],
+      "task": "只讀這份真正對外五欄表格。逐列用自己的話說明範圍、主要動作、白話費用驅動及完成條件，指出哪一項無法由表格得知，附短引用。不要讀內部報告或預期答案。另區分『表格能說明工作』和『已有人核准、已實作或已驗收』；表格沒寫的狀態就說未知。",
+      "private_truth": "actual_B_csv_only"
+    },
+    {
+      "label": "reader-6",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md",
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv",
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/assessment-report.md"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "private_truth": "actual_B_preview_packet"
+    },
+    {
+      "label": "reader-7",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv"
+      ],
+      "task": "只讀這份真正對外五欄表格。逐列用自己的話說明範圍、主要動作、白話費用驅動及完成條件，指出哪一項無法由表格得知，附短引用。不要讀內部報告或預期答案。另區分『表格能說明工作』和『已有人核准、已實作或已驗收』；表格沒寫的狀態就說未知。",
+      "private_truth": "actual_A_csv_only"
+    },
+    {
+      "label": "reader-8",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/handoff.md",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/handoff.md",
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv",
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/assessment-report.md"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "private_truth": "actual_A_preview_packet"
+    }
+  ],
+  "input_sha256": {
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/handoff.md": "f2e73dd6028d971ff817d540940a7d4c47d65bd31de0a8283034775faa12875a",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/estimate-external.csv": "1c0b9b159f54b565c8fd00782f19a6a952206ded0651b924a2b3c4e73eb8fb4f",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/assessment-report.md": "c6285c4d3ae4a36acfc350281029d5ce20dd6d0a05dfc727e5f6e64523ece7ac",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/synthetic-decision-record.json": "39ab95a7a462a7c70df7f12bf5e77c2c4102fec995537d6e3af60760127ed6ca",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/handoff.md": "b7f47a6e620019797a59b5ddc2e29a7fc64d3ae7eebf7c4ca12114dd87fef40c",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/estimate-external.csv": "1c0b9b159f54b565c8fd00782f19a6a952206ded0651b924a2b3c4e73eb8fb4f",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/assessment-report.md": "c6285c4d3ae4a36acfc350281029d5ce20dd6d0a05dfc727e5f6e64523ece7ac",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/synthetic-decision-record.json": "2fbd7a99eabbf506e4177adf73c4c8139656f9e57d1511db2525e4c9e1533046",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/handoff.md": "f2e73dd6028d971ff817d540940a7d4c47d65bd31de0a8283034775faa12875a",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/estimate-external.csv": null,
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/assessment-report.md": "c6285c4d3ae4a36acfc350281029d5ce20dd6d0a05dfc727e5f6e64523ece7ac",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/synthetic-decision-record.json": "39ab95a7a462a7c70df7f12bf5e77c2c4102fec995537d6e3af60760127ed6ca",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/handoff.md": "f2e73dd6028d971ff817d540940a7d4c47d65bd31de0a8283034775faa12875a",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/estimate-external.csv": "79050c5e23a428cb6d708315d30ee4db05cce7cb3dd1b66e0dfc67ab2b6f6b53",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/assessment-report.md": "20fcb16a005fa45321158a9cb291a5ef509b8d65373c63511781093d2ba760f1",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/synthetic-decision-record.json": "39ab95a7a462a7c70df7f12bf5e77c2c4102fec995537d6e3af60760127ed6ca",
+    "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv": "8f0f4c36654277ce714f61d434573f2b42d8466d534eb6d0eaeba590b4ada61b",
+    "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md": "14120d5a71fa0aa052b824405c2847e7aed92c52d9b3fe73482a3fbd5cc8fae5",
+    "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/assessment-report.md": "3c11e430d7a3009bc6400ac64eff5cceb6793ecd478a176bdd463589e4496a9c",
+    "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv": "c5e8a7a1e730c8a85e48cbabeda8c75ee12acfaae24bf1181829e720ba1d0796",
+    "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/handoff.md": "1b4958d29040d30e1f2500f33b0a5217ee67ea8e3e62196188fe197d5747c0c3",
+    "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/assessment-report.md": "b88437d3c877e9ed196006f8e4151ecfcf15dcb424b9e5f03b17d47d177ca7c1"
+  },
+  "runner_sha256": "6a1028fae8d20e94ef255cbb0ddbd113d43b8361bf68ab5ca21478273aa49122",
+  "created_utc": "2026-09-06T05:53:31.052298+00:00"
+}

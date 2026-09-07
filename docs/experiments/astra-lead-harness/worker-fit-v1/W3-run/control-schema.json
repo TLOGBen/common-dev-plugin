@@ -1,0 +1,49 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "action",
+    "requests",
+    "message"
+  ],
+  "properties": {
+    "action": {
+      "type": "string",
+      "enum": [
+        "dispatch",
+        "continue",
+        "final",
+        "human"
+      ]
+    },
+    "message": {
+      "type": "string"
+    },
+    "requests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "role",
+          "brief",
+          "write_paths"
+        ],
+        "properties": {
+          "role": {
+            "type": "string"
+          },
+          "brief": {
+            "type": "string"
+          },
+          "write_paths": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
+}

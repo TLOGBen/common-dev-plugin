@@ -1,0 +1,62 @@
+{
+  "case_id": "strategic-advance-original",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:04:10.878961+00:00",
+  "ended_utc": "2026-09-06T03:04:42.353510+00:00",
+  "wall_seconds": 31.474,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-advance-original-kkckcxxc",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "99da97ad7271330f98de24b01de95530ffffd88ca38f40671db20a0a6dd845c9",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-advance-original-kkckcxxc",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定技能，依你提供的固定證據判斷完成程度與擬議下一步；僅作模擬說明。\n",
+    "**已確認受理與下游送達，但「只送出一次」仍缺證據，因此尚不能宣告全部完成。**\n\n- **受理成功：**DB 成功 receipt 與 `Accepted` 支持。\n- **下游送達：**`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42` 支持。\n- **僅送出一次：**仍待核對；一筆成功 receipt 不能證明沒有其他送出或重複交付紀錄。\n\n**不需要停下再問你。**目標、驗收方式及禁止重送的界線都已清楚；截圖不可用也不再阻礙驗收。\n\n擬議下一步是針對 `REQ-42` 做最小範圍的唯讀對帳，核對完整送出紀錄與下游接收紀錄，確認查詢涵蓋範圍、分頁完整性及是否存在重複。取得結果後，再判定「僅送出一次」是否有充分證據；若資料不足，就明確保留此缺口，不重送。\n\n驗收證據擬保留為一份可追溯的證據包，包含：\n\n- DB receipt 原始內容與 `Accepted` 查詢結果。\n- 下游原始回應：`REQ-42 / Delivered / D-42`。\n- 唯一性對帳的查詢條件、涵蓋範圍、完整結果及判定依據。\n- 各項驗收條件對應的證據來源；註明截圖不可用，但已接受 receipt 作為驗收證據。\n\n以上僅為模擬判斷與保存方案，未執行查詢、寫檔或再次送出。"
+  ],
+  "final_message": "**已確認受理與下游送達，但「只送出一次」仍缺證據，因此尚不能宣告全部完成。**\n\n- **受理成功：**DB 成功 receipt 與 `Accepted` 支持。\n- **下游送達：**`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42` 支持。\n- **僅送出一次：**仍待核對；一筆成功 receipt 不能證明沒有其他送出或重複交付紀錄。\n\n**不需要停下再問你。**目標、驗收方式及禁止重送的界線都已清楚；截圖不可用也不再阻礙驗收。\n\n擬議下一步是針對 `REQ-42` 做最小範圍的唯讀對帳，核對完整送出紀錄與下游接收紀錄，確認查詢涵蓋範圍、分頁完整性及是否存在重複。取得結果後，再判定「僅送出一次」是否有充分證據；若資料不足，就明確保留此缺口，不重送。\n\n驗收證據擬保留為一份可追溯的證據包，包含：\n\n- DB receipt 原始內容與 `Accepted` 查詢結果。\n- 下游原始回應：`REQ-42 / Delivered / D-42`。\n- 唯一性對帳的查詢條件、涵蓋範圍、完整結果及判定依據。\n- 各項驗收條件對應的證據來源；註明截圖不可用，但已接受 receipt 作為驗收證據。\n\n以上僅為模擬判斷與保存方案，未執行查詢、寫檔或再次送出。",
+  "usage": {
+    "input_tokens": 33043,
+    "cached_input_tokens": 27392,
+    "output_tokens": 693,
+    "uncached_input_tokens": 5651,
+    "total_tokens": 33736
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

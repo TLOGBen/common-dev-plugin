@@ -1,0 +1,619 @@
+{
+  "label": "W3",
+  "case": "event-projection",
+  "arm": "lab",
+  "episode_status": "lead_finished",
+  "product": {
+    "passed": true,
+    "checks": {
+      "empty": true,
+      "snapshot_only": true,
+      "unknown_not_created_from_events": true,
+      "arrival_permutation_0": true,
+      "arrival_permutation_1": true,
+      "arrival_permutation_2": true,
+      "arrival_permutation_3": true,
+      "arrival_permutation_4": true,
+      "arrival_permutation_5": true,
+      "semantic_replay_extra_metadata": true,
+      "history_not_applied": true,
+      "gap_after_prefix": true,
+      "gap_at_start": true,
+      "huge_revision_no_enumeration": true,
+      "multiple_and_sorted_unique_requests": true,
+      "unrequested_replay_counted": true,
+      "empty_request_still_counts": true,
+      "nested_input_preserved": true,
+      "identity_payload_conflict": true,
+      "identity_account_conflict": true,
+      "identity_revision_conflict": true,
+      "revision_conflict_same_delta": true,
+      "history_conflict_not_ignored": true,
+      "unknown_conflict_not_ignored": true,
+      "duplicate_snapshot": true,
+      "parameter_must_be_list_0": true,
+      "parameter_must_be_list_1": true,
+      "parameter_must_be_list_2": true,
+      "invalid_snapshot_account_id_''": true,
+      "invalid_snapshot_account_id_0": true,
+      "invalid_snapshot_revision_-1": true,
+      "invalid_snapshot_revision_True": true,
+      "invalid_snapshot_balance_False": true,
+      "invalid_snapshot_balance_2.5": true,
+      "invalid_event_event_id_''": true,
+      "invalid_event_event_id_None": true,
+      "invalid_event_account_id_''": true,
+      "invalid_event_revision_0": true,
+      "invalid_event_revision_True": true,
+      "invalid_event_delta_False": true,
+      "invalid_event_delta_'2'": true,
+      "invalid_request_''": true,
+      "invalid_request_0": true,
+      "invalid_request_None": true,
+      "missing_event_event_id": true,
+      "missing_event_account_id": true,
+      "missing_event_revision": true,
+      "missing_event_delta": true,
+      "missing_snapshot_account_id": true,
+      "missing_snapshot_revision": true,
+      "missing_snapshot_balance": true,
+      "snapshot_not_mapping": true,
+      "event_not_mapping": true,
+      "verifier_left_fixture_unchanged": true
+    },
+    "observations": [
+      {
+        "inputs_unchanged": true,
+        "name": "empty",
+        "value": {
+          "accounts": [],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "snapshot_only",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 30,
+              "first_missing_revision": null,
+              "revision": 4,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "unknown_not_created_from_events",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "Z",
+              "balance": null,
+              "first_missing_revision": null,
+              "revision": null,
+              "status": "missing"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_0",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_1",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_2",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_3",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_4",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "arrival_permutation_5",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 36,
+              "first_missing_revision": null,
+              "revision": 7,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "semantic_replay_extra_metadata",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 23,
+              "first_missing_revision": null,
+              "revision": 6,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 2
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "history_not_applied",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 32,
+              "first_missing_revision": null,
+              "revision": 5,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "gap_after_prefix",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": null,
+              "first_missing_revision": 6,
+              "revision": 5,
+              "status": "incomplete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "gap_at_start",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": null,
+              "first_missing_revision": 5,
+              "revision": 4,
+              "status": "incomplete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "huge_revision_no_enumeration",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": null,
+              "first_missing_revision": 5,
+              "revision": 4,
+              "status": "incomplete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "multiple_and_sorted_unique_requests",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 39,
+              "first_missing_revision": null,
+              "revision": 5,
+              "status": "complete"
+            },
+            {
+              "account_id": "B",
+              "balance": null,
+              "first_missing_revision": null,
+              "revision": null,
+              "status": "missing"
+            },
+            {
+              "account_id": "Z",
+              "balance": -12,
+              "first_missing_revision": null,
+              "revision": 1,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "unrequested_replay_counted",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 30,
+              "first_missing_revision": null,
+              "revision": 4,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 1
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "empty_request_still_counts",
+        "value": {
+          "accounts": [],
+          "duplicates_ignored": 1
+        }
+      },
+      {
+        "inputs_unchanged": true,
+        "name": "nested_input_preserved",
+        "value": {
+          "accounts": [
+            {
+              "account_id": "A",
+              "balance": 31,
+              "first_missing_revision": null,
+              "revision": 5,
+              "status": "complete"
+            }
+          ],
+          "duplicates_ignored": 0
+        }
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting event_id: e",
+        "name": "identity_payload_conflict"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting event_id: e",
+        "name": "identity_account_conflict"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting event_id: e",
+        "name": "identity_revision_conflict"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting events at account revision: A, 5",
+        "name": "revision_conflict_same_delta"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting events at account revision: A, 1",
+        "name": "history_conflict_not_ignored"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "conflicting events at account revision: U, 1",
+        "name": "unknown_conflict_not_ignored"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "duplicate snapshot account_id: A",
+        "name": "duplicate_snapshot"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots must be a list",
+        "name": "parameter_must_be_list_0"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events must be a list",
+        "name": "parameter_must_be_list_1"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "requested_ids must be a list",
+        "name": "parameter_must_be_list_2"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].account_id must be a non-empty string",
+        "name": "invalid_snapshot_account_id_''"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].account_id must be a non-empty string",
+        "name": "invalid_snapshot_account_id_0"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].revision is below its minimum",
+        "name": "invalid_snapshot_revision_-1"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].revision must be an integer",
+        "name": "invalid_snapshot_revision_True"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].balance must be an integer",
+        "name": "invalid_snapshot_balance_False"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0].balance must be an integer",
+        "name": "invalid_snapshot_balance_2.5"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].event_id must be a non-empty string",
+        "name": "invalid_event_event_id_''"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].event_id must be a non-empty string",
+        "name": "invalid_event_event_id_None"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].account_id must be a non-empty string",
+        "name": "invalid_event_account_id_''"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].revision is below its minimum",
+        "name": "invalid_event_revision_0"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].revision must be an integer",
+        "name": "invalid_event_revision_True"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].delta must be an integer",
+        "name": "invalid_event_delta_False"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0].delta must be an integer",
+        "name": "invalid_event_delta_'2'"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "requested_ids[0] must be a non-empty string",
+        "name": "invalid_request_''"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "requested_ids[0] must be a non-empty string",
+        "name": "invalid_request_0"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "requested_ids[0] must be a non-empty string",
+        "name": "invalid_request_None"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0] is missing event_id",
+        "name": "missing_event_event_id"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0] is missing account_id",
+        "name": "missing_event_account_id"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0] is missing revision",
+        "name": "missing_event_revision"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0] is missing delta",
+        "name": "missing_event_delta"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0] is missing account_id",
+        "name": "missing_snapshot_account_id"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0] is missing revision",
+        "name": "missing_snapshot_revision"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0] is missing balance",
+        "name": "missing_snapshot_balance"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "snapshots[0] must be a mapping",
+        "name": "snapshot_not_mapping"
+      },
+      {
+        "error": "ValueError",
+        "inputs_unchanged": true,
+        "message": "events[0] must be a mapping",
+        "name": "event_not_mapping"
+      }
+    ],
+    "execution": {
+      "exit_code": 0,
+      "stdout": "[{\"inputs_unchanged\": true, \"name\": \"empty\", \"value\": {\"accounts\": [], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"snapshot_only\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 30, \"first_missing_revision\": null, \"revision\": 4, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"unknown_not_created_from_events\", \"value\": {\"accounts\": [{\"account_id\": \"Z\", \"balance\": null, \"first_missing_revision\": null, \"revision\": null, \"status\": \"missing\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_0\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_1\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_2\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_3\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_4\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"arrival_permutation_5\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 36, \"first_missing_revision\": null, \"revision\": 7, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"semantic_replay_extra_metadata\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 23, \"first_missing_revision\": null, \"revision\": 6, \"status\": \"complete\"}], \"duplicates_ignored\": 2}}, {\"inputs_unchanged\": true, \"name\": \"history_not_applied\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 32, \"first_missing_revision\": null, \"revision\": 5, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"gap_after_prefix\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": null, \"first_missing_revision\": 6, \"revision\": 5, \"status\": \"incomplete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"gap_at_start\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": null, \"first_missing_revision\": 5, \"revision\": 4, \"status\": \"incomplete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"huge_revision_no_enumeration\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": null, \"first_missing_revision\": 5, \"revision\": 4, \"status\": \"incomplete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"multiple_and_sorted_unique_requests\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 39, \"first_missing_revision\": null, \"revision\": 5, \"status\": \"complete\"}, {\"account_id\": \"B\", \"balance\": null, \"first_missing_revision\": null, \"revision\": null, \"status\": \"missing\"}, {\"account_id\": \"Z\", \"balance\": -12, \"first_missing_revision\": null, \"revision\": 1, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"inputs_unchanged\": true, \"name\": \"unrequested_replay_counted\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 30, \"first_missing_revision\": null, \"revision\": 4, \"status\": \"complete\"}], \"duplicates_ignored\": 1}}, {\"inputs_unchanged\": true, \"name\": \"empty_request_still_counts\", \"value\": {\"accounts\": [], \"duplicates_ignored\": 1}}, {\"inputs_unchanged\": true, \"name\": \"nested_input_preserved\", \"value\": {\"accounts\": [{\"account_id\": \"A\", \"balance\": 31, \"first_missing_revision\": null, \"revision\": 5, \"status\": \"complete\"}], \"duplicates_ignored\": 0}}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting event_id: e\", \"name\": \"identity_payload_conflict\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting event_id: e\", \"name\": \"identity_account_conflict\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting event_id: e\", \"name\": \"identity_revision_conflict\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting events at account revision: A, 5\", \"name\": \"revision_conflict_same_delta\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting events at account revision: A, 1\", \"name\": \"history_conflict_not_ignored\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"conflicting events at account revision: U, 1\", \"name\": \"unknown_conflict_not_ignored\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"duplicate snapshot account_id: A\", \"name\": \"duplicate_snapshot\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots must be a list\", \"name\": \"parameter_must_be_list_0\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events must be a list\", \"name\": \"parameter_must_be_list_1\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"requested_ids must be a list\", \"name\": \"parameter_must_be_list_2\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].account_id must be a non-empty string\", \"name\": \"invalid_snapshot_account_id_''\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].account_id must be a non-empty string\", \"name\": \"invalid_snapshot_account_id_0\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].revision is below its minimum\", \"name\": \"invalid_snapshot_revision_-1\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].revision must be an integer\", \"name\": \"invalid_snapshot_revision_True\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].balance must be an integer\", \"name\": \"invalid_snapshot_balance_False\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0].balance must be an integer\", \"name\": \"invalid_snapshot_balance_2.5\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].event_id must be a non-empty string\", \"name\": \"invalid_event_event_id_''\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].event_id must be a non-empty string\", \"name\": \"invalid_event_event_id_None\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].account_id must be a non-empty string\", \"name\": \"invalid_event_account_id_''\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].revision is below its minimum\", \"name\": \"invalid_event_revision_0\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].revision must be an integer\", \"name\": \"invalid_event_revision_True\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].delta must be an integer\", \"name\": \"invalid_event_delta_False\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0].delta must be an integer\", \"name\": \"invalid_event_delta_'2'\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"requested_ids[0] must be a non-empty string\", \"name\": \"invalid_request_''\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"requested_ids[0] must be a non-empty string\", \"name\": \"invalid_request_0\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"requested_ids[0] must be a non-empty string\", \"name\": \"invalid_request_None\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0] is missing event_id\", \"name\": \"missing_event_event_id\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0] is missing account_id\", \"name\": \"missing_event_account_id\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0] is missing revision\", \"name\": \"missing_event_revision\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0] is missing delta\", \"name\": \"missing_event_delta\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0] is missing account_id\", \"name\": \"missing_snapshot_account_id\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0] is missing revision\", \"name\": \"missing_snapshot_revision\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0] is missing balance\", \"name\": \"missing_snapshot_balance\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"snapshots[0] must be a mapping\", \"name\": \"snapshot_not_mapping\"}, {\"error\": \"ValueError\", \"inputs_unchanged\": true, \"message\": \"events[0] must be a mapping\", \"name\": \"event_not_mapping\"}]\n",
+      "stderr": ""
+    },
+    "fixture_before": {
+      "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+      "src/normalization.py": "9a30cb786beca850c456fc868c08b96d23ae686f073d175772d249b014c54adb",
+      "src/projector.py": "5bdbd789354a24e0dd6be3be0537d0b0ffaca9a36b6f31161a4b8fe184c85ce1",
+      "tests/test_projector.py": "8b59a89252fa36ded25a3c052d4ce933e89303f4da9bc5c036edf1d2076584ef"
+    },
+    "fixture_after": {
+      "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+      "src/normalization.py": "9a30cb786beca850c456fc868c08b96d23ae686f073d175772d249b014c54adb",
+      "src/projector.py": "5bdbd789354a24e0dd6be3be0537d0b0ffaca9a36b6f31161a4b8fe184c85ce1",
+      "tests/test_projector.py": "8b59a89252fa36ded25a3c052d4ce933e89303f4da9bc5c036edf1d2076584ef"
+    },
+    "model_calls": 0,
+    "limits": "Synthetic pure-function contract only; no internal key-order or object-identity requirement."
+  },
+  "role_write_envelopes_preserved": true,
+  "worker_dispatched": true,
+  "lead_returned": true,
+  "profile_choices": [
+    {
+      "call_number": 2,
+      "role": "implementation",
+      "profile": "luna-high",
+      "requested_model": "gpt-5.6-luna",
+      "requested_effort": "high"
+    },
+    {
+      "call_number": 4,
+      "role": "implementation",
+      "profile": "luna-high",
+      "requested_model": "gpt-5.6-luna",
+      "requested_effort": "high"
+    }
+  ],
+  "lead_handoff": "TASK.md 已完成並通過主手驗收。實作支援全量驗證、重送計數、全域衝突檢查、亂序投影與缺口處理，且不修改輸入；改動限於 src/、tests/。\n\n驗證：完整 unittest 12 項全部通過；另有 1,279 次獨立檢查通過，涵蓋生成案例排列、無效輸入、不變性及巨大 revision 缺口。\n\n實作使用 gpt-5.6-luna／high，共兩次 worker 呼叫（含一次測試補強）；主手負責檢查與驗收，未修改產品。無已知未完成項目。未取得實際費用，無法量化包含監督與返工的總成本或節省。",
+  "lead_acceptance_review": "REQUIRES_MAIN_RAW_TRACE_REVIEW",
+  "human_comprehension": null,
+  "model_calls": 0,
+  "actual_cost_usd": null,
+  "fixture_before": {
+    "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "src/normalization.py": "9a30cb786beca850c456fc868c08b96d23ae686f073d175772d249b014c54adb",
+    "src/projector.py": "5bdbd789354a24e0dd6be3be0537d0b0ffaca9a36b6f31161a4b8fe184c85ce1",
+    "tests/test_projector.py": "8b59a89252fa36ded25a3c052d4ce933e89303f4da9bc5c036edf1d2076584ef"
+  },
+  "fixture_after": {
+    "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "src/normalization.py": "9a30cb786beca850c456fc868c08b96d23ae686f073d175772d249b014c54adb",
+    "src/projector.py": "5bdbd789354a24e0dd6be3be0537d0b0ffaca9a36b6f31161a4b8fe184c85ce1",
+    "tests/test_projector.py": "8b59a89252fa36ded25a3c052d4ce933e89303f4da9bc5c036edf1d2076584ef"
+  },
+  "limits": "Behavioral contract on a synthetic task. Completion needs main raw scope/acceptance review; no general model ranking or human satisfaction measured."
+}

@@ -1,0 +1,84 @@
+{
+  "kind": "lead_actual_file_reader_review",
+  "reviewed_at_utc": "2026-09-06T06:07:34Z",
+  "summary_sha256": "befcdcf8ff80f08718af22e07c45364e5f5924df3fffe5335ff24be13586998c",
+  "results": [
+    {
+      "reader": "reader-1",
+      "availability": "4/4 readable",
+      "explanation": "basic_scope_method_cost_and_acceptance_recovered",
+      "approval": "synthetic_approved_only",
+      "business_or_human_completion": "not_established"
+    },
+    {
+      "reader": "reader-2",
+      "availability": "4/4 readable",
+      "explanation": "basic_scope_method_cost_and_acceptance_recovered",
+      "approval": "pending",
+      "business_or_human_completion": "not_established"
+    },
+    {
+      "reader": "reader-3",
+      "availability": "3/4 readable; expected CSV missing",
+      "explanation": "CSV_not_assessable; available_report_partial",
+      "approval": "synthetic_approved_only",
+      "business_or_human_completion": "not_established"
+    },
+    {
+      "reader": "reader-4",
+      "availability": "4/4 readable",
+      "explanation": "vague_actions_cost_basis_and_acceptance_correctly_rejected",
+      "approval": "synthetic_approved_only",
+      "business_or_human_completion": "not_established"
+    },
+    {
+      "reader": "reader-5",
+      "availability": "1/1 actual_B_CSV",
+      "explanation": "all_four_rows_scope_actions_cost_driver_completion_recovered",
+      "approval": "unknown_from_CSV",
+      "business_or_human_completion": "unknown_from_CSV"
+    },
+    {
+      "reader": "reader-6",
+      "availability": "3/3 actual_B_packet",
+      "explanation": "preview_work_and_limits_recovered",
+      "approval": "not_approved_in_packet",
+      "business_or_human_completion": "implementation_not_done; human_understanding_unknown"
+    },
+    {
+      "reader": "reader-7",
+      "availability": "1/1 actual_A_CSV",
+      "explanation": "all_four_rows_scope_actions_cost_driver_completion_recovered",
+      "approval": "unknown_from_CSV",
+      "business_or_human_completion": "unknown_from_CSV"
+    },
+    {
+      "reader": "reader-8",
+      "availability": "3/3 actual_A_packet",
+      "explanation": "preview_work_and_limits_recovered",
+      "approval": "not_approved_in_packet",
+      "business_or_human_completion": "implementation_not_done; human_understanding_unknown"
+    }
+  ],
+  "trace_review": "All eight read commands confined to allowed artifact paths; reader-2/8 additionally queried clock. Missing CSV produced exit 2 and was not created. No source/answer-key/network/delegation/mutation call observed.",
+  "measured": {
+    "actual_calls": 8,
+    "completed_calls": 8,
+    "elapsed_wall_seconds": 522.238,
+    "input_tokens": 341027,
+    "cached_input_tokens": 271744,
+    "output_tokens": 22540,
+    "total_tokens": 363567,
+    "actual_cost_usd": null
+  },
+  "artifact_drift": false,
+  "actual_human_understanding": null,
+  "limits": [
+    "Prompt-scoped reads, not access-control isolation; no human participants.",
+    "The control labelled sufficient_approved represents a sufficiently explained synthetic document, not a real human-approved business delivery. No positive real-human-completion control exists.",
+    "Packet prompt asks about an approved customer-facing assessment, which is stricter than E2's requested high-only preview. Do not regrade successful E2 preview delivery as failure.",
+    "Some readers list downstream implementation, low/baseline or scheduling gaps. Those observations do not make them requirements for the requested preview.",
+    "Reader-8 can parse raw Markdown semantically despite the original report table-rendering defect; proxy fluency is not layout verification.",
+    "No measured time-to-understanding, mandatory human turns or model ranking; one sample per reader condition."
+  ]
+}

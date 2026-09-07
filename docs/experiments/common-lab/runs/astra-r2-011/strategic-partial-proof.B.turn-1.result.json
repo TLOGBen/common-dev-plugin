@@ -1,0 +1,62 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:05:25.452537+00:00",
+  "ended_utc": "2026-09-06T03:05:58.694981+00:00",
+  "wall_seconds": 33.243,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "b398faa551cd3e16877ade66afcefb69a14450a966a29ce9e1fe888b097c68a1",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定技能，依情境提出模擬回覆與下一步行動描述。\n",
+    "主攻 **MAIL-7 的唯讀對帳**，補齊三項目標的證據。寄送結果未明，重寄可能造成重複；縮圖故障則可先用原始紀錄讀回處理，無須重寫系統。\n\n目前判定：\n\n- **只寄出一封：未證實。** 已授權一次不等於實際只寄一次；`Accepted` 也不能排除重複寄送。\n- **收件方收到：未證實。** `Accepted` 只支持系統接受了請求，不能替代收件方 receipt。\n- **證據可讀回：未證實。** 縮圖失敗不代表原始證據不可讀，需檢查原始回應或文字紀錄。\n\n**擬議下一步**：以 `message_id=MAIL-7` 串起寄件資料庫、服務商紀錄及收件方 receipt，核對收件方與郵件識別；同時查閱涵蓋完整寄送流程的嘗試、重試及實際出件紀錄，確認是否存在重複。證據優先以原始 JSON／文字讀回，核對內容與識別是否一致。\n\n預期取得可讀回的收件證據，以及足以判定實際寄送次數的完整紀錄。對帳結果就是重新判斷點：**即使找到一份 receipt，也只能支持收到，不能直接證明只寄一封。** 若紀錄不完整，保留該項未證實，明確指出缺少哪一端的證據；結果釐清前不重寄，原授權也不視為額外寄送許可。\n\n以上僅為模擬回覆與行動提案，未執行查詢、寄送或修改。"
+  ],
+  "final_message": "主攻 **MAIL-7 的唯讀對帳**，補齊三項目標的證據。寄送結果未明，重寄可能造成重複；縮圖故障則可先用原始紀錄讀回處理，無須重寫系統。\n\n目前判定：\n\n- **只寄出一封：未證實。** 已授權一次不等於實際只寄一次；`Accepted` 也不能排除重複寄送。\n- **收件方收到：未證實。** `Accepted` 只支持系統接受了請求，不能替代收件方 receipt。\n- **證據可讀回：未證實。** 縮圖失敗不代表原始證據不可讀，需檢查原始回應或文字紀錄。\n\n**擬議下一步**：以 `message_id=MAIL-7` 串起寄件資料庫、服務商紀錄及收件方 receipt，核對收件方與郵件識別；同時查閱涵蓋完整寄送流程的嘗試、重試及實際出件紀錄，確認是否存在重複。證據優先以原始 JSON／文字讀回，核對內容與識別是否一致。\n\n預期取得可讀回的收件證據，以及足以判定實際寄送次數的完整紀錄。對帳結果就是重新判斷點：**即使找到一份 receipt，也只能支持收到，不能直接證明只寄一封。** 若紀錄不完整，保留該項未證實，明確指出缺少哪一端的證據；結果釐清前不重寄，原授權也不視為額外寄送許可。\n\n以上僅為模擬回覆與行動提案，未執行查詢、寄送或修改。",
+  "usage": {
+    "input_tokens": 32074,
+    "cached_input_tokens": 27008,
+    "output_tokens": 653,
+    "uncached_input_tokens": 5066,
+    "total_tokens": 32727
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

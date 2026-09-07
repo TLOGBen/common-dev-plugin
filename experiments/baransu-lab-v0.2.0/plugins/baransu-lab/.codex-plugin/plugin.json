@@ -1,0 +1,31 @@
+{
+  "name": "baransu-lab",
+  "version": "0.2.0",
+  "description": "Opt-in guidance-first decisions and durable acceptance with independent, impact-bounded verification. Traditional Chinese handoffs.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Baransu Lab",
+    "shortDescription": "落檔鎖定成果，按實際影響分配驗證",
+    "longDescription": "四個獨立實驗技能沿用同一份持久驗收記錄。按失敗影響安排有限的獨立驗證，未完成不算通過；不因形式或模型名稱無限加測。實驗收據不取代穩定 Baransu 的封緘標記或 Stop hook。",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 $lab-think 幫我釐清尚未決定的方向。",
+      "用 $lab-contract 釘清這個變更的驗收條件。",
+      "用 $lab-review 只讀檢視這份工件，不要修改。"
+    ]
+  },
+  "author": {
+    "name": "ben.tsai"
+  },
+  "keywords": [
+    "experimental",
+    "acceptance",
+    "independent-review",
+    "decision"
+  ]
+}

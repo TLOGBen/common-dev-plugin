@@ -1,0 +1,1024 @@
+{
+  "target": "/home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py",
+  "target_sha256": "c1e6a3637fe312625bdce921fc1cb2b4b4659eeeccad254df4348bb0d401217c",
+  "started_at": "2026-09-06T23:52:49.663627+00:00",
+  "ended_at": "2026-09-06T23:53:01.399810+00:00",
+  "tokens": null,
+  "tokens_reason": "Runtime token telemetry is not exposed to this probe",
+  "model": null,
+  "model_reason": "No actual per-run model telemetry exposed to this probe",
+  "cost": null,
+  "cost_reason": "Runtime cost telemetry is not exposed to this probe",
+  "results": [
+    {
+      "label": "valid-continue/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json\",\n  \"sha256\": \"d4f058fc3fb614f96ccc9b35603eb03f0cf481cfcb4cd76c243ac989d9fd22e2\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "valid-continue/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json --purpose continue",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"continue\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "valid-complete/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/packet.json\",\n  \"sha256\": \"46718dccdbd0cf447b69391cc38e4dd0ab2634b654c075f2b1aded917856c2cd\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "valid-complete/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-complete/decision.json --purpose complete",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"complete\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-unmet/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/packet.json\",\n  \"sha256\": \"a600e031936ad77d797ca63cbac06a5e82c2c2df48492e2d51be9cb2a570e2d0\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-unmet/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unmet/decision.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Completion criteria unmet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-pending/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/packet.json\",\n  \"sha256\": \"f34d73956c27116b32d2b8762d43330c46a636de6598923c5d98f6f2f20da29b\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-pending/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-pending/decision.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unresolved operation\n",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-unknown/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/packet.json\",\n  \"sha256\": \"38e50252025e88489502241f0a236ec52d1957f6a9b52747fb1efde84d509bba\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-unknown/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-unknown/decision.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unresolved operation\n",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-failed-reconciled/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/packet.json\",\n  \"sha256\": \"38757654c43be3036288ec9f82cdc284d969427f0431f8d05392c4a5498cb5c3\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-failed-reconciled/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-failed-reconciled/decision.json --purpose complete",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"complete\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-succeeded/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/packet.json\",\n  \"sha256\": \"702e7b477babb1f6314a46efe80f4d9a9eeb66741770eaf643f6e5acccd42ede\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "complete-succeeded/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/complete-succeeded/decision.json --purpose complete",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"complete\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "stale-accepted/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/packet.json\",\n  \"sha256\": \"0c050bc5455a3b9020490622e82eda70c4d82761cc1eb562361f22e5f2c83aaf\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "stale-accepted/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Evidence changed: /tmp/lab020-guard-probe-v2-hf0HJ94W/stale-accepted/accepted.txt\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-completed/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-completed/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-completed/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-completed/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-completed/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Completed campaign is immutable\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-lead-as-worker/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-lead-as-worker/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-lead-as-worker/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-lead-as-worker/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-lead-as-worker/packet.json --worker lead-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Lead cannot be the implementation worker\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-empty-worker/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-empty-worker/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-empty-worker/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-empty-worker/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-empty-worker/packet.json --worker ' '",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing context identity\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-expired/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-expired/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-expired/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-expired/raw.txt --lead lead-A --expires 2026-09-06T23:52:48.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-expired/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Packet must expire in the future\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-missing-source/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-missing-source/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-missing-source/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-missing-source/absent.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-missing-source/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: [Errno 2] No such file or directory: '/tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-missing-source/absent.txt'\n",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-refuses-existing/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/packet.json\",\n  \"sha256\": \"eaddf2009a40acd6297cdf05cc8409616d0f7f09fbfcf50bfe68f7b58f12eb93\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "prepare-refuses-existing/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/prepare-refuses-existing/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Refusing to replace a packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "decision-guards/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json\",\n  \"sha256\": \"130bc8fe560a10b8cfb6619c3dcbd656ded6296019ec91d198d068631ef114c9\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "reviewer-lead",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/reviewer-lead.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reviewer context is not independent\n",
+      "expectation_met": true
+    },
+    {
+      "label": "reviewer-worker",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/reviewer-worker.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reviewer context is not independent\n",
+      "expectation_met": true
+    },
+    {
+      "label": "reviewer-empty",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/reviewer-empty.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing reviewer_context\n",
+      "expectation_met": true
+    },
+    {
+      "label": "wrong-packet",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/wrong-packet.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Decision belongs to another packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "no-sources-inspected",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/no-sources-inspected.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Decision must cite inspected packet sources, not only lead narrative\n",
+      "expectation_met": true
+    },
+    {
+      "label": "unlisted-source",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/unlisted-source.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Decision must cite inspected packet sources, not only lead narrative\n",
+      "expectation_met": true
+    },
+    {
+      "label": "empty-evidence-paths",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/empty-evidence-paths.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Inspected evidence paths required\n",
+      "expectation_met": true
+    },
+    {
+      "label": "invalid-evidence-path-type",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/invalid-evidence-path-type.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Inspected evidence paths required\n",
+      "expectation_met": true
+    },
+    {
+      "label": "empty-reason",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/empty-reason.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing reason\n",
+      "expectation_met": true
+    },
+    {
+      "label": "empty-next-action",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/empty-next-action.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing next_action\n",
+      "expectation_met": true
+    },
+    {
+      "label": "empty-moe",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/empty-moe.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing observed_moe\n",
+      "expectation_met": true
+    },
+    {
+      "label": "empty-mop",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/empty-mop.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Missing observed_mop\n",
+      "expectation_met": true
+    },
+    {
+      "label": "hold-verdict",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/hold-verdict.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Calibration does not permit continue\n",
+      "expectation_met": true
+    },
+    {
+      "label": "replan-verdict",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/replan-verdict.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Calibration does not permit continue\n",
+      "expectation_met": true
+    },
+    {
+      "label": "unknown-verdict",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/unknown-verdict.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Calibration does not permit continue\n",
+      "expectation_met": true
+    },
+    {
+      "label": "wrong-purpose-verdict",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/wrong-purpose-verdict.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Calibration does not permit continue\n",
+      "expectation_met": true
+    },
+    {
+      "label": "unsupported-schema",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/unsupported-schema.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported decision\n",
+      "expectation_met": true
+    },
+    {
+      "label": "continue-for-complete",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/decision-guards/continue-for-complete.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Calibration does not permit complete\n",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-state/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/packet.json\",\n  \"sha256\": \"54c1caf19527bcbbca6471ef6355eae01d878f952f65cc6e2024673899f9e818\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-state/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Evidence changed: /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-state/state.json\n",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-brief/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/packet.json\",\n  \"sha256\": \"38e627f0885287d9ca330f83b008331532d9ce7e9fbb70678c69950f86049bbf\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-brief/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Evidence changed: /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-brief/work-order.md\n",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-raw/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/packet.json\",\n  \"sha256\": \"e021052ddbb537b8fa6d1e3d0acf839d785539985610d08091a5da4be01c3ae9\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-raw/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Evidence changed: /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-raw/raw.txt\n",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-accepted/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/packet.json\",\n  \"sha256\": \"89e3dac3fb22fdb97fa713a1c7a6f2b00c5b3f81417eb3d6a48d538b11dad853\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "changed-accepted/check",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Evidence changed: /tmp/lab020-guard-probe-v2-hf0HJ94W/changed-accepted/accepted.txt\n",
+      "expectation_met": true
+    },
+    {
+      "label": "packet-guards/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/packet.json\",\n  \"sha256\": \"b5bbe2a10ecb7b9fe3797fc44400f844f3c339e27eeb39a2efbd701acbf60341\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "expired",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/expired-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/expired-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Packet is expired or from the future\n",
+      "expectation_met": true
+    },
+    {
+      "label": "future-created",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/future-created-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/future-created-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Packet is expired or from the future\n",
+      "expectation_met": true
+    },
+    {
+      "label": "no-timezone",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/no-timezone-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/no-timezone-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Timezone required\n",
+      "expectation_met": true
+    },
+    {
+      "label": "wrong-schema",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/wrong-schema-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/wrong-schema-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "missing-raw-sources",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/missing-raw-sources-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/missing-raw-sources-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources required\n",
+      "expectation_met": true
+    },
+    {
+      "label": "wrong-worker-type",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/wrong-worker-type-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/wrong-worker-type-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Invalid worker contexts\n",
+      "expectation_met": true
+    },
+    {
+      "label": "worker-same-lead",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/worker-same-lead-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/worker-same-lead-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Lead is an implementation worker\n",
+      "expectation_met": true
+    },
+    {
+      "label": "mismatched-objective",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/mismatched-objective-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/mismatched-objective-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Packet summary differs from state: objective\n",
+      "expectation_met": true
+    },
+    {
+      "label": "mismatched-focus",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/mismatched-focus-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/mismatched-focus-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Packet summary differs from state: focus\n",
+      "expectation_met": true
+    },
+    {
+      "label": "invalid-evidence-reference",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/invalid-evidence-reference-packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/packet-guards/invalid-evidence-reference-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Invalid evidence reference\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-null-packet",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-null/malformed.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-null-decision",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-null/malformed.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported decision\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-array-packet",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-array/malformed.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-array-decision",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-array/malformed.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported decision\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-string-packet",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-string/malformed.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported packet\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-string-decision",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-string/malformed.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Unsupported decision\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-invalid-json-packet",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-invalid-json/malformed.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-invalid-json-decision",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-invalid-json/malformed.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Expecting property name enclosed in double quotes: line 1 column 2 (char 1)\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-invalid-utf8-packet",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-invalid-utf8/malformed.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n",
+      "expectation_met": true
+    },
+    {
+      "label": "malformed-invalid-utf8-decision",
+      "group": "malformed",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/malformed-invalid-utf8/malformed.json",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: 'utf-8' codec can't decode byte 0xff in position 0: invalid start byte\n",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-blocked-continuation/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/packet.json\",\n  \"sha256\": \"7fb60e8a6eefa45afb6beecfaeebc943b0e7de303a4b5f9584f617f97ae97e2c\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-blocked-continuation/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-blocked-continuation/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reconcile campaign status before continuation or completion\n",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-no-worker/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/packet.json",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/packet.json\",\n  \"sha256\": \"a135250da828b3a2a3c7c59c9ae669ce206031e9920dad4a435e410ce76d2ff9\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-no-worker/check",
+      "group": "documented-human-boundary",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-no-worker/decision.json --purpose continue",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"continue\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-brief-as-source/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-brief-as-source/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-brief-as-source/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-brief-as-source/work-order.md --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-brief-as-source/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-missing-bounds/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/packet.json\",\n  \"sha256\": \"e24089cc93e2fd55c83da4a799ce1d23cd47d3dde5f19bb8ba5d8d04c933e2c9\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-missing-bounds/check",
+      "group": "documented-human-boundary",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-missing-bounds/decision.json --purpose continue",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"continue\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-manifest-only/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/manifest.json --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/packet.json\",\n  \"sha256\": \"d435f368e1578f2ec52136929f69efe7c3a3803f4130d9c54ba321297e030e01\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-manifest-only/check",
+      "group": "documented-human-boundary",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-manifest-only/decision.json --purpose continue",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"continue\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "source-direct-state/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/state.json --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-direct-state/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-state/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-direct-brief/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/work-order.md --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-direct-brief/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-direct-brief/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-symlink-state/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/source-alias --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-symlink-state/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-state/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-symlink-brief/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/source-alias --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-symlink-brief/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-symlink-brief/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-hardlink-state/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/source-alias --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-hardlink-state/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-state/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-hardlink-brief/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/source-alias --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "source-hardlink-brief/check",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/source-hardlink-brief/decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Raw sources must differ from state and lead brief\n",
+      "expectation_met": true
+    },
+    {
+      "label": "status-blocked/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/packet.json\",\n  \"sha256\": \"b0ab4616f628d6b88e889bf5054e3dab6699cc0d7c993739fc7175522eb455d3\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "status-blocked-continue",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/continue-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reconcile campaign status before continuation or completion\n",
+      "expectation_met": true
+    },
+    {
+      "label": "status-blocked-complete",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/status-blocked/complete-decision.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reconcile campaign status before continuation or completion\n",
+      "expectation_met": true
+    },
+    {
+      "label": "status-complete/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/raw.txt --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/packet.json --worker worker-A",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Completed campaign is immutable\n",
+      "expectation_met": true
+    },
+    {
+      "label": "status-complete-continue",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/continue-decision.json --purpose continue",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reconcile campaign status before continuation or completion\n",
+      "expectation_met": true
+    },
+    {
+      "label": "status-complete-complete",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/status-complete/complete-decision.json --purpose complete",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "CALIBRATION_REQUIRED: Reconcile campaign status before continuation or completion\n",
+      "expectation_met": true
+    },
+    {
+      "label": "unsupported-purpose",
+      "group": "amended-contract",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/valid-continue/decision.json --purpose reconcile",
+      "expected_exit": 2,
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: calibration.py check [-h] [--purpose {continue,complete}]\n                            packet decision\ncalibration.py check: error: argument --purpose: invalid choice: 'reconcile' (choose from continue, complete)\n",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-copied-narrative/prepare",
+      "group": "guard",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py prepare /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/state.json --brief /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/work-order.md --source /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/copied-brief.md --lead lead-A --expires 2026-09-07T00:52:49.663627+00:00 --output /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/packet.json --worker worker-A",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"packet\": \"/tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/packet.json\",\n  \"sha256\": \"cbb8413723c9d7c827b8cec03aee4b1a92cfe82cf6b98592f1260a8f91547f3a\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    },
+    {
+      "label": "limit-copied-narrative/check",
+      "group": "documented-human-boundary",
+      "command": "python3 /home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py check /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/packet.json /tmp/lab020-guard-probe-v2-hf0HJ94W/limit-copied-narrative/decision.json --purpose continue",
+      "expected_exit": 0,
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"CONTROL_PACKET_VALID\",\n  \"purpose\": \"continue\",\n  \"reviewer_context\": \"reviewer-A\",\n  \"expires_at\": \"2026-09-07T00:52:49.663627+00:00\",\n  \"limits\": \"Declared identity is not runtime attestation; hashes are not semantic acceptance. Material events require renewed calibration.\"\n}\n",
+      "stderr": "",
+      "expectation_met": true
+    }
+  ]
+}

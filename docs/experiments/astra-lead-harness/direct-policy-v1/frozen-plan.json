@@ -1,0 +1,58 @@
+{
+  "kind": "direct-policy-not-skill-only-ab",
+  "scratch": "/tmp/astra-direct-policy-v1-yb0vcmd2",
+  "jobs": [
+    {
+      "label": "D1",
+      "case": "count-label",
+      "workspace": "/tmp/astra-direct-policy-v1-yb0vcmd2/D1",
+      "initial_sha256": {
+        "TASK.md": "cfd97799068f5893ca0946d4e15a2dc616574f255881dd2ca6840b0ef712516e",
+        "src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+        "tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7"
+      },
+      "business_contract_sha256": "6411a010c294eb1af866004981b95525f35cc1acc8dea04c9f49f38756fc0959",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D1-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D1-run",
+      "allowed_writes": [
+        "src/count-label.mjs",
+        "tests/"
+      ]
+    },
+    {
+      "label": "D2",
+      "case": "event-projection",
+      "workspace": "/tmp/astra-direct-policy-v1-yb0vcmd2/D2",
+      "initial_sha256": {
+        "TASK.md": "d40f700bbc19e6b7233ae9c8ca1807db897e0b74b3b911c6c731a787b52ad27e",
+        "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+        "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+        "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+      },
+      "business_contract_sha256": "a88a86222813e2e3e0d6df0cc7c8685024c5b71b9a95b8270f7cd1a3829d7f5a",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D2-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D2-run",
+      "allowed_writes": [
+        "src/",
+        "tests/"
+      ]
+    }
+  ],
+  "source_sha256": {
+    "/home/vakarve/projects/common-dev-plugin/scripts/freeze_astra_direct_policy.py": "ce6d99e16abf9fb8c24f73e74a584f0f2db9065d099f2f2200dd5a259f72b759",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd",
+    "/home/vakarve/projects/common-dev-plugin/scripts/lab_evolve_dispatch.py": "8f3d4818b35c5a85f3466e1442b60e6cc3c18eb14b84c284d6922107fa90ec8d",
+    "/home/vakarve/projects/common-dev-plugin/scripts/common_lab_ab.py": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_fixtures/_evaluation/verify_moe.py": "9d40b2b543cb34817f769d9da4268c2cc3cabca7f6d646b7f63b01590cf986bd",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/_evaluation/verify_moe.py": "ecca26a7fd04f10665c0e85de1c364f44e1a57bdbfca6c646e252b29d1020b21"
+  },
+  "actual_cost_usd": null,
+  "no_automatic_retry": true,
+  "author_acceptance_is_not_independent": true
+}

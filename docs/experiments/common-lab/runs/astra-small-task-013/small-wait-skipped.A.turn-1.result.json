@@ -1,0 +1,77 @@
+{
+  "case_id": "small-wait-skipped",
+  "skill": "wait-what",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:28:14.340505+00:00",
+  "ended_utc": "2026-09-06T05:28:46.169852+00:00",
+  "wall_seconds": 31.825,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wait-what/SKILL.md",
+  "skill_sha256": "7ffdc0116c2ed214e34e35e23c50d19d1acdf703e669570d4ef77da1ef98354d",
+  "prompt_sha256": "dd41d75c45b5f4b7cc43f472e5ff7963e7bcead581cee78d813d503bb3a610fe",
+  "fixture_dir": "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整閱讀你指定的技能檔，再依情境擬出給行政同事的回覆。\n",
+    "**摘要**\n\n依你提供的摘要，原檔那兩列沒有被刪掉。它們只是沒有被放進另存的新檔，所以新檔只有 14 列。\n\n**前情提要**\n\n想像你有一本名冊，另外抄一份新名冊。有兩筆沒填電子郵件地址，所以沒抄進新名冊。舊名冊上的資料都還在。\n\n**當前概況**\n\n這裡的 skipped 就是「略過，沒有放進新檔」：\n\n- 原檔：仍有全部 16 列。\n- 新檔：有 14 列，少了電子郵件地址空白的那 2 列。\n\n**與你相關的部分**\n\n如果你要找那兩筆資料，應該看原檔。新檔沒有包含所有資料。\n\n**決策理由**\n\n前一句用了 skipped，沒有把「從哪份檔案略過」說清楚，讓你擔心資料被刪掉。這裡是在解釋摘要的意思；是否應該略過那兩列，需要另外判斷。\n\n我建議下一步先確認這個差別是否清楚。你還不清楚哪一段：摘要／前情提要／當前概況／與你相關的部分／決策理由？"
+  ],
+  "final_message": "**摘要**\n\n依你提供的摘要，原檔那兩列沒有被刪掉。它們只是沒有被放進另存的新檔，所以新檔只有 14 列。\n\n**前情提要**\n\n想像你有一本名冊，另外抄一份新名冊。有兩筆沒填電子郵件地址，所以沒抄進新名冊。舊名冊上的資料都還在。\n\n**當前概況**\n\n這裡的 skipped 就是「略過，沒有放進新檔」：\n\n- 原檔：仍有全部 16 列。\n- 新檔：有 14 列，少了電子郵件地址空白的那 2 列。\n\n**與你相關的部分**\n\n如果你要找那兩筆資料，應該看原檔。新檔沒有包含所有資料。\n\n**決策理由**\n\n前一句用了 skipped，沒有把「從哪份檔案略過」說清楚，讓你擔心資料被刪掉。這裡是在解釋摘要的意思；是否應該略過那兩列，需要另外判斷。\n\n我建議下一步先確認這個差別是否清楚。你還不清楚哪一段：摘要／前情提要／當前概況／與你相關的部分／決策理由？",
+  "usage": {
+    "input_tokens": 32673,
+    "cached_input_tokens": 26880,
+    "output_tokens": 572,
+    "uncached_input_tokens": 5793,
+    "total_tokens": 33245
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wait-what/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

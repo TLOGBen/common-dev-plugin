@@ -1,0 +1,14 @@
+{
+  "command": "node --test tests/normalize-tag.test.mjs",
+  "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target",
+  "started_utc": "2026-09-06T06:46:31.630913+00:00",
+  "ended_utc": "2026-09-06T06:46:31.747350+00:00",
+  "wall_seconds": 0.115959,
+  "exit_code": 0,
+  "pre_existing_red_set": [],
+  "degradation_flag": false,
+  "stdout_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/baseline-suite.stdout.txt",
+  "stdout_sha256": "62097464e67ec50b46582a6231e5848b40ba81d32328b4193e62e6b6cbe56b02",
+  "stderr_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/baseline-suite.stderr.txt",
+  "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+}

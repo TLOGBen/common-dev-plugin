@@ -1,0 +1,102 @@
+{
+  "case_id": "prototype-late-success",
+  "skill": "prototype",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:30:00.551633+00:00",
+  "ended_utc": "2026-09-06T03:31:01.146864+00:00",
+  "wall_seconds": 60.592,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-prototype-late-success-l53otjf_",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md",
+  "skill_sha256": "391eaf5578ff0334f121d990a38f66f150168c0af6576221c95653590d2f0586",
+  "prompt_sha256": "71954f7d0e4676cba632d0193dd4ae919c8b6516ee654f914c547f1769b8d5ed",
+  "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-l53otjf_",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依你指定的 prototype skill 閱讀其完整規範，僅檢查必要的情境夾具；接著只回傳模擬中的下一則使用者可見訊息與建議下一步，不會修改任何檔案或執行實際業務動作。",
+    "已確認這是 logic 分支；規範要求原本應產出可點選的單檔原型，但你明確限制「不要實作」，所以我只沿用它的判斷方式整理狀態、事件順序與觀察點。接著我會先重新確認當前時鐘，再給出模擬回覆。",
+    "最小反例只需一筆訂單、兩個事件：\n\n1. 初始訂單為 `open`。\n2. 金流側已成功扣款，但通知尚未抵達。\n3. 送入 `customer_cancel`，訂單變成 `cancelled`。\n4. 再送入延遲的 `payment_succeeded`。\n\n若「取消後拒絕所有付款事件」代表直接忽略通知，觀察結果會是：外部已扣款，但本地仍為 `cancelled`，且沒有可供後續處理的付款事實。這已足以構成不安全反例；它不預設應恢復訂單、退款或轉人工。\n\n觀察三件事即可：\n\n- 每一步的訂單狀態。\n- `payment_succeeded` 抵達後是被套用、保留，還是丟棄。\n- 最終是否同時看得到「已扣款」與「已取消」，以及是否留下可交由產品決定的處理訊號。\n\n下一步建議只手動跑這四步，並將「已扣款」視為實驗外部事實；若通知被丟棄，即判定該拒絕策略不安全。"
+  ],
+  "final_message": "最小反例只需一筆訂單、兩個事件：\n\n1. 初始訂單為 `open`。\n2. 金流側已成功扣款，但通知尚未抵達。\n3. 送入 `customer_cancel`，訂單變成 `cancelled`。\n4. 再送入延遲的 `payment_succeeded`。\n\n若「取消後拒絕所有付款事件」代表直接忽略通知，觀察結果會是：外部已扣款，但本地仍為 `cancelled`，且沒有可供後續處理的付款事實。這已足以構成不安全反例；它不預設應恢復訂單、退款或轉人工。\n\n觀察三件事即可：\n\n- 每一步的訂單狀態。\n- `payment_succeeded` 抵達後是被套用、保留，還是丟棄。\n- 最終是否同時看得到「已扣款」與「已取消」，以及是否留下可交由產品決定的處理訊號。\n\n下一步建議只手動跑這四步，並將「已扣款」視為實驗外部事實；若通知被丟棄，即判定該拒絕策略不安全。",
+  "usage": {
+    "input_tokens": 92202,
+    "cached_input_tokens": 81408,
+    "output_tokens": 2548,
+    "uncached_input_tokens": 10794,
+    "total_tokens": 94750
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,260p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/LOGIC.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"rg --files -g '\"'!**/.git/**'\"' .\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'date \\\"+%Y-%m-%d %H:%M:%S %Z %z\\\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

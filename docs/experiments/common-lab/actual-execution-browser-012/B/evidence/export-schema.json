@@ -1,0 +1,22 @@
+{
+  "schema_version": 3,
+  "source_kind": "fictional_primary_fixture",
+  "fields": [
+    {
+      "name": "user_id",
+      "type": "string",
+      "stable_identifier": true
+    },
+    {
+      "name": "display_name_masked",
+      "type": "string",
+      "masked_upstream": true
+    },
+    {
+      "name": "exported_at",
+      "type": "datetime"
+    }
+  ],
+  "includes_full_name": false,
+  "production_verified": false
+}

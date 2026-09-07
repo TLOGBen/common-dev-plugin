@@ -1,0 +1,20 @@
+{
+  "name": "baransu-lab",
+  "interface": {
+    "displayName": "Baransu Lab"
+  },
+  "plugins": [
+    {
+      "name": "baransu-lab",
+      "source": {
+        "source": "local",
+        "path": "./plugins/baransu-lab"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "target": "/tmp/common-lab-exec-normalize-tag-dwh82u2v/src/normalize-tag.mjs",
+  "results": [
+    {
+      "id": "ordinary",
+      "input": "  Quick-TAG  ",
+      "expected": "quick-tag",
+      "actual": "quick-tag",
+      "pass": true
+    },
+    {
+      "id": "non-ascii",
+      "input": " İÉßＡ Z ",
+      "expected": "İÉßＡ z",
+      "actual": "İÉßＡ z",
+      "pass": true
+    },
+    {
+      "id": "inner-spaces",
+      "input": " A  B ",
+      "expected": "a  b",
+      "actual": "a  b",
+      "pass": true
+    },
+    {
+      "id": "inner-controls",
+      "input": "A\tB\nC",
+      "expected": "a\tb\nc",
+      "actual": "a\tb\nc",
+      "pass": true
+    },
+    {
+      "id": "outer-nbsp",
+      "input": " A ",
+      "expected": "a",
+      "actual": "a",
+      "pass": true
+    },
+    {
+      "id": "empty",
+      "input": "",
+      "error": "EMPTY_TAG",
+      "observedError": {
+        "isError": true,
+        "message": "EMPTY_TAG"
+      },
+      "pass": true
+    },
+    {
+      "id": "whitespace-only",
+      "input": " \t\n ",
+      "error": "EMPTY_TAG",
+      "observedError": {
+        "isError": true,
+        "message": "EMPTY_TAG"
+      },
+      "pass": true
+    },
+    {
+      "id": "bom-only",
+      "input": "﻿",
+      "error": "EMPTY_TAG",
+      "observedError": {
+        "isError": true,
+        "message": "EMPTY_TAG"
+      },
+      "pass": true
+    }
+  ],
+  "passed": 8,
+  "total": 8,
+  "mutation": false
+}

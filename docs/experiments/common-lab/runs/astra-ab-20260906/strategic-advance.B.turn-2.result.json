@@ -1,0 +1,61 @@
+{
+  "case_id": "strategic-advance",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 2,
+  "started_utc": "2026-09-06T02:39:37.116656+00:00",
+  "ended_utc": "2026-09-06T02:40:18.852140+00:00",
+  "wall_seconds": 41.735,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "04e4bc69a075ac07e517a4a6a4e98bf5269641e4c3842568854cc0213a6a7687",
+  "prompt_sha256": "0bf0d49dac59b364210d36e92126c0d0662e7d64a2f874ca25e09d728ac7f500",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定技能，再依固定證據提出模擬回覆與下一步描述。",
+    "**受理與下游送達已確認，約定可接受的證據已具備；證據尚未實際留存，因此整體目標仍差留存收尾。**\n\n- DB：REQ-42 有成功 receipt，業務狀態為 `Accepted`。\n- 下游：`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- 截圖：仍為 `CAPTURE_FAILED`，但你已接受 DB 與下游 receipt，因此不阻塞驗收。\n\n**不需要再停下詢問你。** 驗收標準與授權範圍都已明確；不應再次送出，也不必繼續修截圖工具。但單筆 receipt 不能單獨證明全系統絕無重複，不應把「已送達」誇大成完整的唯一性證明。\n\n擬議下一步是整理可驗收的證據包：保留 DB 與下游查詢的原始結果、來源、查詢條件及原有時間欄位，以 REQ-42 串接 DB receipt 與 D-42；另記錄單次送出授權、UI 逾時及截圖失敗，避免後續人員誤判而重送。整理後核對識別碼、狀態與資料完整性，再確認留存完成。\n\n以上僅為模擬回覆與行動描述，未查詢、寫檔或再次送出。"
+  ],
+  "final_message": "**受理與下游送達已確認，約定可接受的證據已具備；證據尚未實際留存，因此整體目標仍差留存收尾。**\n\n- DB：REQ-42 有成功 receipt，業務狀態為 `Accepted`。\n- 下游：`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- 截圖：仍為 `CAPTURE_FAILED`，但你已接受 DB 與下游 receipt，因此不阻塞驗收。\n\n**不需要再停下詢問你。** 驗收標準與授權範圍都已明確；不應再次送出，也不必繼續修截圖工具。但單筆 receipt 不能單獨證明全系統絕無重複，不應把「已送達」誇大成完整的唯一性證明。\n\n擬議下一步是整理可驗收的證據包：保留 DB 與下游查詢的原始結果、來源、查詢條件及原有時間欄位，以 REQ-42 串接 DB receipt 與 D-42；另記錄單次送出授權、UI 逾時及截圖失敗，避免後續人員誤判而重送。整理後核對識別碼、狀態與資料完整性，再確認留存完成。\n\n以上僅為模擬回覆與行動描述，未查詢、寫檔或再次送出。",
+  "usage": {
+    "input_tokens": 50139,
+    "cached_input_tokens": 39680,
+    "output_tokens": 806,
+    "uncached_input_tokens": 10459,
+    "total_tokens": 50945
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

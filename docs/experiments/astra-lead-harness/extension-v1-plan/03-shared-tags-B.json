@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "episode_id": "03-shared-tags-B",
+  "case_id": "shared-tags",
+  "arm": "B",
+  "workspace": "/tmp/astra-campaign-extension-20260906-a/workspaces/03-shared-tags-B",
+  "workspace_sha256": {
+    ".common-lab/strategic/catalog-maintenance/state.json": "debd420acda0d41b8952f933e22d1b6407b4c69705e239430e4c2cc71af3ee3a",
+    ".common-lab/strategic/catalog-maintenance/state.json.history/1-5a41decdabbc4ffdba8925200b4e2c74.json": "1e7a7dab287e452c231f351be7c8b4e0ada50f040f83ff1dee86aa0cadd7ae60",
+    ".common-lab/strategic/catalog-maintenance/state.json.history/2-a4a6f373a640456dba477dad9ce3e4d8.json": "2bfa0cfe2268e349c65e8e1860fcc1859f97108a77ea96299c086daaf258e65a",
+    ".common-lab/strategic/catalog-maintenance/state.json.history/3-853cb53d157a4bfc990073aa4d77f1dd.json": "ff2733bb0cac2be2ca05366d589014a1f51d87b6a7909ac1c56bef594371e999",
+    ".common-lab/strategic/catalog-maintenance/state.json.history/4-8b9c548f66fa4cfea0cf16ae72889080.json": "a33ead97686d186041d056cbed0cdbd48b637843b1fb448e831407c2d49d8446",
+    "TASK.md": "6c62bacf3103616f845505ef2841536642a89dbc8f29b880fc6b08f12b2f3e69",
+    "data/services.json": "e5f4ff6bf6c5e659cf0606c87bfebb214e891db501e37a81d5c06500e30775c3",
+    "history/original-inventory.json": "18bdee9f7c80e19c90646cab18269eaf6b0763435049a970b7a7aea352fcc925",
+    "history/publish-receipt.json": "4ea3ead5364e2a80c940c3dce029ffd792a3a76c094f5dce1043661385698f5c"
+  },
+  "package_roots": [
+    "/tmp/astra-campaign-extension-20260906-a/packages/B"
+  ],
+  "package_sha256": {
+    "/tmp/astra-campaign-extension-20260906-a/packages/B": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "ad81b4205bfc891665095796d38654fc7085c5110059c047808ba82b86882d0a",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "7d8fee83c6d6ec51ceb1b60610eb27d135fff756674ce6bccc5b3dfc6a1ae94c",
+      "skills/lab-strategic-advance/scripts/campaign.py": "2361b39b8bbafb00e15813d33b2a42d836b29e7d0b0e160d287ba61059d0757c",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    }
+  },
+  "read_files": {},
+  "session_store": "/home/vakarve/.codex/sessions",
+  "sandbox": "workspace-write",
+  "role_writes": {
+    "lead": [
+      ".common-lab/strategic/",
+      "reports/"
+    ],
+    "implementation": [],
+    "verifier": []
+  },
+  "max_calls": 4,
+  "max_wall_seconds": 900,
+  "call_timeout_seconds": 600,
+  "arm_context": "Available skills are listed below. Select only applicable skills, then read their full entry and required supporting instructions before using them. These generated Codex packages and bundled roles are available read-only; do not load unrelated/global skill packages.\n- lab-better-prompts: Experimentally audit, shorten, or rewrite a prompt when the user asks to improve agent instructions.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-better-prompts/SKILL.md\n- lab-define-goal: Turn an unclear objective into observable completion criteria when the user asks to define success.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-define-goal/SKILL.md\n- lab-delegate: Delegate bounded implementation to a cheaper task-fit model while the lead retains responsibility for the goal.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-delegate/SKILL.md\n- lab-domain-modeling: Clarify domain terms, rules, and architectural decisions when ambiguity is blocking shared understanding.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-domain-modeling/SKILL.md\n- lab-grilling: Stress-test a plan or decision when the user asks for a skeptical challenge to their reasoning.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-grilling/SKILL.md\n- lab-prototype: Build a disposable prototype when a design or logic question needs concrete experience to answer.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-prototype/SKILL.md\n- lab-research: Investigate a question against primary sources when the user requests evidence-backed research.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-research/SKILL.md\n- lab-strategic-advance: Advance a locked complex objective by measurable progress while preventing attention traps and preserving recovery.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-strategic-advance/SKILL.md\n- lab-wait-what: Re-explain the last confusing answer for the user's audience without advancing the underlying task.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-wait-what/SKILL.md\n- lab-wayfinder: Break a complex unclear effort into a shared decision map paced for human understanding.\n  Entry: /tmp/astra-campaign-extension-20260906-a/packages/B/skills/lab-wayfinder/SKILL.md",
+  "user_prompt": "請使用 lab-strategic-advance 承接既有戰役。原目標、原驗收與未知 publish-041 操作都保留；原遠端查詢仍不可用，這次不授權重試、投用、回復或改其結果。\n另外新增一項必須成果：一般服務的共享標籤報告。請實際產生 reports/shared-tags.json，規格：只含 active 且 standard。找出對應至少兩個不同服務 ID 的標籤，按 tag 排序。每列精確含 tag、service_ids（去重且排序）；輸出精確為 schema_version=1、shared_tags 清單。\n把這項新增成果納入既有戰役的完成條件，保留變更前原稿與原有已取得成果，完成本地報告及驗收。最後交代新增成果、原成果、仍未解決的原操作與整體完成狀態。人不在；不用等我再次確認已給的新增要求。\n既有帳本為 .common-lab/strategic/catalog-maintenance/state.json；history/ 是歷史觀察，data/ 是本次可用來源。可更新該帳本並追加其歷史，另可建 reports/ 新檔；既有 history/、data/ 不改，不改已分發工具／套件，不新增依賴，不碰其他系統、不改 auth/config、不 commit。\n這次是本地成果與目標狀態維護，不要求改產品程式；選擇足夠的驗收即可，不要聲稱已觀測遠端結果。"
+}

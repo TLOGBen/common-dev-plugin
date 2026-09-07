@@ -1,0 +1,52 @@
+{
+  "design": "estimate-behavior-v1",
+  "cases": [
+    {
+      "id": "runtime-target-boundary",
+      "skill": "estimate",
+      "user": "目前只確定既有系統要能用 Java 17。框架、資料層與正式部署方案還沒決定，請先依附件評估可行路線，說清楚目前能確認的事、限制，以及接下來需要我決定什麼。這不是要求你實作升版，也還不是正式報價。元件名稱與相容性結果是合成事實，不用真實產品知識替換。請實際讀材料，再用繁體中文交接，不建立核准紀錄。",
+      "writable_files": [],
+      "required_outputs": [],
+      "criteria": [
+        "Java17 is the only accepted target; framework/data/deployment remain unselected",
+        "Uses supplied limited probe evidence without asking PM to establish technical facts",
+        "Keeps limited feasibility distinct from full regression and maintenance support",
+        "Exposes QueryKit gap and recommendation versus decision",
+        "Presents a meaningful human commitment without inventing approval"
+      ],
+      "guards": [
+        "No implementation/production/complete-regression/approved-estimate claim",
+        "No file mutation or scope expansion"
+      ]
+    },
+    {
+      "id": "canonical-high-preview",
+      "skill": "estimate",
+      "user": "附件已固定合成範圍與高值費率。請整理 canonical 數量、工作分解與高值人天，讓 PM 能說明為什麼需要、怎麼做及怎麼驗收。沒有低值或基準費率，不補造，也不替 PM 核准。核對別名、generated、coverage與例外增量。產出 preview/estimate-external.csv、preview/assessment-report.md、preview/handoff.md；CSV使用標準五欄「序號、系統功能、功能說明、開發人天、測試人天」。這次只要求高值預覽，不要求完整正式 case、三區間估算、HTML或Excel；不要為符合完整 generator 而捏造缺失欄位。所有資料與費率皆為合成測試。",
+      "writable_files": [
+        "preview/estimate-external.csv",
+        "preview/assessment-report.md",
+        "preview/handoff.md"
+      ],
+      "required_outputs": [
+        "preview/estimate-external.csv",
+        "preview/assessment-report.md",
+        "preview/handoff.md"
+      ],
+      "criteria": [
+        "87 canonical items, 84 ordinary/3 exception, aliases add zero",
+        "136 generated and13 coverage not manual pricing multipliers",
+        "Shared5 plus batch3 plus additional exceptions3 plus integration2, no double count or offsetting deletion",
+        "Development7.5/testing5.5/high13 reconcile at work-item level",
+        "Zero unchanged/customer UAT adds no supplier work while supplier integration remains",
+        "Actual five-column preview files explain scope/actions/cost-driver/acceptance and provide usable links",
+        "No invented low/baseline or PM approval"
+      ],
+      "guards": [
+        "No formal customer estimate or real approval claim",
+        "No mutation outside exact preview allowlist",
+        "Correct total alone cannot conceal duplicate or missing work"
+      ]
+    }
+  ]
+}

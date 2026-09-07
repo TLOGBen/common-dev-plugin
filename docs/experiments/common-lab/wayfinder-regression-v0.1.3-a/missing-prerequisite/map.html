@@ -1,0 +1,373 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Wayfinder 共識地圖</title>
+<style>
+  :root{
+    --sea:#101C26; --panel:#17283420; --card:#16242F; --line:#24384633;
+    --ink:#E8EDF2; --muted:#8FA3B0; --faint:#5C7280;
+    --beacon:#FFB454; --charted:#4FD6BE; --claimed:#7FB8E8; --blocked:#46606F;
+    --serif:Georgia,'Times New Roman',serif;
+    --mono:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  }
+  *{box-sizing:border-box;margin:0}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{animation:none!important;transition:none!important}}
+  body{
+    background:var(--sea);color:var(--ink);
+    font:15px/1.65 var(--serif);
+    background-image:
+      radial-gradient(1100px 500px at 85% -10%, #1B3040 0%, transparent 60%),
+      repeating-linear-gradient(0deg, transparent 0 59px, #FFFFFF06 59px 60px),
+      repeating-linear-gradient(90deg, transparent 0 59px, #FFFFFF06 59px 60px);
+    min-height:100vh;
+  }
+  .wrap{max-width:1060px;margin:0 auto;padding:48px 28px 96px}
+  .eyebrow{font:11px/1 var(--mono);letter-spacing:.28em;text-transform:uppercase;color:var(--faint)}
+  header .eyebrow{color:var(--beacon)}
+  h1{font-size:34px;font-weight:400;letter-spacing:.01em;margin:10px 0 6px}
+  .dest{border-left:2px solid var(--beacon);padding:6px 0 6px 18px;margin:22px 0 8px;font-size:18px;font-style:italic;color:var(--ink)}
+  .meta{font:12px var(--mono);color:var(--muted);margin-top:10px}
+  .status-boundary{font-size:14px;line-height:1.65;color:var(--muted);margin-top:12px}
+
+  section{margin-top:52px}
+  h2{font-size:13px;font-weight:400;font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;color:var(--muted);
+     display:flex;align-items:center;gap:14px;margin-bottom:20px}
+  h2::after{content:"";flex:1;height:1px;background:linear-gradient(90deg,#2E4656,transparent)}
+
+  /* chart */
+  .chart{position:relative;border:1px solid #223644;border-radius:6px;background:#0C161E;overflow-x:auto}
+  .chart svg{display:block;min-width:640px}
+  .edge{stroke:#33505F;stroke-width:1.2;fill:none}
+  .edge.dest-edge{stroke-dasharray:4 5;stroke:#3B5A54}
+  .node{cursor:pointer}
+  .node rect{fill:#132430;stroke:var(--blocked);stroke-width:1.2;rx:7}
+  .node text{font:11px var(--mono);fill:var(--muted)}
+  .node .nid{font-size:12px;fill:var(--ink)}
+  .node.frontier rect{stroke:var(--beacon);fill:#211C10}
+  .node.frontier .halo{fill:var(--beacon);opacity:.14;animation:pulse 2.6s ease-in-out infinite}
+  @keyframes pulse{0%,100%{opacity:.10}50%{opacity:.26}}
+  .node.resolved rect{stroke:var(--charted);fill:#0F211F}
+  .node.resolved .nid{fill:var(--charted)}
+  .node.claimed rect{stroke:var(--claimed)}
+  .node.dim,.edge.dim{opacity:.18}
+  .node.lit rect{stroke-width:2}
+  .edge.lit{stroke:var(--beacon);opacity:1}
+  .destflag text{font:12px var(--serif);font-style:italic;fill:var(--beacon)}
+  .destflag path{fill:var(--beacon)}
+  .fogveil{pointer-events:none}
+  .chart-cap{font:11px var(--mono);color:var(--faint);padding:10px 14px;border-top:1px solid #1B2C38;display:flex;gap:18px;flex-wrap:wrap}
+  .chart-cap b{font-weight:400}
+  .k{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:6px;vertical-align:baseline}
+
+  /* filters + cards */
+  .chips{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:18px}
+  .chip{font:11px var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--muted);
+        background:none;border:1px solid #2A4150;border-radius:99px;padding:5px 13px;cursor:pointer}
+  .chip[aria-pressed="true"]{color:var(--sea);background:var(--ink);border-color:var(--ink)}
+  .chip:focus-visible,.node:focus-visible rect,summary:focus-visible,a:focus-visible{outline:2px solid var(--beacon);outline-offset:2px}
+  .cards{display:grid;gap:10px}
+  details.card{background:var(--card);border:1px solid #223644;border-left-width:3px;border-radius:5px}
+  details.card[data-s="frontier"]{border-left-color:var(--beacon)}
+  details.card[data-s="resolved"]{border-left-color:var(--charted)}
+  details.card[data-s="claimed"]{border-left-color:var(--claimed)}
+  details.card[data-s="blocked"]{border-left-color:var(--blocked)}
+  summary{list-style:none;display:flex;gap:14px;align-items:baseline;padding:13px 18px;cursor:pointer;flex-wrap:wrap}
+  summary::-webkit-details-marker{display:none}
+  .tid{font:12px var(--mono);color:var(--faint);min-width:2.2em}
+  .ttitle{font-size:16px;flex:1;min-width:200px}
+  .badge{font:10px var(--mono);letter-spacing:.14em;text-transform:uppercase;padding:2px 9px;border-radius:3px;border:1px solid}
+  .badge.s-frontier{color:var(--beacon);border-color:var(--beacon)}
+  .badge.s-resolved{color:var(--charted);border-color:var(--charted)}
+  .badge.s-claimed{color:var(--claimed);border-color:var(--claimed)}
+  .badge.s-blocked{color:var(--blocked);border-color:var(--blocked)}
+  .badge.t{color:var(--faint);border-color:#2A4150}
+  .card-body{padding:2px 18px 18px;border-top:1px solid #1D303C;color:#C7D3DC}
+  .card-body h4{font:11px var(--mono);letter-spacing:.2em;text-transform:uppercase;color:var(--faint);margin:16px 0 6px}
+  .card-body p{margin:8px 0}
+  .card-body code{font:.85em var(--mono);background:#0C161E;padding:1px 6px;border-radius:3px}
+  .card-body a,li a,.dest a{color:var(--charted)}
+  .blockline{font:11px var(--mono);color:var(--faint)}
+
+  /* map sections */
+  .cols{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:28px}
+  ul.plain{list-style:none;display:grid;gap:10px}
+  ul.plain li{padding-left:16px;position:relative;color:#C7D3DC}
+  ul.plain li::before{content:"—";position:absolute;left:0;color:var(--faint)}
+  .fogbox{position:relative;border:1px dashed #33505F;border-radius:6px;padding:20px 22px;overflow:hidden}
+  .fogbox::after{content:"";position:absolute;inset:0;pointer-events:none;
+    background:linear-gradient(105deg,transparent 30%,#8FA3B012 60%,#8FA3B022 100%)}
+  .oos li{color:var(--faint)}
+  .oos li::before{content:"✕";font-family:var(--mono);font-size:11px}
+  footer{margin-top:70px;font:11px var(--mono);color:#41566417;color:var(--faint);opacity:.7}
+  .overview{margin-top:32px}
+  .overview>summary{border:1px solid #33505F;border-radius:6px;color:var(--charted);padding:12px 16px}
+  .overview>summary::before{content:'▸';margin-right:6px}
+  .overview[open]>summary::before{content:'▾'}
+  .focus-body{border:1px solid #66502B;border-left:3px solid var(--beacon);border-radius:6px;background:#211C10;padding:18px 22px}
+  .focus-body h3{font-size:21px;font-weight:400;margin-bottom:14px}
+  .focus-body h4{font-size:15px;font-weight:400;color:var(--beacon);margin:18px 0 6px}
+  .focus-body p{margin:8px 0}
+  .focus-body a{color:var(--charted)}
+  .focus-missing{color:var(--muted);font-style:italic}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Wayfinder · 共識地圖</div>
+    <h1 id="effort-name"></h1>
+    <div class="dest" id="destination"></div>
+    <div class="meta" id="meta"></div>
+    <p class="status-boundary" id="status-boundary"></p>
+  </header>
+
+  <section id="current-focus" aria-labelledby="focus-title" hidden>
+    <h2 id="focus-title"></h2>
+    <div id="focus-content" class="focus-body"></div>
+  </section>
+
+  <details id="map-overview" class="overview" open>
+  <summary id="map-overview-summary"></summary>
+  <section aria-label="決策路線圖">
+    <h2>決策路線圖</h2>
+    <div class="chart">
+      <svg id="graph" role="img" aria-label="票券阻擋關係圖"></svg>
+      <div class="chart-cap">
+        <b><span class="k" style="background:var(--beacon)"></span>前線 — 前置就緒</b>
+        <b><span class="k" style="background:var(--claimed)"></span>已認領</b>
+        <b><span class="k" style="background:var(--charted)"></span>已解決</b>
+        <b><span class="k" style="background:var(--blocked)"></span>受阻</b>
+        <b style="margin-left:auto">滑過：標亮依賴鏈 · 點擊：開啟票券</b>
+      </div>
+    </div>
+  </section>
+
+  <section aria-label="決策票券">
+    <h2>決策票券</h2>
+    <div class="chips" id="chips" role="group" aria-label="依狀態篩選"></div>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section>
+    <h2>目前已定案</h2>
+    <ul class="plain" id="decisions"></ul>
+  </section>
+
+  <section class="cols">
+    <div>
+      <h2>尚未釐清</h2>
+      <div class="fogbox"><ul class="plain" id="fog"></ul></div>
+    </div>
+    <div>
+      <h2>範圍外</h2>
+      <ul class="plain oos" id="oos"></ul>
+    </div>
+  </section>
+
+  </details>
+  <footer id="foot"></footer>
+</div>
+
+<script>
+const DATA = {"effort": "客服查詢試點", "destination": "讓客服看懂現況並只處理眼前取捨。", "notes": [], "decisions": ["只做查詢；沿用驗證方式。"], "fog": ["完整姓名或遮蔽姓名，尚待本人選擇。"], "outOfScope": ["正式退款及權限異動。"], "tickets": [{"id": "01", "title": "既有事實", "type": "grilling", "status": "resolved", "blockedBy": [], "question": "What is the next useful decision?", "context": "", "evidence": "", "options": "", "recommendation": "", "answer": "", "comments": "", "file": "issues/01-known.md"}, {"id": "02", "title": "仍可獨立查明的事實", "type": "grilling", "status": "open", "blockedBy": [], "question": "What is the next useful decision?", "context": "", "evidence": "", "options": "", "recommendation": "", "answer": "", "comments": "", "file": "issues/02-independent.md"}, {"id": "23", "title": "Missing prerequisite", "type": "grilling", "status": "open", "blockedBy": ["99"], "question": "What is the next useful decision?", "context": "", "evidence": "", "options": "", "recommendation": "", "answer": "", "comments": "", "file": "issues/23-human-choice.md"}, {"id": "24", "title": "待選擇後才調整畫面", "type": "grilling", "status": "open", "blockedBy": ["23"], "question": "What is the next useful decision?", "context": "", "evidence": "", "options": "", "recommendation": "", "answer": "", "comments": "", "file": "issues/24-dependent.md"}], "focus": {"requested": "23", "ticketId": null, "problem": "blocked"}, "generatedAt": "2026-09-06 04:54 UTC", "source": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-regression-v0.1.3-a/missing-prerequisite", "language": "zh-TW", "labels": {"htmlLang": "zh-Hant", "pageTitle": "Wayfinder 共識地圖", "eyebrow": "Wayfinder · 共識地圖", "routeChartAria": "決策路線圖", "routeChart": "決策路線圖", "graphAria": "票券阻擋關係圖", "legendFrontier": "前線 — 前置就緒", "legendClaimed": "已認領", "legendResolved": "已解決", "legendBlocked": "受阻", "legendHint": "滑過：標亮依賴鏈 · 點擊：開啟票券", "ticketsAria": "決策票券", "tickets": "決策票券", "filterAria": "依狀態篩選", "decisions": "目前已定案", "fog": "尚未釐清", "outOfScope": "範圍外", "status": {"frontier": "前置就緒", "claimed": "已認領", "blocked": "受阻", "resolved": "已解決"}, "type": {"research": "研究", "prototype": "原型", "grilling": "決策釐清", "task": "任務"}, "metaTemplate": "{total} 張票券 — {resolved} 張已解決 · {frontier} 張前置就緒 · {claimed} 張已認領 · {blocked} 張受阻", "statusBoundary": "票券狀態只表示問題與前置進度，不代表產品完成或已獲執行授權。", "generated": "產生時間", "source": "來源", "documentTitle": "Wayfinder 共識地圖", "destination": "目的地", "prerequisite": "前置", "prerequisiteResolved": "前置已解", "prerequisitePending": "未解前置阻擋", "prerequisiteMissing": "缺失前置阻擋", "question": "要回答的問題", "answer": "定案", "comments": "補充", "openTicket": "開啟 Markdown 票券", "all": "全部", "empty": "目前沒有內容", "currentFocus": "眼前要決定的事", "focusWarning": "指定焦點目前不可作為決定", "fullMap": "查看完整地圖與已定案事項", "evidence": "所依證據", "options": "選項與代價", "recommendation": "建議與理由", "context": "問題脈絡", "missingField": "原票沒有可呈現的問題或說明；未替來源補寫內容。", "focusProblems": {"invalid": "Current focus 必須只填一個現有票券 ID；未替你選取其他票券。", "resolved": "指定票券已解決，不應再次要求決定；請更新或移除呈現焦點。", "blocked": "指定票券尚有未解決或不存在的前置票券，現在還不能作為可決定事項。", "status": "指定票券狀態無法辨識，未將它推定為可決定事項。"}}};
+const L = DATA.labels;
+const STATUS_LABEL = L.status;
+const TYPE_LABEL = L.type;
+const format = (template, values) => template.replace(/\{(\w+)\}/g, (_, key) => values[key]);
+
+/* ---------- tiny markdown-lite ---------- */
+const esc = s => s.replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const safeUrl = u => {
+  const t = String(u).trim();
+  return /^(https?:|mailto:|#|\/|\.\/|\.\.\/)/i.test(t) ? t.replace(/["'<>]/g, c => ({'"':'&quot;',"'":'&#39;','<':'&lt;','>':'&gt;'}[c])) : '#';
+};
+const md = s => esc(s)
+  .replace(/`([^`]+)`/g,'<code>$1</code>')
+  .replace(/\*\*([^*]+)\*\*/g,'<b>$1</b>')
+  .replace(/\[([^\]]+)\]\(([^)]+)\)/g,(_,txt,url)=>`<a href="${safeUrl(url)}" rel="noreferrer noopener">${txt}</a>`);
+const mdBlock = s => s.trim().split(/\n{2,}/).map(p=>'<p>'+md(p).replace(/\n/g,'<br>')+'</p>').join('');
+
+/* ---------- status ---------- */
+const byId = {}; DATA.tickets.forEach(t=>byId[t.id]=t);
+function status(t){
+  if(t.status==='resolved') return 'resolved';
+  if(t.status==='claimed') return 'claimed';
+  const blocked = t.blockedBy.some(b => !byId[b] || byId[b].status!=='resolved');
+  return blocked ? 'blocked' : 'frontier';
+}
+DATA.tickets.forEach(t=>t.s=status(t));
+
+function dependencySummary(ticket){
+  const resolved=ticket.blockedBy.filter(id=>byId[id]&&byId[id].status==='resolved');
+  const pending=ticket.blockedBy.filter(id=>byId[id]&&byId[id].status!=='resolved');
+  const missing=ticket.blockedBy.filter(id=>!byId[id]);
+  return [[resolved,L.prerequisiteResolved,''],[pending,L.prerequisitePending,'⛔ '],[missing,L.prerequisiteMissing,'⛔ ']]
+    .filter(([ids])=>ids.length)
+    .map(([ids,label,icon])=>`<span class="blockline">${icon}${esc(label)}: ${ids.map(esc).join(', ')}</span>`).join(' ');
+}
+
+/* ---------- explicit human-decision view; ticket remains the source ---------- */
+const overview = document.getElementById('map-overview');
+document.getElementById('map-overview-summary').textContent = L.fullMap;
+if(DATA.focus){
+  const focusSection=document.getElementById('current-focus');
+  const focusTitle=document.getElementById('focus-title');
+  const focusContent=document.getElementById('focus-content');
+  focusSection.hidden=false;
+  if(DATA.focus.problem){
+    focusTitle.textContent=L.focusWarning;
+    focusContent.textContent=L.focusProblems[DATA.focus.problem];
+    overview.open=true;
+  } else {
+    const ticket=byId[DATA.focus.ticketId];
+    focusTitle.textContent=L.currentFocus;
+    const heading=document.createElement('h3');
+    heading.textContent=ticket.title;
+    focusContent.appendChild(heading);
+    let hasContent=false;
+    for(const [key,label] of [['question',L.question],['context',L.context],['evidence',L.evidence],['options',L.options],['recommendation',L.recommendation],['comments',L.comments]]){
+      if(!ticket[key]) continue;
+      hasContent=true;
+      const h=document.createElement('h4'); h.textContent=label; focusContent.appendChild(h);
+      const body=document.createElement('div');
+      body.innerHTML=mdBlock(ticket[key]);
+      focusContent.appendChild(body);
+    }
+    if(!hasContent){const missing=document.createElement('p'); missing.className='focus-missing'; missing.textContent=L.missingField; focusContent.appendChild(missing);}
+    const sourceLink=document.createElement('a'); sourceLink.href=ticket.file; sourceLink.textContent=L.openTicket; focusContent.appendChild(sourceLink);
+    overview.open=false;
+  }
+}
+
+/* ---------- header ---------- */
+document.getElementById('effort-name').textContent = DATA.effort;
+document.getElementById('destination').innerHTML = md(DATA.destination);
+const n = s => DATA.tickets.filter(t=>t.s===s).length;
+document.getElementById('meta').textContent =
+  format(L.metaTemplate,{total:DATA.tickets.length,resolved:n('resolved'),frontier:n('frontier'),claimed:n('claimed'),blocked:n('blocked')});
+document.getElementById('status-boundary').textContent = L.statusBoundary;
+document.getElementById('foot').textContent = `${L.generated} ${DATA.generatedAt} · ${L.source}: ${DATA.source}`;
+document.title = `${L.documentTitle} — ${DATA.effort}`;
+
+/* ---------- graph layout: columns by longest blocking depth ---------- */
+const depth = {};
+function d(t){ if(depth[t.id]!=null) return depth[t.id];
+  depth[t.id] = t.blockedBy.length ? 1+Math.max(...t.blockedBy.map(b=>byId[b]?d(byId[b]):0)) : 0;
+  return depth[t.id]; }
+DATA.tickets.forEach(d);
+const maxD = Math.max(0,...Object.values(depth));
+const cols = Array.from({length:maxD+1},()=>[]);
+DATA.tickets.forEach(t=>cols[depth[t.id]].push(t));
+const CW=208, NW=156, NH=44, PAD=46;
+/* CJK glyphs render ~2× a latin cell in monospace — truncate by display width, not char count */
+const cut=(s,max)=>{let u=0,out='';for(const c of s){u+=c.charCodeAt(0)>0x2E7F?2:1;if(u>max)return out+'…';out+=c;}return s;};
+const rows = Math.max(...cols.map(c=>c.length));
+const H = Math.max(230, rows*74+70), W = PAD*2 + (maxD+1)*CW + 150;
+const svg = document.getElementById('graph');
+svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+const pos = {};
+cols.forEach((col,ci)=>col.forEach((t,ri)=>{
+  const x = PAD + ci*CW;
+  const y = H/2 + (ri - (col.length-1)/2)*74 - NH/2;
+  pos[t.id]={x,y};
+}));
+const S = 'http://www.w3.org/2000/svg';
+const el=(n,a)=>{const e=document.createElementNS(S,n);for(const k in a)e.setAttribute(k,a[k]);return e};
+const edges=[];
+/* blocking edges */
+DATA.tickets.forEach(t=>t.blockedBy.forEach(b=>{ if(!byId[b])return;
+  const p1=pos[b],p2=pos[t.id];
+  const x1=p1.x+NW,y1=p1.y+NH/2,x2=p2.x,y2=p2.y+NH/2,mx=(x1+x2)/2;
+  const path=el('path',{d:`M${x1} ${y1} C ${mx} ${y1}, ${mx} ${y2}, ${x2} ${y2}`,class:'edge'});
+  path.dataset.a=b; path.dataset.b=t.id; svg.appendChild(path); edges.push(path);
+}));
+/* destination flag: dashed edges from tickets nothing depends on */
+const hasDependent = new Set(); DATA.tickets.forEach(t=>t.blockedBy.forEach(b=>hasDependent.add(b)));
+const fx = PAD+(maxD+1)*CW+26, fy = H/2;
+DATA.tickets.filter(t=>!hasDependent.has(t.id)).forEach(t=>{
+  const p=pos[t.id],x1=p.x+NW,y1=p.y+NH/2,mx=(x1+fx)/2;
+  svg.appendChild(el('path',{d:`M${x1} ${y1} C ${mx} ${y1}, ${mx} ${fy}, ${fx-14} ${fy}`,class:'edge dest-edge'}));
+});
+const flag=el('g',{class:'destflag'});
+flag.appendChild(el('path',{d:`M${fx} ${fy-26} v52 M${fx} ${fy-26} l30 9 -30 9`,stroke:'var(--beacon)','stroke-width':'2',fill:'var(--beacon)'}));
+const ftxt=el('text',{x:fx+6,y:fy+38,'text-anchor':'middle'}); ftxt.textContent=L.destination; flag.appendChild(ftxt);
+svg.appendChild(flag);
+/* nodes */
+DATA.tickets.forEach(t=>{
+  const p=pos[t.id];
+  const g=el('g',{class:'node '+t.s,transform:`translate(${p.x},${p.y})`,tabindex:'0',role:'button','aria-label':`${t.id} ${t.title} — ${STATUS_LABEL[t.s]}`});
+  if(t.s==='frontier') g.appendChild(el('circle',{class:'halo',cx:NW/2,cy:NH/2,r:56}));
+  g.appendChild(el('rect',{width:NW,height:NH,rx:7}));
+  const l1=el('text',{x:12,y:19,class:'nid'}); l1.textContent=t.id+' · '+(TYPE_LABEL[t.type]||t.type);
+  const l2=el('text',{x:12,y:35}); l2.textContent=cut(t.title,20);
+  const tip=el('title',{}); tip.textContent=`${t.id} ${t.title} [${STATUS_LABEL[t.s]}]`;
+  g.append(tip,l1,l2);
+  g.addEventListener('mouseenter',()=>light(t.id)); g.addEventListener('mouseleave',unlight);
+  g.addEventListener('focus',()=>light(t.id)); g.addEventListener('blur',unlight);
+  const open=()=>{const c=document.getElementById('card-'+t.id); if(c){c.open=true; c.scrollIntoView({block:'center'});}};
+  g.addEventListener('click',open);
+  g.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();open();}});
+  svg.appendChild(g); t._node=g;
+});
+/* fog veil over the chart's right edge */
+const veil=el('rect',{class:'fogveil',x:W-120,y:0,width:120,height:H,fill:'url(#fogGrad)'});
+const defs=el('defs',{}); const gr=el('linearGradient',{id:'fogGrad',x1:0,x2:1});
+gr.appendChild(el('stop',{offset:'0','stop-color':'#8FA3B0','stop-opacity':'0'}));
+gr.appendChild(el('stop',{offset:'1','stop-color':'#8FA3B0','stop-opacity':'.13'}));
+defs.appendChild(gr); svg.appendChild(defs); svg.appendChild(veil);
+
+function chain(id,dir,acc){ acc.add(id);
+  DATA.tickets.forEach(t=>{
+    if(dir==='up'&&t.id===id) t.blockedBy.forEach(b=>chain(b,'up',acc));
+    if(dir==='down'&&t.blockedBy.includes(id)) chain(t.id,'down',acc);
+  }); return acc; }
+function light(id){
+  const lit=chain(id,'up',chain(id,'down',new Set()));
+  DATA.tickets.forEach(t=>t._node.classList.toggle('dim',!lit.has(t.id))||t._node.classList.toggle('lit',lit.has(t.id)));
+  edges.forEach(e=>{const on=lit.has(e.dataset.a)&&lit.has(e.dataset.b);
+    e.classList.toggle('lit',on); e.classList.toggle('dim',!on);});
+}
+function unlight(){ DATA.tickets.forEach(t=>t._node.classList.remove('dim','lit'));
+  edges.forEach(e=>e.classList.remove('dim','lit')); }
+
+/* ---------- cards + filters ---------- */
+const order=['frontier','claimed','blocked','resolved'];
+const cardsEl=document.getElementById('cards');
+[...DATA.tickets].sort((a,b)=>order.indexOf(a.s)-order.indexOf(b.s)||a.id.localeCompare(b.id)).forEach(t=>{
+  const dts=document.createElement('details');
+  dts.className='card'; dts.id='card-'+t.id; dts.dataset.s=t.s;
+  const blk=dependencySummary(t);
+  dts.innerHTML=`<summary><span class="tid">${esc(t.id)}</span><span class="ttitle">${esc(t.title)}</span>${blk}
+    <span class="badge t">${esc(TYPE_LABEL[t.type]||t.type)}</span><span class="badge s-${t.s}">${STATUS_LABEL[t.s]}</span></summary>
+    <div class="card-body"><h4>${L.question}</h4>${mdBlock(t.question)}
+    ${t.evidence?`<h4>${L.evidence}</h4>${mdBlock(t.evidence)}`:''}
+    ${t.options?`<h4>${L.options}</h4>${mdBlock(t.options)}`:''}
+    ${t.recommendation?`<h4>${L.recommendation}</h4>${mdBlock(t.recommendation)}`:''}
+    ${t.answer?`<h4>${L.answer}</h4>${mdBlock(t.answer)}`:''}
+    ${t.comments?`<h4>${L.comments}</h4>${mdBlock(t.comments)}`:''}
+    <h4><a href="${esc(t.file)}">${L.openTicket} →</a></h4></div>`;
+  cardsEl.appendChild(dts);
+});
+const chipsEl=document.getElementById('chips');
+const active=new Set(order);
+['all',...order].forEach(s=>{
+  const b=document.createElement('button');
+  b.className='chip'; b.textContent=s==='all'?`${L.all} ${DATA.tickets.length}`:`${STATUS_LABEL[s]} ${n(s)}`;
+  b.setAttribute('aria-pressed', s==='all');
+  b.onclick=()=>{ chipsEl.querySelectorAll('.chip').forEach(c=>c.setAttribute('aria-pressed','false'));
+    b.setAttribute('aria-pressed','true');
+    cardsEl.querySelectorAll('details').forEach(c=>c.style.display=(s==='all'||c.dataset.s===s)?'':'none'); };
+  chipsEl.appendChild(b);
+});
+
+/* ---------- map sections ---------- */
+const li=(target,items)=>{const u=document.getElementById(target);
+  items.forEach(x=>{const l=document.createElement('li');l.innerHTML=md(x);u.appendChild(l);});
+  if(!items.length){const l=document.createElement('li');l.style.opacity=.5;l.textContent=`— ${L.empty}`;u.appendChild(l);}};
+li('decisions',DATA.decisions); li('fog',DATA.fog); li('oos',DATA.outOfScope);
+</script>
+</body>
+</html>

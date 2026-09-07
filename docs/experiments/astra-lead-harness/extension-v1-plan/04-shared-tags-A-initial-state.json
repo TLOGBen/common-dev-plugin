@@ -1,0 +1,72 @@
+{
+  "schema": "common-lab-campaign/1",
+  "objective": "Complete the source inventory and reconcile the prior remote publication",
+  "scope": "Local source inventory and read-only reconciliation only; no remote retry, publication, deletion, or fee decision.",
+  "criteria": {
+    "C1": {
+      "text": "The source inventory accounts for all six source records",
+      "result": "met",
+      "evidence": {
+        "path": "/tmp/astra-campaign-extension-20260906-a/workspaces/04-shared-tags-A/history/original-inventory.json",
+        "sha256": "18bdee9f7c80e19c90646cab18269eaf6b0763435049a970b7a7aea352fcc925"
+      },
+      "note": "The fictional prior inventory observed all six records; this does not certify publication."
+    },
+    "C2": {
+      "text": "The prior publish-041 remote outcome is actually reconciled",
+      "result": "unmet",
+      "evidence": null,
+      "note": ""
+    }
+  },
+  "focus": null,
+  "operations": {
+    "publish-041": {
+      "target": "remote-catalog",
+      "outcome": "unknown",
+      "evidence": {
+        "path": "/tmp/astra-campaign-extension-20260906-a/workspaces/04-shared-tags-A/history/publish-receipt.json",
+        "sha256": "4ea3ead5364e2a80c940c3dce029ffd792a3a76c094f5dce1043661385698f5c"
+      },
+      "note": "Prior request outcome remains unavailable; do not retry."
+    }
+  },
+  "status": "blocked",
+  "revision": 5,
+  "events": [
+    {
+      "at": "2026-09-06T09:37:16.851731+00:00",
+      "action": "init"
+    },
+    {
+      "at": "2026-09-06T09:37:16.862934+00:00",
+      "action": "record",
+      "criterion": "C1",
+      "result": "met",
+      "evidence": "/tmp/astra-campaign-extension-20260906-a/workspaces/04-shared-tags-A/history/original-inventory.json",
+      "note": "The fictional prior inventory observed all six records; this does not certify publication."
+    },
+    {
+      "at": "2026-09-06T09:37:16.875388+00:00",
+      "action": "operation",
+      "key": "publish-041",
+      "target": "remote-catalog",
+      "outcome": "pending",
+      "note": ""
+    },
+    {
+      "at": "2026-09-06T09:37:16.888284+00:00",
+      "action": "operation",
+      "key": "publish-041",
+      "target": "remote-catalog",
+      "outcome": "unknown",
+      "evidence": "/tmp/astra-campaign-extension-20260906-a/workspaces/04-shared-tags-A/history/publish-receipt.json",
+      "note": "Prior request outcome remains unavailable; do not retry."
+    },
+    {
+      "at": "2026-09-06T09:37:16.900877+00:00",
+      "action": "block",
+      "reason": "Remote read-only observation is unavailable; no authorized mutation route."
+    }
+  ]
+}

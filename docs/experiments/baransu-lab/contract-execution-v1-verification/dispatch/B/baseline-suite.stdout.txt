@@ -1,0 +1,40 @@
+TAP version 13
+# Subtest: trims outer ASCII spaces and lowers ASCII
+ok 1 - trims outer ASCII spaces and lowers ASCII
+  ---
+  duration_ms: 1.064215
+  type: 'test'
+  ...
+# Subtest: preserves an already normalized tag
+ok 2 - preserves an already normalized tag
+  ---
+  duration_ms: 0.165097
+  type: 'test'
+  ...
+# Subtest: preserves internal whitespace while lowering ASCII
+ok 3 - preserves internal whitespace while lowering ASCII
+  ---
+  duration_ms: 0.101163
+  type: 'test'
+  ...
+# Subtest: preserves non-ASCII characters
+ok 4 - preserves non-ASCII characters
+  ---
+  duration_ms: 1.152104
+  type: 'test'
+  ...
+# Subtest: throws the exact EMPTY_TAG error after trimming
+ok 5 - throws the exact EMPTY_TAG error after trimming
+  ---
+  duration_ms: 0.683719
+  type: 'test'
+  ...
+1..5
+# tests 5
+# suites 0
+# pass 5
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 68.996476

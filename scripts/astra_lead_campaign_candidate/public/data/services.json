@@ -1,0 +1,73 @@
+{
+  "release_id": "service-catalog-v3",
+  "records": [
+    {
+      "id": "S101",
+      "status": "active",
+      "channel": "standard",
+      "name": "Pump inspection",
+      "region": "north",
+      "slots": 12,
+      "tags": [
+        "pump",
+        "maintenance"
+      ]
+    },
+    {
+      "id": "S102",
+      "status": "active",
+      "channel": "standard",
+      "name": "Filter service",
+      "region": "south",
+      "slots": 0,
+      "tags": [
+        "filter"
+      ]
+    },
+    {
+      "id": "S103",
+      "status": "inactive",
+      "channel": "standard",
+      "name": "Retired service",
+      "region": "east",
+      "slots": 9,
+      "tags": [
+        "retired"
+      ]
+    },
+    {
+      "id": "S104",
+      "status": "active",
+      "channel": "standard",
+      "name": "配管, 大型",
+      "region": "north",
+      "slots": 2,
+      "tags": [
+        "valve",
+        "maintenance"
+      ]
+    },
+    {
+      "id": "S105",
+      "status": "active",
+      "channel": "standard",
+      "name": "Sensor inspection",
+      "region": "east",
+      "slots": 4,
+      "tags": [
+        "sensor"
+      ]
+    },
+    {
+      "id": "P201",
+      "status": "active",
+      "channel": "premium",
+      "name": "Priority response",
+      "region": "west",
+      "slots": 3,
+      "tags": [
+        "priority"
+      ]
+    }
+  ]
+}

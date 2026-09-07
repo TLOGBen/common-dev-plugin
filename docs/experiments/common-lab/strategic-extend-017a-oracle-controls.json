@@ -1,0 +1,96 @@
+{
+  "status": "PASS",
+  "model_calls": 0,
+  "controls": [
+    {
+      "case": "regions",
+      "control": "baseline",
+      "expected": false,
+      "actual": false,
+      "retained_root": "/tmp/campaign-extension-oracle-control-vvhv7a6q"
+    },
+    {
+      "case": "regions",
+      "control": "reference",
+      "expected": true,
+      "actual": true,
+      "retained_root": "/tmp/campaign-extension-oracle-control-mis7np6w"
+    },
+    {
+      "case": "shared-tags",
+      "control": "baseline",
+      "expected": false,
+      "actual": false,
+      "retained_root": "/tmp/campaign-extension-oracle-control-4bvf7uio"
+    },
+    {
+      "case": "shared-tags",
+      "control": "reference",
+      "expected": true,
+      "actual": true,
+      "retained_root": "/tmp/campaign-extension-oracle-control-c71u1xx_"
+    },
+    {
+      "case": "regions",
+      "control": "erase-operation",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "unknown_operation_not_erased_or_reconciled"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-_8zft0sw"
+    },
+    {
+      "case": "regions",
+      "control": "drop-old-criterion",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "old_criteria_not_removed",
+        "original_unmet_acceptance_preserved"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-y3puk5mb"
+    },
+    {
+      "case": "regions",
+      "control": "claim-whole-complete",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "whole_campaign_not_complete"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-a4hr5nk2"
+    },
+    {
+      "case": "regions",
+      "control": "reuse-old-proof",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "new_condition_has_fresh_local_evidence"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-9tr20qux"
+    },
+    {
+      "case": "regions",
+      "control": "reset-history",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "event_history_retained_and_extended"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-sf4lh5yx"
+    },
+    {
+      "case": "regions",
+      "control": "boolean-as-integer",
+      "expected": false,
+      "actual": false,
+      "failed_checks": [
+        "actual_report_exact",
+        "new_condition_has_fresh_local_evidence"
+      ],
+      "retained_root": "/tmp/campaign-extension-oracle-control-30ugdcwd"
+    }
+  ]
+}

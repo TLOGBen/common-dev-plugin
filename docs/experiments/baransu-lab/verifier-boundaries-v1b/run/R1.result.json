@@ -1,0 +1,110 @@
+{
+  "label": "R1",
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/verifier-boundaries-v1b-c5t_5hfu/R1",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "started_utc": "2026-09-06T11:47:56.482545+00:00",
+  "ended_utc": "2026-09-06T11:50:50.841676+00:00",
+  "wall_seconds": 174.3645142490277,
+  "status": "completed",
+  "exit_code": 0,
+  "input_unchanged": true,
+  "actual_cost_usd": null,
+  "semantic_acceptance": null,
+  "messages": [
+    "我會嚴格限於列出的 12 個檔案，先逐一核對契約、實作與測試，再以 `python3 -B` 執行不寫入位元碼的測試／必要記憶體探針；不會查看父目錄、全域設定或任何未列檔案。最終會把「已觀察缺陷」「證據不足」「可選改進」分開。",
+    "靜態核對目前顯示：R 的兩個產生器與 S 實作都直接符合其核心規則；V 實作則只檢查 `active`，沒有使用 `allowed_ids`。接著我會分目錄執行三組原有測試，確認現有測試是否能攔到這個行為，之後再跑針對契約邊界的記憶體探針。",
+    "原有測試結果是 R 7/7、S 2/2、V 2/2 全過；因此 V 的現有測試確實沒有覆蓋 allowlist 邊界。第一次記憶體探針因唯讀檔案系統不允許 shell 建立 heredoc 暫存檔而未執行；我會改用 `python3 -B -c`（不建立檔案）重跑，並在限制中如實列出這次失敗。",
+    "## 結論\n\n發現 1 個高影響實作缺陷及 1 個直接相關的測試缺陷，均位於 V。R、S 在可審範圍內未觀察到契約違反。\n\n## 已觀察缺陷\n\n### 高：V 未套用 allowlist，可能暴露未授權資料\n\n- 位置：[V/subject.py:2](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/subject.py:2)\n- 契約：[V/REQUIREMENTS.md:1](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/REQUIREMENTS.md:1) 要求同時滿足 `active is True` 與 `id in allowed_ids`。\n- 觸發：存在 active row，但其 ID 不在 allowlist；空 allowlist 也會觸發。\n- 後果：呼叫端會取得不應可見的 active rows，屬於存取篩選失效。\n- 實際探針：\n\n  - `visible([a(active), b(active), c(inactive)], set())`\n  - 預期：`[]`\n  - 實際：`[a, b]`\n  - `allowed_ids={\"b\",\"c\"}` 時預期只有 `b`，實際為 `a, b`。\n  - 此探針同時確認輸入未被修改。\n\n### 中：V 測試讓上述缺陷呈現全綠\n\n- 位置：[V/test_subject.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/test_subject.py:4)\n- 原因：唯一非空案例剛好令唯一 active row `a` 也在 `{\"a\"}` 中，因此完全沒有辨別實作是否使用 `allowed_ids`。\n- 缺少案例：\n\n  - 非空 rows 搭配空 allowlist。\n  - active row 不在 allowlist。\n  - 多個 active rows 中只允許部分 ID。\n\n- 後果：目前錯誤實作仍通過 V 的 2 項測試，測試無法防止核心授權條件遺失。\n\n## 各產品結果\n\n### R\n\n未觀察到契約缺陷。\n\n- [R/catalog.py:3](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:3) 依 ID 排序。\n- [R/catalog.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:4) 僅保留 active＋standard，未錯刪 `slots=0`。\n- [R/catalog.py:6](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:6) item 欄位精確且原值／型別保留。\n- [R/search_index.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/search_index.py:4) 收集每個 tag；[第 10 行](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/search_index.py:10) 對 ID 去重排序。\n- 權威 fixture 探針產生 `S101,S102,S104,S105`；`north + maintenance` 得到 `S101,S104`；premium tag `priority` 得到空集合。\n- canonical UTF-8 bundle 的探針 SHA-256 為 `aa23d8d804a3839fce396c6773940533ccb3b5a7a8b6d696e3dbab7156baa6ff`。\n\n測試品質整體良好，涵蓋零容量、Unicode、型別、多 tag、重複 tag、共享 region、交集及 canonical formatting。\n\n缺少的證據而非已觀察缺陷：測試中的 release bundle 是在 [R/tests/test_build.py:94](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/tests/test_build.py:94) 直接組裝，未驗證實際 bundle 產生入口，也未直接以 `data/services.json` 作回歸測試。因此測試本身不能證明真實 release 工件永遠只有三個頂層欄位；本次另以記憶體探針驗證了目前 fixture，但不是產品發布／接受端證據。\n\n### S\n\n實作與測試均未觀察到缺陷。\n\n- [S/subject.py:2](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/S/subject.py:2) 正確拒絕負 limit。\n- [S/subject.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/S/subject.py:4) 依 priority 降冪、ID 升冪排序並限制筆數。\n- `sorted()` 產生新 list，未改動輸入。\n- 額外探針確認完整順序為 `a,b,z,n`、limit 0 為空、負 limit 為 `ValueError`，輸入保持不變。\n- 現有測試已覆蓋排序、同分規則、截斷、空輸入、limit 0、負 limit 與輸入順序不變。\n\n### V\n\n除 allowlist 缺陷外，現有實作確實保留 row 順序且未修改輸入；但核心雙條件篩選不成立，因此產品不符合需求。\n\n## 實際執行檢查\n\n- R：`python3 -B -m unittest discover -s tests -v` — 7/7 通過。\n- S：`python3 -B -m unittest -v test_subject.py` — 2/2 通過。\n- V：`python3 -B -m unittest -v test_subject.py` — 2/2 通過，但上述探針證明是假陰性。\n- 另以 `python3 -B -c` 執行 R/S/V 記憶體探針，三者均成功執行。\n- 曾嘗試 heredoc 探針，但唯讀檔案系統拒絕建立 shell 暫存檔；另一次換行引號組裝產生 `SyntaxError`。兩次均未形成行為證據，之後已由成功的 `-c` 探針取代。\n\n## 限制\n\n僅讀取指定的 12 個檔案；未查看其他目錄或設定、未連網、未委派、未編輯檔案。依範圍要求，未執行 `ops.py` CLI，也未存取 receiver、events、decisions、部署或 premium 流程。因此不對 active release、接受端整合或 premium 狀態作任何完成宣稱。"
+  ],
+  "final_message": "## 結論\n\n發現 1 個高影響實作缺陷及 1 個直接相關的測試缺陷，均位於 V。R、S 在可審範圍內未觀察到契約違反。\n\n## 已觀察缺陷\n\n### 高：V 未套用 allowlist，可能暴露未授權資料\n\n- 位置：[V/subject.py:2](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/subject.py:2)\n- 契約：[V/REQUIREMENTS.md:1](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/REQUIREMENTS.md:1) 要求同時滿足 `active is True` 與 `id in allowed_ids`。\n- 觸發：存在 active row，但其 ID 不在 allowlist；空 allowlist 也會觸發。\n- 後果：呼叫端會取得不應可見的 active rows，屬於存取篩選失效。\n- 實際探針：\n\n  - `visible([a(active), b(active), c(inactive)], set())`\n  - 預期：`[]`\n  - 實際：`[a, b]`\n  - `allowed_ids={\"b\",\"c\"}` 時預期只有 `b`，實際為 `a, b`。\n  - 此探針同時確認輸入未被修改。\n\n### 中：V 測試讓上述缺陷呈現全綠\n\n- 位置：[V/test_subject.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/V/test_subject.py:4)\n- 原因：唯一非空案例剛好令唯一 active row `a` 也在 `{\"a\"}` 中，因此完全沒有辨別實作是否使用 `allowed_ids`。\n- 缺少案例：\n\n  - 非空 rows 搭配空 allowlist。\n  - active row 不在 allowlist。\n  - 多個 active rows 中只允許部分 ID。\n\n- 後果：目前錯誤實作仍通過 V 的 2 項測試，測試無法防止核心授權條件遺失。\n\n## 各產品結果\n\n### R\n\n未觀察到契約缺陷。\n\n- [R/catalog.py:3](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:3) 依 ID 排序。\n- [R/catalog.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:4) 僅保留 active＋standard，未錯刪 `slots=0`。\n- [R/catalog.py:6](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/catalog.py:6) item 欄位精確且原值／型別保留。\n- [R/search_index.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/search_index.py:4) 收集每個 tag；[第 10 行](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/search_index.py:10) 對 ID 去重排序。\n- 權威 fixture 探針產生 `S101,S102,S104,S105`；`north + maintenance` 得到 `S101,S104`；premium tag `priority` 得到空集合。\n- canonical UTF-8 bundle 的探針 SHA-256 為 `aa23d8d804a3839fce396c6773940533ccb3b5a7a8b6d696e3dbab7156baa6ff`。\n\n測試品質整體良好，涵蓋零容量、Unicode、型別、多 tag、重複 tag、共享 region、交集及 canonical formatting。\n\n缺少的證據而非已觀察缺陷：測試中的 release bundle 是在 [R/tests/test_build.py:94](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/R/tests/test_build.py:94) 直接組裝，未驗證實際 bundle 產生入口，也未直接以 `data/services.json` 作回歸測試。因此測試本身不能證明真實 release 工件永遠只有三個頂層欄位；本次另以記憶體探針驗證了目前 fixture，但不是產品發布／接受端證據。\n\n### S\n\n實作與測試均未觀察到缺陷。\n\n- [S/subject.py:2](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/S/subject.py:2) 正確拒絕負 limit。\n- [S/subject.py:4](/tmp/verifier-boundaries-v1b-c5t_5hfu/R1/S/subject.py:4) 依 priority 降冪、ID 升冪排序並限制筆數。\n- `sorted()` 產生新 list，未改動輸入。\n- 額外探針確認完整順序為 `a,b,z,n`、limit 0 為空、負 limit 為 `ValueError`，輸入保持不變。\n- 現有測試已覆蓋排序、同分規則、截斷、空輸入、limit 0、負 limit 與輸入順序不變。\n\n### V\n\n除 allowlist 缺陷外，現有實作確實保留 row 順序且未修改輸入；但核心雙條件篩選不成立，因此產品不符合需求。\n\n## 實際執行檢查\n\n- R：`python3 -B -m unittest discover -s tests -v` — 7/7 通過。\n- S：`python3 -B -m unittest -v test_subject.py` — 2/2 通過。\n- V：`python3 -B -m unittest -v test_subject.py` — 2/2 通過，但上述探針證明是假陰性。\n- 另以 `python3 -B -c` 執行 R/S/V 記憶體探針，三者均成功執行。\n- 曾嘗試 heredoc 探針，但唯讀檔案系統拒絕建立 shell 暫存檔；另一次換行引號組裝產生 `SyntaxError`。兩次均未形成行為證據，之後已由成功的 `-c` 探針取代。\n\n## 限制\n\n僅讀取指定的 12 個檔案；未查看其他目錄或設定、未連網、未委派、未編輯檔案。依範圍要求，未執行 `ops.py` CLI，也未存取 receiver、events、decisions、部署或 premium 流程。因此不對 active release、接受端整合或 premium 狀態作任何完成宣稱。",
+  "usage": {
+    "input_tokens": 139118,
+    "cached_input_tokens": 120576,
+    "output_tokens": 8482,
+    "uncached_input_tokens": 18542,
+    "total_tokens": 147600
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'for f in R/TASK.md R/catalog.py R/data/services.json R/ops.py R/search_index.py R/tests/test_build.py S/REQUIREMENTS.md S/subject.py S/test_subject.py V/REQUIREMENTS.md V/subject.py V/test_subject.py; do\n  echo \"FILE $f\"\n  nl -ba \"$f\"\ndone'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c '\"python3\" \"-B\" \"-m\" \"unittest\" \"-v\" \"test_subject.py\"'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c '\"python3\" \"-B\" \"-m\" \"unittest\" \"-v\" \"test_subject.py\"'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c '\"python3\" \"-B\" \"-m\" \"unittest\" \"discover\" \"-s\" \"tests\" \"-v\"'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"\\\"python3\\\" \\\"-B\\\" \\\"-c\\\" \\\"import json\\\\nfrom subject import visible\\\\nrows = [{\\\\\\\"id\\\\\\\": \\\\\\\"a\\\\\\\", \\\\\\\"active\\\\\\\": True}, {\\\\\\\"id\\\\\\\": \\\\\\\"b\\\\\\\", \\\\\\\"active\\\\\\\": True}, {\\\\\\\"id\\\\\\\": \\\\\\\"c\\\\\\\", \\\\\\\"active\\\\\\\": False}]\\\\nbefore = [dict(row) for row in rows]\\\\nobserved_empty_allowlist = visible(rows, set())\\\\nobserved_allow_b = visible(rows, {\\\\\\\"b\\\\\\\", \\\\\\\"c\\\\\\\"})\\\\nprint(json.dumps({\\\\\\\"empty_allowlist_expected\\\\\\\": [], \\\\\\\"empty_allowlist_observed\\\\\\\": observed_empty_allowlist, \\\\\\\"allow_b_expected_ids\\\\\\\": [\\\\\\\"b\\\\\\\"], \\\\\\\"allow_b_observed_ids\\\\\\\": [row[\\\\\\\"id\\\\\\\"] for row in observed_allow_b], \\\\\\\"input_unchanged\\\\\\\": rows == before}, sort_keys=True))\\\"\"",
+      "status": "failed",
+      "exit_code": 1
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"\\\"python3\\\" \\\"-B\\\" \\\"-c\\\" \\\"import hashlib\\\\nimport json\\\\nfrom catalog import build_catalog\\\\nfrom search_index import build_index\\\\nfrom ops import canonical, query\\\\nwith open(\\\\\\\"data/services.json\\\\\\\", encoding=\\\\\\\"utf-8\\\\\\\") as source:\\\\n    document = json.load(source)\\\\ncatalog = build_catalog(document)\\\\nindex = build_index(catalog)\\\\nbundle = {\\\\\\\"release_id\\\\\\\": document[\\\\\\\"release_id\\\\\\\"], \\\\\\\"catalog\\\\\\\": catalog, \\\\\\\"index\\\\\\\": index}\\\\nassert set(bundle) == {\\\\\\\"release_id\\\\\\\", \\\\\\\"catalog\\\\\\\", \\\\\\\"index\\\\\\\"}\\\\nassert [row[\\\\\\\"id\\\\\\\"] for row in catalog[\\\\\\\"items\\\\\\\"]] == [\\\\\\\"S101\\\\\\\", \\\\\\\"S102\\\\\\\", \\\\\\\"S104\\\\\\\", \\\\\\\"S105\\\\\\\"]\\\\nassert all(set(row) == {\\\\\\\"id\\\\\\\", \\\\\\\"name\\\\\\\", \\\\\\\"region\\\\\\\", \\\\\\\"slots\\\\\\\", \\\\\\\"tags\\\\\\\"} for row in catalog[\\\\\\\"items\\\\\\\"])\\\\nassert catalog[\\\\\\\"items\\\\\\\"][1][\\\\\\\"slots\\\\\\\"] == 0\\\\nassert index[\\\\\\\"terms\\\\\\\"][\\\\\\\"maintenance\\\\\\\"] == [\\\\\\\"S101\\\\\\\", \\\\\\\"S104\\\\\\\"]\\\\nassert index[\\\\\\\"regions\\\\\\\"][\\\\\\\"north\\\\\\\"] == [\\\\\\\"S101\\\\\\\", \\\\\\\"S104\\\\\\\"]\\\\nassert [row[\\\\\\\"id\\\\\\\"] for row in query(bundle, region=\\\\\\\"north\\\\\\\", tag=\\\\\\\"maintenance\\\\\\\")] == [\\\\\\\"S101\\\\\\\", \\\\\\\"S104\\\\\\\"]\\\\nassert query(bundle, tag=\\\\\\\"priority\\\\\\\") == []\\\\npretty_roundtrip = json.loads(json.dumps(bundle, ensure_ascii=False, indent=2))\\\\nassert canonical(bundle) == canonical(pretty_roundtrip)\\\\nassert bytes.fromhex(\\\\\\\"e9858de7aea1\\\\\\\") in canonical(bundle)\\\\nprint(json.dumps({\\\\\\\"fixture_ids\\\\\\\": [row[\\\\\\\"id\\\\\\\"] for row in catalog[\\\\\\\"items\\\\\\\"]], \\\\\\\"north_maintenance\\\\\\\": [row[\\\\\\\"id\\\\\\\"] for row in query(bundle, region=\\\\\\\"north\\\\\\\", tag=\\\\\\\"maintenance\\\\\\\")], \\\\\\\"priority\\\\\\\": query(bundle, tag=\\\\\\\"priority\\\\\\\"), \\\\\\\"canonical_sha256\\\\\\\": hashlib.sha256(canonical(bundle)).hexdigest()}, ensure_ascii=False, sort_keys=True))\\\"\"",
+      "status": "failed",
+      "exit_code": 1
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"\\\"python3\\\" \\\"-B\\\" \\\"-c\\\" \\\"import json\\\\nfrom subject import rank\\\\nrows = [{\\\\\\\"id\\\\\\\": \\\\\\\"z\\\\\\\", \\\\\\\"priority\\\\\\\": 2}, {\\\\\\\"id\\\\\\\": \\\\\\\"b\\\\\\\", \\\\\\\"priority\\\\\\\": 3}, {\\\\\\\"id\\\\\\\": \\\\\\\"a\\\\\\\", \\\\\\\"priority\\\\\\\": 3}, {\\\\\\\"id\\\\\\\": \\\\\\\"n\\\\\\\", \\\\\\\"priority\\\\\\\": -1}]\\\\nbefore = [dict(row) for row in rows]\\\\nassert [row[\\\\\\\"id\\\\\\\"] for row in rank(rows, 99)] == [\\\\\\\"a\\\\\\\", \\\\\\\"b\\\\\\\", \\\\\\\"z\\\\\\\", \\\\\\\"n\\\\\\\"]\\\\nassert rank(rows, 0) == []\\\\nassert rows == before\\\\nnegative = None\\\\ntry:\\\\n    rank(rows, -1)\\\\nexcept ValueError:\\\\n    negative = \\\\\\\"ValueError\\\\\\\"\\\\nassert negative == \\\\\\\"ValueError\\\\\\\"\\\\nprint(json.dumps({\\\\\\\"ordered\\\\\\\": [row[\\\\\\\"id\\\\\\\"] for row in rank(rows, 99)], \\\\\\\"input_unchanged\\\\\\\": rows == before, \\\\\\\"negative\\\\\\\": negative}))\\\"\"",
+      "status": "failed",
+      "exit_code": 1
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"python3 -B -c 'import json\nfrom subject import rank\nrows = [{\\\"id\\\": \\\"z\\\", \\\"priority\\\": 2}, {\\\"id\\\": \\\"b\\\", \\\"priority\\\": 3}, {\\\"id\\\": \\\"a\\\", \\\"priority\\\": 3}, {\\\"id\\\": \\\"n\\\", \\\"priority\\\": -1}]\nbefore = [dict(row) for row in rows]\nassert [row[\\\"id\\\"] for row in rank(rows, 99)] == [\\\"a\\\", \\\"b\\\", \\\"z\\\", \\\"n\\\"]\nassert rank(rows, 0) == []\nassert rows == before\nnegative = None\ntry:\n    rank(rows, -1)\nexcept ValueError:\n    negative = \\\"ValueError\\\"\nassert negative == \\\"ValueError\\\"\nprint(json.dumps({\\\"ordered\\\": [row[\\\"id\\\"] for row in rank(rows, 99)], \\\"input_unchanged\\\": rows == before, \\\"negative\\\": negative}))'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"python3 -B -c 'import json\nfrom subject import visible\nrows = [{\\\"id\\\": \\\"a\\\", \\\"active\\\": True}, {\\\"id\\\": \\\"b\\\", \\\"active\\\": True}, {\\\"id\\\": \\\"c\\\", \\\"active\\\": False}]\nbefore = [dict(row) for row in rows]\nobserved_empty_allowlist = visible(rows, set())\nobserved_allow_b = visible(rows, {\\\"b\\\", \\\"c\\\"})\nprint(json.dumps({\\\"empty_allowlist_expected\\\": [], \\\"empty_allowlist_observed\\\": observed_empty_allowlist, \\\"allow_b_expected_ids\\\": [\\\"b\\\"], \\\"allow_b_observed_ids\\\": [row[\\\"id\\\"] for row in observed_allow_b], \\\"input_unchanged\\\": rows == before}, sort_keys=True))'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"python3 -B -c 'import hashlib\nimport json\nfrom catalog import build_catalog\nfrom search_index import build_index\nfrom ops import canonical, query\nwith open(\\\"data/services.json\\\", encoding=\\\"utf-8\\\") as source:\n    document = json.load(source)\ncatalog = build_catalog(document)\nindex = build_index(catalog)\nbundle = {\\\"release_id\\\": document[\\\"release_id\\\"], \\\"catalog\\\": catalog, \\\"index\\\": index}\nassert set(bundle) == {\\\"release_id\\\", \\\"catalog\\\", \\\"index\\\"}\nassert [row[\\\"id\\\"] for row in catalog[\\\"items\\\"]] == [\\\"S101\\\", \\\"S102\\\", \\\"S104\\\", \\\"S105\\\"]\nassert all(set(row) == {\\\"id\\\", \\\"name\\\", \\\"region\\\", \\\"slots\\\", \\\"tags\\\"} for row in catalog[\\\"items\\\"])\nassert catalog[\\\"items\\\"][1][\\\"slots\\\"] == 0\nassert index[\\\"terms\\\"][\\\"maintenance\\\"] == [\\\"S101\\\", \\\"S104\\\"]\nassert index[\\\"regions\\\"][\\\"north\\\"] == [\\\"S101\\\", \\\"S104\\\"]\nassert [row[\\\"id\\\"] for row in query(bundle, region=\\\"north\\\", tag=\\\"maintenance\\\")] == [\\\"S101\\\", \\\"S104\\\"]\nassert query(bundle, tag=\\\"priority\\\") == []\npretty_roundtrip = json.loads(json.dumps(bundle, ensure_ascii=False, indent=2))\nassert canonical(bundle) == canonical(pretty_roundtrip)\nassert bytes.fromhex(\\\"e9858de7aea1\\\") in canonical(bundle)\nprint(json.dumps({\\\"fixture_ids\\\": [row[\\\"id\\\"] for row in catalog[\\\"items\\\"]], \\\"north_maintenance\\\": [row[\\\"id\\\"] for row in query(bundle, region=\\\"north\\\", tag=\\\"maintenance\\\")], \\\"priority\\\": query(bundle, tag=\\\"priority\\\"), \\\"canonical_sha256\\\": hashlib.sha256(canonical(bundle)).hexdigest()}, ensure_ascii=False, sort_keys=True))'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,14 @@
+{
+  "action": "dispatch",
+  "message": "已讀取 TASK.md 與全部程式、測試；將實作及回歸測試交給 implementation，主手收回後獨立驗收。",
+  "requests": [
+    {
+      "role": "implementation",
+      "brief": "完成 TASK.md 全部契約，先讀 TASK.md、src/projector.py、src/normalization.py、tests/test_projector.py。僅可修改 src/、tests/，不新增依賴或設定、不用網路、不 commit。保留原有測試意義。請實作完整輸入驗證（參數為 list、每筆資料有效、整數拒絕 bool、ID 非空字串、snapshot ID 不重複）；所有帳戶與歷史事件也必須驗證。全域 event_id 語意去重並計數，額外欄位不影響；不同內容同 event_id 或不同 event_id 占同帳戶 revision 一律 ValueError。先完整驗證再查詢。以快照為基準排序套用連續事件，遇缺口 balance=None 並回報第一個缺少 revision，大 revision 不枚舉缺少值；無快照維持 missing；輸出欄位精確且 requested_ids 去重排序；完全不修改輸入。可自行決定 normalization 內部 API。補上有意義的測試，涵蓋亂序與重送、全域衝突（含歷史/未知/未選中帳戶）、缺口及巨大 revision、驗證矩陣、額外欄位、輸入不變性和輸出契約。執行 python3 -B -m unittest discover -s tests -v，回報修改摘要、實際測試結果與限制。你負責實作，主手會独立驗收；不要啟動其他 agent 或模型。",
+      "write_paths": [
+        "src/",
+        "tests/"
+      ]
+    }
+  ]
+}

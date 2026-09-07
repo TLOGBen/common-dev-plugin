@@ -1,0 +1,10 @@
+{
+  "model": "gpt-6-astra",
+  "sandbox": "workspace-write",
+  "cwd": "/tmp/astra-direct-policy-v1-yb0vcmd2/D2",
+  "timeout_seconds": 600,
+  "input_sha256": {
+    "/tmp/astra-direct-policy-v1-yb0vcmd2/D2/TASK.md": "d40f700bbc19e6b7233ae9c8ca1807db897e0b74b3b911c6c731a787b52ad27e"
+  },
+  "prompt": "請完整讀取並完成此工作目錄 TASK.md。此為直接實作政策的單次有界實驗，無額外 skill 或委派。僅讀本工作目錄 TASK.md、src/、tests/；不要讀父目錄、其他案例、全域設定或任何不可見 oracle。遵守檔案與權限範圍，使用既有工具，不修改平台限制。"
+}

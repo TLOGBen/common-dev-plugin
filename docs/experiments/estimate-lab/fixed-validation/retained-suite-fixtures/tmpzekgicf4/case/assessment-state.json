@@ -1,0 +1,507 @@
+{
+  "schemaVersion": 8,
+  "caseId": "demo-case",
+  "name": "示範案件",
+  "mode": "upgrade",
+  "status": "estimate-ready",
+  "revision": 10,
+  "createdAt": "2026-09-06T04:54:24Z",
+  "updatedAt": "2026-09-06T04:54:24Z",
+  "outcome": {
+    "goal": "保留既有契約並完成技術遷移",
+    "acceptance": [
+      "代表性契約驗證通過"
+    ],
+    "preserve": [
+      "既有網址與回應契約"
+    ],
+    "responsibilityBoundary": "我方負責應用改造；客戶負責部署與 UAT",
+    "pmCurrentState": "目前系統仍由舊框架承接啟動、登入狀態與功能入口。程式盤點已確認共用底座只需建立一次，但四支入口中有三支必須逐一調整；客戶仍需提供部署環境與正式驗收資料。"
+  },
+  "evidence": [
+    {
+      "id": "ev-runtime",
+      "claim": "主要入口與共同行為已完成靜態及啟動核對",
+      "source": "C:\\ProjectAlpha\\private\\Controller.java password=Secret123",
+      "method": "唯讀原始碼盤點與隔離啟動",
+      "strength": "build",
+      "confidence": "high",
+      "decisionImpact": "scenario"
+    }
+  ],
+  "dependencyCoverage": {
+    "status": "complete",
+    "source": "resolved dependency tree、實際封裝與原始碼使用全集",
+    "discoveryMethod": "比對 resolved artifacts、完整 package imports、產碼設定與 runtime integration",
+    "componentCount": 12,
+    "decisionBearingDependencyIds": [
+      "dependency-query-layer"
+    ],
+    "evidenceIds": [
+      "ev-runtime"
+    ],
+    "boundary": "涵蓋本次目標版本會跨越的 runtime、framework、ORM 與產碼鏈"
+  },
+  "dependencies": [
+    {
+      "id": "dependency-query-layer",
+      "component": "查詢與產碼元件",
+      "current": "既有版本",
+      "target": "目標相容版本",
+      "criticality": "critical",
+      "criticalityReason": "決定 ORM 目標線是否可採用",
+      "upstreamSource": "上游官方發行與 issue tracker",
+      "upstreamMaintainer": "上游專案維護者",
+      "internalOwner": "我方資料層團隊",
+      "maintenanceStatus": "active",
+      "usage": "查詢 DSL 與產碼",
+      "buildTime": "annotation processing 與 generated sources",
+      "extensions": "自訂 DB function registry",
+      "semanticBreaks": [
+        "日期參數型別",
+        "function 註冊",
+        "Entity identity 行為"
+      ],
+      "probe": "代表性 query 與 transaction runtime 驗證",
+      "footprint": {
+        "discoveryMethod": "完整 package imports、APT 設定與高風險 API 搜尋",
+        "scope": "所有查詢、產碼、function 與 transaction 整合使用點",
+        "highRiskApis": [
+          "Date function",
+          "function registry",
+          "entity identity"
+        ]
+      },
+      "compatibilityClaims": [
+        {
+          "target": "目標相容版本",
+          "status": "supported",
+          "evidenceIds": [
+            "ev-runtime"
+          ],
+          "rationale": "上游支援證據與代表性 runtime probe 支持此組合。"
+        }
+      ],
+      "fallbackStrategies": [
+        "若目標組合失效，評估替換元件或停留既有 ORM 線。"
+      ],
+      "resolution": {
+        "status": "accepted",
+        "strategy": "keep",
+        "selectedTarget": "目標相容版本",
+        "rationale": "目前證據支持沿用相容版本。",
+        "owner": "我方資料層團隊"
+      },
+      "blocksScenario": false,
+      "evidenceIds": [
+        "ev-runtime"
+      ]
+    }
+  ],
+  "fogs": [],
+  "scenarios": [
+    {
+      "id": "scenario-a",
+      "name": "相容遷移",
+      "summary": "保留既有契約並替換必要框架"
+    }
+  ],
+  "selectedScenarioId": "scenario-a",
+  "successChain": {
+    "destination": "應用在既有環境維持相同行為",
+    "nodes": [
+      {
+        "id": "foundation",
+        "name": "建立共用承接底座",
+        "description": "承接啟動、輸入輸出與 Session",
+        "owner": "我方應用團隊",
+        "status": "done",
+        "disposition": "priced",
+        "zeroReason": "",
+        "total": 1,
+        "needsChange": 1,
+        "noChange": 0,
+        "unknown": 0,
+        "dependsOn": [],
+        "completionEvidence": "應用可建置並啟動",
+        "evidenceIds": [
+          "ev-runtime"
+        ]
+      },
+      {
+        "id": "actions",
+        "name": "接回既有功能入口",
+        "description": "保留網址與輸入輸出契約",
+        "owner": "我方應用團隊",
+        "status": "done",
+        "disposition": "priced",
+        "zeroReason": "",
+        "total": 4,
+        "needsChange": 3,
+        "noChange": 1,
+        "unknown": 0,
+        "dependsOn": [
+          "foundation"
+        ],
+        "completionEvidence": "代表入口可回應相同契約",
+        "evidenceIds": [
+          "ev-runtime"
+        ]
+      },
+      {
+        "id": "deployment",
+        "name": "部署與 UAT",
+        "description": "由客戶 IT 完成正式環境部署",
+        "owner": "客戶 IT",
+        "status": "external",
+        "disposition": "external",
+        "zeroReason": "客戶責任，不納入我方人天",
+        "total": 1,
+        "needsChange": 1,
+        "noChange": 0,
+        "unknown": 0,
+        "dependsOn": [
+          "actions"
+        ],
+        "completionEvidence": "客戶完成 UAT 簽核",
+        "evidenceIds": [
+          "ev-runtime"
+        ]
+      }
+    ]
+  },
+  "workItems": [
+    {
+      "id": "work-foundation",
+      "package": "框架與共用機制",
+      "name": "建立共用承接底座",
+      "kind": "shared",
+      "description": "建立應用啟動、輸入輸出與 Session 的共用能力",
+      "pmDescription": "建立所有功能共同使用的應用基礎，只做一次。",
+      "total": 1,
+      "needsChange": 1,
+      "pricingUnits": 1,
+      "noChange": 0,
+      "unknown": 0,
+      "unitDays": {
+        "low": 3.0,
+        "baseline": 4.0,
+        "high": 5.0
+      },
+      "effortSplit": {
+        "development": {
+          "low": 2.0,
+          "baseline": 3.0,
+          "high": 4.0
+        },
+        "testing": {
+          "low": 1.0,
+          "baseline": 1.0,
+          "high": 1.0
+        }
+      },
+      "owner": "我方",
+      "nodeIds": [
+        "foundation"
+      ],
+      "evidenceIds": [
+        "ev-runtime"
+      ],
+      "completionEvidence": "應用可建置並啟動",
+      "includes": "啟動與共用契約",
+      "excludes": "客戶環境施工",
+      "currentConstraint": "舊框架負責啟動與 Session，移除後需要新的共用承接點。",
+      "changeMethod": "建立一次性的啟動、輸入輸出與 Session 共用設定，讓功能入口共同使用。",
+      "customerOutcome": "新版應用具備可啟動且一致的共用行為。",
+      "scaleEvidence": "1 組應用底座，承接全部功能入口。",
+      "countingRationale": "所有入口共用同一底座，因此只計一次。",
+      "rateBasis": "以建立設定、啟動 smoke 與共用契約檢查的代表切片估算。",
+      "baselineRationale": "基準值以一位工程師完成共用設定、啟動排錯與主要契約核對所需的正常工期估算；不按入口數重複收費。",
+      "pmChangeSummary": "PG 會先建立新版應用共同使用的啟動、輸入輸出與登入狀態設定，再用一個代表入口確認共用行為正確。這項工作只做一次，不會按四支入口重複計價；完成後新版應用應可建置、啟動，並讓後續功能共用同一套承接方式。",
+      "changeTargets": {
+        "pages": [],
+        "apis": [
+          "共用應用啟動與 Session 契約"
+        ],
+        "files": [
+          "src/main/resources/application.yml",
+          "src/main/java/app/config/WebConfig.java"
+        ],
+        "notes": "本項建立共用底座，不直接修改個別業務頁面。"
+      },
+      "dedupeBoundary": "包含共用啟動與 Session；逐支功能接回由下一列承接。",
+      "detailCatalogIds": [
+        "catalog-foundation-scope"
+      ],
+      "clientPackageId": "package-runtime"
+    },
+    {
+      "id": "work-actions",
+      "package": "既有功能接回",
+      "name": "接回需要處理的功能入口（共 4 支／需處理 3 支）",
+      "kind": "quantity",
+      "description": "逐支確認參數、回應與例外契約",
+      "pmDescription": "將 3 支受影響入口接回新底座，保留使用方式。",
+      "total": 4,
+      "needsChange": 3,
+      "pricingUnits": 3,
+      "noChange": 1,
+      "unknown": 0,
+      "unitDays": {
+        "low": 0.5,
+        "baseline": 1.0,
+        "high": 1.5
+      },
+      "effortSplit": {
+        "development": {
+          "low": 0.5,
+          "baseline": 0.5,
+          "high": 1.0
+        },
+        "testing": {
+          "low": 0.0,
+          "baseline": 0.5,
+          "high": 0.5
+        }
+      },
+      "owner": "我方",
+      "nodeIds": [
+        "actions"
+      ],
+      "evidenceIds": [
+        "ev-runtime"
+      ],
+      "completionEvidence": "代表入口可回應相同契約",
+      "includes": "參數與回應對照",
+      "excludes": "正式 UAT",
+      "currentConstraint": "3 支入口依賴舊框架的參數與回應契約。",
+      "changeMethod": "逐支對照參數、回應與例外，接到共用底座並執行代表性驗證。",
+      "customerOutcome": "3 支受影響入口在新版仍維持原使用方式。",
+      "scaleEvidence": "共 4 支，證據確認 3 支需處理、1 支不異動。",
+      "countingRationale": "每支入口的參數與例外需獨立確認，因此以 3 支乘單價。",
+      "rateBasis": "以一支一般入口的理解、修改與局部驗證作為代表切片。",
+      "baselineRationale": "每支基準 1 天，包含讀懂原參數、接回新底座、處理一輪例外並完成局部驗證；三支各有自己的輸入輸出，因此以三支計價。",
+      "pmChangeSummary": "PG 會逐支核對三個受影響入口的網址、輸入參數、回應內容與錯誤處理，再接到新版共用底座。工作量按三支計算，因為每支都要獨立理解與驗證；完成後使用者仍可沿用原網址與操作方式，代表入口的正常與失敗情境都要通過。",
+      "changeTargets": {
+        "pages": [
+          "查詢首頁",
+          "資料維護頁"
+        ],
+        "apis": [
+          "GET /legacy/search",
+          "POST /legacy/save",
+          "POST /legacy/approve"
+        ],
+        "files": [
+          "src/main/java/app/web/SearchAction.java",
+          "src/main/java/app/web/SaveAction.java",
+          "src/main/java/app/web/ApproveAction.java"
+        ],
+        "notes": "四支入口中一支已由新底座承接，不需修改。"
+      },
+      "dedupeBoundary": "不重複計共用底座，也不包含正式 UAT。",
+      "detailCatalogIds": [
+        "catalog-actions-direct"
+      ],
+      "clientPackageId": "package-entry"
+    }
+  ],
+  "detailCatalogs": [
+    {
+      "id": "catalog-foundation-scope",
+      "name": "共用底座落點",
+      "treatment": "evidence-only",
+      "origin": "discovery",
+      "completeness": "summary",
+      "claimedCount": 2,
+      "pricingRole": "scope-evidence",
+      "explanation": "兩個設定落點用來證明底座範圍；共用底座仍只計一個施工單位。"
+    },
+    {
+      "id": "catalog-actions-direct",
+      "name": "需逐項接回的功能入口",
+      "treatment": "direct-touch",
+      "origin": "discovery",
+      "completeness": "complete",
+      "claimedCount": 3,
+      "pricingRole": "pricing-unit",
+      "items": [
+        {
+          "id": "detail-action-1",
+          "name": "GET /legacy/search",
+          "purpose": "保留既有功能入口契約",
+          "action": "manual-change",
+          "changeDetail": "接回新版共用底座並核對輸入輸出。",
+          "verification": "正常與錯誤情境皆維持原契約。"
+        },
+        {
+          "id": "detail-action-2",
+          "name": "POST /legacy/save",
+          "purpose": "保留既有功能入口契約",
+          "action": "manual-change",
+          "changeDetail": "接回新版共用底座並核對輸入輸出。",
+          "verification": "正常與錯誤情境皆維持原契約。"
+        },
+        {
+          "id": "detail-action-3",
+          "name": "POST /legacy/approve",
+          "purpose": "保留既有功能入口契約",
+          "action": "manual-change",
+          "changeDetail": "接回新版共用底座並核對輸入輸出。",
+          "verification": "正常與錯誤情境皆維持原契約。"
+        }
+      ]
+    }
+  ],
+  "clientPackages": [
+    {
+      "id": "package-runtime",
+      "name": "新版應用可正常啟動",
+      "whyRequired": "舊框架移除後需要新的共用啟動與 Session 承接方式。",
+      "deliveryApproach": "建立一次性的應用底座並完成啟動檢查。",
+      "customerOutcome": "取得可建置、可啟動且共同行為一致的新版應用。",
+      "externalSummary": "建立新版應用啟動、共用輸入輸出與 Session 承接機制，調整必要設定並完成建置及啟動驗證。",
+      "scopeEvidence": "1 組共用底座，涵蓋全部入口。",
+      "owner": "我方",
+      "visuals": [
+        {
+          "type": "flow",
+          "title": "共用底座如何承接既有入口",
+          "question": "為什麼底座只做一次，功能入口仍要逐支接回？",
+          "nodes": [
+            "舊框架共用行為",
+            "新版共用底座",
+            "既有功能入口"
+          ],
+          "caption": "共用底座承接一次；每支入口的參數與回應仍由下一個成果包處理。"
+        }
+      ]
+    },
+    {
+      "id": "package-entry",
+      "name": "既有功能入口可延續使用",
+      "whyRequired": "受影響入口仍依賴舊框架的參數與回應契約。",
+      "deliveryApproach": "將 3 支入口逐支接回新底座並核對行為。",
+      "customerOutcome": "使用者維持原網址與操作方式。",
+      "externalSummary": "逐支調整既有功能入口、參數與回應承接方式，核對原網址及操作契約，並完成代表性功能回歸驗證。",
+      "scopeEvidence": "共 4 支，需處理 3 支、不異動 1 支。",
+      "owner": "我方"
+    }
+  ],
+  "estimationReview": {
+    "conclusion": "主動比對需求描述、程式使用點與估算乘數後，找到一項會改變人天的範圍落差；相容性路線已另由依賴證據收斂。",
+    "checkedPatterns": [
+      "需求列出的功能數是否小於實際共用頁面與入口數",
+      "看似可沿用的套件是否會因目標版本改變方案或維護責任",
+      "原估為共用一次的工作是否其實需要逐頁、逐 API 或逐檔處理"
+    ],
+    "criticalFindings": [
+      {
+        "id": "finding-entry-count",
+        "title": "功能入口比需求初看多一支",
+        "category": "scope-gap",
+        "statedAssumption": "需求初看只列出兩支需要處理的入口。",
+        "evidenceConclusion": "沿路由與共用處理流程追查後，確認三支入口都要獨立修改與驗證。",
+        "whyItMatters": "若仍用兩支估算，會少算一支入口的理解、修改與回歸工作。",
+        "estimateImpact": "基準人天改以三支乘代表單價計算，已納入目前估算。",
+        "treatment": "已納入基準與高值，Gate 5 請 PM 連同範圍一起確認。",
+        "scopeDelta": {
+          "subject": "功能入口",
+          "assumed": 2,
+          "confirmed": 3,
+          "targetKey": "apis",
+          "workItemIds": [
+            "work-actions"
+          ],
+          "detailCatalogIds": [
+            "catalog-actions-direct"
+          ]
+        },
+        "clientPackageIds": [
+          "package-entry"
+        ],
+        "evidenceIds": [
+          "ev-runtime"
+        ]
+      }
+    ]
+  },
+  "calibration": {
+    "referenceAvailable": false,
+    "unavailableReason": "尚未取得可比較的原建置報價、相似案實績或完成樣本"
+  },
+  "decisions": [
+    {
+      "id": "answer-select-outcome-direction-3",
+      "decisionId": "select-outcome-direction",
+      "answer": "指定技術線升級",
+      "decidedBy": "PM（聊天確認）",
+      "recordedAt": "2026-08-28T00:00:00+00:00"
+    },
+    {
+      "id": "answer-select-scenario-7",
+      "decisionId": "select-scenario",
+      "answer": "採用相容遷移",
+      "selectedScenarioId": "scenario-a",
+      "decidedBy": "PM（聊天確認）",
+      "recordedAt": "2026-08-28T00:00:00+00:00"
+    }
+  ],
+  "currentDecision": {
+    "id": "confirm-estimate",
+    "title": "確認工作內容與對外人天",
+    "whyHuman": "這會形成對客戶的範圍承諾。",
+    "factsTitle": "做決定前值得看的資訊",
+    "facts": [
+      "外部人天採同一範圍的合理高值。"
+    ],
+    "choices": [
+      "確認並產生交付成果",
+      "工作範圍需要調整",
+      "其他（自行輸入）"
+    ],
+    "choiceDetails": {
+      "確認並產生交付成果": {
+        "effect": "confirm-estimate"
+      },
+      "工作範圍需要調整": {
+        "effect": "revise-estimate"
+      }
+    },
+    "next": "確認後，Agent 會生成 CSV、Markdown 與 HTML。",
+    "requiresHuman": true
+  },
+  "gates": [
+    {
+      "number": 1,
+      "title": "提供案件資料",
+      "state": "done"
+    },
+    {
+      "number": 2,
+      "title": "選擇成果大方向並確認工作分工",
+      "state": "done"
+    },
+    {
+      "number": 3,
+      "title": "核對案件理解",
+      "state": "done"
+    },
+    {
+      "number": 4,
+      "title": "選擇採用方案",
+      "state": "done"
+    },
+    {
+      "number": 5,
+      "title": "確認工作內容與人天",
+      "state": "current"
+    },
+    {
+      "number": 6,
+      "title": "取得交付成果",
+      "state": "pending"
+    }
+  ],
+  "outputs": {}
+}

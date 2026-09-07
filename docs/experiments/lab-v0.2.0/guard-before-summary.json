@@ -1,0 +1,13 @@
+{
+  "checks": 81,
+  "matched": 75,
+  "unexpected": [
+    "malformed-null-packet",
+    "malformed-null-decision",
+    "malformed-array-packet",
+    "malformed-array-decision",
+    "malformed-string-packet",
+    "malformed-string-decision"
+  ],
+  "retained_root": "/tmp/lab020-guard-probe-0REd2qAL"
+}

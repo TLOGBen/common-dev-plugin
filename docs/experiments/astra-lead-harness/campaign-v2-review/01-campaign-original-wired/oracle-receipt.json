@@ -1,0 +1,9 @@
+{
+  "command": "python3 -B scripts/astra_lead_campaign_candidate/_evaluation/verify.py --fixture /tmp/astra-lead-campaign-20260906-b/workspaces/01-campaign-original-wired --artifact .strategic-advance/service-catalog-v3/artifacts/release-v3.json",
+  "exit_code": 1,
+  "wall_seconds": 5.706987000001594,
+  "stdout_sha256": "a3ceeddf424b83aceaa5346cc4a540c26e3cda2c233d5bb9d76196b96fccce3e",
+  "stderr": "",
+  "artifact_supplied_by": "Main reviewer from actual scribe activation command; no lead final handoff exists",
+  "model_calls": 0
+}

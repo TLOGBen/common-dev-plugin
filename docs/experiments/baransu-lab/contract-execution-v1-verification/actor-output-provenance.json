@@ -1,0 +1,22 @@
+{
+  "A": {
+    "raw_jsonl": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/runs/luna-contract-execution-v1/normalize-tag.A.raw.jsonl",
+    "raw_jsonl_sha256": "aeb6c74c83a14bad3deb00eb86617eb69c95acb51fdccb85b4aeb2a348c2a87f",
+    "line": 54,
+    "item_id": "item_29",
+    "command": "/usr/bin/zsh -lc \"node --test tests/normalize-tag.test.mjs && printf '%s\\\\n' '--- final allowed paths ---' && rg --files -g '\"'!**/.git/**'\"' -g '\"'!**/.codex/**'\"' .\"",
+    "output_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/actor-last-suite.stdout.txt",
+    "output_sha256": "fc0cc9e0063603a15b0ad8f65eeef2c0c81e5a680d293976fa7f143f30029c82",
+    "observation": "File-level TAP summary reports tests=1 and pass=1; do not relabel as individual test count."
+  },
+  "B": {
+    "raw_jsonl": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/runs/luna-contract-execution-v1/normalize-tag.B.raw.jsonl",
+    "raw_jsonl_sha256": "b43ccc936c62102d150721ae843766d4c7d741c5277b164975c387417bca10c2",
+    "line": 26,
+    "item_id": "item_14",
+    "command": "/usr/bin/zsh -lc \"set -eu\nnode --test tests/normalize-tag.test.mjs\nprintf '%s\\\\n' '-- allowed files --'\nrg --files -g '\"'!/.git/**'\"' .\nprintf '%s\\\\n' '-- final artifact hashes --'\nsha256sum -- src/normalize-tag.mjs tests/normalize-tag.test.mjs acceptance.md handoff.md\nprintf '%s\\\\n' '-- source --'\nsed -n '1,220p' src/normalize-tag.mjs\nprintf '%s\\\\n' '-- tests --'\nsed -n '1,260p' tests/normalize-tag.test.mjs\nprintf '%s\\\\n' '-- acceptance tail --'\ntail -n 30 acceptance.md\nprintf '%s\\\\n' '-- handoff --'\nsed -n '1,260p' handoff.md\"",
+    "output_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/actor-last-suite.stdout.txt",
+    "output_sha256": "a73d5c2e31af1c24d909d73a3a8be5615f2131ee95d60f95f34adc94ec503794",
+    "observation": "File-level TAP summary reports tests=1 and pass=1; do not relabel as individual test count."
+  }
+}

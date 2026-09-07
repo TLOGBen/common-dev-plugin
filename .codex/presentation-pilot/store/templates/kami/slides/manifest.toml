@@ -1,0 +1,15 @@
+name = "slides"
+namespace = "kami"
+version = "0.1.0"
+engine = "0.1.1"
+root = "deck"
+blocks = ["doc", "deck", "slide", "section", "prose", "list", "quote", "callout", "code", "table", "raw", "diagram", "stat", "timeline", "board", "graph"]
+layout = "deck"
+language = "zh-TW"
+description = "Kami 簡報模板 — 16:9 單張版面，內建離線播放"
+maxWidth = 1120
+measure = 740
+
+[blockConfig.callout.labels]
+note = "NOTE"
+warn = "WARNING"

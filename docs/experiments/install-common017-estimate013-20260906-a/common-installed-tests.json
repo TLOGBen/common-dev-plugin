@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-09-06T09:54:02.195Z",
+  "model_calls": 0,
+  "results": [
+    {
+      "command": "python3 -B scripts/test_common_lab_campaign_extend.py --tool /tmp/lab-install-common017-estimate013-20260906-a/common-lab/plugins/cache/common-lab/common-lab/0.1.7/skills/lab-strategic-advance/scripts/campaign.py -v",
+      "wall_seconds": 5.962314399998635,
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_addition_preserves_original_evidence_and_records_exact_history (__main__.CampaignExtensionTests.test_addition_preserves_original_evidence_and_records_exact_history) ... ok\ntest_bad_second_id_rolls_back_first_and_description (__main__.CampaignExtensionTests.test_bad_second_id_rolls_back_first_and_description) ... ok\ntest_blank_description_does_not_commit_added_condition (__main__.CampaignExtensionTests.test_blank_description_does_not_commit_added_condition) ... ok\ntest_block_and_unknown_operation_survive (__main__.CampaignExtensionTests.test_block_and_unknown_operation_survive) ... ok\ntest_completed_campaign_remains_immutable (__main__.CampaignExtensionTests.test_completed_campaign_remains_immutable) ... ok\ntest_duplicate_new_id_rolls_back_entire_addition (__main__.CampaignExtensionTests.test_duplicate_new_id_rolls_back_entire_addition) ... ok\ntest_empty_reason_rejected (__main__.CampaignExtensionTests.test_empty_reason_rejected) ... ok\ntest_existing_id_cannot_replace_or_reopen_by_renaming (__main__.CampaignExtensionTests.test_existing_id_cannot_replace_or_reopen_by_renaming) ... ok\ntest_missing_or_empty_condition_rejected (__main__.CampaignExtensionTests.test_missing_or_empty_condition_rejected) ... ok\ntest_new_evidence_is_required_and_unresolved_action_still_blocks (__main__.CampaignExtensionTests.test_new_evidence_is_required_and_unresolved_action_still_blocks) ... ok\ntest_optional_descriptions_and_absent_options (__main__.CampaignExtensionTests.test_optional_descriptions_and_absent_options) ... ok\ntest_required_options_not_optional (__main__.CampaignExtensionTests.test_required_options_not_optional) ... ok\n\n----------------------------------------------------------------------\nRan 12 tests in 0.718s\n\nOK\n"
+    },
+    {
+      "command": "python3 -B /tmp/lab-install-common017-estimate013-20260906-a/common-lab/plugins/cache/common-lab/common-lab/0.1.7/skills/lab-strategic-advance/scripts/campaign.py self-test",
+      "wall_seconds": 5.3557850999981165,
+      "exit_code": 0,
+      "stdout": "{\n  \"self_test\": \"PASS\",\n  \"checks\": 16\n}\n",
+      "stderr": ""
+    }
+  ],
+  "scope": "Tests run against actual installed Common Lab 0.1.7; fixtures retained by new tests; existing self-test uses its own disposable fixture."
+}

@@ -1,0 +1,10 @@
+{
+  "design_id": "estimate-behavior-v1",
+  "adapter_sha256": "7186e2f6611f4026c1911ac829652b0e6b43bc92dbe8489ebd0088b53a672ebb",
+  "a_root": "/home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation",
+  "b_root": "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "planned_calls": 4,
+  "limits": "Synthetic data; real local reads/preview artifacts. Prompt-scoped read isolation, not access-control isolation. No human measurement."
+}

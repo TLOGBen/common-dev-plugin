@@ -1,0 +1,62 @@
+{
+  "case_id": "better-prompts-original",
+  "skill": "better-prompts",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:01:24.207033+00:00",
+  "ended_utc": "2026-09-06T03:01:55.571382+00:00",
+  "wall_seconds": 31.364,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-better-prompts-original-l_2kyeug",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-better-prompts/SKILL.md",
+  "skill_sha256": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+  "prompt_sha256": "33d3c0c5b0095c8556320b81f2ec4ec18241620b0bee33f581c5af55424ad501",
+  "fixture_dir": "/tmp/common-lab-ab-better-prompts-original-l_2kyeug",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會先完整閱讀你指定的技能，再提供可直接貼上的版本，保留權限邊界並精簡小改動的流程。\n",
+    "```text\n你是 coding agent，工作範圍為隔離的本地開發環境，無 production 存取。\n\n請依任務範圍完成修改與驗證：\n- 只閱讀與任務相關的程式碼、文件及必要依賴；僅在釐清問題需要時擴大查閱，不必讀完整個 repo 或製作完整架構圖。\n- 任務範圍內的一般修改可自主執行，不必逐行詢問。只有缺少會實質影響結果的資訊，或需要超出授權範圍時，才提出具體問題。\n- 驗證強度應符合修改風險。純文字錯字檢查差異與呈現；邏輯修改執行相關測試；涉及跨系統行為或效能風險時，再擴大驗證。\n- 初版完成後自行檢查結果、修正發現的問題，直到任務完成或遇到明確阻礙。交付時簡述修改、驗證結果及未解決事項，不得將未執行的驗證說成已通過。\n- 未取得我明確同意，不得部署 production、刪除資料或花錢購買服務。測試 fixtures 可丟棄不代表已授權刪除；需要刪除時，請列出具體範圍並取得同意。\n```\n\n此版取消全面閱讀、逐行核准與一律全測，保留自主檢查及原有權限邊界；代價是 agent 必須依影響範圍判斷驗證深度。\n\n建議用「修正 README 錯字」試用：應直接修改並檢查差異，不要求完整架構圖或全套測試；若牽涉刪除 fixture，仍須取得同意。"
+  ],
+  "final_message": "```text\n你是 coding agent，工作範圍為隔離的本地開發環境，無 production 存取。\n\n請依任務範圍完成修改與驗證：\n- 只閱讀與任務相關的程式碼、文件及必要依賴；僅在釐清問題需要時擴大查閱，不必讀完整個 repo 或製作完整架構圖。\n- 任務範圍內的一般修改可自主執行，不必逐行詢問。只有缺少會實質影響結果的資訊，或需要超出授權範圍時，才提出具體問題。\n- 驗證強度應符合修改風險。純文字錯字檢查差異與呈現；邏輯修改執行相關測試；涉及跨系統行為或效能風險時，再擴大驗證。\n- 初版完成後自行檢查結果、修正發現的問題，直到任務完成或遇到明確阻礙。交付時簡述修改、驗證結果及未解決事項，不得將未執行的驗證說成已通過。\n- 未取得我明確同意，不得部署 production、刪除資料或花錢購買服務。測試 fixtures 可丟棄不代表已授權刪除；需要刪除時，請列出具體範圍並取得同意。\n```\n\n此版取消全面閱讀、逐行核准與一律全測，保留自主檢查及原有權限邊界；代價是 agent 必須依影響範圍判斷驗證深度。\n\n建議用「修正 README 錯字」試用：應直接修改並檢查差異，不要求完整架構圖或全套測試；若牽涉刪除 fixture，仍須取得同意。",
+  "usage": {
+    "input_tokens": 31898,
+    "cached_input_tokens": 27008,
+    "output_tokens": 682,
+    "uncached_input_tokens": 4890,
+    "total_tokens": 32580
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-better-prompts/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

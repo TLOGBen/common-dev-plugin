@@ -1,0 +1,17 @@
+{
+  "synthetic": true,
+  "route": "retain-current-framework-and-data-layer",
+  "targetJava": 17,
+  "suppliedChecks": {
+    "compile": "pass",
+    "applicationStart": "pass",
+    "loginSmoke": "pass",
+    "representativeQuery": "pass"
+  },
+  "notEstablished": [
+    "complete regression",
+    "production deployment compatibility",
+    "vendor-supported long-term maintenance",
+    "PM acceptance of maintenance risk"
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "error": null,
+  "stdout": "{\"syntax\": \"PASS\", \"adapter_checks\": {\"lead\": true, \"implementation\": true, \"operator\": true, \"scribe\": true, \"verifier\": true, \"auditor\": true}, \"new_targets\": [\"/tmp/astra-lead-campaign-20260906-a\", \"/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-v1-plan\"], \"existing_targets\": 0, \"model_calls\": 0}\n",
+  "stderr": ""
+}

@@ -1,0 +1,23 @@
+{
+  "source": "summary.md",
+  "method": "Existing kamishibai SDK 0.1.1 CLI, not unavailable Book skill",
+  "render": {
+    "exit_code": 0,
+    "stdout": "{\"ok\":true,\"artifact\":\"/home/vakarve/projects/common-dev-plugin/docs/experiments/presentation-pilot/pilot.html\",\"bytes\":2202265,\"archived\":\"/home/vakarve/projects/common-dev-plugin/.codex/presentation-pilot/store/artifacts/skill-lab/summary.html\"}\n",
+    "stderr": ""
+  },
+  "lint": {
+    "exit_code": 0,
+    "stdout": "{\"ok\":true,\"artifact\":\"/home/vakarve/projects/common-dev-plugin/docs/experiments/presentation-pilot/pilot.html\",\"errors\":[]}\n",
+    "stderr": ""
+  },
+  "snapshot": {
+    "exit_code": 0,
+    "stdout": "{\"ok\":true,\"artifact\":\"/home/vakarve/projects/common-dev-plugin/.codex/presentation-pilot/pilot.png\",\"width\":1280,\"height\":1799}\n",
+    "stderr": ""
+  },
+  "preflight": "[\n  {\n    \"path\": \"/home/vakarve/projects/common-dev-plugin/.codex/presentation-pilot/store\",\n    \"exists\": false,\n    \"symlink\": false\n  },\n  {\n    \"path\": \"/home/vakarve/projects/common-dev-plugin/docs/experiments/presentation-pilot/pilot.html\",\n    \"exists\": false,\n    \"symlink\": false\n  },\n  {\n    \"path\": \"/home/vakarve/projects/common-dev-plugin/.codex/presentation-pilot/pilot.png\",\n    \"exists\": false,\n    \"symlink\": false\n  }\n]\nTARGET_MATCH: new task-owned presentation output/store only; source Markdown retained for reproduction; no existing artifact or global store will be replaced.\n",
+  "main_visual_review": "1280x1799 screenshot viewed; prose/table readable, no observed clipping. Five-node vertical flow consumes substantial height; mobile and human comprehension untested.",
+  "global_store_written": false,
+  "scope": "Intermediate presentation pilot, not final evolve card or final report."
+}

@@ -1,0 +1,67 @@
+# estimate-lab transfer receipt
+
+{
+  "manifest_mapped": [
+    "加入 `skills: \"./skills/\"` 指標 (Codex manifest-driven)",
+    "加入 `interface` 預設 (display_name + short_description)"
+  ],
+  "manifest_dropped": [],
+  "manifest_manual": [],
+  "agent_definitions": 0,
+  "rules_copied": 0,
+  "skill_count": 1,
+  "plugin_name": "estimate-lab",
+  "source_components": [
+    ".claude-plugin",
+    "skills"
+  ],
+  "unhandled_components": [],
+  "content_closure_verified": true,
+  "aux_dirs_copied": [],
+  "aux_manual": [],
+  "marketplace_written": true
+}
+
+## Codex Transfer Report — lab-estimate
+
+- 來源: `/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate`
+- 輸出: `/tmp/estimate-lab-export-012-a/plugins/estimate-lab/skills/lab-estimate`
+
+### 完整保留 (lossless)
+- `name`
+- `description`
+- `metadata`
+
+### 翻譯處理 (mapped)
+- 加入預設 `compatibility`
+- 複製 skill-root 零散檔案：requirements.lock
+
+### 已捨棄 (dropped)
+- skill-root 子目錄 `tests/` 未複製（非 scripts/references/assets/evals/agents 標準目錄）
+
+### ⚠️ 需人工檢視 (manual review)
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認
+- `references/case-state.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理
+- `references/discovery-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理
+- `references/estimation-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理
+
+### Next-port follow-ups
+- skill-root 子目錄 `tests/` 未複製（非 scripts/references/assets/evals/agents 標準目錄） — `accept-as-lossy`
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 — `refresh-mapping`
+- `references/case-state.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 — `refresh-mapping`
+- `references/discovery-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 — `refresh-mapping`
+- `references/estimation-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 — `refresh-mapping`
+
+### Verified laboratory adapter
+
+- Source unchanged; script/asset bytes and complete agent resolver verified.
+- Package resources use verified LAB_SKILL_DIR, not a presumed Codex environment variable.
+- Codex interface fields are overlaid from the versioned codex-metadata source.
+
+### Next-port follow-ups
+
+- lab-estimate: skill-root 子目錄 `tests/` 未複製（非 scripts/references/assets/evals/agents 標準目錄） - `restore-audited-auxiliary`; tests copied before unchanged content-closure guard; bytes verified
+- lab-estimate: `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-estimate: `references/case-state.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-estimate: `references/discovery-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-estimate: `references/estimation-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理 - `refresh-mapping`; verified LAB_SKILL_DIR adapter

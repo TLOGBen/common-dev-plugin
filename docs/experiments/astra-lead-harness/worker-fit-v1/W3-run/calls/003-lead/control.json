@@ -1,0 +1,13 @@
+{
+  "action": "dispatch",
+  "message": "實作檢查與獨立驗證未發現行為錯誤；需補足持久化回歸測試，完成 TASK.md 的必要反例要求。這是測試涵蓋面的聚焦修正，不升級模型。",
+  "requests": [
+    {
+      "role": "implementation",
+      "brief": "在 /tmp/astra-worker-fit-v1-r46pwud2/W3 僅修改 tests/，補足 TASK.md 關鍵回歸測試。先完整讀取 /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.8/plugins/common-lab/.codex-agents/lab-executor.toml developer_instructions，沿用契約：依指定範圍與驗收標準實作；自主完成相稱驗證並修正自身變更造成的失敗；權限或環境衝突如實回報，不擴權、不啟動子代理；回報檔案與實際證據，完成聲明不代表主手驗收。讀 TASK.md、src/ 與現有 tests/。主手已檢視實作並重跑 8 tests；另做 1279 次獨立檢查（400 組生成案例各 3 種排列、型別/衝突/不變性與 10**100 缺口）均通過，無已知產品錯誤，勿無故改 src/。\n\n目前 tests/test_projector.py 的 test_reorders_events_and_ignores_history 新事件仍是升序；請真正用逆序或排列並比對完整結果。請精簡補足高價值測試：1) 已套用連續前綴後遇缺口，revision 停在前綴、balance=None、first_missing 正確，含巨大 revision；2) 三參數 list 要求、必要欄位、非空 ID、數值型別排除 bool/float、revision 邊界、snapshot ID 重複，可用 subTest 表格；3) 同 event_id 的 account_id/revision/delta 各別衝突，異 event_id 相同 slot，涵蓋歷史/未知/未被查詢情境；4) 多次重送含不同 extras，歷史與未知帳戶仍計 duplicates；未知帳戶有事件仍 missing。保留既有測試意義，避免大量重複或複製實作作為 oracle。執行 python3 -B -m unittest discover -s tests -v，回報實際結果與路徑。使用 implementation (gpt-5.6-luna/high)，不啟動原生子代理、模型 CLI；不得網路、依賴、設定、全域變更、commit/push 或範圍外寫入。遵守平台沙箱限制。",
+      "write_paths": [
+        "tests/"
+      ]
+    }
+  ]
+}

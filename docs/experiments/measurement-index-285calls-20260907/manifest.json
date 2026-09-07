@@ -1,0 +1,380 @@
+{
+  "scope": "Closed, explicitly enumerated 285 normal Codex CLI calls through final verifier heldout. Excludes native authoring, denied Anthropic call and host tools; not a whole campaign total.",
+  "expected_total_calls": 285,
+  "batches": [
+    {
+      "id": "campaign-noextra-v1",
+      "kind": "episode",
+      "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/usage-complete-v1.json",
+      "expected_calls": 5
+    },
+    {
+      "id": "resume-v1",
+      "kind": "episode",
+      "path": "docs/experiments/astra-lead-harness/resume-v1-review/usage-complete-v1.json",
+      "expected_calls": 8
+    },
+    {
+      "id": "worker-fit-v1",
+      "kind": "episode",
+      "path": "docs/experiments/astra-lead-harness/worker-fit-v1-review/usage-complete-v1.json",
+      "expected_calls": 14
+    },
+    {
+      "id": "handoff-brief-reader-v1",
+      "kind": "summary",
+      "path": "docs/experiments/astra-lead-harness/handoff-brief-reader-v1-run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "verifier-boundaries-v1b",
+      "kind": "summary",
+      "path": "docs/experiments/baransu-lab/verifier-boundaries-v1b/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "trace-v1-1",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v1/T1-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v1/T1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "trace-v1-2",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v1/T2-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v1/T2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "trace-v1-3",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v1/T3-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v1/T3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "trace-v1-4",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v1/T4-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v1/T4-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "trace-v2-1",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v2/U1-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v2/U1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "trace-v2-2",
+      "kind": "single",
+      "path": "docs/experiments/trace-visibility-v2/U2-run/result.json",
+      "raw": "docs/experiments/trace-visibility-v2/U2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-1-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-1-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-1",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-1-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-1-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-1-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-1-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-1-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-1-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-1-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-1-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-1-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-1-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-2-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-2-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-2",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-2-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-2-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-2-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-2-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-2-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-2-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-2-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-2-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-2-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-2-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-3-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-3-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-3",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-3-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-3-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-3-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-3-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-3-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-3-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-3-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-3-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-3-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-3-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-4",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-4-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-4-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-4",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-4-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-4-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-4-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-4-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-4-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-4-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-4-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-4-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-4-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-4-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-5",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-5-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-5-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-5",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-5-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-5-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-5-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-5-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-5-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-5-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-5-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-5-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-5-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-5-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-diagnose-6",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/round-6-diagnose-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/round-6-diagnose-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "direct-policy-D1",
+      "kind": "single",
+      "path": "docs/experiments/astra-lead-harness/direct-policy-v1/D1-run/result.json",
+      "raw": "docs/experiments/astra-lead-harness/direct-policy-v1/D1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "direct-policy-D2",
+      "kind": "single",
+      "path": "docs/experiments/astra-lead-harness/direct-policy-v1/D2-run/result.json",
+      "raw": "docs/experiments/astra-lead-harness/direct-policy-v1/D2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-train-6",
+      "kind": "summary",
+      "path": ".codex/evolve/lab-verifier/round-6-effectiveness/run/summary.json",
+      "expected_calls": 4
+    },
+    {
+      "id": "evolve-panel-6-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-6-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-6-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-6-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-6-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-6-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-panel-6-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/round-6-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/round-6-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-builder",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-builder-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-builder-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y1/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y1/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y2/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y2/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y3/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y3/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-4",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y4/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y4/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-5",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y5/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y5/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-6",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y6/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y6/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-7",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y7/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y7/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-actor-8",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y8/result.json",
+      "raw": ".codex/evolve/lab-verifier/heldout-effectiveness/run/Y8/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-judge-1",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/heldout-judge-J1-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/heldout-judge-J1-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-judge-2",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/heldout-judge-J2-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/heldout-judge-J2-run/raw.jsonl",
+      "expected_calls": 1
+    },
+    {
+      "id": "evolve-heldout-judge-3",
+      "kind": "single",
+      "path": ".codex/evolve/lab-verifier/panel/heldout-judge-J3-run/result.json",
+      "raw": ".codex/evolve/lab-verifier/panel/heldout-judge-J3-run/raw.jsonl",
+      "expected_calls": 1
+    }
+  ]
+}

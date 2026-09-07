@@ -1,0 +1,86 @@
+{
+  "kind": "lead_inspected_criterion_checkpoint",
+  "created_utc": "2026-09-06T11:49:08.853Z",
+  "criteria": {
+    "C1": {
+      "references": [
+        {
+          "path": "docs/experiments/common-lab/export-v0.1.8/export-receipt.json",
+          "sha256": "a174ae502f487568cdfa8d53dedab39bfca015711105b3773cd359d47392afdd"
+        },
+        {
+          "path": "docs/experiments/install-common018-estimate013-20260906-a/result.json",
+          "sha256": "d09ca5d86e436f3bce5ca3370b22a478de22f277d934351f24564a0f848234a0"
+        },
+        {
+          "path": "docs/experiments/install-common018-estimate013-20260906-a/common-installed-tests.json",
+          "sha256": "a7aa6645bea5088ceb14e9dc9791f9d301640467dcd281c1a8b072cd3a2d5126"
+        }
+      ],
+      "conclusion": "Common Lab 0.1.8: ten skills, resource closure, fresh temporary install byte equality, installed 21+12+16 relevant checks. Stable sources/catalogs unchanged by recorded diff."
+    },
+    "C5": {
+      "references": [
+        {
+          "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/01-campaign-none/oracle.json",
+          "sha256": "837ceb9d0b06c0219f774782a1cbad5c511e001476f89b6ed694c92c53d00af0"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/01-campaign-none/lead-review.md",
+          "sha256": "e500cc219cc4e16d5bbed7cd988c54978d37b062c6aa4e7fbe3f80bd99878812"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/campaign-v2-review/02-campaign-lab/lead-review.md",
+          "sha256": "840ba83926b6406965fcb0b4680a9e9d077af33ac34bec0d9291c751dbc6b78f"
+        }
+      ],
+      "conclusion": "Actual Astra lead delegated implementation to Luna and returned to inspect product/tests and real receiver; authorized standard frontier achieved with premium decision left open. None and earlier Lab actual runs show ownership separation."
+    },
+    "C7": {
+      "references": [
+        {
+          "path": "docs/experiments/install-common018-estimate013-20260906-a/result.json",
+          "sha256": "d09ca5d86e436f3bce5ca3370b22a478de22f277d934351f24564a0f848234a0"
+        },
+        {
+          "path": "docs/experiments/estimate-lab/presentation-fix-013-a/verification.json",
+          "sha256": "f267ef2a3352d5ebd4cbbbdce3ff8e31e430015a6625956b7939a9d10693723d"
+        },
+        {
+          "path": "docs/experiments/estimate-lab/runs/astra-estimate-011/lead-acceptance.md",
+          "sha256": "2e4c3c988d9231ee0126d3510ecf176f691f41bb2cdcbe669dfa52214c0e3eb5"
+        }
+      ],
+      "conclusion": "Estimate Lab 0.1.3 has independent install, 64 Python and 5 Node installed checks, actual preview arithmetic/artifacts, approval vs delivery distinction, responsibility/scenario stale-approval controls and real keyboard regression. Existing business cases untouched; not every possible commitment field tested."
+    },
+    "C8": {
+      "references": [
+        {
+          "path": "docs/experiments/astra-lead-harness/MECHANISM-VERDICTS.md",
+          "sha256": "34a8a2ad5f908c9564dd2295965a711b91454b565f5f31f5b79a02996706c6b0"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/resume-v1-review/lead-disposition.md",
+          "sha256": "9672c252ea7055aa4de8030c8bda7fef0d59b8d3006497a8095b34dd00c3380b"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/lead-disposition.md",
+          "sha256": "923dfa2212a23e86cb3536c0b4f1fe3f4bb8d1e4f07ceb1a856f544670f5c58f"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/extension-v1-review/lead-disposition.md",
+          "sha256": "5d9a122e97e9df88ed0ff0a6d8ba7cb99d51dbc8d7abec451868012eb4a937d7"
+        },
+        {
+          "path": "docs/experiments/astra-lead-harness/delegate-context-v1-review/disposition.md",
+          "sha256": "ac099bd566c5bf274ec6b3f444e06168e9d01898db02f3b7c2d412d9dee13095"
+        }
+      ],
+      "conclusion": "Astra lead comparisons are executed across screen/campaign/resume and bounded component controls. Decisions distinguish optional workflow, retained authority/outcome identity, reduced forced roles, substitute small ledger/tools, rejected redundant context clause, and causal limits. No inference of neural MoE internals."
+    }
+  },
+  "limits": [
+    "No whole-campaign completion claim; deadline and remaining presentation/behavior/review criteria remain open.",
+    "Human trial and actual invoice unavailable. Source record counts are not quality percentages."
+  ]
+}

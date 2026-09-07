@@ -1,0 +1,139 @@
+{
+  "schema": "lab-revision-measurement/1",
+  "revision": "0.2.0",
+  "scope": "Common Lab 10 + Baransu Lab 4 + Estimate Lab 1; isolated revision, not prior overnight experiment",
+  "time": {
+    "zone": "Asia/Taipei",
+    "first_work_observation": "2026-09-07T07:28:55+08:00",
+    "snapshot_at": "2026-09-07T00:05:16.303Z",
+    "observed_minutes_to_snapshot": 36.36,
+    "coverage": "Snapshot interval, not exact end-to-end billing or all final handoff work"
+  },
+  "completion": {
+    "skills_reviewed_and_revised": 15,
+    "skills_in_scope": 15,
+    "frozen_packages": 3,
+    "isolated_installs_byte_equal": 3,
+    "production_packages_changed": 0,
+    "previous_frozen_files_changed": 0,
+    "active_app_install_changed": false,
+    "published": false,
+    "committed": false,
+    "long_duration_campaign_proven": false,
+    "human_acceptance_observed": false,
+    "cross_model_comparison_completed": false
+  },
+  "tokens": {
+    "source": "C:/Users/jimts/.codex/sessions/2026/08/17/rollout-2026-08-17T09-40-20-01a00d60-74f5-7c10-8b87-96d80e3c2dc3.jsonl",
+    "record_type": "event_msg.token_count.info.total_token_usage",
+    "snapshots": {
+      "before": {
+        "timestamp": "2026-09-06T23:27:27.54Z",
+        "usage": {
+          "input_tokens": 231924427,
+          "cached_input_tokens": 225944704,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1001247,
+          "reasoning_output_tokens": 433007,
+          "total_tokens": 232925674
+        }
+      },
+      "after": {
+        "timestamp": "2026-09-07T00:05:16.303Z",
+        "usage": {
+          "input_tokens": 237977261,
+          "cached_input_tokens": 231612672,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1048290,
+          "reasoning_output_tokens": 443660,
+          "total_tokens": 239025551
+        }
+      },
+      "delta": {
+        "input_tokens": 6052834,
+        "cached_input_tokens": 5667968,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 47043,
+        "reasoning_output_tokens": 10653,
+        "total_tokens": 6099877
+      }
+    },
+    "noncached_input_delta": 384866,
+    "recorded_parent_context": {
+      "timestamp": "2026-09-06T23:49:13.056Z",
+      "model": "gpt-6-astra",
+      "effort": "xhigh"
+    },
+    "per_native_agent_usage": null,
+    "limits": [
+      "Counter delta for the explicitly timestamped main-thread snapshots; baseline precedes first tool observation.",
+      "Input includes repeated context and cached input; do not add cached input again.",
+      "Reasoning output is reported separately as a component; do not add it again to total.",
+      "No verified per-child attribution or guarantee of aggregation semantics. Do not sum this with other native-agent counters.",
+      "Excludes recorded usage after the cutoff and is not the final turn bill."
+    ]
+  },
+  "cost": {
+    "actual_amount": null,
+    "currency": null,
+    "reason": "No invoice or per-turn charge available; no API-equivalent price substituted."
+  },
+  "validation": {
+    "independent_cli_before": {
+      "calls": 81,
+      "expected_exit": 75,
+      "unexpected_exit": 6,
+      "source_alias_gap_observed": true
+    },
+    "independent_cli_after": {
+      "calls": 101,
+      "expected_exit": 101,
+      "unexpected_exit": 0
+    },
+    "calibration_tests_installed": 32,
+    "campaign_self_tests_installed": 16,
+    "campaign_extend_tests_installed": 12,
+    "campaign_brief_tests_installed": 21,
+    "wayfinder_source_checks": 76,
+    "estimate_python_tests_installed": 64,
+    "estimate_node_event_tests_installed": 5,
+    "generated_skill_format": {
+      "count": 15,
+      "result": "PASS_WITH_VALIDATOR_COMPATIBILITY_NOTE",
+      "original_quick_validator_pass": false,
+      "receipt": "metadata-validation.json"
+    },
+    "install_seconds": 9.921
+  },
+  "quality": {
+    "supported": "Behavior controls and regressions verified to their stated scope; fresh scenario responses select intended boundaries.",
+    "not_supported": "No numerical quality score, statistically significant A/B win, human comprehension proof, 24-hour reliability claim, or cross-model ranking."
+  },
+  "friction": [
+    {
+      "type": "intentional",
+      "item": "Fresh campaign calibration and bounded repair handback",
+      "tradeoff": "Extra context and decision latency for high-coupling work; net benefit not long-run measured."
+    },
+    {
+      "type": "intentional",
+      "item": "Durable Contract before implementation handoff",
+      "tradeoff": "Small document cost; reuse one record and do not impose it on trivial changes."
+    },
+    {
+      "type": "resolved",
+      "item": "CLI source/brief alias and malformed top-level rejection inconsistency",
+      "evidence": "guard-before-results.json and guard-after-results.json"
+    },
+    {
+      "type": "accounted",
+      "item": "Quick validator rejects transfer-generated compatibility metadata",
+      "resolution": "Keep raw failures; verify field against Agent Skills spec and remaining content with unchanged validator on retained projection."
+    }
+  ],
+  "presentation": {
+    "artifact": "README.md",
+    "method": "Outcome first, task-scale table, per-skill changes and friction, then evidence and limits",
+    "human_validation": false
+  }
+}

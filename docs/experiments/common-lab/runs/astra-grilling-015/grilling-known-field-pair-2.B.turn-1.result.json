@@ -1,0 +1,77 @@
+{
+  "case_id": "grilling-known-field-pair-2",
+  "skill": "grilling",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:54:34.123221+00:00",
+  "ended_utc": "2026-09-06T05:55:03.646080+00:00",
+  "wall_seconds": 29.521,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-grilling-known-field-pair-2-svxl0va3",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/candidate/skills/lab-grilling/SKILL.md",
+  "skill_sha256": "24d5178d69cf00bcca128230e847e921247cca00976768dd7d238d0a285fd3e2",
+  "prompt_sha256": "73a4621181d76e8bc1d16eee75b0e9434b1baa7fe2919d3401d5571adacbdc4c",
+  "fixture_dir": "/tmp/common-lab-ab-grilling-known-field-pair-2-svxl0va3",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取你指定的技能檔，再依它的流程檢視這個小試驗；僅提出模擬回覆與建議行動。\n",
+    "**最重要的盲點是：你把要測的「自行找到」，變成了「依位置提示找到」。**「備註在頁尾」已提供搜尋方向；即使兩人都完成，也只能支持「有位置提示時能完成」，無法回答原本的問題。\n\n建議下一步把指令改成：「請找到表單的『備註』欄，填入『需開發票』。」讓兩人各自操作，記錄是否無提示完成、在哪裡卡住；若提供協助，就另外註記，別算成自行完成。這是建議流程，尚未執行。\n\n你使用假資料、只描述這兩次結果的界線合理，不必為此擴大試驗。\n\n**兩位同事對這張表單有多熟悉，是否知道備註欄的位置？**這會影響成功代表「介面讓人找得到」，還是「靠記憶找到」，是排除指令提示後最值得釐清的問題。"
+  ],
+  "final_message": "**最重要的盲點是：你把要測的「自行找到」，變成了「依位置提示找到」。**「備註在頁尾」已提供搜尋方向；即使兩人都完成，也只能支持「有位置提示時能完成」，無法回答原本的問題。\n\n建議下一步把指令改成：「請找到表單的『備註』欄，填入『需開發票』。」讓兩人各自操作，記錄是否無提示完成、在哪裡卡住；若提供協助，就另外註記，別算成自行完成。這是建議流程，尚未執行。\n\n你使用假資料、只描述這兩次結果的界線合理，不必為此擴大試驗。\n\n**兩位同事對這張表單有多熟悉，是否知道備註欄的位置？**這會影響成功代表「介面讓人找得到」，還是「靠記憶找到」，是排除指令提示後最值得釐清的問題。",
+  "usage": {
+    "input_tokens": 31691,
+    "cached_input_tokens": 27008,
+    "output_tokens": 573,
+    "uncached_input_tokens": 4683,
+    "total_tokens": 32264
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/candidate/skills/lab-grilling/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

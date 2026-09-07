@@ -1,0 +1,67 @@
+{
+  "case_id": "research",
+  "skill": "research",
+  "arm": "B",
+  "turn": 1,
+  "started_utc": "2026-09-06T02:37:49.496575+00:00",
+  "ended_utc": "2026-09-06T02:38:23.160029+00:00",
+  "wall_seconds": 33.662,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-research-ow0e64db",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-research/SKILL.md",
+  "skill_sha256": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+  "prompt_sha256": "0359c717c658d0703232e6ff980936822eb65fac8a0d4ccaf151d05c1cfb80b3",
+  "fixture_dir": "/tmp/common-lab-ab-research-ow0e64db",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會依指定的 lab-research 技能，唯讀檢視技能內容與 primary-notes.md，僅以提供的兩份原始證據作答。\n",
+    "**HTTP 202 不能當成業務完成。** 依供應商規格，它只表示請求已排入佇列，並回傳 `request_id`。[來源 A：API 規格 revision 3](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:3>)\n\n- **完成判準：** 使用該 `request_id` 查詢 `GET /jobs/{request_id}`，只有 `succeeded` 表示完成；`queued`、`running`、`failed` 都不能據此宣告成功完成。[來源 B：工作狀態規格 revision 1](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:6>)\n- **平均處理時間：未知。** 提供的文件沒有延遲基準，無法估算平均值或承諾完成時間。[來源 B](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:7>)\n- **資料保存期限：未知。** 提供的文件沒有保存期限聲明，不能推定永久保存或任何具體期限。[來源 B](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:7>)\n\n上述完成判準限於供應商工作的完成；兩份證據未說明它是否涵蓋你們全部的下游業務流程。\n\n**建議下一步（僅描述）：** 將 `succeeded` 設為供應商工作完成的判準，並向供應商補詢平均處理時間與保存期限的正式依據。本回合未查詢 API、未上網，也未寫入研究檔。"
+  ],
+  "final_message": "**HTTP 202 不能當成業務完成。** 依供應商規格，它只表示請求已排入佇列，並回傳 `request_id`。[來源 A：API 規格 revision 3](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:3>)\n\n- **完成判準：** 使用該 `request_id` 查詢 `GET /jobs/{request_id}`，只有 `succeeded` 表示完成；`queued`、`running`、`failed` 都不能據此宣告成功完成。[來源 B：工作狀態規格 revision 1](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:6>)\n- **平均處理時間：未知。** 提供的文件沒有延遲基準，無法估算平均值或承諾完成時間。[來源 B](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:7>)\n- **資料保存期限：未知。** 提供的文件沒有保存期限聲明，不能推定永久保存或任何具體期限。[來源 B](</tmp/common-lab-ab-research-ow0e64db/primary-notes.md:7>)\n\n上述完成判準限於供應商工作的完成；兩份證據未說明它是否涵蓋你們全部的下游業務流程。\n\n**建議下一步（僅描述）：** 將 `succeeded` 設為供應商工作完成的判準，並向供應商補詢平均處理時間與保存期限的正式依據。本回合未查詢 API、未上網，也未寫入研究檔。",
+  "usage": {
+    "input_tokens": 64186,
+    "cached_input_tokens": 54400,
+    "output_tokens": 640,
+    "uncached_input_tokens": 9786,
+    "total_tokens": 64826
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-research/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'nl -ba primary-notes.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,90 @@
+{
+  "kind": "lead_semantic_acceptance",
+  "reviewed_at_utc": "2026-09-06T06:07:34Z",
+  "summary_sha256": "42fdc1a09ac74a44097e7018d3c410ced6b184b830b343c54dc730c1c728969d",
+  "criteria_source": "../../behavior-v1-inputs/cases.json",
+  "review_basis": "Lead read all four final answers, actual preview CSV/report/handoff, tool trace and independent parser receipt.",
+  "results": [
+    {
+      "case": "runtime-target-boundary",
+      "arm": "A",
+      "criteria": [
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied"
+      ],
+      "guards": "satisfied",
+      "actual_local_task": "accepted"
+    },
+    {
+      "case": "runtime-target-boundary",
+      "arm": "B",
+      "criteria": [
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied"
+      ],
+      "guards": "satisfied",
+      "actual_local_task": "accepted"
+    },
+    {
+      "case": "canonical-high-preview",
+      "arm": "A",
+      "criteria": [
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied"
+      ],
+      "guards": "satisfied",
+      "actual_local_task": "accepted_with_presentation_defect",
+      "supplemental_finding": "Three intended report tables do not parse as tables; CSV content, numbers and handoff links remain usable. Frozen criteria not changed retrospectively."
+    },
+    {
+      "case": "canonical-high-preview",
+      "arm": "B",
+      "criteria": [
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied",
+        "satisfied"
+      ],
+      "guards": "satisfied",
+      "actual_local_task": "accepted"
+    }
+  ],
+  "checks": {
+    "source_drift": false,
+    "outside_allowlist_changes": false,
+    "csv_recalculation": "PASS",
+    "links_resolve": "PASS",
+    "markdown_parser": "preview-parser-verification.json"
+  },
+  "measured": {
+    "actual_calls": 4,
+    "elapsed_wall_seconds": 613.104,
+    "input_tokens": 538347,
+    "cached_input_tokens": 428544,
+    "output_tokens": 17844,
+    "total_tokens": 556191,
+    "actual_cost_usd": null
+  },
+  "actual_business_completion": null,
+  "actual_human_understanding": null,
+  "full_generator_end_to_end": false,
+  "limits": [
+    "One generated result per case per arm; one model; unblinded lead review.",
+    "Local synthetic assessment/preview only, no customer estimate, real PM approval, runtime upgrade or business acceptance.",
+    "Criterion counts do not represent a quality percentage; no statistically supported superiority or cost advantage."
+  ]
+}

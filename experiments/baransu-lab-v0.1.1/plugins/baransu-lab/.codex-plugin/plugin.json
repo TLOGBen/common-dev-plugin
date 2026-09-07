@@ -1,0 +1,31 @@
+{
+  "name": "baransu-lab",
+  "version": "0.1.1",
+  "description": "Opt-in experiments in decision clarity and independent acceptance: reuse one evidence-backed record without a mandatory governance pipeline. User-facing output defaults to Traditional Chinese.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Baransu Lab",
+    "shortDescription": "一份驗收記錄，精簡判斷與獨立驗證",
+    "longDescription": "四個獨立實驗技能沿用同一份驗收記錄：釐清選擇、釘清成果、唯讀檢視及獨立驗證。實驗收據不取代穩定 Baransu 的封緘標記或 Stop hook。",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 $lab-think 幫我釐清尚未決定的方向。",
+      "用 $lab-contract 釘清這個變更的驗收條件。",
+      "用 $lab-review 只讀檢視這份工件，不要修改。"
+    ]
+  },
+  "author": {
+    "name": "ben.tsai"
+  },
+  "keywords": [
+    "experimental",
+    "acceptance",
+    "independent-review",
+    "decision"
+  ]
+}

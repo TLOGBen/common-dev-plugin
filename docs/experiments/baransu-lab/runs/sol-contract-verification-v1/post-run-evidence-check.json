@@ -1,0 +1,134 @@
+{
+  "checked_utc": "2026-09-06T07:08:33.568637+00:00",
+  "quality_acceptance": null,
+  "status": "MECHANICAL_EVIDENCE_CHECK_ONLY",
+  "arms": {
+    "A": {
+      "reported_role_status_unaccepted": "findings",
+      "reported_role_status_note": "A textual role status is not main acceptance.",
+      "raw_sha256_verified": true,
+      "stderr_sha256_verified": true,
+      "source_fixture_hashes_verified": true,
+      "no_final_target_residue": true,
+      "file_change_events": [
+        {
+          "line": 36,
+          "item": {
+            "id": "item_19",
+            "type": "file_change",
+            "changes": [
+              {
+                "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target/src/normalize-tag.mjs",
+                "kind": "update"
+              }
+            ],
+            "status": "completed"
+          }
+        }
+      ],
+      "observed_shell_startup_denials": [
+        {
+          "line": 5,
+          "item_id": "item_1",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 7,
+          "item_id": "item_2",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 10,
+          "item_id": "item_4",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 12,
+          "item_id": "item_5",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 15,
+          "item_id": "item_7",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 48,
+          "item_id": "item_26",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 52,
+          "item_id": "item_28",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        },
+        {
+          "line": 56,
+          "item_id": "item_29",
+          "denial_lines": [
+            "mkdir: cannot create directory ‘/home/vakarve/.cache/oh-my-zsh’: Read-only file system",
+            "rm: cannot remove '/home/vakarve/.zcompdump-Ben-u-5.9': Read-only file system"
+          ]
+        }
+      ],
+      "scratch_inventory": {
+        "src__normalize-tag.mjs.preprobe": {
+          "type": "file",
+          "bytes": 210,
+          "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+        }
+      },
+      "wall_seconds": 414.672,
+      "usage": {
+        "input_tokens": 547611,
+        "cached_input_tokens": 480896,
+        "output_tokens": 18039,
+        "uncached_input_tokens": 66715,
+        "total_tokens": 565650
+      },
+      "provider_request_count": null
+    },
+    "B": {
+      "reported_role_status_unaccepted": null,
+      "reported_role_status_note": "A textual role status is not main acceptance.",
+      "raw_sha256_verified": true,
+      "stderr_sha256_verified": true,
+      "source_fixture_hashes_verified": true,
+      "no_final_target_residue": true,
+      "file_change_events": [],
+      "observed_shell_startup_denials": [],
+      "scratch_inventory": {},
+      "wall_seconds": 157.237,
+      "usage": {
+        "input_tokens": 219058,
+        "cached_input_tokens": 195712,
+        "output_tokens": 7086,
+        "uncached_input_tokens": 23346,
+        "total_tokens": 226144
+      },
+      "provider_request_count": null
+    }
+  },
+  "scope_limit": "Final file hashes audit the prepared scope and original fixtures. Raw shell startup denials are observed attempted effects, not successful writes. No claim of a complete global filesystem audit."
+}

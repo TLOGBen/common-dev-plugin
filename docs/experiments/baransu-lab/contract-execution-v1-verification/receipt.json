@@ -1,0 +1,133 @@
+{
+  "kind": "independent_read_only_execution_verification",
+  "started_utc": "2026-09-06T06:41:46.016158+00:00",
+  "node_executable": "/home/vakarve/.nvm/versions/node/v22.18.0/bin/node",
+  "node_version": "v22.18.0",
+  "node_test_context": null,
+  "actor_model_calls": 0,
+  "verifier_model_calls": 0,
+  "runner_sha256": "e0c3816a1fd3d9b244ee52b3f090caea8525649acfb8d51579f793ee528f4abd",
+  "oracle_sha256": "810172984c1b60d6d2af8bed41a5232679c9e6a7de16ca054b053aeb77709586",
+  "input_summary_sha256": "1691dfe43c2d32769a6e93af6908ae50844582aa65578d581a9a4751f113097d",
+  "fixture_before_sha256": {
+    "A": {
+      "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+      "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+      "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+      "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+    },
+    "B": {
+      "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+      "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+      "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+      "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+    }
+  },
+  "matches_actor_completion_hashes": true,
+  "checks": [
+    {
+      "command": [
+        "/home/vakarve/.nvm/versions/node/v22.18.0/bin/node",
+        "/home/vakarve/projects/common-dev-plugin/scripts/verify_normalize_tag.mjs",
+        "/tmp/common-lab-exec-normalize-tag-dwh82u2v/src/normalize-tag.mjs"
+      ],
+      "cwd": "/tmp/common-lab-exec-normalize-tag-dwh82u2v",
+      "started_utc": "2026-09-06T06:41:46.023512+00:00",
+      "ended_utc": "2026-09-06T06:41:46.061187+00:00",
+      "wall_seconds": 0.037443,
+      "exit_code": 0,
+      "stdout_path": "A-oracle.stdout.txt",
+      "stdout_sha256": "3507fab45bf3bd23bb6d7ac2403488f251cedeb4162511348fe601cef3b381a2",
+      "stderr_path": "A-oracle.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "arm": "A",
+      "check": "oracle",
+      "passed": 8,
+      "total": 8,
+      "reported_mutation": false
+    },
+    {
+      "command": [
+        "/home/vakarve/.nvm/versions/node/v22.18.0/bin/node",
+        "--test",
+        "tests/normalize-tag.test.mjs"
+      ],
+      "cwd": "/tmp/common-lab-exec-normalize-tag-dwh82u2v",
+      "started_utc": "2026-09-06T06:41:46.061333+00:00",
+      "ended_utc": "2026-09-06T06:41:46.194808+00:00",
+      "wall_seconds": 0.133203,
+      "exit_code": 0,
+      "stdout_path": "A-suite.stdout.txt",
+      "stdout_sha256": "31f7a5517387c9c17afe90b2479b71ded994305806fc0c85fa254f22278dd6bb",
+      "stderr_path": "A-suite.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "arm": "A",
+      "check": "suite"
+    },
+    {
+      "command": [
+        "/home/vakarve/.nvm/versions/node/v22.18.0/bin/node",
+        "/home/vakarve/projects/common-dev-plugin/scripts/verify_normalize_tag.mjs",
+        "/tmp/common-lab-exec-normalize-tag-zukrn7al/src/normalize-tag.mjs"
+      ],
+      "cwd": "/tmp/common-lab-exec-normalize-tag-zukrn7al",
+      "started_utc": "2026-09-06T06:41:46.194949+00:00",
+      "ended_utc": "2026-09-06T06:41:46.241320+00:00",
+      "wall_seconds": 0.04608,
+      "exit_code": 0,
+      "stdout_path": "B-oracle.stdout.txt",
+      "stdout_sha256": "2ca807c3a31be6a8a25dbf726b3ea42a642d9dffb24117dba2f0ec9937b25807",
+      "stderr_path": "B-oracle.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "arm": "B",
+      "check": "oracle",
+      "passed": 8,
+      "total": 8,
+      "reported_mutation": false
+    },
+    {
+      "command": [
+        "/home/vakarve/.nvm/versions/node/v22.18.0/bin/node",
+        "--test",
+        "tests/normalize-tag.test.mjs"
+      ],
+      "cwd": "/tmp/common-lab-exec-normalize-tag-zukrn7al",
+      "started_utc": "2026-09-06T06:41:46.241515+00:00",
+      "ended_utc": "2026-09-06T06:41:46.367770+00:00",
+      "wall_seconds": 0.12606,
+      "exit_code": 0,
+      "stdout_path": "B-suite.stdout.txt",
+      "stdout_sha256": "81e6a43bdff8c8c0c6c69ad321887bcf41cfbafd5024d021dfe9eaa864221a8b",
+      "stderr_path": "B-suite.stderr.txt",
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "arm": "B",
+      "check": "suite"
+    }
+  ],
+  "scope": "Synthetic data; real local node execution. Not full seal, human acceptance, or business completion.",
+  "not_executed": [
+    "mutation probes",
+    "stable sealed marker",
+    "global telemetry",
+    "stop hook",
+    "external writes"
+  ],
+  "ended_utc": "2026-09-06T06:41:46.368350+00:00",
+  "wall_seconds": 0.352185,
+  "fixture_after_sha256": {
+    "A": {
+      "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+      "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+      "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+      "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+    },
+    "B": {
+      "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+      "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+      "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+      "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+    }
+  },
+  "fixtures_unchanged": true,
+  "all_commands_passed": true
+}

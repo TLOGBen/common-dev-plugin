@@ -1,0 +1,24 @@
+{
+  "carrier_sha256": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+  "usage_parser_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "raw_usage_parser_sha256": "7614c26c45052b285bb3df267a880b5eba4c1d749b8125eaadb6ef140ee241a0",
+  "packages": {},
+  "workspace_sha256": {
+    "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+    "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+    "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+  },
+  "profile_adapter_sha256": "eed8705e631aa97a6f7605e099af9816b23b15c37d284a4acad1c52382d3a56f",
+  "base_carrier_sha256": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+  "worker_profiles": {
+    "implementation": {
+      "model": "gpt-5.6-luna",
+      "effort": "high"
+    },
+    "implementation_sol": {
+      "model": "gpt-5.6-sol",
+      "effort": "high"
+    }
+  }
+}

@@ -1,0 +1,182 @@
+{
+  "checked_utc": "2026-09-06T19:08:34.169Z",
+  "status": "PASS",
+  "method": "Final read-only checks after cutoff report update; no model test reruns.",
+  "documents": [
+    {
+      "path": "docs/experiments/RESULTS-20260907.md",
+      "sha256": "e7ef763524fe6128fc1ce9c652336a859871bbe112a7dd9e875197a400e28b91",
+      "local_links": 20,
+      "missing": [],
+      "tables": [
+        {
+          "rows": 8,
+          "columns": 3,
+          "rectangular": true
+        },
+        {
+          "rows": 6,
+          "columns": 3,
+          "rectangular": true
+        },
+        {
+          "rows": 8,
+          "columns": 3,
+          "rectangular": true
+        }
+      ]
+    },
+    {
+      "path": "docs/experiments/README.md",
+      "sha256": "db2b7c857de4c669a4598cc2d45537168794a0228505a887e7251eaa72f711e0",
+      "local_links": 16,
+      "missing": [],
+      "tables": [
+        {
+          "rows": 5,
+          "columns": 3,
+          "rectangular": true
+        }
+      ]
+    },
+    {
+      "path": "docs/experiments/FIELD-GUIDE.md",
+      "sha256": "36b364f3465c17372358993d5fd51cedbae10e7cef1a3c9967a6b7f2e0df008e",
+      "local_links": 5,
+      "missing": [],
+      "tables": [
+        {
+          "rows": 9,
+          "columns": 3,
+          "rectangular": true
+        },
+        {
+          "rows": 9,
+          "columns": 3,
+          "rectangular": true
+        }
+      ]
+    },
+    {
+      "path": "docs/experiments/SKILL-VERDICTS.md",
+      "sha256": "489acb12ee01463943c7c4c93f65c1f22c281d30188dddc187f327e48d6f28d1",
+      "local_links": 33,
+      "missing": [],
+      "tables": [
+        {
+          "rows": 12,
+          "columns": 3,
+          "rectangular": true
+        },
+        {
+          "rows": 6,
+          "columns": 3,
+          "rectangular": true
+        }
+      ]
+    },
+    {
+      "path": "docs/experiments/CONVERGENCE-WRITING-NOTE.md",
+      "sha256": "33cfa3c74e2bce52b5c813c31b4c1bc0960b52703587aa3a31235600f6925aaa",
+      "local_links": 0,
+      "missing": [],
+      "tables": []
+    }
+  ],
+  "checks": [
+    {
+      "name": "json",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 -c \"import json,pathlib; files=list(pathlib.Path(\\\".\\\").rglob(\\\"*.json\\\")); [json.loads(p.read_text(encoding=\\\"utf-8\\\")) for p in files]; print(json.dumps({\\\"all_json_parse\\\":\\\"PASS\\\",\\\"files\\\":len(files)}))\"",
+      "exit_code": 0,
+      "stdout": "{\"all_json_parse\": \"PASS\", \"files\": 1070}\n",
+      "stderr": ""
+    },
+    {
+      "name": "layout",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 -c \"import pathlib,json; root=pathlib.Path(\\\".\\\"); required=[\\\".agents/plugins/marketplace.json\\\",\\\"codex/.agents/plugins/marketplace.json\\\",\\\"codex/plugins/test-utils/.codex-plugin/plugin.json\\\",\\\"codex/plugins/analysis-estimation/.codex-plugin/plugin.json\\\",\\\"codex/plugins/linkstart/.codex-plugin/plugin.json\\\"]; assert all((root/p).is_file() for p in required); print(json.dumps({\\\"required_layout\\\":\\\"PASS\\\",\\\"paths\\\":required}))\"",
+      "exit_code": 0,
+      "stdout": "{\"required_layout\": \"PASS\", \"paths\": [\".agents/plugins/marketplace.json\", \"codex/.agents/plugins/marketplace.json\", \"codex/plugins/test-utils/.codex-plugin/plugin.json\", \"codex/plugins/analysis-estimation/.codex-plugin/plugin.json\", \"codex/plugins/linkstart/.codex-plugin/plugin.json\"]}\n",
+      "stderr": ""
+    },
+    {
+      "name": "linkstart",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_linkstart_release.py",
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": ""
+    },
+    {
+      "name": "diff",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "stable",
+      "command": "git diff --name-only HEAD -- plugins/common plugins/analysis-estimation plugins/test-utils plugins/linkstart codex .agents .claude-plugin",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "index_sha256": "77024110d2f16c5747f46c6d1e268cf067009e51aa566e557da38df926bc4d43",
+  "index_unchanged": true,
+  "native_api_equivalent_exact_replay": true,
+  "criterion_direct_references": [
+    {
+      "criterion": "C1",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "match": true
+    },
+    {
+      "criterion": "C2",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/common-evidence-closure-20260906-2040.json",
+      "sha256": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "match": true
+    },
+    {
+      "criterion": "C3",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/common-evidence-closure-20260906-2040.json",
+      "sha256": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "match": true
+    },
+    {
+      "criterion": "C4",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/closure-011-20260907.json",
+      "sha256": "805a20f6dbf955e305f36e338dddb7382c562de4133fbc8496d28b9c705c0d8a",
+      "match": true
+    },
+    {
+      "criterion": "C5",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "match": true
+    },
+    {
+      "criterion": "C7",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "match": true
+    },
+    {
+      "criterion": "C8",
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/criterion-C8-closure-20260907.json",
+      "sha256": "9db7caf4bcd83b238142c50b60a09d1668797b66b20f9c5129f39c98b274adcf",
+      "match": true
+    }
+  ],
+  "report_ui": {
+    "status": "queued",
+    "threadId": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+    "path": "docs/experiments/RESULTS-20260907.md"
+  },
+  "limits": [
+    "Local-link existence and rectangular Markdown tables are not pixel or human understanding checks.",
+    "1070 existing JSON files parsed; this receipt is serialized and reread separately.",
+    "Source/export/cache continuity comes from prior unchanged-package receipt; no behavior suite rerun.",
+    "Queued Codex file panel is not proof user has seen it.",
+    "Stable tracked package/catalog diff empty; no global activation or sibling change."
+  ]
+}

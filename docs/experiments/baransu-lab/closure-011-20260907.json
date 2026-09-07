@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-09-06T16:24:36.731Z",
+  "criterion": "C4",
+  "result": "met",
+  "meaning": "Four opt-in skills exported and tested against the specified boundaries; not full stable Seal or human acceptance.",
+  "version": "0.1.1",
+  "source_sha256": "d7edea3f7aa1172edd396fa1e9172468fe00ec30e59a32ed39a970e8278e3dda",
+  "output_sha256": "eefd03c41c001814cfa0492e9a54bb5ac0d121a67db73b6403f12727ebfd3caf",
+  "evidence": [
+    {
+      "path": "docs/experiments/common-lab/runs/astra-baransu-010/manual-review.json",
+      "sha256": "5c26cf2bdc4029ec71233d0bc3ee65029cc89dcbe6f1b4f74da5d08cbf5ff1c2"
+    },
+    {
+      "path": "docs/experiments/baransu-lab/contract-execution-v1-verification/receipt.json",
+      "sha256": "78961995d7778fd327e6b7186be73d9873621b9bb6672070167cad0c0d38bc1e"
+    },
+    {
+      "path": "docs/experiments/baransu-lab/runs/sol-contract-verification-v1/lead-review.md",
+      "sha256": "7271295278b6b6515fd007be2267253f2231a9d04a3823130b9a837359823a1c"
+    },
+    {
+      "path": "docs/experiments/baransu-lab/verifier-boundaries-v1b/lead-disposition.md",
+      "sha256": "2686dd3de95c0dd1172cc741101ffd7a459ae8f4092347a012a3e04fb3a3c250"
+    },
+    {
+      "path": ".codex/evolve/lab-verifier/heldout-decision.json",
+      "sha256": "4d872c8474884f9bd66d0f01af4822b105d65b01868d4fb557427c4d1965c30b"
+    },
+    {
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/lead-critical-review.json",
+      "sha256": "de757db9cbf00c25da25bda0f7ac7eefdce77e929ec797196e61a9a55385fb78"
+    },
+    {
+      "path": "docs/experiments/baransu-lab/export-v0.1.1/export-receipt.json",
+      "sha256": "5dda149e1c7796a157376a08ee376a1254d23cac9fa7ecf75733489266993d1a"
+    },
+    {
+      "path": "docs/experiments/install-final-20260907/result.json",
+      "sha256": "508e74bf7cd8cdb8fdc9a3c160205369a52be5d4147c49991d0ed40fec3822d4"
+    }
+  ],
+  "limits": [
+    "Original 0.1.0 eight-call response comparison includes authorization and corrected-premise cases, not whole product execution.",
+    "Actual contract implementation and fresh verifiers are separate evidence; raw counterexamples and dispatch information gaps remain.",
+    "0.1.1 changes only grouping of existing role sentences; fixed heldout actors and judges do not show effectiveness gain.",
+    "Installed seven package files equal frozen export; stable source and global install untouched.",
+    "Formal evolve Book rendering unavailable; SDK fallback and chart-method difference disclosed, not a full reference-workflow PASS."
+  ]
+}

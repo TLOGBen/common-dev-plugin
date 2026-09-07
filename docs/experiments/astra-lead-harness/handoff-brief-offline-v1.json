@@ -1,0 +1,15 @@
+{
+  "kind": "candidate_only_not_adopted",
+  "script": "experiments/common-lab-candidate018/source/common-lab/skills/lab-strategic-advance/scripts/campaign_brief.py",
+  "tests": 21,
+  "result": {
+    "exit_code": 0,
+    "stdout": "",
+    "stderr": "test_actual_block_reason_is_preserved (__main__.CampaignBriefTests.test_actual_block_reason_is_preserved) ... ok\ntest_changed_proof_not_green (__main__.CampaignBriefTests.test_changed_proof_not_green) ... ok\ntest_cli_new_markdown_then_refuses_overwrite (__main__.CampaignBriefTests.test_cli_new_markdown_then_refuses_overwrite) ... ok\ntest_cli_refuses_wrong_extension (__main__.CampaignBriefTests.test_cli_refuses_wrong_extension) ... ok\ntest_cli_rejects_state_symlink (__main__.CampaignBriefTests.test_cli_rejects_state_symlink) ... ok\ntest_cli_stdout_readonly (__main__.CampaignBriefTests.test_cli_stdout_readonly) ... ok\ntest_complete_with_unknown_is_rejected (__main__.CampaignBriefTests.test_complete_with_unknown_is_rejected) ... ok\ntest_completed_focus_is_flagged_not_replaced (__main__.CampaignBriefTests.test_completed_focus_is_flagged_not_replaced) ... ok\ntest_completed_state_is_not_reopened (__main__.CampaignBriefTests.test_completed_state_is_not_reopened) ... ok\ntest_invalid_focus_rejected_not_guessed (__main__.CampaignBriefTests.test_invalid_focus_rejected_not_guessed) ... ok\ntest_keep_results_and_focus (__main__.CampaignBriefTests.test_keep_results_and_focus) ... ok\ntest_markup_is_escaped_not_executed (__main__.CampaignBriefTests.test_markup_is_escaped_not_executed) ... ok\ntest_missing_proof_not_green (__main__.CampaignBriefTests.test_missing_proof_not_green) ... ok\ntest_no_automatic_next_criterion (__main__.CampaignBriefTests.test_no_automatic_next_criterion) ... ok\ntest_no_invented_block_reason (__main__.CampaignBriefTests.test_no_invented_block_reason) ... ok\ntest_old_block_does_not_become_current_pause (__main__.CampaignBriefTests.test_old_block_does_not_become_current_pause) ... ok\ntest_pending_operation_survives (__main__.CampaignBriefTests.test_pending_operation_survives) ... ok\ntest_projection_never_changes_source (__main__.CampaignBriefTests.test_projection_never_changes_source) ... ok\ntest_stale_failed_operation_is_flagged (__main__.CampaignBriefTests.test_stale_failed_operation_is_flagged) ... ok\ntest_unknown_operation_not_collapsed_to_success (__main__.CampaignBriefTests.test_unknown_operation_not_collapsed_to_success) ... ok\ntest_unmet_evidence_remains_accessible (__main__.CampaignBriefTests.test_unmet_evidence_remains_accessible) ... ok\n\n----------------------------------------------------------------------\nRan 21 tests in 0.564s\n\nOK\n"
+  },
+  "own_real_ledger_readonly_probe": {
+    "exit_code": 0,
+    "stderr": ""
+  },
+  "model_calls": 0
+}

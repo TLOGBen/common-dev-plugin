@@ -1,0 +1,52 @@
+{
+  "verified_at_utc": "2026-09-06T04:55:41.865329+00:00",
+  "source_sha256": "cb290dad5817816feacbfa8197db1a9303b04c745e191c9c8b99e52990a5d1f5",
+  "source_before_sha256": "fc21fe3239264f9520b733321e70657f1741c7a801f442af44168cf872e7741d",
+  "source_files": {
+    ".claude-plugin/plugin.json": "e262978143c76d05cfe7217ec746dcb31cd5c8979649058e43dc03ca5ccc5b20",
+    "agents/lab-executor.md": "f8739a7858bbc4f57418d59ce54f28cffd24aee6fc1258ea077fa42bc8f294bd",
+    "skills/lab-better-prompts/SKILL.md": "8a9f76535e1940309770043e2ceeb73fdc906a6074d5e8e482871e5e909172a9",
+    "skills/lab-define-goal/SKILL.md": "e0e8033f92cfc32fe668b42980e1d533832a17c31ac69a3f9fd6539c0a2dcb1b",
+    "skills/lab-delegate/SKILL.md": "a2afe479bd779d1776a0057bb2fec20bd855926fa96efcd1251d5c7f8ab7b819",
+    "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+    "skills/lab-domain-modeling/SKILL.md": "4ac05fdb6374f10284da267092deaccb646789513877170fa6e4cfc5beb7f1bb",
+    "skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+    "skills/lab-prototype/SKILL.md": "eb46e1818b25f1352a719db97d70491a1bff4e83339ebdcbb1732c95716c1e42",
+    "skills/lab-research/SKILL.md": "015008f344f711a6abae91af0f68a5807f52e7ccf558b61b822c910ec4c729e0",
+    "skills/lab-strategic-advance/SKILL.md": "e0b7e11e71c7206382b59d4475b2d687deaaf8697c3b7d6c4b76ec6afb13c277",
+    "skills/lab-strategic-advance/references/campaign.md": "12d17bbf244abd1f2f16bbe9d0aa99a92016700e8893ef3009f7510fe707c31c",
+    "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+    "skills/lab-wait-what/SKILL.md": "2151da59ef74a9c5db7cf71a8cfb9b4b37b492f86e39cff86fd1f7b73af7b494",
+    "skills/lab-wayfinder/SKILL.md": "ae20a232d90b26a08bb05561a9a4f363de91ce2e8b3f411c9b75c4da68dad36f",
+    "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+    "skills/lab-wayfinder/references/map-format.md": "02a6e02a75bf993f4b69d706a0a3ab8c922574fb2326dcb3ed991c795baf60c9",
+    "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+  },
+  "changed_source_files": [
+    "plugins/common-lab/.claude-plugin/plugin.json",
+    "plugins/common-lab/skills/lab-wayfinder/SKILL.md",
+    "plugins/common-lab/skills/lab-wayfinder/assets/map-template.html",
+    "plugins/common-lab/skills/lab-wayfinder/references/map-format.md",
+    "plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py"
+  ],
+  "test_sha256": "f0e3a26cb14e543a040648d40394fb6f04731b12b0756d543cda7ac49c55428d",
+  "source_diff_sha256": "f6f9632fc0abc9f3f20e0a9ac3e4d01800c19f69d295c51bac0735e37c617245",
+  "frozen_hashes_verified": {
+    "experiments/common-lab-v0.1.2": "208261ba54fb57ddf1600c983d1e9b42613cad1d9b7682adb5f43afd6e5bd751",
+    "experiments/common-lab-v0.1.1": "1ddeff53a655e34595b6f8c67c7791415cdd5bcda630ec4a169f0ebf2a7c0360",
+    "experiments/common-lab": "1acbad800747577fafc95fae0fa5decbd98ece5cfbb4a5b0527d2bf14557d6de",
+    "plugins/common": "21009dffc22ba94a66b619e477a242e698b13d4fb6f45a6cf982f2d1aad14235",
+    "codex/plugins/common": "a72653d4bb1b8ffa7fccc9edd0fb2f0ae9cee89ab38e1afec767e45aea9fec1c"
+  },
+  "actual_A_B_unchanged": true,
+  "python_and_full_javascript_syntax": "PASS",
+  "regression_checks": 76,
+  "independent_variables": [
+    "dependency-readiness wording and authority/completion boundary",
+    "reproduced unknown-status fail-closed validation"
+  ],
+  "unchanged_observation": "claimed with blocked dependencies remains claimed",
+  "token_usage": null,
+  "token_usage_reason": "No observable child runtime token meter",
+  "exported": false
+}

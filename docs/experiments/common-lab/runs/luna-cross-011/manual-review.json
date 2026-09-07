@@ -1,0 +1,189 @@
+{
+  "run_id": "luna-cross-011",
+  "reviewed_utc": "2026-09-06T03:35:29Z",
+  "method": "Manually read all six final responses and tool traces against frozen four-criterion rubrics. Unblinded single-repeat tabletop, not model self-grading or real execution.",
+  "identity": "gpt-5.6-luna/high explicitly requested; A Common 1.35.2, B Common Lab 0.1.1; initial arm order reversed from Sol; no fallback.",
+  "scope": {
+    "response_returned": 6,
+    "tabletop_cases_accepted": 4,
+    "tabletop_cases_reviewed": 4,
+    "actual_business_completion": null,
+    "actual_business_completion_status": "NOT_RUN",
+    "human_tested": false
+  },
+  "cost": {
+    "provider_reported_usd": null,
+    "public_price_estimate_usd": null,
+    "reason": "Not reported by Codex CLI. Subscription access and token counts do not imply zero monetary cost."
+  },
+  "observations": [
+    "Both arms distinguish rejecting a notification from reversing the completed charge and leave product remedies undecided.",
+    "Both strategic conversations preserve receipt/readability success without treating it as proof of a unique send. All proposed next checks remain read-only; no repeated approval or resend.",
+    "No new frozen-criterion failure observed. B uses English terms including bounded move/reconciliation/dispatch without plain-language substitution; novice comprehension was not tested in this case.",
+    "Stable strategic root is 494 lines. A turn 2 read ranges 1-240 and 241-520 completely, plus the selected state-contract reference; do not infer an incomplete skill read from the absence of a 521+ call."
+  ],
+  "rows": [
+    {
+      "case_id": "prototype-late-success",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "States the charge has already succeeded before notification arrival.",
+        "Four-step trace reaches cancelled while externally charged, so discarding notification loses a completed payment fact.",
+        "Keeps restoration/refund/manual remedy undecided; observes preserved payment fact and unresolved treatment signal.",
+        "One order and two events, only a proposed manual exercise."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [
+          "Product remedy deferred; no response requested before giving the design."
+        ],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Short sequence plus three observations. Real novice understanding and reading time unmeasured.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Causal event sequence + contradiction + three observations + next exercise",
+        "recoverable": [
+          "Already charged is a fact",
+          "Cancellation before notification does not erase it",
+          "Minimal observation",
+          "Remedy undecided"
+        ],
+        "deferred": [
+          "Real implementation and remedy policy"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "prototype-late-success",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Explicitly says charge C1 already occurred and cannot be reversed by rejecting the notification.",
+        "Code-style trace reaches cancelled / charged / unprocessed event, exposing lost reconciliation evidence.",
+        "Preserves charge/event context and leaves all remedies with product.",
+        "Two-event exercise with no new platform or actual run."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [
+          "Remedy choice remains product-owned without blocking experiment design."
+        ],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Code-style text shows state mismatch; trace is explanatory, not proof of executed test.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Text trace blocks + causal conclusion + evidence observation list",
+        "recoverable": [
+          "Counterexample order",
+          "Charge does not disappear",
+          "Event identifiers to observe",
+          "Product choice not made"
+        ],
+        "deferred": [
+          "Actual test and response to the charge"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Turn 1 rejects resend and thumbnail rewrite; Accepted does not prove delivery or count.",
+        "Turn 2 identifies 2/3 proven with single-send UNKNOWN and overall IN_PROGRESS.",
+        "Proposes complete send/attempt records, total and unique-send identifiers within MAIL-7.",
+        "E-7 makes thumbnail nonblocking; no overall-complete or archival-only claim."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Explicit three-condition ledger and next check. No real human interaction measurement.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Three-condition progress ledger + nonblocking maintenance note + next check",
+        "recoverable": [
+          "2/3 proven",
+          "Remaining uniqueness evidence",
+          "No resending or thumbnail repair",
+          "Read-only continuation"
+        ],
+        "deferred": [
+          "Actual count and business completion"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Turn 1 separates Accepted, timeout and broken observer; no resend.",
+        "Turn 2 marks received/readable proven, only-one unproven and overall incomplete.",
+        "Requests complete matches, total and unique dispatch identification, not first row alone.",
+        "Thumbnail remains parked; only complete unique dispatch proof could close the final condition."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Untranslated reconciliation/dispatch/bounded move may add novice burden. This technical fixture does not establish a comprehension failure.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Condition ledger + concise scoped next action",
+        "recoverable": [
+          "Received and E-7 completed",
+          "Only-one still unproved",
+          "Complete-record check needed",
+          "No resend or thumbnail work"
+        ],
+        "deferred": [
+          "Actual query and authoritative interpretation of records"
+        ],
+        "attached_visuals": []
+      }
+    }
+  ],
+  "interpretation_boundaries": [
+    "Scores apply to whole reconstructed case conversations, not real execution or a broad quality ranking.",
+    "One repeat on two selected cases with simultaneous Sol carrier and variable cache; token and wall changes are descriptive only.",
+    "No human tested these pause points; necessary future product choices are not avoidable friction.",
+    "All six before/after fixture maps match; tool traces are read-only inspections. No transient-effect/security-generalization claim."
+  ]
+}

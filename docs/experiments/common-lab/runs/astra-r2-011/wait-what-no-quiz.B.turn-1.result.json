@@ -1,0 +1,62 @@
+{
+  "case_id": "wait-what-no-quiz",
+  "skill": "wait-what",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:05:52.990397+00:00",
+  "ended_utc": "2026-09-06T03:06:15.436178+00:00",
+  "wall_seconds": 22.445,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-wait-what-no-quiz-7j2kcl72",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-wait-what/SKILL.md",
+  "skill_sha256": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+  "prompt_sha256": "8f1b3774b9fca626bff57432bb72b25d39b18d419f32f6a7b58ae6c8d9c9fd3e",
+  "fixture_dir": "/tmp/common-lab-ab-wait-what-no-quiz-7j2kcl72",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取你指定的技能，依照情境提供簡短說明與建議下一步，僅作文字模擬。\n",
+    "你可以對同事說：「傳送器 timeout，就是送出後沒有等到回覆，不代表事情沒做成。收據已保存，代表有紀錄可查，但是否完成，還要看收據內容和接收端的紀錄。監看器只是幫我們查看狀況，它壞了，不能據此判定動作失敗；如果沒查清楚就再送一次，可能會重複執行。」\n\n安全下一步是：保留收據，先不重送，請負責同事用收據編號查接收端的處理結果；查明前維持「結果不明」。這只是建議，沒有實際執行查詢或重送。"
+  ],
+  "final_message": "你可以對同事說：「傳送器 timeout，就是送出後沒有等到回覆，不代表事情沒做成。收據已保存，代表有紀錄可查，但是否完成，還要看收據內容和接收端的紀錄。監看器只是幫我們查看狀況，它壞了，不能據此判定動作失敗；如果沒查清楚就再送一次，可能會重複執行。」\n\n安全下一步是：保留收據，先不重送，請負責同事用收據編號查接收端的處理結果；查明前維持「結果不明」。這只是建議，沒有實際執行查詢或重送。",
+  "usage": {
+    "input_tokens": 31753,
+    "cached_input_tokens": 23040,
+    "output_tokens": 374,
+    "uncached_input_tokens": 8713,
+    "total_tokens": 32127
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-wait-what/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

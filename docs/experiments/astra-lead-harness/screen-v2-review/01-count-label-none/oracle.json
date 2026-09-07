@@ -1,0 +1,55 @@
+{
+  "case": "count-label",
+  "passed": true,
+  "checks": {
+    "label_0": true,
+    "label_1": true,
+    "label_2": true,
+    "label_11": true,
+    "verifier_left_fixture_unchanged": true
+  },
+  "evidence": {
+    "observations": [
+      {
+        "count": 0,
+        "actual": "0 records"
+      },
+      {
+        "count": 1,
+        "actual": "1 record"
+      },
+      {
+        "count": 2,
+        "actual": "2 records"
+      },
+      {
+        "count": 11,
+        "actual": "11 records"
+      }
+    ],
+    "execution": {
+      "command": [
+        "node",
+        "--input-type=module",
+        "-e",
+        "\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst {countLabel} = await import(pathToFileURL(process.argv[1]).href);\nconst inputs = JSON.parse(fs.readFileSync(0, 'utf8'));\nconsole.log(JSON.stringify(inputs.map(count => ({count, actual:countLabel(count)}))));\n",
+        "/tmp/astra-lead-screen-20260906-b/workspaces/01-count-label-none/count-label.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "[{\"count\":0,\"actual\":\"0 records\"},{\"count\":1,\"actual\":\"1 record\"},{\"count\":2,\"actual\":\"2 records\"},{\"count\":11,\"actual\":\"11 records\"}]\n",
+      "stderr": ""
+    }
+  },
+  "fixture_before_sha256": {
+    "TASK.md": "ff1fb236acb6362712840337453367238b8356b8903794f6651df928f0b23384",
+    "count-label.mjs": "c76bb38aa93ea5bc350474add19abdc97485302f7ec7096dc1061d647b380bf9",
+    "tests/count-label.test.mjs": "d5e4a7c93d0bc4b892b0dd5352c6721b46a0d77e44456300df6c1526fba6d879"
+  },
+  "fixture_after_sha256": {
+    "TASK.md": "ff1fb236acb6362712840337453367238b8356b8903794f6651df928f0b23384",
+    "count-label.mjs": "c76bb38aa93ea5bc350474add19abdc97485302f7ec7096dc1061d647b380bf9",
+    "tests/count-label.test.mjs": "d5e4a7c93d0bc4b892b0dd5352c6721b46a0d77e44456300df6c1526fba6d879"
+  },
+  "model_calls": 0,
+  "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+}

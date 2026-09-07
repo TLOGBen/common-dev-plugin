@@ -1,0 +1,62 @@
+{
+  "case_id": "better-prompts-explicit-authority",
+  "skill": "better-prompts",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:03:43.969234+00:00",
+  "ended_utc": "2026-09-06T03:04:08.119952+00:00",
+  "wall_seconds": 24.151,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-better-prompts-explicit-authority-43o8m2_g",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md",
+  "skill_sha256": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+  "prompt_sha256": "f396daddcda2ab68d8b6e59e11dd155255f22ecf1fe3cd44ac8b2ab4a2665184",
+  "fixture_dir": "/tmp/common-lab-ab-better-prompts-explicit-authority-43o8m2_g",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取你指定的 better-prompts 技能，依照你的授權範圍整理成可直接使用的精簡版本。\n",
+    "可直接使用：\n\n```text\n修正文件錯字，只讀取與任務相關的文件，並依變更影響執行必要的非破壞性檢查或測試。\n\n一般範圍內的本地編輯、唯讀檢查及相關非破壞性測試已獲授權，無須逐次詢問，也不必在初稿完成後停下等待審閱；完成編輯與驗證後回報結果。\n\n所有資料刪除、正式環境部署及付費操作，均須事先取得我的明確批准。此刪除邊界包含本地測試 fixtures；可重建只是描述，不構成刪除授權。若下一步涉及刪除 fixtures，仍須先詢問並獲得批准。\n```"
+  ],
+  "final_message": "可直接使用：\n\n```text\n修正文件錯字，只讀取與任務相關的文件，並依變更影響執行必要的非破壞性檢查或測試。\n\n一般範圍內的本地編輯、唯讀檢查及相關非破壞性測試已獲授權，無須逐次詢問，也不必在初稿完成後停下等待審閱；完成編輯與驗證後回報結果。\n\n所有資料刪除、正式環境部署及付費操作，均須事先取得我的明確批准。此刪除邊界包含本地測試 fixtures；可重建只是描述，不構成刪除授權。若下一步涉及刪除 fixtures，仍須先詢問並獲得批准。\n```",
+  "usage": {
+    "input_tokens": 32500,
+    "cached_input_tokens": 15488,
+    "output_tokens": 424,
+    "uncached_input_tokens": 17012,
+    "total_tokens": 32924
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

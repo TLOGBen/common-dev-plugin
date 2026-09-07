@@ -1,0 +1,77 @@
+{
+  "kind": "four_optional_brief_readers",
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "rows": [
+    {
+      "label": "R1",
+      "entry": "/tmp/campaign-brief-reader-20260906-a/R1/state.json",
+      "files": [
+        "/tmp/campaign-brief-reader-20260906-a/R1/state.json",
+        "/tmp/campaign-brief-reader-20260906-a/R1/integrity-observation.json",
+        "/tmp/campaign-brief-reader-20260906-a/R1/observation.json"
+      ],
+      "task": "請從入口看這份工作交接，必要時才讀允許的支持檔案。用一段可交接的繁體中文說明：目前哪些成果可以據此確認、整體能否視為已完成、下一個具體行動是什麼、是否有確實需要我作的決定。分清帳本紀錄與支持它的實際證據；不要執行後續工作。"
+    },
+    {
+      "label": "R2",
+      "entry": "/tmp/campaign-brief-reader-20260906-a/R2/handoff.md",
+      "files": [
+        "/tmp/campaign-brief-reader-20260906-a/R2/handoff.md",
+        "/tmp/campaign-brief-reader-20260906-a/R2/state.json",
+        "/tmp/campaign-brief-reader-20260906-a/R2/integrity-observation.json",
+        "/tmp/campaign-brief-reader-20260906-a/R2/observation.json"
+      ],
+      "task": "請從入口看這份工作交接，必要時才讀允許的支持檔案。用一段可交接的繁體中文說明：目前哪些成果可以據此確認、整體能否視為已完成、下一個具體行動是什麼、是否有確實需要我作的決定。分清帳本紀錄與支持它的實際證據；不要執行後續工作。"
+    },
+    {
+      "label": "R3",
+      "entry": "/tmp/campaign-brief-reader-20260906-a/R3/handoff.md",
+      "files": [
+        "/tmp/campaign-brief-reader-20260906-a/R3/handoff.md",
+        "/tmp/campaign-brief-reader-20260906-a/R3/state.json",
+        "/tmp/campaign-brief-reader-20260906-a/R3/integrity-observation.json",
+        "/tmp/campaign-brief-reader-20260906-a/R3/observation.json"
+      ],
+      "task": "請從入口看這份工作交接，必要時才讀允許的支持檔案。用一段可交接的繁體中文說明：目前哪些成果可以據此確認、整體能否視為已完成、下一個具體行動是什麼、是否有確實需要我作的決定。分清帳本紀錄與支持它的實際證據；不要執行後續工作。"
+    },
+    {
+      "label": "R4",
+      "entry": "/tmp/campaign-brief-reader-20260906-a/R4/state.json",
+      "files": [
+        "/tmp/campaign-brief-reader-20260906-a/R4/state.json",
+        "/tmp/campaign-brief-reader-20260906-a/R4/integrity-observation.json",
+        "/tmp/campaign-brief-reader-20260906-a/R4/observation.json"
+      ],
+      "task": "請從入口看這份工作交接，必要時才讀允許的支持檔案。用一段可交接的繁體中文說明：目前哪些成果可以據此確認、整體能否視為已完成、下一個具體行動是什麼、是否有確實需要我作的決定。分清帳本紀錄與支持它的實際證據；不要執行後續工作。"
+    }
+  ],
+  "input_sha256": {
+    "/tmp/campaign-brief-reader-20260906-a/R1/state.json": "31ff05a84c5f48d11a75b85a7b07c8045dea980fc159ba213e5a4e41eed83cef",
+    "/tmp/campaign-brief-reader-20260906-a/R1/integrity-observation.json": "f8aafc93d6bd53aaa5d14f5432991b3438631da4ca8809b92aa4ca44dcacc827",
+    "/tmp/campaign-brief-reader-20260906-a/R1/observation.json": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+    "/tmp/campaign-brief-reader-20260906-a/R2/handoff.md": "3c27cab164b0be33128c086dc61473e84859ebad22cc105d39c6d8cdd05ee0a1",
+    "/tmp/campaign-brief-reader-20260906-a/R2/state.json": "5f080825c5efc93bb6e6a47db1b0e203f2d0a7c86e9859ac86f8bd350bba54b0",
+    "/tmp/campaign-brief-reader-20260906-a/R2/integrity-observation.json": "c69f71b1988314fa6af64073aa058a57fae8b61f88a315390fbb55953a2704d7",
+    "/tmp/campaign-brief-reader-20260906-a/R2/observation.json": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+    "/tmp/campaign-brief-reader-20260906-a/R3/handoff.md": "9fd22ddfa2282541abb383a2bb12ede1f57b9def1e9fc1313ed3eb4860a981c6",
+    "/tmp/campaign-brief-reader-20260906-a/R3/state.json": "d62c27c7b36234820558ec65b158d67d900e92ee84ea255fc5f51ad635f86d6e",
+    "/tmp/campaign-brief-reader-20260906-a/R3/integrity-observation.json": "ccdbadec2b0c34c24adcecf596ded69c3378dd6c911e45597245e3a6093666dd",
+    "/tmp/campaign-brief-reader-20260906-a/R3/observation.json": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf",
+    "/tmp/campaign-brief-reader-20260906-a/R4/state.json": "1e4b7b3368d218c9343ac870c401c19a290c0dfb429e1608b61ae59d7915d77c",
+    "/tmp/campaign-brief-reader-20260906-a/R4/integrity-observation.json": "6c28cdd5cdc1ced6ba568ca2e4c51a4714638ca68fd2000c6290e23e7e833290",
+    "/tmp/campaign-brief-reader-20260906-a/R4/observation.json": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf"
+  },
+  "candidate_script": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-candidate018/source/common-lab/skills/lab-strategic-advance/scripts/campaign_brief.py",
+  "candidate_sha256": "afdcca953d75825c769b492cd83477850fe0aac027834d7d49c057e043a9e187",
+  "shared_reader_sha256": "6a1028fae8d20e94ef255cbb0ddbd113d43b8361bf68ab5ca21478273aa49122",
+  "runner_sha256": "1dbab5aef07543abe99887a671e00aa92be789bd37b44a3e2f993c122faa2141",
+  "created_utc": "2026-09-06T10:54:44.981312+00:00",
+  "model_calls_at_freeze": 0,
+  "limits": [
+    "Same supporting facts and integrity observations; brief arm additionally has a generated entry.",
+    "Read paths are prompt-scoped; raw trace must be reviewed. No human comprehension score.",
+    "Two synthetic situations with A/B/B/A order, not randomized/general reader performance.",
+    "No skill is loaded by reader; this tests the resulting view, not skill invocation reliability."
+  ]
+}

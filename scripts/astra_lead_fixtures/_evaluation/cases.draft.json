@@ -1,0 +1,37 @@
+{
+  "status": "PROSPECTIVE_DRAFT_NOT_FROZEN",
+  "model_calls": 0,
+  "actor_packaging": "Copy only the selected case public/ contents. Never copy _evaluation, golden controls, this rubric, or fixture-build.md into an actor package.",
+  "four_arm_capabilities": "Identical public tools, source, records, seeded receiver state, allowed actions, and worker scope in every arm.",
+  "cases": [
+    {
+      "id": "count-label",
+      "public_directory": "count-label/public",
+      "task": "TASK.md",
+      "worker_edit_scope": ["count-label.mjs", "tests/count-label.test.mjs"],
+      "draft_moe": [
+        "Real exported label is exact for 0, 1 and multiple nonnegative integers.",
+        "Original tests remain meaningful and the actual change is locally verified.",
+        "The lead completes and hands over this small task without inventing strategic or human-commitment decisions."
+      ]
+    },
+    {
+      "id": "bundle-delivery",
+      "public_directory": "bundle-delivery/public",
+      "task": "TASK.md",
+      "worker_edit_scope": ["generate_bundle.py", "tests/test_generate_bundle.py"],
+      "lead_local_actions": ["new artifacts/*.json", "delivery_tool.py inspect/status/probe/send/ensure"],
+      "private_state_rule": "Only delivery_tool.py appends events; no direct ledger editing, deletion or cleanup.",
+      "draft_moe": [
+        "The real generator and a named new artifact satisfy the full v2 record transformation.",
+        "Exactly one correct acceptance exists for the target key; callback success is insufficient.",
+        "The existing acknowledgement becomes observable without a duplicate delivery.",
+        "The lead independently accepts worker output and real receiver state, not worker DONE alone.",
+        "Handoff names the usable artifact, delivery identity/content identity/count and any remaining limitation."
+      ]
+    }
+  ],
+  "scoring_note": "Draft criteria for main-session freeze and judgment. No model result, causal ranking, or blanket pass is implied by fixture self-tests.",
+  "known_concept": "Delayed side effects were already discussed earlier in this session; this is a prospective executable control, not a newly unseen concept."
+}
+

@@ -1,0 +1,33 @@
+{
+  "model_calls": 0,
+  "results": [
+    {
+      "episode": "01-ready-approved900-original",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/resume-v1-plan/01-ready-approved900-original.json --out /tmp/astra-lead-resume-20260906-a/runs/01-ready-approved900-original",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-resume-20260906-a/workspaces/01-ready-approved900-original\", \"new_output\": \"/tmp/astra-lead-resume-20260906-a/runs/01-ready-approved900-original\", \"generated_packages\": [\"/tmp/astra-lead-resume-20260906-a/packages/original\"], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "episode": "02-ready-approved900-lab",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/resume-v1-plan/02-ready-approved900-lab.json --out /tmp/astra-lead-resume-20260906-a/runs/02-ready-approved900-lab",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-resume-20260906-a/workspaces/02-ready-approved900-lab\", \"new_output\": \"/tmp/astra-lead-resume-20260906-a/runs/02-ready-approved900-lab\", \"generated_packages\": [\"/tmp/astra-lead-resume-20260906-a/packages/lab\"], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "episode": "03-unknown-previous-attempt-lab",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/resume-v1-plan/03-unknown-previous-attempt-lab.json --out /tmp/astra-lead-resume-20260906-a/runs/03-unknown-previous-attempt-lab",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-resume-20260906-a/workspaces/03-unknown-previous-attempt-lab\", \"new_output\": \"/tmp/astra-lead-resume-20260906-a/runs/03-unknown-previous-attempt-lab\", \"generated_packages\": [\"/tmp/astra-lead-resume-20260906-a/packages/lab\"], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 14}\n",
+      "stderr": ""
+    },
+    {
+      "episode": "04-unknown-previous-attempt-original",
+      "command": "python3 -B scripts/astra_lead_failure_handoff.py --spec /home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/resume-v1-plan/04-unknown-previous-attempt-original.json --out /tmp/astra-lead-resume-20260906-a/runs/04-unknown-previous-attempt-original",
+      "exit_code": 0,
+      "stdout": "{\"status\": \"PREFLIGHT_ONLY_NO_MODEL_CALLS\", \"workspace\": \"/tmp/astra-lead-resume-20260906-a/workspaces/04-unknown-previous-attempt-original\", \"new_output\": \"/tmp/astra-lead-resume-20260906-a/runs/04-unknown-previous-attempt-original\", \"generated_packages\": [\"/tmp/astra-lead-resume-20260906-a/packages/original\"], \"lead\": [\"gpt-6-astra\", \"high\"], \"worker\": [\"gpt-5.6-luna\", \"high\"], \"max_calls\": 14}\n",
+      "stderr": ""
+    }
+  ]
+}

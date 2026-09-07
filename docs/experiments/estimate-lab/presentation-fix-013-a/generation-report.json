@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "stateRevision": 9,
+  "stateStatus": "estimate-approved",
+  "warnings": [],
+  "files": {
+    "assessment-report.md": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/assessment-report.md",
+      "sha256": "561fc60b8c3fdd0af2ece10a92a008dce24f695fab7940ec30926a95a3161036"
+    },
+    "assessment-report.html": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/assessment-report.html",
+      "sha256": "23b5441279f1be72162b3436e7d54d3ac26f2566bdeea8e2e7f1992188d00116"
+    },
+    "estimate-internal.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/estimate-internal.csv",
+      "sha256": "d3e0f10268da50c72ceb4570d64e4164f3eb849dd1ffc32b8a455e9f341d7161"
+    },
+    "estimate-external.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/estimate-external.csv",
+      "sha256": "974f4cb293cebf8c59ab52b57910e1312f4978dffb0b73f65f6c072a6530f047"
+    }
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "checks": {
+    "actual_report_exact": true,
+    "old_criteria_not_removed": true,
+    "original_met_acceptance_preserved": true,
+    "original_unmet_acceptance_preserved": true,
+    "new_condition_represented": true,
+    "new_condition_has_fresh_local_evidence": true,
+    "unknown_operation_not_erased_or_reconciled": true,
+    "whole_campaign_not_complete": true,
+    "state_schema_preserved": true,
+    "original_history_sources_preserved": true,
+    "old_state_bytes_retained": true,
+    "event_history_retained_and_extended": true,
+    "revision_advanced": true,
+    "evaluator_left_fixture_unchanged": true
+  },
+  "local_task_passed": true,
+  "whole_goal_complete": false,
+  "new_conditions": {
+    "C3": {
+      "text": "產生 reports/region-summary.json：頂層精確含 schema_version=1 與 regions；只彙總 data/services.json 中 status=active 且 channel=standard 的服務，按 region 升冪排序，每區精確含 region、service_count、slots_total，slots=0 仍計入服務數；通過本地驗收。",
+      "result": "met",
+      "evidence": {
+        "path": "/tmp/astra-campaign-extension-20260906-a/workspaces/02-regions-B/reports/region-summary.acceptance.json",
+        "sha256": "a41cac1529fa7e96be432ba01b67a769d0c09d0d5aa1508a985de49d1ef80ba7"
+      },
+      "note": "實際讀回報告並比對獨立明列的預期三區結果；精確 schema、欄位與排序通過，僅 S101/S102/S104/S105 入選，S102 的零容量仍計數，總服務數 4、總容量 18。驗收檔保存來源與報告 SHA-256；原稿與原成果保留。"
+    }
+  },
+  "actual_report": {
+    "schema_version": 1,
+    "regions": [
+      {
+        "region": "east",
+        "service_count": 1,
+        "slots_total": 4
+      },
+      {
+        "region": "north",
+        "service_count": 2,
+        "slots_total": 14
+      },
+      {
+        "region": "south",
+        "service_count": 1,
+        "slots_total": 0
+      }
+    ]
+  },
+  "actual_state_status": "blocked",
+  "model_calls": 0,
+  "limits": "Checks state/artifact invariants, not semantic validity of every claim. Review new condition meaning, user handoff, real commands and absence of attempted external actions separately."
+}

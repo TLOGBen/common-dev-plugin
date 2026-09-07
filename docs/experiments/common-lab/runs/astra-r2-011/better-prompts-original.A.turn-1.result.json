@@ -1,0 +1,62 @@
+{
+  "case_id": "better-prompts-original",
+  "skill": "better-prompts",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:00:53.345919+00:00",
+  "ended_utc": "2026-09-06T03:01:24.206649+00:00",
+  "wall_seconds": 30.86,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-better-prompts-original-l_2kyeug",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md",
+  "skill_sha256": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+  "prompt_sha256": "d952cf2760278ff44f7bc8f3d853d9d32f95c55ea9ac27e907317208cc343c41",
+  "fixture_dir": "/tmp/common-lab-ab-better-prompts-original-l_2kyeug",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定的 better-prompts 技能，依照你的隔離本地開發情境，整理成可直接貼上的版本。\n",
+    "```text\n完成使用者指定的程式修改，維持既有功能，並依變更風險完成適當驗證。\n\n- 只閱讀與任務相關的程式碼、文件及適用規範；需要更多背景時再擴大範圍，不必讀完整個 repo 或製作完整架構圖。\n- 可自主進行任務範圍內的本地檢查、修改與測試，不需逐檔或逐行詢問。只有需求歧義會實質影響結果，或操作超出授權範圍時，才提出必要問題。\n- 依影響範圍選擇驗證方式：錯字等低風險修改以差異檢查及相關檢查為主；功能修改執行相關測試。只有涉及跨系統行為或效能風險時，才擴大至整合或效能測試。\n- 初版完成後，自行檢查差異與結果，修正發現的問題並完成必要驗證，再交付。若遇到無法排除的阻礙，說明原因與所需協助，不得宣稱未執行的驗證已通過。\n- 本次操作限於隔離本地開發環境，無 production 存取。可重建或清除明確標示為可丟棄的測試 fixtures；其他資料刪除、production 部署及付費服務購買，均須先取得使用者明確同意。無法確認資料是否可丟棄時，先詢問。\n- 完成後簡述修改內容、驗證結果及尚未解決的問題；有阻礙時提出具體下一步。\n```"
+  ],
+  "final_message": "```text\n完成使用者指定的程式修改，維持既有功能，並依變更風險完成適當驗證。\n\n- 只閱讀與任務相關的程式碼、文件及適用規範；需要更多背景時再擴大範圍，不必讀完整個 repo 或製作完整架構圖。\n- 可自主進行任務範圍內的本地檢查、修改與測試，不需逐檔或逐行詢問。只有需求歧義會實質影響結果，或操作超出授權範圍時，才提出必要問題。\n- 依影響範圍選擇驗證方式：錯字等低風險修改以差異檢查及相關檢查為主；功能修改執行相關測試。只有涉及跨系統行為或效能風險時，才擴大至整合或效能測試。\n- 初版完成後，自行檢查差異與結果，修正發現的問題並完成必要驗證，再交付。若遇到無法排除的阻礙，說明原因與所需協助，不得宣稱未執行的驗證已通過。\n- 本次操作限於隔離本地開發環境，無 production 存取。可重建或清除明確標示為可丟棄的測試 fixtures；其他資料刪除、production 部署及付費服務購買，均須先取得使用者明確同意。無法確認資料是否可丟棄時，先詢問。\n- 完成後簡述修改內容、驗證結果及尚未解決的問題；有阻礙時提出具體下一步。\n```",
+  "usage": {
+    "input_tokens": 32479,
+    "cached_input_tokens": 27008,
+    "output_tokens": 576,
+    "uncached_input_tokens": 5471,
+    "total_tokens": 33055
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

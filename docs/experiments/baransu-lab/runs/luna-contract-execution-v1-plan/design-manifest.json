@@ -1,0 +1,25 @@
+{
+  "kind": "prospective_local_execution_design",
+  "design_id": "execution-probes-v1",
+  "created_utc": "2026-09-06T06:19:30.056827+00:00",
+  "completed_utc": "2026-09-06T06:19:30.064952+00:00",
+  "elapsed_wall_seconds": 0.008,
+  "actual_inference_calls": 0,
+  "planned_calls": 2,
+  "archive_sha256": "0c54a9a196194c15276d906a7a4822ce84d75b352529c6498ffca07952b1c84f",
+  "frozen_files": {
+    "harness/lab_execution_probe.py": "cdf0fe2e8377bd34f47532dd7216572d4fe9e038fcd3ea6a758e5e7a5c8613e0",
+    "harness/common_lab_ab.py": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+    "fixtures/cases.json": "af86a79a4a77fe8497225db7653814ddb68017744f76321e73af3e75f7fe46b6",
+    "fixtures/normalize-tag/files/acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+    "fixtures/normalize-tag/files/src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+    "fixtures/normalize-tag/files/tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+  },
+  "case_ids": [
+    "normalize-tag"
+  ],
+  "skill_package_revision": "NOT_YET_BOUND; run freezes exact A/B resources",
+  "usage": null,
+  "reported_cost_usd": null,
+  "limits": "No inference or human test. Rubrics not included in child fixtures/prompts."
+}

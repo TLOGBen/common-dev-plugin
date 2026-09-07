@@ -1,0 +1,31 @@
+{
+  "name": "estimate-lab",
+  "version": "0.1.1",
+  "description": "Opt-in experiments in existing-system estimates: lean routing, explicit PM commitments, canonical worksets and explainable effort. Traditional Chinese deliverables.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Estimate Lab",
+    "shortDescription": "既有系統估算與人類承諾接續的獨立實驗包",
+    "longDescription": "從客戶成果與可查證的系統現況形成方案、工作集合及人天，實驗精簡入口與 PM 承諾接續。保留計算及交付核對，成果預設繁體中文。",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 $lab-estimate 評估這個既有系統的變更範圍與人天。"
+    ]
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "keywords": [
+    "experimental",
+    "estimation",
+    "legacy-modernization"
+  ]
+}

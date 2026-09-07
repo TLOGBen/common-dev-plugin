@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "episode_id": "04-count-label-lab",
+  "case_id": "count-label",
+  "arm": "lab",
+  "workspace": "/tmp/astra-lead-screen-20260906-b/workspaces/04-count-label-lab",
+  "workspace_sha256": {
+    "TASK.md": "ff1fb236acb6362712840337453367238b8356b8903794f6651df928f0b23384",
+    "count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+  },
+  "package_roots": [
+    "/tmp/astra-lead-screen-20260906-b/packages/lab"
+  ],
+  "package_sha256": {
+    "/tmp/astra-lead-screen-20260906-b/packages/lab": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "c10afb2314851a71a92310f63a1bca19071e2903fbc903b3f35654246afd4399",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+      "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    }
+  },
+  "read_files": {},
+  "session_store": "/home/vakarve/.codex/sessions",
+  "sandbox": "workspace-write",
+  "role_writes": {
+    "lead": [
+      ".strategic-advance/",
+      ".common-lab/",
+      ".claude/wayfinder/",
+      ".codex/impl.html",
+      "notes/",
+      "reports/",
+      "artifacts/"
+    ],
+    "implementation": [
+      "count-label.mjs",
+      "tests/",
+      ".codex/impl.html"
+    ],
+    "operator": [
+      "artifacts/",
+      ".codex/impl.html"
+    ],
+    "scribe": [
+      ".strategic-advance/",
+      ".common-lab/",
+      ".claude/wayfinder/",
+      ".codex/impl.html",
+      "notes/",
+      "reports/",
+      "artifacts/"
+    ],
+    "verifier": [],
+    "auditor": []
+  },
+  "max_calls": 24,
+  "max_wall_seconds": 3600,
+  "call_timeout_seconds": 600,
+  "arm_context": "Available skills are listed below. Select only applicable skills, then read their full entry and required supporting instructions before using them. These generated Codex packages and bundled roles are available read-only; do not load unrelated/global skill packages.\n- lab-better-prompts: Experimentally audit, shorten, or rewrite a prompt when the user asks to improve agent instructions.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-better-prompts/SKILL.md\n- lab-define-goal: Turn an unclear objective into observable completion criteria when the user asks to define success.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-define-goal/SKILL.md\n- lab-delegate: Delegate bounded implementation to a cheaper task-fit model while the lead retains responsibility for the goal.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-delegate/SKILL.md\n- lab-domain-modeling: Clarify domain terms, rules, and architectural decisions when ambiguity is blocking shared understanding.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-domain-modeling/SKILL.md\n- lab-grilling: Stress-test a plan or decision when the user asks for a skeptical challenge to their reasoning.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-grilling/SKILL.md\n- lab-prototype: Build a disposable prototype when a design or logic question needs concrete experience to answer.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-prototype/SKILL.md\n- lab-research: Investigate a question against primary sources when the user requests evidence-backed research.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-research/SKILL.md\n- lab-strategic-advance: Advance a locked complex objective by measurable progress while preventing attention traps and preserving recovery.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-strategic-advance/SKILL.md\n- lab-wait-what: Re-explain the last confusing answer for the user's audience without advancing the underlying task.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-wait-what/SKILL.md\n- lab-wayfinder: Break a complex unclear effort into a shared decision map paced for human understanding.\n  Entry: /tmp/astra-lead-screen-20260906-b/packages/lab/skills/lab-wayfinder/SKILL.md",
+  "user_prompt": "你是 Astra 主手。請將產品程式與針對性測試的實作交給真正的 gpt-5.6-luna/high worker；你不代寫這兩類檔案，仍持有目標、派工、驗收與最後交接的責任。其他可用角色由你按需要選用。使用者不在，本地 fixture 與測試已授權，未授權任何外部操作。請用繁體中文交接成果。\n\n# 修正筆數標籤\n\n請直接修正 countLabel(count)：輸入範圍是非負整數；1 的輸出必須精確為「1 record」，其他值為「{count} records」。這是既有畫面共用的純字串函式。\n\n可修改 count-label.mjs 與相關測試，保留既有兩個測試及其意義。請使用真實 export 驗證，交代修改與實際執行結果。不新增依賴、不 commit、不外部操作。\n\n既有測試命令：\n\n```text\nnode --test tests/count-label.test.mjs\n```\n\n"
+}

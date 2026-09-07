@@ -1,0 +1,98 @@
+{
+  "case_id": "strategic-advance-original",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:03:16.071211+00:00",
+  "ended_utc": "2026-09-06T03:04:10.878063+00:00",
+  "wall_seconds": 54.806,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-advance-original-kkckcxxc",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "ead3416193ddbe556de7fb68d1772ccd42633c7cdae0b41d56a5440b87ee55c2",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-advance-original-kkckcxxc",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定的戰略推進技能，依固定證據提出模擬判斷與證據保留方式；不會實際查詢或寫檔。",
+    "**REQ-42 已確認受理並送達下游；下一步是整理驗收證據，不需停下再問你，也不能再次送出。**\n\n依固定證據判斷：\n\n- **受理成功已證明**：DB 有成功 receipt，業務狀態為 `Accepted`。\n- **下游送達已證明**：`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- **截圖故障不阻擋驗收**：你已接受 DB 與下游 receipt，`CAPTURE_FAILED` 只需記為觀測工具異常，無須繼續修復。\n- **完整結案仍須區分證據留存與唯一性**：本回覆沒有實際保存證據；這兩份 receipt 也不能單憑其存在就證明送出次數恰為一次。\n\n**擬議下一步：整理一份以 `REQ-42` 為索引的驗收證據包**，內容包含：\n\n1. DB 原始成功 receipt 與 `Accepted` 查詢結果，保留實際來源及識別碼，不補造未提供的欄位。\n2. 下游原始回傳，完整保留 `REQ-42 / Delivered / D-42`。\n3. 單次送出的既有操作或稽核紀錄；若尚缺證明，列為待補的唯讀核對項目，不以重新送出驗證。\n4. 驗收對照表：每項條件對應哪份證據，並註明截圖不可用但非必要。實際保存時再確認檔案可讀、內容完整、索引可追溯。\n\n既有授權與驗收方式已清楚，**不需要追加確認或要求你操作 UI**。本次只提出模擬處置；證據實際留存且單次送出條件有據可驗後，才可宣告整體目標完成。"
+  ],
+  "final_message": "**REQ-42 已確認受理並送達下游；下一步是整理驗收證據，不需停下再問你，也不能再次送出。**\n\n依固定證據判斷：\n\n- **受理成功已證明**：DB 有成功 receipt，業務狀態為 `Accepted`。\n- **下游送達已證明**：`request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- **截圖故障不阻擋驗收**：你已接受 DB 與下游 receipt，`CAPTURE_FAILED` 只需記為觀測工具異常，無須繼續修復。\n- **完整結案仍須區分證據留存與唯一性**：本回覆沒有實際保存證據；這兩份 receipt 也不能單憑其存在就證明送出次數恰為一次。\n\n**擬議下一步：整理一份以 `REQ-42` 為索引的驗收證據包**，內容包含：\n\n1. DB 原始成功 receipt 與 `Accepted` 查詢結果，保留實際來源及識別碼，不補造未提供的欄位。\n2. 下游原始回傳，完整保留 `REQ-42 / Delivered / D-42`。\n3. 單次送出的既有操作或稽核紀錄；若尚缺證明，列為待補的唯讀核對項目，不以重新送出驗證。\n4. 驗收對照表：每項條件對應哪份證據，並註明截圖不可用但非必要。實際保存時再確認檔案可讀、內容完整、索引可追溯。\n\n既有授權與驗收方式已清楚，**不需要追加確認或要求你操作 UI**。本次只提出模擬處置；證據實際留存且單次送出條件有據可驗後，才可宣告整體目標完成。",
+  "usage": {
+    "input_tokens": 190153,
+    "cached_input_tokens": 161664,
+    "output_tokens": 1101,
+    "uncached_input_tokens": 28489,
+    "total_tokens": 191254
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,180p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '361,560p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '181,360p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '181,360p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '155,180p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '143,154p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

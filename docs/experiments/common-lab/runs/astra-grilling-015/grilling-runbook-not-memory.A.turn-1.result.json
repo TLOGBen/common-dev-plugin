@@ -1,0 +1,77 @@
+{
+  "case_id": "grilling-runbook-not-memory",
+  "skill": "grilling",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:53:57.083801+00:00",
+  "ended_utc": "2026-09-06T05:54:34.122539+00:00",
+  "wall_seconds": 37.037,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-grilling-runbook-not-memory-bkib1gul",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills/lab-grilling/SKILL.md",
+  "skill_sha256": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+  "prompt_sha256": "67ed29e1ee11b5db59a5a82509bae1939bccf68ab77fc4c736569fb9eb74c094",
+  "fixture_dir": "/tmp/common-lab-ab-grilling-runbook-not-memory-bkib1gul",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會使用你指定的 lab-grilling 技能，完整讀取該檔案，再依這個情境提出模擬回覆與下一步。\n",
+    "**不能直接支持。最大的盲點是：你逐步念出下一條指令，替同事完成了「從 runbook 找出下一步」這個受測環節。** 即使服務恢復，也只能證明他能在你的逐步引導下完成操作，不能證明書面文件足以讓他完成恢復。\n\n反例是：runbook 的步驟順序或描述讓他看不懂，但你每次都念出正確指令，他仍然成功；結果便掩蓋了文件的問題。runbook 一直放在面前完全合理，因為你要評的是照文件操作。\n\n最值得先釐清的是：**如果服務最後恢復，但中途必須靠你指出下一步，你會把它算作成功嗎？** 這決定紀錄能否回答原本的問題。\n\n擬議下一步是把演練改為：同事自行查閱 runbook，你只觀察；若需要提示，記下卡住的位置、提示內容，並區分「依文件完成」與「經協助完成」。單一同事的結果可以提供這份文件是否足以支援他的證據，但不足以推論所有新同事都能完成。"
+  ],
+  "final_message": "**不能直接支持。最大的盲點是：你逐步念出下一條指令，替同事完成了「從 runbook 找出下一步」這個受測環節。** 即使服務恢復，也只能證明他能在你的逐步引導下完成操作，不能證明書面文件足以讓他完成恢復。\n\n反例是：runbook 的步驟順序或描述讓他看不懂，但你每次都念出正確指令，他仍然成功；結果便掩蓋了文件的問題。runbook 一直放在面前完全合理，因為你要評的是照文件操作。\n\n最值得先釐清的是：**如果服務最後恢復，但中途必須靠你指出下一步，你會把它算作成功嗎？** 這決定紀錄能否回答原本的問題。\n\n擬議下一步是把演練改為：同事自行查閱 runbook，你只觀察；若需要提示，記下卡住的位置、提示內容，並區分「依文件完成」與「經協助完成」。單一同事的結果可以提供這份文件是否足以支援他的證據，但不足以推論所有新同事都能完成。",
+  "usage": {
+    "input_tokens": 31658,
+    "cached_input_tokens": 23040,
+    "output_tokens": 637,
+    "uncached_input_tokens": 8618,
+    "total_tokens": 32295
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills/lab-grilling/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

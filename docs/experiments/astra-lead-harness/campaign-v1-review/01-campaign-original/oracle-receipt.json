@@ -1,0 +1,14 @@
+{
+  "command": [
+    "/home/vakarve/miniconda3/bin/python3",
+    "-B",
+    "scripts/astra_lead_campaign_candidate/_evaluation/verify.py",
+    "--fixture",
+    "/tmp/astra-lead-campaign-20260906-a/workspaces/01-campaign-original"
+  ],
+  "started_epoch": 1788685279.4633713,
+  "ended_epoch": 1788685280.4659483,
+  "wall_seconds": 1.0025770664215088,
+  "exit_code": 1,
+  "model_calls": 0
+}

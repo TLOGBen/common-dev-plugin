@@ -1,0 +1,67 @@
+{
+  "started_utc": "2026-09-06T12:48:07.057391+00:00",
+  "ended_utc": "2026-09-06T12:48:33.622743+00:00",
+  "elapsed_seconds": 26.56601467198925,
+  "status": "completed",
+  "exit_code": 0,
+  "model_requested": "gpt-6-astra",
+  "effort_requested": "high",
+  "input_unchanged": true,
+  "actual_cost_usd": null,
+  "adoption": null,
+  "semantic_acceptance": null,
+  "messages": [
+    "I’ll read each file once with separate parallel commands and return the visible marker values as JSON.\n",
+    "{\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt\": \"TRACE_bdc2b3df17a416ee55eb6e85b93e91ba\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt\": \"TRACE_44a59fb042e65e542a7e953673f99055\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt\": \"TRACE_4027a82096cb794439b887ee0204c9a1\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt\": \"TRACE_3789f8d977697ac98498241ec7f9ab73\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt\": \"TRACE_ce362b14086fdcae1d16f72cbaaf4688\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt\": \"TRACE_75208d3e130fcbf90966b626f1007060\"\n}"
+  ],
+  "final_message": "{\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt\": \"TRACE_bdc2b3df17a416ee55eb6e85b93e91ba\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt\": \"TRACE_44a59fb042e65e542a7e953673f99055\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt\": \"TRACE_4027a82096cb794439b887ee0204c9a1\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt\": \"TRACE_3789f8d977697ac98498241ec7f9ab73\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt\": \"TRACE_ce362b14086fdcae1d16f72cbaaf4688\",\n  \"/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt\": \"TRACE_75208d3e130fcbf90966b626f1007060\"\n}",
+  "usage": {
+    "input_tokens": 35546,
+    "cached_input_tokens": 26880,
+    "output_tokens": 499,
+    "uncached_input_tokens": 8666,
+    "total_tokens": 36045
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

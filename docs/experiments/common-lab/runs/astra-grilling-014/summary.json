@@ -1,0 +1,515 @@
+{
+  "run_id": "astra-grilling-014",
+  "kind": "behavioral_tabletop",
+  "started_utc": "2026-09-06T05:41:44.925527+00:00",
+  "ended_utc": "2026-09-06T05:43:47.674433+00:00",
+  "elapsed_wall_seconds": 122.744,
+  "planned_calls": 6,
+  "actual_calls": 6,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "revision": "grilling-claim-preservation-v1",
+  "plugin_versions": {
+    "A": null,
+    "B": null
+  },
+  "repeats": 1,
+  "totals_by_arm": {
+    "A": {
+      "calls": 3,
+      "completed": 3,
+      "usage_known_calls": 3,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 96.276,
+      "known_usage": {
+        "input_tokens": 95007,
+        "cached_input_tokens": 81024,
+        "uncached_input_tokens": 13983,
+        "output_tokens": 1834,
+        "total_tokens": 96841
+      }
+    },
+    "B": {
+      "calls": 3,
+      "completed": 3,
+      "usage_known_calls": 3,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 92.755,
+      "known_usage": {
+        "input_tokens": 95120,
+        "cached_input_tokens": 81024,
+        "uncached_input_tokens": 14096,
+        "output_tokens": 1700,
+        "total_tokens": 96820
+      }
+    }
+  },
+  "resource_drift": [],
+  "cases_changed_during_run": false,
+  "manual_review_status": "PENDING; rubric and pause categories frozen before calls",
+  "results": [
+    {
+      "case_id": "grilling-known-field-retest",
+      "skill": "grilling",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:41:44.927430+00:00",
+      "ended_utc": "2026-09-06T05:42:15.190339+00:00",
+      "wall_seconds": 30.26,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-known-field-retest-uhn09uso",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+      "prompt_sha256": "ab3e49fb9fafda75bf80ebc51e39f3d06b9608f6fb828c685403ab709b391bbe",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-known-field-retest-uhn09uso",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會使用你指定的 lab-grilling 技能，完整讀取該檔案後，針對這個小試驗提出最重要的盲點與建議下一步。\n",
+        "最重要的盲點是：**你把要測的答案放進指令了。**「備註在頁尾」已提供位置線索；即使兩人都完成，也只能支持「有提示時能找到並填寫」，無法支持「能自行找到」。\n\n關鍵問題是：**不告知位置，兩人是否仍能自行找到「備註」欄？**\n\n建議下一步是把開場改成：「請在這份表單中註明『需開發票』。」先不提示欄位名稱或位置，觀察他們如何尋找；若需要協助，再提供提示，並分別記錄「自行完成」與「提示後完成」。\n\n假資料、不發布、只描述這兩次測試，都是合理的限制。這裡最需要改的是提示方式，讓觀察結果真正對應你想測的能力。"
+      ],
+      "final_message": "最重要的盲點是：**你把要測的答案放進指令了。**「備註在頁尾」已提供位置線索；即使兩人都完成，也只能支持「有提示時能找到並填寫」，無法支持「能自行找到」。\n\n關鍵問題是：**不告知位置，兩人是否仍能自行找到「備註」欄？**\n\n建議下一步是把開場改成：「請在這份表單中註明『需開發票』。」先不提示欄位名稱或位置，觀察他們如何尋找；若需要協助，再提供提示，並分別記錄「自行完成」與「提示後完成」。\n\n假資料、不發布、只描述這兩次測試，都是合理的限制。這裡最需要改的是提示方式，讓觀察結果真正對應你想測的能力。",
+      "usage": {
+        "input_tokens": 31619,
+        "cached_input_tokens": 27008,
+        "output_tokens": 553,
+        "uncached_input_tokens": 4611,
+        "total_tokens": 32172
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "grilling-known-field-retest",
+      "skill": "grilling",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:42:15.193253+00:00",
+      "ended_utc": "2026-09-06T05:42:48.364469+00:00",
+      "wall_seconds": 33.169,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-known-field-retest-uhn09uso",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "3da0432fb25127464f74631beb374c145b89410422a1f441fe18662b7b81a86f",
+      "prompt_sha256": "7b883d1cbf9269fd33735e12a9c5f92975ebdd880b33745810afb5d2993c45cc",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-known-field-retest-uhn09uso",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會使用你指定的 lab-grilling 技能，先完整讀取內容，再檢視這個小試驗最重要的盲點並提出模擬的下一步。",
+        "最重要的盲點是：**「自行找到」是否包含你提供的「在頁尾」提示？** 即使兩人都完成，也可能是提示有效；這不足以證明沒有位置提示時，他們也找得到。\n\n若實際要驗證的就是「收到頁尾提示後，能找到並填寫」，原流程合理。拿掉提示則是在測另一個問題，不能直接當成原試驗的必要修正。你已限定只描述這兩次結果，樣本數不是這裡最需要挑戰的地方。\n\n你要測的是**有位置提示後的完成能力，還是沒有位置提示的自行發現能力**？\n\n我提出的下一步是：等你釐清這點，再對齊任務話術與結果描述，避免完成紀錄回答了不同的問題。"
+      ],
+      "final_message": "最重要的盲點是：**「自行找到」是否包含你提供的「在頁尾」提示？** 即使兩人都完成，也可能是提示有效；這不足以證明沒有位置提示時，他們也找得到。\n\n若實際要驗證的就是「收到頁尾提示後，能找到並填寫」，原流程合理。拿掉提示則是在測另一個問題，不能直接當成原試驗的必要修正。你已限定只描述這兩次結果，樣本數不是這裡最需要挑戰的地方。\n\n你要測的是**有位置提示後的完成能力，還是沒有位置提示的自行發現能力**？\n\n我提出的下一步是：等你釐清這點，再對齊任務話術與結果描述，避免完成紀錄回答了不同的問題。",
+      "usage": {
+        "input_tokens": 31666,
+        "cached_input_tokens": 27008,
+        "output_tokens": 540,
+        "uncached_input_tokens": 4658,
+        "total_tokens": 32206
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "skill": "grilling",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:42:48.365333+00:00",
+      "ended_utc": "2026-09-06T05:43:18.706993+00:00",
+      "wall_seconds": 30.341,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-located-bug-not-discovery-mpwbfhz_",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+      "prompt_sha256": "bb5804a2b4e63738e1428cdc2708bd83f832489943e58e805a8a46190e5e0ffb",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-located-bug-not-discovery-mpwbfhz_",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取你指定的 skill，再依這個情境提出最該修改的一點與模擬下一步。\n",
+        "最該改的是**「修好」的判定標準**。原本的 `ceil_div(4, 2) == 2` 已經通過，agent 完全不改程式也能拿到成功，這項證據無法支持「它修好了 bug」。\n\n我建議下一步把驗收改成三項都必須通過：\n\n- 已提供的重現例：`ceil_div(5, 2) == 3`，確認原本的錯誤已修正。\n- 原有 smoke test：`ceil_div(4, 2) == 2`，確認既有行為沒有退步。\n- 未提供給 agent 的有效輸入案例，例如 `ceil_div(7, 3) == 3`，降低只對重現例寫死答案也過關的可能。\n\n檔名、函式位置與重現例可以照給，符合你要測「已知位置的修復能力」的目標。以上只是建議，未執行任何修改或測試。\n\n還有一個會影響驗收範圍的問題：**你要宣稱的是「修正這類正整數除法錯誤」，還是「整個函式符合完整規格」？** 前者可採上述小測試；後者還需要依輸入規格補足案例，三項通過不足以支持完整正確性。"
+      ],
+      "final_message": "最該改的是**「修好」的判定標準**。原本的 `ceil_div(4, 2) == 2` 已經通過，agent 完全不改程式也能拿到成功，這項證據無法支持「它修好了 bug」。\n\n我建議下一步把驗收改成三項都必須通過：\n\n- 已提供的重現例：`ceil_div(5, 2) == 3`，確認原本的錯誤已修正。\n- 原有 smoke test：`ceil_div(4, 2) == 2`，確認既有行為沒有退步。\n- 未提供給 agent 的有效輸入案例，例如 `ceil_div(7, 3) == 3`，降低只對重現例寫死答案也過關的可能。\n\n檔名、函式位置與重現例可以照給，符合你要測「已知位置的修復能力」的目標。以上只是建議，未執行任何修改或測試。\n\n還有一個會影響驗收範圍的問題：**你要宣稱的是「修正這類正整數除法錯誤」，還是「整個函式符合完整規格」？** 前者可採上述小測試；後者還需要依輸入規格補足案例，三項通過不足以支持完整正確性。",
+      "usage": {
+        "input_tokens": 31729,
+        "cached_input_tokens": 27008,
+        "output_tokens": 656,
+        "uncached_input_tokens": 4721,
+        "total_tokens": 32385
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "skill": "grilling",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:43:18.707894+00:00",
+      "ended_utc": "2026-09-06T05:43:47.673362+00:00",
+      "wall_seconds": 28.964,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-located-bug-not-discovery-mpwbfhz_",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "3da0432fb25127464f74631beb374c145b89410422a1f441fe18662b7b81a86f",
+      "prompt_sha256": "bd9ed869a4d3acaf5796f4a9b29263ce17fa8aa502082c79c036e0f286987e88",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-located-bug-not-discovery-mpwbfhz_",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取你指定的技能，再依照這個情境提出模擬回覆與下一步建議。\n",
+        "**最該改的是「修好的判定標準」：修改後必須通過原本失敗的重現例，不能只跑原本就通過的 smoke test。**\n\n反例很直接：agent 完全不改程式，`ceil_div(4, 2) == 2` 仍會通過，你卻會把它記成修好。這個標準無法區分「修復成功」與「bug 原封不動」。\n\n建議成功條件至少同時包含：\n\n- `ceil_div(5, 2) == 3`：確認已知錯誤已修復。\n- `ceil_div(4, 2) == 2`：確認既有案例未退步。\n\n保留檔名、函式位置與重現例，這些資訊符合你要測的「已知位置下修復能力」；拿掉它們會混入找 bug 的能力。\n\n**我建議的下一步**是將上述兩項寫入驗收條件；此處只提出修改建議，不執行測試或變更檔案。兩項通過能支持這兩個案例正確，還不足以證明整個函式都正確。\n\n唯一要先釐清的是：**你預期 `ceil_div` 的有效輸入只包含正整數嗎？** 這會決定是否需要加入零或負數案例，避免驗收超出原定規格。"
+      ],
+      "final_message": "**最該改的是「修好的判定標準」：修改後必須通過原本失敗的重現例，不能只跑原本就通過的 smoke test。**\n\n反例很直接：agent 完全不改程式，`ceil_div(4, 2) == 2` 仍會通過，你卻會把它記成修好。這個標準無法區分「修復成功」與「bug 原封不動」。\n\n建議成功條件至少同時包含：\n\n- `ceil_div(5, 2) == 3`：確認已知錯誤已修復。\n- `ceil_div(4, 2) == 2`：確認既有案例未退步。\n\n保留檔名、函式位置與重現例，這些資訊符合你要測的「已知位置下修復能力」；拿掉它們會混入找 bug 的能力。\n\n**我建議的下一步**是將上述兩項寫入驗收條件；此處只提出修改建議，不執行測試或變更檔案。兩項通過能支持這兩個案例正確，還不足以證明整個函式都正確。\n\n唯一要先釐清的是：**你預期 `ceil_div` 的有效輸入只包含正整數嗎？** 這會決定是否需要加入零或負數案例，避免驗收超出原定規格。",
+      "usage": {
+        "input_tokens": 31748,
+        "cached_input_tokens": 27008,
+        "output_tokens": 579,
+        "uncached_input_tokens": 4740,
+        "total_tokens": 32327
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "skill": "grilling",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:42:15.554304+00:00",
+      "ended_utc": "2026-09-06T05:42:51.231024+00:00",
+      "wall_seconds": 35.675,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-runbook-not-memory-deeaargz",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+      "prompt_sha256": "dbbc332bc3fd17770a0fbec6de29c87ae7b8f99fefd8bfcb18dc36e16f9deab1",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-runbook-not-memory-deeaargz",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會完整閱讀你指定的 grilling 技能，再依它的流程檢視這個演練的盲點，僅提出模擬回覆與下一步建議。\n",
+        "**不能直接支持。最重要的盲點是：你逐步念出下一條指令，替同事完成了「從文件找出下一步」這個受評能力。** 即使服務恢復，也只能支持他能在你逐步口頭引導下完成操作。反例是：一個完全不會使用 runbook 的人，照你念的指令做，也可能成功。\n\nrunbook 一直放在面前符合你的目的，不必改成背指令或自行診斷。建議下一步是調整演練方式：讓同事自行閱讀、選取並執行文件中的步驟；你觀察並記錄卡點、文件歧義、介入情形與恢復結果。單一同事的結果可以提供個案證據，但不足以推論所有新同事都能完成。\n\n**最需要釐清的是：同事停住或選錯步驟時，你打算如何介入？** 這會決定最後的成功能否算作「依書面文件完成」，還是「經人員協助完成」。"
+      ],
+      "final_message": "**不能直接支持。最重要的盲點是：你逐步念出下一條指令，替同事完成了「從文件找出下一步」這個受評能力。** 即使服務恢復，也只能支持他能在你逐步口頭引導下完成操作。反例是：一個完全不會使用 runbook 的人，照你念的指令做，也可能成功。\n\nrunbook 一直放在面前符合你的目的，不必改成背指令或自行診斷。建議下一步是調整演練方式：讓同事自行閱讀、選取並執行文件中的步驟；你觀察並記錄卡點、文件歧義、介入情形與恢復結果。單一同事的結果可以提供個案證據，但不足以推論所有新同事都能完成。\n\n**最需要釐清的是：同事停住或選錯步驟時，你打算如何介入？** 這會決定最後的成功能否算作「依書面文件完成」，還是「經人員協助完成」。",
+      "usage": {
+        "input_tokens": 31659,
+        "cached_input_tokens": 27008,
+        "output_tokens": 625,
+        "uncached_input_tokens": 4651,
+        "total_tokens": 32284
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "skill": "grilling",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:41:44.928899+00:00",
+      "ended_utc": "2026-09-06T05:42:15.553084+00:00",
+      "wall_seconds": 30.622,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-grilling-runbook-not-memory-deeaargz",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "3da0432fb25127464f74631beb374c145b89410422a1f441fe18662b7b81a86f",
+      "prompt_sha256": "bba1b85b9c4689af6908f349b04d3d374f770740f739523b62e05fa6419db247",
+      "fixture_dir": "/tmp/common-lab-ab-grilling-runbook-not-memory-deeaargz",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會完整讀取你指定的 grilling 技能，依其流程檢視這個演練，僅提出模擬回覆與下一步建議。\n",
+        "**不能直接支持。最重要的盲點是：你逐步念出下一條指令，替他完成了「從 runbook 找到並判斷下一步」這個原本要評估的環節。** 即使服務恢復，也只能支持「他能在你逐步口頭引導下完成操作」。\n\n反例是：同事完全看不懂 runbook，只照你念的指令輸入，也可能成功。因此，最後只記錄是否恢復，無法區分文件是否足以讓他完成任務。\n\n我建議的下一步是調整演練方式：**runbook 全程保留，讓他自行閱讀並操作，你先不主動念指令。** 這仍然是在評估照文件操作，不必要求背指令或自行診斷；卡住的位置、接受的提示和最後結果都應記錄。單一同事的成功能支持這份文件在該案例可用，還不足以推廣到所有新同事。\n\n先釐清一個關鍵問題：**他卡住時，你允許提供哪些協助，仍算「依書面 runbook 完成」？** 這條界線會決定結果能支持多強的結論。"
+      ],
+      "final_message": "**不能直接支持。最重要的盲點是：你逐步念出下一條指令，替他完成了「從 runbook 找到並判斷下一步」這個原本要評估的環節。** 即使服務恢復，也只能支持「他能在你逐步口頭引導下完成操作」。\n\n反例是：同事完全看不懂 runbook，只照你念的指令輸入，也可能成功。因此，最後只記錄是否恢復，無法區分文件是否足以讓他完成任務。\n\n我建議的下一步是調整演練方式：**runbook 全程保留，讓他自行閱讀並操作，你先不主動念指令。** 這仍然是在評估照文件操作，不必要求背指令或自行診斷；卡住的位置、接受的提示和最後結果都應記錄。單一同事的成功能支持這份文件在該案例可用，還不足以推廣到所有新同事。\n\n先釐清一個關鍵問題：**他卡住時，你允許提供哪些協助，仍算「依書面 runbook 完成」？** 這條界線會決定結果能支持多強的結論。",
+      "usage": {
+        "input_tokens": 31706,
+        "cached_input_tokens": 27008,
+        "output_tokens": 581,
+        "uncached_input_tokens": 4698,
+        "total_tokens": 32287
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    }
+  ],
+  "limits": "One source-level sample per arm per case, one model, unblinded semantic review; no human usability, product execution, statistical significance or generated-package validation. Questions and alternative tests are allowed. An explicitly distinguished alternative claim may pass; silent substitution of the primary claim does not. Common tabletop wrapper prohibits mutations, goals, delegation and network; absence of such actions is not independent skill-level authority evidence. Codex plugin_versions fields are null because these are Claude source snapshots; version evidence is separate."
+}

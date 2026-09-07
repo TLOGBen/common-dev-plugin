@@ -1,0 +1,14 @@
+{
+  "action": "dispatch",
+  "message": "已確認問題是缺少 count === 1 的單數分支。此修改範圍小且驗收明確，選用 implementation（gpt-5.6-luna，high）實作；主手負責獨立驗收。",
+  "requests": [
+    {
+      "role": "implementation",
+      "brief": "完成 TASK.md：僅修改 src/count-label.mjs 與 tests/count-label.test.mjs。countLabel 輸入為非負整數，1 精確回傳「1 record」，其他值回傳「{count} records」。保留既有 zero records 和 multiple records 測試及其意義，增加透過真實 export 驗證 1 的測試。不新增依賴、不改 TASK.md、不新增根目錄檔案、不做外部操作或 commit。執行 node --test tests/count-label.test.mjs，回報修改及實際結果。現有函式一律回傳 `${count} records`；既有測試驗證 0 和 2。",
+      "write_paths": [
+        "src/count-label.mjs",
+        "tests/count-label.test.mjs"
+      ]
+    }
+  ]
+}

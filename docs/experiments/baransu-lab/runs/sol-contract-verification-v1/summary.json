@@ -1,0 +1,991 @@
+{
+  "run_id": "sol-contract-verification-v1",
+  "kind": "fresh_role_local_verification",
+  "started_utc": "2026-09-06T06:57:52.362781+00:00",
+  "ended_utc": "2026-09-06T07:07:24.394501+00:00",
+  "elapsed_wall_seconds": 571.964,
+  "planned_calls": 2,
+  "attempted_cli_calls": 2,
+  "actual_calls": 2,
+  "actual_calls_definition": "Successfully launched fresh Codex CLI processes, not an invented provider-request count.",
+  "completed_calls": 2,
+  "provider_request_count": null,
+  "provider_request_count_basis": "Not exposed by raw CLI; full usage events preserved per result.",
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "arm_order": [
+    "A",
+    "B"
+  ],
+  "known_usage": {
+    "input_tokens": 766669,
+    "cached_input_tokens": 676608,
+    "uncached_input_tokens": 90061,
+    "output_tokens": 25125,
+    "total_tokens": 791794
+  },
+  "usage_unknown_calls": 0,
+  "stopped_early_reason": null,
+  "preparation_after": {
+    "A-oracle.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "A-oracle.stdout.txt": {
+      "type": "file",
+      "bytes": 1451,
+      "sha256": "3507fab45bf3bd23bb6d7ac2403488f251cedeb4162511348fe601cef3b381a2"
+    },
+    "A-suite.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "A-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 785,
+      "sha256": "31f7a5517387c9c17afe90b2479b71ded994305806fc0c85fa254f22278dd6bb"
+    },
+    "A-verifier.prompt.md": {
+      "type": "file",
+      "bytes": 4788,
+      "sha256": "f82aff1249e8272c8c58b188e95b5663a0daa65eb291dbea7f2e945b35727e44"
+    },
+    "B-oracle.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "B-oracle.stdout.txt": {
+      "type": "file",
+      "bytes": 1451,
+      "sha256": "2ca807c3a31be6a8a25dbf726b3ea42a642d9dffb24117dba2f0ec9937b25807"
+    },
+    "B-suite.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "B-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 879,
+      "sha256": "81e6a43bdff8c8c0c6c69ad321887bcf41cfbafd5024d021dfe9eaa864221a8b"
+    },
+    "B-verifier.prompt.md": {
+      "type": "file",
+      "bytes": 4173,
+      "sha256": "7b9e7c5700197dc5592d2442687935e5720c63059091e6441ff183f0e5f635cf"
+    },
+    "README.md": {
+      "type": "file",
+      "bytes": 3809,
+      "sha256": "cb025ef8f5a0ff00e891c32245e48b8658e5f32b71a1c652072c97d4253b0066"
+    },
+    "actor-output-provenance.json": {
+      "type": "file",
+      "bytes": 2107,
+      "sha256": "f1bb52faed8d4789c9dc8c48c83642243c2be78fe74fc0ea0f5cf7416ff6785c"
+    },
+    "capture-verification.py": {
+      "type": "file",
+      "bytes": 4514,
+      "sha256": "e0c3816a1fd3d9b244ee52b3f090caea8525649acfb8d51579f793ee528f4abd"
+    },
+    "dispatch/": {
+      "type": "directory"
+    },
+    "dispatch/A/": {
+      "type": "directory"
+    },
+    "dispatch/A/actor-last-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 357,
+      "sha256": "fc0cc9e0063603a15b0ad8f65eeef2c0c81e5a680d293976fa7f143f30029c82"
+    },
+    "dispatch/A/baseline/": {
+      "type": "directory"
+    },
+    "dispatch/A/baseline/acceptance.md": {
+      "type": "file",
+      "bytes": 1926,
+      "sha256": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54"
+    },
+    "dispatch/A/baseline/src/": {
+      "type": "directory"
+    },
+    "dispatch/A/baseline/src/normalize-tag.mjs": {
+      "type": "file",
+      "bytes": 98,
+      "sha256": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6"
+    },
+    "dispatch/A/baseline/tests/": {
+      "type": "directory"
+    },
+    "dispatch/A/baseline/tests/normalize-tag.test.mjs": {
+      "type": "file",
+      "bytes": 364,
+      "sha256": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+    },
+    "dispatch/A/baseline-result.json": {
+      "type": "file",
+      "bytes": 902,
+      "sha256": "65101756830a5559464c0e3572e0fdb79f670f5c1393f81c3037e5a82a39608f"
+    },
+    "dispatch/A/baseline-suite.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dispatch/A/baseline-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 785,
+      "sha256": "62097464e67ec50b46582a6231e5848b40ba81d32328b4193e62e6b6cbe56b02"
+    },
+    "dispatch/A/change.diff": {
+      "type": "file",
+      "bytes": 3293,
+      "sha256": "34239851dbc414ae5b04d0d2b914880809280c23097211cc4a06989fb4e3f3dc"
+    },
+    "dispatch/A/payload.json": {
+      "type": "file",
+      "bytes": 4668,
+      "sha256": "e0cdd239c89f45672a92257a3b18c7f09363f3e42c8bdaf9b49071752f4fe564"
+    },
+    "dispatch/A/scratch/": {
+      "type": "directory"
+    },
+    "dispatch/A/scratch/src__normalize-tag.mjs.preprobe": {
+      "type": "file",
+      "bytes": 210,
+      "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+    },
+    "dispatch/A/target/": {
+      "type": "directory"
+    },
+    "dispatch/A/target/acceptance.md": {
+      "type": "file",
+      "bytes": 2432,
+      "sha256": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b"
+    },
+    "dispatch/A/target/handoff.md": {
+      "type": "file",
+      "bytes": 1580,
+      "sha256": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83"
+    },
+    "dispatch/A/target/src/": {
+      "type": "directory"
+    },
+    "dispatch/A/target/src/normalize-tag.mjs": {
+      "type": "file",
+      "bytes": 210,
+      "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+    },
+    "dispatch/A/target/tests/": {
+      "type": "directory"
+    },
+    "dispatch/A/target/tests/normalize-tag.test.mjs": {
+      "type": "file",
+      "bytes": 722,
+      "sha256": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+    },
+    "dispatch/A/target-identity.json": {
+      "type": "file",
+      "bytes": 1144,
+      "sha256": "db7cd5dd6dd02153924c536ec4e4dcf2b80979894fa109a1695a21229da51ec1"
+    },
+    "dispatch/B/": {
+      "type": "directory"
+    },
+    "dispatch/B/actor-last-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 5478,
+      "sha256": "a73d5c2e31af1c24d909d73a3a8be5615f2131ee95d60f95f34adc94ec503794"
+    },
+    "dispatch/B/baseline/": {
+      "type": "directory"
+    },
+    "dispatch/B/baseline/acceptance.md": {
+      "type": "file",
+      "bytes": 1926,
+      "sha256": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54"
+    },
+    "dispatch/B/baseline/src/": {
+      "type": "directory"
+    },
+    "dispatch/B/baseline/src/normalize-tag.mjs": {
+      "type": "file",
+      "bytes": 98,
+      "sha256": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6"
+    },
+    "dispatch/B/baseline/tests/": {
+      "type": "directory"
+    },
+    "dispatch/B/baseline/tests/normalize-tag.test.mjs": {
+      "type": "file",
+      "bytes": 364,
+      "sha256": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+    },
+    "dispatch/B/baseline-result.json": {
+      "type": "file",
+      "bytes": 902,
+      "sha256": "9cdd9215d848a64bc91c3120a538a8eebf5ccdda6668d12e90750c6b9cbe9637"
+    },
+    "dispatch/B/baseline-suite.stderr.txt": {
+      "type": "file",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "dispatch/B/baseline-suite.stdout.txt": {
+      "type": "file",
+      "bytes": 879,
+      "sha256": "cdd3b4db1659848163671303c1cb981958d66977987f7ed057983b0af17c99ab"
+    },
+    "dispatch/B/change.diff": {
+      "type": "file",
+      "bytes": 3672,
+      "sha256": "1742d2d2cea06ed3b3cbaeccdbbb0acba17182b654fb2c1683b44fcdad47fb80"
+    },
+    "dispatch/B/payload.json": {
+      "type": "file",
+      "bytes": 2903,
+      "sha256": "424190cb148087b6faf739a2ce3cdb4e403425f7b417b43b9207907093c072e9"
+    },
+    "dispatch/B/scratch/": {
+      "type": "directory"
+    },
+    "dispatch/B/target/": {
+      "type": "directory"
+    },
+    "dispatch/B/target/acceptance.md": {
+      "type": "file",
+      "bytes": 3074,
+      "sha256": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af"
+    },
+    "dispatch/B/target/handoff.md": {
+      "type": "file",
+      "bytes": 1258,
+      "sha256": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675"
+    },
+    "dispatch/B/target/src/": {
+      "type": "directory"
+    },
+    "dispatch/B/target/src/normalize-tag.mjs": {
+      "type": "file",
+      "bytes": 227,
+      "sha256": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828"
+    },
+    "dispatch/B/target/tests/": {
+      "type": "directory"
+    },
+    "dispatch/B/target/tests/normalize-tag.test.mjs": {
+      "type": "file",
+      "bytes": 834,
+      "sha256": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+    },
+    "dispatch/B/target-identity.json": {
+      "type": "file",
+      "bytes": 1144,
+      "sha256": "984bff5ac9a11d33330d88dfe1649d7f7b4f86c09e60206b32b4eaeca3b0623b"
+    },
+    "dispatch-plan.json": {
+      "type": "file",
+      "bytes": 8416,
+      "sha256": "dccd7da0ec12b025d1a5babf489fe09b648af41e4218cf22c824b696e91192ba"
+    },
+    "frozen/": {
+      "type": "directory"
+    },
+    "frozen/A/": {
+      "type": "directory"
+    },
+    "frozen/A/.codex-agents/": {
+      "type": "directory"
+    },
+    "frozen/A/.codex-agents/seal-agent.toml": {
+      "type": "file",
+      "bytes": 11353,
+      "sha256": "c64e1f792d5197a4eab1f9d0d6fc10dcabb65f0014ca68c47c665df5ca8de1cb"
+    },
+    "frozen/A/skills/": {
+      "type": "directory"
+    },
+    "frozen/A/skills/_shared/": {
+      "type": "directory"
+    },
+    "frozen/A/skills/_shared/contract-gate.md": {
+      "type": "file",
+      "bytes": 4103,
+      "sha256": "e179f9c82a753bd027c1754fde71f20697ac3a33d1c9eca441b4efafe7d2ef7d"
+    },
+    "frozen/A/skills/_shared/loop-contract.md": {
+      "type": "file",
+      "bytes": 10330,
+      "sha256": "13cb9b2d872bf2b188cd05508ec66a072b3e875e481d740c0cc3b57dfd27f648"
+    },
+    "frozen/A/skills/seal/": {
+      "type": "directory"
+    },
+    "frozen/A/skills/seal/SKILL.md": {
+      "type": "file",
+      "bytes": 20219,
+      "sha256": "4f57ba51461b7a95a3c84609c629bf57b46ddf66602a944ca86e4c1e2f8608b9"
+    },
+    "frozen/A/skills/seal/references/": {
+      "type": "directory"
+    },
+    "frozen/A/skills/seal/references/loop-pauses.md": {
+      "type": "file",
+      "bytes": 1645,
+      "sha256": "c70e6b37374001c5ccb404aa6b4b45638acda36d77f0b8f599426b877f9df89a"
+    },
+    "frozen/B/": {
+      "type": "directory"
+    },
+    "frozen/B/.codex-agents/": {
+      "type": "directory"
+    },
+    "frozen/B/.codex-agents/lab-verifier.toml": {
+      "type": "file",
+      "bytes": 2108,
+      "sha256": "e06bf4d4ea19218a7e901204d2f39678cdc4a1c46e2f308664abdb1b64da73d1"
+    },
+    "frozen/B/skills/": {
+      "type": "directory"
+    },
+    "frozen/B/skills/lab-contract/": {
+      "type": "directory"
+    },
+    "frozen/B/skills/lab-contract/references/": {
+      "type": "directory"
+    },
+    "frozen/B/skills/lab-contract/references/acceptance.md": {
+      "type": "file",
+      "bytes": 2859,
+      "sha256": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e"
+    },
+    "frozen/B/skills/lab-seal/": {
+      "type": "directory"
+    },
+    "frozen/B/skills/lab-seal/SKILL.md": {
+      "type": "file",
+      "bytes": 4764,
+      "sha256": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77"
+    },
+    "payload-review-receipt.json": {
+      "type": "file",
+      "bytes": 1004,
+      "sha256": "e7060e96baec82bd4a5747977a61f33e16dd56519271f3d78210d66437da5b93"
+    },
+    "prepare-dispatch.py": {
+      "type": "file",
+      "bytes": 9563,
+      "sha256": "800d496c86c32986a9f6f8980e0b80c63a78bc3f1576be4d10cd7cb42907166c"
+    },
+    "receipt.json": {
+      "type": "file",
+      "bytes": 5828,
+      "sha256": "78961995d7778fd327e6b7186be73d9873621b9bb6672070167cad0c0d38bc1e"
+    },
+    "run-sol-verification.py": {
+      "type": "file",
+      "bytes": 12465,
+      "sha256": "ba83490c4aae5be5c9f86376073a19e6f74db431d4491d45bb5f36eaf0c69b41"
+    }
+  },
+  "original_fixtures_after": {
+    "A": {
+      "acceptance.md": {
+        "type": "file",
+        "bytes": 2432,
+        "sha256": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b"
+      },
+      "handoff.md": {
+        "type": "file",
+        "bytes": 1580,
+        "sha256": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83"
+      },
+      "src/": {
+        "type": "directory"
+      },
+      "src/normalize-tag.mjs": {
+        "type": "file",
+        "bytes": 210,
+        "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+      },
+      "tests/": {
+        "type": "directory"
+      },
+      "tests/normalize-tag.test.mjs": {
+        "type": "file",
+        "bytes": 722,
+        "sha256": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+      }
+    },
+    "B": {
+      "acceptance.md": {
+        "type": "file",
+        "bytes": 3074,
+        "sha256": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af"
+      },
+      "handoff.md": {
+        "type": "file",
+        "bytes": 1258,
+        "sha256": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675"
+      },
+      "src/": {
+        "type": "directory"
+      },
+      "src/normalize-tag.mjs": {
+        "type": "file",
+        "bytes": 227,
+        "sha256": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828"
+      },
+      "tests/": {
+        "type": "directory"
+      },
+      "tests/normalize-tag.test.mjs": {
+        "type": "file",
+        "bytes": 834,
+        "sha256": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+      }
+    }
+  },
+  "manual_acceptance": "PENDING_MAIN_REVIEW",
+  "quality_acceptance": null,
+  "full_seal_lifecycle": false,
+  "no_cleanup_performed": true,
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "results": [
+    {
+      "arm": "A",
+      "kind": "fresh_role_local_verification",
+      "started_utc": "2026-09-06T06:57:52.411168+00:00",
+      "ended_utc": "2026-09-06T07:04:47.134846+00:00",
+      "wall_seconds": 414.672,
+      "status": "completed",
+      "process_launched": true,
+      "process_id": 807425,
+      "exit_code": 0,
+      "os_error": null,
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "workspace-write",
+        "-C",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "model_metadata_basis": "Exact CLI request; no fallback. Resolved runtime model is claimed only if the raw event stream supplies it.",
+      "prompt_sha256": "f82aff1249e8272c8c58b188e95b5663a0daa65eb291dbea7f2e945b35727e44",
+      "raw_jsonl_sha256": "8f5575761aad8e5f494aac7f76db4f55f7b48063f5cab14daa56e987c1d34f71",
+      "raw_jsonl_bytes": 88204,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "messages": [
+        "我會先逐字完整讀取指定的 frozen role TOML，再依其中的相對路徑讀完必要的 shared contract-gate；在這兩步完成前不做其他驗證工作。",
+        "角色定義與 shared contract-gate 均已完整讀取，必要資源存在。接著我只會在允許範圍內讀取五欄 payload 與交付證據，先確認命令、基線、scratch 與目標身份，再執行原始測試。",
+        "Payload 五欄完整，`degradation_flag=false`、既有 red set 為空，故 point 5 不能降級成靜態核對。現在先在 payload 指定 cwd 執行完全相同的 `node --test tests/normalize-tag.test.mjs`，基線集合仍只採 dispatcher 已提供的結果，不重建。",
+        "初步盤點顯示兩個實際表面：回傳字串與空值錯誤；沒有第二個 UI 或第二條真實呼叫路徑，因此 point 3 只能以「單一 export、無跨 UI 對照對象」判定不適用，不能把缺少 UI 當成額外通過證據。測試對精確錯誤與多數正規化行為有 pin，但 A1 明列的「內部 tab 不得改動」尚未由原始 suite 的案例直接斷言；補充 oracle 雖觀察到該行為，依指示不算 mutation-attribution suite。",
+        "Probe admission（注入前紀錄）：\n\n- 排名 1／已准入：未來維護者在一般「統一空白正規化」維護中，把內部 tab 清除接到既有回傳鏈；diff review 看到的是看似合理的空白處理，原始 suite 的新增案例只含邊界 tab、內部空格與內部換行，沒有內部 tab；維護者依正常流程執行指定 suite，若仍綠便以該第一手結果交接，因此 A1/G4 的違反可穿過 diff review、自驗與第一手 handoff 而未被攔下。此 probe 排名最高，因它檢查的是「內部空白不得變動」這一整族上游契約 judge，而非單一字元的表面後果。\n- 未選排名 2：錯誤訊息加後綴；現有測試直接精確斷言 `error.message`，沒有可信的 end-to-end 未捕捉鏈。\n- 未選排名 3：ASCII 範圍邊界退化；既有 `Quick-TAG` 已含 `A` 並精確斷言結果，也沒有可信的 end-to-end 未捕捉鏈。\n- 未選排名 4：邊界 trim 退化；現有核心與空值案例會直接經真實 export 觸發。\n\n我只注入排名 1。下一步先建立／核對 deterministic scratch copy，之後另做一次完全唯讀的 TARGET_MATCH preflight；只有 preflight 明確通過後才會在另一個工具呼叫中注入。",
+        "Preflight 已在目標 cwd 的同一 shell/path context 完成：source 與 scratch 都解析到預期的非 symlink 一般檔案，owner/mode/size 已檢視，SHA-256 與 `cmp` 相同，範圍僅涵蓋唯一可變更 source 與 payload 指定 recovery source；結論為 `TARGET_MATCH`。現在以獨立呼叫注入已准入的內部-tab probe。",
+        "Probe 執行完成：相對於 dispatcher 提供的空 red set，沒有任何新 red；原始命令仍回報測試檔案 1 pass、0 fail，因此 `fired: none`。這直接證實原始 attribution suite 未釘死內部 tab 保留。接著先以獨立唯讀呼叫核對 mutated target 與 immutable saved source，只有再次得到 `TARGET_MATCH` 才會還原。",
+        "Probe 已只用 saved bytes 還原，`cmp` 與 SHA-256 均確認 byte-exact。因原始 suite 的 dispatcher 輸出列出 4 個案例，而本輪 shell 顯示為 1 個測試檔案，我會先唯讀核對 login 與非-login shell 所解析的 Node 路徑／版本；這只釐清 runner 的計數口徑，不會重建或改寫 dispatcher 的 baseline red set。",
+        "status: findings\n\nper_point:\n  - point: 1\n    criteria:\n      - criterion: A1\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:2,6` 直接使用 `String.trim()`，後續只替換 ASCII `A-Z`，未改動內部空白。\n      - criterion: A2\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:6` 的 `/[A-Z]/g` 僅涵蓋 ASCII；補充 oracle 的非 ASCII／全形案例亦符合，但該 oracle 不算 mutation-attribution suite。\n      - criterion: A3\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:3-4` 對 trim 後空字串拋出 `Error(\"EMPTY_TAG\")`。\n      - criterion: A4\n        verdict: 符合\n        observation: 既有兩個案例保留；四個 `test(...)` 都經由 `../src/normalize-tag.mjs` 的真實 export，沒有 mock 被驗證層。\n      - criterion: A5\n        verdict: 違反\n        observation: `change.diff:1-41` 除指定函式與測試外，也修改 `acceptance.md` 並新增 `handoff.md`；A5 未提供文件例外，且與要求交接文件的 A6 形成範圍衝突。\n      - criterion: A6\n        verdict: 違反\n        observation: `handoff.md:14` 宣稱兩次先 RED 後 GREEN，但交付的 `actor-last-suite.stdout.txt:1-16` 只有最後 GREEN，無法從允許證據重新落地該執行順序。其餘修改、最終檢查及未完成事項已有列出，且未宣稱獨立 seal。\n\n  - point: 2\n    verdict: 發現\n    surfaces:\n      - surface: normalizeTag 回傳字串\n        real_call_path: `tests/normalize-tag.test.mjs → ../src/normalize-tag.mjs`\n        pinning: 不足\n        observation: 原始 suite 沒有內部 tab 或全形字元輸入；內部-tab probe 未使任何測試轉紅。補充 oracle 涵蓋這些輸入，但依 dispatch 規則不屬於 mutation-attribution suite。\n      - surface: 空值 Error.message\n        real_call_path: `tests/normalize-tag.test.mjs:17-21 → normalizeTag`\n        pinning: 符合\n        observation: 經真實 export 精確斷言 `EMPTY_TAG`。\n      - surface: CLI/TUI\n        pinning: 不適用\n        observation: `change.diff` 沒有 CLI println、TUI toast 或第二個 UI 呼叫路徑。\n    gate_observation: `acceptance.md:26-29` 的釘死測試欄只寫「本輪需補……」，沒有依 G4／G2 列出實際測試名稱。\n\n  - point: 3\n    verdict: 符合\n    observation: diff 僅觸及單一 exported function 的回傳值與錯誤分支，沒有兩個 UI 表達同一結果，故無 shared-helper／雙真實呼叫路徑可核對；此為具檔案依據的不適用判定。\n\n  - point: 4\n    verdict: 符合\n    observation: 合約 Verbatim Constants 與實作字串均為 UTF-8 bytes `45 4d 50 54 59 5f 54 41 47`（`EMPTY_TAG`），byte-exact 相同。\n\n  - point: 5\n    verdict: 發現\n    observation: 已准入的內部-tab 保留 probe 執行原始命令後仍為 0 fail；相對 dispatcher 提供的空 red set，沒有測試 fired。\n\nfindings:\n  - citation: `acceptance.md:21-22; change.diff:1-41`\n    contradicted_criterion: A5\n    observation: 實際 diff 超出「只改指定函式與相關測試」，而新增 handoff 又是 A6 所要求，形成合約內部範圍衝突。\n    suggested_fix: 由 dispatcher／合約核准者釐清 A5 是否明確豁免必要驗證文件；不要由 verifier 單方面改寫 acceptance。\n\n  - citation: `handoff.md:14; actor-last-suite.stdout.txt:1-16`\n    contradicted_criterion: A6\n    observation: RED→GREEN 執行順序缺少交付的第一手 raw red 證據。\n    suggested_fix: dispatcher 應要求保留對應 raw red outputs，或移除無法證實的執行順序宣稱。\n\n  - citation: `acceptance.md:26-29`\n    contradicted_criterion: G2, G4\n    observation: Surface Inventory 沒有提供任何實際 pinning test name，只留下「本輪需補」描述。\n    suggested_fix: 由合約核准者把每個表面映射到確切、可執行且走真實呼叫路徑的測試名稱。\n\n  - citation: `acceptance.md:17-18,28; tests/normalize-tag.test.mjs:13-15`\n    contradicted_criterion: A1, A2, G4\n    observation: 原始 suite 沒有內部 tab 或全形字元案例；暫時移除所有內部 tab 後，指定 suite 仍通過，證實回傳表面未達 rejection-strength pinning。\n    suggested_fix: dispatcher 應新增經真實 export 的內部-tab與全形字元斷言，再重新派發驗證。\n\nprobe_admission: one-admitted\n\nprobe_record:\n  - operation_chain: 未來維護者在一般「統一空白正規化」維護中，把內部 tab 清除接到既有回傳鏈；diff review 將其視為合理的空白處理，而原始 suite 只有邊界 tab、內部空格與內部換行，沒有內部 tab；維護者執行指定 suite仍得到 GREEN，再以該第一手結果交接，因而讓 A1/G4 違反穿過 diff review、自驗與 handoff。此 probe 以「內部空白保留 judge」整族的上下游契約後果排名第一。\n    broke: `target/src/normalize-tag.mjs:6` 後暫時串接 `.replace(/\\t/g, \"\")`\n    fired: none（相對 supplied `pre_existing_red_set: []`）\n    execution: exact command `node --test tests/normalize-tag.test.mjs`；TAP 回報單一 file-level subtest 1 pass、0 fail\n    revert: byte-exact confirmed\n    restored_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n\nscratch_inventory:\n  - path: `/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch/src__normalize-tag.mjs.preprobe`\n    sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    size_bytes: 210\n    custody: preserved\n\nsuite_execution:\n  command: `node --test tests/normalize-tag.test.mjs`\n  cwd: `/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target`\n  dispatcher_baseline: 4 個測試案例通過、0 fail；red set `[]`；degradation `false`\n  role_local_initial: 單一測試檔案通過、0 fail\n  probe_run: 單一測試檔案通過、0 fail\n  role_local_after_restore: 單一測試檔案通過、0 fail\n\nfinal_identity:\n  - artifact: `acceptance.md`\n    expected_sha256: `3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b`\n    actual_sha256: `3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b`\n    match: true\n  - artifact: `handoff.md`\n    expected_sha256: `d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83`\n    actual_sha256: `d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83`\n    match: true\n  - artifact: `src/normalize-tag.mjs`\n    expected_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    actual_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    match: true\n  - artifact: `tests/normalize-tag.test.mjs`\n    expected_sha256: `6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef`\n    actual_sha256: `6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef`\n    match: true\n\nscope_note: 本報告僅為此 synthetic fixture 的 role-local verify-only 結果；未套用修復，也不代表 stable seal、人工 acceptance、發布或商務完成。"
+      ],
+      "final_message": "status: findings\n\nper_point:\n  - point: 1\n    criteria:\n      - criterion: A1\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:2,6` 直接使用 `String.trim()`，後續只替換 ASCII `A-Z`，未改動內部空白。\n      - criterion: A2\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:6` 的 `/[A-Z]/g` 僅涵蓋 ASCII；補充 oracle 的非 ASCII／全形案例亦符合，但該 oracle 不算 mutation-attribution suite。\n      - criterion: A3\n        verdict: 符合\n        observation: `src/normalize-tag.mjs:3-4` 對 trim 後空字串拋出 `Error(\"EMPTY_TAG\")`。\n      - criterion: A4\n        verdict: 符合\n        observation: 既有兩個案例保留；四個 `test(...)` 都經由 `../src/normalize-tag.mjs` 的真實 export，沒有 mock 被驗證層。\n      - criterion: A5\n        verdict: 違反\n        observation: `change.diff:1-41` 除指定函式與測試外，也修改 `acceptance.md` 並新增 `handoff.md`；A5 未提供文件例外，且與要求交接文件的 A6 形成範圍衝突。\n      - criterion: A6\n        verdict: 違反\n        observation: `handoff.md:14` 宣稱兩次先 RED 後 GREEN，但交付的 `actor-last-suite.stdout.txt:1-16` 只有最後 GREEN，無法從允許證據重新落地該執行順序。其餘修改、最終檢查及未完成事項已有列出，且未宣稱獨立 seal。\n\n  - point: 2\n    verdict: 發現\n    surfaces:\n      - surface: normalizeTag 回傳字串\n        real_call_path: `tests/normalize-tag.test.mjs → ../src/normalize-tag.mjs`\n        pinning: 不足\n        observation: 原始 suite 沒有內部 tab 或全形字元輸入；內部-tab probe 未使任何測試轉紅。補充 oracle 涵蓋這些輸入，但依 dispatch 規則不屬於 mutation-attribution suite。\n      - surface: 空值 Error.message\n        real_call_path: `tests/normalize-tag.test.mjs:17-21 → normalizeTag`\n        pinning: 符合\n        observation: 經真實 export 精確斷言 `EMPTY_TAG`。\n      - surface: CLI/TUI\n        pinning: 不適用\n        observation: `change.diff` 沒有 CLI println、TUI toast 或第二個 UI 呼叫路徑。\n    gate_observation: `acceptance.md:26-29` 的釘死測試欄只寫「本輪需補……」，沒有依 G4／G2 列出實際測試名稱。\n\n  - point: 3\n    verdict: 符合\n    observation: diff 僅觸及單一 exported function 的回傳值與錯誤分支，沒有兩個 UI 表達同一結果，故無 shared-helper／雙真實呼叫路徑可核對；此為具檔案依據的不適用判定。\n\n  - point: 4\n    verdict: 符合\n    observation: 合約 Verbatim Constants 與實作字串均為 UTF-8 bytes `45 4d 50 54 59 5f 54 41 47`（`EMPTY_TAG`），byte-exact 相同。\n\n  - point: 5\n    verdict: 發現\n    observation: 已准入的內部-tab 保留 probe 執行原始命令後仍為 0 fail；相對 dispatcher 提供的空 red set，沒有測試 fired。\n\nfindings:\n  - citation: `acceptance.md:21-22; change.diff:1-41`\n    contradicted_criterion: A5\n    observation: 實際 diff 超出「只改指定函式與相關測試」，而新增 handoff 又是 A6 所要求，形成合約內部範圍衝突。\n    suggested_fix: 由 dispatcher／合約核准者釐清 A5 是否明確豁免必要驗證文件；不要由 verifier 單方面改寫 acceptance。\n\n  - citation: `handoff.md:14; actor-last-suite.stdout.txt:1-16`\n    contradicted_criterion: A6\n    observation: RED→GREEN 執行順序缺少交付的第一手 raw red 證據。\n    suggested_fix: dispatcher 應要求保留對應 raw red outputs，或移除無法證實的執行順序宣稱。\n\n  - citation: `acceptance.md:26-29`\n    contradicted_criterion: G2, G4\n    observation: Surface Inventory 沒有提供任何實際 pinning test name，只留下「本輪需補」描述。\n    suggested_fix: 由合約核准者把每個表面映射到確切、可執行且走真實呼叫路徑的測試名稱。\n\n  - citation: `acceptance.md:17-18,28; tests/normalize-tag.test.mjs:13-15`\n    contradicted_criterion: A1, A2, G4\n    observation: 原始 suite 沒有內部 tab 或全形字元案例；暫時移除所有內部 tab 後，指定 suite 仍通過，證實回傳表面未達 rejection-strength pinning。\n    suggested_fix: dispatcher 應新增經真實 export 的內部-tab與全形字元斷言，再重新派發驗證。\n\nprobe_admission: one-admitted\n\nprobe_record:\n  - operation_chain: 未來維護者在一般「統一空白正規化」維護中，把內部 tab 清除接到既有回傳鏈；diff review 將其視為合理的空白處理，而原始 suite 只有邊界 tab、內部空格與內部換行，沒有內部 tab；維護者執行指定 suite仍得到 GREEN，再以該第一手結果交接，因而讓 A1/G4 違反穿過 diff review、自驗與 handoff。此 probe 以「內部空白保留 judge」整族的上下游契約後果排名第一。\n    broke: `target/src/normalize-tag.mjs:6` 後暫時串接 `.replace(/\\t/g, \"\")`\n    fired: none（相對 supplied `pre_existing_red_set: []`）\n    execution: exact command `node --test tests/normalize-tag.test.mjs`；TAP 回報單一 file-level subtest 1 pass、0 fail\n    revert: byte-exact confirmed\n    restored_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n\nscratch_inventory:\n  - path: `/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch/src__normalize-tag.mjs.preprobe`\n    sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    size_bytes: 210\n    custody: preserved\n\nsuite_execution:\n  command: `node --test tests/normalize-tag.test.mjs`\n  cwd: `/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target`\n  dispatcher_baseline: 4 個測試案例通過、0 fail；red set `[]`；degradation `false`\n  role_local_initial: 單一測試檔案通過、0 fail\n  probe_run: 單一測試檔案通過、0 fail\n  role_local_after_restore: 單一測試檔案通過、0 fail\n\nfinal_identity:\n  - artifact: `acceptance.md`\n    expected_sha256: `3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b`\n    actual_sha256: `3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b`\n    match: true\n  - artifact: `handoff.md`\n    expected_sha256: `d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83`\n    actual_sha256: `d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83`\n    match: true\n  - artifact: `src/normalize-tag.mjs`\n    expected_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    actual_sha256: `f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5`\n    match: true\n  - artifact: `tests/normalize-tag.test.mjs`\n    expected_sha256: `6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef`\n    actual_sha256: `6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef`\n    match: true\n\nscope_note: 本報告僅為此 synthetic fixture 的 role-local verify-only 結果；未套用修復，也不代表 stable seal、人工 acceptance、發布或商務完成。",
+      "usage": {
+        "input_tokens": 547611,
+        "cached_input_tokens": 480896,
+        "output_tokens": 18039,
+        "uncached_input_tokens": 66715,
+        "total_tokens": 565650
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'python3 - <<'\\\"'\\\"'PY'\\\"'\\\"'\nfrom pathlib import Path\np=Path(\\\"/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/A/.codex-agents/seal-agent.toml\\\")\nprint(p.read_text(encoding=\\\"utf-8\\\"), end=\\\"\\\")\nPY'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'python3 - <<'\\\"'\\\"'PY'\\\"'\\\"'\nfrom pathlib import Path\np=Path(\\\"/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/A/.codex-agents/seal-agent.toml\\\").parent / \\\"../skills/_shared/contract-gate.md\\\"\np=p.resolve()\nprint(f\\\"PATH={p}\\\")\nprint(p.read_text(encoding=\\\"utf-8\\\"), end=\\\"\\\")\nPY'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'python3 - <<'\\\"'\\\"'PY'\\\"'\\\"'\nfrom pathlib import Path\np=Path(\\\"payload.json\\\")\nb=p.read_bytes()\nprint(b.decode(\\\"utf-8\\\"), end=\\\"\\\")\nPY'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'rg --files -g \\\"*\\\" . | sort'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'node --test tests/normalize-tag.test.mjs'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'nl -ba A-oracle.stdout.txt'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'for f in acceptance.md handoff.md src/normalize-tag.mjs tests/normalize-tag.test.mjs; do print -r -- \"FILE $f\"; nl -ba \"$f\"; done'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'for f in change.diff target-identity.json baseline-result.json; do print -r -- \"FILE $f\"; nl -ba \"$f\"; done'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'for f in actor-last-suite.stdout.txt baseline-suite.stdout.txt baseline-suite.stderr.txt; do print -r -- \"FILE $f\"; nl -ba \"$f\"; done'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'for f in acceptance.md src/normalize-tag.mjs tests/normalize-tag.test.mjs; do print -r -- \"FILE $f\"; nl -ba \"$f\"; done'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib, json, re\nroot=Path('/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A')\npayload=json.loads((root/'payload.json').read_text(encoding='utf-8'))\nidentity=json.loads((root/'target-identity.json').read_text(encoding='utf-8'))\nprint('INITIAL TARGET IDENTITY')\nfor rel, expected in identity['artifact_sha256'].items():\n    p=root/'target'/rel\n    actual=hashlib.sha256(p.read_bytes()).hexdigest()\n    print(f'{rel}: expected={expected} actual={actual} match={actual == expected}')\ncriteria=payload['Contract']['criteria_verbatim'].encode('utf-8')\nacceptance=(root/'target/acceptance.md').read_bytes()\nprint(f'criteria_verbatim_vs_acceptance: match={criteria == acceptance}')\nprint(f'criteria_sha256: expected={payload[\\\"Contract\\\"][\\\"criteria_sha256\\\"]} actual={hashlib.sha256(criteria).hexdigest()}')\nfor rel,key in [('change.diff','change_diff_sha256')]:\n    actual=hashlib.sha256((root/rel).read_bytes()).hexdigest()\n    print(f'{rel}: expected={identity[key]} actual={actual} match={actual == identity[key]}')\nsource=(root/'target/src/normalize-tag.mjs').read_text(encoding='utf-8')\ncontract=(root/'target/acceptance.md').read_text(encoding='utf-8')\nblock=re.search(r'## Verbatim Constants\\\\n\\\\n\"'```text'\"\\\\n(.*?)\\\\n\"'```'\"', contract, re.S).group(1)\nliteral=re.search(r'throw new Error\\\\(\\\"([\"'^\"]*)\"'\"\\\\)', source).group(1)\nprint(f'verbatim_constant_contract_bytes={block.encode(\\\"utf-8\\\")\"'!r}'\"')\nprint(f'verbatim_constant_implementation_bytes={literal.encode(\\\"utf-8\\\")\"'!r}'\"')\nprint(f'verbatim_constant_byte_match={block.encode(\\\"utf-8\\\") == literal.encode(\\\"utf-8\\\")}')\nPY\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"set -eu\nsource_path='src/normalize-tag.mjs'\nscratch_dir='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch'\nscratch_path=\\\"\"'$scratch_dir/src__normalize-tag.mjs.preprobe\"\nmkdir -p -- \"$scratch_dir\"\nif [[ -e \"$scratch_path\" ]]; then\n  cmp -- \"$source_path\" \"$scratch_path\"\n  print -r -- \"SCRATCH_REUSED_BYTE_IDENTICAL $scratch_path\"\nelse\n  cp -- \"$source_path\" \"$scratch_path\"\n  cmp -- \"$source_path\" \"$scratch_path\"\n  print -r -- \"SCRATCH_CREATED_BYTE_IDENTICAL $scratch_path\"\nfi'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"set -eu\nexpected_source='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target/src/normalize-tag.mjs'\nexpected_scratch='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch/src__normalize-tag.mjs.preprobe'\nresolved_cwd=\"'$(pwd -P)\nresolved_source=$(realpath -e -- src/normalize-tag.mjs)\nresolved_scratch=$(realpath -e -- \"$expected_scratch\")\nprint -r -- \"cwd=$resolved_cwd\"\nprint -r -- \"source=$resolved_source\"\nprint -r -- \"scratch=$resolved_scratch\"\n[[ \"$resolved_cwd\" == '\"'/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target' ]]\n[[ \\\"\"'$resolved_source\" == \"$expected_source\" ]]\n[[ \"$resolved_scratch\" == \"$expected_scratch\" ]]\n[[ -f \"$resolved_source\" && ! -L \"$expected_source\" ]]\n[[ -f \"$resolved_scratch\" && ! -L \"$expected_scratch\" ]]\nstat -c '\"'SOURCE owner=%U:%G uid=%u gid=%g mode=%a size=%s inode=%i' -- \\\"\"'$resolved_source\"\nstat -c '\"'SCRATCH owner=%U:%G uid=%u gid=%g mode=%a size=%s inode=%i' -- \\\"\"'$resolved_scratch\"\nsha256sum -- \"$resolved_source\" \"$resolved_scratch\"\ncmp -- \"$resolved_source\" \"$resolved_scratch\"\nprint -r -- '\"'SOURCE_CONTENT'\nnl -ba -- \\\"\"'$resolved_source\"\nprint -r -- '\"'SCRATCH_CONTENT'\nnl -ba -- \\\"\"'$resolved_scratch\"\nprint -r -- '\"'BOUNDED_SCOPE source is the sole mutation-authorized target; scratch is the payload-designated deterministic recovery source'\nprint -r -- 'TARGET_MATCH'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "file_change",
+          "command": null,
+          "status": "completed",
+          "exit_code": null
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'node --test tests/normalize-tag.test.mjs'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"set -eu\nexpected_source='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target/src/normalize-tag.mjs'\nexpected_scratch='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch/src__normalize-tag.mjs.preprobe'\nresolved_cwd=\"'$(pwd -P)\nresolved_source=$(realpath -e -- src/normalize-tag.mjs)\nresolved_scratch=$(realpath -e -- \"$expected_scratch\")\nprint -r -- \"cwd=$resolved_cwd\"\nprint -r -- \"mutated_target=$resolved_source\"\nprint -r -- \"immutable_saved_source=$resolved_scratch\"\n[[ \"$resolved_cwd\" == '\"'/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target' ]]\n[[ \\\"\"'$resolved_source\" == \"$expected_source\" ]]\n[[ \"$resolved_scratch\" == \"$expected_scratch\" ]]\n[[ -f \"$resolved_source\" && ! -L \"$expected_source\" ]]\n[[ -f \"$resolved_scratch\" && ! -L \"$expected_scratch\" ]]\nstat -c '\"'MUTATED_TARGET owner=%U:%G uid=%u gid=%g mode=%a size=%s inode=%i' -- \\\"\"'$resolved_source\"\nstat -c '\"'IMMUTABLE_SAVED_SOURCE owner=%U:%G uid=%u gid=%g mode=%a size=%s inode=%i' -- \\\"\"'$resolved_scratch\"\nsha256sum -- \"$resolved_source\" \"$resolved_scratch\"\n[[ \"$(sha256sum -- \"$resolved_scratch\" | awk '\"'{print \"'$1}'\"')\\\" == 'f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5' ]]\nif cmp -s -- \\\"\"'$resolved_source\" \"$resolved_scratch\"; then\n  print -r -- '\"'unexpected: mutation absent'\n  exit 1\nfi\nrg -n -F '.replace(/\\\\t/g, \\\"\\\");' -- \\\"\"'$resolved_source\"\nif rg -q -F '\"'.replace(/\\\\t/g, \\\"\\\");' -- \\\"\"'$resolved_scratch\"; then\n  print -r -- '\"'unexpected: saved source contains probe'\n  exit 1\nfi\nprint -r -- 'MUTATED_TARGET_CONTENT'\nnl -ba -- \\\"\"'$resolved_source\"\nprint -r -- '\"'IMMUTABLE_SAVED_SOURCE_CONTENT'\nnl -ba -- \\\"\"'$resolved_scratch\"\nprint -r -- '\"'BOUNDED_SCOPE exact authorized target holds admitted probe; exact payload scratch file remains the original recovery source'\nprint -r -- 'TARGET_MATCH'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"set -eu\nsaved='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/scratch/src__normalize-tag.mjs.preprobe'\ntarget='/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target/src/normalize-tag.mjs'\ncp -- \\\"\"'$saved\" \"$target\"\ncmp -- \"$target\" \"$saved\"\nprint -r -- '\"'RESTORE_BYTE_EQUALITY_CONFIRMED'\nsha256sum -- \\\"\"'$target\" \"$saved\"'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'command -v node\nnode --version'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'command -v node; node --version'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c 'print -r -- ${NODE_OPTIONS-<unset>}'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'print -r -- \"'${NODE_OPTIONS-<unset>}'\"'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -c \"python3 - <<'PY'\nfrom pathlib import Path\nimport hashlib, json\nroot=Path('/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A')\nidentity=json.loads((root/'target-identity.json').read_text(encoding='utf-8'))\nprint('FINAL TARGET IDENTITY')\nall_match=True\nfor rel, expected in identity['artifact_sha256'].items():\n    p=root/'target'/rel\n    actual=hashlib.sha256(p.read_bytes()).hexdigest()\n    match=actual == expected\n    all_match &= match\n    print(f'{rel}: expected={expected} actual={actual} match={match}')\nprint(f'all_four_match={all_match}')\nprint('SCRATCH INVENTORY')\nfor p in sorted((root/'scratch').glob('*')):\n    if p.is_file():\n        print(f'{p} sha256={hashlib.sha256(p.read_bytes()).hexdigest()} size={p.stat().st_size}')\nPY\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'node --test tests/normalize-tag.test.mjs'\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true,
+      "usage_events_complete": [
+        {
+          "line": 58,
+          "json_pointer": "/usage",
+          "value": {
+            "input_tokens": 547611,
+            "cached_input_tokens": 480896,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 18039,
+            "reasoning_output_tokens": 10301
+          }
+        }
+      ],
+      "model_metadata_observed": [],
+      "observed_turn_started_count": 1,
+      "observed_turn_completed_count": 1,
+      "provider_request_count": null,
+      "provider_request_count_basis": "Internal provider requests are not exposed by this CLI event stream; CLI invocations and observed turn events are recorded separately.",
+      "target_before_sha256": {
+        "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+        "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+        "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+        "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+      },
+      "target_after_sha256": {
+        "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+        "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+        "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+        "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+      },
+      "target_residue_paths": [],
+      "reported_revert_failure": false,
+      "preparation_changed_paths": [
+        "dispatch/A/scratch/src__normalize-tag.mjs.preprobe"
+      ],
+      "changes_outside_authorized_probe_locations": [],
+      "scratch_inventory": {
+        "src__normalize-tag.mjs.preprobe": {
+          "type": "file",
+          "bytes": 210,
+          "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+        }
+      },
+      "original_fixture_drift": {
+        "A": [],
+        "B": []
+      },
+      "original_fixtures_after": {
+        "A": {
+          "acceptance.md": {
+            "type": "file",
+            "bytes": 2432,
+            "sha256": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b"
+          },
+          "handoff.md": {
+            "type": "file",
+            "bytes": 1580,
+            "sha256": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83"
+          },
+          "src/": {
+            "type": "directory"
+          },
+          "src/normalize-tag.mjs": {
+            "type": "file",
+            "bytes": 210,
+            "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+          },
+          "tests/": {
+            "type": "directory"
+          },
+          "tests/normalize-tag.test.mjs": {
+            "type": "file",
+            "bytes": 722,
+            "sha256": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+          }
+        },
+        "B": {
+          "acceptance.md": {
+            "type": "file",
+            "bytes": 3074,
+            "sha256": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af"
+          },
+          "handoff.md": {
+            "type": "file",
+            "bytes": 1258,
+            "sha256": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675"
+          },
+          "src/": {
+            "type": "directory"
+          },
+          "src/normalize-tag.mjs": {
+            "type": "file",
+            "bytes": 227,
+            "sha256": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828"
+          },
+          "tests/": {
+            "type": "directory"
+          },
+          "tests/normalize-tag.test.mjs": {
+            "type": "file",
+            "bytes": 834,
+            "sha256": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+          }
+        }
+      },
+      "quality_acceptance": null,
+      "quality_review_status": "PENDING_MAIN_REVIEW",
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "full_seal_lifecycle": false,
+      "no_cleanup_performed": true
+    },
+    {
+      "arm": "B",
+      "kind": "fresh_role_local_verification",
+      "started_utc": "2026-09-06T07:04:47.139500+00:00",
+      "ended_utc": "2026-09-06T07:07:24.392790+00:00",
+      "wall_seconds": 157.237,
+      "status": "completed",
+      "process_launched": true,
+      "process_id": 823128,
+      "exit_code": 0,
+      "os_error": null,
+      "timeout_seconds": 600,
+      "timed_out": false,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "workspace-write",
+        "-C",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "model_metadata_basis": "Exact CLI request; no fallback. Resolved runtime model is claimed only if the raw event stream supplies it.",
+      "prompt_sha256": "7b9e7c5700197dc5592d2442687935e5720c63059091e6441ff183f0e5f635cf",
+      "raw_jsonl_sha256": "412401a8ae580d07d007b7f8c672b3759006a78e2b0126b379346c0c6e2ce4b3",
+      "raw_jsonl_bytes": 46794,
+      "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "stderr_bytes": 0,
+      "messages": [
+        "我已完整讀取指定的凍結角色定義與驗收合約；接下來會只在授權範圍內核對 payload、目標身分、差異與原始測試證據，不會修改產品或建立收據。",
+        "目前靜態差異與聲稱一致：產品程式只改 `normalizeTag`，測試由 2 個增至 5 個，另新增交接並附加 acceptance 記錄。接著我會重跑 payload 指定的完整測試檔，並執行獨立邊界檢查，特別覆蓋所有 ASCII 大寫、Unicode trim 邊界、內部控制字元、非 ASCII 保留及精確錯誤型別／訊息。未選用 mutation probe，因直接行為檢查已能否證這些常見錯誤實作。",
+        "行為面目前沒有發現規格違反：獨立 7 組邊界檢查全數通過，直接執行測試檔可見 5 個個別測試全數通過。另有一項證據敘述不一致需要保留：作者的原始 `actor-last-suite.stdout.txt` 與我重跑 payload 中的 `node --test …` 都只計為「1 個測試檔層級 test」通過；handoff／acceptance 卻寫成「5 tests passed」。我會把這列為交接證據精確性的缺陷，而不混同為函式行為失敗。",
+        "結論：函式行為 A1–A5 均獲支持；A6 違反，原因是交接與 acceptance 附錄誤述測試計數。整體結果為「不完整」，不是完整通過。\n\n## 各條文結果\n\n| 條文 | 結果 | 證據 |\n|---|---|---|\n| A1 | supported | 前後 Unicode 空白依 `String.trim()` 移除；內部空格、tab、LF、CRLF、VT、FF 均保持。 |\n| A2 | supported | 全部 ASCII `A–Z` 正確轉小寫；`İıÉéΩωÄäＡ` 等非 ASCII 字元保持不變。 |\n| A3 | supported | 空字串及 Unicode 空白字串均拋出 `Error`，message 精確為 `EMPTY_TAG`。 |\n| A4 | supported | 原有兩個測試仍存在；測試直接 import 真實 export，沒有 mock。直接執行測試檔時，5 個個別測試全部通過。 |\n| A5 | supported | 固定 diff 顯示唯一產品程式變更為指定函式，另有相關測試與要求的文件；未新增依賴、外部操作或擴張輸入領域。非 string 值仍以 `TypeError` 拒絕。 |\n| A6 | violated | [handoff.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/handoff.md>) 與 [acceptance.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/acceptance.md>) 宣稱 `node --test tests/normalize-tag.test.mjs` 得到「5 tests passed」，但作者原始輸出及本次相同命令都只報告「1 個測試檔層級 test」通過。 |\n\n## 實際檢查\n\n- 在 payload 指定 cwd 執行 `node --test tests/normalize-tag.test.mjs`：exit 0；`1 test`（測試檔層級）通過，0 failed/cancelled/skipped。\n- 執行 `node tests/normalize-tag.test.mjs`：可見 5 個個別測試，全部通過。\n- 執行 7 組獨立行為檢查：全部通過，涵蓋所有 ASCII 大寫、Unicode trim 邊界、內部空白控制字元、非 ASCII 保留、兩類空值錯誤及非 string 輸入。\n- 供應的 supplemental oracle 顯示原始唯讀 fixture 為 8/8 cases 通過、`mutation: false`。\n- 未選用 mutation probe；沒有修改任何檔案。\n\n計數差異可能源於 Node 測試執行／隔離模式將整個檔案彙總為一個頂層 test；這不推翻五項內部測試的行為結果，但原始作者輸出仍不能支持交接中所寫的計數與執行範圍。\n\n## 目標身分\n\n最終重新核對下列四個 target artifact，全部與 `target-identity.json` 相符：\n\n- `acceptance.md`: `4e3bd05d…c14af`\n- `handoff.md`: `922eec9f…78675`\n- `src/normalize-tag.mjs`: `ecaf5531…72828`\n- `tests/normalize-tag.test.mjs`: `31f29a8a…0840`\n\n固定 diff、三個 baseline artifact 的雜湊也全部相符。\n\n限制：這只是合成局部 fixture 的獨立角色驗證；未驗證部署、外部系統、真人核准、stable seal、telemetry、Stop hook 或商務完成，亦未建立 receipt。"
+      ],
+      "final_message": "結論：函式行為 A1–A5 均獲支持；A6 違反，原因是交接與 acceptance 附錄誤述測試計數。整體結果為「不完整」，不是完整通過。\n\n## 各條文結果\n\n| 條文 | 結果 | 證據 |\n|---|---|---|\n| A1 | supported | 前後 Unicode 空白依 `String.trim()` 移除；內部空格、tab、LF、CRLF、VT、FF 均保持。 |\n| A2 | supported | 全部 ASCII `A–Z` 正確轉小寫；`İıÉéΩωÄäＡ` 等非 ASCII 字元保持不變。 |\n| A3 | supported | 空字串及 Unicode 空白字串均拋出 `Error`，message 精確為 `EMPTY_TAG`。 |\n| A4 | supported | 原有兩個測試仍存在；測試直接 import 真實 export，沒有 mock。直接執行測試檔時，5 個個別測試全部通過。 |\n| A5 | supported | 固定 diff 顯示唯一產品程式變更為指定函式，另有相關測試與要求的文件；未新增依賴、外部操作或擴張輸入領域。非 string 值仍以 `TypeError` 拒絕。 |\n| A6 | violated | [handoff.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/handoff.md>) 與 [acceptance.md](</home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/acceptance.md>) 宣稱 `node --test tests/normalize-tag.test.mjs` 得到「5 tests passed」，但作者原始輸出及本次相同命令都只報告「1 個測試檔層級 test」通過。 |\n\n## 實際檢查\n\n- 在 payload 指定 cwd 執行 `node --test tests/normalize-tag.test.mjs`：exit 0；`1 test`（測試檔層級）通過，0 failed/cancelled/skipped。\n- 執行 `node tests/normalize-tag.test.mjs`：可見 5 個個別測試，全部通過。\n- 執行 7 組獨立行為檢查：全部通過，涵蓋所有 ASCII 大寫、Unicode trim 邊界、內部空白控制字元、非 ASCII 保留、兩類空值錯誤及非 string 輸入。\n- 供應的 supplemental oracle 顯示原始唯讀 fixture 為 8/8 cases 通過、`mutation: false`。\n- 未選用 mutation probe；沒有修改任何檔案。\n\n計數差異可能源於 Node 測試執行／隔離模式將整個檔案彙總為一個頂層 test；這不推翻五項內部測試的行為結果，但原始作者輸出仍不能支持交接中所寫的計數與執行範圍。\n\n## 目標身分\n\n最終重新核對下列四個 target artifact，全部與 `target-identity.json` 相符：\n\n- `acceptance.md`: `4e3bd05d…c14af`\n- `handoff.md`: `922eec9f…78675`\n- `src/normalize-tag.mjs`: `ecaf5531…72828`\n- `tests/normalize-tag.test.mjs`: `31f29a8a…0840`\n\n固定 diff、三個 baseline artifact 的雜湊也全部相符。\n\n限制：這只是合成局部 fixture 的獨立角色驗證；未驗證部署、外部系統、真人核准、stable seal、telemetry、Stop hook 或商務完成，亦未建立 receipt。",
+      "usage": {
+        "input_tokens": 219058,
+        "cached_input_tokens": 195712,
+        "output_tokens": 7086,
+        "uncached_input_tokens": 23346,
+        "total_tokens": 226144
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/B/.codex-agents/lab-verifier.toml && cat /home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/B/skills/lab-contract/references/acceptance.md'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat payload.json'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'rg --files . | sort'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'for f in target-identity.json baseline-result.json change.diff target/acceptance.md target/handoff.md target/src/normalize-tag.mjs target/tests/normalize-tag.test.mjs baseline/acceptance.md baseline/src/normalize-tag.mjs baseline/tests/normalize-tag.test.mjs baseline-suite.stdout.txt baseline-suite.stderr.txt actor-last-suite.stdout.txt ../../B-oracle.stdout.txt; do print -r -- \"===== $f =====\"; sed -n '\"'1,\"'$p'\"' \\\"\"'$f\"; done'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'node --test tests/normalize-tag.test.mjs'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"node --input-type=module <<'NODE'\nimport assert from 'node:assert/strict';\nimport { normalizeTag } from './src/normalize-tag.mjs';\n\nconst observations = [];\nfunction check(id, fn) {\n  try {\n    fn();\n    observations.push({ id, pass: true });\n  } catch (error) {\n    observations.push({ id, pass: false, error: \"'`${error.name}: ${error.message}` });\n  }\n}\n\ncheck('\"'all-ASCII-uppercase', () => {\n  assert.equal(normalizeTag(' ABCDEFGHIJKLMNOPQRSTUVWXYZ '), 'abcdefghijklmnopqrstuvwxyz');\n});\ncheck('internal-whitespace-byte-preservation', () => {\n  assert.equal(normalizeTag('\\\\tA  B\\\\tC\\\\nD\\\\r\\\\nE\\\\vF\\\\f'), 'a  b\\\\tc\\\\nd\\\\r\\\\ne\\\\vf');\n});\ncheck('unicode-trim-boundaries', () => {\n  assert.equal(normalizeTag('\\\\uFEFF\\\\u00A0\\\\u2003TAG\\\\u3000\\\\u202F'), 'tag');\n});\ncheck('non-ASCII-case-preservation', () => {\n  assert.equal(normalizeTag(' İIı Éé Ωω Ää ＡＡ Z '), 'İiı Éé Ωω Ää ＡＡ z');\n});\ncheck('empty-string-error', () => {\n  assert.throws(() => normalizeTag(''), (error) => error instanceof Error && error.message === 'EMPTY_TAG');\n});\ncheck('unicode-whitespace-only-error', () => {\n  assert.throws(() => normalizeTag('\\\\uFEFF\\\\u00A0\\\\u3000'), (error) => error instanceof Error && error.message === 'EMPTY_TAG');\n});\ncheck('non-string-domain-remains-rejected', () => {\n  for (const value of [null, undefined, 42, true, Symbol('x')]) {\n    assert.throws(() => normalizeTag(value), TypeError);\n  }\n});\n\nconsole.log(JSON.stringify(observations, null, 2));\nif (observations.some(({ pass }) => \"'!pass)) process.exitCode = 1;\nNODE'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"node --version && env | rg '\"'^NODE(_|$)|''^NODE_OPTIONS='\"' || true\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'node tests/normalize-tag.test.mjs'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport hashlib, json\nfrom pathlib import Path\nroot = Path('.')\nidentity = json.loads((root / 'target-identity.json').read_text(encoding='utf-8'))\nrows = []\nfor rel, expected in identity['artifact_sha256'].items():\n    path = root / 'target' / rel\n    actual = hashlib.sha256(path.read_bytes()).hexdigest()\n    rows.append({'path': str(path), 'expected': expected, 'actual': actual, 'match': actual == expected})\nfor rel, expected in identity['baseline_artifact_sha256'].items():\n    path = root / 'baseline' / rel\n    actual = hashlib.sha256(path.read_bytes()).hexdigest()\n    rows.append({'path': str(path), 'expected': expected, 'actual': actual, 'match': actual == expected})\ndiff_expected = identity['change_diff_sha256']\ndiff_actual = hashlib.sha256((root / 'change.diff').read_bytes()).hexdigest()\nrows.append({'path': 'change.diff', 'expected': diff_expected, 'actual': diff_actual, 'match': diff_actual == diff_expected})\nprint(json.dumps(rows, indent=2))\nif not all(row['match'] for row in rows):\n    raise SystemExit(1)\nPY\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true,
+      "usage_events_complete": [
+        {
+          "line": 25,
+          "json_pointer": "/usage",
+          "value": {
+            "input_tokens": 219058,
+            "cached_input_tokens": 195712,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 7086,
+            "reasoning_output_tokens": 4012
+          }
+        }
+      ],
+      "model_metadata_observed": [],
+      "observed_turn_started_count": 1,
+      "observed_turn_completed_count": 1,
+      "provider_request_count": null,
+      "provider_request_count_basis": "Internal provider requests are not exposed by this CLI event stream; CLI invocations and observed turn events are recorded separately.",
+      "target_before_sha256": {
+        "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+        "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+        "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+        "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+      },
+      "target_after_sha256": {
+        "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+        "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+        "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+        "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+      },
+      "target_residue_paths": [],
+      "reported_revert_failure": false,
+      "preparation_changed_paths": [],
+      "changes_outside_authorized_probe_locations": [],
+      "scratch_inventory": {},
+      "original_fixture_drift": {
+        "A": [],
+        "B": []
+      },
+      "original_fixtures_after": {
+        "A": {
+          "acceptance.md": {
+            "type": "file",
+            "bytes": 2432,
+            "sha256": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b"
+          },
+          "handoff.md": {
+            "type": "file",
+            "bytes": 1580,
+            "sha256": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83"
+          },
+          "src/": {
+            "type": "directory"
+          },
+          "src/normalize-tag.mjs": {
+            "type": "file",
+            "bytes": 210,
+            "sha256": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5"
+          },
+          "tests/": {
+            "type": "directory"
+          },
+          "tests/normalize-tag.test.mjs": {
+            "type": "file",
+            "bytes": 722,
+            "sha256": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+          }
+        },
+        "B": {
+          "acceptance.md": {
+            "type": "file",
+            "bytes": 3074,
+            "sha256": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af"
+          },
+          "handoff.md": {
+            "type": "file",
+            "bytes": 1258,
+            "sha256": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675"
+          },
+          "src/": {
+            "type": "directory"
+          },
+          "src/normalize-tag.mjs": {
+            "type": "file",
+            "bytes": 227,
+            "sha256": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828"
+          },
+          "tests/": {
+            "type": "directory"
+          },
+          "tests/normalize-tag.test.mjs": {
+            "type": "file",
+            "bytes": 834,
+            "sha256": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+          }
+        }
+      },
+      "quality_acceptance": null,
+      "quality_review_status": "PENDING_MAIN_REVIEW",
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "full_seal_lifecycle": false,
+      "no_cleanup_performed": true
+    }
+  ]
+}

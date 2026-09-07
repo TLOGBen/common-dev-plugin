@@ -1,0 +1,28 @@
+{
+  "passed": true,
+  "checks": [
+    {
+      "name": "empty",
+      "passed": true
+    },
+    {
+      "name": "zero",
+      "passed": true
+    },
+    {
+      "name": "archived_only",
+      "passed": true
+    },
+    {
+      "name": "same_owner_mixed",
+      "passed": true
+    },
+    {
+      "name": "several_owners",
+      "passed": true
+    }
+  ],
+  "program_unchanged": true,
+  "program_sha256": "4b58ab3fab4bb067add8cfa5299b840ca61680e40bf5f48c42dba9e97e103686",
+  "model_calls": 0
+}

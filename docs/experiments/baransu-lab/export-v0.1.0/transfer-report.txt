@@ -1,0 +1,119 @@
+# baransu-lab transfer receipt
+
+{
+  "manifest_mapped": [
+    "加入 `skills: \"./skills/\"` 指標 (Codex manifest-driven)",
+    "加入 `interface` 預設 (display_name + short_description)"
+  ],
+  "manifest_dropped": [],
+  "manifest_manual": [],
+  "agent_definitions": 1,
+  "rules_copied": 0,
+  "skill_count": 4,
+  "plugin_name": "baransu-lab",
+  "source_components": [
+    ".claude-plugin",
+    "agents",
+    "skills"
+  ],
+  "unhandled_components": [],
+  "content_closure_verified": true,
+  "aux_dirs_copied": [],
+  "aux_manual": [],
+  "marketplace_written": true
+}
+
+## Codex Transfer Report — lab-contract
+
+- 來源: `/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab/skills/lab-contract`
+- 輸出: `/tmp/baransu-lab-export-010-b/plugins/baransu-lab/skills/lab-contract`
+
+### 完整保留 (lossless)
+- `name`
+- `description`
+
+### 翻譯處理 (mapped)
+- 加入預設 `compatibility`
+- 加入預設 `metadata.version: 0.1.0-codex`
+
+### ⚠️ 需人工檢視 (manual review)
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認
+
+### Next-port follow-ups
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 — `refresh-mapping`
+
+## Codex Transfer Report — lab-review
+
+- 來源: `/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab/skills/lab-review`
+- 輸出: `/tmp/baransu-lab-export-010-b/plugins/baransu-lab/skills/lab-review`
+
+### 完整保留 (lossless)
+- `name`
+- `description`
+
+### 翻譯處理 (mapped)
+- 加入預設 `compatibility`
+- 加入預設 `metadata.version: 0.1.0-codex`
+
+### 動態注入改寫 (rewrites)
+- 注入 bundled agent resolver（定義缺失即 `AGENT_DEFINITION_MISSING`，禁止臨場杜撰）
+
+### ⚠️ 需人工檢視 (manual review)
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認
+
+### Next-port follow-ups
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 — `refresh-mapping`
+
+## Codex Transfer Report — lab-seal
+
+- 來源: `/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab/skills/lab-seal`
+- 輸出: `/tmp/baransu-lab-export-010-b/plugins/baransu-lab/skills/lab-seal`
+
+### 完整保留 (lossless)
+- `name`
+- `description`
+
+### 翻譯處理 (mapped)
+- 加入預設 `compatibility`
+- 加入預設 `metadata.version: 0.1.0-codex`
+
+### 動態注入改寫 (rewrites)
+- 注入 bundled agent resolver（定義缺失即 `AGENT_DEFINITION_MISSING`，禁止臨場杜撰）
+
+### ⚠️ 需人工檢視 (manual review)
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認
+
+### Next-port follow-ups
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 — `refresh-mapping`
+
+## Codex Transfer Report — lab-think
+
+- 來源: `/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab/skills/lab-think`
+- 輸出: `/tmp/baransu-lab-export-010-b/plugins/baransu-lab/skills/lab-think`
+
+### 完整保留 (lossless)
+- `name`
+- `description`
+
+### 翻譯處理 (mapped)
+- 加入預設 `compatibility`
+- 加入預設 `metadata.version: 0.1.0-codex`
+
+### ⚠️ 需人工檢視 (manual review)
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認
+
+### Next-port follow-ups
+- `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 — `refresh-mapping`
+
+### Verified laboratory adapter
+
+- Source unchanged; script/asset bytes and complete agent resolver verified.
+- Package resources use verified LAB_SKILL_DIR, not a presumed Codex environment variable.
+- Codex interface fields are overlaid from the versioned codex-metadata source.
+
+### Next-port follow-ups
+
+- lab-contract: `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-review: `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-seal: `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 - `refresh-mapping`; verified LAB_SKILL_DIR adapter
+- lab-think: `SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認 - `refresh-mapping`; verified LAB_SKILL_DIR adapter

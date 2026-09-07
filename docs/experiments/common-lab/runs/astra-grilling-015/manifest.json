@@ -1,0 +1,36 @@
+{
+  "run_id": "astra-grilling-015",
+  "kind": "behavioral_tabletop",
+  "cli_version": "codex-cli 0.153.0",
+  "git_head": "765c47a047a26fba691d29a4c73d2025c8ee680d",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "max_concurrent_calls": 2,
+  "revision": "grilling-claim-preservation-v2",
+  "plugin_versions": {
+    "A": null,
+    "B": null
+  },
+  "repeats": 1,
+  "case_source_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/cases.json",
+  "arms": {
+    "A": {
+      "root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills",
+      "prefix": "lab-"
+    },
+    "B": {
+      "root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/candidate/skills",
+      "prefix": "lab-"
+    }
+  },
+  "resource_sha256": {
+    "docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+    "docs/experiments/common-lab/grilling-claim-heldout-015-a/candidate/skills/lab-grilling/SKILL.md": "24d5178d69cf00bcca128230e847e921247cca00976768dd7d238d0a285fd3e2"
+  },
+  "frozen_cases_sha256": "9236bdc07126619c496ec3a9eb290fa403e3c5f1f4e3cd92d864a4c83ed08fab",
+  "case_source_sha256": "f840c85b6eaa7d820147e81f05ea27bc434ef095cbb95a6d4185ff399a73d5f7",
+  "harness_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "runtime_model_resolution": "requested exact ID; no deliberate fallback configured",
+  "isolation": "ephemeral; ignore-user-config; read-only sandbox; execpolicy retained; no network authorized",
+  "limits": "Two independent source-level samples per arm for the known-field case, one per arm for each other case; one model, unblinded semantic review. No human usability, product execution, statistical significance or generated-package validation. Questions and explicitly distinguished alternative tests remain allowed. Only reopening an already explicit goal is the new criterion's failure; genuinely unsettled assistance or input-domain boundaries are not automatically avoidable pauses. Common tabletop wrapper prohibits mutation/goals/delegation/network. Codex plugin_versions are null because these are Claude source snapshots; version evidence is separate. No retrospective regrading of 0.1.3 or 0.1.4."
+}

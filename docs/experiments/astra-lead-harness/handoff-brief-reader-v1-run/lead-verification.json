@@ -1,0 +1,271 @@
+{
+  "raw": [
+    {
+      "label": "R1",
+      "raw_sha256": "11e2c1870f8755e433dd08f95a3ae124e1fcde963e45fc7866f083f691750600",
+      "types": {
+        "thread.started:": 1,
+        "turn.started:": 1,
+        "item.completed:agent_message": 3,
+        "item.started:command_execution": 2,
+        "item.completed:command_execution": 2,
+        "turn.completed:": 1
+      },
+      "completed_item_ids": [
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4"
+      ],
+      "other_errors": [],
+      "stderr": ""
+    },
+    {
+      "label": "R2",
+      "raw_sha256": "fb00b976a0fa59c5afc075eeb976a460948b03ec810cf6918abc9a9599dc9362",
+      "types": {
+        "thread.started:": 1,
+        "turn.started:": 1,
+        "item.completed:agent_message": 3,
+        "item.started:command_execution": 4,
+        "item.completed:command_execution": 4,
+        "turn.completed:": 1
+      },
+      "completed_item_ids": [
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ],
+      "other_errors": [],
+      "stderr": ""
+    },
+    {
+      "label": "R3",
+      "raw_sha256": "bced2dcd71b70af5647c7cdf67a294240e2a5b8c648be08e198152ae3196357c",
+      "types": {
+        "thread.started:": 1,
+        "turn.started:": 1,
+        "item.completed:agent_message": 2,
+        "item.started:command_execution": 5,
+        "item.completed:command_execution": 5,
+        "turn.completed:": 1
+      },
+      "completed_item_ids": [
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ],
+      "other_errors": [],
+      "stderr": ""
+    },
+    {
+      "label": "R4",
+      "raw_sha256": "b72b737c646a3c625a70324466bcd827653d536a1a4d557866657bad12d0d8b7",
+      "types": {
+        "thread.started:": 1,
+        "turn.started:": 1,
+        "item.completed:agent_message": 4,
+        "item.started:command_execution": 3,
+        "item.completed:command_execution": 3,
+        "turn.completed:": 1
+      },
+      "completed_item_ids": [
+        "item_0",
+        "item_1",
+        "item_2",
+        "item_3",
+        "item_4",
+        "item_5",
+        "item_6"
+      ],
+      "other_errors": [],
+      "stderr": ""
+    }
+  ],
+  "input_integrity": [
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R1/state.json",
+      "expected": "31ff05a84c5f48d11a75b85a7b07c8045dea980fc159ba213e5a4e41eed83cef",
+      "actual": "31ff05a84c5f48d11a75b85a7b07c8045dea980fc159ba213e5a4e41eed83cef",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R1/integrity-observation.json",
+      "expected": "f8aafc93d6bd53aaa5d14f5432991b3438631da4ca8809b92aa4ca44dcacc827",
+      "actual": "f8aafc93d6bd53aaa5d14f5432991b3438631da4ca8809b92aa4ca44dcacc827",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R1/observation.json",
+      "expected": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+      "actual": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R2/handoff.md",
+      "expected": "3c27cab164b0be33128c086dc61473e84859ebad22cc105d39c6d8cdd05ee0a1",
+      "actual": "3c27cab164b0be33128c086dc61473e84859ebad22cc105d39c6d8cdd05ee0a1",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R2/state.json",
+      "expected": "5f080825c5efc93bb6e6a47db1b0e203f2d0a7c86e9859ac86f8bd350bba54b0",
+      "actual": "5f080825c5efc93bb6e6a47db1b0e203f2d0a7c86e9859ac86f8bd350bba54b0",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R2/integrity-observation.json",
+      "expected": "c69f71b1988314fa6af64073aa058a57fae8b61f88a315390fbb55953a2704d7",
+      "actual": "c69f71b1988314fa6af64073aa058a57fae8b61f88a315390fbb55953a2704d7",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R2/observation.json",
+      "expected": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+      "actual": "ca5e0a8f2bd79e186067e3152026d84725fd7cb65144aec26e633b44d8d0a70d",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R3/handoff.md",
+      "expected": "9fd22ddfa2282541abb383a2bb12ede1f57b9def1e9fc1313ed3eb4860a981c6",
+      "actual": "9fd22ddfa2282541abb383a2bb12ede1f57b9def1e9fc1313ed3eb4860a981c6",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R3/state.json",
+      "expected": "d62c27c7b36234820558ec65b158d67d900e92ee84ea255fc5f51ad635f86d6e",
+      "actual": "d62c27c7b36234820558ec65b158d67d900e92ee84ea255fc5f51ad635f86d6e",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R3/integrity-observation.json",
+      "expected": "ccdbadec2b0c34c24adcecf596ded69c3378dd6c911e45597245e3a6093666dd",
+      "actual": "ccdbadec2b0c34c24adcecf596ded69c3378dd6c911e45597245e3a6093666dd",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R3/observation.json",
+      "expected": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf",
+      "actual": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R4/state.json",
+      "expected": "1e4b7b3368d218c9343ac870c401c19a290c0dfb429e1608b61ae59d7915d77c",
+      "actual": "1e4b7b3368d218c9343ac870c401c19a290c0dfb429e1608b61ae59d7915d77c",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R4/integrity-observation.json",
+      "expected": "6c28cdd5cdc1ced6ba568ca2e4c51a4714638ca68fd2000c6290e23e7e833290",
+      "actual": "6c28cdd5cdc1ced6ba568ca2e4c51a4714638ca68fd2000c6290e23e7e833290",
+      "matches": true
+    },
+    {
+      "path": "/tmp/campaign-brief-reader-20260906-a/R4/observation.json",
+      "expected": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf",
+      "actual": "2ddb3ff6c8d4f8b8111035a8494441f101c936e2afc438cbee0f8596f7aab4bf",
+      "matches": true
+    }
+  ],
+  "link_checks": [
+    {
+      "label": "R1",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R1/state.json",
+      "exists": true
+    },
+    {
+      "label": "R1",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R1/observation.json",
+      "exists": true
+    },
+    {
+      "label": "R1",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R1/integrity-observation.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/observation.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/state.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/state.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/observation.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/integrity-observation.json",
+      "exists": true
+    },
+    {
+      "label": "R2",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R2/handoff.md",
+      "exists": true
+    },
+    {
+      "label": "R3",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R3/state.json",
+      "exists": true
+    },
+    {
+      "label": "R3",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R3/observation.json",
+      "exists": true
+    },
+    {
+      "label": "R3",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R3/integrity-observation.json",
+      "exists": true
+    },
+    {
+      "label": "R4",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R4/state.json",
+      "exists": true
+    },
+    {
+      "label": "R4",
+      "target": "/tmp/campaign-brief-reader-reader-20260906-a/R4/observation.json",
+      "exists": false
+    },
+    {
+      "label": "R4",
+      "target": "/tmp/campaign-brief-reader-20260906-a/R4/integrity-observation.json",
+      "exists": true
+    },
+    {
+      "label": "R4",
+      "target": "/tmp/campaign-brief-reader-veefeisa/R4/state.json",
+      "exists": false
+    }
+  ],
+  "semantic_reviews": {
+    "R1": "Correct: actual standard outcome, unknown premium, no retry or repeated fee decision.",
+    "R2": "Correct: same distinctions; reads original state plus all support despite having a brief.",
+    "R3": "Correct: source-lint-only receipt cannot establish deployed/query goal, notwithstanding state complete.",
+    "R4": "Semantic distinction correct, but two nonexistent final citation paths reduce handoff quality."
+  },
+  "actual_human_understanding": null,
+  "actual_invoice_usd": null,
+  "limits": "Main-reader review of four model proxies. Read-only command scope checked against allowed files; not a human usability study or automated semantic oracle."
+}

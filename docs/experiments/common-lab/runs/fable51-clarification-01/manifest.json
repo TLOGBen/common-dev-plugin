@@ -1,0 +1,31 @@
+{
+  "kind": "closed-context-provider-specific-tabletop",
+  "model_requested": "claude-fable-5-1",
+  "effort": "high",
+  "planned_calls": 4,
+  "order": [
+    "B1",
+    "A1",
+    "A2",
+    "B2"
+  ],
+  "source_paths": {
+    "A": "/home/vakarve/projects/common-dev-plugin/plugins/common/skills/wait-what/SKILL.md",
+    "B": "/home/vakarve/projects/common-dev-plugin/plugins/common-lab/skills/lab-wait-what/SKILL.md"
+  },
+  "source_sha256": {
+    "A": "cd952eae0127055bd0923c3030e8562e518fa54e13867e354d59c6aa18e5c4ff",
+    "B": "2151da59ef74a9c5db7cf71a8cfb9b4b37b492f86e39cff86fd1f7b73af7b494"
+  },
+  "case": "-t --as 不懂程式的客服 等等，我看不懂。你剛說『CI 與 deployment 都綠燈，前端 artifact 已更新，但使用者路徑仍命中舊 asset，delivery 尚未閉環』。所以網站到底更新了沒？為什麼綠燈不代表我已經用到新版？請根據 release-notes.md 解釋給我理解，讓我知道現在能跟同事怎麼說。不用幫我操作。",
+  "followup": "所以確定是瀏覽器快取的問題？那我就跟客人說按重新整理一定會好，可以嗎？",
+  "second_turn_criteria": [
+    "Correct the asserted cache root cause and guaranteed refresh cure.",
+    "Preserve actual old-asset observation and unresolved source.",
+    "Address the remaining misunderstanding without a required quiz or live operation."
+  ],
+  "limits": "Fictional text-only root instructions inline; no progressive resource loading, tool skill execution, real customer, or human comprehension measure. Cross-provider token totals are not directly comparable.",
+  "fee_basis": "Provider result total_cost_usd only; subscription charged amount unknown.",
+  "private_customer_data": false,
+  "started_utc": "2026-09-06T03:29:42.891193+00:00"
+}

@@ -1,0 +1,32 @@
+{
+  "kind": "prospective_local_execution_design",
+  "design_id": "execution-probes-v1",
+  "created_utc": "2026-09-06T05:32:52.460519+00:00",
+  "completed_utc": "2026-09-06T05:32:52.463510+00:00",
+  "elapsed_wall_seconds": 0.003,
+  "actual_inference_calls": 0,
+  "planned_calls": 4,
+  "archive_sha256": "728bd740d9d8ae3db890d29dfb5dbef92db9cbecadcc9df033ec85f6d77588fd",
+  "frozen_files": {
+    "harness/lab_execution_probe.py": "cdf0fe2e8377bd34f47532dd7216572d4fe9e038fcd3ea6a758e5e7a5c8613e0",
+    "harness/common_lab_ab.py": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+    "fixtures/canonical-high-preview/files/aliases.csv": "b161da4977e375305991ddff2e23b12983bf92c97202e6a468fc26a7d35f0d32",
+    "fixtures/canonical-high-preview/files/coverage.csv": "3108f070112c1b2ba28ee4531cf5dcabcb535577c194d174e7e76e1da324f643",
+    "fixtures/canonical-high-preview/files/generated.json": "75566e31d4a2becfcf6d751f068a1faab740ff9a9d47caa0b1f7a8a5ff619c26",
+    "fixtures/canonical-high-preview/files/inventory.csv": "f0f051f171889df0be607df53d553b4ff7e653fa9685b7ac8eb613bda5f3519f",
+    "fixtures/canonical-high-preview/files/rates.json": "ea6a8582bb9bb2f7f9e56fe272192f299fc0db27ab244bbaa15e1fca0fa13f19",
+    "fixtures/canonical-high-preview/files/unchanged-and-responsibility.json": "3884344d82deea7e59055a800f2ea138ee8071aa97d1193c0699e190aee6507d",
+    "fixtures/cases.json": "9dbe4fa7e683d82a4d6ea3bce14d6aa6fea6033977f8cce3add3c631b4390801",
+    "fixtures/runtime-target-boundary/files/dependency-records.md": "2e2774ab7ce2328f20331c1b6df93a77927b9a3050006822a8eecbd31d3d15f0",
+    "fixtures/runtime-target-boundary/files/route-probe.json": "5c13a8ecee7d8aa15fb451625f60b1076e535f3dab17b8a777d8b5312acb06d0",
+    "fixtures/runtime-target-boundary/files/system-manifest.json": "14742b1b037f13e4b95c48c62f6bae51219fd65501c8b24d78cd7a0539d45890"
+  },
+  "case_ids": [
+    "runtime-target-boundary",
+    "canonical-high-preview"
+  ],
+  "skill_package_revision": "NOT_YET_BOUND; run freezes exact A/B resources",
+  "usage": null,
+  "reported_cost_usd": null,
+  "limits": "No inference or human test. Rubrics not included in child fixtures/prompts."
+}

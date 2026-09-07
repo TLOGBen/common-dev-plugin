@@ -1,0 +1,114 @@
+{
+  "summary_sha256": "42fdc1a09ac74a44097e7018d3c410ced6b184b830b343c54dc730c1c728969d",
+  "results": [
+    {
+      "arm": "B",
+      "fixture": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo",
+      "frozen_hashes_verified": true,
+      "csv_structure_and_numbers": "PASS",
+      "handoff_links": [
+        {
+          "target": "estimate-external.csv",
+          "exists": true
+        },
+        {
+          "target": "assessment-report.md",
+          "exists": true
+        },
+        {
+          "target": "handoff.md",
+          "exists": true
+        }
+      ],
+      "markdown_pipe_groups": [
+        {
+          "line": 9,
+          "rows_including_header": 7,
+          "header": "| 證據 | 核對結果 | 計價角色與邊界 |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 23,
+          "rows_including_header": 7,
+          "header": "| CSV 序號／成果包 | 工作 ID／樣態 | 計價數量 | 每單位開發／測試 | 高值開發／測試 | 合計 |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 51,
+          "rows_including_header": 89,
+          "header": "| canonical ID | 附件來源路徑 | 分類／例外 | 別名（新增數量 0） |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 145,
+          "rows_including_header": 15,
+          "header": "| coverage ID | 唯一計價歸屬 |",
+          "rendered_as_table": true
+        }
+      ],
+      "rendered_table_count": 4,
+      "unrendered_pipe_group_count": 0,
+      "render_basis": "markdown-it-py CommonMark with table extension; no browser/pixel or human check",
+      "semantic_quality": "LEAD_REVIEW_REQUIRED; parser does not grade the estimates"
+    },
+    {
+      "arm": "A",
+      "fixture": "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei",
+      "frozen_hashes_verified": true,
+      "csv_structure_and_numbers": "PASS",
+      "handoff_links": [
+        {
+          "target": "estimate-external.csv",
+          "exists": true
+        },
+        {
+          "target": "assessment-report.md",
+          "exists": true
+        }
+      ],
+      "markdown_pipe_groups": [
+        {
+          "line": 9,
+          "rows_including_header": 8,
+          "header": "| 集合／證據 | 核對數量 | 工作分類與歸屬 | 真正計價乘數 |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 26,
+          "rows_including_header": 7,
+          "header": "| CSV 序號／工作 ID | 乘數 | 開發單位高值 | 測試單位高值 | 開發公式 | 測試公式 | 合計 |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 68,
+          "rows_including_header": 4,
+          "header": "| canonical ID | 正式來源路徑 | 別名路徑（不新增單位） | 例外 | 開發增量 | 測試增量 |",
+          "rendered_as_table": false
+        },
+        {
+          "line": 83,
+          "rows_including_header": 14,
+          "header": "| coverage ID | 唯一承接工作 |",
+          "rendered_as_table": false
+        },
+        {
+          "line": 100,
+          "rows_including_header": 4,
+          "header": "| 項目 | 本次新增人天 | 責任與邊界 |",
+          "rendered_as_table": true
+        },
+        {
+          "line": 127,
+          "rows_including_header": 88,
+          "header": "| canonical ID | 附件宣告的來源路徑 | 類型 | 共同批次 | 例外增量 |",
+          "rendered_as_table": false
+        }
+      ],
+      "rendered_table_count": 3,
+      "unrendered_pipe_group_count": 3,
+      "render_basis": "markdown-it-py CommonMark with table extension; no browser/pixel or human check",
+      "semantic_quality": "LEAD_REVIEW_REQUIRED; parser does not grade the estimates"
+    }
+  ],
+  "input_mutations": false
+}

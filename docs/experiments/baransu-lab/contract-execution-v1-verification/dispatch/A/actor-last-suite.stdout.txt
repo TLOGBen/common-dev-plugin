@@ -1,0 +1,21 @@
+TAP version 13
+# Subtest: tests/normalize-tag.test.mjs
+ok 1 - tests/normalize-tag.test.mjs
+  ---
+  duration_ms: 39.59449
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 45.234954
+--- final allowed paths ---
+./acceptance.md
+./handoff.md
+./src/normalize-tag.mjs
+./tests/normalize-tag.test.mjs

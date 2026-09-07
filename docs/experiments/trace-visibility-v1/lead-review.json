@@ -1,0 +1,537 @@
+{
+  "reviewed_utc": "2026-09-06T12:52:22.764Z",
+  "observations": [
+    {
+      "label": "T1",
+      "model": "gpt-6-astra",
+      "status": "completed",
+      "seconds": 41.1722002250026,
+      "usage": {
+        "input_tokens": 124584,
+        "cached_input_tokens": 105216,
+        "output_tokens": 613,
+        "uncached_input_tokens": 19368,
+        "total_tokens": 125197
+      },
+      "input_unchanged": true,
+      "completed_commands": 6,
+      "empty_output_commands": [],
+      "reads": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        }
+      ],
+      "commands": [
+        {
+          "id": "item_1",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_2",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_3",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_4",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_5",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_6",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt'",
+          "exit": 0,
+          "chars": 2802
+        }
+      ]
+    },
+    {
+      "label": "T2",
+      "model": "gpt-6-astra",
+      "status": "completed",
+      "seconds": 26.56601467198925,
+      "usage": {
+        "input_tokens": 35546,
+        "cached_input_tokens": 26880,
+        "output_tokens": 499,
+        "uncached_input_tokens": 8666,
+        "total_tokens": 36045
+      },
+      "input_unchanged": true,
+      "completed_commands": 6,
+      "empty_output_commands": [],
+      "reads": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        }
+      ],
+      "commands": [
+        {
+          "id": "item_1",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_2",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_3",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_4",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_5",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_6",
+          "cmd": "/usr/bin/zsh -c 'cat /tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt'",
+          "exit": 0,
+          "chars": 2802
+        }
+      ]
+    },
+    {
+      "label": "T3",
+      "model": "gpt-5.6-sol",
+      "status": "completed",
+      "seconds": 19.197992755041923,
+      "usage": {
+        "input_tokens": 33638,
+        "cached_input_tokens": 25088,
+        "output_tokens": 573,
+        "uncached_input_tokens": 8550,
+        "total_tokens": 34211
+      },
+      "input_unchanged": true,
+      "completed_commands": 6,
+      "empty_output_commands": [],
+      "reads": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        }
+      ],
+      "commands": [
+        {
+          "id": "item_1",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_2",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_4",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_3",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_6",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_5",
+          "cmd": "/usr/bin/zsh -c 'cat \"/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt\"'",
+          "exit": 0,
+          "chars": 2802
+        }
+      ]
+    },
+    {
+      "label": "T4",
+      "model": "gpt-5.6-sol",
+      "status": "completed",
+      "seconds": 36.43301636597607,
+      "usage": {
+        "input_tokens": 118234,
+        "cached_input_tokens": 108800,
+        "output_tokens": 786,
+        "uncached_input_tokens": 9434,
+        "total_tokens": 119020
+      },
+      "input_unchanged": true,
+      "completed_commands": 6,
+      "empty_output_commands": [],
+      "reads": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-1.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-2.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-3.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-4.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-5.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-6.txt",
+          "final_has_marker": true,
+          "tool_output_has_marker": true,
+          "command_contains_marker": false
+        }
+      ],
+      "commands": [
+        {
+          "id": "item_1",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-1.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_2",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-2.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_3",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-3.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_4",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-4.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_5",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-5.txt'",
+          "exit": 0,
+          "chars": 2802
+        },
+        {
+          "id": "item_6",
+          "cmd": "/usr/bin/zsh -lc 'cat /tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-6.txt'",
+          "exit": 0,
+          "chars": 2802
+        }
+      ]
+    }
+  ],
+  "mechanical_mapping_checks": [
+    {
+      "label": "T1",
+      "exact_final_mapping_correct": true,
+      "checks": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        }
+      ],
+      "peak_active_commands": 1,
+      "no_open_command_at_end": true
+    },
+    {
+      "label": "T2",
+      "exact_final_mapping_correct": true,
+      "checks": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        }
+      ],
+      "peak_active_commands": 1,
+      "no_open_command_at_end": true
+    },
+    {
+      "label": "T3",
+      "exact_final_mapping_correct": true,
+      "checks": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        }
+      ],
+      "peak_active_commands": 2,
+      "no_open_command_at_end": true
+    },
+    {
+      "label": "T4",
+      "exact_final_mapping_correct": true,
+      "checks": [
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-1.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-2.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-3.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-4.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-5.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        },
+        {
+          "path": "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-6.txt",
+          "marker_correct": true,
+          "input_unchanged": true
+        }
+      ],
+      "peak_active_commands": 1,
+      "no_open_command_at_end": true
+    }
+  ],
+  "actual_calls": 4,
+  "known_calls": 4,
+  "known_tokens": 314473,
+  "captured_output_loss_reproduced": false,
+  "limits": [
+    "Only cat file-read events tested; not the previous unittest or Python import/probe output path.",
+    "No loss in this small control neither repairs historical evidence nor proves why previous captured outputs were empty.",
+    "No target skill, fixed benchmark, rubric, or vote was changed."
+  ],
+  "actual_cost_usd": null
+}

@@ -1,0 +1,42 @@
+{
+  "checked_utc": "2026-09-06T16:49:41.199Z",
+  "state_revision": 19,
+  "scope": "INCOMPLETE: only four outer evidence documents visited due a REPL closure-binding error. Superseded by criterion-freshness-20260907-0100b.json, which passes the result array explicitly and asserts nested coverage.",
+  "checked": 4,
+  "status": "SUPERSEDED_INCOMPLETE_CHECK",
+  "rows": [
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "expected": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "origin": "C7",
+      "actual": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "match": true
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/common-evidence-closure-20260906-2040.json",
+      "expected": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "origin": "C3",
+      "actual": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "match": true
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/closure-011-20260907.json",
+      "expected": "805a20f6dbf955e305f36e338dddb7382c562de4133fbc8496d28b9c705c0d8a",
+      "origin": "C4",
+      "actual": "805a20f6dbf955e305f36e338dddb7382c562de4133fbc8496d28b9c705c0d8a",
+      "match": true
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/criterion-C8-closure-20260907.json",
+      "expected": "9db7caf4bcd83b238142c50b60a09d1668797b66b20f9c5129f39c98b274adcf",
+      "origin": "C8",
+      "actual": "9db7caf4bcd83b238142c50b60a09d1668797b66b20f9c5129f39c98b274adcf",
+      "match": true
+    }
+  ],
+  "limits": [
+    "C6 remains unmet until deadline handoff.",
+    "Old C8 subsection remains historical; current C8 uses its frozen re-reviewed closure.",
+    "Bytes do not prove semantic truth; evidence was separately read and scoped."
+  ]
+}

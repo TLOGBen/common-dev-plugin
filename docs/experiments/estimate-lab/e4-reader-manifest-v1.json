@@ -1,0 +1,103 @@
+{
+  "design": "estimate-e4-v1",
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "human_tested": false,
+  "limits": "Eight artificial reader calls: four calibration packets plus two real E2 CSV-only and two real E2 handoff packets. No actual human or production acceptance. Truth never included in actor prompt.",
+  "rows": [
+    {
+      "label": "reader-1",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-p/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "sufficient_approved"
+    },
+    {
+      "label": "reader-2",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-q/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "pending"
+    },
+    {
+      "label": "reader-3",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-r/estimate-external.csv"
+      ],
+      "private_truth": "missing_csv"
+    },
+    {
+      "label": "reader-4",
+      "entry": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/handoff.md",
+      "files": [
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/handoff.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/estimate-external.csv",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/assessment-report.md",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/e4-reader-controls-v1/bundle-s/synthetic-decision-record.json"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "expected_missing": [],
+      "private_truth": "vague"
+    },
+    {
+      "label": "reader-5",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv"
+      ],
+      "task": "只讀這份真正對外五欄表格。逐列用自己的話說明範圍、主要動作、白話費用驅動及完成條件，指出哪一項無法由表格得知，附短引用。不要讀內部報告或預期答案。另區分『表格能說明工作』和『已有人核准、已實作或已驗收』；表格沒寫的狀態就說未知。",
+      "private_truth": "actual_B_csv_only"
+    },
+    {
+      "label": "reader-6",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md",
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv",
+        "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/assessment-report.md"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "private_truth": "actual_B_preview_packet"
+    },
+    {
+      "label": "reader-7",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv"
+      ],
+      "task": "只讀這份真正對外五欄表格。逐列用自己的話說明範圍、主要動作、白話費用驅動及完成條件，指出哪一項無法由表格得知，附短引用。不要讀內部報告或預期答案。另區分『表格能說明工作』和『已有人核准、已實作或已驗收』；表格沒寫的狀態就說未知。",
+      "private_truth": "actual_A_csv_only"
+    },
+    {
+      "label": "reader-8",
+      "entry": "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/handoff.md",
+      "files": [
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/handoff.md",
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/estimate-external.csv",
+        "/tmp/common-lab-exec-canonical-high-preview-e1v4r7ei/preview/assessment-report.md"
+      ],
+      "task": "從指定入口實際開檔，判斷這份『人天經核准、可供客戶說明的技術評估交付』完成到哪裡，還缺什麼。分開說檔案可用性、說明是否充分、核准狀態。區分文件、系統實作與真人理解；說明成果、必要工作、方法及驗收的可見支持，缺少的就指出，不能補答案。列出實際讀過及未能讀取的檔案。",
+      "private_truth": "actual_A_preview_packet"
+    }
+  ]
+}

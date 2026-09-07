@@ -1,0 +1,901 @@
+{
+  "created_utc": "2026-09-06T03:40:06.224631+00:00",
+  "scope": "Only 12 bounded Sol/Luna Common tabletop calls plus a separately excluded Claude carrier denial. Not an all-workspace spending ledger. Existing runs/raw/zips unchanged.",
+  "previous_astra_batches": {
+    "index": "docs/experiments/common-lab/runs/measurement-index-astra-first-batches/index.json",
+    "sha256": "6105e805c30f8cfee862f0a25bf550036d5d0a14f481a104355d2a6cb0644c76",
+    "actual_cli_usage": {
+      "calls": 61,
+      "input_tokens": 3600316,
+      "cached_input_tokens": 2951040,
+      "output_tokens": 43894,
+      "total_tokens": 3644210,
+      "usage_unknown_calls": 0
+    }
+  },
+  "new_successful_codex_calls": 12,
+  "new_actual_cli_usage": {
+    "input_tokens": 1086788,
+    "cached_input_tokens": 896128,
+    "uncached_input_tokens": 190660,
+    "output_tokens": 21052,
+    "total_tokens": 1107840
+  },
+  "named_codex_batches_cumulative": {
+    "calls": 73,
+    "input_tokens": 4687104,
+    "cached_input_tokens": 3847168,
+    "output_tokens": 64946,
+    "total_tokens": 4752050
+  },
+  "cost": {
+    "reported_codex_cost_usd": null,
+    "public_price_estimate_usd": null,
+    "reason": "Codex did not return monetary receipts. A zero-cost failed Claude API-equivalent attempt does not make Codex or subscriptions free."
+  },
+  "runs": [
+    {
+      "run_id": "sol-cross-011",
+      "kind": "behavioral_tabletop",
+      "model": "gpt-5.6-sol",
+      "revision": "common-lab-0.1.1-cross-sol",
+      "started_utc": "2026-09-06T03:29:10.293074+00:00",
+      "ended_utc": "2026-09-06T03:33:44.110202+00:00",
+      "elapsed_wall_seconds": 273.81,
+      "totals_by_arm": {
+        "A": {
+          "calls": 3,
+          "completed": 3,
+          "usage_known_calls": 3,
+          "usage_unknown_calls": 0,
+          "wall_seconds_sum": 149.149,
+          "known_usage": {
+            "input_tokens": 301814,
+            "cached_input_tokens": 253824,
+            "uncached_input_tokens": 47990,
+            "output_tokens": 4147,
+            "total_tokens": 305961
+          }
+        },
+        "B": {
+          "calls": 3,
+          "completed": 3,
+          "usage_known_calls": 3,
+          "usage_unknown_calls": 0,
+          "wall_seconds_sum": 124.646,
+          "known_usage": {
+            "input_tokens": 170730,
+            "cached_input_tokens": 144384,
+            "uncached_input_tokens": 26346,
+            "output_tokens": 4258,
+            "total_tokens": 174988
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "prototype-late-success",
+          "arm": "A",
+          "repeat": 1,
+          "response_calls": 1,
+          "actual_cli_usage": {
+            "input_tokens": 65101,
+            "cached_input_tokens": 52864,
+            "uncached_input_tokens": 12237,
+            "output_tokens": 1494,
+            "total_tokens": 66595
+          },
+          "wall_seconds_sum": 42.406,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "prototype-late-success",
+              "arm": "A",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Distinguishes external charge before notification arrival from a command that could be rejected.",
+                "Sequence open / externally charged / cancel / late success ends with cancelled while charged; rejecting the notification loses the fact.",
+                "Keeps paid/refund/manual policy with product and makes preserved charge fact the observation.",
+                "Proposes a paper/single-page trajectory, not a production platform."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [
+                  "Remedy choice remains with product for a later implementation; it does not block this requested experiment design."
+                ],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Timeline and table repeat the sequence; no real reader measurement.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Question + numbered causal sequence + observation table + next step",
+                "recoverable": [
+                  "Why rejection cannot undo a charge",
+                  "Minimal counterexample",
+                  "Observable contradiction",
+                  "Product still owns remedy"
+                ],
+                "deferred": [
+                  "Choice/implementation of refund, reactivation or manual handling"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/sol-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [
+              "Remedy choice remains with product for a later implementation; it does not block this requested experiment design."
+            ],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Timeline and table repeat the sequence; no real reader measurement.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Question + numbered causal sequence + observation table + next step",
+            "recoverable": [
+              "Why rejection cannot undo a charge",
+              "Minimal counterexample",
+              "Observable contradiction",
+              "Product still owns remedy"
+            ],
+            "deferred": [
+              "Choice/implementation of refund, reactivation or manual handling"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/sol-cross-011/prototype-late-success.A.turn-1.result.json"
+          ]
+        },
+        {
+          "case_id": "prototype-late-success",
+          "arm": "B",
+          "repeat": 1,
+          "response_calls": 1,
+          "actual_cli_usage": {
+            "input_tokens": 61307,
+            "cached_input_tokens": 51840,
+            "uncached_input_tokens": 9467,
+            "output_tokens": 1841,
+            "total_tokens": 63148
+          },
+          "wall_seconds_sum": 52.17,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "prototype-late-success",
+              "arm": "B",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Says the successful charge is an external side effect already completed.",
+                "Table ends cancelled despite charge; notification rejection cannot reverse the charge.",
+                "Labels the unresolved treatment as an experiment observation, not a new state, with all product remedies unchosen.",
+                "One event sequence and observation fields suffice; no implementation/platform."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [
+                  "Product remedy is explicitly deferred, not a gate on delivering the requested design."
+                ],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "One table and observation list; length alone is not a quality score.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Event table + causal conclusion + observation fields + product handoff",
+                "recoverable": [
+                  "Charged-and-cancelled mismatch",
+                  "Rejection does not reverse charge",
+                  "Fields to observe",
+                  "No product policy chosen"
+                ],
+                "deferred": [
+                  "Actual execution and product remedy"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/sol-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [
+              "Product remedy is explicitly deferred, not a gate on delivering the requested design."
+            ],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "One table and observation list; length alone is not a quality score.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Event table + causal conclusion + observation fields + product handoff",
+            "recoverable": [
+              "Charged-and-cancelled mismatch",
+              "Rejection does not reverse charge",
+              "Fields to observe",
+              "No product policy chosen"
+            ],
+            "deferred": [
+              "Actual execution and product remedy"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/sol-cross-011/prototype-late-success.B.turn-1.result.json"
+          ]
+        },
+        {
+          "case_id": "strategic-partial-proof",
+          "arm": "A",
+          "repeat": 1,
+          "response_calls": 2,
+          "actual_cli_usage": {
+            "input_tokens": 236713,
+            "cached_input_tokens": 200960,
+            "uncached_input_tokens": 35753,
+            "output_tokens": 2653,
+            "total_tokens": 239366
+          },
+          "wall_seconds_sum": 106.743,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "strategic-partial-proof",
+              "arm": "A",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Turn 1 separates Accepted from UI timeout and treats thumbnail as observation degradation; no resend.",
+                "Turn 2 explicitly marks received and readable evidence PASS, single-send UNKNOWN, overall in progress.",
+                "Proposes a bounded complete-set count with immutable delivery/provider event identifiers under existing authority.",
+                "Remaining mainline is uniqueness, not generic archival or thumbnail repair; branches handle 1, >1 and unknown."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Status ledger and count branches expose actual remaining work; PASS/UNKNOWN and observer terminology assume some technical familiarity.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Three-condition status ledger + missing evidence + next read-only action + result branches",
+                "recoverable": [
+                  "2/3 evidence conditions satisfied",
+                  "Only-one condition unproven",
+                  "No resending",
+                  "Authorized exact next check"
+                ],
+                "deferred": [
+                  "Actual query, count and real completion"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/sol-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Status ledger and count branches expose actual remaining work; PASS/UNKNOWN and observer terminology assume some technical familiarity.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Three-condition status ledger + missing evidence + next read-only action + result branches",
+            "recoverable": [
+              "2/3 evidence conditions satisfied",
+              "Only-one condition unproven",
+              "No resending",
+              "Authorized exact next check"
+            ],
+            "deferred": [
+              "Actual query, count and real completion"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/sol-cross-011/strategic-partial-proof.A.turn-1.result.json",
+            "docs/experiments/common-lab/runs/sol-cross-011/strategic-partial-proof.A.turn-2.result.json"
+          ]
+        },
+        {
+          "case_id": "strategic-partial-proof",
+          "arm": "B",
+          "repeat": 1,
+          "response_calls": 2,
+          "actual_cli_usage": {
+            "input_tokens": 109423,
+            "cached_input_tokens": 92544,
+            "uncached_input_tokens": 16879,
+            "output_tokens": 2417,
+            "total_tokens": 111840
+          },
+          "wall_seconds_sum": 72.476,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "strategic-partial-proof",
+              "arm": "B",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Turn 1 says Accepted does not prove delivery or uniqueness and forbids another send.",
+                "Turn 2 preserves 2/3 supported, first row not exhaustive, overall incomplete.",
+                "Requests complete pages or equivalent total and distinguishes attempt total from unique send count; does not ask again.",
+                "Explicitly avoids thumbnail work; result branches preserve unknown or violated status."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Clear 2/3 ledger; key semantics for dedup remain untested, not a reader-friendly guarantee of correctness.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Completion ledger + exhaustive reconciliation + re-evaluation branches",
+                "recoverable": [
+                  "Delivered and E-7 are supported",
+                  "Uniqueness still missing",
+                  "No resend or thumbnail repair",
+                  "Next step remains within authority"
+                ],
+                "deferred": [
+                  "Real query and validation of dedup identity semantics"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/sol-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Clear 2/3 ledger; key semantics for dedup remain untested, not a reader-friendly guarantee of correctness.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Completion ledger + exhaustive reconciliation + re-evaluation branches",
+            "recoverable": [
+              "Delivered and E-7 are supported",
+              "Uniqueness still missing",
+              "No resend or thumbnail repair",
+              "Next step remains within authority"
+            ],
+            "deferred": [
+              "Real query and validation of dedup identity semantics"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/sol-cross-011/strategic-partial-proof.B.turn-1.result.json",
+            "docs/experiments/common-lab/runs/sol-cross-011/strategic-partial-proof.B.turn-2.result.json"
+          ]
+        }
+      ],
+      "source_summary": "docs/experiments/common-lab/runs/sol-cross-011/summary.json",
+      "source_summary_sha256": "1840e3087ab4d96d78e6b804989faa68665a59a6e68c2f95cad329f6567e7d3f",
+      "cost_usd": null
+    },
+    {
+      "run_id": "luna-cross-011",
+      "kind": "behavioral_tabletop",
+      "model": "gpt-5.6-luna",
+      "revision": "common-lab-0.1.1-cross-luna",
+      "started_utc": "2026-09-06T03:29:09.604928+00:00",
+      "ended_utc": "2026-09-06T03:35:24.984502+00:00",
+      "elapsed_wall_seconds": 375.37,
+      "totals_by_arm": {
+        "A": {
+          "calls": 3,
+          "completed": 3,
+          "usage_known_calls": 3,
+          "usage_unknown_calls": 0,
+          "wall_seconds_sum": 242.776,
+          "known_usage": {
+            "input_tokens": 448594,
+            "cached_input_tokens": 364544,
+            "uncached_input_tokens": 84050,
+            "output_tokens": 8344,
+            "total_tokens": 456938
+          }
+        },
+        "B": {
+          "calls": 3,
+          "completed": 3,
+          "usage_known_calls": 3,
+          "usage_unknown_calls": 0,
+          "wall_seconds_sum": 132.579,
+          "known_usage": {
+            "input_tokens": 165650,
+            "cached_input_tokens": 133376,
+            "uncached_input_tokens": 32274,
+            "output_tokens": 4303,
+            "total_tokens": 169953
+          }
+        }
+      },
+      "cases": [
+        {
+          "case_id": "prototype-late-success",
+          "arm": "A",
+          "repeat": 1,
+          "response_calls": 1,
+          "actual_cli_usage": {
+            "input_tokens": 92202,
+            "cached_input_tokens": 81408,
+            "uncached_input_tokens": 10794,
+            "output_tokens": 2548,
+            "total_tokens": 94750
+          },
+          "wall_seconds_sum": 60.592,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "prototype-late-success",
+              "arm": "A",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "States the charge has already succeeded before notification arrival.",
+                "Four-step trace reaches cancelled while externally charged, so discarding notification loses a completed payment fact.",
+                "Keeps restoration/refund/manual remedy undecided; observes preserved payment fact and unresolved treatment signal.",
+                "One order and two events, only a proposed manual exercise."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [
+                  "Product remedy deferred; no response requested before giving the design."
+                ],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Short sequence plus three observations. Real novice understanding and reading time unmeasured.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Causal event sequence + contradiction + three observations + next exercise",
+                "recoverable": [
+                  "Already charged is a fact",
+                  "Cancellation before notification does not erase it",
+                  "Minimal observation",
+                  "Remedy undecided"
+                ],
+                "deferred": [
+                  "Real implementation and remedy policy"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/luna-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [
+              "Product remedy deferred; no response requested before giving the design."
+            ],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Short sequence plus three observations. Real novice understanding and reading time unmeasured.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Causal event sequence + contradiction + three observations + next exercise",
+            "recoverable": [
+              "Already charged is a fact",
+              "Cancellation before notification does not erase it",
+              "Minimal observation",
+              "Remedy undecided"
+            ],
+            "deferred": [
+              "Real implementation and remedy policy"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/luna-cross-011/prototype-late-success.A.turn-1.result.json"
+          ]
+        },
+        {
+          "case_id": "prototype-late-success",
+          "arm": "B",
+          "repeat": 1,
+          "response_calls": 1,
+          "actual_cli_usage": {
+            "input_tokens": 56009,
+            "cached_input_tokens": 49152,
+            "uncached_input_tokens": 6857,
+            "output_tokens": 1483,
+            "total_tokens": 57492
+          },
+          "wall_seconds_sum": 50.941,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "prototype-late-success",
+              "arm": "B",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Explicitly says charge C1 already occurred and cannot be reversed by rejecting the notification.",
+                "Code-style trace reaches cancelled / charged / unprocessed event, exposing lost reconciliation evidence.",
+                "Preserves charge/event context and leaves all remedies with product.",
+                "Two-event exercise with no new platform or actual run."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [
+                  "Remedy choice remains product-owned without blocking experiment design."
+                ],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Code-style text shows state mismatch; trace is explanatory, not proof of executed test.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Text trace blocks + causal conclusion + evidence observation list",
+                "recoverable": [
+                  "Counterexample order",
+                  "Charge does not disappear",
+                  "Event identifiers to observe",
+                  "Product choice not made"
+                ],
+                "deferred": [
+                  "Actual test and response to the charge"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/luna-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [
+              "Remedy choice remains product-owned without blocking experiment design."
+            ],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Code-style text shows state mismatch; trace is explanatory, not proof of executed test.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Text trace blocks + causal conclusion + evidence observation list",
+            "recoverable": [
+              "Counterexample order",
+              "Charge does not disappear",
+              "Event identifiers to observe",
+              "Product choice not made"
+            ],
+            "deferred": [
+              "Actual test and response to the charge"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/luna-cross-011/prototype-late-success.B.turn-1.result.json"
+          ]
+        },
+        {
+          "case_id": "strategic-partial-proof",
+          "arm": "A",
+          "repeat": 1,
+          "response_calls": 2,
+          "actual_cli_usage": {
+            "input_tokens": 356392,
+            "cached_input_tokens": 283136,
+            "uncached_input_tokens": 73256,
+            "output_tokens": 5796,
+            "total_tokens": 362188
+          },
+          "wall_seconds_sum": 182.184,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "strategic-partial-proof",
+              "arm": "A",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Turn 1 rejects resend and thumbnail rewrite; Accepted does not prove delivery or count.",
+                "Turn 2 identifies 2/3 proven with single-send UNKNOWN and overall IN_PROGRESS.",
+                "Proposes complete send/attempt records, total and unique-send identifiers within MAIL-7.",
+                "E-7 makes thumbnail nonblocking; no overall-complete or archival-only claim."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Explicit three-condition ledger and next check. No real human interaction measurement.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Three-condition progress ledger + nonblocking maintenance note + next check",
+                "recoverable": [
+                  "2/3 proven",
+                  "Remaining uniqueness evidence",
+                  "No resending or thumbnail repair",
+                  "Read-only continuation"
+                ],
+                "deferred": [
+                  "Actual count and business completion"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/luna-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Explicit three-condition ledger and next check. No real human interaction measurement.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Three-condition progress ledger + nonblocking maintenance note + next check",
+            "recoverable": [
+              "2/3 proven",
+              "Remaining uniqueness evidence",
+              "No resending or thumbnail repair",
+              "Read-only continuation"
+            ],
+            "deferred": [
+              "Actual count and business completion"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/luna-cross-011/strategic-partial-proof.A.turn-1.result.json",
+            "docs/experiments/common-lab/runs/luna-cross-011/strategic-partial-proof.A.turn-2.result.json"
+          ]
+        },
+        {
+          "case_id": "strategic-partial-proof",
+          "arm": "B",
+          "repeat": 1,
+          "response_calls": 2,
+          "actual_cli_usage": {
+            "input_tokens": 109641,
+            "cached_input_tokens": 84224,
+            "uncached_input_tokens": 25417,
+            "output_tokens": 2820,
+            "total_tokens": 112461
+          },
+          "wall_seconds_sum": 81.638,
+          "reported_cost_usd": null,
+          "public_price_estimate_usd": null,
+          "task_completion": {
+            "responses_returned": true,
+            "tabletop_acceptance": "PASS_FROZEN_CASE",
+            "actual_business_task_completed": null,
+            "business_execution_status": "NOT_RUN_IN_THIS_TABLETOP"
+          },
+          "quality": {
+            "manual_observation": {
+              "case_id": "strategic-partial-proof",
+              "arm": "B",
+              "scores": [
+                2,
+                2,
+                2,
+                2
+              ],
+              "evidence": [
+                "Turn 1 separates Accepted, timeout and broken observer; no resend.",
+                "Turn 2 marks received/readable proven, only-one unproven and overall incomplete.",
+                "Requests complete matches, total and unique dispatch identification, not first row alone.",
+                "Thumbnail remains parked; only complete unique dispatch proof could close the final condition."
+              ],
+              "guards": "pass",
+              "friction": {
+                "current_blocking_questions": 0,
+                "necessary_human_value": [],
+                "necessary_authority": [],
+                "duplicate_approval": [],
+                "comprehension_note": "Untranslated reconciliation/dispatch/bounded move may add novice burden. This technical fixture does not establish a comprehension failure.",
+                "environment": []
+              },
+              "presentation": {
+                "type": "Condition ledger + concise scoped next action",
+                "recoverable": [
+                  "Received and E-7 completed",
+                  "Only-one still unproved",
+                  "Complete-record check needed",
+                  "No resend or thumbnail work"
+                ],
+                "deferred": [
+                  "Actual query and authoritative interpretation of records"
+                ],
+                "attached_visuals": []
+              }
+            },
+            "manual_review_artifact": "docs/experiments/common-lab/runs/luna-cross-011/manual-review.json",
+            "unmet_frozen_conditions": [],
+            "no_global_rank": true
+          },
+          "friction": {
+            "current_blocking_questions": 0,
+            "necessary_human_value": [],
+            "necessary_authority": [],
+            "duplicate_approval": [],
+            "comprehension_note": "Untranslated reconciliation/dispatch/bounded move may add novice burden. This technical fixture does not establish a comprehension failure.",
+            "environment": []
+          },
+          "presentation": {
+            "type": "Condition ledger + concise scoped next action",
+            "recoverable": [
+              "Received and E-7 completed",
+              "Only-one still unproved",
+              "Complete-record check needed",
+              "No resend or thumbnail work"
+            ],
+            "deferred": [
+              "Actual query and authoritative interpretation of records"
+            ],
+            "attached_visuals": []
+          },
+          "response_evidence": [
+            "docs/experiments/common-lab/runs/luna-cross-011/strategic-partial-proof.B.turn-1.result.json",
+            "docs/experiments/common-lab/runs/luna-cross-011/strategic-partial-proof.B.turn-2.result.json"
+          ]
+        }
+      ],
+      "source_summary": "docs/experiments/common-lab/runs/luna-cross-011/summary.json",
+      "source_summary_sha256": "b64685c2ac5e8f3e268e714b7ab499b8c093543917578b3643000f162659f8da",
+      "cost_usd": null
+    }
+  ],
+  "excluded_carrier_failure": {
+    "source_summary": "docs/experiments/common-lab/runs/fable51-clarification-01/summary.json",
+    "source_summary_sha256": "a96bb8f57bb08a6058897294be6b91cd1d27ae4b8d4177c260471165f3369a75",
+    "requested_model": "claude-fable-5-1",
+    "planned_calls": 4,
+    "actual_calls": 1,
+    "completed_calls": 0,
+    "elapsed_wall_seconds": 2.734,
+    "attempt_wall_seconds": 2.733,
+    "usage": {
+      "output_tokens_details": {
+        "thinking_tokens": 0
+      },
+      "input_tokens": 0,
+      "cache_creation_input_tokens": 0,
+      "cache_read_input_tokens": 0,
+      "output_tokens": 0,
+      "server_tool_use": {
+        "web_search_requests": 0,
+        "web_fetch_requests": 0
+      },
+      "service_tier": "standard",
+      "cache_creation": {
+        "ephemeral_1h_input_tokens": 0,
+        "ephemeral_5m_input_tokens": 0
+      },
+      "inference_geo": "",
+      "iterations": [],
+      "speed": "standard"
+    },
+    "provider_reported_api_equivalent_cost_usd": 0,
+    "actual_subscription_charge_usd": null,
+    "status": "ENVIRONMENT_ORGANIZATION_POLICY_DENIAL",
+    "error": "Your organization has disabled Claude subscription access for Claude Code · Use an Anthropic API key instead, or ask your admin to enable access",
+    "interpretation": "No successful Fable inference; Opus not attempted. Carrier parked. No API-key/account/model workaround. Not a model-quality sample."
+  },
+  "limits": [
+    "Unblinded, single-repeat, selected difficult cases. Not statistical model or skill ranking.",
+    "Sol/Luna shared-host wall times and cache differences are not intrinsic throughput measures.",
+    "Manual reviewer is an AI author, not a human reader. No actual human pause or reading time measured.",
+    "The first strategic rubric is internally ambiguous; preserve its separate measurement note and do not rank 79 vs 77.",
+    "Main/subagent reasoning, authoring, reader probes, local execution experiments and unlisted later runs are excluded."
+  ]
+}

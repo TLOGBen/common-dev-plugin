@@ -1,0 +1,344 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-06T23:54:28.153339+00:00",
+  "preflight": {
+    "verdict": "TARGET_MATCH",
+    "temporary_root": "/tmp/lab-install-v020-0755",
+    "report_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/lab-v0.2.0/install",
+    "sources": {
+      "common-lab": {
+        ".agents/plugins/marketplace.json": "e306a4d9c08085ba2bb201e9299778692cf10cb9c361fb7f7238d9122b02bdba",
+        "plugins/common-lab/.codex-agents/lab-calibrator.toml": "5ccf06e63314ea5722b3b9e687a882eac369090f1e072310943e47253883bf2b",
+        "plugins/common-lab/.codex-agents/lab-executor.toml": "97b09f88e1b4d8722af36f220e5e53d423c05b9ba510ae9536c022804c9654ef",
+        "plugins/common-lab/.codex-plugin/plugin.json": "0b5e081567b1de346eeaba1566a2441cfdc9aab731fa4bcb4fb4376087660ba3",
+        "plugins/common-lab/skills/lab-better-prompts/SKILL.md": "7ef57b29de1bcc670009d3a6010229fa31da65567af094b5d050ba0bcb5dab56",
+        "plugins/common-lab/skills/lab-define-goal/SKILL.md": "c849139a1f9c76fcdfe87588d72db97399940afe8129ee33603bb7e51195f825",
+        "plugins/common-lab/skills/lab-delegate/SKILL.md": "4426a2ea06c4385583a72324253753b8064ce428b8203219064f3a0b9b7ed327",
+        "plugins/common-lab/skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+        "plugins/common-lab/skills/lab-domain-modeling/SKILL.md": "b6a2970c9f10bcaeaf6a57101f2bf784973f3baa044a26ecb9695a1b201f47f8",
+        "plugins/common-lab/skills/lab-grilling/SKILL.md": "18e5f5cdaaca800fa3a9d6e2c3f04971b8be6eef49671109e06913bf70068e66",
+        "plugins/common-lab/skills/lab-prototype/SKILL.md": "8036e0c80aad09f0b17b5caa5ccde2b44cb48e05a66dcbd51b0ef7781308a23d",
+        "plugins/common-lab/skills/lab-research/SKILL.md": "b6c10c5ce2f16bff4106dc4067482b6738aa0780d61c0e0c5e1470a281cbacb2",
+        "plugins/common-lab/skills/lab-strategic-advance/SKILL.md": "f72b008e59133a4d53697a1a1396bed2a04aeaf32367c8827b8e0b4377fbe201",
+        "plugins/common-lab/skills/lab-strategic-advance/references/campaign.md": "53dd99d3f02724c35ef422240cc4643c55c081ab7dcf3aaf47dbd2881f7494a7",
+        "plugins/common-lab/skills/lab-strategic-advance/references/long-run-control.md": "4d4b19de3ccf1705c9aa7862182f54884001e10777195c112ec0606c82263919",
+        "plugins/common-lab/skills/lab-strategic-advance/scripts/calibration.py": "c1e6a3637fe312625bdce921fc1cb2b4b4659eeeccad254df4348bb0d401217c",
+        "plugins/common-lab/skills/lab-strategic-advance/scripts/campaign.py": "2361b39b8bbafb00e15813d33b2a42d836b29e7d0b0e160d287ba61059d0757c",
+        "plugins/common-lab/skills/lab-strategic-advance/scripts/campaign_brief.py": "afdcca953d75825c769b492cd83477850fe0aac027834d7d49c057e043a9e187",
+        "plugins/common-lab/skills/lab-wait-what/SKILL.md": "ad82434f2bdcc39eefe419f72642033a719fc2fab67b09e96deb8c8b52270917",
+        "plugins/common-lab/skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+        "plugins/common-lab/skills/lab-wayfinder/SKILL.md": "35fe1be7b9ac4cf1196e0fb8f45009f6ef11460734b16757f0b9ac5e4d60db10",
+        "plugins/common-lab/skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+        "plugins/common-lab/skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+        "plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+      },
+      "estimate-lab": {
+        ".agents/plugins/marketplace.json": "615d94ce66d82324ff37991203dc9be8019fe9328b12d56a1f71a7c3d725c68d",
+        "plugins/estimate-lab/.codex-agents/lab-estimate-auditor.toml": "e13f869eef3a42dffd0c85f2d8c199d08c0cbad56b17eed750c1f0f54a8de5a2",
+        "plugins/estimate-lab/.codex-plugin/plugin.json": "b63392acdbdd9f2108491e25bfb7464ed51056aacd986192e34c654c4af23c7d",
+        "plugins/estimate-lab/skills/lab-estimate/SKILL.md": "bc097b3905ae2b6cfe70793b007bb2de9760d100aed9f7b33482a3c5edfdf701",
+        "plugins/estimate-lab/skills/lab-estimate/agents/openai.yaml": "d6055f47b53e9fbe003b10682a9bd5f75902b7773639cbbe5f4de81ddf15bf54",
+        "plugins/estimate-lab/skills/lab-estimate/assets/assessment-report-template.html": "cb750028b6648c02358da13fa4466e24fbce538669f2693dc25b9c0b3417b058",
+        "plugins/estimate-lab/skills/lab-estimate/references/case-state.md": "da53357b7291ca6664236f98ec563339fd7541d4f1fa44ad8e3622e5b0dc5dfa",
+        "plugins/estimate-lab/skills/lab-estimate/references/deliverables.md": "1344ac6549c184a3952105a1934547c7dbe2a8526a5cfc6a5c511918e9613e88",
+        "plugins/estimate-lab/skills/lab-estimate/references/dependency-behavior.md": "fd798be92122e1ae2fbee1489c4344af2aa8fdf7565b875b853b43ab7b2d327a",
+        "plugins/estimate-lab/skills/lab-estimate/references/discovery-guide.md": "0031c9231af858fe8e1eb3f939509a6fc914456a352a11754d52feca61644909",
+        "plugins/estimate-lab/skills/lab-estimate/references/estimation-guide.md": "7d1e238268adc41efe38b009c064c4c1d1169e6db5bae7f404a869ea9564c890",
+        "plugins/estimate-lab/skills/lab-estimate/references/evidence-and-success-chain.md": "fcb3248ade86852a27fa0f55c32ca84507cce5de2e7d7e5f9936ec1e50f43705",
+        "plugins/estimate-lab/skills/lab-estimate/references/inventory-sidekick-brief.md": "a2103846599b3cc43ddd93136e636e5bb2e8b2453c4d4de1bdeda8ad7eec82a1",
+        "plugins/estimate-lab/skills/lab-estimate/references/long-run-reconciliation.md": "164ad2c3c88d736e0c82e7333772f7f5fae2fa950d67349d23ec69f68ca52a18",
+        "plugins/estimate-lab/skills/lab-estimate/references/pm-decision-pauses.md": "889d96d961bfab42310b11a070a96c847aa21db450c28abccc34da2a5db67f65",
+        "plugins/estimate-lab/skills/lab-estimate/references/pm-report-design.md": "01e4ef9f23f76367f81afc86271b2fa2df430f6763783423e725904189406720",
+        "plugins/estimate-lab/skills/lab-estimate/references/scenario-guide.md": "9bb31fb8adbfd5c06d4e5d98ac527bb8460cab226426b74af07860b6c1e8b749",
+        "plugins/estimate-lab/skills/lab-estimate/requirements.lock": "e3cb5e7d0c47f4f966581e80bb8d4429494827e14bc6bd0057a81a66423f4c7b",
+        "plugins/estimate-lab/skills/lab-estimate/scripts/case_state.py": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b",
+        "plugins/estimate-lab/skills/lab-estimate/scripts/generate_outputs.py": "def65f23ac538eeb64729faef44b5444b1649f66308703727c4a28bb7c12651c",
+        "plugins/estimate-lab/skills/lab-estimate/tests/helpers.py": "27a192948d20813b76096ee616a926cdd237d93ba24e5b50317b137f949b52eb",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_approval_validity.py": "45c35e893f0f07bc46c55eb240f4e5d65791976f0df2b7c6505de0bd9c244ede",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_case_state.py": "7e2fbd1b6c7fc4dcca5806c9872819ae5400f5d8b656890c0ea57ae873ca6450",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs": "2307e03e66313b68d7e0c9314bc95cf6708780adb877e0a6f97a3e8d2f8b66bf",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py": "85805f12d538c32d2a54bffbc084766aa023a6e0e490f2d8fa585887f6b64b57",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_gate_handoff.py": "a605683e37ca58e664e111fbdf8e97823513b6339a09b48e60016ba14c62e34c",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_outputs.py": "13d4559473290215da57b0f3b14e908fe8769cdbd36777a7a5b4e905be34d444"
+      },
+      "baransu-lab": {
+        ".agents/plugins/marketplace.json": "1db13fa22f6f754ad35a4b5489ee0cc808ff543f4e4d3e34eb8388534c37aafd",
+        "plugins/baransu-lab/.codex-agents/lab-verifier.toml": "e288b8c3afdfc0c0dca36764b036a829be47f54782e600b8d20e3d4a6e71f16e",
+        "plugins/baransu-lab/.codex-plugin/plugin.json": "d05508f9132b0eb91d98e0953bfd0096e034953d1b0da998edd28636aac5c5d9",
+        "plugins/baransu-lab/skills/lab-contract/SKILL.md": "2d178a32e0f4e9e05855d4e4c316aeba818c0f07b5df4b1ebfa25149c5c3cfad",
+        "plugins/baransu-lab/skills/lab-contract/references/acceptance.md": "13bc29eba871ac2a2495c75dbbcf6e5750be353607766bf3e4c62a16cbb48b67",
+        "plugins/baransu-lab/skills/lab-review/SKILL.md": "9f37df1bf1eaec3f786ed0f9d05be5a1c434e5cbd73d021c908aa2327e882776",
+        "plugins/baransu-lab/skills/lab-seal/SKILL.md": "96ef8d8c3e4f673307224a6d71e63cf93e78012ba24a14e0bc5e484a2ef14bd5",
+        "plugins/baransu-lab/skills/lab-seal/references/verification-effort.md": "0cddf2cb45bfe99da9763f7f550ae221ebb763acd3ee73f84d503c23345082c0",
+        "plugins/baransu-lab/skills/lab-think/SKILL.md": "7fe53d557d917ece3d35cd7e2e5bb7eb414ddbdfdde5b44c47cdb1534e92b8eb"
+      }
+    },
+    "existing_destination_items": 0,
+    "packages": [
+      {
+        "name": "common-lab",
+        "version": "0.2.0",
+        "source": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0"
+      },
+      {
+        "name": "estimate-lab",
+        "version": "0.2.0",
+        "source": "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0"
+      },
+      {
+        "name": "baransu-lab",
+        "version": "0.2.0",
+        "source": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0"
+      }
+    ],
+    "scope": "Fresh child homes and reproducible local test fixtures only; global config and stable packages untouched.",
+    "recovery": "All install homes and receipts retained. Test-owned temporary fixtures can be regenerated from the frozen test source."
+  },
+  "steps": [
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"marketplaceName\": \"common-lab\",\n  \"installedRoot\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.064
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--available",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"common-lab@common-lab\",\n      \"name\": \"common-lab\",\n      \"marketplaceName\": \"common-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.042
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "common-lab@common-lab",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"pluginId\": \"common-lab@common-lab\",\n  \"name\": \"common-lab\",\n  \"marketplaceName\": \"common-lab\",\n  \"version\": \"0.2.0\",\n  \"installedPath\": \"/tmp/lab-install-v020-0755/common-lab/plugins/cache/common-lab/common-lab/0.2.0\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.053
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"common-lab@common-lab\",\n      \"name\": \"common-lab\",\n      \"marketplaceName\": \"common-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.05
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"marketplaceName\": \"estimate-lab\",\n  \"installedRoot\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.05
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--available",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"estimate-lab@estimate-lab\",\n      \"name\": \"estimate-lab\",\n      \"marketplaceName\": \"estimate-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0/plugins/estimate-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.051
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "estimate-lab@estimate-lab",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"pluginId\": \"estimate-lab@estimate-lab\",\n  \"name\": \"estimate-lab\",\n  \"marketplaceName\": \"estimate-lab\",\n  \"version\": \"0.2.0\",\n  \"installedPath\": \"/tmp/lab-install-v020-0755/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.2.0\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.053
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"estimate-lab@estimate-lab\",\n      \"name\": \"estimate-lab\",\n      \"marketplaceName\": \"estimate-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0/plugins/estimate-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.047
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/tmp/lab-install-v020-0755/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.2.0/skills/lab-estimate/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_complete_case_reopens_without_treating_old_outputs_as_new_delivery (test_approval_validity.ApprovalValidityTests.test_complete_case_reopens_without_treating_old_outputs_as_new_delivery) ... ok\ntest_direct_workitem_rate_merge_remains_rejected (test_approval_validity.ApprovalValidityTests.test_direct_workitem_rate_merge_remains_rejected) ... ok\ntest_first_pending_estimate_refresh_does_not_invent_a_prior_approval (test_approval_validity.ApprovalValidityTests.test_first_pending_estimate_refresh_does_not_invent_a_prior_approval) ... ok\ntest_invalid_or_stale_commitment_change_preserves_last_good (test_approval_validity.ApprovalValidityTests.test_invalid_or_stale_commitment_change_preserves_last_good) ... ok\ntest_mapping_with_another_decision_is_not_replaced_by_confirmation (test_approval_validity.ApprovalValidityTests.test_mapping_with_another_decision_is_not_replaced_by_confirmation) ... ok\ntest_noop_presentation_and_delivery_records_preserve_approval (test_approval_validity.ApprovalValidityTests.test_noop_presentation_and_delivery_records_preserve_approval) ... ok\ntest_pending_confirmation_refreshes_after_a_second_boundary_change (test_approval_validity.ApprovalValidityTests.test_pending_confirmation_refreshes_after_a_second_boundary_change) ... ok\ntest_responsibility_change_reopens_and_requires_a_fresh_answer (test_approval_validity.ApprovalValidityTests.test_responsibility_change_reopens_and_requires_a_fresh_answer) ... ok\ntest_selected_scenario_change_reopens_after_explicit_synthetic_selection (test_approval_validity.ApprovalValidityTests.test_selected_scenario_change_reopens_after_explicit_synthetic_selection) ... ok\ntest_choice_details_must_reference_visible_choice (test_case_state.CaseStateTests.test_choice_details_must_reference_visible_choice) ... ok\ntest_complete_state_is_valid_and_uses_high_external_total (test_case_state.CaseStateTests.test_complete_state_is_valid_and_uses_high_external_total) ... ok\ntest_complete_state_requires_confirmation_record_and_all_gates_done (test_case_state.CaseStateTests.test_complete_state_requires_confirmation_record_and_all_gates_done) ... ok\ntest_critical_finding_must_trace_to_evidence_and_package (test_case_state.CaseStateTests.test_critical_finding_must_trace_to_evidence_and_package) ... ok\ntest_dependency_coverage_must_name_every_decision_bearing_dependency (test_case_state.CaseStateTests.test_dependency_coverage_must_name_every_decision_bearing_dependency) ... ok\ntest_development_and_testing_split_must_reconcile_to_unit_days (test_case_state.CaseStateTests.test_development_and_testing_split_must_reconcile_to_unit_days) ... ok\ntest_development_and_testing_split_use_half_day_units (test_case_state.CaseStateTests.test_development_and_testing_split_use_half_day_units) ... ok\ntest_direct_touch_catalog_blocks_gate_five_when_claimed_count_does_not_match (test_case_state.CaseStateTests.test_direct_touch_catalog_blocks_gate_five_when_claimed_count_does_not_match) ... ok\ntest_draft_can_be_saved_while_readiness_gaps_are_warnings (test_case_state.CaseStateTests.test_draft_can_be_saved_while_readiness_gaps_are_warnings) ... ok\ntest_explicit_pricing_units_drive_totals_instead_of_kind_guessing (test_case_state.CaseStateTests.test_explicit_pricing_units_drive_totals_instead_of_kind_guessing) ... ok\ntest_external_summary_validation_distinguishes_allow_warn_and_block (test_case_state.CaseStateTests.test_external_summary_validation_distinguishes_allow_warn_and_block) ... ok\ntest_formal_state_requires_gate_two_outcome_direction_decision (test_case_state.CaseStateTests.test_formal_state_requires_gate_two_outcome_direction_decision) ... ok\ntest_formal_state_requires_method_card_and_client_package (test_case_state.CaseStateTests.test_formal_state_requires_method_card_and_client_package) ... ok\ntest_formal_state_requires_pm_drilldown_and_estimation_review (test_case_state.CaseStateTests.test_formal_state_requires_pm_drilldown_and_estimation_review) ... ok\ntest_formal_state_requires_pm_readable_work_and_consistent_gates (test_case_state.CaseStateTests.test_formal_state_requires_pm_readable_work_and_consistent_gates) ... ok\ntest_formal_state_requires_referenced_unique_canonical_catalogs (test_case_state.CaseStateTests.test_formal_state_requires_referenced_unique_canonical_catalogs) ... ok\ntest_formal_state_requires_selected_scenario_and_converged_chain (test_case_state.CaseStateTests.test_formal_state_requires_selected_scenario_and_converged_chain) ... ok\ntest_formal_upgrade_state_requires_dependency_behavior_evidence (test_case_state.CaseStateTests.test_formal_upgrade_state_requires_dependency_behavior_evidence) ... ok\ntest_generated_catalog_requires_one_reproducible_generation_contract (test_case_state.CaseStateTests.test_generated_catalog_requires_one_reproducible_generation_contract) ... ok\ntest_half_day_rates_are_enforced (test_case_state.CaseStateTests.test_half_day_rates_are_enforced) ... ok\ntest_non_querydsl_codegen_dependency_uses_the_same_generic_guard (test_case_state.CaseStateTests.test_non_querydsl_codegen_dependency_uses_the_same_generic_guard) ... ok\ntest_open_important_pm_decision_blocks_formal_estimate (test_case_state.CaseStateTests.test_open_important_pm_decision_blocks_formal_estimate) ... ok\ntest_pricing_units_cannot_exceed_items_needing_change (test_case_state.CaseStateTests.test_pricing_units_cannot_exceed_items_needing_change) ... ok\ntest_quantity_conservation_and_unique_coverage_are_enforced (test_case_state.CaseStateTests.test_quantity_conservation_and_unique_coverage_are_enforced) ... ok\ntest_querydsl_like_dependency_requires_supported_selected_target (test_case_state.CaseStateTests.test_querydsl_like_dependency_requires_supported_selected_target) ... ok\ntest_record_answer_sets_selected_scenario_and_records_provenance (test_case_state.CaseStateTests.test_record_answer_sets_selected_scenario_and_records_provenance) ... ok\ntest_revision_conflict_preserves_last_good (test_case_state.CaseStateTests.test_revision_conflict_preserves_last_good) ... ok\ntest_scope_delta_count_must_match_the_named_target_list (test_case_state.CaseStateTests.test_scope_delta_count_must_match_the_named_target_list) ... ok\ntest_selected_scenario_requires_explicit_pm_decision_record (test_case_state.CaseStateTests.test_selected_scenario_requires_explicit_pm_decision_record) ... ok\ntest_technical_fog_blocks_readiness_without_interrupting_pm (test_case_state.CaseStateTests.test_technical_fog_blocks_readiness_without_interrupting_pm) ... ok\ntest_upgrade_near_historical_build_requires_rebuild_outcome_explanation (test_case_state.CaseStateTests.test_upgrade_near_historical_build_requires_rebuild_outcome_explanation) ... ok\ntest_upstream_maintainer_and_internal_owner_are_distinct_required_facts (test_case_state.CaseStateTests.test_upstream_maintainer_and_internal_owner_are_distinct_required_facts) ... ok\ntest_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) ... ok\ntest_pending_estimate_keeps_current_reminder_without_claiming_approval (test_finding_context.FindingContextTests.test_pending_estimate_keeps_current_reminder_without_claiming_approval) ... ok\ntest_acceptance_is_atomic_but_is_not_delivery (test_gate_handoff.GateHandoffTests.test_acceptance_is_atomic_but_is_not_delivery) ... ok\ntest_approved_state_keeps_formal_readiness_and_gate_six_open (test_gate_handoff.GateHandoffTests.test_approved_state_keeps_formal_readiness_and_gate_six_open) ... ok\ntest_explicit_revision_request_returns_to_mapping_without_selecting_a_new_route (test_gate_handoff.GateHandoffTests.test_explicit_revision_request_returns_to_mapping_without_selecting_a_new_route) ... ok\ntest_missing_effects_fail_closed_then_explicit_upgrade_allows_the_known_answer (test_gate_handoff.GateHandoffTests.test_missing_effects_fail_closed_then_explicit_upgrade_allows_the_known_answer) ... ok\ntest_missing_false_and_string_human_flags_cannot_accept (test_gate_handoff.GateHandoffTests.test_missing_false_and_string_human_flags_cannot_accept) ... ok\ntest_multiple_accept_effects_and_hidden_effects_do_not_choose_for_the_pm (test_gate_handoff.GateHandoffTests.test_multiple_accept_effects_and_hidden_effects_do_not_choose_for_the_pm) ... ok\ntest_old_approval_cannot_override_a_later_request_to_revise (test_gate_handoff.GateHandoffTests.test_old_approval_cannot_override_a_later_request_to_revise) ... ok\ntest_preview_approved_and_explicit_delivery_outputs_preserve_amounts_and_revisions (test_gate_handoff.GateHandoffTests.test_preview_approved_and_explicit_delivery_outputs_preserve_amounts_and_revisions) ... ok\ntest_stale_and_retried_answers_do_not_duplicate_or_overwrite (test_gate_handoff.GateHandoffTests.test_stale_and_retried_answers_do_not_duplicate_or_overwrite) ... ok\ntest_two_simultaneous_answers_have_only_one_successful_commit (test_gate_handoff.GateHandoffTests.test_two_simultaneous_answers_have_only_one_successful_commit) ... ok\ntest_unknown_blank_and_other_answers_preserve_last_good (test_gate_handoff.GateHandoffTests.test_unknown_blank_and_other_answers_preserve_last_good) ... ok\ntest_csv_markdown_and_html_are_generated_without_office (test_outputs.OutputTests.test_csv_markdown_and_html_are_generated_without_office) ... ok\ntest_dependency_assumptions_are_projected_under_the_pm_risk_section (test_outputs.OutputTests.test_dependency_assumptions_are_projected_under_the_pm_risk_section) ... ok\ntest_external_csv_is_customer_facing_five_column_high_estimate (test_outputs.OutputTests.test_external_csv_is_customer_facing_five_column_high_estimate) ... ok\ntest_html_uses_the_bundled_report_template (test_outputs.OutputTests.test_html_uses_the_bundled_report_template) ... ok\ntest_internal_csv_keeps_pm_drilldown_fields (test_outputs.OutputTests.test_internal_csv_keeps_pm_drilldown_fields) ... ok\ntest_internal_csv_keeps_the_auditable_effort_split (test_outputs.OutputTests.test_internal_csv_keeps_the_auditable_effort_split) ... ok\ntest_only_explanatory_visuals_are_rendered_and_are_accessible (test_outputs.OutputTests.test_only_explanatory_visuals_are_rendered_and_are_accessible) ... ok\ntest_package_rows_project_one_owned_dialog_with_controls_and_detail (test_outputs.OutputTests.test_package_rows_project_one_owned_dialog_with_controls_and_detail) ... ok\ntest_report_leads_with_summary_then_estimates_and_keeps_findings_contextual (test_outputs.OutputTests.test_report_leads_with_summary_then_estimates_and_keeps_findings_contextual) ... ok\ntest_report_projects_direct_generated_and_evidence_worksets_from_state (test_outputs.OutputTests.test_report_projects_direct_generated_and_evidence_worksets_from_state) ... ok\n\n----------------------------------------------------------------------\nRan 64 tests in 8.152s\n\nOK\n",
+      "elapsed_seconds": 8.331
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "/tmp/lab-install-v020-0755/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.2.0/skills/lab-estimate/tests/test_dialog_events.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: keyboard activation of descendant summary does not close its dialog\nok 1 - keyboard activation of descendant summary does not close its dialog\n  ---\n  duration_ms: 3.898927\n  type: 'test'\n  ...\n# Subtest: descendant pointer clicks cannot be mistaken for backdrop clicks\nok 2 - descendant pointer clicks cannot be mistaken for backdrop clicks\n  ---\n  duration_ms: 0.741668\n  type: 'test'\n  ...\n# Subtest: real outside pointer click targeting dialog backdrop still closes\nok 3 - real outside pointer click targeting dialog backdrop still closes\n  ---\n  duration_ms: 0.615019\n  type: 'test'\n  ...\n# Subtest: inside dialog clicks and keyboard dialog activation stay open\nok 4 - inside dialog clicks and keyboard dialog activation stay open\n  ---\n  duration_ms: 0.919715\n  type: 'test'\n  ...\n# Subtest: explicit close control still closes\nok 5 - explicit close control still closes\n  ---\n  duration_ms: 0.583609\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 5\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 66.347521\n",
+      "stderr": "",
+      "elapsed_seconds": 0.1
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"marketplaceName\": \"baransu-lab\",\n  \"installedRoot\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.048
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--available",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"baransu-lab@baransu-lab\",\n      \"name\": \"baransu-lab\",\n      \"marketplaceName\": \"baransu-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.049
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "baransu-lab@baransu-lab",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"pluginId\": \"baransu-lab@baransu-lab\",\n  \"name\": \"baransu-lab\",\n  \"marketplaceName\": \"baransu-lab\",\n  \"version\": \"0.2.0\",\n  \"installedPath\": \"/tmp/lab-install-v020-0755/baransu-lab/plugins/cache/baransu-lab/baransu-lab/0.2.0\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.05
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"baransu-lab@baransu-lab\",\n      \"name\": \"baransu-lab\",\n      \"marketplaceName\": \"baransu-lab\",\n      \"version\": \"0.2.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.046
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD",
+        "--",
+        "plugins/common",
+        "plugins/analysis-estimation",
+        "plugins/test-utils",
+        "plugins/linkstart",
+        "codex",
+        ".agents",
+        ".claude-plugin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_seconds": 0.003
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_linkstart_release.py"
+      ],
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": "",
+      "elapsed_seconds": 0.869
+    }
+  ],
+  "packages": [
+    {
+      "plugin_id": "common-lab@common-lab",
+      "version": "0.2.0",
+      "cache_path": "/tmp/lab-install-v020-0755/common-lab/plugins/cache/common-lab/common-lab/0.2.0",
+      "file_count": 23,
+      "byte_equal": true,
+      "manifest_sha256": "0b5e081567b1de346eeaba1566a2441cfdc9aab731fa4bcb4fb4376087660ba3"
+    },
+    {
+      "plugin_id": "estimate-lab@estimate-lab",
+      "version": "0.2.0",
+      "cache_path": "/tmp/lab-install-v020-0755/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.2.0",
+      "file_count": 26,
+      "byte_equal": true,
+      "manifest_sha256": "b63392acdbdd9f2108491e25bfb7464ed51056aacd986192e34c654c4af23c7d"
+    },
+    {
+      "plugin_id": "baransu-lab@baransu-lab",
+      "version": "0.2.0",
+      "cache_path": "/tmp/lab-install-v020-0755/baransu-lab/plugins/cache/baransu-lab/baransu-lab/0.2.0",
+      "file_count": 8,
+      "byte_equal": true,
+      "manifest_sha256": "d05508f9132b0eb91d98e0953bfd0096e034953d1b0da998edd28636aac5c5d9"
+    }
+  ],
+  "model_calls": 0,
+  "inference_tokens": 0,
+  "actual_cost_usd": null,
+  "limits": "Local installation and mechanical verification only, not active-app loading or human understanding. Main-agent usage is separate.",
+  "ended_utc": "2026-09-06T23:54:38.074659+00:00",
+  "elapsed_seconds": 9.921
+}

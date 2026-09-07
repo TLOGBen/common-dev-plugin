@@ -1,0 +1,149 @@
+{
+  "created_utc": "2026-09-06T13:04:48.041889+00:00",
+  "root": "/tmp/trace-visibility-v2-67z_tb6t",
+  "cases": {
+    "U1": {
+      "model": "gpt-6-astra",
+      "cases": [
+        {
+          "label": "C1",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-1/test_markers.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-1/markers.json",
+          "command": "python3 -B -m unittest discover -s /tmp/trace-visibility-v2-67z_tb6t/U1/case-1 -v",
+          "expected_stdout": "STDOUT_b7db33747b114b34e9f747225e6f16df",
+          "expected_stderr": "STDERR_55577bb62d1470f0e769d9902566f6c9",
+          "expected_tests": 7,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C2",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-2/test_markers.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-2/markers.json",
+          "command": "python3 -B -m unittest discover -s /tmp/trace-visibility-v2-67z_tb6t/U1/case-2 -v",
+          "expected_stdout": "STDOUT_b19cb334f14f7d36f46ee35c5e755135",
+          "expected_stderr": "STDERR_697e3943eac8e550583d3ffaf1280303",
+          "expected_tests": 7,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C3",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-3/probe.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-3/markers.json",
+          "command": "python3 -B -c \"import runpy; runpy.run_path('/tmp/trace-visibility-v2-67z_tb6t/U1/case-3/probe.py')\"",
+          "expected_stdout": "STDOUT_d31d3e475265bb908568edbbaf301c8c",
+          "expected_stderr": "STDERR_ae0849583e82a2fc086ca415c8323d8f",
+          "expected_tests": null,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C4",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-4/probe.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U1/case-4/markers.json",
+          "command": "python3 -B -c \"import runpy; runpy.run_path('/tmp/trace-visibility-v2-67z_tb6t/U1/case-4/probe.py')\"",
+          "expected_stdout": "STDOUT_cdaa3a128da06e9e870597afb765946a",
+          "expected_stderr": "STDERR_9404d2ae0a11b3936366f3f1d7f24d64",
+          "expected_tests": null,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        }
+      ],
+      "input_sha256": {
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-1/markers.json": "f7da7507801308980c17bc379841f97d75abe9b52582fcbad2e8567469914880",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-1/test_markers.py": "a45521fba927ebc0f4ea2c221c60bc9ff0e11d69c1c1d0fd08457259e9a59443",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-2/markers.json": "57cdce4b37e7ffad83fa3420ae533f4759e44981afa8b97dcb04580a3a30fc86",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-2/test_markers.py": "a45521fba927ebc0f4ea2c221c60bc9ff0e11d69c1c1d0fd08457259e9a59443",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-4/markers.json": "3276812022ffedb7c487be88ab268dbdd3f489d1e9209017a02ab5f2b2eec73c",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-4/probe.py": "ac208453a10a3c5fc23068aca625d6ad596726dc9e291da84b33ac818190a2a7",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-3/markers.json": "643d886d397eb02ae4af093641c5355d76b7dd5b03ca22e93cf4c4fa86422aa9",
+        "/tmp/trace-visibility-v2-67z_tb6t/U1/case-3/probe.py": "ac208453a10a3c5fc23068aca625d6ad596726dc9e291da84b33ac818190a2a7"
+      }
+    },
+    "U2": {
+      "model": "gpt-5.6-sol",
+      "cases": [
+        {
+          "label": "C1",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-1/test_markers.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-1/markers.json",
+          "command": "python3 -B -m unittest discover -s /tmp/trace-visibility-v2-67z_tb6t/U2/case-1 -v",
+          "expected_stdout": "STDOUT_2ef3494fea24d7d617d283263ce2ecc4",
+          "expected_stderr": "STDERR_13b51159264b0b41a30bb36972396253",
+          "expected_tests": 7,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C2",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-2/test_markers.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-2/markers.json",
+          "command": "python3 -B -m unittest discover -s /tmp/trace-visibility-v2-67z_tb6t/U2/case-2 -v",
+          "expected_stdout": "STDOUT_72fa2f437c21a5f8826137a3c4d15d4b",
+          "expected_stderr": "STDERR_cf7afb7bacc4151f8a8d79be5fa157e9",
+          "expected_tests": 7,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C3",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-3/probe.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-3/markers.json",
+          "command": "python3 -B -c \"import runpy; runpy.run_path('/tmp/trace-visibility-v2-67z_tb6t/U2/case-3/probe.py')\"",
+          "expected_stdout": "STDOUT_902ae2daad5552d1f72bb3537dfdb9dc",
+          "expected_stderr": "STDERR_22cb4acf1165047eb16e34fcabe44610",
+          "expected_tests": null,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        },
+        {
+          "label": "C4",
+          "source": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-4/probe.py",
+          "markers_file": "/tmp/trace-visibility-v2-67z_tb6t/U2/case-4/markers.json",
+          "command": "python3 -B -c \"import runpy; runpy.run_path('/tmp/trace-visibility-v2-67z_tb6t/U2/case-4/probe.py')\"",
+          "expected_stdout": "STDOUT_587781e18715e193c48efd19a8e0225b",
+          "expected_stderr": "STDERR_3a784f0310ff0b71c3fec05aa6d1b3d0",
+          "expected_tests": null,
+          "selfcheck": {
+            "exit_code": 0,
+            "stdout_verified": true,
+            "stderr_verified": true
+          }
+        }
+      ],
+      "input_sha256": {
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-1/markers.json": "8ca684458fdcb66e3914641e7f6066503d81052e0b8cbfdaf6748814f36286da",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-1/test_markers.py": "a45521fba927ebc0f4ea2c221c60bc9ff0e11d69c1c1d0fd08457259e9a59443",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-2/markers.json": "570481eff977a5efc1af0e1218db7282fcedb6182d7be6f9dcbb6581cdb6bad6",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-2/test_markers.py": "a45521fba927ebc0f4ea2c221c60bc9ff0e11d69c1c1d0fd08457259e9a59443",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-4/markers.json": "799c563fd79ba7dabce1456fe5a923641d4e70aedfb2f9b876a8503b221e50e2",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-4/probe.py": "ac208453a10a3c5fc23068aca625d6ad596726dc9e291da84b33ac818190a2a7",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-3/markers.json": "7b7e3bd4332ad7fadda7e49fb5356ad5302d3b4e1fb5ba75800deed9d5dda1a9",
+        "/tmp/trace-visibility-v2-67z_tb6t/U2/case-3/probe.py": "ac208453a10a3c5fc23068aca625d6ad596726dc9e291da84b33ac818190a2a7"
+      }
+    }
+  },
+  "script_sha256": "d2240e089ab8b0f5c7e7cc7a87c5e9a784528dc8bea721dc0b167359757593d5"
+}

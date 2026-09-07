@@ -1,0 +1,47 @@
+{
+  "carrier_sha256": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+  "usage_parser_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "raw_usage_parser_sha256": "7614c26c45052b285bb3df267a880b5eba4c1d749b8125eaadb6ef140ee241a0",
+  "packages": {
+    "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.8/plugins/common-lab": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "5f3d80906714ecf0064d3c3cfac4504eb642e7409536082998b3c69803e266ed",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "fa32dfa4447e1cc92168fe07ca9149f5102d735fe634fc91640557ea064bce09",
+      "skills/lab-strategic-advance/scripts/campaign.py": "2361b39b8bbafb00e15813d33b2a42d836b29e7d0b0e160d287ba61059d0757c",
+      "skills/lab-strategic-advance/scripts/campaign_brief.py": "afdcca953d75825c769b492cd83477850fe0aac027834d7d49c057e043a9e187",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    }
+  },
+  "workspace_sha256": {
+    "TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+    "src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+    "tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+  },
+  "profile_adapter_sha256": "eed8705e631aa97a6f7605e099af9816b23b15c37d284a4acad1c52382d3a56f",
+  "base_carrier_sha256": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+  "worker_profiles": {
+    "implementation": {
+      "model": "gpt-5.6-luna",
+      "effort": "high"
+    },
+    "implementation_sol": {
+      "model": "gpt-5.6-sol",
+      "effort": "high"
+    }
+  }
+}

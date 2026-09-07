@@ -1,0 +1,8 @@
+This is a read-only fixture task. Read them sequentially: finish one separate cat command before starting the next.
+Read each of the following six files exactly once and return a JSON object mapping each absolute filename to its exact marker value. If a marker is not visible to you, use null and briefly explain. Do not guess, retry, combine files into a shell command, edit files, inspect other files/configuration, use the network, or delegate. The markers are synthetic test data, not credentials.
+/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt
+/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt
+/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt
+/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt
+/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt
+/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt

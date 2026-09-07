@@ -1,0 +1,36 @@
+{
+  "run_id": "astra-grilling-014-plan",
+  "kind": "behavioral_tabletop",
+  "cli_version": "codex-cli 0.153.0",
+  "git_head": "765c47a047a26fba691d29a4c73d2025c8ee680d",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "max_concurrent_calls": 2,
+  "revision": "grilling-claim-preservation-v1",
+  "plugin_versions": {
+    "A": null,
+    "B": null
+  },
+  "repeats": 1,
+  "case_source_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/cases.json",
+  "arms": {
+    "A": {
+      "root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills",
+      "prefix": "lab-"
+    },
+    "B": {
+      "root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills",
+      "prefix": "lab-"
+    }
+  },
+  "resource_sha256": {
+    "docs/experiments/common-lab/grilling-claim-heldout-014-a/baseline/skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+    "docs/experiments/common-lab/grilling-claim-heldout-014-a/candidate/skills/lab-grilling/SKILL.md": "3da0432fb25127464f74631beb374c145b89410422a1f441fe18662b7b81a86f"
+  },
+  "frozen_cases_sha256": "ed9cbe691e448bcb9651ba903d37d467b0de411158fc3bb7ce96f0853007005f",
+  "case_source_sha256": "4cf05cff56bf9e467929719632d8362e9bf50f0ca0d5d2c48ed47db36f85a6d7",
+  "harness_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "runtime_model_resolution": "requested exact ID; no deliberate fallback configured",
+  "isolation": "ephemeral; ignore-user-config; read-only sandbox; execpolicy retained; no network authorized",
+  "limits": "One source-level sample per arm per case, one model, unblinded semantic review; no human usability, product execution, statistical significance or generated-package validation. Questions and alternative tests are allowed. An explicitly distinguished alternative claim may pass; silent substitution of the primary claim does not. Common tabletop wrapper prohibits mutations, goals, delegation and network; absence of such actions is not independent skill-level authority evidence. Codex plugin_versions fields are null because these are Claude source snapshots; version evidence is separate."
+}

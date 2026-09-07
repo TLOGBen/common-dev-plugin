@@ -1,0 +1,5 @@
+{
+  "command": "python3 -B scripts/astra_lead_campaign_candidate/_evaluation/verify.py --fixture /tmp/astra-lead-noextra-20260906-a/workspaces/01-campaign-none --artifact artifacts/release-v3.json",
+  "exit_code": 0,
+  "stderr": ""
+}

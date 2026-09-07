@@ -1,0 +1,126 @@
+{
+  "run_id": "astra-presentation-011",
+  "method": "Author-side manual reading of all six output responses and tool traces; reader-proxy questions were not supplied to generation. No aggregate winner or human-usability claim.",
+  "reader_probe_status": "Pending separate fresh-reader extraction; not included in these scores.",
+  "interpretation_boundaries": [
+    "可復原資訊是診斷，不是每個 reader 答不出就等於技能失敗。",
+    "Wayfinder 應只露當下 D07 與代價；已定事項可以透過共享圖或精簡摘要漸進揭露，不應為答題重述全表。",
+    "必要價值/管理員權限等待必須保留；真正摩擦是把可獨立進行且已授權的工作也全停。",
+    "模型讀者不是真人，不能證明理解時間、舒適度、語氣合適度或實戰完成品質。",
+    "不因字數少、格式好看或章節數少加分。"
+  ],
+  "rows": [
+    {
+      "case_id": "presentation-wait-what",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "清楚分開新版已放伺服器與觀測使用者仍拿 OLD-16。",
+        "新菜單比喻保留實況，瀏覽器/中間快取/舊引用都仍未知。",
+        "下一步明說『以唯讀方式確認舊檔案的來源』，未提清除/重部署。",
+        "提供可直接轉述同事的一段話；結尾僅邀請指出不清楚段落，非要求復述。"
+      ],
+      "guards": "pass",
+      "questions": "Optional clarification invitation after the answer, not a proven execution gate."
+    },
+    {
+      "case_id": "presentation-wait-what",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "新版已上伺服器，但觀測使用者仍拿舊版；未推論全部人。",
+        "綠燈只檢查放好檔案，舊檔確切来源未知。",
+        "擬請技術同事查舊檔來源，明說此處不操作。",
+        "提供可轉述同事的話術，無小考或復述要求。"
+      ],
+      "guards": "pass",
+      "questions": "None.",
+      "reader_diagnostic": "下一步較泛稱查來源，未像 A 明說唯讀。Reader 若無法復原全部禁止操作，是邊界呈現的診斷訊號，不等於已越權。",
+      "other_observation": "『我剛才把…混在一起』可能把原本只是術語難懂說成先前概念錯誤；未影響本回覆的事實判斷，不扣凍結 criterion。"
+    },
+    {
+      "case_id": "presentation-wayfinder",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "只呈現 CSV先行/列印齊備一個取捨，兩週/四週與切換/相容性風險。",
+        "建議以少切換偏好為理由，但沒有替人定案或重開已定設計。",
+        "Q08/Q09依賴選擇；印表機/鍵盤錯誤/瀏覽器版本可在AFK時繼續。",
+        "當下決策與代價完整可見，未要求處理整張圖。"
+      ],
+      "guards": "pass",
+      "questions": "One legitimate value decision remains with the user; independent fact work explicitly continues.",
+      "reader_diagnostic": "未重述所有既定登入/主機/CSV/鍵盤條件，不等於遺失或重開；不可因此倒逼冗長全表。"
+    },
+    {
+      "case_id": "presentation-wayfinder",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "D07選項、估計工期、切換與printer不確定清楚。",
+        "開頭精簡摘要已釐清事項；建議不等於使用者決定。",
+        "明列Q08/Q09等待，Q10/Q11/Q12仍可繼續。",
+        "一個當下問題及其代價，沒有整張樹問卷。"
+      ],
+      "guards": "pass",
+      "questions": "One legitimate value decision; no all-work stop."
+    },
+    {
+      "case_id": "presentation-strategic",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "6/10完整通過，三條每帳號皆需成立。",
+        "A07缺陷、A08未測、A09/A10需角色且三項未驗證分開。",
+        "選A08有界負向測試，A07修正接續；無關tests/capture不算進展。",
+        "說明預期成功才由6增7/8，管理員事項park、不阻擋其他。"
+      ],
+      "guards": "pass",
+      "questions": "No renewed permission request for A07/A08; admin-only prerequisite remains parked."
+    },
+    {
+      "case_id": "presentation-strategic",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "正確6/10，沒有把可匯出或未測當全通過。",
+        "已知亂碼/缺負向測試/外部角色阻礙各自具體。",
+        "選A07修復+三項回歸，再補A08；保留權限邊界。",
+        "觀測成果、剩餘、下步證據與管理員介入可讀出；無關活動不算完成。"
+      ],
+      "guards": "pass",
+      "questions": "No immediate user stop; role grant does not block independent safe work."
+    }
+  ],
+  "reviewed_utc": "2026-09-06 03:14:46 UTC"
+}

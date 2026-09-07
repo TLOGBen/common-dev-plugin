@@ -1,0 +1,74 @@
+{
+  "reviewed_utc": "2026-09-06T12:37:11.602Z",
+  "purpose": "Evidence closure for bounded experimental criteria C2 and C3, not whole campaign completion or human field acceptance",
+  "source_sha256": {
+    "docs/experiments/common-lab/runs/astra-r2-011/manual-review.json": "2905456308a3d3ea8514f94d1eb0deeb85c44ea0ffa80252ad8e54d22a897977",
+    "docs/experiments/common-lab/runs/astra-r2-design-freeze/measurement-note.md": "6415c025a370d2c3639f5be221be347b98715bc64a3bb52a34c36247401b48c2",
+    "docs/experiments/common-lab/grilling-claim-heldout-015-a/lead-acceptance.json": "063213629a1874ff2d583e431109b293516b733968b54ed6e91dace8e4599680",
+    "docs/experiments/common-lab/wayfinder-regression-v0.1.3-a/verification.json": "6317736fc17da295c6e84dadb23f57951b0cd1e7c272bd48170a2e57d7d62c09",
+    "docs/experiments/common-lab/wayfinder-browser-qa-v0.1.3.md": "b79b2821a742fc6d141595ec0c421c3b77b68b4c53cf244113ae6b27be9b7f93",
+    "docs/experiments/common-lab/runs/astra-execution-012/lead-acceptance.md": "357d77e676026ce73170bd3e7ed11578b57691bd7557eb7f0a14127d5271ce87",
+    "docs/experiments/common-lab/runs/reader-astra011-sol-01/lead-review.md": "203b069ae08caf1f174bc17de71b65363c64e404a6c354e4411d2015689d79c2",
+    "docs/experiments/common-lab/runs/astra-presentation-011/manual-review.json": "59d19df4895fdd25a3c15b29f777c71ab369df300179d56f1890f3673d33955c",
+    "docs/experiments/astra-lead-harness/extension-v1-review/lead-disposition.md": "5d9a122e97e9df88ed0ff0a6d8ba7cb99d51dbc8d7abec451868012eb4a937d7",
+    "docs/experiments/astra-lead-harness/handoff-brief-reader-v1-run/lead-disposition.md": "726368e3d3b5d65f24e96c9a9479ec4266d3c9fd52e0696c1514f482f36bf1f4",
+    "docs/experiments/astra-lead-harness/resume-v1-review/lead-disposition.md": "9672c252ea7055aa4de8030c8bda7fef0d59b8d3006497a8095b34dd00c3380b",
+    "docs/experiments/install-common018-estimate013-20260906-a/result.json": "d09ca5d86e436f3bce5ca3370b22a478de22f277d934351f24564a0f848234a0"
+  },
+  "wayfinder_byte_continuity": [
+    {
+      "path": "skills/lab-wayfinder/SKILL.md",
+      "expected": "ae20a232d90b26a08bb05561a9a4f363de91ce2e8b3f411c9b75c4da68dad36f",
+      "current": "ae20a232d90b26a08bb05561a9a4f363de91ce2e8b3f411c9b75c4da68dad36f",
+      "unchanged": true
+    },
+    {
+      "path": "skills/lab-wayfinder/assets/map-template.html",
+      "expected": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "current": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "unchanged": true
+    },
+    {
+      "path": "skills/lab-wayfinder/references/map-format.md",
+      "expected": "02a6e02a75bf993f4b69d706a0a3ab8c922574fb2326dcb3ed991c795baf60c9",
+      "current": "02a6e02a75bf993f4b69d706a0a3ab8c922574fb2326dcb3ed991c795baf60c9",
+      "unchanged": true
+    },
+    {
+      "path": "skills/lab-wayfinder/scripts/render_map.py",
+      "expected": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e",
+      "current": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e",
+      "unchanged": true
+    }
+  ],
+  "criteria": {
+    "C2": {
+      "assessment": "met-with-explicit-evidence-limits",
+      "supports": [
+        "Observed prompt-authority, late-event and independent-acceptance defects have frozen R2 original/regression cases and fresh held-out questions.",
+        "Grilling 0.1.4 rejected; 0.1.5 eight fixed cases accepted with construct guard, no retrospective rescore.",
+        "Wayfinder renderer has 76 mechanical checks and actual browser/keyboard observations; currently identical four distributed source files."
+      ],
+      "limits": [
+        "Small synthetic samples, source-aware lead review, and several explicit user boundaries make baseline also succeed.",
+        "Old conflicting rubric remains invalid for aggregate ranking; no universal quality percentage.",
+        "This criterion is evidence availability for observed fixes, not proof every possible skill defect is eliminated."
+      ]
+    },
+    "C3": {
+      "assessment": "met-with-explicit-evidence-limits",
+      "supports": [
+        "Wait What, Wayfinder, and Strategic six paired presentation outputs plus six fresh reader extractions preserve outcome, uncertainty and next action.",
+        "Four actual local executions preserved settled decisions, continued independent work, and rejected misleading completion evidence.",
+        "Wayfinder readiness is not completion/authority; actual DOM/keyboard observations and source continuity verified.",
+        "Optional Strategic brief does not replace primary evidence; four readers and own dogfood preserve this limit."
+      ],
+      "limits": [
+        "No human attention, understanding, comfort, approval or one-week result measured.",
+        "A concise reply need not restate an entire durable map; answered extraction is not a complete-answer score.",
+        "Current own campaign criteria are English and one repeated checkpoint link burdens the mechanical brief; human handoff must curate context without rewriting acceptance."
+      ]
+    }
+  },
+  "overall_campaign_complete": false
+}

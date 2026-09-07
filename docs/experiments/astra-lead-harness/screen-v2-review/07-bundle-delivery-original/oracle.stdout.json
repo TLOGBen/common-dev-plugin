@@ -1,0 +1,95 @@
+{
+  "case": "bundle-delivery",
+  "passed": true,
+  "checks": {
+    "input_records_unchanged": true,
+    "receiver_tool_unchanged": true,
+    "initial_receiver_history_preserved": true,
+    "generator_matches_required_bundle": true,
+    "generator_handles_changed_input": true,
+    "named_artifact_matches_required_bundle": true,
+    "accepted_exactly_one_for_key": true,
+    "accepted_correct_version_exactly_once": true,
+    "no_unrelated_delivery": true,
+    "delivery_ids_unique": true,
+    "existing_correct_receipt_observable": true,
+    "caller_status_matches_receiver_evidence": true,
+    "status_command_did_not_mutate_state": true,
+    "verifier_left_fixture_unchanged": true
+  },
+  "evidence": {
+    "generator_execution": {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-c",
+        "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+        "/tmp/astra-lead-screen-20260906-b/workspaces/07-bundle-delivery-original/generate_bundle.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Design\"}]}\n",
+      "stderr": ""
+    },
+    "changed_input_execution": {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-c",
+        "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+        "/tmp/astra-lead-screen-20260906-b/workspaces/07-bundle-delivery-original/generate_bundle.py"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-aa\", \"label\": \"Additional zero record\", \"quantity\": 0, \"unit\": \"pack\", \"owner_team\": \"Another team\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Control team\"}]}\n",
+      "stderr": ""
+    },
+    "artifact_path": "/tmp/astra-lead-screen-20260906-b/workspaces/07-bundle-delivery-original/artifacts/catalog-release-v2-verified.json",
+    "required_payload_sha256": "c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9",
+    "generated_payload_sha256": "c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9",
+    "artifact_payload_sha256": "c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9",
+    "receiver_accepted_count_for_key": 1,
+    "receiver_correct_count_for_key": 1,
+    "receiver_delivery_ids": [
+      "D0001"
+    ],
+    "receiver_visible_ids": [
+      "D0001"
+    ],
+    "journal_sha256": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+    "caller_status_execution": {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "status",
+        "--key",
+        "catalog-release-v2"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0001\",\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+      "stderr": ""
+    },
+    "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+  },
+  "fixture_before_sha256": {
+    "TASK.md": "785e3b34dea051475ebfebd40b6a0e76d281c38e131d8796f4c647ad1e38570c",
+    "artifacts/catalog-release-v2-verified.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+    "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+    "generate_bundle.py": "527c09aff8b24b576bbc0314807cb4496c939f61adb63261f81f3c5919b7881d",
+    "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+    "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+    "reports/bundle-acceptance.md": "98d5046da3294a84f48e64a1ffcb115eb7ca6444fd785d06ca28d68a40f591ff",
+    "tests/test_generate_bundle.py": "fba36253a8a85cb5c91e4f0f6383ae9326b517f5c92f47ac8c7fbd04e7f2331a"
+  },
+  "fixture_after_sha256": {
+    "TASK.md": "785e3b34dea051475ebfebd40b6a0e76d281c38e131d8796f4c647ad1e38570c",
+    "artifacts/catalog-release-v2-verified.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+    "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+    "generate_bundle.py": "527c09aff8b24b576bbc0314807cb4496c939f61adb63261f81f3c5919b7881d",
+    "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+    "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+    "reports/bundle-acceptance.md": "98d5046da3294a84f48e64a1ffcb115eb7ca6444fd785d06ca28d68a40f591ff",
+    "tests/test_generate_bundle.py": "fba36253a8a85cb5c91e4f0f6383ae9326b517f5c92f47ac8c7fbd04e7f2331a"
+  },
+  "model_calls": 0,
+  "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+}

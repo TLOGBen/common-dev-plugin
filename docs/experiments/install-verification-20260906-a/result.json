@@ -1,0 +1,179 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-06T04:02:27.399822+00:00",
+  "ended_utc": "2026-09-06T04:02:27.778398+00:00",
+  "elapsed_seconds": 0.379,
+  "packages": [
+    {
+      "plugin_id": "common-lab@common-lab",
+      "version": "0.1.2",
+      "source": "experiments/common-lab-v0.1.2/plugins/common-lab",
+      "installed_path": "/tmp/common-lab-install-012-aq8TN1/plugins/cache/common-lab/common-lab/0.1.2",
+      "byte_equal": true,
+      "file_count": 19,
+      "file_sha256": {
+        ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+        ".codex-plugin/plugin.json": "9b07afc9fcce95eea32fdbd19dad6dc264e61c7334c9e7f3dc88410df913f138",
+        "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+        "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+        "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+        "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+        "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+        "skills/lab-grilling/SKILL.md": "182020d2197261ede6d0b360179eea8c08b2b7d81c7ca1096c50c6a337aeba58",
+        "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+        "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+        "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+        "skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+        "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+        "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+        "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+        "skills/lab-wayfinder/SKILL.md": "46e9403bc610f607e637d88cbf42f96927e6e147272b9e9d2a4f151eb5955eb1",
+        "skills/lab-wayfinder/assets/map-template.html": "43f68aa3f418d2a841bec07174e84c79fde5e0ba8e4f221f73d2b3cfe974ffda",
+        "skills/lab-wayfinder/references/map-format.md": "2d3ad4c35e0e1b669bfca95e182d1cddf6a068394e12441c21a5489e9dec0682",
+        "skills/lab-wayfinder/scripts/render_map.py": "37653a66b9b330203a6ce3724b6f5f510f1da0d621c8b37c59a7d2ff5a1a0c47"
+      }
+    },
+    {
+      "plugin_id": "baransu-lab@baransu-lab",
+      "version": "0.1.0",
+      "source": "experiments/baransu-lab/plugins/baransu-lab",
+      "installed_path": "/tmp/baransu-lab-install-010-iyUeUg/plugins/cache/baransu-lab/baransu-lab/0.1.0",
+      "byte_equal": true,
+      "file_count": 7,
+      "file_sha256": {
+        ".codex-agents/lab-verifier.toml": "e06bf4d4ea19218a7e901204d2f39678cdc4a1c46e2f308664abdb1b64da73d1",
+        ".codex-plugin/plugin.json": "67a3c4f4fd01c5a7ee2d479933eaee71f7c52549b8c901503681a52872a31344",
+        "skills/lab-contract/SKILL.md": "b04f8684f7aab2af129a4baab99013b905d988a3adab8dfde86cb67693d8ceb2",
+        "skills/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e",
+        "skills/lab-review/SKILL.md": "58528a53dde11ec5293388943e0b477d595c17a64fc7a4431ca30e904bfc3d6f",
+        "skills/lab-seal/SKILL.md": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77",
+        "skills/lab-think/SKILL.md": "c0bcddc486e3bed4d35b958f34bb252e74c3a9a6f9f8df2d78d39ed6a0c9a92e"
+      }
+    },
+    {
+      "plugin_id": "test-utils@common-dev",
+      "version": "1.2.2",
+      "source": "codex/plugins/test-utils",
+      "installed_path": "/tmp/common-stable-install-1U8krL/plugins/cache/common-dev/test-utils/1.2.2",
+      "byte_equal": true,
+      "file_count": 37,
+      "file_sha256": {
+        ".codex-plugin/plugin.json": "d880f0ec7dc03b28acc993d42180a04b9cdec4d8f268fb1c6a9dafcbc1d71f3a",
+        "skills/dev-browser/SKILL.md": "4cfe4af58aa46ab4d6010efe049fafff22c966f7544a64aafd33e4b73bc785e0",
+        "skills/dev-browser/references/case-api.md": "2daf667bbe2778c1ec1a9c2152464257565a53c4ba1c277cbfde335c590231e1",
+        "skills/dev-browser/references/case-login.md": "22c7786d2cda93159dbafef86518bcbf14182b68da0fa09149aed8c5a12f869a",
+        "skills/dev-browser/references/case-new-tab.md": "47558e03e274b3d59dc6e4f97ac118d5f82d2a80af5910bddab29ba92197ae21",
+        "skills/dev-browser/references/case-review.md": "b712b22cd7ddbf4ebca0b22e04cf64212abc931eb03feb42e12adbdaa41089af",
+        "skills/dev-browser/references/gotchas-login.md": "85c1ca291302e1e3f963cafb5cb8ed233edefb94ea379b1739f6cf7c1a3099c0",
+        "skills/dev-browser/references/gotchas-sandbox.md": "847642481b5aaff8685684f1c658df8352359a555b00f136113513ab5ec45b5d",
+        "skills/dev-browser/references/gotchas-vuetify.md": "b21c8d7c36c921a159ad9a67768d34ae143a18ad096e5eaedf832fc11f40e9cc",
+        "skills/dev-browser/references/route.md": "2683c3e9d53c0051970ecd9746b520bae0ae0726976b07e186c975fa781d1095",
+        "skills/dev-browser/references/setup-wsl2-chrome.md": "2e07150ba421a58d0f6562d3b0f51964c52bcc98aa12e401298f8457fbff7fc8",
+        "skills/dev-browser/scripts/case/login.js": "d5b99c37942805dc6bae732a2eb044ebc8d6f7eddb8e5685f1f2887adbb9a466",
+        "skills/dev-browser/scripts/case/new-tab.js": "a2b9036f1b8b701596a5079f7bfa27d0f6ccbdc5f10c24dafbb3ae628c8a7c08",
+        "skills/dev-browser/scripts/setup-chrome-debug.ps1": "c9553bc892c648c593ad5701330818e87d1794fe55b01ab0d1564a7928be5905",
+        "skills/dev-browser/scripts/setup-wsl2-chrome-debug.sh": "5a21fbbb86cb7e1d519130395b2dc9b4671502693c4267accf6342d5142d4690",
+        "skills/gen-e2e-record/SKILL.md": "669d5d83eb1363d5b639ebdc3850a43ecf653effabcae342adc1e8034d64ce22",
+        "skills/gen-e2e-record/assets/gitignore.txt": "7b329cba938e353243c1ced0bb1c0579dd4787f9f0c1407902f45f217cf40f26",
+        "skills/gen-e2e-record/assets/init-test-template.py": "5eb1aaae17f770a7df8356983d8ba93ce27091d2f08a0ba335b2ae2bc9aedc78",
+        "skills/gen-e2e-record/assets/inspect.mjs": "ccf37c6070ee318f46eefad88e9a0b04d78e45de61e29348ac2beb02ae41676b",
+        "skills/gen-e2e-record/assets/package.json": "db83f3cc4be28a81e90d9aedd6282bb3fa5a69e2ffa3567639d31f6a5e7ee86a",
+        "skills/gen-e2e-record/assets/record.bat": "78ba3d9bd16b60721a1e5131f4a5b5c89be80d0cb086874d30ebb9c0761404f4",
+        "skills/gen-e2e-record/assets/record.sh": "f417a1420d256dcbb489a3dbed0adf4c79c1962c46b84517516500c05d30bca8",
+        "skills/gen-e2e-record/assets/test-template-scaffold/README.md": "d90f3549f0fa85385fc09353aa79fb8d2ce07329a4394b7222504be679ba01ed",
+        "skills/gen-e2e-record/assets/test-template-scaffold/login/example.md": "2be694f4ecb8c13830097e668e2583e607e22ba6699f38f11d2c44bf03d942b6",
+        "skills/gen-e2e-record/assets/test-template-scaffold/query.py": "42318658b8812b72ac948bb42a4e9cb7545d0df23d378cfd139004d4e6bac0b0",
+        "skills/gen-e2e-record/assets/walk.mjs": "622af3d4415c3a3d68411a040229c69da043d6c8e7ab9cb8a03e0b3db8b873d3",
+        "skills/gen-e2e-record/references/codegen-to-flow.md": "91d3ef3acdd6ed0672f94cdf9f0b37d185f6dd83e57e4aa02c2d07e9bbbb4a5f",
+        "skills/gen-e2e-test/SKILL.md": "9ddf302bcce7f9060c635aac1b13268631ac9d32bd40807a194a59b35eda9d21",
+        "skills/gen-e2e-test/assets/capture-auth.bat": "c437011f91a32c3075c7799e5e5ed96a9ee8fc2f887444dbed4174f3ef3bbe36",
+        "skills/gen-e2e-test/assets/capture-auth.mjs": "10761d0b1bbb082aaac8680fcc3f354e1fa43b2d3fd03ce20da99ecde61c165b",
+        "skills/gen-e2e-test/assets/gitignore.txt": "7b329cba938e353243c1ced0bb1c0579dd4787f9f0c1407902f45f217cf40f26",
+        "skills/gen-e2e-test/assets/package.json": "1709b8acbc27a662d6077a9f40aacd7255cccf793f7381b951b9e858bf94d842",
+        "skills/gen-e2e-test/assets/run-test.bat": "525d18942c59052a1ebfc9ffa4a246defefa4bfe027dcddf10c2cc7233c5b0f6",
+        "skills/gen-e2e-test/assets/run.sh": "d71908d9752b7e04cc6e04d745bf172cd7f6f407df7e747f6ff2d3c31e8944ed",
+        "skills/gen-e2e-test/assets/test-template.mjs": "ab0951b9afcf7a639ed96e9757afe3c4023d66d619e7e59910e87821460df9ec",
+        "skills/gen-e2e-test/references/gotchas.md": "365a67bd204a871ac0086c3bd43b3e4959d9feb6e01cd6c9f34851d212589aed",
+        "skills/gen-e2e-test/references/verify-loop.md": "0a1c22e8193d8b55126e52997487fc0f68520747e03397fbe7d8c9fbe659ba8d"
+      }
+    }
+  ],
+  "json_files_parsed": 213,
+  "stable_distribution_diff": [],
+  "steps": [
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "child_home": "/tmp/common-lab-install-012-aq8TN1",
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"common-lab@common-lab\",\n      \"name\": \"common-lab\",\n      \"marketplaceName\": \"common-lab\",\n      \"version\": \"0.1.2\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.2/plugins/common-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.2\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"/tmp\" (codex_home: AbsolutePathBuf(\"/tmp/common-lab-install-012-aq8TN1\"))\n"
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "child_home": "/tmp/baransu-lab-install-010-iyUeUg",
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"baransu-lab@baransu-lab\",\n      \"name\": \"baransu-lab\",\n      \"marketplaceName\": \"baransu-lab\",\n      \"version\": \"0.1.0\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"/tmp\" (codex_home: AbsolutePathBuf(\"/tmp/baransu-lab-install-010-iyUeUg\"))\n"
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "child_home": "/tmp/common-stable-install-1U8krL",
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"test-utils@common-dev\",\n      \"name\": \"test-utils\",\n      \"marketplaceName\": \"common-dev\",\n      \"version\": \"1.2.2\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/codex/plugins/test-utils\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "WARNING: proceeding, even though we could not create PATH aliases: Refusing to create helper binaries under temporary dir \"/tmp\" (codex_home: AbsolutePathBuf(\"/tmp/common-stable-install-1U8krL\"))\n"
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD",
+        "--",
+        "plugins/common",
+        "plugins/test-utils",
+        "plugins/analysis-estimation",
+        "plugins/linkstart",
+        "codex",
+        ".agents",
+        ".claude-plugin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_linkstart_release.py"
+      ],
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": ""
+    }
+  ],
+  "model_calls": 0,
+  "inference_tokens": 0,
+  "actual_cost_usd": null,
+  "cost_note": "These are local CLI validation commands, not inference. Root/worker reasoning is separately metered.",
+  "prior_install_commands": "Each exact child home was created fresh by mktemp, then marketplace add, list --available and plugin add succeeded via the ordinary Codex CLI. The parent tool transcript preserves their stdout.",
+  "friction": [
+    "Native worker shell setup failed, briefly recovered for CLI help, then failed again; main completed same-permission installs without modifying runtime or auth.",
+    "Codex warns it refuses helper PATH aliases under /tmp; plugin add/list still succeeded. Warning retained in stderr."
+  ],
+  "limits": "Temporary install and byte-identity only; user global installation and active app skill loading were not changed or claimed."
+}

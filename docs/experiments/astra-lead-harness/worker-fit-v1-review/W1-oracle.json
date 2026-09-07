@@ -1,0 +1,76 @@
+{
+  "label": "W1",
+  "case": "count-label",
+  "arm": "none",
+  "episode_status": "lead_finished",
+  "product": {
+    "passed": true,
+    "checks": {
+      "label_0": true,
+      "label_1": true,
+      "label_2": true,
+      "label_11": true,
+      "verifier_left_fixture_unchanged": true
+    },
+    "evidence": {
+      "observations": [
+        {
+          "count": 0,
+          "actual": "0 records"
+        },
+        {
+          "count": 1,
+          "actual": "1 record"
+        },
+        {
+          "count": 2,
+          "actual": "2 records"
+        },
+        {
+          "count": 11,
+          "actual": "11 records"
+        }
+      ],
+      "execution": {
+        "command": [
+          "node",
+          "--input-type=module",
+          "-e",
+          "\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst {countLabel} = await import(pathToFileURL(process.argv[1]).href);\nconst inputs = JSON.parse(fs.readFileSync(0, 'utf8'));\nconsole.log(JSON.stringify(inputs.map(count => ({count, actual:countLabel(count)}))));\n",
+          "/tmp/astra-worker-fit-v1-r46pwud2/W1/src/count-label.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "[{\"count\":0,\"actual\":\"0 records\"},{\"count\":1,\"actual\":\"1 record\"},{\"count\":2,\"actual\":\"2 records\"},{\"count\":11,\"actual\":\"11 records\"}]\n",
+        "stderr": ""
+      }
+    }
+  },
+  "role_write_envelopes_preserved": true,
+  "worker_dispatched": true,
+  "lead_returned": true,
+  "profile_choices": [
+    {
+      "call_number": 2,
+      "role": "implementation",
+      "profile": "luna-high",
+      "requested_model": "gpt-5.6-luna",
+      "requested_effort": "high"
+    }
+  ],
+  "lead_handoff": "已完成並驗收。\n\n- countLabel(1) 精確回傳「1 record」，其他非負整數回傳「{count} records」。\n- 保留原有 0、2 測試，新增透過真實 export 驗證 1 的測試。\n- 主手執行指定測試，exit code 0、無失敗；另外直接匯入驗證 0、1、2、10、最大安全整數，全部通過。\n\n由 gpt-5.6-luna 實作，主手檢查及驗收，無返工。未新增依賴或 commit。未提供可觀測費用資料，無法量化包含主手驗收的總成本。",
+  "lead_acceptance_review": "REQUIRES_MAIN_RAW_TRACE_REVIEW",
+  "human_comprehension": null,
+  "model_calls": 0,
+  "actual_cost_usd": null,
+  "fixture_before": {
+    "TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "src/count-label.mjs": "c76bb38aa93ea5bc350474add19abdc97485302f7ec7096dc1061d647b380bf9",
+    "tests/count-label.test.mjs": "5a43d7050817e2d00a0d5f047637bc9740f75bbb448d5aa4c5183c54fbbf114b"
+  },
+  "fixture_after": {
+    "TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "src/count-label.mjs": "c76bb38aa93ea5bc350474add19abdc97485302f7ec7096dc1061d647b380bf9",
+    "tests/count-label.test.mjs": "5a43d7050817e2d00a0d5f047637bc9740f75bbb448d5aa4c5183c54fbbf114b"
+  },
+  "limits": "Behavioral contract on a synthetic task. Completion needs main raw scope/acceptance review; no general model ranking or human satisfaction measured."
+}

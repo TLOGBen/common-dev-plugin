@@ -1,0 +1,68 @@
+{
+  "case_id": "prototype-late-success",
+  "skill": "prototype",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:05:10.192585+00:00",
+  "ended_utc": "2026-09-06T03:05:52.989846+00:00",
+  "wall_seconds": 42.798,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-prototype-late-success-qh7a_l_t",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md",
+  "skill_sha256": "391eaf5578ff0334f121d990a38f66f150168c0af6576221c95653590d2f0586",
+  "prompt_sha256": "71954f7d0e4676cba632d0193dd4ae919c8b6516ee654f914c547f1769b8d5ed",
+  "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-qh7a_l_t",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會依指定的 prototype 技能閱讀完整流程，提出最小反例與觀察方式，僅描述實驗，不進行實作。\n",
+    "最小實驗要檢驗的是：**取消後丟棄付款成功通知，是否會掩蓋「訂單已取消，但錢已扣」的事實？** `payment_succeeded` 是既成事實的通知，拒絕通知不會撤銷扣款。\n\n依指定技能的邏輯分支，這次只設計紙上逐步演練，不實作。\n\n最小反例：一筆訂單、一筆付款、兩個事件。假設「拒絕」代表丟棄通知且不留下待處理紀錄。\n\n| 步驟 | 模擬輸入／外部事實 | 訂單狀態 | 觀察重點 |\n|---|---|---|---|\n| 起點 | 金流已扣款成功，通知尚未抵達 | `open` | 外部已扣款，訂單尚未反映 |\n| 1 | 收到 `customer_cancel` | `cancelled` | 取消不會自行撤銷扣款 |\n| 2 | 收到 `payment_succeeded`，套用「取消後拒絕」 | `cancelled` | 通知被丟棄，但外部仍已扣款 |\n\n每步並列觀察四項：**訂單狀態、金流扣款事實、事件處理結果、差異是否被保留為待決事項**。後三項是實驗觀察欄位，不是新增訂單狀態或平台。\n\n判準是：若終點為「`cancelled`＋已扣款」，而系統沒有保留這個差異供後續處理，就足以推翻「丟棄所有付款事件是安全的」。若「拒絕」只是不讓訂單轉成 `paid`，但仍記錄扣款與待決事項，則不能用同一反例判定它不安全，必須區分這兩種語意。\n\n**建議下一步**：按表演練一次，在終點標記「處置待產品決定」並停下；恢復訂單、退款或轉人工都不預選。這個實驗只驗證扣款事實是否被遺漏，不決定補救政策。"
+  ],
+  "final_message": "最小實驗要檢驗的是：**取消後丟棄付款成功通知，是否會掩蓋「訂單已取消，但錢已扣」的事實？** `payment_succeeded` 是既成事實的通知，拒絕通知不會撤銷扣款。\n\n依指定技能的邏輯分支，這次只設計紙上逐步演練，不實作。\n\n最小反例：一筆訂單、一筆付款、兩個事件。假設「拒絕」代表丟棄通知且不留下待處理紀錄。\n\n| 步驟 | 模擬輸入／外部事實 | 訂單狀態 | 觀察重點 |\n|---|---|---|---|\n| 起點 | 金流已扣款成功，通知尚未抵達 | `open` | 外部已扣款，訂單尚未反映 |\n| 1 | 收到 `customer_cancel` | `cancelled` | 取消不會自行撤銷扣款 |\n| 2 | 收到 `payment_succeeded`，套用「取消後拒絕」 | `cancelled` | 通知被丟棄，但外部仍已扣款 |\n\n每步並列觀察四項：**訂單狀態、金流扣款事實、事件處理結果、差異是否被保留為待決事項**。後三項是實驗觀察欄位，不是新增訂單狀態或平台。\n\n判準是：若終點為「`cancelled`＋已扣款」，而系統沒有保留這個差異供後續處理，就足以推翻「丟棄所有付款事件是安全的」。若「拒絕」只是不讓訂單轉成 `paid`，但仍記錄扣款與待決事項，則不能用同一反例判定它不安全，必須區分這兩種語意。\n\n**建議下一步**：按表演練一次，在終點標記「處置待產品決定」並停下；恢復訂單、退款或轉人工都不預選。這個實驗只驗證扣款事實是否被遺漏，不決定補救政策。",
+  "usage": {
+    "input_tokens": 68368,
+    "cached_input_tokens": 61312,
+    "output_tokens": 781,
+    "uncached_input_tokens": 7056,
+    "total_tokens": 69149
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/LOGIC.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,175 @@
+{
+  "status": "PASS_WITH_VALIDATOR_COMPATIBILITY_NOTE",
+  "observed_utc": "2026-09-07T00:03:31.394267+00:00",
+  "basis": "https://agentskills.io/specification#compatibility-field",
+  "original_validation": "validation.json",
+  "retained_projections": "/tmp/lab020-metadata-projections-2u837k7h",
+  "skills": [
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-better-prompts/SKILL.md",
+      "source_sha256": "7ef57b29de1bcc670009d3a6010229fa31da65567af094b5d050ba0bcb5dab56",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-better-prompts/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-define-goal/SKILL.md",
+      "source_sha256": "c849139a1f9c76fcdfe87588d72db97399940afe8129ee33603bb7e51195f825",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-define-goal/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-delegate/SKILL.md",
+      "source_sha256": "4426a2ea06c4385583a72324253753b8064ce428b8203219064f3a0b9b7ed327",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-delegate/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-domain-modeling/SKILL.md",
+      "source_sha256": "b6a2970c9f10bcaeaf6a57101f2bf784973f3baa044a26ecb9695a1b201f47f8",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-domain-modeling/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-grilling/SKILL.md",
+      "source_sha256": "18e5f5cdaaca800fa3a9d6e2c3f04971b8be6eef49671109e06913bf70068e66",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-grilling/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-prototype/SKILL.md",
+      "source_sha256": "8036e0c80aad09f0b17b5caa5ccde2b44cb48e05a66dcbd51b0ef7781308a23d",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-prototype/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-research/SKILL.md",
+      "source_sha256": "b6c10c5ce2f16bff4106dc4067482b6738aa0780d61c0e0c5e1470a281cbacb2",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-research/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+      "source_sha256": "f72b008e59133a4d53697a1a1396bed2a04aeaf32367c8827b8e0b4377fbe201",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-strategic-advance/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-wait-what/SKILL.md",
+      "source_sha256": "ad82434f2bdcc39eefe419f72642033a719fc2fab67b09e96deb8c8b52270917",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-wait-what/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-wayfinder/SKILL.md",
+      "source_sha256": "35fe1be7b9ac4cf1196e0fb8f45009f6ef11460734b16757f0b9ac5e4d60db10",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/common-lab/lab-wayfinder/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-contract/SKILL.md",
+      "source_sha256": "2d178a32e0f4e9e05855d4e4c316aeba818c0f07b5df4b1ebfa25149c5c3cfad",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/baransu-lab/lab-contract/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-review/SKILL.md",
+      "source_sha256": "9f37df1bf1eaec3f786ed0f9d05be5a1c434e5cbd73d021c908aa2327e882776",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/baransu-lab/lab-review/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-seal/SKILL.md",
+      "source_sha256": "96ef8d8c3e4f673307224a6d71e63cf93e78012ba24a14e0bc5e484a2ef14bd5",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/baransu-lab/lab-seal/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-think/SKILL.md",
+      "source_sha256": "7fe53d557d917ece3d35cd7e2e5bb7eb414ddbdfdde5b44c47cdb1534e92b8eb",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/baransu-lab/lab-think/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    },
+    {
+      "source": "experiments/estimate-lab-v0.2.0/plugins/estimate-lab/skills/lab-estimate/SKILL.md",
+      "source_sha256": "bc097b3905ae2b6cfe70793b007bb2de9760d100aed9f7b33482a3c5edfdf701",
+      "compatibility": "Designed for Claude Code; ported to Codex.",
+      "compatibility_spec_check": "PASS",
+      "projection": "/tmp/lab020-metadata-projections-2u837k7h/estimate-lab/lab-estimate/SKILL.md",
+      "body_unchanged": true,
+      "quick_validator_exit": 0,
+      "stdout": "Skill is valid!\n",
+      "stderr": ""
+    }
+  ],
+  "limits": "Not an unmodified quick-validator PASS on the frozen files; compatibility separately checked. No runtime behavior claim."
+}

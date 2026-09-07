@@ -1,0 +1,79 @@
+{
+  "case_id": "small-defined-goal-label",
+  "skill": "define-goal",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:27:54.516956+00:00",
+  "ended_utc": "2026-09-06T05:28:14.339364+00:00",
+  "wall_seconds": 19.817,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-define-goal/SKILL.md",
+  "skill_sha256": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+  "prompt_sha256": "7b382f370dd29d780ec19ceb2260a9bc97e01754df25a9457b771702c9ff8c4a",
+  "fixture_dir": "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+    "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+    "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會使用指定的 lab-define-goal 技能，先完整閱讀其說明，再整理完成目標；本次只提出目標與下一步，不修改檔案。\n",
+    "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」。\n\n驗收條件：\n\n- 連結文字為「下載 CSV」。\n- `href` 維持 `/exports/report.csv`。\n- 其他內容不變。\n\n確認上述條件即完成，不需額外測試或延伸修改。\n\n本次只定義目標，到此停止；未修改檔案。後續實作的下一步是僅替換該連結文字，再核對上述條件。"
+  ],
+  "final_message": "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」。\n\n驗收條件：\n\n- 連結文字為「下載 CSV」。\n- `href` 維持 `/exports/report.csv`。\n- 其他內容不變。\n\n確認上述條件即完成，不需額外測試或延伸修改。\n\n本次只定義目標，到此停止；未修改檔案。後續實作的下一步是僅替換該連結文字，再核對上述條件。",
+  "usage": {
+    "input_tokens": 31615,
+    "cached_input_tokens": 26880,
+    "output_tokens": 307,
+    "uncached_input_tokens": 4735,
+    "total_tokens": 31922
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-define-goal/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,7 @@
+scenario,intent_id,attempt_id,dispatch_id,delivery_receipt_id,status,occurred_at
+main,MAIL-7,A7-1,D7-1,R7-1,DELIVERED,2026-01-10T00:00:01Z
+main,MAIL-7,A7-2,D7-2,R7-2,DELIVERED,2026-01-10T00:00:03Z
+same-receipt-log,MAIL-8,A8-1,D8-1,R8-1,DELIVERED,2026-01-10T00:01:01Z
+same-receipt-log,MAIL-8,A8-1,D8-1,R8-1,DELIVERED,2026-01-10T00:01:02Z
+failed-then-success,MAIL-9,A9-1,,,FAILED,2026-01-10T00:02:01Z
+failed-then-success,MAIL-9,A9-2,D9-2,R9-2,DELIVERED,2026-01-10T00:02:03Z

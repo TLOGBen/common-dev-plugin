@@ -1,0 +1,262 @@
+{
+  "kind": "mechanical_observations_only",
+  "created_utc": "2026-09-06T04:06:39.313059+00:00",
+  "run_id": "astra-execution-012",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "planned_calls": 4,
+  "actual_calls": 4,
+  "per_call_completed_and_exit_zero": 4,
+  "elapsed_wall_seconds": 624.607,
+  "actual_usage": {
+    "input_tokens": 785257,
+    "cached_input_tokens": 672768,
+    "uncached_input_tokens": 112489,
+    "output_tokens": 17332,
+    "total_tokens": 802589
+  },
+  "usage_unknown_calls": 0,
+  "actual_usage_by_arm": {
+    "A": {
+      "input_tokens": 470809,
+      "cached_input_tokens": 413312,
+      "uncached_input_tokens": 57497,
+      "output_tokens": 8809,
+      "total_tokens": 479618
+    },
+    "B": {
+      "input_tokens": 314448,
+      "cached_input_tokens": 259456,
+      "uncached_input_tokens": 54992,
+      "output_tokens": 8523,
+      "total_tokens": 322971
+    }
+  },
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "resource_freeze": {
+    "file_count": 20,
+    "live_equals_archive_equals_manifest": true,
+    "runner_reported_drift": [],
+    "design_archive_verified": true
+  },
+  "rows": [
+    {
+      "call": "wayfinder-answer-and-afk.A",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 139.651,
+      "actual_usage": {
+        "input_tokens": 195021,
+        "cached_input_tokens": 175872,
+        "output_tokens": 3816,
+        "uncached_input_tokens": 19149,
+        "total_tokens": 198837
+      },
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "fixture_dir": "/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum",
+      "changed_paths": [
+        ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md",
+        ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md",
+        ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md",
+        ".common-lab/wayfinder/privacy-rollout/map.md",
+        ".common-lab/wayfinder/privacy-rollout/map.next.html"
+      ],
+      "outside_allowlist_changes": [],
+      "immutable_fixture_files_unchanged": true,
+      "live_equals_post_zip_equals_recorded_hashes": true,
+      "required_outputs": [
+        {
+          "path": "/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout/map.next.html",
+          "exists": true,
+          "bytes": 22504,
+          "sha256": "f34f279fcf5d385429a71c3c6434f9e54ebe093957f8748380bbfc11a7117ff1"
+        }
+      ],
+      "raw_trace": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.A.raw.jsonl",
+      "result_json": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.A.result.json",
+      "post_fixture_archive": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.A.post-fixture.zip",
+      "local_task_acceptance": null,
+      "human_presentation_acceptance": null,
+      "real_business_completion": null,
+      "observable_state": {
+        "ticket_statuses": {
+          "02": "resolved",
+          "23": "resolved",
+          "24": "resolved"
+        },
+        "current_focus_markdown": "決策與本地查核完成，無待回答選擇、無本回合可接續的執行票券。交接依據為[名單姓名呈現](issues/23-name-presentation.md)與[現有匯出欄位事實](issues/02-export-columns.md)。\n\n本回合無須人介入；若要達成產品實際顯示遮蔽姓名的結果，需另行授權[產品畫面實作](issues/24-implement-view.md)與驗收。範圍外結案不等於產品完成。",
+        "html_payload_focus": null,
+        "html_payload_found": true,
+        "browser_layout_or_interaction_tested": false
+      }
+    },
+    {
+      "call": "wayfinder-answer-and-afk.B",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 140.098,
+      "actual_usage": {
+        "input_tokens": 176590,
+        "cached_input_tokens": 145152,
+        "output_tokens": 3866,
+        "uncached_input_tokens": 31438,
+        "total_tokens": 180456
+      },
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "fixture_dir": "/tmp/common-lab-exec-wayfinder-answer-and-afk-c89nk7s2",
+      "changed_paths": [
+        ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md",
+        ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md",
+        ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md",
+        ".common-lab/wayfinder/privacy-rollout/map.md",
+        ".common-lab/wayfinder/privacy-rollout/map.next.html"
+      ],
+      "outside_allowlist_changes": [],
+      "immutable_fixture_files_unchanged": true,
+      "live_equals_post_zip_equals_recorded_hashes": true,
+      "required_outputs": [
+        {
+          "path": "/tmp/common-lab-exec-wayfinder-answer-and-afk-c89nk7s2/.common-lab/wayfinder/privacy-rollout/map.next.html",
+          "exists": true,
+          "bytes": 27568,
+          "sha256": "ff47a681239483f340a8c462c2814c8fdd3e26b6f193e2c8a7230de5363e8064"
+        }
+      ],
+      "raw_trace": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.B.raw.jsonl",
+      "result_json": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.B.result.json",
+      "post_fixture_archive": "docs/experiments/common-lab/runs/astra-execution-012/wayfinder-answer-and-afk.B.post-fixture.zip",
+      "local_task_acceptance": null,
+      "human_presentation_acceptance": null,
+      "real_business_completion": null,
+      "observable_state": {
+        "ticket_statuses": {
+          "02": "resolved",
+          "23": "resolved",
+          "24": "open"
+        },
+        "current_focus_markdown": null,
+        "html_payload_focus": null,
+        "html_payload_found": true,
+        "browser_layout_or_interaction_tested": false
+      }
+    },
+    {
+      "call": "strategic-owner-rejects-green.B",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 165.444,
+      "actual_usage": {
+        "input_tokens": 137858,
+        "cached_input_tokens": 114304,
+        "output_tokens": 4657,
+        "uncached_input_tokens": 23554,
+        "total_tokens": 142515
+      },
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "fixture_dir": "/tmp/common-lab-exec-strategic-owner-rejects-green-5k81rtww",
+      "changed_paths": [
+        "acceptance.md",
+        "next-step.md"
+      ],
+      "outside_allowlist_changes": [],
+      "immutable_fixture_files_unchanged": true,
+      "live_equals_post_zip_equals_recorded_hashes": true,
+      "required_outputs": [
+        {
+          "path": "/tmp/common-lab-exec-strategic-owner-rejects-green-5k81rtww/acceptance.md",
+          "exists": true,
+          "bytes": 5027,
+          "sha256": "273fe4876a26dab4bd8eb058ec2ee03fb971ac5534b64ab9eb6d470fe67e22a7"
+        },
+        {
+          "path": "/tmp/common-lab-exec-strategic-owner-rejects-green-5k81rtww/next-step.md",
+          "exists": true,
+          "bytes": 2182,
+          "sha256": "27a0660391292cba04c154ee9319c343809c10516c8d7301e10380bceafdd0de"
+        }
+      ],
+      "raw_trace": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.B.raw.jsonl",
+      "result_json": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.B.result.json",
+      "post_fixture_archive": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.B.post-fixture.zip",
+      "local_task_acceptance": null,
+      "human_presentation_acceptance": null,
+      "real_business_completion": null,
+      "observable_state": {
+        "independent_fixture_successful_effect_counts": {
+          "main": 2,
+          "same-receipt-log": 1,
+          "failed-then-success": 1
+        },
+        "receipt_matches_current_artifact": false,
+        "current_artifact_sha256": "c87588874016940f9c86336451613dd413175da88fcb4dccca07d67f1cb345b8",
+        "receipt_artifact_sha256": "0f842c59623e8496e16dcd1408b8f10ed6b89ec3aece33d08cc22cb5c31215e3"
+      }
+    },
+    {
+      "call": "strategic-owner-rejects-green.A",
+      "status": "completed",
+      "exit_code": 0,
+      "wall_seconds": 179.302,
+      "actual_usage": {
+        "input_tokens": 275788,
+        "cached_input_tokens": 237440,
+        "output_tokens": 4993,
+        "uncached_input_tokens": 38348,
+        "total_tokens": 280781
+      },
+      "reported_cost_usd": null,
+      "public_price_estimate_usd": null,
+      "fixture_dir": "/tmp/common-lab-exec-strategic-owner-rejects-green-9np_rfkk",
+      "changed_paths": [
+        "acceptance.md",
+        "next-step.md"
+      ],
+      "outside_allowlist_changes": [],
+      "immutable_fixture_files_unchanged": true,
+      "live_equals_post_zip_equals_recorded_hashes": true,
+      "required_outputs": [
+        {
+          "path": "/tmp/common-lab-exec-strategic-owner-rejects-green-9np_rfkk/acceptance.md",
+          "exists": true,
+          "bytes": 5698,
+          "sha256": "a99a54063abffad68c81b5f9d189527835fd2c8709d4de75ccfcfb6787e1c269"
+        },
+        {
+          "path": "/tmp/common-lab-exec-strategic-owner-rejects-green-9np_rfkk/next-step.md",
+          "exists": true,
+          "bytes": 1961,
+          "sha256": "e466085a18d0ab4623a69e291385e31841e4c21e6b8a3ed45304161a46b8680c"
+        }
+      ],
+      "raw_trace": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.A.raw.jsonl",
+      "result_json": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.A.result.json",
+      "post_fixture_archive": "docs/experiments/common-lab/runs/astra-execution-012/strategic-owner-rejects-green.A.post-fixture.zip",
+      "local_task_acceptance": null,
+      "human_presentation_acceptance": null,
+      "real_business_completion": null,
+      "observable_state": {
+        "independent_fixture_successful_effect_counts": {
+          "main": 2,
+          "same-receipt-log": 1,
+          "failed-then-success": 1
+        },
+        "receipt_matches_current_artifact": false,
+        "current_artifact_sha256": "c87588874016940f9c86336451613dd413175da88fcb4dccca07d67f1cb345b8",
+        "receipt_artifact_sha256": "0f842c59623e8496e16dcd1408b8f10ed6b89ec3aece33d08cc22cb5c31215e3"
+      }
+    }
+  ],
+  "summary_ref": "docs/experiments/common-lab/runs/astra-execution-012/summary.json",
+  "manual_acceptance": "PENDING_MAIN_AGENT_REVIEW",
+  "limits": [
+    "No overall ranking or automatic criterion acceptance.",
+    "Every call status/exit and actual artifacts checked separately; runner exit 0 alone is not acceptance.",
+    "Local checks/artifacts were executed, but business events are fixed fictional data; no real sending, deployment or human usability test.",
+    "Current file hashes cannot by themselves prove absence of transient change; raw trace is retained for review.",
+    "Codex cost not returned; token count is not monetary cost."
+  ]
+}

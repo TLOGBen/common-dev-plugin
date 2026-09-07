@@ -1,0 +1,34 @@
+{
+  "name": "common-lab",
+  "version": "0.1.7",
+  "description": "Opt-in experiments in lean, outcome-led skills: goal ownership, human decision pacing, and evidence-backed strategic progress. User-facing output defaults to Traditional Chinese.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Common Lab",
+    "shortDescription": "精簡工作技能的獨立實驗包",
+    "longDescription": "以清楚的成果、人的決策節奏與證據推進工作。保留授權與復原邊界，實驗減少不必要的提示規則及停頓；不取代穩定 Common。",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 $lab-strategic-advance 推進已確認的目標。",
+      "用 $lab-delegate 委派一段可獨立驗收的實作。",
+      "用 $lab-wayfinder 釐清下一個需要我決定的問題。"
+    ]
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "keywords": [
+    "experimental",
+    "skills",
+    "delegation",
+    "strategic-execution"
+  ]
+}

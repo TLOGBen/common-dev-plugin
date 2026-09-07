@@ -1,0 +1,24 @@
+{
+  "checked_utc": "2026-09-06T06:50:19.010951+00:00",
+  "actual_model_calls": 0,
+  "arms": {
+    "A": {
+      "prompt_sha256": "f82aff1249e8272c8c58b188e95b5663a0daa65eb291dbea7f2e945b35727e44",
+      "payload_sha256": "e0cdd239c89f45672a92257a3b18c7f09363f3e42c8bdaf9b49071752f4fe564",
+      "frozen_role_hashes_verified": true,
+      "disposable_and_original_hashes_match": true,
+      "scratch_empty": true,
+      "baseline_exit_code": 0
+    },
+    "B": {
+      "prompt_sha256": "7b9e7c5700197dc5592d2442687935e5720c63059091e6441ff183f0e5f635cf",
+      "payload_sha256": "424190cb148087b6faf739a2ce3cdb4e403425f7b417b43b9207907093c072e9",
+      "frozen_role_hashes_verified": true,
+      "disposable_and_original_hashes_match": true,
+      "scratch_empty": true,
+      "baseline_exit_code": 0
+    }
+  },
+  "dispatch_plan_sha256": "dccd7da0ec12b025d1a5babf489fe09b648af41e4218cf22c824b696e91192ba",
+  "verification_receipt_sha256": "78961995d7778fd327e6b7186be73d9873621b9bb6672070167cad0c0d38bc1e"
+}

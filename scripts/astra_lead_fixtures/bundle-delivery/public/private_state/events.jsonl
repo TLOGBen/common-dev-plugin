@@ -1,0 +1,2 @@
+{"event":"delivery_accepted","delivery_id":"D0001","request_id":"Q0001","bundle":{"schema_version":2,"bundle_key":"catalog-release-v2","items":[{"record_id":"row-a","label":"Standard","quantity":5,"unit":"piece","owner_team":"Ops"},{"record_id":"row-b","label":"Zero balance","quantity":0,"unit":"box","owner_team":"Finance"},{"record_id":"row-d","label":"彩色, 大型","quantity":2,"unit":"set","owner_team":"Design"}]},"receipt_visible":false}
+

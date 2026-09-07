@@ -1,0 +1,8 @@
+{
+  "command": "python3 -B scripts/astra_lead_campaign_candidate/_evaluation/verify.py --fixture /tmp/astra-lead-campaign-20260906-b/workspaces/03-campaign-original --artifact artifacts/release-v3.json",
+  "exit_code": 0,
+  "stderr": "",
+  "oracle_sha256": "39c3392f732c87827065f1b319f22b4cfe1a70d3092dfe07521057dbf641fdd6",
+  "basis": "Read-only independent oracle after actor completion; original output preserved.",
+  "overall_goal_achieved": false
+}

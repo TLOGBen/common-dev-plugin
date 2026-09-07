@@ -1,0 +1,148 @@
+{
+  "exported_at": "2026-09-06T23:53:46.080744+00:00",
+  "preflight": {
+    "verdict": "TARGET_MATCH",
+    "source": "/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab",
+    "output": "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0",
+    "staging": "/tmp/estimate-lab-v020-export-0800",
+    "report_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/lab-v0.2.0/export-estimate-lab",
+    "transfer": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py",
+    "plugin": "estimate-lab",
+    "version": "0.2.0",
+    "interface": "/home/vakarve/projects/common-dev-plugin/codex-metadata/estimate-lab/plugin-interface.json",
+    "interface_sha256": "e5f4a7e69f1fc42734180fc95d535d44d4fc843dd38a337003b0cf8d2f57e2b6",
+    "validator": "/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py",
+    "output_exists": false,
+    "staging_exists": false,
+    "source_files": {
+      ".claude-plugin/plugin.json": "243965fc922434136bcf7a2a0bb1e4a263eace9fbd8375a57f63f01dc4ffd8cd",
+      "agents/lab-estimate-auditor.md": "bac484273f3fb7590b0f743c646de0ddf9512b7ce7505bc23f635afaf6a4c980",
+      "skills/lab-estimate/SKILL.md": "2468717e38cbe9a2253684963d222e82b89d738d4cb672a23b088f985becabbc",
+      "skills/lab-estimate/assets/assessment-report-template.html": "cb750028b6648c02358da13fa4466e24fbce538669f2693dc25b9c0b3417b058",
+      "skills/lab-estimate/references/case-state.md": "444d36ef8e04d8b7445b9450fa3c2f8704a97a679d6eb93b1b94bdc232d8f3c3",
+      "skills/lab-estimate/references/deliverables.md": "1344ac6549c184a3952105a1934547c7dbe2a8526a5cfc6a5c511918e9613e88",
+      "skills/lab-estimate/references/dependency-behavior.md": "fd798be92122e1ae2fbee1489c4344af2aa8fdf7565b875b853b43ab7b2d327a",
+      "skills/lab-estimate/references/discovery-guide.md": "87d4b694c609b186db1ad881d7041ba0f1d2bbed4ae070f5ad6e2177b73ddeed",
+      "skills/lab-estimate/references/estimation-guide.md": "e42bf1638df1b87e8b16d9a3028fcffab601f2eb89f5b2e0d9f64f02c52e5fa8",
+      "skills/lab-estimate/references/evidence-and-success-chain.md": "fcb3248ade86852a27fa0f55c32ca84507cce5de2e7d7e5f9936ec1e50f43705",
+      "skills/lab-estimate/references/inventory-sidekick-brief.md": "a2103846599b3cc43ddd93136e636e5bb2e8b2453c4d4de1bdeda8ad7eec82a1",
+      "skills/lab-estimate/references/long-run-reconciliation.md": "164ad2c3c88d736e0c82e7333772f7f5fae2fa950d67349d23ec69f68ca52a18",
+      "skills/lab-estimate/references/pm-decision-pauses.md": "889d96d961bfab42310b11a070a96c847aa21db450c28abccc34da2a5db67f65",
+      "skills/lab-estimate/references/pm-report-design.md": "01e4ef9f23f76367f81afc86271b2fa2df430f6763783423e725904189406720",
+      "skills/lab-estimate/references/scenario-guide.md": "9bb31fb8adbfd5c06d4e5d98ac527bb8460cab226426b74af07860b6c1e8b749",
+      "skills/lab-estimate/requirements.lock": "e3cb5e7d0c47f4f966581e80bb8d4429494827e14bc6bd0057a81a66423f4c7b",
+      "skills/lab-estimate/scripts/case_state.py": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b",
+      "skills/lab-estimate/scripts/generate_outputs.py": "def65f23ac538eeb64729faef44b5444b1649f66308703727c4a28bb7c12651c",
+      "skills/lab-estimate/tests/helpers.py": "27a192948d20813b76096ee616a926cdd237d93ba24e5b50317b137f949b52eb",
+      "skills/lab-estimate/tests/test_approval_validity.py": "45c35e893f0f07bc46c55eb240f4e5d65791976f0df2b7c6505de0bd9c244ede",
+      "skills/lab-estimate/tests/test_case_state.py": "7e2fbd1b6c7fc4dcca5806c9872819ae5400f5d8b656890c0ea57ae873ca6450",
+      "skills/lab-estimate/tests/test_dialog_events.mjs": "2307e03e66313b68d7e0c9314bc95cf6708780adb877e0a6f97a3e8d2f8b66bf",
+      "skills/lab-estimate/tests/test_finding_context.py": "85805f12d538c32d2a54bffbc084766aa023a6e0e490f2d8fa585887f6b64b57",
+      "skills/lab-estimate/tests/test_gate_handoff.py": "a605683e37ca58e664e111fbdf8e97823513b6339a09b48e60016ba14c62e34c",
+      "skills/lab-estimate/tests/test_outputs.py": "13d4559473290215da57b0f3b14e908fe8769cdbd36777a7a5b4e905be34d444"
+    },
+    "source_sha256": "489d3346acb7111708a24d618d1b761d456504354ad367c7a3b7f2bb86cd386e",
+    "skill_ui_sources": {
+      "/home/vakarve/projects/common-dev-plugin/codex-metadata/estimate-lab/lab-estimate/openai.yaml": "4ee101809aa9915868b5f9327ff1152f8c73298ab5b9820a7ff3618a40e72727"
+    },
+    "recovery": "Existing state untouched; new staging retained for reproducibility."
+  },
+  "transfer_sha256": "571c7cdaa2ebef2bf5330da0e9a7b87155f13ca8e9e490460dc00ab9e6e62c64",
+  "source_sha256": "489d3346acb7111708a24d618d1b761d456504354ad367c7a3b7f2bb86cd386e",
+  "output_sha256": "d2a81e6ed7b8b61b81aadfa3ea06012635396ff4e560f5c87c9d70fa8b613285",
+  "interface_source": "/home/vakarve/projects/common-dev-plugin/codex-metadata/estimate-lab/plugin-interface.json",
+  "interface_sha256": "e5f4a7e69f1fc42734180fc95d535d44d4fc843dd38a337003b0cf8d2f57e2b6",
+  "skill_ui_sources": {
+    "/home/vakarve/projects/common-dev-plugin/codex-metadata/estimate-lab/lab-estimate/openai.yaml": "4ee101809aa9915868b5f9327ff1152f8c73298ab5b9820a7ff3618a40e72727"
+  },
+  "restored_skill_ui": [
+    "skills/lab-estimate/agents/openai.yaml"
+  ],
+  "output_files": {
+    ".agents/plugins/marketplace.json": "615d94ce66d82324ff37991203dc9be8019fe9328b12d56a1f71a7c3d725c68d",
+    "plugins/estimate-lab/.codex-agents/lab-estimate-auditor.toml": "e13f869eef3a42dffd0c85f2d8c199d08c0cbad56b17eed750c1f0f54a8de5a2",
+    "plugins/estimate-lab/.codex-plugin/plugin.json": "b63392acdbdd9f2108491e25bfb7464ed51056aacd986192e34c654c4af23c7d",
+    "plugins/estimate-lab/skills/lab-estimate/SKILL.md": "bc097b3905ae2b6cfe70793b007bb2de9760d100aed9f7b33482a3c5edfdf701",
+    "plugins/estimate-lab/skills/lab-estimate/agents/openai.yaml": "d6055f47b53e9fbe003b10682a9bd5f75902b7773639cbbe5f4de81ddf15bf54",
+    "plugins/estimate-lab/skills/lab-estimate/assets/assessment-report-template.html": "cb750028b6648c02358da13fa4466e24fbce538669f2693dc25b9c0b3417b058",
+    "plugins/estimate-lab/skills/lab-estimate/references/case-state.md": "da53357b7291ca6664236f98ec563339fd7541d4f1fa44ad8e3622e5b0dc5dfa",
+    "plugins/estimate-lab/skills/lab-estimate/references/deliverables.md": "1344ac6549c184a3952105a1934547c7dbe2a8526a5cfc6a5c511918e9613e88",
+    "plugins/estimate-lab/skills/lab-estimate/references/dependency-behavior.md": "fd798be92122e1ae2fbee1489c4344af2aa8fdf7565b875b853b43ab7b2d327a",
+    "plugins/estimate-lab/skills/lab-estimate/references/discovery-guide.md": "0031c9231af858fe8e1eb3f939509a6fc914456a352a11754d52feca61644909",
+    "plugins/estimate-lab/skills/lab-estimate/references/estimation-guide.md": "7d1e238268adc41efe38b009c064c4c1d1169e6db5bae7f404a869ea9564c890",
+    "plugins/estimate-lab/skills/lab-estimate/references/evidence-and-success-chain.md": "fcb3248ade86852a27fa0f55c32ca84507cce5de2e7d7e5f9936ec1e50f43705",
+    "plugins/estimate-lab/skills/lab-estimate/references/inventory-sidekick-brief.md": "a2103846599b3cc43ddd93136e636e5bb2e8b2453c4d4de1bdeda8ad7eec82a1",
+    "plugins/estimate-lab/skills/lab-estimate/references/long-run-reconciliation.md": "164ad2c3c88d736e0c82e7333772f7f5fae2fa950d67349d23ec69f68ca52a18",
+    "plugins/estimate-lab/skills/lab-estimate/references/pm-decision-pauses.md": "889d96d961bfab42310b11a070a96c847aa21db450c28abccc34da2a5db67f65",
+    "plugins/estimate-lab/skills/lab-estimate/references/pm-report-design.md": "01e4ef9f23f76367f81afc86271b2fa2df430f6763783423e725904189406720",
+    "plugins/estimate-lab/skills/lab-estimate/references/scenario-guide.md": "9bb31fb8adbfd5c06d4e5d98ac527bb8460cab226426b74af07860b6c1e8b749",
+    "plugins/estimate-lab/skills/lab-estimate/requirements.lock": "e3cb5e7d0c47f4f966581e80bb8d4429494827e14bc6bd0057a81a66423f4c7b",
+    "plugins/estimate-lab/skills/lab-estimate/scripts/case_state.py": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b",
+    "plugins/estimate-lab/skills/lab-estimate/scripts/generate_outputs.py": "def65f23ac538eeb64729faef44b5444b1649f66308703727c4a28bb7c12651c",
+    "plugins/estimate-lab/skills/lab-estimate/tests/helpers.py": "27a192948d20813b76096ee616a926cdd237d93ba24e5b50317b137f949b52eb",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_approval_validity.py": "45c35e893f0f07bc46c55eb240f4e5d65791976f0df2b7c6505de0bd9c244ede",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_case_state.py": "7e2fbd1b6c7fc4dcca5806c9872819ae5400f5d8b656890c0ea57ae873ca6450",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs": "2307e03e66313b68d7e0c9314bc95cf6708780adb877e0a6f97a3e8d2f8b66bf",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py": "85805f12d538c32d2a54bffbc084766aa023a6e0e490f2d8fa585887f6b64b57",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_gate_handoff.py": "a605683e37ca58e664e111fbdf8e97823513b6339a09b48e60016ba14c62e34c",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_outputs.py": "13d4559473290215da57b0f3b14e908fe8769cdbd36777a7a5b4e905be34d444"
+  },
+  "adapted_files": [
+    "skills/lab-estimate/SKILL.md",
+    "skills/lab-estimate/references/case-state.md",
+    "skills/lab-estimate/references/discovery-guide.md",
+    "skills/lab-estimate/references/estimation-guide.md"
+  ],
+  "checks": {
+    "skill_count": 1,
+    "explicit_only_skills": [],
+    "bundled_agent_resolver": true,
+    "unchanged_scripts_assets": [
+      "skills/lab-estimate/requirements.lock",
+      "skills/lab-estimate/tests/test_case_state.py",
+      "skills/lab-estimate/tests/test_finding_context.py",
+      "skills/lab-estimate/tests/test_outputs.py",
+      "skills/lab-estimate/tests/test_approval_validity.py",
+      "skills/lab-estimate/tests/test_dialog_events.mjs",
+      "skills/lab-estimate/tests/helpers.py",
+      "skills/lab-estimate/tests/test_gate_handoff.py",
+      "skills/lab-estimate/scripts/generate_outputs.py",
+      "skills/lab-estimate/scripts/case_state.py",
+      "skills/lab-estimate/assets/assessment-report-template.html"
+    ],
+    "plugin_validator": "Plugin validation passed: /tmp/estimate-lab-v020-export-0800/plugins/estimate-lab"
+  },
+  "followups": [
+    {
+      "skill": "lab-estimate",
+      "item": "skill-root 子目錄 `tests/` 未複製（非 scripts/references/assets/evals/agents 標準目錄）",
+      "action": "restore-audited-auxiliary",
+      "resolved_by": "tests copied before unchanged content-closure guard; bytes verified"
+    },
+    {
+      "skill": "lab-estimate",
+      "item": "`SKILL.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；skill 本體不自動改寫，請依實際 Codex package 路徑人工確認",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-estimate",
+      "item": "`references/case-state.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-estimate",
+      "item": "`references/discovery-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    },
+    {
+      "skill": "lab-estimate",
+      "item": "`references/estimation-guide.md` 含 Claude-only token（CLAUDE_PLUGIN_ROOT）；引用文件不自動改寫，請人工確認語境後處理",
+      "action": "refresh-mapping",
+      "resolved_by": "verified LAB_SKILL_DIR adapter"
+    }
+  ],
+  "staging_retained": "/tmp/estimate-lab-v020-export-0800"
+}

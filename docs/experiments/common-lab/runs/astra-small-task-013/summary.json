@@ -1,0 +1,677 @@
+{
+  "run_id": "astra-small-task-013",
+  "kind": "behavioral_tabletop",
+  "started_utc": "2026-09-06T05:27:36.075133+00:00",
+  "ended_utc": "2026-09-06T05:29:18.425510+00:00",
+  "elapsed_wall_seconds": 102.34,
+  "planned_calls": 8,
+  "actual_calls": 8,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "revision": "small-clear-tasks-v1",
+  "plugin_versions": {
+    "A": "1.35.2",
+    "B": "0.1.3"
+  },
+  "repeats": 1,
+  "totals_by_arm": {
+    "A": {
+      "calls": 4,
+      "completed": 4,
+      "usage_known_calls": 4,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 100.981,
+      "known_usage": {
+        "input_tokens": 129342,
+        "cached_input_tokens": 103680,
+        "uncached_input_tokens": 25662,
+        "output_tokens": 1665,
+        "total_tokens": 131007
+      }
+    },
+    "B": {
+      "calls": 4,
+      "completed": 4,
+      "usage_known_calls": 4,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 90.45,
+      "known_usage": {
+        "input_tokens": 126591,
+        "cached_input_tokens": 99840,
+        "uncached_input_tokens": 26751,
+        "output_tokens": 1483,
+        "total_tokens": 128074
+      }
+    }
+  },
+  "resource_drift": [],
+  "cases_changed_during_run": false,
+  "manual_review_status": "PENDING; rubric and pause categories frozen before calls",
+  "results": [
+    {
+      "case_id": "small-defined-goal-label",
+      "skill": "define-goal",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:27:36.078935+00:00",
+      "ended_utc": "2026-09-06T05:27:54.516239+00:00",
+      "wall_seconds": 18.437,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/define-goal/SKILL.md",
+      "skill_sha256": "a6d87c16a183d78c2e6ddb4029ea80f3467446e27112844b76193c95f9928ccb",
+      "prompt_sha256": "9b1147a1c98d6906f9b184c23121b49ff7dad3e458310856d6c62343ac759628",
+      "fixture_dir": "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會依你指定的 define-goal 技能閱讀完整指引，接著只提出完成目標與下一步說明。\n",
+        "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」，`href` 維持 `/exports/report.csv`，其他內容完全不變。\n\n驗收標準：確認連結字樣精確為「下載 CSV」，且差異僅有這一處文字變更，即算完成。若發現多個符合的連結或原始 `href` 不符，先停止並釐清。\n\n本次僅定義上述目標，不修改檔案；待你要求實作時，再檢查該連結並進行修改。"
+      ],
+      "final_message": "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」，`href` 維持 `/exports/report.csv`，其他內容完全不變。\n\n驗收標準：確認連結字樣精確為「下載 CSV」，且差異僅有這一處文字變更，即算完成。若發現多個符合的連結或原始 `href` 不符，先停止並釐清。\n\n本次僅定義上述目標，不修改檔案；待你要求實作時，再檢查該連結並進行修改。",
+      "usage": {
+        "input_tokens": 32575,
+        "cached_input_tokens": 26880,
+        "output_tokens": 292,
+        "uncached_input_tokens": 5695,
+        "total_tokens": 32867
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/define-goal/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-defined-goal-label",
+      "skill": "define-goal",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:27:54.516956+00:00",
+      "ended_utc": "2026-09-06T05:28:14.339364+00:00",
+      "wall_seconds": 19.817,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-define-goal/SKILL.md",
+      "skill_sha256": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "prompt_sha256": "7b382f370dd29d780ec19ceb2260a9bc97e01754df25a9457b771702c9ff8c4a",
+      "fixture_dir": "/tmp/common-lab-ab-small-defined-goal-label-qio1thu1",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "help.html": "9101919f026ca8ad92600f08ed2f25c5c31610a21ec43e4349107d0e704db02d"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會使用指定的 lab-define-goal 技能，先完整閱讀其說明，再整理完成目標；本次只提出目標與下一步，不修改檔案。\n",
+        "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」。\n\n驗收條件：\n\n- 連結文字為「下載 CSV」。\n- `href` 維持 `/exports/report.csv`。\n- 其他內容不變。\n\n確認上述條件即完成，不需額外測試或延伸修改。\n\n本次只定義目標，到此停止；未修改檔案。後續實作的下一步是僅替換該連結文字，再核對上述條件。"
+      ],
+      "final_message": "完成目標：將 `help.html` 中唯一的「下載」連結文字改為「下載 CSV」。\n\n驗收條件：\n\n- 連結文字為「下載 CSV」。\n- `href` 維持 `/exports/report.csv`。\n- 其他內容不變。\n\n確認上述條件即完成，不需額外測試或延伸修改。\n\n本次只定義目標，到此停止；未修改檔案。後續實作的下一步是僅替換該連結文字，再核對上述條件。",
+      "usage": {
+        "input_tokens": 31615,
+        "cached_input_tokens": 26880,
+        "output_tokens": 307,
+        "uncached_input_tokens": 4735,
+        "total_tokens": 31922
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-define-goal/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-grilling-leading-instruction",
+      "skill": "grilling",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:28:47.707347+00:00",
+      "ended_utc": "2026-09-06T05:29:18.424582+00:00",
+      "wall_seconds": 30.716,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-grilling-leading-instruction-fn1t_ote",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/grilling/SKILL.md",
+      "skill_sha256": "d621b78d95bb600b0bbf177d166dc8ac13e9ed12b2cdad643d73f302191a71a7",
+      "prompt_sha256": "2a9aaab61bc147358a44253601581755d807e5619c7ac06aee921f9e9b246b02",
+      "fixture_dir": "/tmp/common-lab-ab-small-grilling-leading-instruction-fn1t_ote",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會完整讀取你指定的 grilling 技能，依照它的流程檢視這個小試驗的盲點；只提出模擬回覆與下一步。\n",
+        "最重要的盲點是：**你先說「備註在頁尾」，就把要測的「自行找到」提示掉了。** 即使兩人都完成，也只能描述他們能在位置提示下找到並填寫，無法回答原本的問題。假資料、不發布、限制結論範圍，都不能消除這個提示造成的影響。\n\n❓ **Q1** - **是否拿掉位置提示？** 建議把開場改成：「請找到表單的『備註』欄，並填入『需開發票』。」保留欄位名稱符合你要測的目標；不要告知位置、指向頁尾或示範捲動。\n\n➡️ 建議採用。將「未獲協助便找到備註欄並正確填寫」定為完成；若需要提示，另外記錄，別與自行完成混在一起。\n\n擬議下一步：等你確認這個調整，再整理一份兩位同事共用的簡短主持稿與紀錄格式。"
+      ],
+      "final_message": "最重要的盲點是：**你先說「備註在頁尾」，就把要測的「自行找到」提示掉了。** 即使兩人都完成，也只能描述他們能在位置提示下找到並填寫，無法回答原本的問題。假資料、不發布、限制結論範圍，都不能消除這個提示造成的影響。\n\n❓ **Q1** - **是否拿掉位置提示？** 建議把開場改成：「請找到表單的『備註』欄，並填入『需開發票』。」保留欄位名稱符合你要測的目標；不要告知位置、指向頁尾或示範捲動。\n\n➡️ 建議採用。將「未獲協助便找到備註欄並正確填寫」定為完成；若需要提示，另外記錄，別與自行完成混在一起。\n\n擬議下一步：等你確認這個調整，再整理一份兩位同事共用的簡短主持稿與紀錄格式。",
+      "usage": {
+        "input_tokens": 31854,
+        "cached_input_tokens": 23040,
+        "output_tokens": 501,
+        "uncached_input_tokens": 8814,
+        "total_tokens": 32355
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-grilling-leading-instruction",
+      "skill": "grilling",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:28:22.795106+00:00",
+      "ended_utc": "2026-09-06T05:28:47.706559+00:00",
+      "wall_seconds": 24.907,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-grilling-leading-instruction-fn1t_ote",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-grilling/SKILL.md",
+      "skill_sha256": "182020d2197261ede6d0b360179eea8c08b2b7d81c7ca1096c50c6a337aeba58",
+      "prompt_sha256": "b54d5933fa38a0bada9b9a22ef3b1750808515c4d16d95b1739c5b133259646b",
+      "fixture_dir": "/tmp/common-lab-ab-small-grilling-leading-instruction-fn1t_ote",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會使用你指定的 lab-grilling 技能，完整讀取該檔案，並依情境提出模擬回覆與建議的下一步。\n",
+        "最重要的盲點是：**你想測「自行找到」，但開場就告訴他們「備註在頁尾」**。即使兩人都完成，也只能支持「得到位置提示後能完成」，無法確認他們能自行發現欄位。\n\n只描述這兩次測試、不推論所有使用者，這個範圍合理；關鍵是讓任務指令對準你要驗證的能力。\n\n建議下一步：把指令改成「請填寫這份表單，並註明『需開發票』」，不透露欄位名稱或位置；記錄是否自行找到，以及是否需要提示。\n\n**如果同事詢問「要填在哪裡」，你是否會把這次記為「需要協助」，即使提示後完成？** 這個判準會決定你記下的「完成」能否回答原本的問題。"
+      ],
+      "final_message": "最重要的盲點是：**你想測「自行找到」，但開場就告訴他們「備註在頁尾」**。即使兩人都完成，也只能支持「得到位置提示後能完成」，無法確認他們能自行發現欄位。\n\n只描述這兩次測試、不推論所有使用者，這個範圍合理；關鍵是讓任務指令對準你要驗證的能力。\n\n建議下一步：把指令改成「請填寫這份表單，並註明『需開發票』」，不透露欄位名稱或位置；記錄是否自行找到，以及是否需要提示。\n\n**如果同事詢問「要填在哪裡」，你是否會把這次記為「需要協助」，即使提示後完成？** 這個判準會決定你記下的「完成」能否回答原本的問題。",
+      "usage": {
+        "input_tokens": 31645,
+        "cached_input_tokens": 23040,
+        "output_tokens": 441,
+        "uncached_input_tokens": 8605,
+        "total_tokens": 32086
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-grilling/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-prompt-already-clear",
+      "skill": "better-prompts",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:28:02.786310+00:00",
+      "ended_utc": "2026-09-06T05:28:22.793984+00:00",
+      "wall_seconds": 20.003,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md",
+      "skill_sha256": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+      "prompt_sha256": "e0c67e22ac354b897ed286a71112df6560c0e8cc1111f2ae22cd4241a04a302f",
+      "fixture_dir": "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會依你指定的 better-prompts 技能，完整讀取該檔案後整理成可直接貼上的提示。\n",
+        "```text\n僅將 docs/guide.md 中唯一一處 sucess 改為 success。其餘所有字元（包含空白與換行）保持原樣，不修改其他檔案，也不要 commit。\n```"
+      ],
+      "final_message": "```text\n僅將 docs/guide.md 中唯一一處 sucess 改為 success。其餘所有字元（包含空白與換行）保持原樣，不修改其他檔案，也不要 commit。\n```",
+      "usage": {
+        "input_tokens": 32240,
+        "cached_input_tokens": 26880,
+        "output_tokens": 300,
+        "uncached_input_tokens": 5360,
+        "total_tokens": 32540
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-prompt-already-clear",
+      "skill": "better-prompts",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:27:36.080411+00:00",
+      "ended_utc": "2026-09-06T05:28:02.784943+00:00",
+      "wall_seconds": 26.704,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-better-prompts/SKILL.md",
+      "skill_sha256": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "prompt_sha256": "56a7b7809d6baaa3b1a1b32b1ea8de45d686b47d607620ce97bb9c78d37a83c9",
+      "fixture_dir": "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+        "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整閱讀指定的 lab-better-prompts 技能，再依照你的情境整理可直接貼上的提示。\n",
+        "可直接貼上：\n\n```text\n只將 docs/guide.md 中唯一的 sucess 改成 success。其他所有字元（包含空白與換行）維持原樣，不要修改其他檔案，也不要 commit。\n```\n\n原句已很清楚，這版只明確補上空白、換行與檔案範圍。建議 agent 修改後比對差異：若出現這一次替換以外的任何變動，就不符合要求。"
+      ],
+      "final_message": "可直接貼上：\n\n```text\n只將 docs/guide.md 中唯一的 sucess 改成 success。其他所有字元（包含空白與換行）維持原樣，不要修改其他檔案，也不要 commit。\n```\n\n原句已很清楚，這版只明確補上空白、換行與檔案範圍。建議 agent 修改後比對差異：若出現這一次替換以外的任何變動，就不符合要求。",
+      "usage": {
+        "input_tokens": 31658,
+        "cached_input_tokens": 26880,
+        "output_tokens": 431,
+        "uncached_input_tokens": 4778,
+        "total_tokens": 32089
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-better-prompts/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-wait-skipped",
+      "skill": "wait-what",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:28:14.340505+00:00",
+      "ended_utc": "2026-09-06T05:28:46.169852+00:00",
+      "wall_seconds": 31.825,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wait-what/SKILL.md",
+      "skill_sha256": "7ffdc0116c2ed214e34e35e23c50d19d1acdf703e669570d4ef77da1ef98354d",
+      "prompt_sha256": "dd41d75c45b5f4b7cc43f472e5ff7963e7bcead581cee78d813d503bb3a610fe",
+      "fixture_dir": "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整閱讀你指定的技能檔，再依情境擬出給行政同事的回覆。\n",
+        "**摘要**\n\n依你提供的摘要，原檔那兩列沒有被刪掉。它們只是沒有被放進另存的新檔，所以新檔只有 14 列。\n\n**前情提要**\n\n想像你有一本名冊，另外抄一份新名冊。有兩筆沒填電子郵件地址，所以沒抄進新名冊。舊名冊上的資料都還在。\n\n**當前概況**\n\n這裡的 skipped 就是「略過，沒有放進新檔」：\n\n- 原檔：仍有全部 16 列。\n- 新檔：有 14 列，少了電子郵件地址空白的那 2 列。\n\n**與你相關的部分**\n\n如果你要找那兩筆資料，應該看原檔。新檔沒有包含所有資料。\n\n**決策理由**\n\n前一句用了 skipped，沒有把「從哪份檔案略過」說清楚，讓你擔心資料被刪掉。這裡是在解釋摘要的意思；是否應該略過那兩列，需要另外判斷。\n\n我建議下一步先確認這個差別是否清楚。你還不清楚哪一段：摘要／前情提要／當前概況／與你相關的部分／決策理由？"
+      ],
+      "final_message": "**摘要**\n\n依你提供的摘要，原檔那兩列沒有被刪掉。它們只是沒有被放進另存的新檔，所以新檔只有 14 列。\n\n**前情提要**\n\n想像你有一本名冊，另外抄一份新名冊。有兩筆沒填電子郵件地址，所以沒抄進新名冊。舊名冊上的資料都還在。\n\n**當前概況**\n\n這裡的 skipped 就是「略過，沒有放進新檔」：\n\n- 原檔：仍有全部 16 列。\n- 新檔：有 14 列，少了電子郵件地址空白的那 2 列。\n\n**與你相關的部分**\n\n如果你要找那兩筆資料，應該看原檔。新檔沒有包含所有資料。\n\n**決策理由**\n\n前一句用了 skipped，沒有把「從哪份檔案略過」說清楚，讓你擔心資料被刪掉。這裡是在解釋摘要的意思；是否應該略過那兩列，需要另外判斷。\n\n我建議下一步先確認這個差別是否清楚。你還不清楚哪一段：摘要／前情提要／當前概況／與你相關的部分／決策理由？",
+      "usage": {
+        "input_tokens": 32673,
+        "cached_input_tokens": 26880,
+        "output_tokens": 572,
+        "uncached_input_tokens": 5793,
+        "total_tokens": 33245
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wait-what/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "small-wait-skipped",
+      "skill": "wait-what",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T05:28:46.170393+00:00",
+      "ended_utc": "2026-09-06T05:29:05.192263+00:00",
+      "wall_seconds": 19.022,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-wait-what/SKILL.md",
+      "skill_sha256": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "prompt_sha256": "e9f8ec8d209100cdd13ef11bde1c6b9723593e48f1e9f246dbcf0129c481e158",
+      "fixture_dir": "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整閱讀你指定的技能檔，再依情境擬出模擬回覆。\n",
+        "不是，照前一句摘要，那兩列沒有從原檔刪掉。\n\n「skipped」是「略過」的意思：因為那兩列的 email 欄位空白，所以沒有放進另外存的新檔。原檔仍有全部 16 列，包含那兩列；新檔只有其餘 14 列。\n\n我會停在這裡，等你指示再繼續處理。"
+      ],
+      "final_message": "不是，照前一句摘要，那兩列沒有從原檔刪掉。\n\n「skipped」是「略過」的意思：因為那兩列的 email 欄位空白，所以沒有放進另外存的新檔。原檔仍有全部 16 列，包含那兩列；新檔只有其餘 14 列。\n\n我會停在這裡，等你指示再繼續處理。",
+      "usage": {
+        "input_tokens": 31673,
+        "cached_input_tokens": 23040,
+        "output_tokens": 304,
+        "uncached_input_tokens": 8633,
+        "total_tokens": 31977
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-wait-what/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    }
+  ],
+  "limits": "One fictional next-reply case per skill, one model, one sample per arm; not a human usability test or statistical proof. The common read-only tabletop wrapper prohibits actual mutation, goals, delegation and network, so absence of such actions is not independent proof of skill authority enforcement. Do not penalize stable formatting itself or equate a useful challenge/invitation with a blocking wait. Parent performs unblinded semantic review; no model judge calls."
+}

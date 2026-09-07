@@ -1,0 +1,15 @@
+{
+  "model": "gpt-5.6-sol",
+  "sandbox": "read-only",
+  "timeout_seconds": 180,
+  "cwd": "/tmp/trace-visibility-v1-w7p9dk94/T3",
+  "input_sha256": {
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt": "158cb1edec290d13720b546ca707431e4489f839b1c94f0baea37eb8e16a7d7c",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt": "42fafd85d4429ed843dc5eb7e5cdec79d1dc9368bd8b892b4fc07eb72de73a55",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt": "dee2297676562fe2a380a9390ec107fe410565533ad98ce156010ac31a2511a7",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt": "b1e7b6f2d9a65cf2b69a69e4c838e23d83cae5d0666245becf27ace155b6dbc9",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt": "843b228d63ae4c8e532843c627c8de885b19f56f097727a2649c4d68c7d7cafe",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt": "8fecd8d5ed9a714f0714a57674539cca23a1242cdda7ab33679fe6c785ea4617"
+  },
+  "prompt": "This is a read-only fixture task. Read independent files with parallel tool calls if available, using one separate cat command per file.\nRead each of the following six files exactly once and return a JSON object mapping each absolute filename to its exact marker value. If a marker is not visible to you, use null and briefly explain. Do not guess, retry, combine files into a shell command, edit files, inspect other files/configuration, use the network, or delegate. The markers are synthetic test data, not credentials.\n/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt\n/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt\n/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt\n/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt\n/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt\n/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt"
+}

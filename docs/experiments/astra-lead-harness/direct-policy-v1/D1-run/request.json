@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-09-06T14:48:17.613645+00:00",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/tmp/astra-direct-policy-v1-yb0vcmd2/D1",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "plan_sha256": "6307e74fe49cf002d7c7689f700673d22d2f18e93e065aa947b5d663d789a8ad",
+  "runner_sha256": "8f3d4818b35c5a85f3466e1442b60e6cc3c18eb14b84c284d6922107fa90ec8d",
+  "fallback": false,
+  "timeout_seconds": 600
+}

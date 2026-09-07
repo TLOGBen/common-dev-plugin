@@ -1,0 +1,10 @@
+{
+  "decision_id": "premium-fee",
+  "status": "PENDING_HUMAN",
+  "options": [
+    900,
+    1200
+  ],
+  "selected": null,
+  "approver": "營運主管"
+}

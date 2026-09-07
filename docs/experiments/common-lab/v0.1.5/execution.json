@@ -1,0 +1,44 @@
+{
+  "command": [
+    "/home/vakarve/miniconda3/bin/python3",
+    "-B",
+    "scripts/export_common_lab.py",
+    "--source",
+    "plugins/common-lab",
+    "--output",
+    "experiments/common-lab-v0.1.5",
+    "--report-dir",
+    "docs/experiments/common-lab/v0.1.5",
+    "--staging",
+    "docs/experiments/common-lab/staging-v0.1.5-a",
+    "--transfer",
+    "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py",
+    "--validator",
+    "/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py"
+  ],
+  "started_utc": "2026-09-06T06:08:08.018233+00:00",
+  "ended_utc": "2026-09-06T06:08:09.493461+00:00",
+  "elapsed_seconds": 1.475232,
+  "exit_code": 0,
+  "stdout": "{\n  \"verdict\": \"TARGET_MATCH\",\n  \"source\": \"/home/vakarve/projects/common-dev-plugin/plugins/common-lab\",\n  \"output\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.5\",\n  \"staging\": \"/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/staging-v0.1.5-a\",\n  \"report_dir\": \"/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/v0.1.5\",\n  \"transfer\": \"/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py\",\n  \"plugin\": \"common-lab\",\n  \"version\": \"0.1.5\",\n  \"interface\": \"/home/vakarve/projects/common-dev-plugin/codex-metadata/common-lab/plugin-interface.json\",\n  \"interface_sha256\": \"281194f94a5118c218533546827f53107ddd6f62497d186c9e255ea365731282\",\n  \"validator\": \"/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py\",\n  \"output_exists\": false,\n  \"staging_exists\": false,\n  \"source_files\": {\n    \".claude-plugin/plugin.json\": \"cc682196a76b383c0a5c9f9313f7d98b5468ad02c6d8384bc9bd3e6443a74e63\",\n    \"agents/lab-executor.md\": \"f8739a7858bbc4f57418d59ce54f28cffd24aee6fc1258ea077fa42bc8f294bd\",\n    \"skills/lab-better-prompts/SKILL.md\": \"8a9f76535e1940309770043e2ceeb73fdc906a6074d5e8e482871e5e909172a9\",\n    \"skills/lab-define-goal/SKILL.md\": \"e0e8033f92cfc32fe668b42980e1d533832a17c31ac69a3f9fd6539c0a2dcb1b\",\n    \"skills/lab-delegate/SKILL.md\": \"a2afe479bd779d1776a0057bb2fec20bd855926fa96efcd1251d5c7f8ab7b819\",\n    \"skills/lab-delegate/references/runtime.md\": \"e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692\",\n    \"skills/lab-domain-modeling/SKILL.md\": \"4ac05fdb6374f10284da267092deaccb646789513877170fa6e4cfc5beb7f1bb\",\n    \"skills/lab-grilling/SKILL.md\": \"24d5178d69cf00bcca128230e847e921247cca00976768dd7d238d0a285fd3e2\",\n    \"skills/lab-prototype/SKILL.md\": \"eb46e1818b25f1352a719db97d70491a1bff4e83339ebdcbb1732c95716c1e42\",\n    \"skills/lab-research/SKILL.md\": \"015008f344f711a6abae91af0f68a5807f52e7ccf558b61b822c910ec4c729e0\",\n    \"skills/lab-strategic-advance/SKILL.md\": \"e0b7e11e71c7206382b59d4475b2d687deaaf8697c3b7d6c4b76ec6afb13c277\",\n    \"skills/lab-strategic-advance/references/campaign.md\": \"12d17bbf244abd1f2f16bbe9d0aa99a92016700e8893ef3009f7510fe707c31c\",\n    \"skills/lab-strategic-advance/scripts/campaign.py\": \"35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2\",\n    \"skills/lab-wait-what/SKILL.md\": \"2151da59ef74a9c5db7cf71a8cfb9b4b37b492f86e39cff86fd1f7b73af7b494\",\n    \"skills/lab-wayfinder/SKILL.md\": \"ae20a232d90b26a08bb05561a9a4f363de91ce2e8b3f411c9b75c4da68dad36f\",\n    \"skills/lab-wayfinder/assets/map-template.html\": \"64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e\",\n    \"skills/lab-wayfinder/references/map-format.md\": \"02a6e02a75bf993f4b69d706a0a3ab8c922574fb2326dcb3ed991c795baf60c9\",\n    \"skills/lab-wayfinder/scripts/render_map.py\": \"3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e\"\n  },\n  \"source_sha256\": \"8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf\",\n  \"skill_ui_sources\": {},\n  \"recovery\": \"Existing state untouched; new staging retained for reproducibility.\"\n}\n{\n  \"status\": \"EXPORTED\",\n  \"output\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.5\",\n  \"checks\": {\n    \"skill_count\": 10,\n    \"explicit_only_skills\": [\n      \"lab-wait-what\"\n    ],\n    \"bundled_agent_resolver\": true,\n    \"unchanged_scripts_assets\": [\n      \"skills/lab-strategic-advance/scripts/campaign.py\",\n      \"skills/lab-wayfinder/scripts/render_map.py\",\n      \"skills/lab-wayfinder/assets/map-template.html\"\n    ],\n    \"plugin_validator\": \"Plugin validation passed: /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/staging-v0.1.5-a/plugins/common-lab\"\n  },\n  \"source_sha256\": \"8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf\",\n  \"output_sha256\": \"20fe6c72a4808e409bf180fbe2bc6ee6adcb8b4beedeafa47f893a0fd3f44871\"\n}\n",
+  "stderr": "",
+  "preflight": {
+    "command": "wsl.exe -d Ubuntu --cd /home/vakarve/projects/common-dev-plugin zsh -lic 'python3 -B scripts/export_common_lab.py --source plugins/common-lab --output experiments/common-lab-v0.1.5 --report-dir docs/experiments/common-lab/v0.1.5 --staging docs/experiments/common-lab/staging-v0.1.5-a --transfer /mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/codex-skill-transfer/scripts/transfer.py --validator /mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py --preflight'",
+    "exit_code": 0,
+    "reviewed_verdict": "TARGET_MATCH",
+    "identical_to_execution_preflight": true,
+    "source_sha256": "8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf"
+  },
+  "preparation_friction": [
+    {
+      "phase": "acceptance artifact creation",
+      "error": "Windows command length limit (os error 206)",
+      "process_started": false,
+      "files_written": false,
+      "recovery": "Shortened the serialized record in the same shell and permission scope; no score or evidence removed."
+    }
+  ],
+  "model_generation_calls": 0,
+  "assistant_tokens": null,
+  "cost_usd": null
+}

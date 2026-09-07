@@ -1,0 +1,71 @@
+--- baseline/acceptance.md
++++ target/acceptance.md
+@@ -32,3 +32,13 @@
+ ```text
+ EMPTY_TAG
+ ```
++
++## 本輪查證與實作記錄
++
++以下內容為本輪追加記錄；上方既有條文、前提、表面清單與來源均保留未改寫。
++
++- 初始讀取確認：`src/normalize-tag.mjs` 原先會縮併所有內部空白，並以非 ASCII 限定的 `toLowerCase()` 處理字串；原有兩個測試未涵蓋這些邊界或空標籤錯誤。
++- 實作結果：`normalizeTag` 先使用 JavaScript `String.trim()`，對 trim 後空字串拋出 `Error` 且 message 精確為 `EMPTY_TAG`，並只將 ASCII `A` 到 `Z` 轉為小寫；內部空白與非 ASCII 字元保留。
++- 測試結果：直接執行 `node --test tests/normalize-tag.test.mjs`；5 個測試通過、0 個失敗、0 個取消、0 個略過。
++- 條文查證：A1–A4 由真實 export 函式的可執行測試涵蓋；A5 僅變更指定的實作與測試，並依明確要求追加本 acceptance 記錄及 `handoff.md`；A6 的交接內容見 `handoff.md`。
++- 範圍限制：未建立實驗 receipt（技能參考所述 `.baransu-lab/receipts/<task>-<run>.md` 不在本任務允許寫入路徑），未實施 seal、發布、外部操作、全域 telemetry 或 Stop-hook 紀錄。
+--- baseline/handoff.md
++++ target/handoff.md
+@@ -0,0 +1,17 @@
++# 交接 — normalizeTag 合成局部修復
++
++## 已完成的本機工作
++
++- 修復 `src/normalize-tag.mjs`：只處理 string 輸入；使用 JavaScript `String.trim()` 移除前後邊界空白；只把 ASCII `A`–`Z` 轉成小寫；保留內部空白與所有非 ASCII 字元；trim 後為空時拋出 `Error`，message 精確為 `EMPTY_TAG`。
++- 保留既有兩個測試，並在 `tests/normalize-tag.test.mjs` 補上內部空白、非 ASCII 字元及精確錯誤訊息測試。
++- 追加本輪查證記錄至 `acceptance.md`，原有 acceptance 條文與來源保留。
++- 實際執行：`node --test tests/normalize-tag.test.mjs`。
++- 結果：5 tests passed、0 failed、0 cancelled、0 skipped。
++
++## 尚未完成的結果
++
++本次已完成允許範圍內的本機修復與測試；沒有宣稱任何真實商務事件、外部系統變更、部署或發布已發生。未執行 seal、正式 sealed marker、全域 telemetry 或 Stop-hook 紀錄，也未建立範圍外的實驗 receipt。
++
++## 人工介入
++
++本輪非互動授權已足以完成這次局部實作與測試，未擬造真人審閱或商業核准。若後續要納入產品流程、部署或取得正式核准，仍需由適當人員另行審閱並授權；這些不屬於本輪工作。
+--- baseline/src/normalize-tag.mjs
++++ target/src/normalize-tag.mjs
+@@ -1,3 +1,10 @@
+ export function normalizeTag(input) {
+-  return input.trim().toLowerCase().replace(/\s+/g, " ");
++  const tag = input.trim();
++  if (tag === "") {
++    throw new Error("EMPTY_TAG");
++  }
++
++  return tag.replace(/[A-Z]/g, (letter) =>
++    String.fromCharCode(letter.charCodeAt(0) + 32),
++  );
+ }
+--- baseline/tests/normalize-tag.test.mjs
++++ target/tests/normalize-tag.test.mjs
+@@ -9,3 +9,18 @@
+ test("preserves an already normalized tag", () => {
+   assert.equal(normalizeTag("clean_tag"), "clean_tag");
+ });
++
++test("preserves internal whitespace while lowering ASCII", () => {
++  assert.equal(
++    normalizeTag(" \tQuick TAG\twith\n  spaces \n"),
++    "quick tag\twith\n  spaces",
++  );
++});
++
++test("preserves non-ASCII characters", () => {
++  assert.equal(normalizeTag(" ÄéΩ 中文 ＡＢＣ Quick "), "ÄéΩ 中文 ＡＢＣ quick");
++});
++
++test("throws the exact EMPTY_TAG error after trimming", () => {
++  assert.throws(() => normalizeTag(" \t\n"), { message: "EMPTY_TAG" });
++});

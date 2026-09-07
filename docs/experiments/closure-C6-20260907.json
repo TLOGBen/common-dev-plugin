@@ -1,0 +1,75 @@
+{
+  "schema": "common-lab-criterion-closure/1",
+  "criterion": "C6",
+  "created_utc": "2026-09-06T19:08:39.910Z",
+  "result": "met",
+  "deadline": "2026-09-07T03:00:00+08:00",
+  "observed_cutoff_clock_utc": "2026-09-06 19:00:19 UTC",
+  "latest_verified_clock_utc": "2026-09-06 19:06:28 UTC",
+  "native_capture_utc": "2026-09-06T19:00:58.636589+00:00",
+  "native_last_event_utc": "2026-09-06T19:00:19.422Z",
+  "cli": {
+    "calls": 285,
+    "known_usage_calls": 277,
+    "unknown_usage_calls": 8,
+    "known_tokens": 42623631,
+    "short_standard_api_equivalent_usd": "96.06783308",
+    "last_call_finished_taipei": "2026-09-07T00:09:35.031065+08:00"
+  },
+  "native": {
+    "known_tokens": 314516128,
+    "short_standard_api_equivalent_usd": "459.1258084",
+    "actual_invoice_usd": null
+  },
+  "evidence": [
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/RESULTS-20260907.md",
+      "sha256": "e7ef763524fe6128fc1ce9c652336a859871bbe112a7dd9e875197a400e28b91"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/README.md",
+      "sha256": "db2b7c857de4c669a4598cc2d45537168794a0228505a887e7251eaa72f711e0"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/FIELD-GUIDE.md",
+      "sha256": "36b364f3465c17372358993d5fd51cedbae10e7cef1a3c9967a6b7f2e0df008e"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/SKILL-VERDICTS.md",
+      "sha256": "489acb12ee01463943c7c4c93f65c1f22c281d30188dddc187f327e48d6f28d1"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/measurement-index-285calls-20260907/index.json",
+      "sha256": "77024110d2f16c5747f46c6d1e268cf067009e51aa566e557da38df926bc4d43"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/native-usage-20260906/snapshot-c.json",
+      "sha256": "2056ad5161d414eb6710e5a49ac294bf4b1ff7c3d4b15a630109714bee2050b1"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/native-usage-20260906/snapshot-c-api-equivalent.json",
+      "sha256": "f688350faae6bb03354abd46702d770160a51fbf8c6f6e3446ca3114c8559f0d"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/final-handoff-verification-20260907.json",
+      "sha256": "17f43b428bc51f1ef0a1c799d03e6b2ee6f32df2efb81807abcc392a1c21079c"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/package-freshness-20260907.json",
+      "sha256": "a992b3fc6934a1168fed1a9dd6bef4b65a6b45bc94aa94bb9c3d6d11e5ec4911"
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/criterion-freshness-20260907-0100b.json",
+      "sha256": "62cb21d9618627d3f5a661cf9dbefce421e949f016798830989d5a451805c186"
+    }
+  ],
+  "conclusion": "Closed model queues, cutoff snapshot, human-first report, per-skill verdicts and opt-in install entry are delivered. No complete workflow invoice, universal quality gain or human comprehension claimed.",
+  "limits": [
+    "00:09 onward includes convergence, documentation, accounting and deadline waiting, not continuous model testing.",
+    "Native counters exclude inherited fork prefixes, root pre-baseline, unallocated sessions and post-snapshot handoff.",
+    "CLI and native are separate measurement scopes; Evolve is a CLI subset, not added twice.",
+    "Eight CLI usages unknown; Fable policy-denied attempts outside index, not zero.",
+    "Final report file panel queued, not observed by a human.",
+    "Fable, Opus, Windows App activation, real-case trial and new card pixel/narrow-screen QA remain unverified."
+  ]
+}

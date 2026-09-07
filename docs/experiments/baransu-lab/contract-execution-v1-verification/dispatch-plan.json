@@ -1,0 +1,145 @@
+{
+  "kind": "prospective_fresh_role_verification",
+  "prepared_utc": "2026-09-06T06:46:31.559668+00:00",
+  "actual_model_calls": 0,
+  "planned_model_calls": 2,
+  "model": "gpt-5.6-sol",
+  "reasoning_effort": "high",
+  "fallback": "FORBIDDEN; report RUNTIME_UNAVAILABLE",
+  "scope": "Role-local verification; no complete stable seal claim.",
+  "source_freeze_phase": "Prospective verifier preparation, not actor-time freeze.",
+  "not_executed": [
+    "stable marker",
+    "selection telemetry",
+    "seal-log telemetry",
+    "stop hook",
+    "fix loop",
+    "model invocation"
+  ],
+  "arms": {
+    "A": {
+      "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A",
+      "stdin_prompt": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/A-verifier.prompt.md",
+      "payload": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/payload.json",
+      "target_identity": {
+        "original_read_only_root": "/tmp/common-lab-exec-normalize-tag-dwh82u2v",
+        "disposable_target": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target",
+        "artifact_sha256": {
+          "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+          "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+          "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+          "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+        },
+        "baseline_artifact_sha256": {
+          "acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+          "src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+          "tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+        },
+        "change_diff_sha256": "34239851dbc414ae5b04d0d2b914880809280c23097211cc4a06989fb4e3f3dc",
+        "git_base": null,
+        "note": "Explicit named artifact comparison, not a fabricated Git ref."
+      },
+      "role_sources": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1",
+      "frozen_resource_root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/A",
+      "frozen_resource_sha256": {
+        ".codex-agents/seal-agent.toml": "c64e1f792d5197a4eab1f9d0d6fc10dcabb65f0014ca68c47c665df5ca8de1cb",
+        "skills/seal/SKILL.md": "4f57ba51461b7a95a3c84609c629bf57b46ddf66602a944ca86e4c1e2f8608b9",
+        "skills/_shared/contract-gate.md": "e179f9c82a753bd027c1754fde71f20697ac3a33d1c9eca441b4efafe7d2ef7d",
+        "skills/_shared/loop-contract.md": "13cb9b2d872bf2b188cd05508ec66a072b3e875e481d740c0cc3b57dfd27f648",
+        "skills/seal/references/loop-pauses.md": "c70e6b37374001c5ccb404aa6b4b45638acda36d77f0b8f599426b877f9df89a"
+      },
+      "baseline_result": {
+        "command": "node --test tests/normalize-tag.test.mjs",
+        "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target",
+        "started_utc": "2026-09-06T06:46:31.630913+00:00",
+        "ended_utc": "2026-09-06T06:46:31.747350+00:00",
+        "wall_seconds": 0.115959,
+        "exit_code": 0,
+        "pre_existing_red_set": [],
+        "degradation_flag": false,
+        "stdout_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/baseline-suite.stdout.txt",
+        "stdout_sha256": "62097464e67ec50b46582a6231e5848b40ba81d32328b4193e62e6b6cbe56b02",
+        "stderr_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/baseline-suite.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "workspace-write",
+        "-C",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A",
+        "--skip-git-repo-check",
+        "-"
+      ]
+    },
+    "B": {
+      "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B",
+      "stdin_prompt": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/B-verifier.prompt.md",
+      "payload": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/payload.json",
+      "target_identity": {
+        "original_read_only_root": "/tmp/common-lab-exec-normalize-tag-zukrn7al",
+        "disposable_target": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target",
+        "artifact_sha256": {
+          "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+          "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+          "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+          "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+        },
+        "baseline_artifact_sha256": {
+          "acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+          "src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+          "tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+        },
+        "change_diff_sha256": "1742d2d2cea06ed3b3cbaeccdbbb0acba17182b654fb2c1683b44fcdad47fb80",
+        "git_base": null,
+        "note": "Explicit named artifact comparison, not a fabricated Git ref."
+      },
+      "role_sources": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab",
+      "frozen_resource_root": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/frozen/B",
+      "frozen_resource_sha256": {
+        ".codex-agents/lab-verifier.toml": "e06bf4d4ea19218a7e901204d2f39678cdc4a1c46e2f308664abdb1b64da73d1",
+        "skills/lab-seal/SKILL.md": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77",
+        "skills/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e"
+      },
+      "baseline_result": {
+        "command": "node --test tests/normalize-tag.test.mjs",
+        "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target",
+        "started_utc": "2026-09-06T06:46:31.758153+00:00",
+        "ended_utc": "2026-09-06T06:46:31.862325+00:00",
+        "wall_seconds": 0.103642,
+        "exit_code": 0,
+        "pre_existing_red_set": [],
+        "degradation_flag": false,
+        "stdout_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/baseline-suite.stdout.txt",
+        "stdout_sha256": "cdd3b4db1659848163671303c1cb981958d66977987f7ed057983b0af17c99ab",
+        "stderr_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/baseline-suite.stderr.txt",
+        "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+      },
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "workspace-write",
+        "-C",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B",
+        "--skip-git-repo-check",
+        "-"
+      ]
+    }
+  }
+}

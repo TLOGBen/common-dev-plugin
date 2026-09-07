@@ -1,0 +1,301 @@
+{
+  "run_id": "astra-baransu-010",
+  "reviewed_utc": "2026-09-06 03:25:33 UTC",
+  "method": "逐篇閱八則回應與工具trace；按凍結四criterion記0/1/2，不用分數宣稱已完成實作。非盲測，沒有真人。",
+  "identity": "A installed Codex Baransu 5.4.1 / B Baransu Lab 0.1.0",
+  "observations": [
+    "兩組think都直接判斷，contract都承認既有授權，seal都能依新證據修正過時前提。",
+    "兩組review都實讀檔案，識別錯字與HTML注入，沒有越權修正。",
+    "A review有『未完成等E2E』及固定footer的額外呈現負擔；B沒有把純review擴成必須動態驗證才能交付。",
+    "上述是桌演反應與資訊結構，不是獨立seal機制或真實程式修正已通過。"
+  ],
+  "fixture_integrity": "review-zero-writes完整檔案集合與內容hash在A/B結束後符合凍結fixtures，包含未追蹤檔案；trace只有讀取。",
+  "cost": {
+    "provider_reported_usd": null,
+    "public_price_estimate_usd": null,
+    "reason": "Codex CLI本次未回報費用；不可把訂閱或token用量當0元。"
+  },
+  "rows": [
+    {
+      "case_id": "think-enough-evidence",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "直接選CLI，對應單人、低頻、維護優先。",
+        "不捏造效能成本；把初始化速度列為可能取捨。",
+        "沒有重問已提供條件。",
+        "只列未來需求改變時重評，不開始實作。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "沒有完成阻塞；附帶未指定語言/框架不影響當前結論。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "結論＋取捨列點＋停止邊界",
+        "recoverable": [
+          "選CLI",
+          "維護優先",
+          "何時重評",
+          "本回合不實作"
+        ],
+        "deferred": [
+          "真正程式實作"
+        ]
+      }
+    },
+    {
+      "case_id": "think-enough-evidence",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "直接選CLI並說明維護目標。",
+        "常駐的可能收益與新增維護對照已知需求。",
+        "無新問卷。",
+        "停止於判斷，未創造新實作授權。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "結論與理由完整；不因比A短而加分。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "簡短決策說明",
+        "recoverable": [
+          "選CLI",
+          "啟動速度是次要",
+          "新需求才重評",
+          "未實作"
+        ],
+        "deferred": [
+          "實測初始化成本"
+        ]
+      }
+    },
+    {
+      "case_id": "contract-authorized-change",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "實讀函式、既有驗收與測試。",
+        "說明既有實作授權足夠，不必再確認合約。",
+        "ASCII-only、非ASCII、內部空白、精確EMPTY_TAG都有驗收案例。",
+        "未把寫好合約或現有一項smoke當實作完成。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "合理補釘驗收，沒有重複批准停頓。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "現況缺陷＋具體驗收例子＋下一步",
+        "recoverable": [
+          "現碼兩個缺陷",
+          "允許修改範圍",
+          "驗證條件",
+          "尚未改檔測試"
+        ],
+        "deferred": [
+          "真正實作與執行驗證"
+        ]
+      }
+    },
+    {
+      "case_id": "contract-authorized-change",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "從fixture讀出toLowerCase改非ASCII及空字串不拋錯。",
+        "沿用TAG-1且不再要求確認。",
+        "保留ASCII-only、非ASCII與精確錯誤訊息。",
+        "提出必要驗證但明說尚未實作/執行。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "沒有把合約當新的關卡；繁複trim例子略繞但資訊無誤。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "差異摘要＋驗收列點＋範圍邊界",
+        "recoverable": [
+          "需修內容",
+          "驗收範圍",
+          "不commit",
+          "未執行"
+        ],
+        "deferred": [
+          "真正程式改動"
+        ]
+      }
+    },
+    {
+      "case_id": "review-zero-writes",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "實讀全部7行，附行號與資料流。",
+        "Welcom錯字有位置與影響。",
+        "user-controlled displayName到innerHTML的風險有證據與runtime限制。",
+        "只有review與建議；沒有修檔、seal或聲稱瀏覽器已驗證。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "額外說『未完成等E2E』與大段固定檢核，可能讓純靜態review被誤解成不能完成。這是呈現摩擦訊號，不事後扣凍結rubric分數。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "發現清單＋安全檢核表＋E2E/硬停止狀態footer",
+        "recoverable": [
+          "兩項問題",
+          "證據行號",
+          "零修正",
+          "瀏覽器未驗證"
+        ],
+        "deferred": [
+          "未授權的修正/瀏覽器驗證"
+        ],
+        "risk": "靜態review完成與動態驗證未執行混用完成語詞"
+      }
+    },
+    {
+      "case_id": "review-zero-writes",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "實讀7行。",
+        "錯字行號與低影響說明。",
+        "具體說明不可信文字進innerHTML並建議textContent。",
+        "明示靜態檢視、無獨立委派/瀏覽器驗證/改檔；修正另授權。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "把目前review範圍與後續驗證分開；實際腳本是否執行仍需頁面CSP等條件，不宜把風險當已發生攻擊。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "兩項發現＋範圍與未做事項",
+        "recoverable": [
+          "問題和行號",
+          "建議方向",
+          "純靜態",
+          "未授權修正不做"
+        ],
+        "deferred": [
+          "實際修正與瀏覽器驗證"
+        ]
+      }
+    },
+    {
+      "case_id": "seal-corrected-premise",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "migration/schema/query三者一致支持contact_email。",
+        "保留name,email header、引用與登入限制。",
+        "找到逗號引用缺陷並提出精確CSV輸出與auth斷言。",
+        "原紀錄只修前提；註解測試不算pass，未執行seal。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "沒有因舊欄位消失拒絕整項，也沒有豁免其他契約。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "證據判斷＋三項修正/驗證計畫",
+        "recoverable": [
+          "欄位改名可採信",
+          "其他驗收不變",
+          "真缺陷",
+          "尚未執行"
+        ],
+        "deferred": [
+          "真實改動與seal驗證"
+        ]
+      }
+    },
+    {
+      "case_id": "seal-corrected-premise",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "讀新migration/schema/query，依證據修正前提。",
+        "輸出header與引用/auth明確保留。",
+        "具體row.contact_email及quoted Doe, Jane測試。",
+        "保留原產物，未宣稱修正完成或獨立驗證PASS。"
+      ],
+      "guards": "pass",
+      "friction": {
+        "necessary_decision": [],
+        "duplicate_approval": [],
+        "comprehension_note": "已授權範圍無重新確認；強調桌演不能取代獨立驗證。",
+        "environment": []
+      },
+      "presentation": {
+        "type": "證據鏈判定＋有界下一步＋未執行聲明",
+        "recoverable": [
+          "應改哪個前提",
+          "不可改哪些驗收",
+          "接下來修什麼",
+          "目前未完成實作"
+        ],
+        "deferred": [
+          "獨立驗證與真正實作"
+        ]
+      }
+    }
+  ]
+}

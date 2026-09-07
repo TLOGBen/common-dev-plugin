@@ -1,0 +1,65 @@
+{
+  "kind": "two_fresh_direct_policy_calls",
+  "calls": 2,
+  "known_calls": 2,
+  "unknown_calls": 0,
+  "rows": [
+    {
+      "label": "D1",
+      "case": "count-label",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "status": "completed",
+      "started_utc": "2026-09-06T14:48:17.613645+00:00",
+      "ended_utc": "2026-09-06T14:49:16.241198+00:00",
+      "seconds": 58.62488518800819,
+      "usage": {
+        "input_tokens": 168407,
+        "cached_input_tokens": 154240,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 852,
+        "reasoning_output_tokens": 56,
+        "uncached_input_tokens": 14167,
+        "total_tokens": 169259
+      },
+      "result_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D1-run/result.json",
+      "result_sha256": "11dba1bfd8d0d0b19844d819e0e73d1124d2c42b8c7091e4cac4ae0042560a84",
+      "raw_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D1-run/raw.jsonl",
+      "raw_sha256": "ff91ddc89dcc0e5e1ceb7f2f0683a262f62f9b5f6fee32979d0a038602d81986",
+      "standard_short_api_equivalent_usd": "0.33851",
+      "invoice_usd": null,
+      "full_source_commands_final_reviewed": true,
+      "implementation_acceptance_separation": false
+    },
+    {
+      "label": "D2",
+      "case": "event-projection",
+      "model": "gpt-6-astra",
+      "effort": "high",
+      "status": "completed",
+      "started_utc": "2026-09-06T14:48:17.613784+00:00",
+      "ended_utc": "2026-09-06T14:50:48.440464+00:00",
+      "seconds": 150.82216445100494,
+      "usage": {
+        "input_tokens": 107544,
+        "cached_input_tokens": 88832,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 4311,
+        "reasoning_output_tokens": 84,
+        "uncached_input_tokens": 18712,
+        "total_tokens": 111855
+      },
+      "result_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D2-run/result.json",
+      "result_sha256": "9b02aa4e520c5d90fd2cf50a677fce6fcd4b340942ad6802134308b7eab3019d",
+      "raw_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/direct-policy-v1/D2-run/raw.jsonl",
+      "raw_sha256": "bebd5c708f24e14d3be68f7e88c75f5917a6fb58c26313470124035d9977b195",
+      "standard_short_api_equivalent_usd": "0.491502",
+      "invoice_usd": null,
+      "full_source_commands_final_reviewed": true,
+      "implementation_acceptance_separation": false
+    }
+  ],
+  "actual_cost_usd": null,
+  "scope": "Direct-Astra policy contrast, not skill-only A/B; excludes main review/oracle work.",
+  "known_tokens": 281114
+}

@@ -1,0 +1,27 @@
+{
+  "checks": [
+    {
+      "command": [
+        "node",
+        "--test",
+        "tests/normalize-tag.test.mjs"
+      ],
+      "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-inputs/normalize-tag/files",
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: trims outer ASCII spaces and lowers ASCII\nok 1 - trims outer ASCII spaces and lowers ASCII\n  ---\n  duration_ms: 0.862199\n  type: 'test'\n  ...\n# Subtest: preserves an already normalized tag\nok 2 - preserves an already normalized tag\n  ---\n  duration_ms: 0.190567\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 2\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 65.928137\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "node",
+        "/home/vakarve/projects/common-dev-plugin/scripts/verify_normalize_tag.mjs",
+        "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-inputs/normalize-tag/files/src/normalize-tag.mjs"
+      ],
+      "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-inputs/normalize-tag/files",
+      "exit_code": 1,
+      "stdout": "{\n  \"target\": \"/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-inputs/normalize-tag/files/src/normalize-tag.mjs\",\n  \"results\": [\n    {\n      \"id\": \"ordinary\",\n      \"input\": \"  Quick-TAG  \",\n      \"expected\": \"quick-tag\",\n      \"actual\": \"quick-tag\",\n      \"pass\": true\n    },\n    {\n      \"id\": \"non-ascii\",\n      \"input\": \" İÉßＡ Z \",\n      \"expected\": \"İÉßＡ z\",\n      \"actual\": \"i̇éßａ z\",\n      \"pass\": false\n    },\n    {\n      \"id\": \"inner-spaces\",\n      \"input\": \" A  B \",\n      \"expected\": \"a  b\",\n      \"actual\": \"a b\",\n      \"pass\": false\n    },\n    {\n      \"id\": \"inner-controls\",\n      \"input\": \"A\\tB\\nC\",\n      \"expected\": \"a\\tb\\nc\",\n      \"actual\": \"a b c\",\n      \"pass\": false\n    },\n    {\n      \"id\": \"outer-nbsp\",\n      \"input\": \" A \",\n      \"expected\": \"a\",\n      \"actual\": \"a\",\n      \"pass\": true\n    },\n    {\n      \"id\": \"empty\",\n      \"input\": \"\",\n      \"error\": \"EMPTY_TAG\",\n      \"actual\": \"\",\n      \"pass\": false\n    },\n    {\n      \"id\": \"whitespace-only\",\n      \"input\": \" \\t\\n \",\n      \"error\": \"EMPTY_TAG\",\n      \"actual\": \"\",\n      \"pass\": false\n    },\n    {\n      \"id\": \"bom-only\",\n      \"input\": \"﻿\",\n      \"error\": \"EMPTY_TAG\",\n      \"actual\": \"\",\n      \"pass\": false\n    }\n  ],\n  \"passed\": 2,\n  \"total\": 8,\n  \"mutation\": false\n}\n",
+      "stderr": ""
+    }
+  ],
+  "production": false
+}

@@ -1,0 +1,69 @@
+{
+  "label": "D1",
+  "case": "count-label",
+  "episode_status": "completed",
+  "product": {
+    "passed": true,
+    "checks": {
+      "label_0": true,
+      "label_1": true,
+      "label_2": true,
+      "label_11": true,
+      "verifier_left_fixture_unchanged": true
+    },
+    "evidence": {
+      "observations": [
+        {
+          "count": 0,
+          "actual": "0 records"
+        },
+        {
+          "count": 1,
+          "actual": "1 record"
+        },
+        {
+          "count": 2,
+          "actual": "2 records"
+        },
+        {
+          "count": 11,
+          "actual": "11 records"
+        }
+      ],
+      "execution": {
+        "command": [
+          "node",
+          "--input-type=module",
+          "-e",
+          "\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst {countLabel} = await import(pathToFileURL(process.argv[1]).href);\nconst inputs = JSON.parse(fs.readFileSync(0, 'utf8'));\nconsole.log(JSON.stringify(inputs.map(count => ({count, actual:countLabel(count)}))));\n",
+          "/tmp/astra-direct-policy-v1-yb0vcmd2/D1/src/count-label.mjs"
+        ],
+        "exit_code": 0,
+        "stdout": "[{\"count\":0,\"actual\":\"0 records\"},{\"count\":1,\"actual\":\"1 record\"},{\"count\":2,\"actual\":\"2 records\"},{\"count\":11,\"actual\":\"11 records\"}]\n",
+        "stderr": ""
+      }
+    }
+  },
+  "changed_paths": [
+    "src/count-label.mjs",
+    "tests/count-label.test.mjs"
+  ],
+  "scope_violations": [],
+  "initial_sha256": {
+    "TASK.md": "cfd97799068f5893ca0946d4e15a2dc616574f255881dd2ca6840b0ef712516e",
+    "src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7"
+  },
+  "final_sha256": {
+    "TASK.md": "cfd97799068f5893ca0946d4e15a2dc616574f255881dd2ca6840b0ef712516e",
+    "src/count-label.mjs": "187daa4f9cd49a634752cb372efbc48f0ea983643011a9eca09a55583035f7a8",
+    "tests/count-label.test.mjs": "5a43d7050817e2d00a0d5f047637bc9740f75bbb448d5aa4c5183c54fbbf114b"
+  },
+  "oracle_left_fixture_unchanged": true,
+  "worker_dispatched": false,
+  "implementation_acceptance_separation": false,
+  "human_comprehension": null,
+  "actual_cost_usd": null,
+  "model_calls": 0,
+  "lead_trace_review": "PENDING_MAIN_REVIEW"
+}

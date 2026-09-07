@@ -1,0 +1,126 @@
+{
+  "kind": "additive_campaign_scope_actual_local_artifact_probe",
+  "frozen_utc": "2026-09-06T09:37:16.919796+00:00",
+  "model_calls_at_freeze": 0,
+  "episodes": [
+    {
+      "episode_id": "01-regions-A",
+      "case_id": "regions",
+      "arm": "A",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/extension-v1-plan/01-regions-A.json",
+      "spec_sha256": "39ef8e484b2b33ed5d3226ff8f23ba2fbab47cde5ea5aca6da143663c93ca3ad",
+      "output": "/tmp/astra-campaign-extension-20260906-a/runs/01-regions-A",
+      "required_report": "reports/region-summary.json",
+      "original_state": "/tmp/astra-campaign-extension-20260906-a/workspaces/01-regions-A/.common-lab/strategic/catalog-maintenance/state.json",
+      "original_state_sha256": "da586c4402e7feef574c996e7cae9b2d05edfa18914814e38b1314cec0a2029e"
+    },
+    {
+      "episode_id": "02-regions-B",
+      "case_id": "regions",
+      "arm": "B",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/extension-v1-plan/02-regions-B.json",
+      "spec_sha256": "41f80d1a7a6bfe7055fa061861cfdab7dd06cd83c91dca1da884cb205e116d52",
+      "output": "/tmp/astra-campaign-extension-20260906-a/runs/02-regions-B",
+      "required_report": "reports/region-summary.json",
+      "original_state": "/tmp/astra-campaign-extension-20260906-a/workspaces/02-regions-B/.common-lab/strategic/catalog-maintenance/state.json",
+      "original_state_sha256": "e41f9365075fbcf3cae219468a34f904ab9532a961fe32dae0d33d664bc43daf"
+    },
+    {
+      "episode_id": "03-shared-tags-B",
+      "case_id": "shared-tags",
+      "arm": "B",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/extension-v1-plan/03-shared-tags-B.json",
+      "spec_sha256": "1684e6c11185aa200e69b254ec34939ffae08a08be242f2e32533a75e235ac62",
+      "output": "/tmp/astra-campaign-extension-20260906-a/runs/03-shared-tags-B",
+      "required_report": "reports/shared-tags.json",
+      "original_state": "/tmp/astra-campaign-extension-20260906-a/workspaces/03-shared-tags-B/.common-lab/strategic/catalog-maintenance/state.json",
+      "original_state_sha256": "debd420acda0d41b8952f933e22d1b6407b4c69705e239430e4c2cc71af3ee3a"
+    },
+    {
+      "episode_id": "04-shared-tags-A",
+      "case_id": "shared-tags",
+      "arm": "A",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/extension-v1-plan/04-shared-tags-A.json",
+      "spec_sha256": "d951aed79d3b9458498d385a9e99c53abc58af3e38ac29abe4071e1e0593fb28",
+      "output": "/tmp/astra-campaign-extension-20260906-a/runs/04-shared-tags-A",
+      "required_report": "reports/shared-tags.json",
+      "original_state": "/tmp/astra-campaign-extension-20260906-a/workspaces/04-shared-tags-A/.common-lab/strategic/catalog-maintenance/state.json",
+      "original_state_sha256": "e069dcc246455bd81617f4f8194694b3827a6110178a0031bfa005e2d1c886d2"
+    }
+  ],
+  "source_package_sha256": {
+    "A": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "c10afb2314851a71a92310f63a1bca19071e2903fbc903b3f35654246afd4399",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+      "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    },
+    "B": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "ad81b4205bfc891665095796d38654fc7085c5110059c047808ba82b86882d0a",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "7d8fee83c6d6ec51ceb1b60610eb27d135fff756674ce6bccc5b3dfc6a1ae94c",
+      "skills/lab-strategic-advance/scripts/campaign.py": "2361b39b8bbafb00e15813d33b2a42d836b29e7d0b0e160d287ba61059d0757c",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    }
+  },
+  "package_changes": [
+    ".codex-plugin/plugin.json",
+    "skills/lab-strategic-advance/references/campaign.md",
+    "skills/lab-strategic-advance/scripts/campaign.py"
+  ],
+  "source_unchanged_after_copy": {
+    "A": true,
+    "B": true
+  },
+  "carrier_sha256": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+  "shared_wording_adapter_sha256": "b67dd2cd1020f81e3b5c6119a3dddebe39a883d0d81857cb5f58190fa1743dd9",
+  "failure_handoff_adapter_sha256": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+  "freeze_script_sha256": "60b198019795b3d910b64b76be07db4afa3f7a7996c2a54a411a1968e48bdb40",
+  "oracle_sha256": "dcd0902a479ae31e2dd8377a0adda23d554a039a318c478a994de54bf9f1d8d1",
+  "hypothesis": "A narrow additive ledger command may remove manual contract-edit friction while retaining prior acceptance and unknown operations.",
+  "measures": [
+    "actual new report matches source and exact output contract",
+    "original C1 acceptance/evidence remains intact and C2 remains unmet",
+    "new required outcome is represented and actually verified",
+    "unknown publish-041 and no-retry boundary preserved; whole goal not claimed complete",
+    "prior state bytes and history retained; current evidence not rewritten",
+    "actual skill/tool use, unsuccessful commands, repair, wall time, tokens, human handoff"
+  ],
+  "limits": [
+    "Four fresh local tasks, not cross-day production work or a human comprehension test.",
+    "A may use an authorized safe manual update; absence of extend alone is not model failure.",
+    "This tests actual Astra-led state maintenance; it does not require implementation delegation and is not labeled worker E2E.",
+    "Prior observations and unknown operation are synthetic fixture history, never claims of real external actions.",
+    "Original state evidence paths differ per isolated workspace; task meaning and source bytes are otherwise controlled.",
+    "No broad contract replacement, criterion deletion, or new authority is tested."
+  ]
+}

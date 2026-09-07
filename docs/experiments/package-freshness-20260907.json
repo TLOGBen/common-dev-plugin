@@ -1,0 +1,110 @@
+{
+  "checked_utc": "2026-09-06T16:57:24.142Z",
+  "method": "Read-only per-file SHA256 and exact file-set comparison against frozen export receipt, for canonical source, versioned export and final isolated cache. Symbolic links rejected; none found. __pycache__ follows original inventory exclusion; none present in these nine trees.",
+  "status": "PASS",
+  "packages": [
+    {
+      "plugin": "common-lab",
+      "version": "0.1.8",
+      "source_sha256": "ed745554da83d7404f90c4823b381c4c46fd14adc42a37ff0e69d6e142fce648",
+      "output_sha256": "a9ea6d3fbdf9c4e7229dcce86d1078b7d4e71fc331eb717c5134afb6bb4a7403",
+      "checks": [
+        {
+          "kind": "source",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/plugins/common-lab",
+          "files": 19,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "export",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.8",
+          "files": 21,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "installed",
+          "root": "/tmp/lab-install-common018-baransu011-estimate013-final/common-lab/plugins/cache/common-lab/common-lab/0.1.8",
+          "files": 20,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "plugin": "baransu-lab",
+      "version": "0.1.1",
+      "source_sha256": "d7edea3f7aa1172edd396fa1e9172468fe00ec30e59a32ed39a970e8278e3dda",
+      "output_sha256": "eefd03c41c001814cfa0492e9a54bb5ac0d121a67db73b6403f12727ebfd3caf",
+      "checks": [
+        {
+          "kind": "source",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/plugins/baransu-lab",
+          "files": 7,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "export",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.1.1",
+          "files": 8,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "installed",
+          "root": "/tmp/lab-install-common018-baransu011-estimate013-final/baransu-lab/plugins/cache/baransu-lab/baransu-lab/0.1.1",
+          "files": 7,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "plugin": "estimate-lab",
+      "version": "0.1.3",
+      "source_sha256": "fbd40dce56529e9b16208214ea7ac624f86e653f2010b97d66d9bf129d9baa5f",
+      "output_sha256": "f878e6b77f86b0188262e1b2e2da1d1b3cdd0eeaaf92393cf28682f0215e6cc0",
+      "checks": [
+        {
+          "kind": "source",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab",
+          "files": 23,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "export",
+          "root": "//wsl.localhost/Ubuntu/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.3",
+          "files": 25,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        },
+        {
+          "kind": "installed",
+          "root": "/tmp/lab-install-common018-baransu011-estimate013-final/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.1.3",
+          "files": 24,
+          "differences": [],
+          "ignored": [],
+          "symlinks": []
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "limits": [
+    "This checks distribution continuity, not new behavior or Windows App activation.",
+    "No install, model call, cleanup or stable source edit performed."
+  ]
+}

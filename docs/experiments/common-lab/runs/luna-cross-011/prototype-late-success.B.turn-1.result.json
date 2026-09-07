@@ -1,0 +1,90 @@
+{
+  "case_id": "prototype-late-success",
+  "skill": "prototype",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:29:09.606832+00:00",
+  "ended_utc": "2026-09-06T03:30:00.550850+00:00",
+  "wall_seconds": 50.941,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-prototype-late-success-l53otjf_",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md",
+  "skill_sha256": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+  "prompt_sha256": "9311c19673c3c8aabef336329f915635a890f059fa72830e27b21c81faa30ce6",
+  "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-l53otjf_",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依指定的 `lab-prototype` 技能，先完整讀取該 `SKILL.md`，再只檢查它明確指向且本題需要的場景材料；全程僅做唯讀分析，不實作、不改狀態。",
+    "技能內容已讀完；它要求把「已發生的外部扣款」與「尚未決定的補償／對帳處置」分開，並以狀態轉移與最小反例回答。接著我只檢查工作目錄中的場景素材名稱，尋找是否有本題必要的 fixture。",
+    "最小反例如下：\n\n```text\n初始：open\n事件 1：customer_cancel\n結果：cancelled\n事件 2：payment_succeeded(charge_id=C1)\n前提：C1 已在金流端扣款成功\n策略：因訂單已 cancelled，拒絕此付款事件\n```\n\n這會產生：\n\n```text\n訂單：cancelled\n金流：已扣款 C1\n系統：付款事件未被處理\n```\n\n因此「取消後拒絕所有付款事件」不安全；拒絕通知不會撤銷已完成的扣款，反而可能遺失對帳線索。\n\n最小觀察方式：\n\n- 檢查 `payment_succeeded` 抵達時，是否仍保存 `order_id`、`charge_id`、事件時間與原始事件。\n- 檢查是否明確觀察到「訂單已取消，但外部扣款已成功」這個未解決狀態。\n- 不預設恢復訂單、退款或轉人工；只確認事件是否被可靠記錄並交給產品定義的後續處置。\n\n建議下一步：只做這兩個事件的順序測試，驗證系統能否保留已扣款事實與待處理對帳項；若只能單純丟棄事件，即可判定該策略不安全。"
+  ],
+  "final_message": "最小反例如下：\n\n```text\n初始：open\n事件 1：customer_cancel\n結果：cancelled\n事件 2：payment_succeeded(charge_id=C1)\n前提：C1 已在金流端扣款成功\n策略：因訂單已 cancelled，拒絕此付款事件\n```\n\n這會產生：\n\n```text\n訂單：cancelled\n金流：已扣款 C1\n系統：付款事件未被處理\n```\n\n因此「取消後拒絕所有付款事件」不安全；拒絕通知不會撤銷已完成的扣款，反而可能遺失對帳線索。\n\n最小觀察方式：\n\n- 檢查 `payment_succeeded` 抵達時，是否仍保存 `order_id`、`charge_id`、事件時間與原始事件。\n- 檢查是否明確觀察到「訂單已取消，但外部扣款已成功」這個未解決狀態。\n- 不預設恢復訂單、退款或轉人工；只確認事件是否被可靠記錄並交給產品定義的後續處置。\n\n建議下一步：只做這兩個事件的順序測試，驗證系統能否保留已扣款事實與待處理對帳項；若只能單純丟棄事件，即可判定該策略不安全。",
+  "usage": {
+    "input_tokens": 56009,
+    "cached_input_tokens": 49152,
+    "output_tokens": 1483,
+    "uncached_input_tokens": 6857,
+    "total_tokens": 57492
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'date \\\"+%Y-%m-%d %H:%M:%S %Z %z\\\" && sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'rg --files -g \\\"*\\\" -g \\\"\"'!.git/**\" | sed -n \"1,120p\"'\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,240p\\\" SCENARIO.txt'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

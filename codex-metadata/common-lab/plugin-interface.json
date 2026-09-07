@@ -1,0 +1,13 @@
+{
+  "displayName": "Common Lab",
+  "shortDescription": "指引優先，對反覆失誤設置控制的實驗包",
+  "longDescription": "依任務規模與失敗模式調整工作指引。長程複合任務保留獨立校準、成果與活動分離；小任務不套戰役流程。成果回到人的理解與決策，不取代穩定 Common。",
+  "developerName": "ben.tsai",
+  "category": "Productivity",
+  "capabilities": ["Interactive", "Write"],
+  "defaultPrompt": [
+    "用 $lab-strategic-advance 推進已確認的目標。",
+    "用 $lab-delegate 委派一段可獨立驗收的實作。",
+    "用 $lab-wayfinder 釐清下一個需要我決定的問題。"
+  ]
+}

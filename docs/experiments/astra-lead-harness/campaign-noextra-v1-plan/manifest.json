@@ -1,0 +1,84 @@
+{
+  "kind": "campaign_no_additional_skill_vs_accepted_lab",
+  "frozen_utc": "2026-09-06T11:13:37.944698+00:00",
+  "model_calls_at_freeze": 0,
+  "episodes": [
+    {
+      "episode_id": "01-campaign-none",
+      "case_id": "offline-service-campaign",
+      "arm": "none",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-noextra-v1-plan/01-campaign-none.json",
+      "spec_sha256": "8b52141446f4f6c23d59ce9fcc4b43af07b3ee6a909eea54fbaeed2774c41807",
+      "output": "/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none"
+    },
+    {
+      "episode_id": "02-campaign-lab",
+      "case_id": "offline-service-campaign",
+      "arm": "lab",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-noextra-v1-plan/02-campaign-lab.json",
+      "spec_sha256": "27531bc177daae1e60e9d769be268aebc9ab66300af6e588ae3db72541b33418",
+      "output": "/tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab"
+    }
+  ],
+  "public_fixture_sha256": {
+    "TASK.md": "ad40e5db2d613b1f49e81da4b76c73192e5674fdc19c362ba61be0ed000102f0",
+    "catalog.py": "ebc7d49a3c13c02bfdd07ba6c8f388d018d0921fc0e8dd8f3fdc3975308f7a99",
+    "data/services.json": "e5f4ff6bf6c5e659cf0606c87bfebb214e891db501e37a81d5c06500e30775c3",
+    "decisions/premium-fee.json": "613dde99f6f75d3368939b4df35c9e2e5acf8239639339e6ba1a8cf252c1db86",
+    "history/dataset-summary.json": "f27f7fca544f7a0ade22785a2002466520dc23f83fcf2279cbf7666310745eff",
+    "history/naming-summary.json": "ff1fe5ed9d997c4164e1a1e9f9c16f80f777065c9ec42c7a447955cef0016b75",
+    "history/previous-handoff.md": "43a7f5846ef202425768cb8e0448f2b327f45c21b635c2ed9a28bbfaa53d68ae",
+    "ops.py": "59b41e4162c70880487807c4c891ec6649d9ca052f5b08f4a53bca950ccffcea",
+    "private_receiver/events.jsonl": "276233c03382eb4ba82231d746d0edf1ede165114681b9feb2941728706f6aed",
+    "search_index.py": "42c4e800475341418bc29b321e9f3a9c845393300cd8bae61f152d0e22f5bc9f",
+    "tests/test_build.py": "a497952876b573a3ce569832305636a4192a441ec2243968b4f09fa50de40c34"
+  },
+  "source_package_sha256": {
+    "lab": {
+      ".codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+      ".codex-plugin/plugin.json": "ad81b4205bfc891665095796d38654fc7085c5110059c047808ba82b86882d0a",
+      "skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+      "skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+      "skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+      "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+      "skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+      "skills/lab-grilling/SKILL.md": "e59819ddf4c0500b87e63abdb4cd138f04e7506442a3783d4410e291b234260c",
+      "skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+      "skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "skills/lab-strategic-advance/references/campaign.md": "7d8fee83c6d6ec51ceb1b60610eb27d135fff756674ce6bccc5b3dfc6a1ae94c",
+      "skills/lab-strategic-advance/scripts/campaign.py": "2361b39b8bbafb00e15813d33b2a42d836b29e7d0b0e160d287ba61059d0757c",
+      "skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+      "skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+      "skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+      "skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+      "skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+      "skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+    }
+  },
+  "evaluator_sha256": {
+    "reference/catalog.py": "2a1bc1eb8a04e0b65944696f4edcda5428f90e37dfe151138b5cfd7b2a97fa27",
+    "reference/search_index.py": "8c06ed74f02ae7c4d2c91fa05688c3b46cbf027517b26bd9a3af490a0aa1e90e",
+    "selftest-receipt-v1.json": "04a68b1074326d83a5d97f77bdf61b891fbc8a4934aac3b4a853c54dae1b3953",
+    "selftest-receipt-v2.json": "65fae7f22df08ece312f2910c1e22c180b352541d774dbf4abd76cfea24d3835",
+    "selftest.py": "70d4c9d47a22670ab03968857713bf4c35f3def45bd448ef7a859d1d83c682f1",
+    "verify.py": "827667e8d4ff6a65a4744b19720ebbebe70e92072f3d7eeb64fa03cc42d801d0"
+  },
+  "carrier_sha256": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+  "shared_wording_adapter_sha256": "b67dd2cd1020f81e3b5c6119a3dddebe39a883d0d81857cb5f58190fa1743dd9",
+  "failure_handoff_adapter_sha256": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+  "freeze_script_sha256": "07472fed861cce4217b2d58a35b27d3704a916dd7615da94468941826397b998",
+  "design_sha256": "b172e31a1a20440361b897b4fdc89169184a384fc965f1b0790b07be9200c0f8",
+  "source_unchanged_after_copy": {
+    "public": true,
+    "lab": true
+  },
+  "noextra_is_not_harness_free": true,
+  "limits": [
+    "Two fixed-order synthetic observations, not a general ranking.",
+    "Shared carrier, role bounds and explicit specification remain in both arms.",
+    "None must not load global skills; confirm from raw actor reads.",
+    "Whole goal remains incomplete pending real premium decision.",
+    "Human comprehension and actual invoice remain unmeasured."
+  ]
+}

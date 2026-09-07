@@ -1,0 +1,126 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:31:01.148058+00:00",
+  "ended_utc": "2026-09-06T03:32:38.805467+00:00",
+  "wall_seconds": 97.656,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "ec81a557405fa56e549563856da1b644603e7eba7d3b93200d28040ad16ff655",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依指定的 `strategic-advance` 技能讀取完整規則，並僅檢查它明確引用的資源與本題情境證據；接著只提出模擬的下一則回覆與下一步，不會執行寄送或任何狀態變更。",
+    "技能規則已讀完。關鍵約束是：送出逾時後不得盲目重試；先以權威狀態判定結果，並把寄送成功與縮圖觀測故障分開。為了準確套用它的證據與判定欄位，我只再讀取技能明確指向的 `state-contract.md`。",
+    "先不要重寄，也不要先重寫縮圖系統。\n\n送出逾時不能證明未送出；寄件資料庫的 `Accepted` 只能證明 `MAIL-7` 被寄件系統接受，尚不能證明收件方收到，也不能證明實際寄送次數為一。\n\n下一個主攻動作是一次只讀的權威回讀：\n\n- 以 `message_id=MAIL-7` 查寄送記錄，確認唯一筆數與收件方。\n- 查同一筆記錄的 delivery/receipt 狀態。\n- 保存可直接讀取的原始證據與證據 ID，不依賴縮圖。\n\n判定方式：\n\n- 筆數為 1、receipt 明確通過：三項目標可進入驗收。\n- 筆數為 1 但沒有 receipt：維持未完成，改走寄送系統的權威回讀或其他觀測旁路，絕不重寄。\n- 筆數不是 1：停止任何後續寄送，保留違反「只寄一封」的證據。\n\n縮圖工具目前只算觀測器降級；只有在權威文字或資料證據確實無法讀回時，才另行處理觀測問題。這一步不會改變寄送狀態，也不需要你介入。"
+  ],
+  "final_message": "先不要重寄，也不要先重寫縮圖系統。\n\n送出逾時不能證明未送出；寄件資料庫的 `Accepted` 只能證明 `MAIL-7` 被寄件系統接受，尚不能證明收件方收到，也不能證明實際寄送次數為一。\n\n下一個主攻動作是一次只讀的權威回讀：\n\n- 以 `message_id=MAIL-7` 查寄送記錄，確認唯一筆數與收件方。\n- 查同一筆記錄的 delivery/receipt 狀態。\n- 保存可直接讀取的原始證據與證據 ID，不依賴縮圖。\n\n判定方式：\n\n- 筆數為 1、receipt 明確通過：三項目標可進入驗收。\n- 筆數為 1 但沒有 receipt：維持未完成，改走寄送系統的權威回讀或其他觀測旁路，絕不重寄。\n- 筆數不是 1：停止任何後續寄送，保留違反「只寄一封」的證據。\n\n縮圖工具目前只算觀測器降級；只有在權威文字或資料證據確實無法讀回時，才另行處理觀測問題。這一步不會改變寄送狀態，也不需要你介入。",
+  "usage": {
+    "input_tokens": 231600,
+    "cached_input_tokens": 185088,
+    "output_tokens": 3600,
+    "uncached_input_tokens": 46512,
+    "total_tokens": 235200
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '1,260p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '261,520p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '521,760p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '1,320p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/references/state-contract.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '321,680p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/references/state-contract.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"date '+%Y-%m-%dT%H:%M:%S%:z %Z'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"rg --files -g '\"'!**/.git/**'\"' -g '*' | sort\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -c \"sed -n '1,240p' SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

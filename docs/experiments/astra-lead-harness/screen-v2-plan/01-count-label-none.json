@@ -1,0 +1,53 @@
+{
+  "schema_version": 1,
+  "episode_id": "01-count-label-none",
+  "case_id": "count-label",
+  "arm": "none",
+  "workspace": "/tmp/astra-lead-screen-20260906-b/workspaces/01-count-label-none",
+  "workspace_sha256": {
+    "TASK.md": "ff1fb236acb6362712840337453367238b8356b8903794f6651df928f0b23384",
+    "count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+  },
+  "package_roots": [],
+  "package_sha256": {},
+  "read_files": {},
+  "session_store": "/home/vakarve/.codex/sessions",
+  "sandbox": "workspace-write",
+  "role_writes": {
+    "lead": [
+      ".strategic-advance/",
+      ".common-lab/",
+      ".claude/wayfinder/",
+      ".codex/impl.html",
+      "notes/",
+      "reports/",
+      "artifacts/"
+    ],
+    "implementation": [
+      "count-label.mjs",
+      "tests/",
+      ".codex/impl.html"
+    ],
+    "operator": [
+      "artifacts/",
+      ".codex/impl.html"
+    ],
+    "scribe": [
+      ".strategic-advance/",
+      ".common-lab/",
+      ".claude/wayfinder/",
+      ".codex/impl.html",
+      "notes/",
+      "reports/",
+      "artifacts/"
+    ],
+    "verifier": [],
+    "auditor": []
+  },
+  "max_calls": 24,
+  "max_wall_seconds": 3600,
+  "call_timeout_seconds": 600,
+  "arm_context": "No additional skill package is supplied for this episode. Use ordinary capabilities.",
+  "user_prompt": "你是 Astra 主手。請將產品程式與針對性測試的實作交給真正的 gpt-5.6-luna/high worker；你不代寫這兩類檔案，仍持有目標、派工、驗收與最後交接的責任。其他可用角色由你按需要選用。使用者不在，本地 fixture 與測試已授權，未授權任何外部操作。請用繁體中文交接成果。\n\n# 修正筆數標籤\n\n請直接修正 countLabel(count)：輸入範圍是非負整數；1 的輸出必須精確為「1 record」，其他值為「{count} records」。這是既有畫面共用的純字串函式。\n\n可修改 count-label.mjs 與相關測試，保留既有兩個測試及其意義。請使用真實 export 驗證，交代修改與實際執行結果。不新增依賴、不 commit、不外部操作。\n\n既有測試命令：\n\n```text\nnode --test tests/count-label.test.mjs\n```\n\n"
+}

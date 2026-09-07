@@ -1,0 +1,14 @@
+{
+  "command": [
+    "node",
+    "scripts/astra_delegate_context_candidate/_evaluation/oracle.mjs",
+    "/tmp/astra-delegate-context-20260906-a/workspaces/01-queue-A"
+  ],
+  "exit_code": 0,
+  "started_epoch": 1788685418.7228477,
+  "ended_epoch": 1788685418.757488,
+  "wall_seconds": 0.03464031219482422,
+  "stderr": "",
+  "stdout_sha256": "45720cab0687dbe63e84e5c4b3378fa78d31f2b30dbc7f70c6a57cb70f1f3332",
+  "model_calls": 0
+}

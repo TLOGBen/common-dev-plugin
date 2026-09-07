@@ -1,0 +1,12 @@
+{
+  "synthetic": true,
+  "unchangedScope": {
+    "description": "Existing views need no change.",
+    "additionalPersonDays": 0
+  },
+  "customerFormalUAT": {
+    "owner": "customer",
+    "supplierAdditionalPersonDays": 0,
+    "note": "Supplier integration verification remains in scope."
+  }
+}

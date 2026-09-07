@@ -1,0 +1,11 @@
+{
+  "prefix_preserved": true,
+  "line_count": 9,
+  "errors": [],
+  "last_bytes": "�禁止重投。\"}}\n",
+  "baseline_sha256": "2e07dd13fb805ea7921a1a294e2a318c1301a9e559b427617fbcc230ad52fa23",
+  "preserved_snapshot_sha256": "2e07dd13fb805ea7921a1a294e2a318c1301a9e559b427617fbcc230ad52fa23",
+  "current_sha256": "b1780c15b08a93179fe4a7bfb5a45625c6eb202eebaef00b20ad9f52b44c2a54",
+  "limitation": "Read-only supplement: confirms frozen historical bytes and JSONL parsing, not semantic truth of each claim.",
+  "frozen_history_confirmed": true
+}

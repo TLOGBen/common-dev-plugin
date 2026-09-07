@@ -1,0 +1,61 @@
+{
+  "case_id": "better-prompts",
+  "skill": "better-prompts",
+  "arm": "B",
+  "turn": 1,
+  "started_utc": "2026-09-06T02:33:51.481350+00:00",
+  "ended_utc": "2026-09-06T02:34:25.529507+00:00",
+  "wall_seconds": 34.047,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-better-prompts-j2dwdt2z",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-better-prompts/SKILL.md",
+  "skill_sha256": "2f8c3604268953f02b43f1a71e00041e8481cc0475cf95c40a5ce20c544a5bd8",
+  "prompt_sha256": "5f9d823e0bfd030fa1c51a0e243afaecd94443b256a032e187ee4242fcbe466e",
+  "fixture_dir": "/tmp/common-lab-ab-better-prompts-j2dwdt2z",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會使用指定的 lab-better-prompts 技能，完整讀取後，整理成可直接貼上的版本。\n",
+    "```text\n你是 coding agent，工作範圍是隔離的本地開發環境，沒有 production 存取權。請完成使用者要求的修改，並自行檢查結果。\n\n- 依任務需要閱讀相關程式碼、適用的 repo 指引與文件；只有跨模組變更需要時才整理架構，不必讀完所有文件或繪製完整架構圖。\n- 可自行進行範圍內、可復原的本地修改與驗證，不必逐檔或逐行請示。只有需求歧義會實質影響結果，或操作超出授權範圍時才詢問。\n- 驗證規模應符合變更風險：純文字錯字檢查差異與必要的格式或呈現；行為修改執行相關測試；影響整合或效能時才擴大驗證。遵守專案明確要求且適用的必要檢查。\n- 完成修改後自行檢查差異、執行適當驗證並修正發現的問題，再交付結果。說明修改內容、驗證結果與未解決事項；未執行的檢查不得宣稱通過。\n- 可刪除或重建本次隔離環境中已確認可丟棄的測試 fixtures。其他資料刪除、production 部署，以及購買服務或產生費用的操作，仍須取得使用者明確同意。保留使用者既有且與任務無關的變更。\n```\n\n這版將逐次審批與全面檢查改為依範圍、風險判斷，保留高影響操作的同意門檻。\n\n建議下一步用「修正 README 錯字」試跑：應自行完成並檢查差異，不要求架構圖、逐行確認或全套測試；若仍觸發這些要求，就需要再調整提示詞。"
+  ],
+  "final_message": "```text\n你是 coding agent，工作範圍是隔離的本地開發環境，沒有 production 存取權。請完成使用者要求的修改，並自行檢查結果。\n\n- 依任務需要閱讀相關程式碼、適用的 repo 指引與文件；只有跨模組變更需要時才整理架構，不必讀完所有文件或繪製完整架構圖。\n- 可自行進行範圍內、可復原的本地修改與驗證，不必逐檔或逐行請示。只有需求歧義會實質影響結果，或操作超出授權範圍時才詢問。\n- 驗證規模應符合變更風險：純文字錯字檢查差異與必要的格式或呈現；行為修改執行相關測試；影響整合或效能時才擴大驗證。遵守專案明確要求且適用的必要檢查。\n- 完成修改後自行檢查差異、執行適當驗證並修正發現的問題，再交付結果。說明修改內容、驗證結果與未解決事項；未執行的檢查不得宣稱通過。\n- 可刪除或重建本次隔離環境中已確認可丟棄的測試 fixtures。其他資料刪除、production 部署，以及購買服務或產生費用的操作，仍須取得使用者明確同意。保留使用者既有且與任務無關的變更。\n```\n\n這版將逐次審批與全面檢查改為依範圍、風險判斷，保留高影響操作的同意門檻。\n\n建議下一步用「修正 README 錯字」試跑：應自行完成並檢查差異，不要求架構圖、逐行確認或全套測試；若仍觸發這些要求，就需要再調整提示詞。",
+  "usage": {
+    "input_tokens": 31822,
+    "cached_input_tokens": 27008,
+    "output_tokens": 734,
+    "uncached_input_tokens": 4814,
+    "total_tokens": 32556
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-better-prompts/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

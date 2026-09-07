@@ -1,0 +1,62 @@
+{
+  "status": "FROZEN_NO_MODEL_CALLS",
+  "created_utc": "2026-09-06T14:03:31.269547+00:00",
+  "scratch": "/tmp/astra-worker-fit-v1-r46pwud2",
+  "jobs": [
+    {
+      "label": "W1",
+      "case": "count-label",
+      "arm": "none",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W1-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W1-run",
+      "workspace": "/tmp/astra-worker-fit-v1-r46pwud2/W1"
+    },
+    {
+      "label": "W2",
+      "case": "count-label",
+      "arm": "lab",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W2-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W2-run",
+      "workspace": "/tmp/astra-worker-fit-v1-r46pwud2/W2"
+    },
+    {
+      "label": "W3",
+      "case": "event-projection",
+      "arm": "lab",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W3-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W3-run",
+      "workspace": "/tmp/astra-worker-fit-v1-r46pwud2/W3"
+    },
+    {
+      "label": "W4",
+      "case": "event-projection",
+      "arm": "none",
+      "spec": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-spec.json",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run",
+      "workspace": "/tmp/astra-worker-fit-v1-r46pwud2/W4"
+    }
+  ],
+  "source_sha256": {
+    "/home/vakarve/projects/common-dev-plugin/scripts/freeze_astra_worker_fit.py": "a50bfc99b1d1305fae42fbc1797de2ab1dccc4cc370d5efa638ab05b3db81b42",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_profile_choice.py": "eed8705e631aa97a6f7605e099af9816b23b15c37d284a4acad1c52382d3a56f",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_episode.py": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_failure_handoff.py": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_model_budget.py": "b67dd2cd1020f81e3b5c6119a3dddebe39a883d0d81857cb5f58190fa1743dd9",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/_evaluation/verify_moe.py": "ecca26a7fd04f10665c0e85de1c364f44e1a57bdbfca6c646e252b29d1020b21",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1-prep/event-oracle-selftest.json": "290feec1636c1428fa9beb751e32c76d93ba3439ab25a2d95f26a20311ad4f40",
+    "/home/vakarve/projects/common-dev-plugin/scripts/astra_lead_fixtures/_evaluation/verify_moe.py": "9d40b2b543cb34817f769d9da4268c2cc3cabca7f6d646b7f63b01590cf986bd",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/count-label/public/tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/_evaluation/golden/projector.py": "3fed24a43b377b17b3660b0cb0b080b36e024026ebb6191b46570485bab1e00d",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/_evaluation/selftest.py": "e0dd0f59eed02108c1bff6e2c67f7c59728affa77c251155fc4cf4883135ef5a",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/TASK.md": "340877f8593ab669136a9cc996e7db5af5fda0783575320a4554bc897679b620",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/src/normalization.py": "3382138119754bb0b2cda02c0580f595bd075808771ba80399800b160d6a5acd",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/src/projector.py": "284f034240f08b8fe15bc256c5d768f19a22debb2b9791f44bd8cc0c3687cf2f",
+    "/home/vakarve/projects/common-dev-plugin/scripts/worker_fit_fixtures/event-projection/public/tests/test_projector.py": "e96d6b39649654d639f18ce35935f27fe668670dcc9dc1b2ed0e40d7c28bbfcd"
+  },
+  "pairwise_initial_bytes_equal": true,
+  "actor_oracle_access": false,
+  "actual_cost_usd": null,
+  "limits": "Two task pairs, one sample per arm. Reused count-label concept is a positive control, not new generalization. Model choices do not prove optimality. No automatic fallback/retry."
+}

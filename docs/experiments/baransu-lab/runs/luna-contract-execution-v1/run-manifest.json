@@ -1,0 +1,56 @@
+{
+  "started_utc": "2026-09-06T06:20:04.146880+00:00",
+  "design_manifest": {
+    "kind": "prospective_local_execution_design",
+    "design_id": "execution-probes-v1",
+    "created_utc": "2026-09-06T06:19:30.056827+00:00",
+    "completed_utc": "2026-09-06T06:19:30.064952+00:00",
+    "elapsed_wall_seconds": 0.008,
+    "actual_inference_calls": 0,
+    "planned_calls": 2,
+    "archive_sha256": "0c54a9a196194c15276d906a7a4822ce84d75b352529c6498ffca07952b1c84f",
+    "frozen_files": {
+      "harness/lab_execution_probe.py": "cdf0fe2e8377bd34f47532dd7216572d4fe9e038fcd3ea6a758e5e7a5c8613e0",
+      "harness/common_lab_ab.py": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+      "fixtures/cases.json": "af86a79a4a77fe8497225db7653814ddb68017744f76321e73af3e75f7fe46b6",
+      "fixtures/normalize-tag/files/acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+      "fixtures/normalize-tag/files/src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+      "fixtures/normalize-tag/files/tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+    },
+    "case_ids": [
+      "normalize-tag"
+    ],
+    "skill_package_revision": "NOT_YET_BOUND; run freezes exact A/B resources",
+    "usage": null,
+    "reported_cost_usd": null,
+    "limits": "No inference or human test. Rubrics not included in child fixtures/prompts."
+  },
+  "design_plan": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/runs/luna-contract-execution-v1-plan",
+  "resource_hashes": {
+    "A/contract/SKILL.md": "f446589868b46fc0756ca4232846097a3e523ad706d6ce539fd76abeb0276b2f",
+    "A/contract/evals/evals.json": "51e24c9d558850057159c04149fcdda67df20bc700ff4e5e7d96d46b97c8428b",
+    "A/contract/references/loop-pauses.md": "9782830576e2889a375e2fed30cb51dd32d5ff0e80552a769d6727981758b5cd",
+    "A/plugin.json": "9a488ec5741e4a772c6a5a988ecf38424857cd60e990bae9d24d3a24023b6c62",
+    "B/lab-contract/SKILL.md": "b04f8684f7aab2af129a4baab99013b905d988a3adab8dfde86cb67693d8ceb2",
+    "B/lab-contract/references/acceptance.md": "1c1f3a4659ad968deed50ff65264f17cd74868adae6ec0bf90d451b886c9954e",
+    "B/plugin.json": "67a3c4f4fd01c5a7ee2d479933eaee71f7c52549b8c901503681a52872a31344",
+    "A/_shared/contract-gate.md": "e179f9c82a753bd027c1754fde71f20697ac3a33d1c9eca441b4efafe7d2ef7d",
+    "A/_shared/selection-telemetry.md": "f19a14bb1a6df0c58b1eb70c92eb1b42b4ae4ff1d61a5588b332d16fcf8b6cfa",
+    "A/_shared/loop-contract.md": "13cb9b2d872bf2b188cd05508ec66a072b3e875e481d740c0cc3b57dfd27f648",
+    "A/_shared/tdd.md": "7c8049e5f60adcd3a5274463b837b382ec9d28cbd955dcc9c30e4eb04c9ba72b"
+  },
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "planned_calls": 2,
+  "repeat": 1,
+  "arm_order": [
+    [
+      "A",
+      "B"
+    ]
+  ],
+  "source_roots": {
+    "A": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills",
+    "B": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/skills"
+  }
+}

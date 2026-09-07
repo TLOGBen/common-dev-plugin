@@ -1,0 +1,77 @@
+{
+  "case_id": "grilling-known-field-pair-2",
+  "skill": "grilling",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:55:03.647993+00:00",
+  "ended_utc": "2026-09-06T05:55:28.487715+00:00",
+  "wall_seconds": 24.837,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-grilling-known-field-pair-2-svxl0va3",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills/lab-grilling/SKILL.md",
+  "skill_sha256": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+  "prompt_sha256": "8ee0c5ab31735ac932176f7c9c7f8afcc4980b0720949a1af94f66d62ba8b03d",
+  "fixture_dir": "/tmp/common-lab-ab-grilling-known-field-pair-2-svxl0va3",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整閱讀你指定的 lab-grilling 技能，再依它的流程檢視這個小試驗最重要的盲點。",
+    "最重要的盲點是：**你要測「自行找到」，卻在指令中先透露「備註在頁尾」。** 即使兩人都完成，也只能支持「得到位置提示後能完成」，無法判斷他們是否能自行發現欄位。即使結果只描述這兩次測試，這個落差仍然存在。\n\n你真正想驗證的是「沒有提示也找得到」，還是「知道位置後能順利填寫」？\n\n若是前者，我建議下一步把指令改成：「請在這份表單註明『需開發票』。」先不透露欄位名稱或位置，觀察是否自行找到；若提供提示，就分開記錄提示前後的表現。這是擬議調整，尚未執行測試。"
+  ],
+  "final_message": "最重要的盲點是：**你要測「自行找到」，卻在指令中先透露「備註在頁尾」。** 即使兩人都完成，也只能支持「得到位置提示後能完成」，無法判斷他們是否能自行發現欄位。即使結果只描述這兩次測試，這個落差仍然存在。\n\n你真正想驗證的是「沒有提示也找得到」，還是「知道位置後能順利填寫」？\n\n若是前者，我建議下一步把指令改成：「請在這份表單註明『需開發票』。」先不透露欄位名稱或位置，觀察是否自行找到；若提供提示，就分開記錄提示前後的表現。這是擬議調整，尚未執行測試。",
+  "usage": {
+    "input_tokens": 31625,
+    "cached_input_tokens": 23040,
+    "output_tokens": 406,
+    "uncached_input_tokens": 8585,
+    "total_tokens": 32031
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/grilling-claim-heldout-015-a/baseline/skills/lab-grilling/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

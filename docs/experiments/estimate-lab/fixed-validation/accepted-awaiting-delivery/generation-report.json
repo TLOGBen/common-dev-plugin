@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "stateRevision": 9,
+  "stateStatus": "estimate-approved",
+  "warnings": [],
+  "files": {
+    "assessment-report.md": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/accepted-awaiting-delivery/assessment-report.md",
+      "sha256": "4184f5e736a36c4a413287b3039b103e0ebcd16fca4dd8f75f6161b83c1f6f28"
+    },
+    "assessment-report.html": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/accepted-awaiting-delivery/assessment-report.html",
+      "sha256": "08acd7984e224bdf44a197a2dcee96c9774bf26a62b4e7d8f953a5bfdce7542c"
+    },
+    "estimate-internal.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/accepted-awaiting-delivery/estimate-internal.csv",
+      "sha256": "d3e0f10268da50c72ceb4570d64e4164f3eb849dd1ffc32b8a455e9f341d7161"
+    },
+    "estimate-external.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/accepted-awaiting-delivery/estimate-external.csv",
+      "sha256": "974f4cb293cebf8c59ab52b57910e1312f4978dffb0b73f65f6c072a6530f047"
+    }
+  }
+}

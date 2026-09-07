@@ -1,0 +1,101 @@
+{
+  "kind": "targeted_source_and_browser_regression",
+  "createdUtc": "2026-09-06T06:46:56.405Z",
+  "candidateVersion": "estimate-lab 0.1.3 (not exported yet)",
+  "baseline": {
+    "package": "experiments/estimate-lab-v0.1.2",
+    "browserUrl": "http://127.0.0.1:35903/estimate-lab/fixed-validation/accepted-awaiting-delivery/assessment-report.html",
+    "stateRevision": 9
+  },
+  "testEvidence": {
+    "initialCombinedCall": {
+      "error": "stderr maxBuffer length exceeded",
+      "nodeStdout": "TAP version 13\n# Subtest: keyboard activation of descendant summary does not close its dialog\nnot ok 1 - keyboard activation of descendant summary does not close its dialog\n  ---\n  duration_ms: 13.773142\n  type: 'test'\n  location: '/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:27:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:30:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.start (node:internal/test_runner/test:944:17)\n    startSubtestAfterBootstrap (node:internal/test_runner/harness:296:17)\n  ...\n# Subtest: descendant pointer clicks cannot be mistaken for backdrop clicks\nnot ok 2 - descendant pointer clicks cannot be mistaken for backdrop clicks\n  ---\n  duration_ms: 0.730032\n  type: 'test'\n  location: '/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:33:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:36:10)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:744:18)\n    Test.postRun (node:internal/test_runner/test:1173:19)\n    Test.run (node:internal/test_runner/test:1101:12)\n    async startSubtestAfterBootstrap (node:internal/test_runner/harness:296:3)\n  ...\n# Subtest: real outside pointer click targeting dialog backdrop still closes\nok 3 - real outside pointer click targeting dialog backdrop still closes\n  ---\n  duration_ms: 0.478339\n  type: 'test'\n  ...\n# Subtest: inside dialog clicks and keyboard dialog activation stay open\nnot ok 4 - inside dialog clicks and keyboard dialog activation stay open\n  ---\n  duration_ms: 0.813019\n  type: 'test'\n  location: '/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:45:1'\n  failureType: 'testCodeFailure'\n  error: |-\n    Expected values to be strictly equal:\n    \n    false !== true\n    \n  code: 'ERR_ASSERTION'\n  name: 'AssertionError'\n  expected: true\n  actual: false\n  operator: 'strictEqual'\n  stack: |-\n    TestContext.<anonymous> (file:///home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_dialog_events.mjs:49:12)\n    Test.runInAsyncScope (node:async_hooks:214:14)\n    Test.run (node:internal/test_runner/test:1047:25)\n    Test.processPendingSubtests (node:internal/test_runner/test:744:18)\n    Test.postRun (node:internal/test_runner/test:1173:19)\n    Test.run (node:internal/test_runner/test:1101:12)\n    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)\n  ...\n# Subtest: explicit close control still closes\nok 5 - explicit close control still closes\n  ---\n  duration_ms: 0.612824\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 2\n# fail 3\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 75.56668\n",
+      "limit": "Python failure dumped full HTML and exceeded buffer; rerun below is the complete Python evidence."
+    },
+    "compactPythonRed": {
+      "exitCode": 1,
+      "stdout": "",
+      "stderr": "test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) ... \n  test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='estimate-approved', format='markdown') ... FAIL\n  test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='estimate-approved', format='html') ... FAIL\n  test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='complete', format='markdown') ... FAIL\n  test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='complete', format='html') ... FAIL\ntest_pending_estimate_keeps_current_reminder_without_claiming_approval (test_finding_context.FindingContextTests.test_pending_estimate_keeps_current_reminder_without_claiming_approval) ... ok\n\n======================================================================\nFAIL: test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='estimate-approved', format='markdown')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py\", line 17, in test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders\n    self.assertTrue(\"原評估處理紀錄\" in document, \"missing historical finding label\")\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true : missing historical finding label\n\n======================================================================\nFAIL: test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='estimate-approved', format='html')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py\", line 17, in test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders\n    self.assertTrue(\"原評估處理紀錄\" in document, \"missing historical finding label\")\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true : missing historical finding label\n\n======================================================================\nFAIL: test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='complete', format='markdown')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py\", line 17, in test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders\n    self.assertTrue(\"原評估處理紀錄\" in document, \"missing historical finding label\")\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true : missing historical finding label\n\n======================================================================\nFAIL: test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) (status='complete', format='html')\n----------------------------------------------------------------------\nTraceback (most recent call last):\n  File \"/home/vakarve/projects/common-dev-plugin/plugins/estimate-lab/skills/lab-estimate/tests/test_finding_context.py\", line 17, in test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders\n    self.assertTrue(\"原評估處理紀錄\" in document, \"missing historical finding label\")\n    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nAssertionError: False is not true : missing historical finding label\n\n----------------------------------------------------------------------\nRan 2 tests in 0.006s\n\nFAILED (failures=4)\n"
+    },
+    "green": {
+      "exitCode": 0,
+      "stdout": "TAP version 13\n# Subtest: keyboard activation of descendant summary does not close its dialog\nok 1 - keyboard activation of descendant summary does not close its dialog\n  ---\n  duration_ms: 3.712858\n  type: 'test'\n  ...\n# Subtest: descendant pointer clicks cannot be mistaken for backdrop clicks\nok 2 - descendant pointer clicks cannot be mistaken for backdrop clicks\n  ---\n  duration_ms: 0.763669\n  type: 'test'\n  ...\n# Subtest: real outside pointer click targeting dialog backdrop still closes\nok 3 - real outside pointer click targeting dialog backdrop still closes\n  ---\n  duration_ms: 0.787998\n  type: 'test'\n  ...\n# Subtest: inside dialog clicks and keyboard dialog activation stay open\nok 4 - inside dialog clicks and keyboard dialog activation stay open\n  ---\n  duration_ms: 1.456697\n  type: 'test'\n  ...\n# Subtest: explicit close control still closes\nok 5 - explicit close control still closes\n  ---\n  duration_ms: 0.698085\n  type: 'test'\n  ...\n1..5\n# tests 5\n# suites 0\n# pass 5\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 73.624745\n",
+      "stderr": "test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders (test_finding_context.FindingContextTests.test_approved_and_delivered_estimates_do_not_reissue_old_approval_reminders) ... ok\ntest_pending_estimate_keeps_current_reminder_without_claiming_approval (test_finding_context.FindingContextTests.test_pending_estimate_keeps_current_reminder_without_claiming_approval) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.005s\n\nOK\n"
+    }
+  },
+  "generated": {
+    "ok": true,
+    "stateRevision": 9,
+    "stateStatus": "estimate-approved",
+    "warnings": [],
+    "files": {
+      "assessment-report.md": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/assessment-report.md",
+        "sha256": "561fc60b8c3fdd0af2ece10a92a008dce24f695fab7940ec30926a95a3161036"
+      },
+      "assessment-report.html": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/assessment-report.html",
+        "sha256": "23b5441279f1be72162b3436e7d54d3ac26f2566bdeea8e2e7f1992188d00116"
+      },
+      "estimate-internal.csv": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/estimate-internal.csv",
+        "sha256": "d3e0f10268da50c72ceb4570d64e4164f3eb849dd1ffc32b8a455e9f341d7161"
+      },
+      "estimate-external.csv": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/estimate-external.csv",
+        "sha256": "974f4cb293cebf8c59ab52b57910e1312f4978dffb0b73f65f6c072a6530f047"
+      },
+      "generation-report.json": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/presentation-fix-013-a/generation-report.json",
+        "sha256": "ab3e61262898b5d3327cb73ce49835bae094254ec123f0dad282a0e119a02d8f"
+      }
+    }
+  },
+  "browserChecks": [
+    {
+      "check": "baseline native Tab twice -> summary focused -> Return",
+      "observed": "dialog closed unexpectedly; focus returned to package opener",
+      "result": "FAIL"
+    },
+    {
+      "check": "fixed native Tab twice -> summary focused -> Return",
+      "observed": "dialog open; workset expanded; GET /legacy/search, POST /legacy/save, POST /legacy/approve visible",
+      "result": "PASS"
+    },
+    {
+      "check": "fixed Space on same summary",
+      "observed": "workset collapsed; dialog stays open",
+      "result": "PASS"
+    },
+    {
+      "check": "fixed Escape",
+      "observed": "dialog closed; focus returned to package-package-entry-dialog",
+      "result": "PASS"
+    },
+    {
+      "check": "approved finding context",
+      "observed": "historical record retained; approval reminder is not a new todo; deployment and UAT not implicitly completed",
+      "result": "PASS"
+    },
+    {
+      "check": "pointer backdrop browser click",
+      "observed": "coordinate API call rejected before action; no live-browser conclusion. Unit event test passes.",
+      "result": "NOT_VERIFIED"
+    }
+  ],
+  "friction": {
+    "selectorAttempts": "getByRole button did not match summary; DOM native focus used to establish actual bug",
+    "initialOutputOverflow": true,
+    "coordinateApiMismatch": true
+  },
+  "modelCalls": 0,
+  "inferenceTokens": 0,
+  "actualCostUsd": null,
+  "limits": [
+    "Main-agent/tool usage is separate; zero means no additional model invocation by these tests, not free campaign work.",
+    "No human participants; no claim of human comprehension or pixel-level visual QA.",
+    "Mocked DOM event checks do not replace the recorded real browser keyboard regression.",
+    "State approval integrity is a separate pending runtime fix."
+  ]
+}

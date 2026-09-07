@@ -1,0 +1,271 @@
+{
+  "checked_utc": "2026-09-06T16:48:15.552Z",
+  "scope": "All embedded reference fields of historical met checkpoints, including non-applicable sibling criteria",
+  "results": [
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "expected": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "origin": "C8",
+      "actual": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d",
+      "bytes": 4562,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/export-v0.1.8/export-receipt.json",
+      "expected": "a174ae502f487568cdfa8d53dedab39bfca015711105b3773cd359d47392afdd",
+      "origin": "C8",
+      "actual": "a174ae502f487568cdfa8d53dedab39bfca015711105b3773cd359d47392afdd",
+      "bytes": 8942,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/install-common018-estimate013-20260906-a/result.json",
+      "expected": "d09ca5d86e436f3bce5ca3370b22a478de22f277d934351f24564a0f848234a0",
+      "origin": "C8",
+      "actual": "d09ca5d86e436f3bce5ca3370b22a478de22f277d934351f24564a0f848234a0",
+      "bytes": 27667,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/install-common018-estimate013-20260906-a/common-installed-tests.json",
+      "expected": "a7aa6645bea5088ceb14e9dc9791f9d301640467dcd281c1a8b072cd3a2d5126",
+      "origin": "C8",
+      "actual": "a7aa6645bea5088ceb14e9dc9791f9d301640467dcd281c1a8b072cd3a2d5126",
+      "bytes": 5473,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/01-campaign-none/oracle.json",
+      "expected": "837ceb9d0b06c0219f774782a1cbad5c511e001476f89b6ed694c92c53d00af0",
+      "origin": "C8",
+      "actual": "837ceb9d0b06c0219f774782a1cbad5c511e001476f89b6ed694c92c53d00af0",
+      "bytes": 14517,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/01-campaign-none/lead-review.md",
+      "expected": "e500cc219cc4e16d5bbed7cd988c54978d37b062c6aa4e7fbe3f80bd99878812",
+      "origin": "C8",
+      "actual": "e500cc219cc4e16d5bbed7cd988c54978d37b062c6aa4e7fbe3f80bd99878812",
+      "bytes": 1700,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/campaign-v2-review/02-campaign-lab/lead-review.md",
+      "expected": "840ba83926b6406965fcb0b4680a9e9d077af33ac34bec0d9291c751dbc6b78f",
+      "origin": "C8",
+      "actual": "840ba83926b6406965fcb0b4680a9e9d077af33ac34bec0d9291c751dbc6b78f",
+      "bytes": 2545,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/estimate-lab/presentation-fix-013-a/verification.json",
+      "expected": "f267ef2a3352d5ebd4cbbbdce3ff8e31e430015a6625956b7939a9d10693723d",
+      "origin": "C8",
+      "actual": "f267ef2a3352d5ebd4cbbbdce3ff8e31e430015a6625956b7939a9d10693723d",
+      "bytes": 14444,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/estimate-lab/runs/astra-estimate-011/lead-acceptance.md",
+      "expected": "2e4c3c988d9231ee0126d3510ecf176f691f41bb2cdcbe669dfa52214c0e3eb5",
+      "origin": "C8",
+      "actual": "2e4c3c988d9231ee0126d3510ecf176f691f41bb2cdcbe669dfa52214c0e3eb5",
+      "bytes": 2235,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/MECHANISM-VERDICTS.md",
+      "expected": "34a8a2ad5f908c9564dd2295965a711b91454b565f5f31f5b79a02996706c6b0",
+      "origin": "C8",
+      "actual": "d026c19a0a68431e2d45eb44962d608d1c41e988c58d56d31f5271febf1ff3bd",
+      "bytes": 8340,
+      "match": false
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/resume-v1-review/lead-disposition.md",
+      "expected": "9672c252ea7055aa4de8030c8bda7fef0d59b8d3006497a8095b34dd00c3380b",
+      "origin": "C8",
+      "actual": "9672c252ea7055aa4de8030c8bda7fef0d59b8d3006497a8095b34dd00c3380b",
+      "bytes": 2716,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/lead-disposition.md",
+      "expected": "923dfa2212a23e86cb3536c0b4f1fe3f4bb8d1e4f07ceb1a856f544670f5c58f",
+      "origin": "C8",
+      "actual": "923dfa2212a23e86cb3536c0b4f1fe3f4bb8d1e4f07ceb1a856f544670f5c58f",
+      "bytes": 2015,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/extension-v1-review/lead-disposition.md",
+      "expected": "5d9a122e97e9df88ed0ff0a6d8ba7cb99d51dbc8d7abec451868012eb4a937d7",
+      "origin": "C8",
+      "actual": "5d9a122e97e9df88ed0ff0a6d8ba7cb99d51dbc8d7abec451868012eb4a937d7",
+      "bytes": 3054,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/delegate-context-v1-review/disposition.md",
+      "expected": "ac099bd566c5bf274ec6b3f444e06168e9d01898db02f3b7c2d412d9dee13095",
+      "origin": "C8",
+      "actual": "ac099bd566c5bf274ec6b3f444e06168e9d01898db02f3b7c2d412d9dee13095",
+      "bytes": 1564,
+      "match": true
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/common-evidence-closure-20260906-2040.json",
+      "expected": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "origin": "C3",
+      "actual": "37ffd9b72610462a81704318a1c33801d290197bfbc02c26969aad75c643a377",
+      "bytes": 5118,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/astra-r2-011/manual-review.json",
+      "expected": "2905456308a3d3ea8514f94d1eb0deeb85c44ea0ffa80252ad8e54d22a897977",
+      "origin": "C3",
+      "actual": "2905456308a3d3ea8514f94d1eb0deeb85c44ea0ffa80252ad8e54d22a897977",
+      "bytes": 9467,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/astra-r2-design-freeze/measurement-note.md",
+      "expected": "6415c025a370d2c3639f5be221be347b98715bc64a3bb52a34c36247401b48c2",
+      "origin": "C3",
+      "actual": "6415c025a370d2c3639f5be221be347b98715bc64a3bb52a34c36247401b48c2",
+      "bytes": 2492,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/grilling-claim-heldout-015-a/lead-acceptance.json",
+      "expected": "063213629a1874ff2d583e431109b293516b733968b54ed6e91dace8e4599680",
+      "origin": "C3",
+      "actual": "063213629a1874ff2d583e431109b293516b733968b54ed6e91dace8e4599680",
+      "bytes": 5609,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/wayfinder-regression-v0.1.3-a/verification.json",
+      "expected": "6317736fc17da295c6e84dadb23f57951b0cd1e7c272bd48170a2e57d7d62c09",
+      "origin": "C3",
+      "actual": "6317736fc17da295c6e84dadb23f57951b0cd1e7c272bd48170a2e57d7d62c09",
+      "bytes": 3775,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/wayfinder-browser-qa-v0.1.3.md",
+      "expected": "b79b2821a742fc6d141595ec0c421c3b77b68b4c53cf244113ae6b27be9b7f93",
+      "origin": "C3",
+      "actual": "b79b2821a742fc6d141595ec0c421c3b77b68b4c53cf244113ae6b27be9b7f93",
+      "bytes": 775,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/astra-execution-012/lead-acceptance.md",
+      "expected": "357d77e676026ce73170bd3e7ed11578b57691bd7557eb7f0a14127d5271ce87",
+      "origin": "C3",
+      "actual": "357d77e676026ce73170bd3e7ed11578b57691bd7557eb7f0a14127d5271ce87",
+      "bytes": 4613,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/reader-astra011-sol-01/lead-review.md",
+      "expected": "203b069ae08caf1f174bc17de71b65363c64e404a6c354e4411d2015689d79c2",
+      "origin": "C3",
+      "actual": "203b069ae08caf1f174bc17de71b65363c64e404a6c354e4411d2015689d79c2",
+      "bytes": 2336,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/astra-presentation-011/manual-review.json",
+      "expected": "59d19df4895fdd25a3c15b29f777c71ab369df300179d56f1890f3673d33955c",
+      "origin": "C3",
+      "actual": "59d19df4895fdd25a3c15b29f777c71ab369df300179d56f1890f3673d33955c",
+      "bytes": 5122,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/handoff-brief-reader-v1-run/lead-disposition.md",
+      "expected": "726368e3d3b5d65f24e96c9a9479ec4266d3c9fd52e0696c1514f482f36bf1f4",
+      "origin": "C3",
+      "actual": "726368e3d3b5d65f24e96c9a9479ec4266d3c9fd52e0696c1514f482f36bf1f4",
+      "bytes": 1925,
+      "match": true
+    },
+    {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/closure-011-20260907.json",
+      "expected": "805a20f6dbf955e305f36e338dddb7382c562de4133fbc8496d28b9c705c0d8a",
+      "origin": "C4",
+      "actual": "805a20f6dbf955e305f36e338dddb7382c562de4133fbc8496d28b9c705c0d8a",
+      "bytes": 2533,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/common-lab/runs/astra-baransu-010/manual-review.json",
+      "expected": "5c26cf2bdc4029ec71233d0bc3ee65029cc89dcbe6f1b4f74da5d08cbf5ff1c2",
+      "origin": "C4",
+      "actual": "5c26cf2bdc4029ec71233d0bc3ee65029cc89dcbe6f1b4f74da5d08cbf5ff1c2",
+      "bytes": 9204,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/baransu-lab/contract-execution-v1-verification/receipt.json",
+      "expected": "78961995d7778fd327e6b7186be73d9873621b9bb6672070167cad0c0d38bc1e",
+      "origin": "C4",
+      "actual": "78961995d7778fd327e6b7186be73d9873621b9bb6672070167cad0c0d38bc1e",
+      "bytes": 5828,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/baransu-lab/runs/sol-contract-verification-v1/lead-review.md",
+      "expected": "7271295278b6b6515fd007be2267253f2231a9d04a3823130b9a837359823a1c",
+      "origin": "C4",
+      "actual": "7271295278b6b6515fd007be2267253f2231a9d04a3823130b9a837359823a1c",
+      "bytes": 3264,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/baransu-lab/verifier-boundaries-v1b/lead-disposition.md",
+      "expected": "2686dd3de95c0dd1172cc741101ffd7a459ae8f4092347a012a3e04fb3a3c250",
+      "origin": "C4",
+      "actual": "2686dd3de95c0dd1172cc741101ffd7a459ae8f4092347a012a3e04fb3a3c250",
+      "bytes": 2282,
+      "match": true
+    },
+    {
+      "path": ".codex/evolve/lab-verifier/heldout-decision.json",
+      "expected": "4d872c8474884f9bd66d0f01af4822b105d65b01868d4fb557427c4d1965c30b",
+      "origin": "C4",
+      "actual": "4d872c8474884f9bd66d0f01af4822b105d65b01868d4fb557427c4d1965c30b",
+      "bytes": 9790,
+      "match": true
+    },
+    {
+      "path": ".codex/evolve/lab-verifier/heldout-effectiveness/lead-critical-review.json",
+      "expected": "de757db9cbf00c25da25bda0f7ac7eefdce77e929ec797196e61a9a55385fb78",
+      "origin": "C4",
+      "actual": "de757db9cbf00c25da25bda0f7ac7eefdce77e929ec797196e61a9a55385fb78",
+      "bytes": 18753,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/baransu-lab/export-v0.1.1/export-receipt.json",
+      "expected": "5dda149e1c7796a157376a08ee376a1254d23cac9fa7ecf75733489266993d1a",
+      "origin": "C4",
+      "actual": "5dda149e1c7796a157376a08ee376a1254d23cac9fa7ecf75733489266993d1a",
+      "bytes": 5099,
+      "match": true
+    },
+    {
+      "path": "docs/experiments/install-final-20260907/result.json",
+      "expected": "508e74bf7cd8cdb8fdc9a3c160205369a52be5d4147c49991d0ed40fec3822d4",
+      "origin": "C4",
+      "actual": "508e74bf7cd8cdb8fdc9a3c160205369a52be5d4147c49991d0ed40fec3822d4",
+      "bytes": 32158,
+      "match": true
+    }
+  ],
+  "conclusion": "32 of 33 references unchanged; historical C8 mutable presentation evolved after checkpoint. Raw data not shown changed. Refresh C8 with frozen reviewed conclusion, preserve old checkpoint."
+}

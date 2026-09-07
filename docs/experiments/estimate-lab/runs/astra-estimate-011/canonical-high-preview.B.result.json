@@ -1,0 +1,184 @@
+{
+  "case_id": "canonical-high-preview",
+  "arm": "B",
+  "repeat": 1,
+  "kind": "isolated_local_artifact_execution",
+  "started_utc": "2026-09-06T05:35:53.009971+00:00",
+  "ended_utc": "2026-09-06T05:39:42.380723+00:00",
+  "wall_seconds": 229.353,
+  "status": "completed",
+  "exit_code": 0,
+  "os_error": null,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "model_metadata_basis": "Exact CLI request; no fallback. Runtime JSONL may not echo resolved model.",
+  "fixture_dir": "/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo",
+  "fixture_before_sha256": {
+    "aliases.csv": "b161da4977e375305991ddff2e23b12983bf92c97202e6a468fc26a7d35f0d32",
+    "coverage.csv": "3108f070112c1b2ba28ee4531cf5dcabcb535577c194d174e7e76e1da324f643",
+    "generated.json": "75566e31d4a2becfcf6d751f068a1faab740ff9a9d47caa0b1f7a8a5ff619c26",
+    "inventory.csv": "f0f051f171889df0be607df53d553b4ff7e653fa9685b7ac8eb613bda5f3519f",
+    "rates.json": "ea6a8582bb9bb2f7f9e56fe272192f299fc0db27ab244bbaa15e1fca0fa13f19",
+    "unchanged-and-responsibility.json": "3884344d82deea7e59055a800f2ea138ee8071aa97d1193c0699e190aee6507d"
+  },
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate/SKILL.md",
+  "skill_sha256": "6e3942441383659bd1ea3fc9f541e255d8f4196a497dac62f8a17309e200d6e6",
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "actual_business_completion": null,
+  "actual_business_status": "NOT_EXECUTED",
+  "local_execution_acceptance": null,
+  "messages": [
+    "我會先完整讀取指定技能，再核對附件的 canonical 數量、別名、generated、coverage 與例外增量，產出三份指定檔案；只使用附件提供的高值費率，不補造其他費率，也不代替 PM 核准。\n",
+    "核對結果為 87 個 canonical API，其中 84 個一般項目、3 個例外；3 筆別名不增加數量。136 個 generated 輸出歸入共用底座，13 筆 coverage 歸入一包整合驗證。依附件高值費率計算，開發 7.5 人天、測試 5.5 人天，合計 13 人天。報告會區分已完成的附件核對與尚未執行的系統施工、驗收。\n",
+    "已完成本地高值預覽並通過數量、去重、公式與 CSV 五欄檢查：\n\n- [對外估算 CSV](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv)\n- [評估報告](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/assessment-report.md)\n- [交接文件](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md)\n\n高值合計 **13 人天：開發 7.5、測試 5.5**。87 個 canonical API 已核對別名、generated、coverage 與例外增量，未重複計價，未補造低值或基準費率。\n\n所有資料皆為合成測試；實際施工與驗收未執行。估算是否接受及後續驗收要求仍由 PM／責任人決定，未代為核准。"
+  ],
+  "final_message": "已完成本地高值預覽並通過數量、去重、公式與 CSV 五欄檢查：\n\n- [對外估算 CSV](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/estimate-external.csv)\n- [評估報告](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/assessment-report.md)\n- [交接文件](/tmp/common-lab-exec-canonical-high-preview-6b9wmkgo/preview/handoff.md)\n\n高值合計 **13 人天：開發 7.5、測試 5.5**。87 個 canonical API 已核對別名、generated、coverage 與例外增量，未重複計價，未補造低值或基準費率。\n\n所有資料皆為合成測試；實際施工與驗收未執行。估算是否接受及後續驗收要求仍由 PM／責任人決定，未代為核准。",
+  "usage": {
+    "input_tokens": 185791,
+    "cached_input_tokens": 150912,
+    "output_tokens": 6773,
+    "uncached_input_tokens": 34879,
+    "total_tokens": 192564
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"pwd; rg --files -g '\"'!**/.git/**'\"' -g '\"'!**/.codex/**'\"' -g '\"'!**/.agents/**'\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat aliases.csv coverage.csv rates.json generated.json unchanged-and-responsibility.json inventory.csv'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'LAB_SKILL_DIR=/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate\ncat \"$LAB_SKILL_DIR/references/evidence-and-success-chain.md\" \"$LAB_SKILL_DIR/references/estimation-guide.md\" \"$LAB_SKILL_DIR/references/pm-report-design.md\" \"$LAB_SKILL_DIR/references/deliverables.md\" \"$LAB_SKILL_DIR/references/dependency-behavior.md\"'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'LAB_SKILL_DIR=/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate\ncat \"$LAB_SKILL_DIR/references/pm-report-design.md\"\ntail -n 35 \"$LAB_SKILL_DIR/references/estimation-guide.md\"'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"ls -la\npython3 - <<'PY'\nimport csv,json\nfrom decimal import Decimal\nfrom pathlib import Path\np=Path('.')\ninv=list(csv.DictReader((p/'inventory.csv').open()))\na=list(csv.DictReader((p/'aliases.csv').open()))\nc=list(csv.DictReader((p/'coverage.csv').open()))\nr=json.loads((p/'rates.json').read_text())\ng=json.loads((p/'generated.json').read_text())\nids={x['canonical_id'] for x in inv}\nassert len(inv)==len(ids)==87\nassert ids=={f'api-{n:03}' for n in range(1,88)}\nassert len({x['source_path'] for x in inv})==87\nassert all(x['batch_included']=='true' for x in inv)\nex=[x for x in inv if x['change_kind']=='exception']\nassert [(x['canonical_id'],x['exception_kind']) for x in ex]==[('api-085','upload'),('api-086','signed-payload'),('api-087','transaction')]\nassert len(a)==3 and {x['canonical_id'] for x in a}=={x['canonical_id'] for x in ex}\nassert len({x['alias_path'] for x in a})==3\nassert not ({x['alias_path'] for x in a}&{x['source_path'] for x in inv})\nassert len(c)==len({x['coverage_id'] for x in c})==13\nassert {x['priced_within'] for x in c}=={'integration-verification'}\nassert g['generatedOutputCount']==136 and g['manualChangeUnits']==0 and g['pricedWithin']=='shared-foundation'\nassert r['bound']=='high-only' and r['lowAndBaselineRates'] is None\nfor x in r['items']:\n d=Decimal(str(x['quantity']))*Decimal(str(x['developmentPerUnit']))\n t=Decimal(str(x['quantity']))*Decimal(str(x['testPerUnit']))\n assert d%Decimal('0.5')==0 and t%Decimal('0.5')==0\n print(x['id'], 'quantity=',x['quantity'],'development=',d,'test=',t,'total=',d+t)\nprint('Canonical 87 = normal 84 + exceptions 3; aliases add 0; generated manual units 0; coverage 13 within one package.')\nprint('Development',sum(Decimal(str(x['quantity']))*Decimal(str(x['developmentPerUnit'])) for x in r['items']))\nprint('Test',sum(Decimal(str(x['quantity']))*Decimal(str(x['testPerUnit'])) for x in r['items']))\nprint('All fixture assertions passed; this verifies fixture consistency, not runtime behavior.')\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nfrom pathlib import Path\nfrom decimal import Decimal\nimport csv,json,io\nroot=Path.cwd()\nnames=['inventory.csv','aliases.csv','coverage.csv','rates.json','generated.json','unchanged-and-responsibility.json']\noriginal={n:(root/n).read_bytes() for n in names}\ndef readcsv(n): return list(csv.DictReader(io.StringIO(original[n].decode())))\ninv=readcsv('inventory.csv'); aliases=readcsv('aliases.csv'); coverage=readcsv('coverage.csv')\nrates=json.loads(original['rates.json']); generated=json.loads(original['generated.json']); resp=json.loads(original['unchanged-and-responsibility.json'])\nD=lambda x:Decimal(str(x))\nfmt=lambda x:format(D(x).normalize(),'f')\nitems={i['id']:i for i in rates['items']}\nassert len(items)==4\nassert {k:i['quantity'] for k,i in items.items()}=={'shared-foundation':1,'homogeneous-batch':1,'exception-increment':3,'integration-verification':1}\nassert all(json.loads(original[n])['synthetic'] is True for n in names if n.endswith('.json'))\nassert resp['unchangedScope']['additionalPersonDays']==0\nassert resp['customerFormalUAT']['owner']=='customer' and resp['customerFormalUAT']['supplierAdditionalPersonDays']==0\npackages=[\n('shared-foundation','共用執行與產製能力','調整共用設定與執行底座，依來源設定重新產製輸出並核對結果；工作量來自共用能力建立一次及整批重生驗證，完成時須提供可重現的產製結果與核對紀錄。'),\n('homogeneous-batch','既有介面共同轉換','以共同規則整批轉換既有介面，核對完整清冊與一般處理結果；工作量來自一批共通轉換，也包含特殊介面的一般部分，完成時須確認全量納入且共同規則驗證通過。'),\n('exception-increment','上傳、簽章資料與交易特殊處理','針對上傳、簽章資料與交易補上共同轉換以外的特殊調整，分別除錯並驗證結果；工作量來自三種例外的額外處理，完成時須各自提供特殊行為的驗證紀錄。'),\n('integration-verification','介面整合驗證','彙整既定覆蓋清單，執行跨介面整合檢查並核對結果；工作量來自一包整合測試，完成時須提供各覆蓋項目的結果與問題紀錄，確認整體串接符合既定條件。')]\nefforts={k:(D(i['quantity'])*D(i['developmentPerUnit']),D(i['quantity'])*D(i['testPerUnit'])) for k,i in items.items()}\ndev=sum(v[0] for v in efforts.values()); test=sum(v[1] for v in efforts.values())\nassert (dev,test,dev+test)==(D('7.5'),D('5.5'),D('13'))\nheader=['序號','系統功能','功能說明','開發人天','測試人天']\nbuf=io.StringIO(newline=''); w=csv.writer(buf);w.writerow(header)\nfor n,(k,title,summary) in enumerate(packages,1): w.writerow([n,title,summary,*map(fmt,efforts[k])])\nreport=[\n'本文件為合成測試附件的高值估算預覽，未經 PM 核准。已完成本地資料核對與估算文件製作；下列施工與驗收皆為待執行的工作說明，並非實際系統已完成的結果。',\n'高值合計 **13 人天：開發 7.5、測試 5.5**。附件只提供高值單位人天，低值與基準為未提供，不能視為零、不能由高值反推。人天表示投入量，不代表日曆工期、排程或金額。',\n'本預覽依使用者已固定的合成範圍與費率整理：共用設定／執行底座、全量 API 共同轉換、三項例外增量及整合驗證。既有畫面維持不變；客戶負責正式 UAT，我方整合驗證仍納入。附件未提供業務流程名稱、目標版本、實際原始碼、產碼設定路徑或驗收案例內容，不補造這些資訊。',\n'**數量與去重核對**',\n'| 證據 | 核對結果 | 計價角色與邊界 |\\\\n|---|---|---|',\n'| inventory.csv | 87 列、87 個唯一 canonical ID、87 個唯一來源路徑；84 個 normal＋3 個 exception；87 列 batch_included 皆為 true | 全量修改範圍證據；共同轉換只計 1 批，包含三項例外的一般部分 |',\n'| aliases.csv | 3 筆唯一別名路徑，皆指向已存在的例外 canonical ID | 別名新增 canonical 數為 0；87 個來源與 3 個別名共 90 筆路徑記錄仍對應 87 個工作對象 |',\n'| generated.json | 宣告 generated 輸出 136、人工修改單位 0；pricedWithin 為 shared-foundation | 來源設定調整後整批重生與驗證，含於共用底座；136 不乘人工單價 |',\n'| coverage.csv | 13 個唯一 coverage ID，全數 priced_within 為 integration-verification | 僅覆蓋證據；整合驗證計 1 包，不逐筆收費 |',\n'| unchanged-and-responsibility.json | 既有畫面無須異動；正式 UAT owner 為 customer | 畫面追加 0 人天，客戶正式 UAT 的供應方追加 0 人天；不扣除我方整合測試 |',\n'數量守恆：87＝84＋3；三項例外已在 87 之內，不能再把共同轉換擴成 90。API、產碼輸出、覆蓋條目屬不同集合，不將 87＋136＋13 合併成計價單位。generated 的 136 為附件宣告值，未取得逐檔清冊或執行重生，故只驗證宣告與歸屬一致，沒有獨立證明輸出存在或可重現。coverage 有完整 ID 清單，但沒有實際測試結果。',\n'**工作分解與高值公式**',\n'每個工作 ID 恰好歸入下表的一個成果包；對外 CSV 依此順序彙總相同工作。所有費率直接來自 rates.json 的 developmentPerUnit／testPerUnit，沒有重新校準或拆造步驟單價。',\n'| CSV 序號／成果包 | 工作 ID／樣態 | 計價數量 | 每單位開發／測試 | 高值開發／測試 | 合計 |\\\\n|---|---|---:|---:|---:|---:|'\n]\nkind={'shared-foundation':'共用一次','homogeneous-batch':'批次','exception-increment':'例外增量','integration-verification':'整合驗證'}\nfor n,(k,title,summary) in enumerate(packages,1):\n i=items[k]; d,t=efforts[k]\n report.append(f'| {n}／{title} | {k}／{kind[k]} | {i[\\\"quantity\\\"]} | {fmt(i[\\\"developmentPerUnit\\\"])}／{fmt(i[\\\"testPerUnit\\\"])} | {fmt(d)}／{fmt(t)} | {fmt(d+t)} |')\nreport += [\n'| 總計 | 四項工作唯一歸屬 | — | — | 7.5／5.5 | 13 |',\n'開發＝1×4＋1×2＋3×0.5＋1×0＝7.5；測試＝1×1＋1×1＋3×0.5＋1×2＝5.5。全數保留半日粒度，無額外比例緩衝、無新增費率。',\n'**PM 可轉述的施工與驗收說明**',\n'以下為依附件 covers／method 整理的承作說明與建議驗收證據；尚無實際實作切片或工時實績支持費率校準，也沒有把說明中的步驟各自配置新的人天。責任依附件供應方工作／客戶 UAT 的邊界整理，未指定實際人員。',\n'1. **共用執行與產製能力｜開發 4、測試 1。** 為讓共同轉換有一致的設定與執行基礎，開發調整一套共用底座及產製来源設定，再重生 136 個輸出；測試核對重生結果。共用能力只做一次，輸出不逐檔計人工。建議以固定來源／設定、重生操作及結果核對紀錄作為完成證據；具體來源檔案未提供。這筆測試只承接底座與重生核對，跨介面覆蓋另由整合包承接。',\n'2. **既有介面共同轉換｜開發 2、測試 1。** 為使全量介面接受同一套共同轉換，開發先整理共同改法，再整批套用 87 個 canonical API；測試核對清冊守恆及共同處理結果。一般代表落點為 api-001（src/api/Api001.java），僅為附件代表項，未檢視實際程式。完成證據應含 87 項處理對照與共同規則驗證；三項例外的一般部分已包含，特殊部分由下一包承接。',\n'3. **上傳、簽章資料與交易特殊處理｜開發 1.5、測試 1.5。** 共同規則以外尚有三個已識別的例外。開發針對 api-085 的 upload、api-086 的 signed-payload、api-087 的 transaction 各補做特殊調整與除錯，每項開發 0.5；測試各驗證特殊處理，每項測試 0.5。建議完成證據為三份對應例外行為的案例與結果，僅承接超出共同批次的增量，不重收一般轉換。附件未定義上傳限制、簽章演算法或交易成功／失敗契約，具體斷言需由責任人補定。',\n'4. **介面整合驗證｜開發 0、測試 2。** 為確認調整後的串接結果，測試彙整 13 個既定覆蓋條目、執行一包整合檢查並記錄問題與結果。每筆 coverage 對應同一包驗證，沒有 13 次獨立計價；附件未配置此包開發人天，不能補加開發費率。完成證據應為 13 個 ID 全數對應的測試結果及問題處置紀錄；此處不把測試核對宣稱為額外開發修復承諾。正式 UAT 仍由客戶負責。',\n'施工依賴為共用底座 → 共同批次 → 例外增量 → 整合驗證，最後銜接客戶正式 UAT；這是工作依賴說明，並非已承諾的排程。一般／特殊局部檢查與跨介面整合檢查目的不同，驗證紀錄應標示所屬工作以避免重複歸價。',\n'**唯一 canonical 工作集合**',\n'下表直接投影 inventory.csv，以原有 canonical ID 作為穩定識別；87 項均納入 homogeneous-batch，並均屬修改範圍證據。例外欄只標出額外歸入 exception-increment 的特殊操作，同一 API 的一般與特殊操作互斥。來源路徑僅為附件記錄，沒有宣稱這些 Java 檔案存在於本工作目錄。',\n'| canonical ID | 附件來源路徑 | 分類／例外 | 別名（新增數量 0） |\\\\n|---|---|---|---|'\n]\naliasmap={a['canonical_id']:a['alias_path'] for a in aliases}\nfor x in inv: report.append(f'| {x[\\\"canonical_id\\\"]} | {x[\\\"source_path\\\"]} | {x[\\\"exception_kind\\\"] or \\\"一般\\\"} | {aliasmap.get(x[\\\"canonical_id\\\"],\\\"—\\\")} |')\nreport += ['**整合覆蓋集合**','全數僅作範圍證據；不捏造條目名稱、案例內容或通過結果。','| coverage ID | 唯一計價歸屬 |\\\\n|---|---|']\nreport += [f'| {x[\\\"coverage_id\\\"]} | {x[\\\"priced_within\\\"]} |' for x in coverage]\nreport += [\n'**檢查結論與限制**',\n'已用 Python 標準函式庫讀取六份附件，核對 canonical 唯一性、來源路徑唯一性、完整 ID 集合、分類守恆、batch_included、別名指向、generated 歸屬、coverage 唯一性與歸屬、零人天責任及高值算術。逐項檢查了「別名另算」「例外重收共同工作」「generated 逐輸出計價」「coverage 逐條計價」「漏掉供應方整合測試」等替代計數方式，附件均支持上述去重結果。未发现需要更改固定範圍或人天的附件矛盾。',\n'這些結果證明合成附件的一致性與計價可重算；無實際原始碼、建置環境、測試輸出或業務操作證據，不能推出相容性成立、系統驗收通過、工時實績成立或真實商業交付完成。',\n'本地交付僅包含 estimate-external.csv、assessment-report.md、handoff.md。直接由同次讀取的附件與高值工作模型生成，CSV 為 UTF-8 BOM、標準五欄、數字序號及單段功能說明。依使用者指定範圍，不初始化完整 case 或 assessment-state.json，不執行完整 generator，也不建立低值／基準、HTML、Excel 或其他檔案；無 render／開啟瀏覽器操作。',\n'對外 CSV 已回讀核對欄位、順序、逐列與總計人天，並以實際主表檢視範圍、主要動作、計價原因與完成結果。這是本地文字檢視；未進行獨立讀者或真人 PM 回述，亦未記錄任何 PM 核准。',\n'人工作業：本次預覽製作無須追加決策。PM 可據此說明高值範圍，是否接受估算仍由 PM 決定；若要推進實際施工，由供應方與客戶補定具體環境、行為契約、13 項覆蓋案例及驗收證據要求，客戶另承接正式 UAT。這些是後續成果的成立条件，並非本預覽未完成的檔案工作。'\n]\nreport='\\\\n\\\\n'.join(report).replace('产製来源','產製來源').replace('未发现','未發現').replace('成立条件','成立條件')+'\\\\n'\nhandoff='''已完成三份本地高值預覽，資料與費率皆為合成測試，未經 PM 核准。\n\n- [對外估算 CSV](estimate-external.csv)：UTF-8 BOM，五欄「序號、系統功能、功能說明、開發人天、測試人天」，四個成果包。\n- [評估報告](assessment-report.md)：canonical 全量清冊、別名與 coverage 對照、工作分解、費率公式、責任邊界與待執行的驗收說明。\n- [本交接文件](handoff.md)：完成範圍及人工承接事項。\n\n高值共 **13 人天＝開發 7.5＋測試 5.5**。87 個 canonical API＝84 個一般＋3 個例外；3 個別名不新增工作。共同轉換含全部 87 個 API，例外僅加三筆特殊增量。136 個 generated 輸出人工修改單位為 0，重生及核對包含在共用底座；13 筆 coverage 由一包整合驗證涵蓋。既有畫面及客戶正式 UAT 的我方追加人天皆為 0，我方整合測試仍已計入。\n\n已完成六份附件的資料一致性檢查、高值公式重算、CSV 回讀與實際文字檢視；驗證涵蓋唯一性、別名歸屬、批次與例外邊界、generated／coverage 歸屬、半日粒度、標準五欄與逐列／總計一致性。原始附件保留，僅新增指定的三個檔案。\n\n尚未達成的系統成果：實際底座調整、API 轉換、輸出重生、例外處理、整合測試及客戶正式 UAT 均未執行。generated 數量及可重現性只有合成附件宣告，coverage 只有條目清單，不能當成系統通過驗證的證據。沒有真人 PM 回述或估算核准紀錄。\n\n人工介入：本次高值預覽已完成，無待補資料阻擋交付。PM 若要推進施工，需自行決定是否接受高值估算，並與供應方／客戶確認具體行為、環境、測試案例與驗收要求；正式 UAT 由客戶負責。未代替 PM 核准，也未執行任何真實商業活動。\n\n低值與基準費率未提供，維持缺失而未補造。本次依授權不建立完整正式 case、三區間估算、HTML 或 Excel，亦未執行完整 generator 或任何 render／自動開啟操作。\n'''\noutputs={'preview/estimate-external.csv':buf.getvalue().encode('utf-8-sig'),'preview/assessment-report.md':report.encode(),'preview/handoff.md':handoff.encode()}\nassert all(not (root/n).exists() and not (root/n).is_symlink() for n in outputs), 'Existing output must be preserved'\nassert not (root/'preview').is_symlink()\n(root/'preview').mkdir(exist_ok=True)\nfor n,data in outputs.items():\n with (root/n).open('xb') as f: f.write(data)\nrows=list(csv.reader(io.StringIO((root/'preview/estimate-external.csv').read_text(encoding='utf-8-sig'))))\nassert rows[0]==header and len(rows)==5 and all(len(r)==5 for r in rows)\nassert [r[0] for r in rows[1:]]==['1','2','3','4']\nfor row,(k,title,summary) in zip(rows[1:],packages):\n assert row[1:3]==[title,summary] and '\\\\n' not in row[2]\n assert tuple(map(D,row[3:]))==efforts[k]\n assert all(D(v)%D('0.5')==0 for v in row[3:])\nassert sum(D(r[3]) for r in rows[1:])==dev\nassert sum(D(r[4]) for r in rows[1:])==test\nassert (root/'preview/estimate-external.csv').read_bytes().startswith(b'\\\\xef\\\\xbb\\\\xbf')\nfor n,data in original.items(): assert (root/n).read_bytes()==data, f'Fixture changed: {n}'\nassert {str(p.relative_to(root)) for p in (root/'preview').iterdir()}==set(outputs)\nassert sum(line.startswith('| api-') for line in report.splitlines())==87\nassert sum(line.startswith('| integration-') for line in report.splitlines())==13\nprint('PASS: fixture preservation; exactly three output files; CSV BOM, five columns, four numbered packages, single-paragraph summaries, per-row high values, half-day granularity, totals 7.5 / 5.5 / 13; report catalogs 87 API and 13 coverage rows.')\nprint((root/'preview/estimate-external.csv').read_text(encoding='utf-8-sig'))\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nfrom pathlib import Path\np=Path('preview/assessment-report.md')\ns=p.read_text().replace('產製来源','產製來源')\ns=s.replace('|\\\\n\\\\n|','|\\\\n|')\np.write_text(s)\nprint(s[:5800])\nprint(Path('preview/handoff.md').read_text())\nassert '|\\\\n\\\\n|' not in s\nassert sum(x.startswith('| api-') for x in s.splitlines())==87\nassert sum(x.startswith('| integration-') for x in s.splitlines())==13\nprint('PASS: Markdown table rows contiguous; canonical and coverage catalog counts preserved.')\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true,
+  "artifact_observations": {
+    "fixture_after_sha256": {
+      "aliases.csv": "b161da4977e375305991ddff2e23b12983bf92c97202e6a468fc26a7d35f0d32",
+      "coverage.csv": "3108f070112c1b2ba28ee4531cf5dcabcb535577c194d174e7e76e1da324f643",
+      "generated.json": "75566e31d4a2becfcf6d751f068a1faab740ff9a9d47caa0b1f7a8a5ff619c26",
+      "inventory.csv": "f0f051f171889df0be607df53d553b4ff7e653fa9685b7ac8eb613bda5f3519f",
+      "preview/assessment-report.md": "3c11e430d7a3009bc6400ac64eff5cceb6793ecd478a176bdd463589e4496a9c",
+      "preview/estimate-external.csv": "8f0f4c36654277ce714f61d434573f2b42d8466d534eb6d0eaeba590b4ada61b",
+      "preview/handoff.md": "14120d5a71fa0aa052b824405c2847e7aed92c52d9b3fe73482a3fbd5cc8fae5",
+      "rates.json": "ea6a8582bb9bb2f7f9e56fe272192f299fc0db27ab244bbaa15e1fca0fa13f19",
+      "unchanged-and-responsibility.json": "3884344d82deea7e59055a800f2ea138ee8071aa97d1193c0699e190aee6507d"
+    },
+    "changed_paths": [
+      "preview/assessment-report.md",
+      "preview/estimate-external.csv",
+      "preview/handoff.md"
+    ],
+    "outside_allowlist_changes": [],
+    "required_outputs_present": {
+      "preview/estimate-external.csv": true,
+      "preview/assessment-report.md": true,
+      "preview/handoff.md": true
+    },
+    "local_artifacts": {
+      "preview/estimate-external.csv": "序號,系統功能,功能說明,開發人天,測試人天\r\n1,共用執行與產製能力,調整共用設定與執行底座，依來源設定重新產製輸出並核對結果；工作量來自共用能力建立一次及整批重生驗證，完成時須提供可重現的產製結果與核對紀錄。,4,1\r\n2,既有介面共同轉換,以共同規則整批轉換既有介面，核對完整清冊與一般處理結果；工作量來自一批共通轉換，也包含特殊介面的一般部分，完成時須確認全量納入且共同規則驗證通過。,2,1\r\n3,上傳、簽章資料與交易特殊處理,針對上傳、簽章資料與交易補上共同轉換以外的特殊調整，分別除錯並驗證結果；工作量來自三種例外的額外處理，完成時須各自提供特殊行為的驗證紀錄。,1.5,1.5\r\n4,介面整合驗證,彙整既定覆蓋清單，執行跨介面整合檢查並核對結果；工作量來自一包整合測試，完成時須提供各覆蓋項目的結果與問題紀錄，確認整體串接符合既定條件。,0,2\r\n",
+      "preview/assessment-report.md": "本文件為合成測試附件的高值估算預覽，未經 PM 核准。已完成本地資料核對與估算文件製作；下列施工與驗收皆為待執行的工作說明，並非實際系統已完成的結果。\n\n高值合計 **13 人天：開發 7.5、測試 5.5**。附件只提供高值單位人天，低值與基準為未提供，不能視為零、不能由高值反推。人天表示投入量，不代表日曆工期、排程或金額。\n\n本預覽依使用者已固定的合成範圍與費率整理：共用設定／執行底座、全量 API 共同轉換、三項例外增量及整合驗證。既有畫面維持不變；客戶負責正式 UAT，我方整合驗證仍納入。附件未提供業務流程名稱、目標版本、實際原始碼、產碼設定路徑或驗收案例內容，不補造這些資訊。\n\n**數量與去重核對**\n\n| 證據 | 核對結果 | 計價角色與邊界 |\n|---|---|---|\n| inventory.csv | 87 列、87 個唯一 canonical ID、87 個唯一來源路徑；84 個 normal＋3 個 exception；87 列 batch_included 皆為 true | 全量修改範圍證據；共同轉換只計 1 批，包含三項例外的一般部分 |\n| aliases.csv | 3 筆唯一別名路徑，皆指向已存在的例外 canonical ID | 別名新增 canonical 數為 0；87 個來源與 3 個別名共 90 筆路徑記錄仍對應 87 個工作對象 |\n| generated.json | 宣告 generated 輸出 136、人工修改單位 0；pricedWithin 為 shared-foundation | 來源設定調整後整批重生與驗證，含於共用底座；136 不乘人工單價 |\n| coverage.csv | 13 個唯一 coverage ID，全數 priced_within 為 integration-verification | 僅覆蓋證據；整合驗證計 1 包，不逐筆收費 |\n| unchanged-and-responsibility.json | 既有畫面無須異動；正式 UAT owner 為 customer | 畫面追加 0 人天，客戶正式 UAT 的供應方追加 0 人天；不扣除我方整合測試 |\n\n數量守恆：87＝84＋3；三項例外已在 87 之內，不能再把共同轉換擴成 90。API、產碼輸出、覆蓋條目屬不同集合，不將 87＋136＋13 合併成計價單位。generated 的 136 為附件宣告值，未取得逐檔清冊或執行重生，故只驗證宣告與歸屬一致，沒有獨立證明輸出存在或可重現。coverage 有完整 ID 清單，但沒有實際測試結果。\n\n**工作分解與高值公式**\n\n每個工作 ID 恰好歸入下表的一個成果包；對外 CSV 依此順序彙總相同工作。所有費率直接來自 rates.json 的 developmentPerUnit／testPerUnit，沒有重新校準或拆造步驟單價。\n\n| CSV 序號／成果包 | 工作 ID／樣態 | 計價數量 | 每單位開發／測試 | 高值開發／測試 | 合計 |\n|---|---|---:|---:|---:|---:|\n| 1／共用執行與產製能力 | shared-foundation／共用一次 | 1 | 4／1 | 4／1 | 5 |\n| 2／既有介面共同轉換 | homogeneous-batch／批次 | 1 | 2／1 | 2／1 | 3 |\n| 3／上傳、簽章資料與交易特殊處理 | exception-increment／例外增量 | 3 | 0.5／0.5 | 1.5／1.5 | 3 |\n| 4／介面整合驗證 | integration-verification／整合驗證 | 1 | 0／2 | 0／2 | 2 |\n| 總計 | 四項工作唯一歸屬 | — | — | 7.5／5.5 | 13 |\n\n開發＝1×4＋1×2＋3×0.5＋1×0＝7.5；測試＝1×1＋1×1＋3×0.5＋1×2＝5.5。全數保留半日粒度，無額外比例緩衝、無新增費率。\n\n**PM 可轉述的施工與驗收說明**\n\n以下為依附件 covers／method 整理的承作說明與建議驗收證據；尚無實際實作切片或工時實績支持費率校準，也沒有把說明中的步驟各自配置新的人天。責任依附件供應方工作／客戶 UAT 的邊界整理，未指定實際人員。\n\n1. **共用執行與產製能力｜開發 4、測試 1。** 為讓共同轉換有一致的設定與執行基礎，開發調整一套共用底座及產製來源設定，再重生 136 個輸出；測試核對重生結果。共用能力只做一次，輸出不逐檔計人工。建議以固定來源／設定、重生操作及結果核對紀錄作為完成證據；具體來源檔案未提供。這筆測試只承接底座與重生核對，跨介面覆蓋另由整合包承接。\n\n2. **既有介面共同轉換｜開發 2、測試 1。** 為使全量介面接受同一套共同轉換，開發先整理共同改法，再整批套用 87 個 canonical API；測試核對清冊守恆及共同處理結果。一般代表落點為 api-001（src/api/Api001.java），僅為附件代表項，未檢視實際程式。完成證據應含 87 項處理對照與共同規則驗證；三項例外的一般部分已包含，特殊部分由下一包承接。\n\n3. **上傳、簽章資料與交易特殊處理｜開發 1.5、測試 1.5。** 共同規則以外尚有三個已識別的例外。開發針對 api-085 的 upload、api-086 的 signed-payload、api-087 的 transaction 各補做特殊調整與除錯，每項開發 0.5；測試各驗證特殊處理，每項測試 0.5。建議完成證據為三份對應例外行為的案例與結果，僅承接超出共同批次的增量，不重收一般轉換。附件未定義上傳限制、簽章演算法或交易成功／失敗契約，具體斷言需由責任人補定。\n\n4. **介面整合驗證｜開發 0、測試 2。** 為確認調整後的串接結果，測試彙整 13 個既定覆蓋條目、執行一包整合檢查並記錄問題與結果。每筆 coverage 對應同一包驗證，沒有 13 次獨立計價；附件未配置此包開發人天，不能補加開發費率。完成證據應為 13 個 ID 全數對應的測試結果及問題處置紀錄；此處不把測試核對宣稱為額外開發修復承諾。正式 UAT 仍由客戶負責。\n\n施工依賴為共用底座 → 共同批次 → 例外增量 → 整合驗證，最後銜接客戶正式 UAT；這是工作依賴說明，並非已承諾的排程。一般／特殊局部檢查與跨介面整合檢查目的不同，驗證紀錄應標示所屬工作以避免重複歸價。\n\n**唯一 canonical 工作集合**\n\n下表直接投影 inventory.csv，以原有 canonical ID 作為穩定識別；87 項均納入 homogeneous-batch，並均屬修改範圍證據。例外欄只標出額外歸入 exception-increment 的特殊操作，同一 API 的一般與特殊操作互斥。來源路徑僅為附件記錄，沒有宣稱這些 Java 檔案存在於本工作目錄。\n\n| canonical ID | 附件來源路徑 | 分類／例外 | 別名（新增數量 0） |\n|---|---|---|---|\n| api-001 | src/api/Api001.java | 一般 | — |\n| api-002 | src/api/Api002.java | 一般 | — |\n| api-003 | src/api/Api003.java | 一般 | — |\n| api-004 | src/api/Api004.java | 一般 | — |\n| api-005 | src/api/Api005.java | 一般 | — |\n| api-006 | src/api/Api006.java | 一般 | — |\n| api-007 | src/api/Api007.java | 一般 | — |\n| api-008 | src/api/Api008.java | 一般 | — |\n| api-009 | src/api/Api009.java | 一般 | — |\n| api-010 | src/api/Api010.java | 一般 | — |\n| api-011 | src/api/Api011.java | 一般 | — |\n| api-012 | src/api/Api012.java | 一般 | — |\n| api-013 | src/api/Api013.java | 一般 | — |\n| api-014 | src/api/Api014.java | 一般 | — |\n| api-015 | src/api/Api015.java | 一般 | — |\n| api-016 | src/api/Api016.java | 一般 | — |\n| api-017 | src/api/Api017.java | 一般 | — |\n| api-018 | src/api/Api018.java | 一般 | — |\n| api-019 | src/api/Api019.java | 一般 | — |\n| api-020 | src/api/Api020.java | 一般 | — |\n| api-021 | src/api/Api021.java | 一般 | — |\n| api-022 | src/api/Api022.java | 一般 | — |\n| api-023 | src/api/Api023.java | 一般 | — |\n| api-024 | src/api/Api024.java | 一般 | — |\n| api-025 | src/api/Api025.java | 一般 | — |\n| api-026 | src/api/Api026.java | 一般 | — |\n| api-027 | src/api/Api027.java | 一般 | — |\n| api-028 | src/api/Api028.java | 一般 | — |\n| api-029 | src/api/Api029.java | 一般 | — |\n| api-030 | src/api/Api030.java | 一般 | — |\n| api-031 | src/api/Api031.java | 一般 | — |\n| api-032 | src/api/Api032.java | 一般 | — |\n| api-033 | src/api/Api033.java | 一般 | — |\n| api-034 | src/api/Api034.java | 一般 | — |\n| api-035 | src/api/Api035.java | 一般 | — |\n| api-036 | src/api/Api036.java | 一般 | — |\n| api-037 | src/api/Api037.java | 一般 | — |\n| api-038 | src/api/Api038.java | 一般 | — |\n| api-039 | src/api/Api039.java | 一般 | — |\n| api-040 | src/api/Api040.java | 一般 | — |\n| api-041 | src/api/Api041.java | 一般 | — |\n| api-042 | src/api/Api042.java | 一般 | — |\n| api-043 | src/api/Api043.java | 一般 | — |\n| api-044 | src/api/Api044.java | 一般 | — |\n| api-045 | src/api/Api045.java | 一般 | — |\n| api-046 | src/api/Api046.java | 一般 | — |\n| api-047 | src/api/Api047.java | 一般 | — |\n| api-048 | src/api/Api048.java | 一般 | — |\n| api-049 | src/api/Api049.java | 一般 | — |\n| api-050 | src/api/Api050.java | 一般 | — |\n| api-051 | src/api/Api051.java | 一般 | — |\n| api-052 | src/api/Api052.java | 一般 | — |\n| api-053 | src/api/Api053.java | 一般 | — |\n| api-054 | src/api/Api054.java | 一般 | — |\n| api-055 | src/api/Api055.java | 一般 | — |\n| api-056 | src/api/Api056.java | 一般 | — |\n| api-057 | src/api/Api057.java | 一般 | — |\n| api-058 | src/api/Api058.java | 一般 | — |\n| api-059 | src/api/Api059.java | 一般 | — |\n| api-060 | src/api/Api060.java | 一般 | — |\n| api-061 | src/api/Api061.java | 一般 | — |\n| api-062 | src/api/Api062.java | 一般 | — |\n| api-063 | src/api/Api063.java | 一般 | — |\n| api-064 | src/api/Api064.java | 一般 | — |\n| api-065 | src/api/Api065.java | 一般 | — |\n| api-066 | src/api/Api066.java | 一般 | — |\n| api-067 | src/api/Api067.java | 一般 | — |\n| api-068 | src/api/Api068.java | 一般 | — |\n| api-069 | src/api/Api069.java | 一般 | — |\n| api-070 | src/api/Api070.java | 一般 | — |\n| api-071 | src/api/Api071.java | 一般 | — |\n| api-072 | src/api/Api072.java | 一般 | — |\n| api-073 | src/api/Api073.java | 一般 | — |\n| api-074 | src/api/Api074.java | 一般 | — |\n| api-075 | src/api/Api075.java | 一般 | — |\n| api-076 | src/api/Api076.java | 一般 | — |\n| api-077 | src/api/Api077.java | 一般 | — |\n| api-078 | src/api/Api078.java | 一般 | — |\n| api-079 | src/api/Api079.java | 一般 | — |\n| api-080 | src/api/Api080.java | 一般 | — |\n| api-081 | src/api/Api081.java | 一般 | — |\n| api-082 | src/api/Api082.java | 一般 | — |\n| api-083 | src/api/Api083.java | 一般 | — |\n| api-084 | src/api/Api084.java | 一般 | — |\n| api-085 | src/api/Api085.java | upload | inventory-export/UploadApi.java |\n| api-086 | src/api/Api086.java | signed-payload | inventory-export/SignedApi.java |\n| api-087 | src/api/Api087.java | transaction | inventory-export/TransactionApi.java |\n\n**整合覆蓋集合**\n\n全數僅作範圍證據；不捏造條目名稱、案例內容或通過結果。\n\n| coverage ID | 唯一計價歸屬 |\n|---|---|\n| integration-01 | integration-verification |\n| integration-02 | integration-verification |\n| integration-03 | integration-verification |\n| integration-04 | integration-verification |\n| integration-05 | integration-verification |\n| integration-06 | integration-verification |\n| integration-07 | integration-verification |\n| integration-08 | integration-verification |\n| integration-09 | integration-verification |\n| integration-10 | integration-verification |\n| integration-11 | integration-verification |\n| integration-12 | integration-verification |\n| integration-13 | integration-verification |\n\n**檢查結論與限制**\n\n已用 Python 標準函式庫讀取六份附件，核對 canonical 唯一性、來源路徑唯一性、完整 ID 集合、分類守恆、batch_included、別名指向、generated 歸屬、coverage 唯一性與歸屬、零人天責任及高值算術。逐項檢查了「別名另算」「例外重收共同工作」「generated 逐輸出計價」「coverage 逐條計價」「漏掉供應方整合測試」等替代計數方式，附件均支持上述去重結果。未發現需要更改固定範圍或人天的附件矛盾。\n\n這些結果證明合成附件的一致性與計價可重算；無實際原始碼、建置環境、測試輸出或業務操作證據，不能推出相容性成立、系統驗收通過、工時實績成立或真實商業交付完成。\n\n本地交付僅包含 estimate-external.csv、assessment-report.md、handoff.md。直接由同次讀取的附件與高值工作模型生成，CSV 為 UTF-8 BOM、標準五欄、數字序號及單段功能說明。依使用者指定範圍，不初始化完整 case 或 assessment-state.json，不執行完整 generator，也不建立低值／基準、HTML、Excel 或其他檔案；無 render／開啟瀏覽器操作。\n\n對外 CSV 已回讀核對欄位、順序、逐列與總計人天，並以實際主表檢視範圍、主要動作、計價原因與完成結果。這是本地文字檢視；未進行獨立讀者或真人 PM 回述，亦未記錄任何 PM 核准。\n\n人工作業：本次預覽製作無須追加決策。PM 可據此說明高值範圍，是否接受估算仍由 PM 決定；若要推進實際施工，由供應方與客戶補定具體環境、行為契約、13 項覆蓋案例及驗收證據要求，客戶另承接正式 UAT。這些是後續成果的成立條件，並非本預覽未完成的檔案工作。\n",
+      "preview/handoff.md": "已完成三份本地高值預覽，資料與費率皆為合成測試，未經 PM 核准。\n\n- [對外估算 CSV](estimate-external.csv)：UTF-8 BOM，五欄「序號、系統功能、功能說明、開發人天、測試人天」，四個成果包。\n- [評估報告](assessment-report.md)：canonical 全量清冊、別名與 coverage 對照、工作分解、費率公式、責任邊界與待執行的驗收說明。\n- [本交接文件](handoff.md)：完成範圍及人工承接事項。\n\n高值共 **13 人天＝開發 7.5＋測試 5.5**。87 個 canonical API＝84 個一般＋3 個例外；3 個別名不新增工作。共同轉換含全部 87 個 API，例外僅加三筆特殊增量。136 個 generated 輸出人工修改單位為 0，重生及核對包含在共用底座；13 筆 coverage 由一包整合驗證涵蓋。既有畫面及客戶正式 UAT 的我方追加人天皆為 0，我方整合測試仍已計入。\n\n已完成六份附件的資料一致性檢查、高值公式重算、CSV 回讀與實際文字檢視；驗證涵蓋唯一性、別名歸屬、批次與例外邊界、generated／coverage 歸屬、半日粒度、標準五欄與逐列／總計一致性。原始附件保留，僅新增指定的三個檔案。\n\n尚未達成的系統成果：實際底座調整、API 轉換、輸出重生、例外處理、整合測試及客戶正式 UAT 均未執行。generated 數量及可重現性只有合成附件宣告，coverage 只有條目清單，不能當成系統通過驗證的證據。沒有真人 PM 回述或估算核准紀錄。\n\n人工介入：本次高值預覽已完成，無待補資料阻擋交付。PM 若要推進施工，需自行決定是否接受高值估算，並與供應方／客戶確認具體行為、環境、測試案例與驗收要求；正式 UAT 由客戶負責。未代替 PM 核准，也未執行任何真實商業活動。\n\n低值與基準費率未提供，維持缺失而未補造。本次依授權不建立完整正式 case、三區間估算、HTML 或 Excel，亦未執行完整 generator 或任何 render／自動開啟操作。\n"
+    },
+    "semantic_acceptance": null,
+    "manual_review_required": true,
+    "external_csv_rows": [
+      [
+        "序號",
+        "系統功能",
+        "功能說明",
+        "開發人天",
+        "測試人天"
+      ],
+      [
+        "1",
+        "共用執行與產製能力",
+        "調整共用設定與執行底座，依來源設定重新產製輸出並核對結果；工作量來自共用能力建立一次及整批重生驗證，完成時須提供可重現的產製結果與核對紀錄。",
+        "4",
+        "1"
+      ],
+      [
+        "2",
+        "既有介面共同轉換",
+        "以共同規則整批轉換既有介面，核對完整清冊與一般處理結果；工作量來自一批共通轉換，也包含特殊介面的一般部分，完成時須確認全量納入且共同規則驗證通過。",
+        "2",
+        "1"
+      ],
+      [
+        "3",
+        "上傳、簽章資料與交易特殊處理",
+        "針對上傳、簽章資料與交易補上共同轉換以外的特殊調整，分別除錯並驗證結果；工作量來自三種例外的額外處理，完成時須各自提供特殊行為的驗證紀錄。",
+        "1.5",
+        "1.5"
+      ],
+      [
+        "4",
+        "介面整合驗證",
+        "彙整既定覆蓋清單，執行跨介面整合檢查並核對結果；工作量來自一包整合測試，完成時須提供各覆蓋項目的結果與問題紀錄，確認整體串接符合既定條件。",
+        "0",
+        "2"
+      ]
+    ]
+  },
+  "post_fixture_snapshot_error": null
+}

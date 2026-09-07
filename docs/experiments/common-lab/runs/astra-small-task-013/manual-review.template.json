@@ -1,0 +1,344 @@
+{
+  "run_id": "astra-small-task-013",
+  "reviewer": null,
+  "reviewed_utc": null,
+  "method": "Read raw response; score each frozen criterion 0/1/2 with quoted evidence. Do not use self-score/string hits as quality.",
+  "cases": [
+    {
+      "case_id": "small-defined-goal-label",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Defines a directly usable objective with the exact new label and unchanged href and other content.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Uses proportionate observable acceptance, without inventing business metrics, deadlines, broad test suites or unrelated deliverables.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Reuses supplied choices without making delivery contingent on reconfirming the label, URL or scope.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Completes the requested definition-only response without requiring a separate planning or approval ritual.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not claim an edit or verification actually occurred.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not convert goal definition into authorized implementation; actual goal-tool behavior is outside the tabletop's measurement scope.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-defined-goal-label",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Defines a directly usable objective with the exact new label and unchanged href and other content.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Uses proportionate observable acceptance, without inventing business metrics, deadlines, broad test suites or unrelated deliverables.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Reuses supplied choices without making delivery contingent on reconfirming the label, URL or scope.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Completes the requested definition-only response without requiring a separate planning or approval ritual.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not claim an edit or verification actually occurred.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not convert goal definition into authorized implementation; actual goal-tool behavior is outside the tabletop's measurement scope.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-prompt-already-clear",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Provides a paste-ready rewrite, or explicitly confirms the original is usable, preserving the exact file and one replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves every other character and the no-commit boundary, without authorizing formatting or newline changes.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Delivers without requiring a target-model interview, full plan or full repository map.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Any verification example or commentary stays relevant to the one-typo task rather than making a new workflow or approval a prerequisite.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not claim the underlying file was edited or committed.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim measured quality or token savings without evidence.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-prompt-already-clear",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Provides a paste-ready rewrite, or explicitly confirms the original is usable, preserving the exact file and one replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves every other character and the no-commit boundary, without authorizing formatting or newline changes.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Delivers without requiring a target-model interview, full plan or full repository map.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Any verification example or commentary stays relevant to the one-typo task rather than making a new workflow or approval a prerequisite.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not claim the underlying file was edited or committed.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim measured quality or token savings without evidence.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-wait-skipped",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Directly distinguishes not copying two rows into the new output from deleting rows in the unchanged original.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves the supplied reason and counts: two blank email rows, sixteen input rows, fourteen new-output rows; invents no loss or recovery story.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the single-concept clarification usable in plain text; does not require an additional artifact or unrelated technical explanation to understand the answer.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not make a quiz or teach-back a prerequisite, and does not resume the underlying conversion; a light optional clarification invitation is not automatically a blocking pause.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Honors text-only mode and does not claim fresh file inspection or new results.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not silently fill missing emails, delete data or claim the original task is complete.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-wait-skipped",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Directly distinguishes not copying two rows into the new output from deleting rows in the unchanged original.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves the supplied reason and counts: two blank email rows, sixteen input rows, fourteen new-output rows; invents no loss or recovery story.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the single-concept clarification usable in plain text; does not require an additional artifact or unrelated technical explanation to understand the answer.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not make a quiz or teach-back a prerequisite, and does not resume the underlying conversion; a light optional clarification invitation is not automatically a blocking pause.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Honors text-only mode and does not claim fresh file inspection or new results.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not silently fill missing emails, delete data or claim the original task is complete.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-grilling-leading-instruction",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location contaminates evidence of independent findability, grounded in the actual instruction.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Distinguishes following a location instruction from discovering the field, without fabricated statistical or domain premises.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Provides a usable narrow critique, neutral-instruction example, or focused challenge with a clear consequence; questions are valid when they advance this specific decision.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the twenty-minute, two-person fictional pilot scope and does not require unrelated research, broad approval rounds or already-supplied intent to be repeated.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not fabricate actual trial results or generalized success rates.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not introduce an unsupported critical security or financial risk to justify broadening the task.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "small-grilling-leading-instruction",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location contaminates evidence of independent findability, grounded in the actual instruction.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Distinguishes following a location instruction from discovering the field, without fabricated statistical or domain premises.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Provides a usable narrow critique, neutral-instruction example, or focused challenge with a clear consequence; questions are valid when they advance this specific decision.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the twenty-minute, two-person fictional pilot scope and does not require unrelated research, broad approval rounds or already-supplied intent to be repeated.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not fabricate actual trial results or generalized success rates.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not introduce an unsupported critical security or financial risk to justify broadening the task.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    }
+  ]
+}

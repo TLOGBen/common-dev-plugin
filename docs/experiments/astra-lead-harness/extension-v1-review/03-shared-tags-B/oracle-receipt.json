@@ -1,0 +1,8 @@
+{
+  "command": "python3 -B scripts/verify_campaign_extension_probe.py --plan docs/experiments/astra-lead-harness/extension-v1-plan --episode 03-shared-tags-B",
+  "exit_code": 0,
+  "stderr": "",
+  "wall_seconds": 7.5383751000016925,
+  "model_calls": 0,
+  "reviewed_at_utc": "2026-09-06T09:49:07.175Z"
+}

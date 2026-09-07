@@ -1,0 +1,255 @@
+{
+  "kind": "derived_astra_lead_usage_not_raw_rewrite",
+  "created_utc": "2026-09-06T11:29:57.573988+00:00",
+  "manifest_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/campaign-noextra-v1-plan/manifest.json",
+  "manifest_sha256": "4b64427d9f25b18e3ccf17ed274bbe4a70c8437e1b75f6a4cd9648f6d1dcc700",
+  "actual_cli_calls": 5,
+  "known_calls": 5,
+  "unknown_calls": 0,
+  "pending_episodes": [],
+  "known_usage_subtotal": {
+    "input_tokens": 695692,
+    "cached_input_tokens": 574720,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 17377,
+    "reasoning_output_tokens": 4766,
+    "uncached_input_tokens": 120972,
+    "total_tokens": 713069
+  },
+  "episodes": [
+    {
+      "episode_id": "01-campaign-none",
+      "arm": "none",
+      "case_id": "offline-service-campaign",
+      "status": "lead_finished",
+      "summary_sha256": "8b9cbd71d35e21081b02a8778589d1730e539d47940e37297754014a13c3b8c3",
+      "summary_path": "/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none/summary.json",
+      "elapsed_wall_seconds": 296.12079809996067,
+      "calls": [
+        {
+          "number": 1,
+          "role": "lead",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "effort_requested": "high",
+          "started_utc": "2026-09-06T11:14:53.990857+00:00",
+          "ended_utc": "2026-09-06T11:16:00.858939+00:00",
+          "wall_seconds": 66.87346845399588,
+          "evidence_dir": "/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none/calls/001-lead",
+          "raw_sha256": "94d2c325cdf7f069e4a817de876fc564bee915869555a6caafedfc23494796ab",
+          "result_sha256": "a0556a323d6ef6af45368cc01255eccf2cb4a7cdbbd02e0c3d514a4178b2cd19",
+          "original_usage": {
+            "input_tokens": 104434,
+            "cached_input_tokens": 62592,
+            "output_tokens": 1492,
+            "reasoning_output_tokens": 122,
+            "cache_write_input_tokens": 0,
+            "uncached_input_tokens": 41842,
+            "total_tokens": 105926
+          },
+          "original_usage_basis": "exact-session token_count total delta",
+          "derived_usage": {
+            "input_tokens": 104434,
+            "cached_input_tokens": 62592,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1492,
+            "reasoning_output_tokens": 122,
+            "uncached_input_tokens": 41842,
+            "total_tokens": 105926
+          },
+          "model_observation": {
+            "turn_id": "01a0766d-ad7e-7223-97e0-6325513a02b0",
+            "model": "gpt-6-astra",
+            "effort": "high",
+            "task_started_utc": "2026-09-06T11:14:54.483Z",
+            "task_completed_utc": "2026-09-06T11:16:00.212Z",
+            "native_increment_sum": {
+              "input_tokens": 104434,
+              "cached_input_tokens": 62592,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1492,
+              "reasoning_output_tokens": 122
+            },
+            "basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+          },
+          "native_session_path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T19-14-54-01a0766d-ad11-7082-9711-1d1bbd77c338.jsonl",
+          "native_current_sha256": "7839ae305ca6346abe68982440c2bf1b8fbdd0ae7d7dddf9114e2ea4d90bbb98",
+          "usage_basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+        },
+        {
+          "number": 2,
+          "role": "implementation",
+          "status": "completed",
+          "model_requested": "gpt-5.6-luna",
+          "effort_requested": "high",
+          "started_utc": "2026-09-06T11:16:00.886229+00:00",
+          "ended_utc": "2026-09-06T11:17:44.924501+00:00",
+          "wall_seconds": 104.04787413595477,
+          "evidence_dir": "/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none/calls/002-implementation",
+          "raw_sha256": "87fed471da83900eccfd021d48207025ce79dae01c08db24cc6db96342462370",
+          "result_sha256": "c33a9635f425f0736971383d947f845435013c82d600ae69551fbffd9f9f03af",
+          "original_usage": {
+            "input_tokens": 172363,
+            "cached_input_tokens": 152320,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4927,
+            "reasoning_output_tokens": 1726,
+            "uncached_input_tokens": 20043,
+            "total_tokens": 177290
+          },
+          "original_usage_basis": "one turn.completed in fresh invocation; no history replay",
+          "derived_usage": {
+            "input_tokens": 172363,
+            "cached_input_tokens": 152320,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 4927,
+            "reasoning_output_tokens": 1726,
+            "uncached_input_tokens": 20043,
+            "total_tokens": 177290
+          },
+          "model_observation": null,
+          "usage_basis": "One raw turn.completed in a fresh ephemeral CLI invocation; effective model not independently exposed"
+        },
+        {
+          "number": 3,
+          "role": "lead",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "effort_requested": "high",
+          "started_utc": "2026-09-06T11:17:44.935643+00:00",
+          "ended_utc": "2026-09-06T11:19:50.079272+00:00",
+          "wall_seconds": 125.15176584204892,
+          "evidence_dir": "/tmp/astra-lead-noextra-20260906-a/runs/01-campaign-none/calls/003-lead",
+          "raw_sha256": "563c737989f4e378e497a85b052a7d9fec6ef0720cf12339331bc003c399ca4a",
+          "result_sha256": "c4382d6ff2bf551123179e91e7f9e74bcba42464f3ec1289eca0982b8a3b2de0",
+          "original_usage": null,
+          "original_usage_basis": "invalid cache/input relationship",
+          "derived_usage": {
+            "input_tokens": 144993,
+            "cached_input_tokens": 136064,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 3136,
+            "reasoning_output_tokens": 330,
+            "uncached_input_tokens": 8929,
+            "total_tokens": 148129
+          },
+          "model_observation": {
+            "turn_id": "01a07670-498d-7441-a614-9020a4d7248c",
+            "model": "gpt-6-astra",
+            "effort": "high",
+            "task_started_utc": "2026-09-06T11:17:45.497Z",
+            "task_completed_utc": "2026-09-06T11:19:49.319Z",
+            "native_increment_sum": {
+              "input_tokens": 144993,
+              "cached_input_tokens": 136064,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 3136,
+              "reasoning_output_tokens": 330
+            },
+            "basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+          },
+          "native_session_path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T19-14-54-01a0766d-ad11-7082-9711-1d1bbd77c338.jsonl",
+          "native_current_sha256": "7839ae305ca6346abe68982440c2bf1b8fbdd0ae7d7dddf9114e2ea4d90bbb98",
+          "usage_basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+        }
+      ]
+    },
+    {
+      "episode_id": "02-campaign-lab",
+      "arm": "lab",
+      "case_id": "offline-service-campaign",
+      "status": "scope_violation",
+      "summary_sha256": "ae8f4d39e31c5bc3dd6005fef8a137683b65d49fcb0627dd4051a0ed15673d7f",
+      "summary_path": "/tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab/summary.json",
+      "elapsed_wall_seconds": 211.59206782799447,
+      "calls": [
+        {
+          "number": 1,
+          "role": "lead",
+          "status": "completed",
+          "model_requested": "gpt-6-astra",
+          "effort_requested": "high",
+          "started_utc": "2026-09-06T11:19:55.545250+00:00",
+          "ended_utc": "2026-09-06T11:21:13.170507+00:00",
+          "wall_seconds": 77.62848387705162,
+          "evidence_dir": "/tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab/calls/001-lead",
+          "raw_sha256": "0f67fcc23e28d8ff5a6d923b738cf890ce21f6e17e69e88d387e1084d81bb3c3",
+          "result_sha256": "ad8a4c8bf630edea09428dfc00e96e11287772e053ae664bfc6e2967784bb697",
+          "original_usage": {
+            "input_tokens": 118285,
+            "cached_input_tokens": 88576,
+            "output_tokens": 1972,
+            "reasoning_output_tokens": 36,
+            "cache_write_input_tokens": 0,
+            "uncached_input_tokens": 29709,
+            "total_tokens": 120257
+          },
+          "original_usage_basis": "exact-session token_count total delta",
+          "derived_usage": {
+            "input_tokens": 118285,
+            "cached_input_tokens": 88576,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 1972,
+            "reasoning_output_tokens": 36,
+            "uncached_input_tokens": 29709,
+            "total_tokens": 120257
+          },
+          "model_observation": {
+            "turn_id": "01a07672-4737-7401-9fb3-708f47071bb5",
+            "model": "gpt-6-astra",
+            "effort": "high",
+            "task_started_utc": "2026-09-06T11:19:55.981Z",
+            "task_completed_utc": "2026-09-06T11:21:12.445Z",
+            "native_increment_sum": {
+              "input_tokens": 118285,
+              "cached_input_tokens": 88576,
+              "cache_write_input_tokens": 0,
+              "output_tokens": 1972,
+              "reasoning_output_tokens": 36
+            },
+            "basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+          },
+          "native_session_path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T19-19-55-01a07672-46d2-7a83-b764-5eb850f2e328.jsonl",
+          "native_current_sha256": "28a873a9ef9ec7739b90f344fba8eb28b7f0f616537b51e510ed686284d08d0c",
+          "usage_basis": "Exact invocation task interval: CLI total equals native final total and sum of non-duplicate per-response increments"
+        },
+        {
+          "number": 2,
+          "role": "implementation",
+          "status": "scope_violation",
+          "model_requested": "gpt-5.6-luna",
+          "effort_requested": "high",
+          "started_utc": "2026-09-06T11:21:13.181307+00:00",
+          "ended_utc": "2026-09-06T11:23:27.116837+00:00",
+          "wall_seconds": 133.940368629992,
+          "evidence_dir": "/tmp/astra-lead-noextra-20260906-a/runs/02-campaign-lab/calls/002-implementation",
+          "raw_sha256": "01a7e5412a952916ec0ede8025d874f038e9f13afa92a2ebb26e616509eacac9",
+          "result_sha256": "3d35b7bde7d3db4620e84fd78274f36320c65170d71830e734229d1a8efb1b4a",
+          "original_usage": {
+            "input_tokens": 155617,
+            "cached_input_tokens": 135168,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5850,
+            "reasoning_output_tokens": 2552,
+            "uncached_input_tokens": 20449,
+            "total_tokens": 161467
+          },
+          "original_usage_basis": "one turn.completed in fresh invocation; no history replay",
+          "derived_usage": {
+            "input_tokens": 155617,
+            "cached_input_tokens": 135168,
+            "cache_write_input_tokens": 0,
+            "output_tokens": 5850,
+            "reasoning_output_tokens": 2552,
+            "uncached_input_tokens": 20449,
+            "total_tokens": 161467
+          },
+          "model_observation": null,
+          "usage_basis": "One raw turn.completed in a fresh ephemeral CLI invocation; effective model not independently exposed"
+        }
+      ]
+    }
+  ],
+  "cost_usd": null,
+  "scope": "CLI episode calls only; not main/native campaign, invoice, human comprehension, or semantic acceptance"
+}

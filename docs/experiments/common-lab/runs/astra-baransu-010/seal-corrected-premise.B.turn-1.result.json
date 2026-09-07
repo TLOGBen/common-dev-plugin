@@ -1,0 +1,86 @@
+{
+  "case_id": "seal-corrected-premise",
+  "skill": "seal",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:17:35.733986+00:00",
+  "ended_utc": "2026-09-06T03:18:13.629904+00:00",
+  "wall_seconds": 37.894,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-seal-corrected-premise-cosknu8m",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/skills/lab-seal/SKILL.md",
+  "skill_sha256": "7e330843f456d46554613f55d1a699dc899c01eee73e8752cbc5776230920d77",
+  "prompt_sha256": "fbcec98342e3f24d9447c939354d1fcff2f8fdf9de27eafc74ff19e99b221c93",
+  "fixture_dir": "/tmp/common-lab-ab-seal-corrected-premise-cosknu8m",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整閱讀指定的 lab-seal 技能，並依其流程查閱本情境的必要證據；本回合只提出模擬回覆與下一步，不修改檔案或執行 seal。\n",
+    "證據支持修正既有紀錄的欄位前提：`db/migration-2.sql` 將 `email` 改名為 `contact_email`，schema 與 `fixture-db-result.json` 也一致使用 `contact_email`。因此應將資料來源更正為 `users.contact_email`；CSV 表頭仍須精確為 `name,email`，逗號引用與未登入禁止匯出的要求全部保留，無須另行確認。\n\n擬議下一步是在原授權範圍內修補 `src/export.js`，讀取 `row.contact_email` 並正確處理 CSV 引用及雙引號跳脫；補上測試，驗證 fixture 匯出為 `name,email\\n\"Doe, Jane\",jane@example.invalid`，以及未登入時拋出 `AUTH_REQUIRED`。驗收紀錄僅更正欄位前提並附上證據，保留舊產物。\n\n本回合僅完成唯讀查閱，未改檔、執行測試、委派驗證或執行 seal，不能宣稱修正完成或獨立驗證通過。"
+  ],
+  "final_message": "證據支持修正既有紀錄的欄位前提：`db/migration-2.sql` 將 `email` 改名為 `contact_email`，schema 與 `fixture-db-result.json` 也一致使用 `contact_email`。因此應將資料來源更正為 `users.contact_email`；CSV 表頭仍須精確為 `name,email`，逗號引用與未登入禁止匯出的要求全部保留，無須另行確認。\n\n擬議下一步是在原授權範圍內修補 `src/export.js`，讀取 `row.contact_email` 並正確處理 CSV 引用及雙引號跳脫；補上測試，驗證 fixture 匯出為 `name,email\\n\"Doe, Jane\",jane@example.invalid`，以及未登入時拋出 `AUTH_REQUIRED`。驗收紀錄僅更正欄位前提並附上證據，保留舊產物。\n\n本回合僅完成唯讀查閱，未改檔、執行測試、委派驗證或執行 seal，不能宣稱修正完成或獨立驗證通過。",
+  "usage": {
+    "input_tokens": 69132,
+    "cached_input_tokens": 61568,
+    "output_tokens": 712,
+    "uncached_input_tokens": 7564,
+    "total_tokens": 69844
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/skills/lab-seal/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/skills/lab-contract/references/acceptance.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/baransu-lab/plugins/baransu-lab/.codex-agents/lab-verifier.toml'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"rg --files --hidden -g '\"'!.git'\"' -g '\"'!AGENTS.md'\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat ACCEPTANCE.md SCENARIO.txt fixture-db-result.json src/export.js tests/export.test.js db/migration-2.sql db/current-schema.sql'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

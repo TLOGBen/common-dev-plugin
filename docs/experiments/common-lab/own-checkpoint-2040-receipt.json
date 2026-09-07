@@ -1,0 +1,20 @@
+{
+  "reviewed_utc": "2026-09-06T12:43:31.157Z",
+  "revision": 15,
+  "status": "active",
+  "sha256": "d564498ec5f947818be9ecf06ecee9e5bb511f9dd1d1896e6b55b048edb39479",
+  "before_sha256": "11f09df7aca6c6be2fdd55f835bc6d59e0c4fd781dc1bb2baa8be83c4e5e3cd4",
+  "criterion_results": {
+    "C1": "met",
+    "C2": "met",
+    "C3": "met",
+    "C4": "unmet",
+    "C5": "met",
+    "C6": "unmet",
+    "C7": "met",
+    "C8": "met"
+  },
+  "old_events_are_exact_prefix": true,
+  "unchanged": true,
+  "completion_not_claimed": true
+}

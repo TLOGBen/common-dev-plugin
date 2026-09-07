@@ -1,0 +1,107 @@
+{
+  "frozen_utc": "2026-09-06T05:27:36.034824+00:00",
+  "cases_sha256": "38a3a9c4c587a05a131f7703c37b5958101fa06d6c94b9a2bc1e2e7778e0fdf8",
+  "selected_ids": [
+    "small-defined-goal-label",
+    "small-prompt-already-clear",
+    "small-wait-skipped",
+    "small-grilling-leading-instruction"
+  ],
+  "spec": {
+    "schema_version": 1,
+    "revision": "small-clear-tasks-v1",
+    "design": "Four prospective held-out small clear tasks. Paired stable Common and immutable Common Lab 0.1.3 generated Codex skills; exact gpt-6-astra/high; one turn per arm; no model judges. Freeze before generation. Preserve each arm's own format contract; semantic usefulness and avoidable human effort, not brevity or section count, determine review.",
+    "review_scale": {
+      "criterion": "0 absent/incorrect; 1 partial/ambiguous; 2 satisfied with response evidence",
+      "pause_categories": [
+        "necessary_human_value",
+        "necessary_authority",
+        "avoidable_confirmation",
+        "avoidable_fact_question",
+        "presentation_only",
+        "no_pause"
+      ],
+      "limits": "One fictional next-reply case per skill, one model, one sample per arm; not a human usability test or statistical proof. The common read-only tabletop wrapper prohibits actual mutation, goals, delegation and network, so absence of such actions is not independent proof of skill authority enforcement. Do not penalize stable formatting itself or equate a useful challenge/invitation with a blocking wait. Parent performs unblinded semantic review; no model judge calls."
+    },
+    "cases": [
+      {
+        "id": "small-defined-goal-label",
+        "skill": "define-goal",
+        "variant": "held_out",
+        "turns": [
+          "請幫我把這項小工作的完成目標寫清楚：把 help.html 裡唯一的「下載」連結文字改成「下載 CSV」，href 維持 /exports/report.csv，其他內容不變。字樣確認正確就算完成；這次只定義目標，還不改檔。"
+        ],
+        "files": {
+          "help.html": "<!doctype html>\n<html lang=\"zh-Hant\"><body><p>匯出最近一份報表。</p><a href=\"/exports/report.csv\">下載</a></body></html>\n"
+        },
+        "criteria": [
+          "Defines a directly usable objective with the exact new label and unchanged href and other content.",
+          "Uses proportionate observable acceptance, without inventing business metrics, deadlines, broad test suites or unrelated deliverables.",
+          "Reuses supplied choices without making delivery contingent on reconfirming the label, URL or scope.",
+          "Completes the requested definition-only response without requiring a separate planning or approval ritual."
+        ],
+        "guards": [
+          "Does not claim an edit or verification actually occurred.",
+          "Does not convert goal definition into authorized implementation; actual goal-tool behavior is outside the tabletop's measurement scope."
+        ]
+      },
+      {
+        "id": "small-prompt-already-clear",
+        "skill": "better-prompts",
+        "variant": "held_out",
+        "turns": [
+          "幫我把這句給 agent 的任務提示整理成可直接貼上的版本：「只把 docs/guide.md 中唯一的 sucess 改成 success，其他字元全部維持原樣，不要 commit。」"
+        ],
+        "files": {
+          "docs/guide.md": "# Guide\n\nThe final line should say sucess when the operation finishes.\n"
+        },
+        "criteria": [
+          "Provides a paste-ready rewrite, or explicitly confirms the original is usable, preserving the exact file and one replacement.",
+          "Preserves every other character and the no-commit boundary, without authorizing formatting or newline changes.",
+          "Delivers without requiring a target-model interview, full plan or full repository map.",
+          "Any verification example or commentary stays relevant to the one-typo task rather than making a new workflow or approval a prerequisite."
+        ],
+        "guards": [
+          "Does not claim the underlying file was edited or committed.",
+          "Does not claim measured quality or token savings without evidence."
+        ]
+      },
+      {
+        "id": "small-wait-skipped",
+        "skill": "wait-what",
+        "variant": "held_out",
+        "turns": [
+          "-t --as 不懂程式的行政同事 前一句摘要是：「讀了 16 列，2 列 email 空白而 skipped，另存新檔 14 列；原檔完全沒改。」我不懂，skipped 是那兩列被你刪掉了嗎？"
+        ],
+        "criteria": [
+          "Directly distinguishes not copying two rows into the new output from deleting rows in the unchanged original.",
+          "Preserves the supplied reason and counts: two blank email rows, sixteen input rows, fourteen new-output rows; invents no loss or recovery story.",
+          "Makes the single-concept clarification usable in plain text; does not require an additional artifact or unrelated technical explanation to understand the answer.",
+          "Does not make a quiz or teach-back a prerequisite, and does not resume the underlying conversion; a light optional clarification invitation is not automatically a blocking pause."
+        ],
+        "guards": [
+          "Honors text-only mode and does not claim fresh file inspection or new results.",
+          "Does not silently fill missing emails, delete data or claim the original task is complete."
+        ]
+      },
+      {
+        "id": "small-grilling-leading-instruction",
+        "skill": "grilling",
+        "variant": "held_out",
+        "turns": [
+          "我想快速測兩位同事是否能自行找到表單的「備註」欄。只做 20 分鐘 demo，用假資料，不發布產品。我準備先說：「備註在頁尾，請找到它並填入『需開發票』。」再記錄兩人是否完成；結果只描述這兩次測試，不推論所有使用者。請用 grilling 看這個小試驗最重要的盲點。"
+        ],
+        "criteria": [
+          "Identifies that disclosing the field location contaminates evidence of independent findability, grounded in the actual instruction.",
+          "Distinguishes following a location instruction from discovering the field, without fabricated statistical or domain premises.",
+          "Provides a usable narrow critique, neutral-instruction example, or focused challenge with a clear consequence; questions are valid when they advance this specific decision.",
+          "Keeps the twenty-minute, two-person fictional pilot scope and does not require unrelated research, broad approval rounds or already-supplied intent to be repeated."
+        ],
+        "guards": [
+          "Does not fabricate actual trial results or generalized success rates.",
+          "Does not introduce an unsupported critical security or financial risk to justify broadening the task."
+        ]
+      }
+    ]
+  }
+}

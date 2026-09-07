@@ -1,0 +1,22 @@
+{
+  "status": "PLAN_ONLY_NO_MODEL_CALLS",
+  "planned_calls": 6,
+  "actual_calls": 0,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "source_drift": [],
+  "results": [],
+  "usage_known_calls": 0,
+  "usage_unknown_calls": 0,
+  "known_usage": {
+    "input_tokens": 0,
+    "cached_input_tokens": 0,
+    "uncached_input_tokens": 0,
+    "output_tokens": 0,
+    "total_tokens": 0
+  },
+  "trustworthy_total_tokens": null,
+  "accounting": "cached_input_tokens is a subset of input_tokens and is not added again",
+  "cost_usd": null,
+  "cost_reason": "Runtime does not expose a trustworthy USD increment; cost is not estimated"
+}

@@ -1,0 +1,36 @@
+{
+  "status": "complete",
+  "gates": [
+    {
+      "number": 1,
+      "title": "提供案件資料",
+      "state": "done"
+    },
+    {
+      "number": 2,
+      "title": "選擇成果大方向並確認工作分工",
+      "state": "done"
+    },
+    {
+      "number": 3,
+      "title": "核對案件理解",
+      "state": "done"
+    },
+    {
+      "number": 4,
+      "title": "選擇採用方案",
+      "state": "done"
+    },
+    {
+      "number": 5,
+      "title": "確認工作內容與人天",
+      "state": "done"
+    },
+    {
+      "number": 6,
+      "title": "取得交付成果",
+      "state": "done"
+    }
+  ],
+  "currentDecision": null
+}

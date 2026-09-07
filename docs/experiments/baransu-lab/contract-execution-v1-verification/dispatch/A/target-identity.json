@@ -1,0 +1,18 @@
+{
+  "original_read_only_root": "/tmp/common-lab-exec-normalize-tag-dwh82u2v",
+  "disposable_target": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A/target",
+  "artifact_sha256": {
+    "acceptance.md": "3004b42282fb46cc300c186992d1195b36f871282b82aea6a5bb2b2d2cc1789b",
+    "handoff.md": "d98831701c81bff1d3122e3e654dc682093968240bce59931c9aa2c37f2d6a83",
+    "src/normalize-tag.mjs": "f6ac02f8ee591af572d048f4839b4e8b21903c5206fe0826fe471036b461f3b5",
+    "tests/normalize-tag.test.mjs": "6c2b43d1cf8a46b64887ebe58fa15fa9c79c99a9707f6cfa8400ef7453f98aef"
+  },
+  "baseline_artifact_sha256": {
+    "acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+    "src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+    "tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+  },
+  "change_diff_sha256": "34239851dbc414ae5b04d0d2b914880809280c23097211cc4a06989fb4e3f3dc",
+  "git_base": null,
+  "note": "Explicit named artifact comparison, not a fabricated Git ref."
+}

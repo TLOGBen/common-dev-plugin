@@ -1,0 +1,11 @@
+{
+  "name": "common-lab",
+  "displayName": "Common Lab",
+  "version": "0.2.0",
+  "description": "Opt-in guidance-first skills with failure-driven controls: human understanding, bounded delegation, and independent long-run outcome calibration. Traditional Chinese handoffs.",
+  "author": {"name": "ben.tsai", "email": "vakarve@csie.io"},
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "keywords": ["experimental", "skills", "delegation", "strategic-execution"],
+  "defaultEnabled": false
+}

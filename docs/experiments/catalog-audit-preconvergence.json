@@ -1,0 +1,127 @@
+{
+  "status": "PASS",
+  "skills": 15,
+  "rows": [
+    {
+      "plugin": "common-lab",
+      "skill": "lab-better-prompts",
+      "description_chars": 100,
+      "root_body_lines": 18,
+      "source_bytes": 1903,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-define-goal",
+      "description_chars": 99,
+      "root_body_lines": 14,
+      "source_bytes": 1339,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-delegate",
+      "description_chars": 111,
+      "root_body_lines": 22,
+      "source_bytes": 2628,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-domain-modeling",
+      "description_chars": 105,
+      "root_body_lines": 14,
+      "source_bytes": 1317,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-grilling",
+      "description_chars": 95,
+      "root_body_lines": 14,
+      "source_bytes": 1437,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-prototype",
+      "description_chars": 97,
+      "root_body_lines": 16,
+      "source_bytes": 1654,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-research",
+      "description_chars": 95,
+      "root_body_lines": 12,
+      "source_bytes": 1152,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-strategic-advance",
+      "description_chars": 115,
+      "root_body_lines": 22,
+      "source_bytes": 2712,
+      "explicit_only": false
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-wait-what",
+      "description_chars": 99,
+      "root_body_lines": 14,
+      "source_bytes": 1607,
+      "explicit_only": true
+    },
+    {
+      "plugin": "common-lab",
+      "skill": "lab-wayfinder",
+      "description_chars": 88,
+      "root_body_lines": 18,
+      "source_bytes": 2155,
+      "explicit_only": false
+    },
+    {
+      "plugin": "baransu-lab",
+      "skill": "lab-contract",
+      "description_chars": 109,
+      "root_body_lines": 20,
+      "source_bytes": 2333,
+      "explicit_only": false
+    },
+    {
+      "plugin": "baransu-lab",
+      "skill": "lab-review",
+      "description_chars": 110,
+      "root_body_lines": 22,
+      "source_bytes": 2754,
+      "explicit_only": false
+    },
+    {
+      "plugin": "baransu-lab",
+      "skill": "lab-seal",
+      "description_chars": 111,
+      "root_body_lines": 24,
+      "source_bytes": 3174,
+      "explicit_only": false
+    },
+    {
+      "plugin": "baransu-lab",
+      "skill": "lab-think",
+      "description_chars": 106,
+      "root_body_lines": 18,
+      "source_bytes": 1857,
+      "explicit_only": false
+    },
+    {
+      "plugin": "estimate-lab",
+      "skill": "lab-estimate",
+      "description_chars": 168,
+      "root_body_lines": 73,
+      "source_bytes": 6825,
+      "explicit_only": false
+    }
+  ],
+  "scope": "Catalog/router shape only, not semantic skill quality or runtime tokens."
+}

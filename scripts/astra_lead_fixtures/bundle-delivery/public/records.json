@@ -1,0 +1,10 @@
+{
+  "bundle_key": "catalog-release-v2",
+  "records": [
+    {"id": "row-a", "status": "active", "label": "Standard", "quantity": 5, "unit": "piece", "owner": {"team": "Ops"}},
+    {"id": "row-b", "status": "active", "label": "Zero balance", "quantity": 0, "unit": "box", "owner": {"team": "Finance"}},
+    {"id": "row-c", "status": "archived", "label": "Retired", "quantity": 9, "unit": "piece", "owner": {"team": "Ops"}},
+    {"id": "row-d", "status": "active", "label": "彩色, 大型", "quantity": 2, "unit": "set", "owner": {"team": "Design"}}
+  ]
+}
+

@@ -35,6 +35,18 @@ codex plugin add linkstart@common-dev
 
 ## 內容一覽
 
+### Skills Lab：獨立實驗版
+
+另提供 **Common Lab、Baransu Lab、Estimate Lab 0.2.0**。三個獨立實驗 marketplace 不加入下表四個穩定套件、不替換現有安裝；本版以「指引優先，針對反覆失誤設置控制」重新檢視全部 15 個技能，不以全面瘦身為目標。
+
+- [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
+- [三個實驗包與試用入口](docs/experiments/README.md)
+- [Common 實驗說明與使用方式](docs/experiments/common-lab/README.md)
+- [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
+- [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
+
+本版凍結包位於 `experiments/common-lab-v0.2.0/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。舊實驗版本保留供重測，不覆寫。暫存安裝驗證不代表目前 App 已載入新版。
+
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
 | [`common`](#common--通用工具) | 10 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |

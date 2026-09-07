@@ -1,0 +1,10 @@
+{
+  "status": "DONE",
+  "candidate": "data/current-artifact.json",
+  "checker_command": "python3 checker.py",
+  "checker_exit_code": 0,
+  "reported_goal_status": "PASS",
+  "reported_single_send_count": 1,
+  "validation_receipt": "evidence/old-validation-receipt.json",
+  "note": "Worker assertions are claims to verify, not execution authority."
+}

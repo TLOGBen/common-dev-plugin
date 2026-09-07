@@ -1,0 +1,47 @@
+{
+  "recorded_utc": "2026-09-06T05:52:04.524659+00:00",
+  "experiment_level": "Claude source SKILL only; not generated-package validation",
+  "source_versions": {
+    "A": "0.1.3",
+    "B": "0.1.5",
+    "preserved_rejected": "0.1.4"
+  },
+  "selected_snapshot_sha256": {
+    "A": {
+      ".claude-plugin/plugin.json": "e262978143c76d05cfe7217ec746dcb31cd5c8979649058e43dc03ca5ccc5b20",
+      "skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4"
+    },
+    "B": {
+      ".claude-plugin/plugin.json": "cc682196a76b383c0a5c9f9313f7d98b5468ad02c6d8384bc9bd3e6443a74e63",
+      "skills/lab-grilling/SKILL.md": "24d5178d69cf00bcca128230e847e921247cca00976768dd7d238d0a285fd3e2"
+    },
+    "rejected_014": {
+      ".claude-plugin/plugin.json": "7ad15c4c03adc171117d896ae4fe2ee8635086dfd08bf07eb140713f0049d946",
+      "skills/lab-grilling/SKILL.md": "3da0432fb25127464f74631beb374c145b89410422a1f441fe18662b7b81a86f"
+    }
+  },
+  "candidate_full_source_sha256": "8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf",
+  "reconstructed_014_source_sha256": "375236d491b6a78ebfdff009860f3565d0e0bf99e10fd770e742b9364098f9ea",
+  "reconstructed_013_source_sha256": "cb290dad5817816feacbfa8197db1a9303b04c745e191c9c8b99e52990a5d1f5",
+  "unchanged_013_export_sha256": "705e53c49e4e8f132ae8e017a51dab6b21cd4a7e78c2b806864bd009e33d853c",
+  "cases_sha256": "f840c85b6eaa7d820147e81f05ea27bc434ef095cbb95a6d4185ff399a73d5f7",
+  "source_diff_from_014": "--- rejected-0.1.4\n+++ candidate-0.1.5\n@@ -10,7 +10,7 @@\n \n Start from the user's actual claim, evidence, constraints, and alternatives. Investigate answerable facts yourself when tools and scope allow; do not turn research work into questions for the user.\n \n-When improving a method or test, preserve the claim it is meant to validate, including the information or assistance that defines the task. A different or stricter test may be useful, but explicitly distinguish what it would measure instead of silently substituting it.\n+Distinguish the user's stated claim and necessary task conditions from the proposed method under review. Change a method that confounds the claim; do not reopen an already explicit goal merely to preserve that method. If recommending a different or stricter claim, explain what it would measure instead of silently substituting it.\n \n Ask the highest-value unresolved question, explain why it matters, and let the user answer before adding a new branch. If they request an asynchronous review, deliver the ranked objections together instead.\n \n",
+  "source_diff_from_013": "--- A-0.1.3\n+++ B-0.1.5\n@@ -10,6 +10,8 @@\n \n Start from the user's actual claim, evidence, constraints, and alternatives. Investigate answerable facts yourself when tools and scope allow; do not turn research work into questions for the user.\n \n+Distinguish the user's stated claim and necessary task conditions from the proposed method under review. Change a method that confounds the claim; do not reopen an already explicit goal merely to preserve that method. If recommending a different or stricter claim, explain what it would measure instead of silently substituting it.\n+\n Ask the highest-value unresolved question, explain why it matters, and let the user answer before adding a new branch. If they request an asynchronous review, deliver the ranked objections together instead.\n \n Use counterexamples, failure conditions, and opportunity cost. Challenge the reasoning without performing hostility or repeatedly relitigating a defensible choice.\n",
+  "prior_014_summary_sha256": "841b0be1e2f2701fb057e0c33261989a604424aa3047ffe76963302f4f543404",
+  "skill_creator_quick_validate": {
+    "status": "PASS",
+    "exit_code": 0,
+    "stdout": "Skill is valid!"
+  },
+  "checks": [
+    "0.1.4 root and manifest frozen exactly before edit",
+    "0.1.4 paragraph replaced, no additional rule stack",
+    "A/B root differ only by new principle",
+    "old three inputs and first four criteria/guards preserved exactly",
+    "fifth criterion explicitly new and frozen before inference",
+    "known-field has two independent pairs with opposite arm order",
+    "live candidate equals snapshot",
+    "reconstructed source hashes match both prior versions",
+    "prior result and generated export unchanged"
+  ]
+}

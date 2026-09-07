@@ -1,0 +1,14 @@
+{
+  "action": "dispatch",
+  "message": "已讀取 TASK.md、現有實作與測試，以及 lab-delegate 技能及必要資源。委派單一完整且可驗證的實作切片，收回後由主手獨立檢查與驗收。",
+  "requests": [
+    {
+      "role": "implementation",
+      "brief": "完成 /tmp/astra-worker-fit-v1-r46pwud2/W3/TASK.md 的帳戶事件投影器，修改只限 src/、tests/。第一步完整讀取 /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.8/plugins/common-lab/.codex-agents/lab-executor.toml 的 developer_instructions，相對路徑以該 TOML 目錄解析；然後讀取 TASK.md 與現有檔案。角色契約全文：Implement the assigned slice within its acceptance criteria, permitted files/actions, and settled decisions. Use implementation judgment; do not reopen scope or architecture without evidence of a conflict. Continue through proportionate verification and fix failures caused by the slice while the next action is safe and in scope. Report conflicts, missing authority, or an unrepresentable required model profile instead of silently broadening the task. Do not publish, make destructive changes, or retry an external operation with an unknown outcome merely because the assignment says finish. Inspect its actual state first. Return the artifact, verification results, changed paths, and unfinished work. Separate observed results from assumptions. Never treat your own completion statement as sufficient acceptance evidence.\n\n你使用供應的 implementation profile（gpt-5.6-luna, high）；不要啟動子代理或模型 CLI。主手保留驗收責任，你負責完整實作及必要測試。保持現有兩項測試的意義，新增有區辨力的反例。重點包括：三參數必須 list；每筆必要欄位與型別、整數排除 bool、ID 非空、revision 邊界；snapshot ID 唯一；先驗證全部輸入，未查詢/歷史/未知帳戶不能藏無效值或衝突；event_id 相同只比較 account_id/revision/delta，每筆額外重送均計數；不同 event_id 不可占相同帳戶 revision；extra fields 忽略且不修改。輸出去重排序且只含契約欄位。未知帳戶 missing；有快照忽略有效歷史，後續按 revision 連續套用，缺口 balance=None、first_missing_revision 正確且不可套用缺口後事件；巨大 revision 不逐一列舉。保證所有輸入及巢狀額外欄位不變。內部分層自行判斷，可改 normalization.py，避免不必要依賴或架構。\n\n執行 python3 -B -m unittest discover -s tests -v 並修正失敗。不得新增依賴、網路、設定、部署、commit/push、存取憑證、全域變更或範圍外寫入；快取亦僅能在 src/、tests/。遵守平台權限，若寫入受阻請如實報告，不嘗試繞過。回報實際改動路徑、設計要點、測試結果與未完成工作。",
+      "write_paths": [
+        "src/",
+        "tests/"
+      ]
+    }
+  ]
+}

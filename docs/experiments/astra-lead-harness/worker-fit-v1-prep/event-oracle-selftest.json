@@ -1,0 +1,187 @@
+{
+  "passed": true,
+  "scratch": "/tmp/worker-fit-oracle-selftest-xyny9cir",
+  "semantic_cases": 53,
+  "variants": [
+    {
+      "name": "golden",
+      "expected_pass": true,
+      "passed": true,
+      "correct_classification": true,
+      "failed_checks": [],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "starter",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "arrival_permutation_2",
+        "arrival_permutation_3",
+        "arrival_permutation_4",
+        "arrival_permutation_5",
+        "semantic_replay_extra_metadata",
+        "gap_after_prefix",
+        "gap_at_start",
+        "huge_revision_no_enumeration",
+        "unrequested_replay_counted",
+        "empty_request_still_counts",
+        "identity_payload_conflict",
+        "identity_account_conflict",
+        "identity_revision_conflict",
+        "revision_conflict_same_delta",
+        "history_conflict_not_ignored",
+        "unknown_conflict_not_ignored",
+        "duplicate_snapshot",
+        "parameter_must_be_list_0",
+        "parameter_must_be_list_1",
+        "parameter_must_be_list_2",
+        "invalid_snapshot_account_id_''",
+        "invalid_snapshot_account_id_0",
+        "invalid_snapshot_revision_-1",
+        "invalid_snapshot_revision_True",
+        "invalid_snapshot_balance_False",
+        "invalid_snapshot_balance_2.5",
+        "invalid_event_event_id_''",
+        "invalid_event_event_id_None",
+        "invalid_event_account_id_''",
+        "invalid_event_revision_0",
+        "invalid_event_revision_True",
+        "invalid_event_delta_False",
+        "invalid_event_delta_'2'",
+        "invalid_request_''",
+        "invalid_request_0",
+        "invalid_request_None",
+        "missing_event_event_id",
+        "missing_event_account_id",
+        "missing_event_revision",
+        "missing_event_delta",
+        "missing_snapshot_account_id",
+        "missing_snapshot_revision",
+        "missing_snapshot_balance",
+        "snapshot_not_mapping",
+        "event_not_mapping"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "accept_bool",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "invalid_snapshot_revision_True",
+        "invalid_snapshot_balance_False",
+        "invalid_event_revision_True",
+        "invalid_event_delta_False"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "hide_partial_balance",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "gap_after_prefix",
+        "gap_at_start",
+        "huge_revision_no_enumeration"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "ignore_replay_count",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "semantic_replay_extra_metadata",
+        "unrequested_replay_counted",
+        "empty_request_still_counts"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "ignore_identity_conflict",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "identity_payload_conflict",
+        "identity_account_conflict",
+        "identity_revision_conflict"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "ignore_revision_conflict",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "revision_conflict_same_delta",
+        "history_conflict_not_ignored",
+        "unknown_conflict_not_ignored"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "apply_history",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "history_not_applied"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "arrival_order",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "arrival_permutation_1",
+        "arrival_permutation_2",
+        "arrival_permutation_3",
+        "arrival_permutation_4",
+        "arrival_permutation_5",
+        "gap_after_prefix"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "ignore_missing_revision",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "gap_after_prefix",
+        "gap_at_start",
+        "huge_revision_no_enumeration"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "mutate_input",
+      "expected_pass": false,
+      "passed": false,
+      "correct_classification": true,
+      "failed_checks": [
+        "multiple_and_sorted_unique_requests",
+        "duplicate_snapshot"
+      ],
+      "fixture_unchanged": true
+    },
+    {
+      "name": "equivalent_key_order",
+      "expected_pass": true,
+      "passed": true,
+      "correct_classification": true,
+      "failed_checks": [],
+      "fixture_unchanged": true
+    }
+  ],
+  "model_calls": 0
+}

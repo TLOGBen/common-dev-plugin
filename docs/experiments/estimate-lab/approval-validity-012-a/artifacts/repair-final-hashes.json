@@ -1,0 +1,120 @@
+{
+  "verified_utc": "2026-09-06T06:53:18.075800+00:00",
+  "owned_file_hashes": {
+    "plugins/estimate-lab/skills/lab-estimate/scripts/case_state.py": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b",
+    "plugins/estimate-lab/skills/lab-estimate/tests/test_approval_validity.py": "45c35e893f0f07bc46c55eb240f4e5d65791976f0df2b7c6505de0bd9c244ede"
+  },
+  "receipt_hashes": {
+    "baseline-rev9.json": "7e5a4bd33bdba95ea8a117677a768c51fd2e3f5a54ba7104cf4ff21ff994a24a",
+    "repair-baseline.json": "a2e114e56288f25b20b663cae5061c3c94c574937fa3f6a072e8b40948e42243",
+    "repair-green-b-failed.json": "9f7e9cd314ff61daab61b799dd8ad9b9f87eedc81b5595dce651bec46a80110f",
+    "repair-green-c.json": "8fa0dde94251fa0cdb36ad5a341a9be8e7181f7f9461a4b30faf43d2add78d20",
+    "repair-green.json": "19ca0175bc2635a4a330411c3b0e323da1d47dab9996477e629849ccefca00f3",
+    "repair-red-b.json": "8e0a98fa666dd30b7ab699c46260a6932dcaf5ab4bf140b82ea647adfd3c00ae",
+    "repair-red.json": "1747ce0b2d3a0fc14d8565effe65a3c53b8a05ce759d8887cbcc7a7a9fce4e18",
+    "repair-review-b.json": "67c761a246ebb208db7be3a2845ed2dbf3ba2268c66d255bcb29d72a2107cd29",
+    "repair-review.json": "c22184a722f1d8551ffdc0bf12063bfdaaa153a1f5f750baac51ff46106b6464",
+    "result.json": "93a5cf36ad3dee10973ad60e4bc019dfbfa9d59df8c165361c74c11668dd269c"
+  },
+  "frozen012_and_original_rev9_unchanged": true,
+  "stable_diff_empty": true,
+  "runtime_diff": {
+    "added": 61,
+    "removed": 2
+  },
+  "runs": {
+    "repair-baseline.json": {
+      "started_utc": "2026-09-06T06:38:23.284546+00:00",
+      "ended_utc": "2026-09-06T06:38:27.982268+00:00",
+      "elapsed_seconds": 4.697705,
+      "tests": 53,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-baseline-a",
+      "runtime_sha256": "cbbc14d98f40d3cecb436ab61b8d9e53eaa9506438c0f95e4b02b9d805802ca3"
+    },
+    "repair-green-b-failed.json": {
+      "started_utc": "2026-09-06T06:48:41.895716+00:00",
+      "ended_utc": "2026-09-06T06:48:50.044190+00:00",
+      "elapsed_seconds": 8.148477,
+      "tests": 64,
+      "failures": 0,
+      "errors": 1,
+      "successful": false,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-green-b",
+      "runtime_sha256": "4e36d843b46c9238cdbfdc5cfeb572715da284056ea3e3b090a3eb26d4fcdad7"
+    },
+    "repair-green-c.json": {
+      "started_utc": "2026-09-06T06:50:50.427699+00:00",
+      "ended_utc": "2026-09-06T06:50:59.146071+00:00",
+      "elapsed_seconds": 8.718374,
+      "tests": 64,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-green-c",
+      "runtime_sha256": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b"
+    },
+    "repair-green.json": {
+      "started_utc": "2026-09-06T06:41:51.798151+00:00",
+      "ended_utc": "2026-09-06T06:41:59.084590+00:00",
+      "elapsed_seconds": 7.286428,
+      "tests": 61,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-green-a",
+      "runtime_sha256": "b14f79520e6878b38a261c453e95cc520b0890ef094ed4df135c02bc35292456"
+    },
+    "repair-red-b.json": {
+      "started_utc": "2026-09-06T06:47:45.626216+00:00",
+      "ended_utc": "2026-09-06T06:47:49.827869+00:00",
+      "elapsed_seconds": 4.201659,
+      "tests": 9,
+      "failures": 2,
+      "errors": 0,
+      "successful": false,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-red-b",
+      "runtime_sha256": "b14f79520e6878b38a261c453e95cc520b0890ef094ed4df135c02bc35292456"
+    },
+    "repair-red.json": {
+      "started_utc": "2026-09-06T06:40:27.054390+00:00",
+      "ended_utc": "2026-09-06T06:40:29.901535+00:00",
+      "elapsed_seconds": 2.847292,
+      "tests": 6,
+      "failures": 3,
+      "errors": 0,
+      "successful": false,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-red-a",
+      "runtime_sha256": "cbbc14d98f40d3cecb436ab61b8d9e53eaa9506438c0f95e4b02b9d805802ca3"
+    },
+    "repair-review-b.json": {
+      "started_utc": "2026-09-06T06:52:07.988281+00:00",
+      "ended_utc": "2026-09-06T06:52:12.555277+00:00",
+      "elapsed_seconds": 4.566994,
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-review-b",
+      "runtime_sha256": "99be518711270790c8e82cf229471c1beaeb964b354562863930f59c7c20cb2b"
+    },
+    "repair-review.json": {
+      "started_utc": "2026-09-06T06:44:34.176127+00:00",
+      "ended_utc": "2026-09-06T06:44:37.324468+00:00",
+      "elapsed_seconds": 3.148333,
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "successful": true,
+      "retained_fixtures": "/tmp/estimate-approval-regression-013-review-a",
+      "runtime_sha256": "b14f79520e6878b38a261c453e95cc520b0890ef094ed4df135c02bc35292456"
+    }
+  },
+  "automated_test_elapsed_seconds": 43.615262,
+  "model_calls": 0,
+  "author_actual_tokens": null,
+  "actual_cost_usd": null
+}
+

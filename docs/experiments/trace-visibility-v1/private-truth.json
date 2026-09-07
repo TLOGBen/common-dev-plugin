@@ -1,0 +1,87 @@
+{
+  "created_utc": "2026-09-06T12:48:06.983663+00:00",
+  "root": "/tmp/trace-visibility-v1-w7p9dk94",
+  "cases": {
+    "T1": {
+      "model": "gpt-6-astra",
+      "order": "sequential",
+      "markers": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt": "TRACE_4cb1c4dbb0e130977f86c9b086e78ec7",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt": "TRACE_f573d601e7f477a71a4e4d2dbb7c634e",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt": "TRACE_bc749758828390cc64389795498a5a0b",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt": "TRACE_c1082fef198c9f7a38d0849ee7251313",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt": "TRACE_b27bcedec03a2e79c644d7256e3ed187",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt": "TRACE_c880aeb8f27364c7295d8b453808f27e"
+      },
+      "input_sha256": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-1.txt": "4e71d4227e81f0942fe499871b61067c0a6f7f1a6984e279bbf8a8c30caa76f4",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-2.txt": "d207dc77b6af3162350796bdf26a424f6d432dd387b2e651ffa9f71639decc11",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/R/sample-3.txt": "5491a824d7a37357006f224c9700c176378b0d8b7261b9a5edcb93972d33036a",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-4.txt": "715ac2f0b16a379696fef9cc2e07100aede2a35731c2992655292754350a7891",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-5.txt": "3dec913968ae01e3dfdec2d66cb1f2352c403a499507e069e1e8f6cf6ea4286c",
+        "/tmp/trace-visibility-v1-w7p9dk94/T1/S/sample-6.txt": "22dd2b14ebfa887aec7ce0342f7c04b6638c724718517a29594d08d1989e3a87"
+      }
+    },
+    "T2": {
+      "model": "gpt-6-astra",
+      "order": "parallel",
+      "markers": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt": "TRACE_bdc2b3df17a416ee55eb6e85b93e91ba",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt": "TRACE_44a59fb042e65e542a7e953673f99055",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt": "TRACE_4027a82096cb794439b887ee0204c9a1",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt": "TRACE_3789f8d977697ac98498241ec7f9ab73",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt": "TRACE_ce362b14086fdcae1d16f72cbaaf4688",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt": "TRACE_75208d3e130fcbf90966b626f1007060"
+      },
+      "input_sha256": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-1.txt": "ab3d9abd851fd9f9827974c62c937f6b8447dbfde3775785b3d3b43f1510ad97",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-2.txt": "730dcdb719872abefb8addf2234ccf9a35fb4bf1e4d65abfeb0b0b0aa95a0231",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/R/sample-3.txt": "5d5eaf7224bb6ad72cba5f120dadd5c2b07b865c57ef2ca80dc70b177fd5caf9",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-4.txt": "da97004b5b13a93a6a1e1fb07ae77390f6f7a66d14b9bec944b2d0876f1d2f71",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-5.txt": "a8d52ab2e9a44d17dc73768f187bbb5843c9b72b4e353d64a986ff2befd098b3",
+        "/tmp/trace-visibility-v1-w7p9dk94/T2/S/sample-6.txt": "346edb3b6d0400e4ba1b71a6bebf836b07310660c9b02d4ba3c4e7a7bc6ac525"
+      }
+    },
+    "T3": {
+      "model": "gpt-5.6-sol",
+      "order": "parallel",
+      "markers": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt": "TRACE_b76d51b111a0ffdf4a9b876c91de26a1",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt": "TRACE_1e52cd5e16af683d98104b982c9084c6",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt": "TRACE_78bcb6c44de0f45fe1b7977d472a90ec",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt": "TRACE_50ed51dcfc6d523cd1606a2fdf8bdc1b",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt": "TRACE_c794b4a89411343b94f32a676782e845",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt": "TRACE_041cf1760e6dad36b00b770130093637"
+      },
+      "input_sha256": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-1.txt": "158cb1edec290d13720b546ca707431e4489f839b1c94f0baea37eb8e16a7d7c",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-2.txt": "42fafd85d4429ed843dc5eb7e5cdec79d1dc9368bd8b892b4fc07eb72de73a55",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/R/sample-3.txt": "dee2297676562fe2a380a9390ec107fe410565533ad98ce156010ac31a2511a7",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-4.txt": "b1e7b6f2d9a65cf2b69a69e4c838e23d83cae5d0666245becf27ace155b6dbc9",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-5.txt": "843b228d63ae4c8e532843c627c8de885b19f56f097727a2649c4d68c7d7cafe",
+        "/tmp/trace-visibility-v1-w7p9dk94/T3/S/sample-6.txt": "8fecd8d5ed9a714f0714a57674539cca23a1242cdda7ab33679fe6c785ea4617"
+      }
+    },
+    "T4": {
+      "model": "gpt-5.6-sol",
+      "order": "sequential",
+      "markers": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-1.txt": "TRACE_dffd1351df57fe60c85c3d36f994bed9",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-2.txt": "TRACE_9192641a83393f66137e1028dbe6dc24",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-3.txt": "TRACE_a1eb2021fe5088e0d18db9ee3ac10eee",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-4.txt": "TRACE_00bc819fd4bd8299940c61312a73717d",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-5.txt": "TRACE_556ce7a852e34c9f335acfe253f1c166",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-6.txt": "TRACE_98e404e36ecf70700b0f701b93b87925"
+      },
+      "input_sha256": {
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-1.txt": "3faf6eaa4182e3e85fb6991a464dc735fce0976af963da6ed3e530f8b6ecd4b6",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-2.txt": "21cfb4a710bc623ade5a86cf43dcba84cad9849cd72d2cbd2ad3e988285efa11",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/R/sample-3.txt": "4002de09b11b84d6aba51abd133d25f2ee772a6d9ebf1de6cf16dee3d272be13",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-4.txt": "7a9796f1a28e6b0c21b5c666c386cfef519f230a3dd18c2c11acd731d76d7084",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-5.txt": "87017f44fb216be4ec9bb0bbfb544986e3e00783bc0cd6f010050e5989f22231",
+        "/tmp/trace-visibility-v1-w7p9dk94/T4/S/sample-6.txt": "d2f8b67166b48d146dc1591500f5320f758e1d67bc6c264bf0ebfde47e0eef62"
+      }
+    }
+  },
+  "script_sha256": "3d30ef1c908fbd19e77acabe4f5397dbc79884a053ddc0e52d6789490627dbc7"
+}

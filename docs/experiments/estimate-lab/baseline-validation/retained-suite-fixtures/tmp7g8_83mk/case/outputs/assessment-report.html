@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>示範案件 評估報告</title>
+  <style>
+:root{--ink:#17242c;--ink-soft:#40515a;--muted:#687782;--rule:#d6dfe3;--paper:#edf2f4;--surface:#fff;--signal:#cf5737;--signal-soft:#fff2ec;--focus:#25677d;--focus-soft:#eaf4f7;--baseline:#f0b74e;--shadow:0 18px 52px rgba(23,36,44,.18)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 'Aptos','Microsoft JhengHei UI','Noto Sans TC',sans-serif}body:has(dialog[open]){overflow:hidden}button{font:inherit;color:inherit}main{max-width:1180px;margin:0 auto;padding:42px 30px 90px}.kicker,.eyebrow{margin:0 0 8px;font:700 12px/1.2 'Cascadia Mono','Consolas',monospace;letter-spacing:.1em;color:var(--muted)}h1,h2,h3,h4,h5,p{margin-top:0}h1{max-width:820px;margin:0 0 8px;font:700 clamp(34px,5vw,62px)/1 'Bahnschrift SemiCondensed','Arial Narrow',sans-serif;letter-spacing:-.03em}h2{font:700 clamp(28px,3.7vw,42px)/1.08 'Bahnschrift SemiCondensed','Arial Narrow',sans-serif;letter-spacing:-.018em}h3{font-size:24px;line-height:1.22}h4{font-size:19px;line-height:1.35}.report-header{display:flex;align-items:end;justify-content:space-between;gap:24px;margin-bottom:28px}.report-header>p:last-child{margin:0;color:var(--muted);font:700 13px 'Cascadia Mono','Consolas',monospace}.summary-panel{display:grid;grid-template-columns:minmax(0,1fr) 292px;background:var(--surface);border-top:6px solid var(--ink)}.summary-main{padding:32px 36px}.summary-main h2{margin-bottom:20px}.current-state{max-width:800px;font-size:20px;line-height:1.65;margin-bottom:28px}.summary-facts{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:0}.summary-facts div{padding-top:14px;border-top:1px solid var(--rule)}.summary-facts dt{font-weight:800;font-size:13px;color:var(--muted)}.summary-facts dd{margin:5px 0 0}.total-ledger{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));align-content:start;background:var(--ink);color:#fff;padding:30px 20px}.total-ledger>.eyebrow{grid-column:1/-1;color:#adbbc2}.total-ledger div{display:grid;padding:14px 7px;border-top:1px solid #53646d;min-width:0}.total-ledger div+div{border-left:1px solid #53646d}.total-ledger span{font-size:13px;color:#c7d1d6}.total-ledger b{font:700 27px/1.1 'Bahnschrift',sans-serif}.total-ledger .baseline{background:#344750;border-top-color:var(--baseline)}.total-ledger>small{grid-column:1/-1;margin-top:10px;color:#adbbc2}.estimate-section{padding-top:62px}.section-heading.primary{display:grid;grid-template-columns:minmax(0,1fr) minmax(280px,520px);gap:36px;align-items:end;margin-bottom:24px}.section-heading.primary h2{margin-bottom:0}.section-heading.primary>p{margin-bottom:4px;color:var(--ink-soft)}.package-columns{display:grid;grid-template-columns:minmax(0,1fr) repeat(3,84px) 112px;gap:8px;padding:0 20px 8px 62px;color:var(--muted);font-size:12px;font-weight:800}.package-columns span:not(:first-child){text-align:center}.package-list{display:grid;gap:10px}.package-row{width:100%;display:grid;grid-template-columns:34px minmax(0,1fr) repeat(3,84px) 112px;gap:8px;align-items:center;text-align:left;background:var(--surface);border:1px solid #bdcbd1;padding:16px 18px;cursor:pointer;transition:border-color .16s ease,transform .16s ease,box-shadow .16s ease}.package-row:hover{border-color:var(--focus);box-shadow:0 5px 18px rgba(23,36,44,.08);transform:translateY(-1px)}.package-row:focus-visible{outline:4px solid #83b9ca;outline-offset:3px}.package-rank{display:grid;place-items:center;width:28px;height:28px;border:1px solid var(--rule);font:700 13px 'Cascadia Mono','Consolas',monospace;color:var(--muted)}.package-copy{display:grid;gap:4px;padding-right:14px}.package-copy strong{font-size:19px}.package-copy small{color:var(--ink-soft)}.estimate{height:62px;display:grid;place-items:center;border-left:1px solid var(--rule)}.estimate small{font-size:12px;color:var(--muted);line-height:1}.estimate b{font:700 25px/1 'Bahnschrift',sans-serif}.estimate.baseline{background:var(--signal-soft);border-top:3px solid var(--signal)}.estimate.baseline small{color:#9c3f27}.open-cue{text-align:right;color:var(--focus);font-weight:800;font-size:13px}.technical-appendix{margin-top:56px;border-top:1px solid var(--ink)}.technical-appendix>details>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;padding:20px 4px;cursor:pointer}.technical-appendix summary::-webkit-details-marker{display:none}.technical-appendix summary:focus-visible{outline:3px solid #83b9ca}.technical-appendix summary span:first-child{display:grid}.technical-appendix summary small{color:var(--muted)}.technical-appendix summary strong{font-size:22px}.technical-appendix details[open] summary>span:last-child{transform:rotate(45deg)}.appendix-body{background:var(--surface);padding:12px 32px 30px}.appendix-body section{padding:24px 0;border-top:1px solid var(--rule)}.appendix-body h3{margin-bottom:10px}.appendix-body ul{margin-bottom:0}.package-dialog{width:min(780px,100%);height:100dvh;max-width:none;max-height:none;margin:0 0 0 auto;padding:0;border:0;background:var(--surface);box-shadow:var(--shadow);overflow:hidden}.package-dialog::backdrop{background:rgba(16,27,33,.58)}.dialog-shell{height:100%;display:grid;grid-template-rows:auto minmax(0,1fr) auto}.dialog-header{position:relative;z-index:2;display:flex;align-items:flex-start;justify-content:space-between;gap:24px;padding:22px 26px 18px;background:var(--surface);border-bottom:1px solid var(--rule)}.dialog-header h2{font-size:34px;margin:0}.icon-close{flex:0 0 44px;width:44px;height:44px;border:1px solid var(--ink);background:#fff;cursor:pointer;font-size:30px;line-height:1}.dialog-close:focus-visible{outline:4px solid #83b9ca;outline-offset:3px}.dialog-scroll{overflow-y:auto;overscroll-behavior:contain;padding:26px 30px 42px}.dialog-summary{font-size:19px;color:var(--ink-soft);max-width:680px}.effort-ledger{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);margin:24px 0}.effort-ledger div{padding:15px 14px;display:grid;align-content:start}.effort-ledger div+div{border-left:1px solid var(--rule)}.effort-ledger span,.effort-ledger small{font-size:12px;color:var(--muted)}.effort-ledger b{font:700 27px/1.2 'Bahnschrift',sans-serif}.effort-ledger .focus{background:var(--signal-soft);border-top:4px solid var(--signal);padding-top:11px}.package-intro{display:grid;grid-template-columns:1fr 1fr;gap:26px;padding:20px 0 10px}.package-intro>div{padding-top:15px;border-top:1px solid var(--ink)}.dialog-section{margin-top:32px}.section-heading:not(.primary){padding-top:22px;border-top:1px solid var(--ink)}.section-heading:not(.primary) h3{margin-bottom:16px}.contextual-findings{margin-top:26px}.inline-finding{padding:18px 20px;background:#fff8e6;border-left:5px solid var(--baseline)}.inline-finding+.inline-finding{margin-top:12px}.inline-finding h4{margin-bottom:8px}.finding-visible p{margin:0}.finding-visible p+p{margin-top:7px}.finding-basis{margin-top:13px;border-top:1px solid #e1ca93;padding-top:10px}.finding-basis>summary{width:max-content;max-width:100%;cursor:pointer;color:var(--focus);font-weight:800}.finding-basis>summary:focus-visible{outline:3px solid #83b9ca;outline-offset:3px}.finding-basis ul{padding-left:20px;margin:10px 0 0}.finding-basis li+li{margin-top:5px}.delta{font:800 16px 'Cascadia Mono','Consolas',monospace;color:#9c3f27}.explanation-figure{margin:30px 0 0;border:1px solid var(--rule);padding:18px;background:#fff}.explanation-figure h4{margin-bottom:4px}.explanation-figure p{color:var(--ink-soft);margin-bottom:8px}.explanation-visual{display:block;width:100%;height:auto;overflow:visible}.svg-label{font-family:'Aptos','Microsoft JhengHei UI',sans-serif;font-size:17px;font-weight:700;fill:var(--ink)}.explanation-figure figcaption{padding-top:8px;color:var(--muted);font-size:13px}.work-item{padding:24px 0;border-top:1px solid var(--rule)}.work-item:first-of-type{border-top:0}.work-item header{display:flex;gap:12px;align-items:center}.work-item header h4{margin:0}.work-index{display:grid;place-items:center;flex:0 0 30px;width:30px;height:30px;background:var(--ink);color:#fff;font:700 13px 'Cascadia Mono','Consolas',monospace}.change-summary{margin:14px 0 18px}.target-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.target-grid section{border:1px solid var(--rule);padding:14px;min-width:0}.target-grid h5{font-size:14px;margin-bottom:10px}.target-grid ul{padding-left:18px;margin:0;overflow-wrap:anywhere}.target-grid li+li{margin-top:4px}.empty{color:var(--muted);margin:0}.target-note{margin:10px 0 0;padding:11px 14px;background:#fff8e6;border-left:4px solid var(--baseline)}.work-math{display:grid;grid-template-columns:repeat(3,1fr);margin-top:14px;border:1px solid var(--rule)}.work-math div{display:grid;padding:12px}.work-math div+div{border-left:1px solid var(--rule)}.work-math span{font-size:12px;color:var(--muted)}.work-math strong{font:700 16px 'Cascadia Mono','Consolas',monospace}.work-math .baseline{background:var(--focus-soft);border-top:3px solid var(--focus);padding-top:9px}.baseline-rationale{margin:0;padding:15px 16px;background:var(--focus-soft);border-left:4px solid var(--focus)}.effort-split{margin:8px 0 0;color:var(--muted);font-size:13px}.tier-guide{margin:0}.tier-guide div{display:grid;grid-template-columns:140px 1fr;gap:16px;padding:13px 0;border-top:1px solid var(--rule)}.tier-guide dt{font-weight:800}.tier-guide dd{margin:0}.dialog-footer{display:flex;justify-content:flex-end;padding:14px 26px;background:var(--surface);border-top:1px solid var(--rule)}.return-button{min-width:200px;padding:11px 18px;background:var(--ink);border:1px solid var(--ink);color:#fff;font-weight:800;cursor:pointer}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.package-row{transition:none}}
+@media(max-width:760px){main{padding:26px 14px 60px}.report-header{display:block}.report-header>p:last-child{margin-top:12px}.summary-panel{grid-template-columns:1fr}.summary-main{padding:26px 20px}.current-state{font-size:18px}.summary-facts{grid-template-columns:1fr}.total-ledger{padding:22px 18px}.section-heading.primary{grid-template-columns:1fr;gap:6px}.package-columns{display:none}.package-row{grid-template-columns:28px minmax(0,1fr) repeat(3,54px);padding:14px 10px;gap:5px}.package-copy{grid-column:2/-1;padding:0 0 7px}.package-copy strong{font-size:17px}.package-rank{grid-row:1/3}.estimate{height:48px}.estimate b{font-size:21px}.open-cue{grid-column:2/-1;text-align:left;padding-top:4px}.package-dialog{width:100%;height:100dvh}.dialog-header{padding:16px}.dialog-header h2{font-size:28px}.dialog-scroll{padding:20px 16px 34px}.effort-ledger{grid-template-columns:1fr 1fr}.effort-ledger div:nth-child(3){border-left:0;border-top:1px solid var(--rule)}.effort-ledger div:nth-child(4){border-top:1px solid var(--rule)}.package-intro,.target-grid{grid-template-columns:1fr}.work-math{grid-template-columns:1fr}.work-math div+div{border-left:0;border-top:1px solid var(--rule)}.tier-guide div{grid-template-columns:1fr;gap:2px}.dialog-footer{padding:12px 16px}.return-button{width:100%}.explanation-figure{overflow-x:auto}.explanation-visual{min-width:520px}}
+@media print{body{background:#fff}body:has(dialog[open]){overflow:visible}main{max-width:none;padding:0}.package-row{break-inside:avoid}.technical-appendix .appendix-body{display:block}.package-dialog{display:block;position:static;width:auto;height:auto;box-shadow:none;border-top:2px solid var(--ink);margin-top:28px;overflow:visible}.dialog-shell{display:block}.dialog-scroll{overflow:visible;padding:16px 0}.dialog-header{padding:16px 0}.dialog-footer,.icon-close,.finding-basis>summary{display:none}.finding-basis:not([open])>*:not(summary){display:block}}
+  </style>
+  <style>
+.worksets{margin-top:18px}.workset{border:1px solid var(--rule);background:#fff}.workset+.workset{margin-top:9px}.workset>summary{list-style:none;display:flex;justify-content:space-between;align-items:center;gap:18px;padding:13px 15px;cursor:pointer}.workset>summary::-webkit-details-marker{display:none}.workset>summary:focus-visible{outline:3px solid #83b9ca;outline-offset:2px}.workset>summary>span:first-child{display:grid}.workset>summary small{color:var(--muted);font-size:12px}.workset>summary>span:last-child{white-space:nowrap;color:var(--muted)}.workset>summary b{font:700 20px 'Bahnschrift',sans-serif;color:var(--ink)}.workset[open]>summary{border-bottom:1px solid var(--rule);background:var(--focus-soft)}.workset-body{padding:14px 15px}.workset-meta{margin-bottom:12px;color:var(--focus);font-weight:800;font-size:13px}.workset-table-scroll{overflow-x:auto;max-height:520px;overflow-y:auto;border:1px solid var(--rule)}.workset table{width:100%;min-width:920px;border-collapse:collapse;font-size:13px;line-height:1.45}.workset th,.workset td{padding:10px;text-align:left;vertical-align:top;border-bottom:1px solid var(--rule);overflow-wrap:anywhere}.workset thead th{position:sticky;top:0;background:var(--ink);color:#fff;z-index:1}.workset tbody th{width:25%;font-family:'Cascadia Mono','Consolas',monospace;font-size:12px}.workset tbody tr:last-child th,.workset tbody tr:last-child td{border-bottom:0}.generated-note{padding:11px 13px;background:var(--signal-soft);border-left:4px solid var(--signal)}.generation-method{margin:0}.generation-method div{display:grid;grid-template-columns:112px 1fr;gap:12px;padding:9px 0;border-top:1px solid var(--rule)}.generation-method dt{font-weight:800}.generation-method dd{margin:0}
+@media(max-width:760px){.workset>summary{padding:12px}.workset-body{padding:12px}.workset-table-scroll{margin-right:-12px}.generation-method div{grid-template-columns:1fr;gap:2px}}
+  </style>
+</head>
+<body>
+<main>
+<header class="report-header"><p class="kicker">Estimate／PM 確認台</p><h1>示範案件</h1><p>案件版本 8</p></header>
+<section class="summary-panel" aria-labelledby="case-summary"><div class="summary-main"><p class="eyebrow">先掌握這次要處理什麼</p><h2 id="case-summary">本次升版摘要</h2><p class="current-state">目前系統仍由舊框架承接啟動、登入狀態與功能入口。程式盤點已確認共用底座只需建立一次，但四支入口中有三支必須逐一調整；客戶仍需提供部署環境與正式驗收資料。</p><dl class="summary-facts"><div><dt>這次要達成</dt><dd>保留既有契約並完成技術遷移</dd></div><div><dt>責任邊界</dt><dd>我方負責應用改造；客戶負責部署與 UAT</dd></div></dl></div>
+<aside class="total-ledger" aria-label="本次估算合計"><p class="eyebrow">全部項目合計</p><div><span>低</span><b>4.5</b></div><div class="baseline"><span>基準</span><b>7.0</b></div><div><span>高</span><b>9.5</b></div><small>單位：人天</small></aside></section>
+<section class="estimate-section" aria-labelledby="estimate-heading"><div class="section-heading primary"><div><p class="eyebrow">逐項比較，再按需要下鑽</p><h2 id="estimate-heading">評估項目與人天</h2></div><p>每列先看原項目說明與低／基準／高；點擊後查看修改落點、計算方式，以及只屬於該項的額外發現。</p></div><div class="package-columns" aria-hidden="true"><span>項目與說明</span><span>低</span><span>基準</span><span>高</span><span></span></div><div class="package-list"><button class="package-row" type="button" data-dialog="package-package-runtime-dialog" aria-haspopup="dialog">
+<span class="package-rank">1</span>
+<span class="package-copy"><strong>新版應用可正常啟動</strong><small>調整 [本機路徑已移除] 的共用承接機制，以 password=[REDACTED] 完成設定並驗證既有功能。</small></span>
+<span class="estimate low"><small>低</small><b>3.0</b></span>
+<span class="estimate baseline"><small>基準</small><b>4.0</b></span>
+<span class="estimate high"><small>高</small><b>5.0</b></span>
+<span class="open-cue">查看細節 <span aria-hidden="true">→</span></span>
+</button><button class="package-row" type="button" data-dialog="package-package-entry-dialog" aria-haspopup="dialog">
+<span class="package-rank">2</span>
+<span class="package-copy"><strong>既有功能入口可延續使用</strong><small>逐支調整既有功能入口、參數與回應承接方式，核對原網址及操作契約，並完成代表性功能回歸驗證。</small></span>
+<span class="estimate low"><small>低</small><b>1.5</b></span>
+<span class="estimate baseline"><small>基準</small><b>3.0</b></span>
+<span class="estimate high"><small>高</small><b>4.5</b></span>
+<span class="open-cue">查看細節 <span aria-hidden="true">→</span></span>
+</button></div></section>
+<section class="technical-appendix"><details><summary><span><small>需要追查時再看</small><strong>技術附錄</strong></span><span aria-hidden="true">＋</span></summary><div class="appendix-body"><section><h3>採用方案</h3><h3>相容遷移</h3><p>保留既有契約並替換必要框架</p></section><section><h3>做到哪些事才算交付</h3><ul><li>建立共用承接底座（我方應用團隊）：應用可建置並啟動</li><li>接回既有功能入口（我方應用團隊）：代表入口可回應相同契約</li><li>部署與 UAT（客戶 IT）：客戶完成 UAT 簽核</li></ul></section><section><h3>會讓方案失敗或加價的前提</h3><ul><li>查詢與產碼元件：目標相容版本；目前證據支持沿用相容版本。；確認方式：代表性 query 與 transaction runtime 驗證</li></ul></section><section><h3>技術證據</h3><ul><li>主要入口與共同行為已完成靜態及啟動核對</li></ul></section></div></details></section>
+<dialog class="package-dialog" id="package-package-runtime-dialog" aria-labelledby="package-package-runtime-dialog-title" aria-describedby="package-package-runtime-dialog-summary">
+<div class="dialog-shell">
+<header class="dialog-header"><div><p class="eyebrow">評估項目 1／2</p><h2 id="package-package-runtime-dialog-title">新版應用可正常啟動</h2></div><button class="dialog-close icon-close" type="button" data-close aria-label="關閉 新版應用可正常啟動"><span aria-hidden="true">×</span></button></header>
+<div class="dialog-scroll">
+<p class="dialog-summary" id="package-package-runtime-dialog-summary">調整 [本機路徑已移除] 的共用承接機制，以 password=[REDACTED] 完成設定並驗證既有功能。</p>
+<div class="effort-ledger" aria-label="低基準高人天"><div><span>低值</span><b>3.0</b><small>條件順利</small></div><div class="focus"><span>基準值</span><b>4.0</b><small>目前最可能</small></div><div><span>高值</span><b>5.0</b><small>同範圍保守上限</small></div><div><span>基準開發／測試</span><b>3.0／1.0</b><small>人天</small></div></div>
+<section class="package-intro"><div><p class="eyebrow">為什麼要做</p><p>舊框架移除後需要新的共用啟動與 Session 承接方式。</p></div><div><p class="eyebrow">怎麼完成</p><p>建立一次性的應用底座並完成啟動檢查。</p></div></section>
+
+<figure class="explanation-figure">
+<div><p class="eyebrow">圖解</p><h4>共用底座如何承接既有入口</h4><p>為什麼底座只做一次，功能入口仍要逐支接回？</p></div>
+<svg class="explanation-visual" viewBox="0 0 640 168" role="img" aria-labelledby="package-runtime-explanation-1-title package-runtime-explanation-1-desc">
+<title id="package-runtime-explanation-1-title">共用底座如何承接既有入口</title><desc id="package-runtime-explanation-1-desc">為什麼底座只做一次，功能入口仍要逐支接回？ 流程為：舊框架共用行為、新版共用底座、既有功能入口。</desc>
+<defs><marker id="arrow-package-runtime-explanation-1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0 0 L8 4 L0 8 Z" fill="#687782"/></marker></defs>
+<path d="M192 96 H240" fill="none" stroke="#687782" stroke-width="2" marker-end="url(#arrow-package-runtime-explanation-1)"/><path d="M400 96 H448" fill="none" stroke="#687782" stroke-width="2" marker-end="url(#arrow-package-runtime-explanation-1)"/><rect x="32" y="56" width="160" height="80" rx="8" fill="#f7f8f8" stroke="#78909b" stroke-width="1"/><text x="112" y="104" class="svg-label" text-anchor="middle">舊框架共用行為</text><rect x="240" y="56" width="160" height="80" rx="8" fill="#fff5ef" stroke="#c95332" stroke-width="2"/><text x="320" y="104" class="svg-label" text-anchor="middle">新版共用底座</text><rect x="448" y="56" width="160" height="80" rx="8" fill="#f7f8f8" stroke="#78909b" stroke-width="1"/><text x="528" y="104" class="svg-label" text-anchor="middle">既有功能入口</text>
+</svg><figcaption>共用底座承接一次；每支入口的參數與回應仍由下一個成果包處理。</figcaption></figure>
+<section class="dialog-section"><div class="section-heading"><p class="eyebrow">逐項確認施工落點</p><h3>修改明細</h3></div><article class="work-item">
+<header><span class="work-index">1</span><h4>建立共用承接底座</h4></header>
+<p class="change-summary">PG 會先建立新版應用共同使用的啟動、輸入輸出與登入狀態設定，再用一個代表入口確認共用行為正確。這項工作只做一次，不會按四支入口重複計價；完成後新版應用應可建置、啟動，並讓後續功能共用同一套承接方式。</p>
+<div class="target-grid"><section><h5>影響頁面（0）</h5><p class="empty">不涉及</p></section><section><h5>影響 API（1）</h5><ul><li>共用應用啟動與 Session 契約</li></ul></section><section><h5>對應檔案（2）</h5><ul><li>src/main/resources/application.yml</li><li>src/main/java/app/config/WebConfig.java</li></ul></section></div>
+<p class="target-note"><strong>落點說明：</strong>本項建立共用底座，不直接修改個別業務頁面。</p>
+<div class="worksets"><p class="eyebrow">同一份 Discovery 工作集合</p><details class="workset workset-evidence" data-evidence-count="2"><summary><span><small>範圍證據</small><strong>共用底座落點</strong></span><span><b>2</b> 項</span></summary>
+<div class="workset-body"><p class="workset-meta">範圍證據，不作人工乘數｜Discovery 盤點</p><p>兩個設定落點用來證明底座範圍；共用底座仍只計一個施工單位。</p></div></details></div>
+<div class="work-math" aria-label="建立共用承接底座低基準高人天公式">
+<div><span>低值</span><strong>1 × 3.0 = 3.0</strong></div>
+<div class="baseline"><span>基準公式</span><strong>1 × 4.0 = 4.0 人天</strong></div>
+<div><span>高值</span><strong>1 × 5.0 = 5.0</strong></div>
+</div>
+<p class="baseline-rationale"><strong>基準為何這樣估：</strong>基準值以一位工程師完成共用設定、啟動排錯與主要契約核對所需的正常工期估算；不按入口數重複收費。</p>
+<p class="effort-split">基準拆分：開發 3.0 人天／測試 1.0 人天</p>
+</article></section>
+<section class="dialog-section calculation"><div class="section-heading"><p class="eyebrow">本項合計</p><h3>低／基準／高怎麼看</h3></div>
+<dl class="tier-guide"><div><dt>低值 3.0</dt><dd>以已確認的修改範圍計算，假設共用規則可順利套用、例外較少。</dd></div><div><dt>基準 4.0</dt><dd>由上方每項工作的「計價單位 × 基準單價」加總，是目前證據下最可能的投入。</dd></div><div><dt>高值 5.0</dt><dd>仍是同一範圍，另吸收已辨識的例外、整合與返工風險；不包含未說明的新需求。</dd></div></dl>
+</section></div>
+<footer class="dialog-footer"><button class="dialog-close return-button" type="button" data-close>回到評估項目</button></footer>
+</div></dialog><dialog class="package-dialog" id="package-package-entry-dialog" aria-labelledby="package-package-entry-dialog-title" aria-describedby="package-package-entry-dialog-summary">
+<div class="dialog-shell">
+<header class="dialog-header"><div><p class="eyebrow">評估項目 2／2</p><h2 id="package-package-entry-dialog-title">既有功能入口可延續使用</h2></div><button class="dialog-close icon-close" type="button" data-close aria-label="關閉 既有功能入口可延續使用"><span aria-hidden="true">×</span></button></header>
+<div class="dialog-scroll">
+<p class="dialog-summary" id="package-package-entry-dialog-summary">逐支調整既有功能入口、參數與回應承接方式，核對原網址及操作契約，並完成代表性功能回歸驗證。</p>
+<div class="effort-ledger" aria-label="低基準高人天"><div><span>低值</span><b>1.5</b><small>條件順利</small></div><div class="focus"><span>基準值</span><b>3.0</b><small>目前最可能</small></div><div><span>高值</span><b>4.5</b><small>同範圍保守上限</small></div><div><span>基準開發／測試</span><b>1.5／1.5</b><small>人天</small></div></div>
+<section class="package-intro"><div><p class="eyebrow">為什麼要做</p><p>受影響入口仍依賴舊框架的參數與回應契約。</p></div><div><p class="eyebrow">怎麼完成</p><p>將 3 支入口逐支接回新底座並核對行為。</p></div></section>
+<section class="dialog-section contextual-findings">
+<div class="section-heading"><p class="eyebrow">這一項額外查到</p><h3>會影響本項判斷的發現</h3></div><article class="inline-finding" data-finding-id="finding-entry-count">
+<h4>功能入口比需求初看多一支</h4>
+<div class="finding-visible">
+<p><strong>人天怎麼看：</strong>基準人天改以三支乘代表單價計算，已納入目前估算。</p>
+<p><strong>PM 現在要注意什麼：</strong>已納入基準與高值，Gate 5 請 PM 連同範圍一起確認。</p>
+</div>
+<details class="finding-basis"><summary>查看判斷依據</summary><ul>
+<li><strong>原本怎麼算：</strong>需求初看只列出兩支需要處理的入口。</li>
+<li><strong>後來查到什麼：</strong>沿路由與共用處理流程追查後，確認三支入口都要獨立修改與驗證。 <span class="delta">範圍修正 2 → 3 功能入口</span></li>
+<li><strong>為什麼重要：</strong>若仍用兩支估算，會少算一支入口的理解、修改與回歸工作。</li></ul></details></article></section>
+
+<section class="dialog-section"><div class="section-heading"><p class="eyebrow">逐項確認施工落點</p><h3>修改明細</h3></div><article class="work-item">
+<header><span class="work-index">1</span><h4>接回需要處理的功能入口（共 4 支／需處理 3 支）</h4></header>
+<p class="change-summary">PG 會逐支核對三個受影響入口的網址、輸入參數、回應內容與錯誤處理，再接到新版共用底座。工作量按三支計算，因為每支都要獨立理解與驗證；完成後使用者仍可沿用原網址與操作方式，代表入口的正常與失敗情境都要通過。</p>
+<div class="target-grid"><section><h5>影響頁面（2）</h5><ul><li>查詢首頁</li><li>資料維護頁</li></ul></section><section><h5>影響 API（3）</h5><ul><li>GET /legacy/search</li><li>POST /legacy/save</li><li>POST /legacy/approve</li></ul></section><section><h5>對應檔案（3）</h5><ul><li>src/main/java/app/web/SearchAction.java</li><li>src/main/java/app/web/SaveAction.java</li><li>src/main/java/app/web/ApproveAction.java</li></ul></section></div>
+<p class="target-note"><strong>落點說明：</strong>四支入口中一支已由新底座承接，不需修改。</p>
+<div class="worksets"><p class="eyebrow">同一份 Discovery 工作集合</p><details class="workset workset-direct" data-workset-items="3"><summary><span><small>逐項處理</small><strong>需逐項接回的功能入口</strong></span><span><b>3</b> 項</span></summary>
+<div class="workset-body"><p class="workset-meta">計價單位｜Discovery 盤點</p><div class="workset-table-scroll"><table><thead><tr><th>項目／路徑</th><th>用途</th><th>處理方式</th><th>修改重點</th><th>驗證</th></tr></thead><tbody><tr data-workset-item="detail-action-1">
+<th scope="row">GET /legacy/search</th><td>保留既有功能入口契約</td><td>逐項修改</td><td>接回新版共用底座並核對輸入輸出。</td><td>正常與錯誤情境皆維持原契約。</td></tr><tr data-workset-item="detail-action-2">
+<th scope="row">POST /legacy/save</th><td>保留既有功能入口契約</td><td>逐項修改</td><td>接回新版共用底座並核對輸入輸出。</td><td>正常與錯誤情境皆維持原契約。</td></tr><tr data-workset-item="detail-action-3">
+<th scope="row">POST /legacy/approve</th><td>保留既有功能入口契約</td><td>逐項修改</td><td>接回新版共用底座並核對輸入輸出。</td><td>正常與錯誤情境皆維持原契約。</td></tr></tbody></table></div></div></details></div>
+<div class="work-math" aria-label="接回需要處理的功能入口（共 4 支／需處理 3 支）低基準高人天公式">
+<div><span>低值</span><strong>3 × 0.5 = 1.5</strong></div>
+<div class="baseline"><span>基準公式</span><strong>3 × 1.0 = 3.0 人天</strong></div>
+<div><span>高值</span><strong>3 × 1.5 = 4.5</strong></div>
+</div>
+<p class="baseline-rationale"><strong>基準為何這樣估：</strong>每支基準 1 天，包含讀懂原參數、接回新底座、處理一輪例外並完成局部驗證；三支各有自己的輸入輸出，因此以三支計價。</p>
+<p class="effort-split">基準拆分：開發 1.5 人天／測試 1.5 人天</p>
+</article></section>
+<section class="dialog-section calculation"><div class="section-heading"><p class="eyebrow">本項合計</p><h3>低／基準／高怎麼看</h3></div>
+<dl class="tier-guide"><div><dt>低值 1.5</dt><dd>以已確認的修改範圍計算，假設共用規則可順利套用、例外較少。</dd></div><div><dt>基準 3.0</dt><dd>由上方每項工作的「計價單位 × 基準單價」加總，是目前證據下最可能的投入。</dd></div><div><dt>高值 4.5</dt><dd>仍是同一範圍，另吸收已辨識的例外、整合與返工風險；不包含未說明的新需求。</dd></div></dl>
+</section></div>
+<footer class="dialog-footer"><button class="dialog-close return-button" type="button" data-close>回到評估項目</button></footer>
+</div></dialog>
+</main>
+<script>
+(() => {
+  let opener = null;
+  let savedScrollY = 0;
+
+  const closeDialog = (dialog) => {
+    if (dialog && dialog.open) dialog.close();
+  };
+
+  document.querySelectorAll('[data-dialog]').forEach((button) => {
+    button.addEventListener('click', () => {
+      const dialog = document.getElementById(button.dataset.dialog);
+      if (!dialog || typeof dialog.showModal !== 'function') return;
+      opener = button;
+      savedScrollY = window.scrollY;
+      dialog.showModal();
+      const scroller = dialog.querySelector('.dialog-scroll');
+      if (scroller) scroller.scrollTop = 0;
+      dialog.querySelector('[data-close]')?.focus({preventScroll: true});
+    });
+  });
+
+  document.querySelectorAll('.package-dialog').forEach((dialog) => {
+    dialog.querySelectorAll('[data-close]').forEach((button) => {
+      button.addEventListener('click', () => closeDialog(dialog));
+    });
+    dialog.addEventListener('click', (event) => {
+      const box = dialog.getBoundingClientRect();
+      const outside = event.clientX < box.left || event.clientX > box.right || event.clientY < box.top || event.clientY > box.bottom;
+      if (outside) closeDialog(dialog);
+    });
+    dialog.addEventListener('close', () => {
+      window.scrollTo({top: savedScrollY, behavior: 'instant'});
+      opener?.focus({preventScroll: true});
+      opener = null;
+    });
+  });
+})();
+</script>
+</body>
+</html>

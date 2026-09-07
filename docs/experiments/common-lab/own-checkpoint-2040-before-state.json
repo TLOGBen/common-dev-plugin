@@ -1,0 +1,174 @@
+{
+  "schema": "common-lab-campaign/1",
+  "objective": "Strengthen experimental Common, Baransu and Estimate skills through observed failures, verified revisions, human-readable in-work outcomes and actual Astra-lead harness comparisons for the next field trial.",
+  "scope": "Task-owned experimental source, fresh versioned exports, isolated fixtures and local evidence only; preserve stable packages, existing installations, protected catalogs and sibling worktrees; continue until 2026-09-07T03:00:00+08:00.",
+  "criteria": {
+    "C1": {
+      "text": "Ten Common Lab skills exported and installed in a temporary Codex home with resource closure and original stable packages preserved.",
+      "result": "met",
+      "evidence": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+        "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d"
+      },
+      "note": "Common Lab 0.1.8 十技能導出 closure、暫存安裝逐位元與包內 21+12+16 測試已核對；全域 App 不宣稱更新。"
+    },
+    "C2": {
+      "text": "Observed Common behavior defects have fixed-fixture and held-out regression evidence; uncertainty and rubric defects remain explicit.",
+      "result": "unmet",
+      "evidence": null,
+      "note": ""
+    },
+    "C3": {
+      "text": "Wait What, Wayfinder and Strategic Advance present faithful status, choices and next actions; durable map retains settled decisions; reader-proxy limits are explicit.",
+      "result": "unmet",
+      "evidence": null,
+      "note": ""
+    },
+    "C4": {
+      "text": "Four Baransu Lab skills exported and tested against authorization, stale-premise and acceptance-gap counterexamples without impersonating stable seals.",
+      "result": "unmet",
+      "evidence": null,
+      "note": ""
+    },
+    "C5": {
+      "text": "Actual local execution exercises implementation-versus-goal ownership and captures independently inspected artifacts and acceptance results.",
+      "result": "met",
+      "evidence": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+        "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d"
+      },
+      "note": "真 Astra 派 Luna 實作後回來驗收實際接受端，一般服務成果完成、premium 人的決定保留；詳 checkpoint 的獨立 oracle 與 raw 審查。"
+    },
+    "C6": {
+      "text": "Per-run time and actual available token usage are recorded without invented total workflow costs, and final convergence occurs at the user deadline.",
+      "result": "unmet",
+      "evidence": null,
+      "note": ""
+    },
+    "C7": {
+      "text": "Estimate Lab has an independently installable experiment with observed approval-versus-delivery, truthful estimation, scope-change validity, and human-readable handoff regression evidence; original business cases remain untouched.",
+      "result": "met",
+      "evidence": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+        "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d"
+      },
+      "note": "Estimate 0.1.3 獨立安裝、64+5 回歸、真預覽產物與鍵盤操作、責任/選案核准保護已核對；既有案件未動，非完整商務驗收。"
+    },
+    "C8": {
+      "text": "Astra as lead is actually tested with bounded cheaper-model execution and harness comparisons; findings distinguish strengthening, degradation, partial retention, replacement and uncertainty, with observable causes and MOE rather than invented model internals.",
+      "result": "met",
+      "evidence": {
+        "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+        "sha256": "aea02dff5b4bcad6bbea5227adacdaa80e87ebd16e96f2a39259b2db4dd1e85d"
+      },
+      "note": "已實測 Astra 主手及便宜實作的原版/Lab/無額外技能與窄控制；按機制記保留、刪減、替代、未定及可觀測根因，不猜模型內部 MoE。"
+    }
+  },
+  "focus": {
+    "criterion": "C4",
+    "move": "檢驗現有 verifier 能否同時拒絕錯誤產品與放過合法替代實作；依真缺口決定是否修改技能。",
+    "expect": "四次 fresh review 有原始證據、保留正確排序契約，區分產品缺陷/測試誤擋/未知，沒有為增加finding而補規則。"
+  },
+  "operations": {},
+  "status": "active",
+  "revision": 13,
+  "events": [
+    {
+      "at": "2026-09-06T03:10:58.101727+00:00",
+      "action": "init"
+    },
+    {
+      "at": "2026-09-06T03:11:28.093472+00:00",
+      "action": "focus",
+      "criterion": "C3",
+      "move": "重現 Wayfinder 已決定資訊掉落，測三項 skill 的人類可理解呈現，依反例修訂技能。",
+      "expect": "保留固定情境與實際渲染證據；新版本呈現能讓讀者辨識現況、剩餘缺口、下一步與需人事項。"
+    },
+    {
+      "at": "2026-09-06T04:04:20.929161+00:00",
+      "action": "record",
+      "criterion": "C1",
+      "result": "met",
+      "evidence": "docs/experiments/install-verification-20260906-a/result.json",
+      "note": "Common Lab 0.1.2 的十個技能已完成獨立導出與內容closure；暫存安裝後與選定package逐檔相同，正式分發檔案diff空。這不代表使用者全域插件已升級。"
+    },
+    {
+      "at": "2026-09-06T04:04:21.037120+00:00",
+      "action": "focus",
+      "criterion": "C5",
+      "move": "核對四次真實本地執行的產物，測人離席後決策同步與目標擁有者驗收。",
+      "expect": "讀取實際map票券與新HTML、驗收文件和raw trace，區分本地任務完成、原目標未達與需要人的下一步。"
+    },
+    {
+      "at": "2026-09-06T04:56:13.406361+00:00",
+      "action": "record",
+      "criterion": "C5",
+      "result": "met",
+      "evidence": "docs/experiments/common-lab/runs/astra-execution-012/lead-acceptance.json",
+      "note": "主線已閱讀四次實際本地產物與trace，兩版均達成固定查核/交接任務、拒收假綠燈、零越權檔案變更；不是完整campaign或真實業務成功。"
+    },
+    {
+      "at": "2026-09-06T04:56:13.518129+00:00",
+      "action": "focus",
+      "criterion": "C3",
+      "move": "修正實際交接畫面的前置就緒與執行授權混淆，驗證0.1.3；並接續新增Estimate的核准/交付分離。",
+      "expect": "更新後HTML第一層不把依賴就緒當授權或產品完成，未知狀態failclosed；Estimate保留真PM核准與實際產物交付界線。"
+    },
+    {
+      "at": "2026-09-06T09:55:37.491125+00:00",
+      "action": "extend",
+      "criterion": [
+        "C7=Estimate Lab has an independently installable experiment with observed approval-versus-delivery, truthful estimation, scope-change validity, and human-readable handoff regression evidence; original business cases remain untouched.",
+        "C8=Astra as lead is actually tested with bounded cheaper-model execution and harness comparisons; findings distinguish strengthening, degradation, partial retention, replacement and uncertainty, with observable causes and MOE rather than invented model internals."
+      ],
+      "reason": "User explicitly added Estimate skill improvements and Astra-lead harness experiments after this campaign was initialized; preserve all earlier outcomes, authority boundaries and the 2026-09-07 03:00 Asia/Taipei deadline.",
+      "objective": "Strengthen experimental Common, Baransu and Estimate skills through observed failures, verified revisions, human-readable in-work outcomes and actual Astra-lead harness comparisons for the next field trial."
+    },
+    {
+      "at": "2026-09-06T10:35:54.549150+00:00",
+      "action": "focus",
+      "criterion": "C8",
+      "move": "完成原版與Lab決策後接續試驗，核對實際作用與人接手，再依機制採用或拒收修改。",
+      "expect": "區分必要等待與重問、未知作用與已核准決定；完成可追溯的Astra主手MOE判斷，保留原件及未測限制。"
+    },
+    {
+      "at": "2026-09-06T11:50:27.730991+00:00",
+      "action": "record",
+      "criterion": "C1",
+      "result": "met",
+      "evidence": "docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "note": "Common Lab 0.1.8 十技能導出 closure、暫存安裝逐位元與包內 21+12+16 測試已核對；全域 App 不宣稱更新。"
+    },
+    {
+      "at": "2026-09-06T11:50:27.863206+00:00",
+      "action": "record",
+      "criterion": "C5",
+      "result": "met",
+      "evidence": "docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "note": "真 Astra 派 Luna 實作後回來驗收實際接受端，一般服務成果完成、premium 人的決定保留；詳 checkpoint 的獨立 oracle 與 raw 審查。"
+    },
+    {
+      "at": "2026-09-06T11:50:27.996908+00:00",
+      "action": "record",
+      "criterion": "C7",
+      "result": "met",
+      "evidence": "docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "note": "Estimate 0.1.3 獨立安裝、64+5 回歸、真預覽產物與鍵盤操作、責任/選案核准保護已核對；既有案件未動，非完整商務驗收。"
+    },
+    {
+      "at": "2026-09-06T11:50:28.127285+00:00",
+      "action": "record",
+      "criterion": "C8",
+      "result": "met",
+      "evidence": "docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+      "note": "已實測 Astra 主手及便宜實作的原版/Lab/無額外技能與窄控制；按機制記保留、刪減、替代、未定及可觀測根因，不猜模型內部 MoE。"
+    },
+    {
+      "at": "2026-09-06T11:50:28.248077+00:00",
+      "action": "focus",
+      "criterion": "C4",
+      "move": "檢驗現有 verifier 能否同時拒絕錯誤產品與放過合法替代實作；依真缺口決定是否修改技能。",
+      "expect": "四次 fresh review 有原始證據、保留正確排序契約，區分產品缺陷/測試誤擋/未知，沒有為增加finding而補規則。"
+    }
+  ]
+}

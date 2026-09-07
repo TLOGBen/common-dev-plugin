@@ -1,0 +1,252 @@
+{
+  "kind": "derived_usage_reconciliation_not_raw_rewrite",
+  "episode_id": "01-count-label-none",
+  "original_summary_known_total": 170000,
+  "original_summary_unknown_calls": 1,
+  "reason": "The exact CLI 0.153.0 session restarts total_token_usage in each observed task interval; session after-minus-before across resume is not usage.",
+  "session_path": "\\\\wsl.localhost\\Ubuntu\\home\\vakarve\\.codex\\sessions\\2026\\09\\06\\rollout-2026-09-06T15-58-47-01a075ba-205c-7271-a159-4c91aaf5d91d.jsonl",
+  "session_sha256": "88e2f1e0d39a0230390b3972e28911c9f644d6b2378b7a1f086c0d2f0da8495c",
+  "observations": [
+    {
+      "line": 1,
+      "type": "session_meta",
+      "id": "01a075ba-205c-7271-a159-4c91aaf5d91d",
+      "cli_version": "0.153.0"
+    },
+    {
+      "line": 2,
+      "timestamp": "2026-09-06T07:58:47.540Z",
+      "type": "task_started",
+      "turn_id": "01a075ba-20d6-74f3-a609-d032e69b299d"
+    },
+    {
+      "line": 8,
+      "timestamp": "2026-09-06T07:58:49.593Z",
+      "type": "turn_context",
+      "turn_id": "01a075ba-20d6-74f3-a609-d032e69b299d",
+      "model": "gpt-6-astra",
+      "effort": "high"
+    },
+    {
+      "line": 17,
+      "timestamp": "2026-09-06T07:58:54.684Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 16864,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 111,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 16975
+        },
+        "last_token_usage": {
+          "input_tokens": 16864,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 111,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 16975
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 22,
+      "timestamp": "2026-09-06T07:58:57.450Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 33928,
+          "cached_input_tokens": 16640,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 148,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 34076
+        },
+        "last_token_usage": {
+          "input_tokens": 17064,
+          "cached_input_tokens": 16640,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 37,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 17101
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 28,
+      "timestamp": "2026-09-06T07:59:07.760Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 51200,
+          "cached_input_tokens": 33536,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 429,
+          "reasoning_output_tokens": 15,
+          "total_tokens": 51629
+        },
+        "last_token_usage": {
+          "input_tokens": 17272,
+          "cached_input_tokens": 16896,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 281,
+          "reasoning_output_tokens": 15,
+          "total_tokens": 17553
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 29,
+      "timestamp": "2026-09-06T07:59:07.769Z",
+      "type": "task_complete",
+      "turn_id": "01a075ba-20d6-74f3-a609-d032e69b299d"
+    },
+    {
+      "line": 31,
+      "timestamp": "2026-09-06T08:00:06.219Z",
+      "type": "task_started",
+      "turn_id": "01a075bb-543e-7872-8a5d-911668617999"
+    },
+    {
+      "line": 32,
+      "timestamp": "2026-09-06T08:00:07.990Z",
+      "type": "turn_context",
+      "turn_id": "01a075bb-543e-7872-8a5d-911668617999",
+      "model": "gpt-6-astra",
+      "effort": "high"
+    },
+    {
+      "line": 42,
+      "timestamp": "2026-09-06T08:00:14.684Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 18413,
+          "cached_input_tokens": 17152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 132,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 18545
+        },
+        "last_token_usage": {
+          "input_tokens": 18413,
+          "cached_input_tokens": 17152,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 132,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 18545
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 49,
+      "timestamp": "2026-09-06T08:00:24.199Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 37535,
+          "cached_input_tokens": 35328,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 321,
+          "reasoning_output_tokens": 44,
+          "total_tokens": 37856
+        },
+        "last_token_usage": {
+          "input_tokens": 19122,
+          "cached_input_tokens": 18176,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 189,
+          "reasoning_output_tokens": 44,
+          "total_tokens": 19311
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 53,
+      "timestamp": "2026-09-06T08:00:33.333Z",
+      "type": "token_count",
+      "info": {
+        "total_token_usage": {
+          "input_tokens": 56970,
+          "cached_input_tokens": 54272,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 500,
+          "reasoning_output_tokens": 44,
+          "total_tokens": 57470
+        },
+        "last_token_usage": {
+          "input_tokens": 19435,
+          "cached_input_tokens": 18944,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 179,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 19614
+        },
+        "model_context_window": 258400
+      }
+    },
+    {
+      "line": 54,
+      "timestamp": "2026-09-06T08:00:33.361Z",
+      "type": "task_complete",
+      "turn_id": "01a075bb-543e-7872-8a5d-911668617999"
+    }
+  ],
+  "raw_cli_usage": [
+    {
+      "number": 1,
+      "role": "lead",
+      "usage": {
+        "input_tokens": 51200,
+        "cached_input_tokens": 33536,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 429,
+        "reasoning_output_tokens": 15
+      },
+      "result_file": "/tmp/astra-lead-screen-20260906-b/runs/01-count-label-none/calls/001-lead/result.json"
+    },
+    {
+      "number": 2,
+      "role": "implementation",
+      "usage": {
+        "input_tokens": 116028,
+        "cached_input_tokens": 101376,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 2343,
+        "reasoning_output_tokens": 1178
+      },
+      "result_file": "/tmp/astra-lead-screen-20260906-b/runs/01-count-label-none/calls/002-implementation/result.json"
+    },
+    {
+      "number": 3,
+      "role": "lead",
+      "usage": {
+        "input_tokens": 56970,
+        "cached_input_tokens": 54272,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 500,
+        "reasoning_output_tokens": 44
+      },
+      "result_file": "/tmp/astra-lead-screen-20260906-b/runs/01-count-label-none/calls/003-lead/result.json"
+    }
+  ],
+  "normalized": {
+    "input_tokens": 224198,
+    "cached_input_tokens": 189184,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 3272,
+    "reasoning_output_tokens": 1237,
+    "total_tokens": 227470
+  },
+  "model_verified": {
+    "lead": "gpt-6-astra/high from exact turn_context",
+    "worker": "gpt-5.6-luna/high explicit CLI only"
+  },
+  "scope": "These three invocations only; not invoice, full campaign, or generic telemetry behavior."
+}

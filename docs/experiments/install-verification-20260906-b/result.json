@@ -1,0 +1,234 @@
+{
+  "status": "PASS",
+  "started_utc": "2026-09-06T05:21:12.482609+00:00",
+  "preflight": {
+    "verdict": "TARGET_MATCH",
+    "temporary_root": "/tmp/lab-install-013-011-b",
+    "report_dir": "/home/vakarve/projects/common-dev-plugin/docs/experiments/install-verification-20260906-b",
+    "sources": {
+      "common-lab": {
+        ".agents/plugins/marketplace.json": "e306a4d9c08085ba2bb201e9299778692cf10cb9c361fb7f7238d9122b02bdba",
+        "plugins/common-lab/.codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+        "plugins/common-lab/.codex-plugin/plugin.json": "01309165e8cda69bc76d6e47f804e9239eb0754bb636d1204c25035ca81a520a",
+        "plugins/common-lab/skills/lab-better-prompts/SKILL.md": "1ff32e009bd4a70948f00a26d30700e3c43c16ca6d06d915856ccc643e72c021",
+        "plugins/common-lab/skills/lab-define-goal/SKILL.md": "718ad4a12f67ab0d05a40c056c566bb26321597e9d4b34cfff43203a715e70dd",
+        "plugins/common-lab/skills/lab-delegate/SKILL.md": "852760ddf1de90bffb2d869880739c5a8cda656d53110355ae1acd8700d3a1f3",
+        "plugins/common-lab/skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+        "plugins/common-lab/skills/lab-domain-modeling/SKILL.md": "2b91adc1ebcac708716e781f61a9d26043e4c860f15b6d7ad0eb657eaf9521fc",
+        "plugins/common-lab/skills/lab-grilling/SKILL.md": "182020d2197261ede6d0b360179eea8c08b2b7d81c7ca1096c50c6a337aeba58",
+        "plugins/common-lab/skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+        "plugins/common-lab/skills/lab-research/SKILL.md": "9e394d73ee7269a786e3133056dc2618cef7c13a523e50b9dc96f978d11c5a55",
+        "plugins/common-lab/skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+        "plugins/common-lab/skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+        "plugins/common-lab/skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+        "plugins/common-lab/skills/lab-wait-what/SKILL.md": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+        "plugins/common-lab/skills/lab-wait-what/agents/openai.yaml": "600b5ef50420d9a03475ce4a9466fdc8bd7c35f43503df31a44a272e6330a21a",
+        "plugins/common-lab/skills/lab-wayfinder/SKILL.md": "d2223adfa131b21d2f37e3ae1214c93237158044d4ff2c9ec31b1811eb9438ad",
+        "plugins/common-lab/skills/lab-wayfinder/assets/map-template.html": "64ccd6dd1f8639c9324a783095ca2c8ad8d6d020fd818e0fe752621dcc4ff76e",
+        "plugins/common-lab/skills/lab-wayfinder/references/map-format.md": "37e22bd63d0f0f113aa5234df736bca8b69062597448a51bc998f819efb25346",
+        "plugins/common-lab/skills/lab-wayfinder/scripts/render_map.py": "3ee0ee5f6f7916db546400ffd2cffde7798f77d7dcbb36c3f13e1597ea6f2d6e"
+      },
+      "estimate-lab": {
+        ".agents/plugins/marketplace.json": "615d94ce66d82324ff37991203dc9be8019fe9328b12d56a1f71a7c3d725c68d",
+        "plugins/estimate-lab/.codex-plugin/plugin.json": "5d363c938986c2e35b597777e6bb50b39aae55622ee35cbb1f04cbcb6c74f71d",
+        "plugins/estimate-lab/skills/lab-estimate/SKILL.md": "6e3942441383659bd1ea3fc9f541e255d8f4196a497dac62f8a17309e200d6e6",
+        "plugins/estimate-lab/skills/lab-estimate/agents/openai.yaml": "d6055f47b53e9fbe003b10682a9bd5f75902b7773639cbbe5f4de81ddf15bf54",
+        "plugins/estimate-lab/skills/lab-estimate/assets/assessment-report-template.html": "02c3f38ced1ff1cad8d12b132b872352d46255fa6492964d72867213cfd6617b",
+        "plugins/estimate-lab/skills/lab-estimate/references/case-state.md": "0e50a8546eb8f610dff6ea865360597244d80d6d6d753f9e30912d101adeb02b",
+        "plugins/estimate-lab/skills/lab-estimate/references/deliverables.md": "04a654b119c378bc30fcbade622c46cb32dc96aea28a6d93875476bb0d656eb5",
+        "plugins/estimate-lab/skills/lab-estimate/references/dependency-behavior.md": "fd798be92122e1ae2fbee1489c4344af2aa8fdf7565b875b853b43ab7b2d327a",
+        "plugins/estimate-lab/skills/lab-estimate/references/discovery-guide.md": "0031c9231af858fe8e1eb3f939509a6fc914456a352a11754d52feca61644909",
+        "plugins/estimate-lab/skills/lab-estimate/references/estimation-guide.md": "7d1e238268adc41efe38b009c064c4c1d1169e6db5bae7f404a869ea9564c890",
+        "plugins/estimate-lab/skills/lab-estimate/references/evidence-and-success-chain.md": "fcb3248ade86852a27fa0f55c32ca84507cce5de2e7d7e5f9936ec1e50f43705",
+        "plugins/estimate-lab/skills/lab-estimate/references/inventory-sidekick-brief.md": "ce6e83d8fcc200cf47e220d2c97b4a3f20fa952768b295d88df248cd54d9993f",
+        "plugins/estimate-lab/skills/lab-estimate/references/pm-decision-pauses.md": "889d96d961bfab42310b11a070a96c847aa21db450c28abccc34da2a5db67f65",
+        "plugins/estimate-lab/skills/lab-estimate/references/pm-report-design.md": "b186183417d47395c81370bc43f54aa8b0efdf0c78e557c994bb3a6f66a21e73",
+        "plugins/estimate-lab/skills/lab-estimate/references/scenario-guide.md": "9bb31fb8adbfd5c06d4e5d98ac527bb8460cab226426b74af07860b6c1e8b749",
+        "plugins/estimate-lab/skills/lab-estimate/requirements.lock": "e3cb5e7d0c47f4f966581e80bb8d4429494827e14bc6bd0057a81a66423f4c7b",
+        "plugins/estimate-lab/skills/lab-estimate/scripts/case_state.py": "cbbc14d98f40d3cecb436ab61b8d9e53eaa9506438c0f95e4b02b9d805802ca3",
+        "plugins/estimate-lab/skills/lab-estimate/scripts/generate_outputs.py": "ce278de5cf0634cb2935027f446d70c82d4b70a86a6dbb8292303caa5ef583a7",
+        "plugins/estimate-lab/skills/lab-estimate/tests/helpers.py": "27a192948d20813b76096ee616a926cdd237d93ba24e5b50317b137f949b52eb",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_case_state.py": "7e2fbd1b6c7fc4dcca5806c9872819ae5400f5d8b656890c0ea57ae873ca6450",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_gate_handoff.py": "a605683e37ca58e664e111fbdf8e97823513b6339a09b48e60016ba14c62e34c",
+        "plugins/estimate-lab/skills/lab-estimate/tests/test_outputs.py": "13d4559473290215da57b0f3b14e908fe8769cdbd36777a7a5b4e905be34d444"
+      }
+    },
+    "existing_destination_items": 0,
+    "scope": "Fresh child homes and reproducible local test fixtures only; global config and stable packages untouched.",
+    "recovery": "All install homes and receipts retained. Test-owned temporary fixtures can be regenerated from the frozen test source."
+  },
+  "steps": [
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"marketplaceName\": \"common-lab\",\n  \"installedRoot\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.065
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--available",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"common-lab@common-lab\",\n      \"name\": \"common-lab\",\n      \"marketplaceName\": \"common-lab\",\n      \"version\": \"0.1.3\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.059
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "common-lab@common-lab",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"pluginId\": \"common-lab@common-lab\",\n  \"name\": \"common-lab\",\n  \"marketplaceName\": \"common-lab\",\n  \"version\": \"0.1.3\",\n  \"installedPath\": \"/tmp/lab-install-013-011-b/common-lab/plugins/cache/common-lab/common-lab/0.1.3\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.062
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"common-lab@common-lab\",\n      \"name\": \"common-lab\",\n      \"marketplaceName\": \"common-lab\",\n      \"version\": \"0.1.3\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.05
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "marketplace",
+        "add",
+        "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"marketplaceName\": \"estimate-lab\",\n  \"installedRoot\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1\",\n  \"alreadyAdded\": false\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.053
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--available",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [],\n  \"available\": [\n    {\n      \"pluginId\": \"estimate-lab@estimate-lab\",\n      \"name\": \"estimate-lab\",\n      \"marketplaceName\": \"estimate-lab\",\n      \"version\": \"0.1.1\",\n      \"installed\": false,\n      \"enabled\": false,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ]\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.049
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "add",
+        "estimate-lab@estimate-lab",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"pluginId\": \"estimate-lab@estimate-lab\",\n  \"name\": \"estimate-lab\",\n  \"marketplaceName\": \"estimate-lab\",\n  \"version\": \"0.1.1\",\n  \"installedPath\": \"/tmp/lab-install-013-011-b/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.1.1\",\n  \"authPolicy\": \"ON_INSTALL\"\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.056
+    },
+    {
+      "command": [
+        "codex",
+        "plugin",
+        "list",
+        "--json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"installed\": [\n    {\n      \"pluginId\": \"estimate-lab@estimate-lab\",\n      \"name\": \"estimate-lab\",\n      \"marketplaceName\": \"estimate-lab\",\n      \"version\": \"0.1.1\",\n      \"installed\": true,\n      \"enabled\": true,\n      \"source\": {\n        \"source\": \"local\",\n        \"path\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab\"\n      },\n      \"marketplaceSource\": {\n        \"sourceType\": \"local\",\n        \"source\": \"/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1\"\n      },\n      \"installPolicy\": \"AVAILABLE\",\n      \"authPolicy\": \"ON_INSTALL\"\n    }\n  ],\n  \"available\": []\n}\n",
+      "stderr": "",
+      "elapsed_seconds": 0.047
+    },
+    {
+      "command": [
+        "python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "/tmp/lab-install-013-011-b/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.1.1/skills/lab-estimate/tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_choice_details_must_reference_visible_choice (test_case_state.CaseStateTests.test_choice_details_must_reference_visible_choice) ... ok\ntest_complete_state_is_valid_and_uses_high_external_total (test_case_state.CaseStateTests.test_complete_state_is_valid_and_uses_high_external_total) ... ok\ntest_complete_state_requires_confirmation_record_and_all_gates_done (test_case_state.CaseStateTests.test_complete_state_requires_confirmation_record_and_all_gates_done) ... ok\ntest_critical_finding_must_trace_to_evidence_and_package (test_case_state.CaseStateTests.test_critical_finding_must_trace_to_evidence_and_package) ... ok\ntest_dependency_coverage_must_name_every_decision_bearing_dependency (test_case_state.CaseStateTests.test_dependency_coverage_must_name_every_decision_bearing_dependency) ... ok\ntest_development_and_testing_split_must_reconcile_to_unit_days (test_case_state.CaseStateTests.test_development_and_testing_split_must_reconcile_to_unit_days) ... ok\ntest_development_and_testing_split_use_half_day_units (test_case_state.CaseStateTests.test_development_and_testing_split_use_half_day_units) ... ok\ntest_direct_touch_catalog_blocks_gate_five_when_claimed_count_does_not_match (test_case_state.CaseStateTests.test_direct_touch_catalog_blocks_gate_five_when_claimed_count_does_not_match) ... ok\ntest_draft_can_be_saved_while_readiness_gaps_are_warnings (test_case_state.CaseStateTests.test_draft_can_be_saved_while_readiness_gaps_are_warnings) ... ok\ntest_explicit_pricing_units_drive_totals_instead_of_kind_guessing (test_case_state.CaseStateTests.test_explicit_pricing_units_drive_totals_instead_of_kind_guessing) ... ok\ntest_external_summary_validation_distinguishes_allow_warn_and_block (test_case_state.CaseStateTests.test_external_summary_validation_distinguishes_allow_warn_and_block) ... ok\ntest_formal_state_requires_gate_two_outcome_direction_decision (test_case_state.CaseStateTests.test_formal_state_requires_gate_two_outcome_direction_decision) ... ok\ntest_formal_state_requires_method_card_and_client_package (test_case_state.CaseStateTests.test_formal_state_requires_method_card_and_client_package) ... ok\ntest_formal_state_requires_pm_drilldown_and_estimation_review (test_case_state.CaseStateTests.test_formal_state_requires_pm_drilldown_and_estimation_review) ... ok\ntest_formal_state_requires_pm_readable_work_and_consistent_gates (test_case_state.CaseStateTests.test_formal_state_requires_pm_readable_work_and_consistent_gates) ... ok\ntest_formal_state_requires_referenced_unique_canonical_catalogs (test_case_state.CaseStateTests.test_formal_state_requires_referenced_unique_canonical_catalogs) ... ok\ntest_formal_state_requires_selected_scenario_and_converged_chain (test_case_state.CaseStateTests.test_formal_state_requires_selected_scenario_and_converged_chain) ... ok\ntest_formal_upgrade_state_requires_dependency_behavior_evidence (test_case_state.CaseStateTests.test_formal_upgrade_state_requires_dependency_behavior_evidence) ... ok\ntest_generated_catalog_requires_one_reproducible_generation_contract (test_case_state.CaseStateTests.test_generated_catalog_requires_one_reproducible_generation_contract) ... ok\ntest_half_day_rates_are_enforced (test_case_state.CaseStateTests.test_half_day_rates_are_enforced) ... ok\ntest_non_querydsl_codegen_dependency_uses_the_same_generic_guard (test_case_state.CaseStateTests.test_non_querydsl_codegen_dependency_uses_the_same_generic_guard) ... ok\ntest_open_important_pm_decision_blocks_formal_estimate (test_case_state.CaseStateTests.test_open_important_pm_decision_blocks_formal_estimate) ... ok\ntest_pricing_units_cannot_exceed_items_needing_change (test_case_state.CaseStateTests.test_pricing_units_cannot_exceed_items_needing_change) ... ok\ntest_quantity_conservation_and_unique_coverage_are_enforced (test_case_state.CaseStateTests.test_quantity_conservation_and_unique_coverage_are_enforced) ... ok\ntest_querydsl_like_dependency_requires_supported_selected_target (test_case_state.CaseStateTests.test_querydsl_like_dependency_requires_supported_selected_target) ... ok\ntest_record_answer_sets_selected_scenario_and_records_provenance (test_case_state.CaseStateTests.test_record_answer_sets_selected_scenario_and_records_provenance) ... ok\ntest_revision_conflict_preserves_last_good (test_case_state.CaseStateTests.test_revision_conflict_preserves_last_good) ... ok\ntest_scope_delta_count_must_match_the_named_target_list (test_case_state.CaseStateTests.test_scope_delta_count_must_match_the_named_target_list) ... ok\ntest_selected_scenario_requires_explicit_pm_decision_record (test_case_state.CaseStateTests.test_selected_scenario_requires_explicit_pm_decision_record) ... ok\ntest_technical_fog_blocks_readiness_without_interrupting_pm (test_case_state.CaseStateTests.test_technical_fog_blocks_readiness_without_interrupting_pm) ... ok\ntest_upgrade_near_historical_build_requires_rebuild_outcome_explanation (test_case_state.CaseStateTests.test_upgrade_near_historical_build_requires_rebuild_outcome_explanation) ... ok\ntest_upstream_maintainer_and_internal_owner_are_distinct_required_facts (test_case_state.CaseStateTests.test_upstream_maintainer_and_internal_owner_are_distinct_required_facts) ... ok\ntest_acceptance_is_atomic_but_is_not_delivery (test_gate_handoff.GateHandoffTests.test_acceptance_is_atomic_but_is_not_delivery) ... ok\ntest_approved_state_keeps_formal_readiness_and_gate_six_open (test_gate_handoff.GateHandoffTests.test_approved_state_keeps_formal_readiness_and_gate_six_open) ... ok\ntest_explicit_revision_request_returns_to_mapping_without_selecting_a_new_route (test_gate_handoff.GateHandoffTests.test_explicit_revision_request_returns_to_mapping_without_selecting_a_new_route) ... ok\ntest_missing_effects_fail_closed_then_explicit_upgrade_allows_the_known_answer (test_gate_handoff.GateHandoffTests.test_missing_effects_fail_closed_then_explicit_upgrade_allows_the_known_answer) ... ok\ntest_missing_false_and_string_human_flags_cannot_accept (test_gate_handoff.GateHandoffTests.test_missing_false_and_string_human_flags_cannot_accept) ... ok\ntest_multiple_accept_effects_and_hidden_effects_do_not_choose_for_the_pm (test_gate_handoff.GateHandoffTests.test_multiple_accept_effects_and_hidden_effects_do_not_choose_for_the_pm) ... ok\ntest_old_approval_cannot_override_a_later_request_to_revise (test_gate_handoff.GateHandoffTests.test_old_approval_cannot_override_a_later_request_to_revise) ... ok\ntest_preview_approved_and_explicit_delivery_outputs_preserve_amounts_and_revisions (test_gate_handoff.GateHandoffTests.test_preview_approved_and_explicit_delivery_outputs_preserve_amounts_and_revisions) ... ok\ntest_stale_and_retried_answers_do_not_duplicate_or_overwrite (test_gate_handoff.GateHandoffTests.test_stale_and_retried_answers_do_not_duplicate_or_overwrite) ... ok\ntest_two_simultaneous_answers_have_only_one_successful_commit (test_gate_handoff.GateHandoffTests.test_two_simultaneous_answers_have_only_one_successful_commit) ... ok\ntest_unknown_blank_and_other_answers_preserve_last_good (test_gate_handoff.GateHandoffTests.test_unknown_blank_and_other_answers_preserve_last_good) ... ok\ntest_csv_markdown_and_html_are_generated_without_office (test_outputs.OutputTests.test_csv_markdown_and_html_are_generated_without_office) ... ok\ntest_dependency_assumptions_are_projected_under_the_pm_risk_section (test_outputs.OutputTests.test_dependency_assumptions_are_projected_under_the_pm_risk_section) ... ok\ntest_external_csv_is_customer_facing_five_column_high_estimate (test_outputs.OutputTests.test_external_csv_is_customer_facing_five_column_high_estimate) ... ok\ntest_html_uses_the_bundled_report_template (test_outputs.OutputTests.test_html_uses_the_bundled_report_template) ... ok\ntest_internal_csv_keeps_pm_drilldown_fields (test_outputs.OutputTests.test_internal_csv_keeps_pm_drilldown_fields) ... ok\ntest_internal_csv_keeps_the_auditable_effort_split (test_outputs.OutputTests.test_internal_csv_keeps_the_auditable_effort_split) ... ok\ntest_only_explanatory_visuals_are_rendered_and_are_accessible (test_outputs.OutputTests.test_only_explanatory_visuals_are_rendered_and_are_accessible) ... ok\ntest_package_rows_project_one_owned_dialog_with_controls_and_detail (test_outputs.OutputTests.test_package_rows_project_one_owned_dialog_with_controls_and_detail) ... ok\ntest_report_leads_with_summary_then_estimates_and_keeps_findings_contextual (test_outputs.OutputTests.test_report_leads_with_summary_then_estimates_and_keeps_findings_contextual) ... ok\ntest_report_projects_direct_generated_and_evidence_worksets_from_state (test_outputs.OutputTests.test_report_projects_direct_generated_and_evidence_worksets_from_state) ... ok\n\n----------------------------------------------------------------------\nRan 53 tests in 3.618s\n\nOK\n",
+      "elapsed_seconds": 3.785
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--name-only",
+        "HEAD",
+        "--",
+        "plugins/common",
+        "plugins/analysis-estimation",
+        "plugins/test-utils",
+        "plugins/linkstart",
+        "codex",
+        ".agents",
+        ".claude-plugin"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "",
+      "elapsed_seconds": 0.009
+    },
+    {
+      "command": [
+        "python3",
+        "scripts/validate_linkstart_release.py"
+      ],
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": "",
+      "elapsed_seconds": 0.544
+    }
+  ],
+  "packages": [
+    {
+      "plugin_id": "common-lab@common-lab",
+      "version": "0.1.3",
+      "cache_path": "/tmp/lab-install-013-011-b/common-lab/plugins/cache/common-lab/common-lab/0.1.3",
+      "file_count": 19,
+      "byte_equal": true
+    },
+    {
+      "plugin_id": "estimate-lab@estimate-lab",
+      "version": "0.1.1",
+      "cache_path": "/tmp/lab-install-013-011-b/estimate-lab/plugins/cache/estimate-lab/estimate-lab/0.1.1",
+      "file_count": 21,
+      "byte_equal": true
+    }
+  ],
+  "model_calls": 0,
+  "inference_tokens": 0,
+  "actual_cost_usd": null,
+  "limits": "Local installation and mechanical verification only, not active-app loading or human understanding. Main-agent usage is separate.",
+  "ended_utc": "2026-09-06T05:21:17.273451+00:00",
+  "elapsed_seconds": 4.791
+}

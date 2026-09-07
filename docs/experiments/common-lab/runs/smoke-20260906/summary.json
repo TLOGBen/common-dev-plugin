@@ -1,0 +1,106 @@
+{
+  "run_id": "smoke-20260906",
+  "kind": "smoke",
+  "started_utc": "2026-09-06T02:20:46.358401+00:00",
+  "ended_utc": "2026-09-06T02:21:15.183024+00:00",
+  "elapsed_wall_seconds": 28.826,
+  "planned_calls": 1,
+  "actual_calls": 1,
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "totals_by_arm": {
+    "A": {
+      "calls": 1,
+      "completed": 1,
+      "usage_known_calls": 1,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 28.821,
+      "known_usage": {
+        "input_tokens": 32476,
+        "cached_input_tokens": 27008,
+        "uncached_input_tokens": 5468,
+        "output_tokens": 571,
+        "total_tokens": 33047
+      }
+    },
+    "B": {
+      "calls": 0,
+      "completed": 0,
+      "usage_known_calls": 0,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 0,
+      "known_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "uncached_input_tokens": 0,
+        "output_tokens": 0,
+        "total_tokens": 0
+      }
+    }
+  },
+  "manual_review_status": "PENDING; rubric and pause categories frozen before calls",
+  "results": [
+    {
+      "case_id": "better-prompts",
+      "skill": "better-prompts",
+      "arm": "A",
+      "turn": 1,
+      "started_utc": "2026-09-06T02:20:46.361397+00:00",
+      "ended_utc": "2026-09-06T02:21:15.182241+00:00",
+      "wall_seconds": 28.821,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-6-astra",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-6-astra",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-better-prompts-p7s6spv1",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md",
+      "skill_sha256": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+      "prompt_sha256": "d952cf2760278ff44f7bc8f3d853d9d32f95c55ea9ac27e907317208cc343c41",
+      "fixture_dir": "/tmp/common-lab-ab-better-prompts-p7s6spv1",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "messages": [
+        "我會讀完指定的 better-prompts 技能，依照你的隔離本地開發情境，整理成可直接貼上的版本。\n",
+        "```text\n請完成我指定的程式修改，符合需求並自行檢查結果。工作範圍限於隔離的本地開發環境，測試 fixtures 可丟棄，且無 production 存取權限。\n\n- 先讀取與任務直接相關的程式碼及文件；只有資訊不足時才擴大查閱，不必讀完整個 repo 或製作完整架構圖。\n- 可自行進行任務範圍內、可回復的本地修改與驗證，無須逐檔或逐行詢問。避免無關重構；遇到影響需求、擴大範圍或無法安全判斷的問題時再詢問。\n- 依修改風險選擇驗證：錯字或純文字調整以差異檢查為主；邏輯修改執行相關測試；涉及跨元件行為或效能時，再執行相應的整合或效能測試。\n- 完成修改後自行檢查差異、執行必要驗證並修正發現的問題，不必停在初版等待審閱。若受阻，清楚說明原因及尚未驗證的部分，不得宣稱通過。\n- 可清理或重建本次任務的可丟棄測試 fixtures；其他資料刪除、production 部署及付費服務購買，均須事先取得我的明確同意。資料是否可丟棄不明時，先詢問。\n- 需求完成且必要檢查通過後，簡要交付修改摘要、驗證結果及任何未解決問題。\n```"
+      ],
+      "final_message": "```text\n請完成我指定的程式修改，符合需求並自行檢查結果。工作範圍限於隔離的本地開發環境，測試 fixtures 可丟棄，且無 production 存取權限。\n\n- 先讀取與任務直接相關的程式碼及文件；只有資訊不足時才擴大查閱，不必讀完整個 repo 或製作完整架構圖。\n- 可自行進行任務範圍內、可回復的本地修改與驗證，無須逐檔或逐行詢問。避免無關重構；遇到影響需求、擴大範圍或無法安全判斷的問題時再詢問。\n- 依修改風險選擇驗證：錯字或純文字調整以差異檢查為主；邏輯修改執行相關測試；涉及跨元件行為或效能時，再執行相應的整合或效能測試。\n- 完成修改後自行檢查差異、執行必要驗證並修正發現的問題，不必停在初版等待審閱。若受阻，清楚說明原因及尚未驗證的部分，不得宣稱通過。\n- 可清理或重建本次任務的可丟棄測試 fixtures；其他資料刪除、production 部署及付費服務購買，均須事先取得我的明確同意。資料是否可丟棄不明時，先詢問。\n- 需求完成且必要檢查通過後，簡要交付修改摘要、驗證結果及任何未解決問題。\n```",
+      "usage": {
+        "input_tokens": 32476,
+        "cached_input_tokens": 27008,
+        "output_tokens": 571,
+        "uncached_input_tokens": 5468,
+        "total_tokens": 33047
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md'",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    }
+  ],
+  "limits": "One fixture per skill, one tested model, no production acceptance or statistical significance."
+}

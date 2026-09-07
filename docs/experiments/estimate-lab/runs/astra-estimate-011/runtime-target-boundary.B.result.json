@@ -1,0 +1,113 @@
+{
+  "case_id": "runtime-target-boundary",
+  "arm": "B",
+  "repeat": 1,
+  "kind": "isolated_local_artifact_execution",
+  "started_utc": "2026-09-06T05:34:45.944814+00:00",
+  "ended_utc": "2026-09-06T05:35:52.968830+00:00",
+  "wall_seconds": 67.018,
+  "status": "completed",
+  "exit_code": 0,
+  "os_error": null,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "model_metadata_basis": "Exact CLI request; no fallback. Runtime JSONL may not echo resolved model.",
+  "fixture_dir": "/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y",
+  "fixture_before_sha256": {
+    "dependency-records.md": "2e2774ab7ce2328f20331c1b6df93a77927b9a3050006822a8eecbd31d3d15f0",
+    "route-probe.json": "5c13a8ecee7d8aa15fb451625f60b1076e535f3dab17b8a777d8b5312acb06d0",
+    "system-manifest.json": "14742b1b037f13e4b95c48c62f6bae51219fd65501c8b24d78cd7a0539d45890"
+  },
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate/SKILL.md",
+  "skill_sha256": "6e3942441383659bd1ea3fc9f541e255d8f4196a497dac62f8a17309e200d6e6",
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "actual_business_completion": null,
+  "actual_business_status": "NOT_EXECUTED",
+  "local_execution_acceptance": null,
+  "messages": [
+    "我會完整閱讀指定技能與附件，依合成事實整理可行路線、已確認事項、限制及待決策項目；本次僅讀取與檢查，不修改檔案或建立核准紀錄。\n",
+    "**Java 17 是唯一已確認的目標；附件支持保留既有框架與資料層作為可行候選，但不足以承諾正式部署或完整功能相容。**\n\n已完整閱讀指定技能及相關參考，實際讀取三份附件，並完成 JSON 格式、目標一致性與證據邊界檢查。沒有新增或修改檔案，也沒有建立核准紀錄。\n\n依 [system-manifest.json](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/system-manifest.json)，現況為 Java 8、AcmeMVC 4、StoreLayer 2、QueryKit 1.4，採 WAR 封裝。框架、資料層、正式部署與維護風險接受均未決定。\n\n| 評估路線 | 附件能支持的結論 | 限制與工作代價 |\n|---|---|---|\n| **保留 AcmeMVC 4／StoreLayer 2，達成 Java 17 相容** | 附件記載編譯、啟動、登入冒煙測試及代表查詢皆通過；QueryKit 1.4 有 StoreLayer 2 支援證據。 | 完整回歸、正式部署相容及長期維護支援尚未證明。後續工作重點是補足驗證、處理發現的例外及釐清維護責任；不能直接認定工作量很小。 |\n| **改採 AcmeNext 6／StoreLayer 3，並達成 Java 17 相容** | 是另一候選；依附件必須進行命名空間轉換並使用 StoreLayer 3。 | QueryKit 1.4 缺乏 StoreLayer 3 的已驗證替代或維護路徑，構成關鍵技術缺口。需先解開私有元件問題，才有依據承諾轉換與整合成果。 |\n\n第一條路線的通過結果來自 [route-probe.json](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/route-probe.json)，**是附件提供的合成結果，不是本次重新執行的建置或系統測試**。第二條路線的相依限制來自 [dependency-records.md](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/dependency-records.md) R3–R4；R5 的 AcmeNext 6 建議也不代表你已選定。缺乏證據不能解讀成已證明不相容，但也不能視為已可落地。\n\n**建議優先深化「保留既有框架與資料層」的相容評估**，條件是你的成果需求可以聚焦 Java 17，且願意在釐清維護責任後再判斷是否接受。若你要求明確的長期支援保障，附件還不足以支持任一路線滿足該要求。兩案均未具備同口徑估算基礎，因此不提供人天或價格排序。\n\n接下來需要你決定的是：\n\n- **先決定成果方向**：聚焦 Java 17 必要相容，或將框架與資料層現代化一併納入評估；也可以另述必須達成的成果。\n- **方向確定後再決定保障與責任**：必須保留哪些業務行為、回歸與驗收深度、正式部署環境及施工責任，以及可接受的維護風險。WAR 是現況，不等於已選定部署方案。\n\n本次附件評估已完成；尚未完成的是可承諾的升版與部署方案。選擇相容方向後，應補建置／部署設定與回歸範圍；選擇現代化方向後，應先查明 QueryKit 的替代或維護可行性。這些技術查證應由評估方完成，再交由你決定成果與責任承諾。"
+  ],
+  "final_message": "**Java 17 是唯一已確認的目標；附件支持保留既有框架與資料層作為可行候選，但不足以承諾正式部署或完整功能相容。**\n\n已完整閱讀指定技能及相關參考，實際讀取三份附件，並完成 JSON 格式、目標一致性與證據邊界檢查。沒有新增或修改檔案，也沒有建立核准紀錄。\n\n依 [system-manifest.json](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/system-manifest.json)，現況為 Java 8、AcmeMVC 4、StoreLayer 2、QueryKit 1.4，採 WAR 封裝。框架、資料層、正式部署與維護風險接受均未決定。\n\n| 評估路線 | 附件能支持的結論 | 限制與工作代價 |\n|---|---|---|\n| **保留 AcmeMVC 4／StoreLayer 2，達成 Java 17 相容** | 附件記載編譯、啟動、登入冒煙測試及代表查詢皆通過；QueryKit 1.4 有 StoreLayer 2 支援證據。 | 完整回歸、正式部署相容及長期維護支援尚未證明。後續工作重點是補足驗證、處理發現的例外及釐清維護責任；不能直接認定工作量很小。 |\n| **改採 AcmeNext 6／StoreLayer 3，並達成 Java 17 相容** | 是另一候選；依附件必須進行命名空間轉換並使用 StoreLayer 3。 | QueryKit 1.4 缺乏 StoreLayer 3 的已驗證替代或維護路徑，構成關鍵技術缺口。需先解開私有元件問題，才有依據承諾轉換與整合成果。 |\n\n第一條路線的通過結果來自 [route-probe.json](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/route-probe.json)，**是附件提供的合成結果，不是本次重新執行的建置或系統測試**。第二條路線的相依限制來自 [dependency-records.md](/tmp/common-lab-exec-runtime-target-boundary-k43hnp5y/dependency-records.md) R3–R4；R5 的 AcmeNext 6 建議也不代表你已選定。缺乏證據不能解讀成已證明不相容，但也不能視為已可落地。\n\n**建議優先深化「保留既有框架與資料層」的相容評估**，條件是你的成果需求可以聚焦 Java 17，且願意在釐清維護責任後再判斷是否接受。若你要求明確的長期支援保障，附件還不足以支持任一路線滿足該要求。兩案均未具備同口徑估算基礎，因此不提供人天或價格排序。\n\n接下來需要你決定的是：\n\n- **先決定成果方向**：聚焦 Java 17 必要相容，或將框架與資料層現代化一併納入評估；也可以另述必須達成的成果。\n- **方向確定後再決定保障與責任**：必須保留哪些業務行為、回歸與驗收深度、正式部署環境及施工責任，以及可接受的維護風險。WAR 是現況，不等於已選定部署方案。\n\n本次附件評估已完成；尚未完成的是可承諾的升版與部署方案。選擇相容方向後，應補建置／部署設定與回歸範圍；選擇現代化方向後，應先查明 QueryKit 的替代或維護可行性。這些技術查證應由評估方完成，再交由你決定成果與責任承諾。",
+  "usage": {
+    "input_tokens": 85533,
+    "cached_input_tokens": 65920,
+    "output_tokens": 1714,
+    "uncached_input_tokens": 19613,
+    "total_tokens": 87247
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"pwd; rg --files -g '\"'!.*'\"' -g 'AGENTS.md' -g '*' .\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat system-manifest.json route-probe.json dependency-records.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'LAB_SKILL_DIR=/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.1.1/plugins/estimate-lab/skills/lab-estimate\nfor resource in pm-decision-pauses.md scenario-guide.md discovery-guide.md dependency-behavior.md evidence-and-success-chain.md; do cat \"$LAB_SKILL_DIR/references/$resource\"; done'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"date '+%Y-%m-%dT%H:%M:%S%:z %Z'; TZ=Asia/Taipei date '+%Y-%m-%dT%H:%M:%S%:z %Z'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 -B - <<'PY'\nimport json\nfrom pathlib import Path\nroot = Path.cwd()\nm = json.loads((root / 'system-manifest.json').read_text())\np = json.loads((root / 'route-probe.json').read_text())\nassert m['synthetic'] is True and p['synthetic'] is True\nassert m['approvedTarget'] == {'java': 17}\nassert p['targetJava'] == m['approvedTarget']['java']\nassert p['route'] == 'retain-current-framework-and-data-layer'\nassert set(p['suppliedChecks']) == {'compile', 'applicationStart', 'loginSmoke', 'representativeQuery'}\nassert all(v == 'pass' for v in p['suppliedChecks'].values())\nassert len(m['unselectedDecisions']) == 4\nassert len(p['notEstablished']) == 4\nprint('PASS: JSON parsing, synthetic markers, Java target consistency, retained-route identity, four supplied pass claims, and unresolved-boundary counts.')\nprint('Checks read fixture claims only; no build, application, query, or deployment was executed.')\nprint('Workspace files: ' + ', '.join(sorted(x.name for x in root.iterdir())))\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true,
+  "artifact_observations": {
+    "fixture_after_sha256": {
+      "dependency-records.md": "2e2774ab7ce2328f20331c1b6df93a77927b9a3050006822a8eecbd31d3d15f0",
+      "route-probe.json": "5c13a8ecee7d8aa15fb451625f60b1076e535f3dab17b8a777d8b5312acb06d0",
+      "system-manifest.json": "14742b1b037f13e4b95c48c62f6bae51219fd65501c8b24d78cd7a0539d45890"
+    },
+    "changed_paths": [],
+    "outside_allowlist_changes": [],
+    "required_outputs_present": {},
+    "local_artifacts": {},
+    "semantic_acceptance": null,
+    "manual_review_required": true
+  },
+  "post_fixture_snapshot_error": null
+}

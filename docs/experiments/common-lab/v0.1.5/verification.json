@@ -1,0 +1,53 @@
+{
+  "status": "PASS",
+  "verified_utc": "2026-09-06T06:10:53.323215+00:00",
+  "json_files_parsed": 464,
+  "stable_layout_assertions": "PASS",
+  "commands": [
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/plugin-creator/scripts/validate_plugin.py",
+        "experiments/common-lab-v0.1.5/plugins/common-lab"
+      ],
+      "exit_code": 0,
+      "stdout": "Plugin validation passed: /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.5/plugins/common-lab\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/validate_linkstart_release.py"
+      ],
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": ""
+    }
+  ],
+  "changed_from_013": [
+    "plugins/common-lab/.codex-plugin/plugin.json",
+    "plugins/common-lab/skills/lab-grilling/SKILL.md"
+  ],
+  "source_body_preserved": true,
+  "staging_equals_output": true,
+  "unchanged_hashes": {
+    "plugins/common": "21009dffc22ba94a66b619e477a242e698b13d4fb6f45a6cf982f2d1aad14235",
+    "codex/plugins/common": "a72653d4bb1b8ffa7fccc9edd0fb2f0ae9cee89ab38e1afec767e45aea9fec1c",
+    "experiments/common-lab": "1acbad800747577fafc95fae0fa5decbd98ece5cfbb4a5b0527d2bf14557d6de",
+    "experiments/common-lab-v0.1.1": "1ddeff53a655e34595b6f8c67c7791415cdd5bcda630ec4a169f0ebf2a7c0360",
+    "experiments/common-lab-v0.1.2": "208261ba54fb57ddf1600c983d1e9b42613cad1d9b7682adb5f43afd6e5bd751",
+    "experiments/common-lab-v0.1.3": "705e53c49e4e8f132ae8e017a51dab6b21cd4a7e78c2b806864bd009e33d853c"
+  },
+  "source_sha256": "8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf",
+  "output_sha256": "20fe6c72a4808e409bf180fbe2bc6ee6adcb8b4beedeafa47f893a0fd3f44871",
+  "lead_acceptance_sha256": "063213629a1874ff2d583e431109b293516b733968b54ed6e91dace8e4599680",
+  "lead_acceptance_markdown_sha256": "1ea3bdded16f87e09e247492fcd32e60194a841e893819534d32a9cc15eb9b1a",
+  "report_sha256": "fe1cd68d68c8107d27ae9559270fb61f44712915b54e7911e46866490b57e64c",
+  "export_receipt_sha256": "14ad551a5eadf103a6c68583620ee172d16d6c22b4c5cbe7117a3a42ff38694e",
+  "install": "NOT_RUN_PER_SCOPE",
+  "assistant_tokens": null,
+  "cost_usd": null,
+  "output_files_manifest": "export-receipt.json#/output_files"
+}

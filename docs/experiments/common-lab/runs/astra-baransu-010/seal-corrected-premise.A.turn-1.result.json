@@ -1,0 +1,80 @@
+{
+  "case_id": "seal-corrected-premise",
+  "skill": "seal",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:18:13.630468+00:00",
+  "ended_utc": "2026-09-06T03:18:51.242038+00:00",
+  "wall_seconds": 37.612,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-seal-corrected-premise-cosknu8m",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/SKILL.md",
+  "skill_sha256": "4f57ba51461b7a95a3c84609c629bf57b46ddf66602a944ca86e4c1e2f8608b9",
+  "prompt_sha256": "3e018b474d3e848e1436df8f17f3fd15ffde95b55dd7c3fd276490e3c0c8c787",
+  "fixture_dir": "/tmp/common-lab-ab-seal-corrected-premise-cosknu8m",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會使用指定的 seal 技能，完整閱讀其內容，並查閱情境中的相關證據；本回合只描述擬議的回覆與下一步，不修改檔案或執行 seal。\n",
+    "證據支持將資料來源修正為 `users.contact_email`：migration 明確重新命名欄位，schema 與 `fixture-db-result.json` 也一致使用 `contact_email`。依 seal 的證據判斷規則，這項調整應判為符合，並記錄驗收前提修正；CSV 表頭仍須精確為 `name,email`。\n\n下一步擬在授權範圍內：\n\n1. 修正 `src/export.js` 的欄位讀取與 CSV 引用處理，包含逗號欄位加上雙引號、內含雙引號正確跳脫。\n2. 補上呼叫實際匯出函式的測試，精確比對 fixture 輸出：\n   ```text\n   name,email\n   \"Doe, Jane\",jane@example.invalid\n   ```\n   另驗證未登入拋出 `AUTH_REQUIRED`，以及只有 `contact_email` 的資料仍能正確匯出。\n3. 保留既有驗收紀錄，提出附帶證據的前提修正註記，再於實作階段執行測試並記錄結果。\n\n測試檔僅有註解，不能當作通過證據。本回合僅完成唯讀查閱與上述提案，未改檔、執行測試或 seal，也未部署或清理舊產物。"
+  ],
+  "final_message": "證據支持將資料來源修正為 `users.contact_email`：migration 明確重新命名欄位，schema 與 `fixture-db-result.json` 也一致使用 `contact_email`。依 seal 的證據判斷規則，這項調整應判為符合，並記錄驗收前提修正；CSV 表頭仍須精確為 `name,email`。\n\n下一步擬在授權範圍內：\n\n1. 修正 `src/export.js` 的欄位讀取與 CSV 引用處理，包含逗號欄位加上雙引號、內含雙引號正確跳脫。\n2. 補上呼叫實際匯出函式的測試，精確比對 fixture 輸出：\n   ```text\n   name,email\n   \"Doe, Jane\",jane@example.invalid\n   ```\n   另驗證未登入拋出 `AUTH_REQUIRED`，以及只有 `contact_email` 的資料仍能正確匯出。\n3. 保留既有驗收紀錄，提出附帶證據的前提修正註記，再於實作階段執行測試並記錄結果。\n\n測試檔僅有註解，不能當作通過證據。本回合僅完成唯讀查閱與上述提案，未改檔、執行測試或 seal，也未部署或清理舊產物。",
+  "usage": {
+    "input_tokens": 59387,
+    "cached_input_tokens": 43904,
+    "output_tokens": 723,
+    "uncached_input_tokens": 15483,
+    "total_tokens": 60110
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/seal/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"rg --files -g '\"'!AGENTS.md'\"' -g '\"'!node_modules'\"' -g '\"'!.git'\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat ACCEPTANCE.md SCENARIO.txt fixture-db-result.json db/migration-2.sql db/current-schema.sql src/export.js tests/export.test.js'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/_shared/contract-gate.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

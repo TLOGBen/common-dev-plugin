@@ -1,0 +1,20 @@
+{
+  "name": "estimate-lab",
+  "interface": {
+    "displayName": "Estimate Lab"
+  },
+  "plugins": [
+    {
+      "name": "estimate-lab",
+      "source": {
+        "source": "local",
+        "path": "./plugins/estimate-lab"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

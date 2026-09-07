@@ -1,0 +1,39 @@
+{
+  "kind": "prospective_local_execution_design",
+  "design_id": "execution-probes-v1",
+  "created_utc": "2026-09-06T03:50:44.558281+00:00",
+  "completed_utc": "2026-09-06T03:50:44.562174+00:00",
+  "elapsed_wall_seconds": 0.004,
+  "actual_inference_calls": 0,
+  "planned_calls": 4,
+  "archive_sha256": "9350ac077db1196ed3cff469b634448d187dbbe83354cba14fd9ece80b4a07a2",
+  "frozen_files": {
+    "harness/lab_execution_probe.py": "cdf0fe2e8377bd34f47532dd7216572d4fe9e038fcd3ea6a758e5e7a5c8613e0",
+    "harness/common_lab_ab.py": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+    "fixtures/README.md": "b02de0f54bbeaeb2db52ffdb4c083c195f221ca4004036e4b68c9e2b835d8e65",
+    "fixtures/cases.json": "38e78339a577fde94187e886ebef9b95bf2106fe97899c18e62fdffa5a6ec2f2",
+    "fixtures/strategic-owner-rejects-green/files/checker.py": "bd5d61e4ad1eb737e9be090d393561b0faaa13582fb2ed02a71b132d5423837c",
+    "fixtures/strategic-owner-rejects-green/files/data/current-artifact.json": "c87588874016940f9c86336451613dd413175da88fcb4dccca07d67f1cb345b8",
+    "fixtures/strategic-owner-rejects-green/files/data/events.csv": "ae6af643644f33992e45824928054afb71c14e2e668463c468539d097a77a852",
+    "fixtures/strategic-owner-rejects-green/files/data/old-artifact.json": "0f842c59623e8496e16dcd1408b8f10ed6b89ec3aece33d08cc22cb5c31215e3",
+    "fixtures/strategic-owner-rejects-green/files/data/semantics.md": "282c32c538fa4a41255db11659ee9d4820f17431fce39f77da22a7915c6fefbf",
+    "fixtures/strategic-owner-rejects-green/files/evidence/old-validation-receipt.json": "ec6b0c68e25eb62d087734ffb31ffb3bf40b65a167f162c65b7c2d07206b6b19",
+    "fixtures/strategic-owner-rejects-green/files/worker-handoff.json": "ccf40eb7ae01d760865fc748eb8b096dee3740559ba14a1cefacee59dec0a295",
+    "fixtures/wayfinder-answer-and-afk/files/.common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md": "6ecca8d4d7690453f04ed6da9c04eedd8258bffdc2f12a7e6f35b9b93ad2eadc",
+    "fixtures/wayfinder-answer-and-afk/files/.common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md": "65c52080c47753513d2eb37ecb52714afaafd6794d3bb6f1544c9cb134d0fda4",
+    "fixtures/wayfinder-answer-and-afk/files/.common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md": "4542e2af0c193b27809145e2d21ccf25def031d92f9b6bd2c07218c81de105b7",
+    "fixtures/wayfinder-answer-and-afk/files/.common-lab/wayfinder/privacy-rollout/map.html": "e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a",
+    "fixtures/wayfinder-answer-and-afk/files/.common-lab/wayfinder/privacy-rollout/map.md": "a92a7319bd3bfe9346893d0fd9f316fd2b5c8399db0dfcb25f1b30f6e1e05029",
+    "fixtures/wayfinder-answer-and-afk/files/evidence/export-sample.csv": "7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4",
+    "fixtures/wayfinder-answer-and-afk/files/evidence/export-schema.json": "196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4",
+    "fixtures/wayfinder-answer-and-afk/files/product/index.js": "9b0ebcc5a2cf1ae2513dd50c99792957d6ac1416eb3cba644a19c7daf0ee2806"
+  },
+  "case_ids": [
+    "wayfinder-answer-and-afk",
+    "strategic-owner-rejects-green"
+  ],
+  "skill_package_revision": "NOT_YET_BOUND; run freezes exact A/B resources",
+  "usage": null,
+  "reported_cost_usd": null,
+  "limits": "No inference or human test. Rubrics not included in child fixtures/prompts."
+}

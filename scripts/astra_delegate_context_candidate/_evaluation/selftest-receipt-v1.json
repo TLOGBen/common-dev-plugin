@@ -1,0 +1,48 @@
+{
+  "model_calls": 0,
+  "passed": false,
+  "temp_root_retained": "/tmp/astra-context-oracle-control-YYnzVg",
+  "rows": [
+    {
+      "name": "unmodified_green_smoke",
+      "workspace": "/tmp/astra-context-oracle-control-YYnzVg/unmodified_green_smoke",
+      "expected": false,
+      "observed": false,
+      "control_pass": true,
+      "exit": 1,
+      "stdout": "{\n  \"passed\": false,\n  \"checks\": [\n    {\n      \"name\": \"empty\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"zero\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n+ []\\n- [\\n-   {\\n-     estimate: 0,\\n-     owner: 'ops',\\n-     tickets: 1\\n-   }\\n- ]\\n\"\n    },\n    {\n      \"name\": \"archived_only\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"same_owner_mixed\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n  [\\n    {\\n      estimate: 4,\\n      owner: 'ops',\\n+     tickets: 1\\n-     tickets: 2\\n    }\\n  ]\\n\"\n    },\n    {\n      \"name\": \"several_owners\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n  [\\n    {\\n      estimate: 3,\\n      owner: 'a',\\n+     tickets: 1\\n-     tickets: 2\\n    },\\n    {\\n      estimate: 2,\\n      owner: 'z',\\n      tickets: 1\\n    },\\n-   {\\n-     estimate: 0,\\n-     owner: '研發, 二組',\\n-     tickets: 1\\n-   }\\n  ]\\n\"\n    }\n  ],\n  \"program_unchanged\": true,\n  \"program_sha256\": \"2ba5725f65440f2d970dc91d774573e3580c492ec1577562e3a127b6660ce689\",\n  \"model_calls\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "reference",
+      "workspace": "/tmp/astra-context-oracle-control-YYnzVg/reference",
+      "expected": true,
+      "observed": true,
+      "control_pass": true,
+      "exit": 0,
+      "stdout": "{\n  \"passed\": true,\n  \"checks\": [\n    {\n      \"name\": \"empty\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"zero\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"archived_only\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"same_owner_mixed\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"several_owners\",\n      \"passed\": true\n    }\n  ],\n  \"program_unchanged\": true,\n  \"program_sha256\": \"4b58ab3fab4bb067add8cfa5299b840ca61680e40bf5f48c42dba9e97e103686\",\n  \"model_calls\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "boolean_zero",
+      "workspace": "/tmp/astra-context-oracle-control-YYnzVg/boolean_zero",
+      "expected": false,
+      "observed": true,
+      "control_pass": false,
+      "exit": 0,
+      "stdout": "{\n  \"passed\": true,\n  \"checks\": [\n    {\n      \"name\": \"empty\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"zero\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"archived_only\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"same_owner_mixed\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"several_owners\",\n      \"passed\": true\n    }\n  ],\n  \"program_unchanged\": true,\n  \"program_sha256\": \"e31c46cc0c0c3d7fbd91e41097b3728cedfb09949af901582e4b26a2ddba5336\",\n  \"model_calls\": 0\n}\n",
+      "stderr": ""
+    },
+    {
+      "name": "constant_empty",
+      "workspace": "/tmp/astra-context-oracle-control-YYnzVg/constant_empty",
+      "expected": false,
+      "observed": false,
+      "control_pass": true,
+      "exit": 1,
+      "stdout": "{\n  \"passed\": false,\n  \"checks\": [\n    {\n      \"name\": \"empty\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"zero\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n+ []\\n- [\\n-   {\\n-     estimate: 0,\\n-     owner: 'ops',\\n-     tickets: 1\\n-   }\\n- ]\\n\"\n    },\n    {\n      \"name\": \"archived_only\",\n      \"passed\": true\n    },\n    {\n      \"name\": \"same_owner_mixed\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n+ []\\n- [\\n-   {\\n-     estimate: 4,\\n-     owner: 'ops',\\n-     tickets: 2\\n-   }\\n- ]\\n\"\n    },\n    {\n      \"name\": \"several_owners\",\n      \"passed\": false,\n      \"error\": \"Expected values to be strictly deep-equal:\\n+ actual - expected\\n\\n+ []\\n- [\\n-   {\\n-     estimate: 3,\\n-     owner: 'a',\\n-     tickets: 2\\n-   },\\n-   {\\n-     estimate: 2,\\n-     owner: 'z',\\n-     tickets: 1\\n-   },\\n-   {\\n-     estimate: 0,\\n-     owner: '研發, 二組',\\n-     tickets: 1\\n-   }\\n- ]\\n\"\n    }\n  ],\n  \"program_unchanged\": true,\n  \"program_sha256\": \"901c6feff412298922ae0f909d796a8c51d0971dd76d3781e1381224b1d3dcc2\",\n  \"model_calls\": 0\n}\n",
+      "stderr": ""
+    }
+  ],
+  "oracle_sha256": "f6b294526891e6e06f1952a0094222e6542435f09f53dea4d0536e087f445fb8"
+}

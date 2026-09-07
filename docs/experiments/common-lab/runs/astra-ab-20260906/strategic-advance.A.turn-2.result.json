@@ -1,0 +1,79 @@
+{
+  "case_id": "strategic-advance",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 2,
+  "started_utc": "2026-09-06T02:40:18.852811+00:00",
+  "ended_utc": "2026-09-06T02:41:06.513255+00:00",
+  "wall_seconds": 47.66,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "23ba3051eb995e8d5bd1674833b9242c37ec4d8a654449fe8425cfb82c0a8a59",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定的 strategic-advance 技能，再依固定證據提出模擬判斷；不會查詢下游或寫入檔案。\n",
+    "**受理與下游送達已確認；不需停下再問你，也不能再次送出。** 主線應轉為驗收證據整理，截圖修復不構成阻塞。\n\n依你提供的固定證據：\n\n- **受理成功：已證明。** DB 有 REQ-42 的成功 receipt，業務狀態為 `Accepted`。\n- **下游收到：已證明。** 下游回傳 `request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- **只送出一次：尚不能單憑上述欄位證明。** 成功回執證明成功，不直接證明不存在重複紀錄。\n- **證據留存：可提出完整方案，但不能宣稱已完成歸檔。** 本次禁止寫檔。\n\n**擬議下一步**是以已授權的下游唯讀查詢，做一次有界的重複紀錄核對，確認 REQ-42 對應的接收筆數及去重結果；若來源無法證明送出次數，就明確保留這項驗收缺口，不以重送補證據。\n\n證據包應以 `REQ-42` 為索引，保留 DB 原始成功 receipt 與 `Accepted`、下游原始回覆與 `D-42`，以及單次送出的核對結果；附來源、查詢條件及各項驗收結論。`CAPTURE_FAILED` 僅記為觀測限制，並註明你已接受 receipt 作為驗收證據。原始資料保留一份，摘要引用其識別碼與保存位置，避免只有截斷內容或結論文字。\n\n待單次送出證據齊備、證據包實際保存且可讀回核對，才能宣告整體完成。以上僅為模擬判斷與行動描述，未查詢、重送或寫檔。"
+  ],
+  "final_message": "**受理與下游送達已確認；不需停下再問你，也不能再次送出。** 主線應轉為驗收證據整理，截圖修復不構成阻塞。\n\n依你提供的固定證據：\n\n- **受理成功：已證明。** DB 有 REQ-42 的成功 receipt，業務狀態為 `Accepted`。\n- **下游收到：已證明。** 下游回傳 `request_id=REQ-42`、`delivery_status=Delivered`、`receipt_id=D-42`。\n- **只送出一次：尚不能單憑上述欄位證明。** 成功回執證明成功，不直接證明不存在重複紀錄。\n- **證據留存：可提出完整方案，但不能宣稱已完成歸檔。** 本次禁止寫檔。\n\n**擬議下一步**是以已授權的下游唯讀查詢，做一次有界的重複紀錄核對，確認 REQ-42 對應的接收筆數及去重結果；若來源無法證明送出次數，就明確保留這項驗收缺口，不以重送補證據。\n\n證據包應以 `REQ-42` 為索引，保留 DB 原始成功 receipt 與 `Accepted`、下游原始回覆與 `D-42`，以及單次送出的核對結果；附來源、查詢條件及各項驗收結論。`CAPTURE_FAILED` 僅記為觀測限制，並註明你已接受 receipt 作為驗收證據。原始資料保留一份，摘要引用其識別碼與保存位置，避免只有截斷內容或結論文字。\n\n待單次送出證據齊備、證據包實際保存且可讀回核對，才能宣告整體完成。以上僅為模擬判斷與行動描述，未查詢、重送或寫檔。",
+  "usage": {
+    "input_tokens": 107802,
+    "cached_input_tokens": 81280,
+    "output_tokens": 904,
+    "uncached_input_tokens": 26522,
+    "total_tokens": 108706
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,180p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '181,340p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '341,520p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

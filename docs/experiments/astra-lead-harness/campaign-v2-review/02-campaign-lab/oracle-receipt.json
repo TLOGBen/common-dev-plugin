@@ -1,0 +1,9 @@
+{
+  "command": "python3 -B scripts/astra_lead_campaign_candidate/_evaluation/verify.py --fixture /tmp/astra-lead-campaign-20260906-b/workspaces/02-campaign-lab --artifact artifacts/release-v3.json",
+  "exit_code": 0,
+  "stderr": "",
+  "wall_seconds": 7.015784299999475,
+  "model_calls": 0,
+  "reviewed_at_utc": "2026-09-06T09:46:29.715Z",
+  "scope": "standard authorized frontier only; overall_goal_achieved false"
+}

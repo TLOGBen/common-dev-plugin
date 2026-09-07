@@ -1,0 +1,107 @@
+{
+  "case_id": "runtime-target-boundary",
+  "arm": "A",
+  "repeat": 1,
+  "kind": "isolated_local_artifact_execution",
+  "started_utc": "2026-09-06T05:33:36.928946+00:00",
+  "ended_utc": "2026-09-06T05:34:45.910793+00:00",
+  "wall_seconds": 68.98,
+  "status": "completed",
+  "exit_code": 0,
+  "os_error": null,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/tmp/common-lab-exec-runtime-target-boundary-m5khflp_",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "model_metadata_basis": "Exact CLI request; no fallback. Runtime JSONL may not echo resolved model.",
+  "fixture_dir": "/tmp/common-lab-exec-runtime-target-boundary-m5khflp_",
+  "fixture_before_sha256": {
+    "dependency-records.md": "2e2774ab7ce2328f20331c1b6df93a77927b9a3050006822a8eecbd31d3d15f0",
+    "route-probe.json": "5c13a8ecee7d8aa15fb451625f60b1076e535f3dab17b8a777d8b5312acb06d0",
+    "system-manifest.json": "14742b1b037f13e4b95c48c62f6bae51219fd65501c8b24d78cd7a0539d45890"
+  },
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation/skills/estimate/SKILL.md",
+  "skill_sha256": "7ee44e5ba4a4523bc56c2186c78a6d62979467163a975ed536e9020e5aa58b28",
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "actual_business_completion": null,
+  "actual_business_status": "NOT_EXECUTED",
+  "local_execution_acceptance": null,
+  "messages": [
+    "我會完整閱讀指定技能與附件，整理 Java 17 的可行路線、可確認事項、限制及待決策項目；本次只做讀取與檢查，不修改檔案或建立核准紀錄。\n",
+    "**附件支持一條 Java 17 的局部可行路線：保留 AcmeMVC 4 與 StoreLayer 2。但框架、資料層、正式部署及維護風險接受均未決定，不能視為已選方案或可正式上線。**\n\n我已完整閱讀指定技能、必要參考文件與三份附件，並實際完成 JSON 解析及目標、檢查結果的一致性核對，結果通過。全部判斷依合成事實；未新增或修改檔案，也未建立核准紀錄。\n\n| 評估軸 | 附件可確認的事 | 尚未確定 |\n|---|---|---|\n| Java | 現況為 8，唯一已確認目標為 17 | 完整系統驗收是否通過 |\n| 框架 | 現況 AcmeMVC 4；保留路線有局部驗證支持 | 保留或改採 AcmeNext 6 |\n| 資料層 | 現況 StoreLayer 2；QueryKit 1.4 僅有此版本的支援證據 | 是否升至 StoreLayer 3，以及 QueryKit 如何承接 |\n| 部署 | 現況封裝為 WAR | 正式部署方案、相容性與施工責任 |\n| 維護 | 附件未建立長期支援保障 | 維護承擔者及可接受風險 |\n\n現況與決策狀態來源：[system-manifest.json](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/system-manifest.json)。\n\n**兩條路線的差異如下：**\n\n- **A：Java 17，保留既有框架與資料層。** 附件記載編譯、應用啟動、登入冒煙測試及代表性查詢均通過，足以支持繼續驗證。完整回歸、正式部署相容性、供應方長期維護支援及 PM 風險接受仍未成立。工作量主要取決於剩餘相容問題、回歸範圍及部署驗證，尚無人天依據。這四項是附件提供的結果，本次沒有重新執行。[route-probe.json](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/route-probe.json)\n- **B：Java 17，改採 AcmeNext 6 與 StoreLayer 3。** 需要命名空間轉換；關鍵阻礙是 QueryKit 1.4 沒有 StoreLayer 3 的已驗證替代或維護路徑。因此只能列為待查證候選，不能承諾可落地，也不能把缺少證據直接判定為不相容。工作量還會受到替代元件、整合修改及維護責任影響。附件中的 AcmeNext 6 建議不是 PM 決議。[dependency-records.md](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/dependency-records.md)\n\n**我的建議是優先補強 A 的驗證證據**，因為它直接對應唯一確定的 Java 17 目標，且已有局部通過結果。這項建議不代表選定保留既有元件，也不代表接受其維護風險。B 則應先釐清 QueryKit 的承接方式，再比較整體投入與保障。\n\n接下來需要你決定的是：\n\n1. **成果範圍：**以 Java 17 相容為主，或把框架與資料層更新也納入；亦可指定其他組合。\n2. **維護責任與保障：**需要哪些支援承諾、由誰負責，以及哪些風險可以接受。\n3. **正式交付與驗收：**部署環境、施工分工、回歸與驗收深度；WAR 現況不等於部署方案已定。\n\n本次本地材料評估已完成。剩餘技術查證需要實際依賴清單、QueryKit 使用與支援資料、部署條件及測試證據；取得材料後才能補足可行性判斷。方案與責任仍需由你決定，尚不足以形成正式人天或報價。"
+  ],
+  "final_message": "**附件支持一條 Java 17 的局部可行路線：保留 AcmeMVC 4 與 StoreLayer 2。但框架、資料層、正式部署及維護風險接受均未決定，不能視為已選方案或可正式上線。**\n\n我已完整閱讀指定技能、必要參考文件與三份附件，並實際完成 JSON 解析及目標、檢查結果的一致性核對，結果通過。全部判斷依合成事實；未新增或修改檔案，也未建立核准紀錄。\n\n| 評估軸 | 附件可確認的事 | 尚未確定 |\n|---|---|---|\n| Java | 現況為 8，唯一已確認目標為 17 | 完整系統驗收是否通過 |\n| 框架 | 現況 AcmeMVC 4；保留路線有局部驗證支持 | 保留或改採 AcmeNext 6 |\n| 資料層 | 現況 StoreLayer 2；QueryKit 1.4 僅有此版本的支援證據 | 是否升至 StoreLayer 3，以及 QueryKit 如何承接 |\n| 部署 | 現況封裝為 WAR | 正式部署方案、相容性與施工責任 |\n| 維護 | 附件未建立長期支援保障 | 維護承擔者及可接受風險 |\n\n現況與決策狀態來源：[system-manifest.json](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/system-manifest.json)。\n\n**兩條路線的差異如下：**\n\n- **A：Java 17，保留既有框架與資料層。** 附件記載編譯、應用啟動、登入冒煙測試及代表性查詢均通過，足以支持繼續驗證。完整回歸、正式部署相容性、供應方長期維護支援及 PM 風險接受仍未成立。工作量主要取決於剩餘相容問題、回歸範圍及部署驗證，尚無人天依據。這四項是附件提供的結果，本次沒有重新執行。[route-probe.json](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/route-probe.json)\n- **B：Java 17，改採 AcmeNext 6 與 StoreLayer 3。** 需要命名空間轉換；關鍵阻礙是 QueryKit 1.4 沒有 StoreLayer 3 的已驗證替代或維護路徑。因此只能列為待查證候選，不能承諾可落地，也不能把缺少證據直接判定為不相容。工作量還會受到替代元件、整合修改及維護責任影響。附件中的 AcmeNext 6 建議不是 PM 決議。[dependency-records.md](/tmp/common-lab-exec-runtime-target-boundary-m5khflp_/dependency-records.md)\n\n**我的建議是優先補強 A 的驗證證據**，因為它直接對應唯一確定的 Java 17 目標，且已有局部通過結果。這項建議不代表選定保留既有元件，也不代表接受其維護風險。B 則應先釐清 QueryKit 的承接方式，再比較整體投入與保障。\n\n接下來需要你決定的是：\n\n1. **成果範圍：**以 Java 17 相容為主，或把框架與資料層更新也納入；亦可指定其他組合。\n2. **維護責任與保障：**需要哪些支援承諾、由誰負責，以及哪些風險可以接受。\n3. **正式交付與驗收：**部署環境、施工分工、回歸與驗收深度；WAR 現況不等於部署方案已定。\n\n本次本地材料評估已完成。剩餘技術查證需要實際依賴清單、QueryKit 使用與支援資料、部署條件及測試證據；取得材料後才能補足可行性判斷。方案與責任仍需由你決定，尚不足以形成正式人天或報價。",
+  "usage": {
+    "input_tokens": 107387,
+    "cached_input_tokens": 85376,
+    "output_tokens": 1641,
+    "uncached_input_tokens": 22011,
+    "total_tokens": 109028
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation/skills/estimate/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"pwd; rg --files -g '\"'!/.git'\"' -g '\"'!node_modules'\"' -g '\"'!vendor'\"'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation/skills/estimate/references/dependency-behavior.md /home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation/skills/estimate/references/scenario-guide.md /home/vakarve/projects/common-dev-plugin/codex/plugins/analysis-estimation/skills/estimate/references/pm-decision-pauses.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat system-manifest.json route-probe.json dependency-records.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python -B - <<'PY'\nimport json\nfrom pathlib import Path\nm=json.loads(Path('system-manifest.json').read_text())\np=json.loads(Path('route-probe.json').read_text())\nassert m['synthetic'] is True and p['synthetic'] is True\nassert m['approvedTarget']=={'java':17}\nassert p['targetJava']==m['approvedTarget']['java']\nassert p['route']=='retain-current-framework-and-data-layer'\nassert len(p['suppliedChecks'])==4 and all(v=='pass' for v in p['suppliedChecks'].values())\nassert len(m['unselectedDecisions'])==4\nassert len(p['notEstablished'])==4\nprint('附件 JSON 解析及交叉一致性檢查通過。')\nprint('已確認：Java 17 目標一致；四項附件檢查為 pass；四項決策未選；四項保障未成立。')\nprint('這是附件資料檢查，並非重新執行編譯、啟動或功能測試。')\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true,
+  "artifact_observations": {
+    "fixture_after_sha256": {
+      "dependency-records.md": "2e2774ab7ce2328f20331c1b6df93a77927b9a3050006822a8eecbd31d3d15f0",
+      "route-probe.json": "5c13a8ecee7d8aa15fb451625f60b1076e535f3dab17b8a777d8b5312acb06d0",
+      "system-manifest.json": "14742b1b037f13e4b95c48c62f6bae51219fd65501c8b24d78cd7a0539d45890"
+    },
+    "changed_paths": [],
+    "outside_allowlist_changes": [],
+    "required_outputs_present": {},
+    "local_artifacts": {},
+    "semantic_acceptance": null,
+    "manual_review_required": true
+  },
+  "post_fixture_snapshot_error": null
+}

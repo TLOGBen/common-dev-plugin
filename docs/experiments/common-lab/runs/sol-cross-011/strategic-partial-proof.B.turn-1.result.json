@@ -1,0 +1,90 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:30:44.880750+00:00",
+  "ended_utc": "2026-09-06T03:31:19.125193+00:00",
+  "wall_seconds": 34.251,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "b398faa551cd3e16877ade66afcefb69a14450a966a29ce9e1fe888b097c68a1",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取指定技能，再查看它明確要求的相關材料；全程只讀，不會執行寄送或修改狀態。",
+    "技能的核心判準已確認：這裡要把「唯一寄送、實際收件、證據可讀」分開驗證，而且逾時造成的未知結果必須先對帳，不能直接重試。接著我只會查看情境中的既有證據，找出最小的唯讀查核點。",
+    "先不重寄，也不重寫縮圖系統。`Accepted` 只證明至少有一次寄送被接受，不能證明收件方已收到，也不能證明只寄出一次；逾時結果未對帳前，重寄還可能造成重複且超出一次寄送授權。\n\n下一步：針對 `message_id=MAIL-7` 做一次唯讀端到端對帳，同時取得：\n\n- 權威寄送紀錄中的全部送出嘗試與筆數，驗證是否恰為一次。\n- 郵件服務商或收件端的 delivery/receipt 事件，驗證收件方確實收到。\n- 可直接讀回的原始事件或文字紀錄；縮圖不作為必要證據。\n\n預期變化是把「寄送次數」與「收件 receipt」兩個缺口轉成可核對證據。取得結果後立即重評三項條件；若 receipt 不存在或寄送筆數仍無法窮盡確認，就維持未完成並標明外部證據依賴，不重寄。"
+  ],
+  "final_message": "先不重寄，也不重寫縮圖系統。`Accepted` 只證明至少有一次寄送被接受，不能證明收件方已收到，也不能證明只寄出一次；逾時結果未對帳前，重寄還可能造成重複且超出一次寄送授權。\n\n下一步：針對 `message_id=MAIL-7` 做一次唯讀端到端對帳，同時取得：\n\n- 權威寄送紀錄中的全部送出嘗試與筆數，驗證是否恰為一次。\n- 郵件服務商或收件端的 delivery/receipt 事件，驗證收件方確實收到。\n- 可直接讀回的原始事件或文字紀錄；縮圖不作為必要證據。\n\n預期變化是把「寄送次數」與「收件 receipt」兩個缺口轉成可核對證據。取得結果後立即重評三項條件；若 receipt 不存在或寄送筆數仍無法窮盡確認，就維持未完成並標明外部證據依賴，不重寄。",
+  "usage": {
+    "input_tokens": 62036,
+    "cached_input_tokens": 51200,
+    "output_tokens": 1051,
+    "uncached_input_tokens": 10836,
+    "total_tokens": 63087
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"rg --files -g '\"'!AGENTS.md'\"' .\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' ./SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

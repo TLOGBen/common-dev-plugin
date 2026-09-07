@@ -1,0 +1,20 @@
+{
+  "checks": [
+    {
+      "id": "01-ready-approved900-original",
+      "json_files": 23,
+      "errors": []
+    },
+    {
+      "id": "02-ready-approved900-lab",
+      "json_files": 28,
+      "errors": []
+    },
+    {
+      "id": "03-unknown-previous-attempt-lab",
+      "json_files": 27,
+      "errors": []
+    }
+  ],
+  "scope": "All .json files under each completed workspace; excludes JSONL, separately checked for original ready ledger. Semantic acceptance is not inferred from parse success."
+}

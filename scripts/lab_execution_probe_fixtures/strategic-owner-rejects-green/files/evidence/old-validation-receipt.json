@@ -1,0 +1,7 @@
+{
+  "receipt_id": "VALIDATION-OLD-1",
+  "artifact": "data/old-artifact.json",
+  "artifact_sha256": "0f842c59623e8496e16dcd1408b8f10ed6b89ec3aece33d08cc22cb5c31215e3",
+  "result": "PASS",
+  "source_kind": "fictional_prior_validation"
+}

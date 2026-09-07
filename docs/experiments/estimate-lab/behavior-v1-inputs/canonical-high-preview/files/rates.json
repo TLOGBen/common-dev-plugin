@@ -1,0 +1,36 @@
+{
+  "synthetic": true,
+  "unit": "person-day",
+  "bound": "high-only",
+  "items": [
+    {
+      "id": "shared-foundation",
+      "quantity": 1,
+      "developmentPerUnit": 4,
+      "testPerUnit": 1,
+      "covers": "One shared configuration/runtime foundation, reproducible regeneration and its verification."
+    },
+    {
+      "id": "homogeneous-batch",
+      "quantity": 1,
+      "developmentPerUnit": 2,
+      "testPerUnit": 1,
+      "covers": "Common conversion of all 87 canonical APIs, including the ordinary part of the three exceptions."
+    },
+    {
+      "id": "exception-increment",
+      "quantity": 3,
+      "developmentPerUnit": 0.5,
+      "testPerUnit": 0.5,
+      "covers": "Only additional upload, signed-payload and transaction work beyond the common batch."
+    },
+    {
+      "id": "integration-verification",
+      "quantity": 1,
+      "developmentPerUnit": 0,
+      "testPerUnit": 2,
+      "covers": "One integration-verification package covering all 13 coverage entries."
+    }
+  ],
+  "lowAndBaselineRates": null
+}

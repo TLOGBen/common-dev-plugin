@@ -1,0 +1,184 @@
+{
+  "schema_version": 1,
+  "recorded_utc": "2026-09-06T06:02:56.802029+00:00",
+  "run_id": "astra-grilling-015",
+  "reviewer": {
+    "identity": "/root",
+    "role": "lead agent",
+    "basis": "Lead read the skill, frozen cases and all eight final responses. This records the supplied lead decision; no new judge call or human usability test."
+  },
+  "decision": "ACCEPT_FOR_EXPERIMENTAL_PACKAGE",
+  "accepted_source_version": "0.1.5",
+  "accepted_source_sha256": "8a5ab67d3a4fa87bf3f1742a9cd993ceab1b45809aa3250597f8e6f806222fcf",
+  "summary": {
+    "path": "../runs/astra-grilling-015/summary.json",
+    "sha256": "8b98ddf04635934ad57391e66ae8d7fe17b456026c864b9bedc0bc9df6c64979"
+  },
+  "rubric": {
+    "path": "cases.json",
+    "sha256": "f840c85b6eaa7d820147e81f05ea27bc434ef095cbb95a6d4185ff399a73d5f7",
+    "criterion_scale": "0 not satisfied; 1 partial; 2 satisfied",
+    "score_order": "Exact one-based order of the five frozen criteria for case_id; guard results follow frozen guard order.",
+    "criterion_5_new_in_this_run": true,
+    "prior_scores_unchanged": true
+  },
+  "totals": {
+    "A": {
+      "score": 37,
+      "max": 40,
+      "responses": 4,
+      "construct_guard_violations": 1
+    },
+    "B": {
+      "score": 40,
+      "max": 40,
+      "responses": 4,
+      "construct_guard_violations": 0
+    }
+  },
+  "cases": [
+    {
+      "case_id": "grilling-known-field-pair-1",
+      "arm": "A",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-known-field-pair-1.A.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-known-field-pair-1",
+      "arm": "B",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-known-field-pair-1.B.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-known-field-pair-2",
+      "arm": "A",
+      "criterion_scores": [
+        2,
+        0,
+        2,
+        2,
+        1
+      ],
+      "guard_passed": [
+        false,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-known-field-pair-2.A.turn-1.result.json",
+      "finding": "Criterion 2 fails and construct guard is violated: field-name removal adds intent-to-field mapping. Criterion 5 is partial: explicit goal reopened, but usable critique already supplied."
+    },
+    {
+      "case_id": "grilling-known-field-pair-2",
+      "arm": "B",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-known-field-pair-2.B.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "arm": "A",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-located-bug-not-discovery.A.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "arm": "B",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-located-bug-not-discovery.B.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "arm": "A",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-runbook-not-memory.A.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "arm": "B",
+      "criterion_scores": [
+        2,
+        2,
+        2,
+        2,
+        2
+      ],
+      "guard_passed": [
+        true,
+        true
+      ],
+      "response_path": "../runs/astra-grilling-015/grilling-runbook-not-memory.B.turn-1.result.json",
+      "finding": "All five frozen criteria and guards satisfied according to lead review."
+    }
+  ],
+  "pause_calibration": {
+    "actual_extra_user_turns": null,
+    "mandatory_extra_round_demonstrated": false,
+    "note": "A known-field-pair-2 reopens the stated goal but already delivers usable critique. Do not claim forced waiting or an extra turn. Genuinely unsettled runbook assistance, familiarity, input-domain or verification-boundary questions remain legitimate."
+  },
+  "scope": "Small-sample regression accepted for opt-in experiments only; no human usability, statistical significance, actual wait reduction or general model-superiority claim.",
+  "next_authorized_action": "Export through the existing script to new experiments/common-lab-v0.1.5 with fresh staging/receipts; no installation or frozen-output overwrite."
+}

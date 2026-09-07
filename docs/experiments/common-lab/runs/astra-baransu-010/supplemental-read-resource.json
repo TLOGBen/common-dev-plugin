@@ -1,0 +1,15 @@
+{
+  "resource": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills/_shared/contract-gate.md",
+  "sha256": "e179f9c82a753bd027c1754fde71f20697ac3a33d1c9eca441b4efafe7d2ef7d",
+  "reason": "Selected A roots read a sibling _shared file not included in the initial selected-skill snapshot. Both raw traces match exact file bytes; original frozen zip is unchanged.",
+  "evidence": [
+    {
+      "trace": "contract-authorized-change.A.turn-1.raw.jsonl",
+      "raw_read_matches_current_file": true
+    },
+    {
+      "trace": "seal-corrected-premise.A.turn-1.raw.jsonl",
+      "raw_read_matches_current_file": true
+    }
+  ]
+}

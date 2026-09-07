@@ -1,0 +1,63 @@
+{
+  "snapshot_utc": "2026-09-06T15:29:16.750689+00:00",
+  "rows": [
+    {
+      "role": "root-after-explicit-baseline",
+      "model": "gpt-6-astra",
+      "tokens": 169854687,
+      "standard_short_api_equivalent_usd": "243.980894"
+    },
+    {
+      "role": "lab_author",
+      "model": "gpt-6-astra",
+      "tokens": 46564618,
+      "standard_short_api_equivalent_usd": "72.638652"
+    },
+    {
+      "role": "campaign_scribe",
+      "model": "gpt-6-astra",
+      "tokens": 1188738,
+      "standard_short_api_equivalent_usd": "1.897972"
+    },
+    {
+      "role": "ab_harness",
+      "model": "gpt-6-astra",
+      "tokens": 22493485,
+      "standard_short_api_equivalent_usd": "32.955186"
+    },
+    {
+      "role": "lab_verifier",
+      "model": "gpt-6-astra",
+      "tokens": 723923,
+      "standard_short_api_equivalent_usd": "1.614118"
+    },
+    {
+      "role": "baransu_lab",
+      "model": "gpt-6-astra",
+      "tokens": 19057431,
+      "standard_short_api_equivalent_usd": "30.572118"
+    },
+    {
+      "role": "reader_probe",
+      "model": "gpt-5.6-sol",
+      "tokens": 3199013,
+      "standard_short_api_equivalent_usd": "2.6663944"
+    },
+    {
+      "role": "web_handoff",
+      "model": "gpt-6-astra",
+      "tokens": 1799844,
+      "standard_short_api_equivalent_usd": "2.9738"
+    },
+    {
+      "role": "estimate_probe",
+      "model": "gpt-6-astra",
+      "tokens": 8463853,
+      "standard_short_api_equivalent_usd": "14.160562"
+    }
+  ],
+  "known_native_tokens": 273345592,
+  "standard_short_api_equivalent_usd": "403.4596964",
+  "actual_invoice_usd": null,
+  "limits": "Rates as frozen 2026-09-06; all model rows individually observed. Aggregate native counters do not prove per-request context tier. Main before explicit baseline, guardians, later work and tools excluded."
+}

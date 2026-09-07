@@ -1,0 +1,96 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:33:16.451728+00:00",
+  "ended_utc": "2026-09-06T03:34:40.986278+00:00",
+  "wall_seconds": 84.528,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "1c0dc96a5db9b7ba45f4a03c71fb644ca0b2ddcc701e6f60d24b79d248351bb6",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依你指定的 `strategic-advance` 技能流程，先完整讀取該 `SKILL.md`；另只查詢目前時鐘以符合工作區的時間規則，不會查詢情境資料或執行任何寄送／修復操作。",
+    "技能規範已讀完。要更新「完成程度」的判定，我只再讀它明確指定的 `references/state-contract.md`，以依照其中的機械化條件表述，而不建立或修改任何任務狀態。",
+    "完成程度：2/3 項已證明，戰略狀態仍是 `IN_PROGRESS`。\n\n- 只寄出一封：`UNKNOWN`。目前只回第一筆，不能推出總數或去重後為一。\n- 收件方收到：`PASS`。`MAIL-7` receipt 為 `Delivered`。\n- 證據可讀回：`PASS`。證據已存為可讀回檔案 `E-7`。\n\n預覽縮圖故障已不再阻塞，因為 `E-7` 提供了可讀回證據。不要重寄，也不要重寫縮圖系統。\n\n下一步：在 `MAIL-7` 範圍執行一次權威唯讀回讀，取得完整寄送／嘗試記錄、總筆數、唯一寄送識別與去重結果。只有當結果明確證明唯一寄送數為 `1`，才可將第一項判定為 `PASS` 並完成驗收；若仍無法取得，則保留 `UNKNOWN`，維持不重寄。"
+  ],
+  "final_message": "完成程度：2/3 項已證明，戰略狀態仍是 `IN_PROGRESS`。\n\n- 只寄出一封：`UNKNOWN`。目前只回第一筆，不能推出總數或去重後為一。\n- 收件方收到：`PASS`。`MAIL-7` receipt 為 `Delivered`。\n- 證據可讀回：`PASS`。證據已存為可讀回檔案 `E-7`。\n\n預覽縮圖故障已不再阻塞，因為 `E-7` 提供了可讀回證據。不要重寄，也不要重寫縮圖系統。\n\n下一步：在 `MAIL-7` 範圍執行一次權威唯讀回讀，取得完整寄送／嘗試記錄、總筆數、唯一寄送識別與去重結果。只有當結果明確證明唯一寄送數為 `1`，才可將第一項判定為 `PASS` 並完成驗收；若仍無法取得，則保留 `UNKNOWN`，維持不重寄。",
+  "usage": {
+    "input_tokens": 124792,
+    "cached_input_tokens": 98048,
+    "output_tokens": 2196,
+    "uncached_input_tokens": 26744,
+    "total_tokens": 126988
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'date \\\"+%Y-%m-%d %H:%M:%S %Z %z\\\"; sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"241,520p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,280p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/references/state-contract.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"281,620p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/references/state-contract.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

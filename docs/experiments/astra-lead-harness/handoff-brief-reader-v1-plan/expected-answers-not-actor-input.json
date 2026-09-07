@@ -1,0 +1,48 @@
+[
+  {
+    "label": "R1",
+    "case": "unknown-operation",
+    "arm": "raw",
+    "expected": {
+      "confirmed": "standard receiver v3 incl slots0",
+      "whole": "unconfirmed/incomplete premium",
+      "next": "identity-bearing observation for the existing operation, no resend",
+      "human_choice": "no new fee choice; approved900 is already given",
+      "focus": "recorded focus C1 is already met; do not blindly repeat it"
+    }
+  },
+  {
+    "label": "R2",
+    "case": "unknown-operation",
+    "arm": "brief",
+    "expected": {
+      "confirmed": "standard receiver v3 incl slots0",
+      "whole": "unconfirmed/incomplete premium",
+      "next": "identity-bearing observation for the existing operation, no resend",
+      "human_choice": "no new fee choice; approved900 is already given",
+      "focus": "recorded focus C1 is already met; do not blindly repeat it"
+    }
+  },
+  {
+    "label": "R3",
+    "case": "insufficient-proof",
+    "arm": "brief",
+    "expected": {
+      "confirmed": "source syntax/lint only",
+      "whole": "ledger says complete but supplied proof does not establish receiver goal",
+      "next": "current receiver version and actual query observation",
+      "human_choice": "no new approval established as missing; evidence gap not a fabricated decision"
+    }
+  },
+  {
+    "label": "R4",
+    "case": "insufficient-proof",
+    "arm": "raw",
+    "expected": {
+      "confirmed": "source syntax/lint only",
+      "whole": "ledger says complete but supplied proof does not establish receiver goal",
+      "next": "current receiver version and actual query observation",
+      "human_choice": "no new approval established as missing; evidence gap not a fabricated decision"
+    }
+  }
+]

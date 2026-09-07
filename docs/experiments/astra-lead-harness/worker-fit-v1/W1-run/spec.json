@@ -1,0 +1,36 @@
+{
+  "schema_version": 1,
+  "episode_id": "worker-fit-v1-W1",
+  "case_id": "count-label",
+  "arm": "none",
+  "workspace": "/tmp/astra-worker-fit-v1-r46pwud2/W1",
+  "workspace_sha256": {
+    "TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7"
+  },
+  "sandbox": "workspace-write",
+  "role_writes": {
+    "lead": [],
+    "implementation": [
+      "src/",
+      "tests/"
+    ],
+    "implementation_sol": [
+      "src/",
+      "tests/"
+    ]
+  },
+  "worker_profiles": {
+    "implementation": "luna-high",
+    "implementation_sol": "sol-high"
+  },
+  "max_calls": 10,
+  "max_wall_seconds": 1800,
+  "call_timeout_seconds": 600,
+  "package_roots": [],
+  "package_sha256": {},
+  "session_store": "/home/vakarve/.codex/sessions",
+  "user_prompt": "請完成 TASK.md 的工作。你是 Astra 主手，負責目標、必要切片、驗收及人類交接；把實作派給可用的便宜且符合任務難度的 worker，自己不改產品。現有 profiles 中自行選擇，不預設哪個一定正確；不要為湊出模型階層而加派工。保留權限與範圍，持續到可驗證完成或有真正無法在既有權限內處理的阻礙。使用者不在場，已授權的細節請自行判斷。費用只能報可觀測值，便宜策略仍需計入 supervision 與返工。",
+  "arm_context": "No additional skill is supplied for this arm."
+}

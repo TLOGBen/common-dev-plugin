@@ -1,0 +1,79 @@
+{
+  "case_id": "strategic-advance",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 1,
+  "started_utc": "2026-09-06T02:38:53.790646+00:00",
+  "ended_utc": "2026-09-06T02:39:37.116008+00:00",
+  "wall_seconds": 43.324,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "7e67fcb402f92bbb5dfa163c77de818f3e8abfbe3ffe6d0600ff34c75d586f41",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-advance-6bxqsio5",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定的戰略推進技能，依情境提出模擬回覆與下一步行動。\n",
+    "**下一步應以唯讀方式核對下游是否收到 REQ-42，並補齊驗收證據；不要再次送出，也不要讓截圖修復占住主線。**\n\n依題述，DB 的成功 receipt 與 `Accepted` 已證明訂單受理成功。UI 逾時與 `CAPTURE_FAILED` 是觀測問題，不能推翻這項結果；但受理成功也不能直接證明下游已收到，或證明沒有重複送出。\n\n建議的模擬行動是：\n\n1. 以 `REQ-42` 及其 receipt／訂單識別碼，做一輪有界的唯讀核對：查送出紀錄、下游接收回執及重複紀錄。\n2. 將 DB receipt、`Accepted` 狀態、下游回執與可證明單次送出的紀錄，規劃留存為同一組可追溯證據。截圖可用這些權威紀錄替代，修復工作暫緩。\n3. 若下游查無紀錄或證據互相矛盾，維持「下游待確認」，沿既有訂單的投遞鏈唯讀追查；不能因此重送、換 request_id 或要求人工再按一次。\n\n驗收須同時滿足：**只送出一次、下游確實收到、成功證據已留存且可核對**。使用者無須介入點擊。\n\n以上僅為模擬判斷與行動描述，未實際查詢、送出或寫入任何狀態。"
+  ],
+  "final_message": "**下一步應以唯讀方式核對下游是否收到 REQ-42，並補齊驗收證據；不要再次送出，也不要讓截圖修復占住主線。**\n\n依題述，DB 的成功 receipt 與 `Accepted` 已證明訂單受理成功。UI 逾時與 `CAPTURE_FAILED` 是觀測問題，不能推翻這項結果；但受理成功也不能直接證明下游已收到，或證明沒有重複送出。\n\n建議的模擬行動是：\n\n1. 以 `REQ-42` 及其 receipt／訂單識別碼，做一輪有界的唯讀核對：查送出紀錄、下游接收回執及重複紀錄。\n2. 將 DB receipt、`Accepted` 狀態、下游回執與可證明單次送出的紀錄，規劃留存為同一組可追溯證據。截圖可用這些權威紀錄替代，修復工作暫緩。\n3. 若下游查無紀錄或證據互相矛盾，維持「下游待確認」，沿既有訂單的投遞鏈唯讀追查；不能因此重送、換 request_id 或要求人工再按一次。\n\n驗收須同時滿足：**只送出一次、下游確實收到、成功證據已留存且可核對**。使用者無須介入點擊。\n\n以上僅為模擬判斷與行動描述，未實際查詢、送出或寫入任何狀態。",
+  "usage": {
+    "input_tokens": 141293,
+    "cached_input_tokens": 115456,
+    "output_tokens": 750,
+    "uncached_input_tokens": 25837,
+    "total_tokens": 142043
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,220p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '221,440p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '441,620p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

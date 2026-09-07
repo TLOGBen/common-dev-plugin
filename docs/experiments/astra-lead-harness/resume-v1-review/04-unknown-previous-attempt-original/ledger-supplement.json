@@ -1,0 +1,11 @@
+{
+  "baseline_ledger_sha256": "2e07dd13fb805ea7921a1a294e2a318c1301a9e559b427617fbcc230ad52fa23",
+  "matching_historical_prefix_bytes": [
+    2183
+  ],
+  "frozen_history_exactly_preserved": true,
+  "json_files": 16,
+  "json_errors": [],
+  "ledger_lines": 8,
+  "ledger_errors": []
+}

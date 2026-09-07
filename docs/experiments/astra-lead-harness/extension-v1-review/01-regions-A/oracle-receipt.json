@@ -1,0 +1,7 @@
+{
+  "command": "python3 -B scripts/verify_campaign_extension_probe.py --plan docs/experiments/astra-lead-harness/extension-v1-plan --episode 01-regions-A",
+  "exit_code": 0,
+  "stderr": "",
+  "reviewed_at_utc": "2026-09-06T09:46:29.715Z",
+  "model_calls": 0
+}

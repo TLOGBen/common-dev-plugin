@@ -1,0 +1,21 @@
+{
+  "created_utc": "2026-09-06T10:06:59.741Z",
+  "checks": [
+    {
+      "command": "python3 -B -c 'import json,pathlib; files=list(pathlib.Path(\".\").rglob(\"*.json\")); [json.load(open(f,encoding=\"utf-8\")) for f in files]; print(\"JSON_VALID\",len(files))'",
+      "wall_seconds": 4.762743100002408,
+      "exit_code": 0,
+      "stdout": "JSON_VALID 637\n",
+      "stderr": ""
+    },
+    {
+      "command": "python3 -B -c 'from pathlib import Path; root=Path(\".\"); required=[\".agents/plugins/marketplace.json\",\"codex/.agents/plugins/marketplace.json\",\"codex/plugins/test-utils/.codex-plugin/plugin.json\",\"codex/plugins/analysis-estimation/.codex-plugin/plugin.json\",\"codex/plugins/linkstart/.codex-plugin/plugin.json\"]; assert all((root/p).is_file() for p in required); print(\"REQUIRED_MARKETPLACE_PATHS_VALID\",len(required))'",
+      "wall_seconds": 4.637517799999565,
+      "exit_code": 0,
+      "stdout": "REQUIRED_MARKETPLACE_PATHS_VALID 5\n",
+      "stderr": ""
+    }
+  ],
+  "linkstart_and_stable_diff_receipt": "../../install-common017-estimate013-20260906-a/result.json",
+  "model_calls": 0
+}

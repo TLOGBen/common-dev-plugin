@@ -1,0 +1,58 @@
+{
+  "kind": "lead_semantic_review",
+  "source_summary": "summary.json",
+  "source_summary_sha256": "97133f70f045accd28403cb7f6260880bb789bb0478245ad9135b62126726e90",
+  "basis": "Main agent read all eight complete final responses and the prospectively frozen case criteria. Unblinded review; not a human usability experiment.",
+  "frozen_criteria_results": [
+    {
+      "case": "small-defined-goal-label",
+      "A": "satisfied",
+      "B": "satisfied",
+      "evidence": "Both preserve exact label, href and other content; complete definition only. A's mismatch guard does not create an immediate approval gate."
+    },
+    {
+      "case": "small-prompt-already-clear",
+      "A": "satisfied",
+      "B": "satisfied",
+      "evidence": "Both supply paste-ready single replacement and no-commit/other-character boundary. B's diff suggestion is proportional, not an extra prerequisite."
+    },
+    {
+      "case": "small-wait-skipped",
+      "A": "satisfied",
+      "B": "satisfied",
+      "evidence": "Both distinguish unchanged 16-row original from 14-row new output and explain two blank-email omissions; text-only, no fresh inspection claim. A's longer section navigation is not scored as a mandatory quiz."
+    },
+    {
+      "case": "small-grilling-leading-instruction",
+      "A": "satisfied",
+      "B": "satisfied",
+      "evidence": "Both identify location cue contamination and deliver a narrow critique. Frozen criterion 3 permits critique OR example OR focused challenge, so B's correct critique satisfies it despite the supplementary suggestion defect."
+    }
+  ],
+  "supplementary_findings": [
+    {
+      "id": "GRILL-CONSTRUCT-DRIFT",
+      "arm": "B",
+      "observed": "Suggested removing both field name and location; user's target was independent findability of a named field.",
+      "consequence": "Adds an intent-to-field mapping requirement, so the proposed replacement need not test only the original claim.",
+      "original_arm_comparison": "A explicitly retains the named field and removes only location cues.",
+      "classification": "Supplementary method-quality defect; not retroactively scored as failure against an OR criterion.",
+      "next": "Freeze targeted original/held-out cases before changing generic instruction; compare 0.1.3 and single-principle candidate."
+    }
+  ],
+  "pause_conclusion": "No demonstrated reduction in required turns: definition and prompt tasks complete in one response in both arms; wait-what is deliberately paused; grilling already supplies the requested critique.",
+  "quality_percentage": null,
+  "actual_human_understanding": null,
+  "actual_business_completion": null,
+  "measured_cli": {
+    "calls": 8,
+    "wall_seconds": 102.34,
+    "input_tokens": 255933,
+    "cached_input_tokens": 203520,
+    "output_tokens": 3148,
+    "total_tokens": 259081,
+    "actual_cost_usd": null
+  },
+  "cost_limit": "Cached input is already within input. No actual billing data; total-token decrease alone is not cost evidence.",
+  "source_results_modified": false
+}

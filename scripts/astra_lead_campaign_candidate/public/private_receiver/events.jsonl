@@ -1,0 +1,1 @@
+{"event":"activated","event_id":"E0001","bundle":{"release_id":"service-catalog-v2","catalog":{"schema_version":2,"release_id":"service-catalog-v2","items":[{"id":"S101","name":"Pump inspection","region":"north","slots":12,"tags":["pump"]}]},"index":{"schema_version":2,"release_id":"service-catalog-v2","terms":{"pump":["S101"]},"regions":{"north":["S101"]}}}}

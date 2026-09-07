@@ -1,0 +1,4 @@
+2026-09-06T06:21:56.430330Z ERROR codex_core::tools::router: error=apply_patch verification failed: Failed to find expected lines in /tmp/common-lab-exec-normalize-tag-dwh82u2v/acceptance.md:
+```
+EMPTY_TAG
+```

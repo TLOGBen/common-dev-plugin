@@ -1,0 +1,20 @@
+{
+  "run_id": "smoke-20260906",
+  "kind": "smoke",
+  "cli_version": "codex-cli 0.153.0",
+  "git_head": "765c47a047a26fba691d29a4c73d2025c8ee680d",
+  "model": "gpt-6-astra",
+  "effort": "high",
+  "max_concurrent_calls": 2,
+  "resource_sha256": {
+    "codex/plugins/common/skills/better-prompts/SKILL.md": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+    "codex/plugins/common/skills/better-prompts/agents/openai.yaml": "419cc70f4880c00561e1eb9bda1f51250b3c8403be6dc39cb014aa34760c966f",
+    "codex/plugins/common/skills/better-prompts/references/gpt-5p6-guidance.md": "eae30a3b7d7a256daf6052313fb2f67bb03d56a507b4b09f9a10426e8e196598"
+  },
+  "frozen_cases_sha256": "13fb547e350531dcb5ec2aaf911282085953756c5602a82c99879c0daabe188c",
+  "case_source_sha256": "3ffd39e7adfacdb90aad84a51812e1b3d8d228ff9d1b5dfa5c65dff0261b5dc3",
+  "harness_sha256": "36f717ba1573d731a1a38cf0c1dfb283d73934961242dd79b88c339f5878237f",
+  "runtime_model_resolution": "requested exact ID; no deliberate fallback configured",
+  "isolation": "ephemeral; ignore-user-config; read-only sandbox; execpolicy retained; no network authorized",
+  "limits": "One fixture per skill, one tested model, no production acceptance or statistical significance."
+}

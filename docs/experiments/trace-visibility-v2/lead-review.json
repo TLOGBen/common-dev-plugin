@@ -1,0 +1,235 @@
+{
+  "status": "COMPLETED_OBSERVED_TRACE_GAP",
+  "model_calls": 2,
+  "known_tokens": 64821,
+  "actual_cost_usd": null,
+  "per_call": [
+    {
+      "actor": "U1",
+      "model": "gpt-6-astra",
+      "seconds": 28.46041124803014,
+      "usage": {
+        "input_tokens": 32392,
+        "cached_input_tokens": 27008,
+        "output_tokens": 601,
+        "uncached_input_tokens": 5384,
+        "total_tokens": 32993
+      },
+      "input_unchanged": true
+    },
+    {
+      "actor": "U2",
+      "model": "gpt-5.6-sol",
+      "seconds": 30.001514550996944,
+      "usage": {
+        "input_tokens": 30727,
+        "cached_input_tokens": 25216,
+        "output_tokens": 1101,
+        "uncached_input_tokens": 5511,
+        "total_tokens": 31828
+      },
+      "input_unchanged": true
+    }
+  ],
+  "pairs": [
+    {
+      "actor": "U1",
+      "case": "C1",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_2"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C1",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_2"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C2",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_3"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C2",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_3"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C3",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": false,
+      "any_tool_event_has": false,
+      "prompt_has": false,
+      "command_matches": [
+        "item_1"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C3",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": false,
+      "any_tool_event_has": false,
+      "prompt_has": false,
+      "command_matches": [
+        "item_1"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C4",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_4"
+      ]
+    },
+    {
+      "actor": "U1",
+      "case": "C4",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_4"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C1",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_1"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C1",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_1"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C2",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_4"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C2",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_4"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C3",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_3"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C3",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_3"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C4",
+      "stream": "stdout",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_2"
+      ]
+    },
+    {
+      "actor": "U2",
+      "case": "C4",
+      "stream": "stderr",
+      "final_has_exact": true,
+      "own_command_output_has": true,
+      "any_tool_event_has": true,
+      "prompt_has": false,
+      "command_matches": [
+        "item_2"
+      ]
+    }
+  ],
+  "reviewed_all_command_events": 8,
+  "reviewed_all_final_outputs": true,
+  "observed_extra_reads": 0,
+  "observed_mutations": 0,
+  "network_or_agents_observed": false,
+  "preparation_friction": "Authored script initially failed AST due escaped-newline generation; repaired before any model invocation. Not a model failure.",
+  "inference": "U1 C3 final contains both fresh random output markers absent from all captured non-message events and the prompt. External CLI event stream is insufficient to reconstruct model-available information in this control. Does not identify internal root cause or retroactively prove any particular historical claim."
+}

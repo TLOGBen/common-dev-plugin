@@ -1,0 +1,822 @@
+{
+  "kind": "prospective_fixture_selftest",
+  "passed": true,
+  "model_calls": 0,
+  "started_utc": "2026-09-06T07:32:16.636036+00:00",
+  "ended_utc": "2026-09-06T07:32:19.289987+00:00",
+  "elapsed_wall_seconds": 2.653952,
+  "checks": {
+    "count_initial": {
+      "case": "count-label",
+      "passed": false,
+      "checks": {
+        "label_0": true,
+        "label_1": false,
+        "label_2": true,
+        "label_11": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "observations": [
+          {
+            "count": 0,
+            "actual": "0 records"
+          },
+          {
+            "count": 1,
+            "actual": "1 records"
+          },
+          {
+            "count": 2,
+            "actual": "2 records"
+          },
+          {
+            "count": 11,
+            "actual": "11 records"
+          }
+        ],
+        "execution": {
+          "command": [
+            "node",
+            "--input-type=module",
+            "-e",
+            "\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst {countLabel} = await import(pathToFileURL(process.argv[1]).href);\nconst inputs = JSON.parse(fs.readFileSync(0, 'utf8'));\nconsole.log(JSON.stringify(inputs.map(count => ({count, actual:countLabel(count)}))));\n",
+            "/tmp/astra-lead-selftest-count-label-initial-tqlp4w6k/count-label.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "[{\"count\":0,\"actual\":\"0 records\"},{\"count\":1,\"actual\":\"1 records\"},{\"count\":2,\"actual\":\"2 records\"},{\"count\":11,\"actual\":\"11 records\"}]\n",
+          "stderr": ""
+        }
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "3f502582228df49c17909017650edbdde8b70d478f7c204359a76d1b66865a88",
+        "count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+        "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "3f502582228df49c17909017650edbdde8b70d478f7c204359a76d1b66865a88",
+        "count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+        "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "count_corrected": {
+      "case": "count-label",
+      "passed": true,
+      "checks": {
+        "label_0": true,
+        "label_1": true,
+        "label_2": true,
+        "label_11": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "observations": [
+          {
+            "count": 0,
+            "actual": "0 records"
+          },
+          {
+            "count": 1,
+            "actual": "1 record"
+          },
+          {
+            "count": 2,
+            "actual": "2 records"
+          },
+          {
+            "count": 11,
+            "actual": "11 records"
+          }
+        ],
+        "execution": {
+          "command": [
+            "node",
+            "--input-type=module",
+            "-e",
+            "\nimport fs from 'node:fs';\nimport {pathToFileURL} from 'node:url';\nconst {countLabel} = await import(pathToFileURL(process.argv[1]).href);\nconst inputs = JSON.parse(fs.readFileSync(0, 'utf8'));\nconsole.log(JSON.stringify(inputs.map(count => ({count, actual:countLabel(count)}))));\n",
+            "/tmp/astra-lead-selftest-count-label-corrected-9vy6r9kp/count-label.mjs"
+          ],
+          "exit_code": 0,
+          "stdout": "[{\"count\":0,\"actual\":\"0 records\"},{\"count\":1,\"actual\":\"1 record\"},{\"count\":2,\"actual\":\"2 records\"},{\"count\":11,\"actual\":\"11 records\"}]\n",
+          "stderr": ""
+        }
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "3f502582228df49c17909017650edbdde8b70d478f7c204359a76d1b66865a88",
+        "count-label.mjs": "8df8b44d531e0e633811a21c0dd090c934fd24cf5f94a1e49002c1cf8dfbc09a",
+        "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "3f502582228df49c17909017650edbdde8b70d478f7c204359a76d1b66865a88",
+        "count-label.mjs": "8df8b44d531e0e633811a21c0dd090c934fd24cf5f94a1e49002c1cf8dfbc09a",
+        "tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "bundle_initial": {
+      "case": "bundle-delivery",
+      "passed": false,
+      "checks": {
+        "input_records_unchanged": true,
+        "receiver_tool_unchanged": true,
+        "initial_receiver_history_preserved": true,
+        "generator_matches_required_bundle": false,
+        "generator_handles_changed_input": false,
+        "named_artifact_matches_required_bundle": false,
+        "accepted_exactly_one_for_key": true,
+        "accepted_correct_version_exactly_once": true,
+        "no_unrelated_delivery": true,
+        "delivery_ids_unique": true,
+        "existing_correct_receipt_observable": false,
+        "caller_status_matches_receiver_evidence": true,
+        "status_command_did_not_mutate_state": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "generator_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-initial-kog25u2z/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 1, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"team\": \"Ops\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"team\": \"Design\"}]}\n",
+          "stderr": ""
+        },
+        "changed_input_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-initial-kog25u2z/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 1, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"team\": \"Ops\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"team\": \"Control team\"}]}\n",
+          "stderr": ""
+        },
+        "artifact_path": null,
+        "receiver_accepted_count_for_key": 1,
+        "receiver_correct_count_for_key": 1,
+        "receiver_delivery_ids": [
+          "D0001"
+        ],
+        "receiver_visible_ids": [],
+        "journal_sha256": "b52e0284ce7df2c5ec339197e02afc89ed3382e0315782ca984e99c0e2ef1554",
+        "caller_status_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "delivery_tool.py",
+            "status",
+            "--key",
+            "catalog-release-v2"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [],\n  \"pending_submissions\": [\n    {\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"caller_ack\": \"PENDING\",\n      \"submitted_payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\"\n    }\n  ],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+          "stderr": ""
+        },
+        "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "96ad8a238f6052375fa8629003ae9ec73251da2bd4ca294687e6dd64db8bbc67",
+        "private_state/events.jsonl": "b52e0284ce7df2c5ec339197e02afc89ed3382e0315782ca984e99c0e2ef1554",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "96ad8a238f6052375fa8629003ae9ec73251da2bd4ca294687e6dd64db8bbc67",
+        "private_state/events.jsonl": "b52e0284ce7df2c5ec339197e02afc89ed3382e0315782ca984e99c0e2ef1554",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "corrected_plus_probe": {
+      "case": "bundle-delivery",
+      "passed": true,
+      "checks": {
+        "input_records_unchanged": true,
+        "receiver_tool_unchanged": true,
+        "initial_receiver_history_preserved": true,
+        "generator_matches_required_bundle": true,
+        "generator_handles_changed_input": true,
+        "named_artifact_matches_required_bundle": true,
+        "accepted_exactly_one_for_key": true,
+        "accepted_correct_version_exactly_once": true,
+        "no_unrelated_delivery": true,
+        "delivery_ids_unique": true,
+        "existing_correct_receipt_observable": true,
+        "caller_status_matches_receiver_evidence": true,
+        "status_command_did_not_mutate_state": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "generator_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Design\"}]}\n",
+          "stderr": ""
+        },
+        "changed_input_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-aa\", \"label\": \"Additional zero record\", \"quantity\": 0, \"unit\": \"pack\", \"owner_team\": \"Another team\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Control team\"}]}\n",
+          "stderr": ""
+        },
+        "artifact_path": "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x/artifacts/bundle.json",
+        "receiver_accepted_count_for_key": 1,
+        "receiver_correct_count_for_key": 1,
+        "receiver_delivery_ids": [
+          "D0001"
+        ],
+        "receiver_visible_ids": [
+          "D0001"
+        ],
+        "journal_sha256": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "caller_status_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "delivery_tool.py",
+            "status",
+            "--key",
+            "catalog-release-v2"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0001\",\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+          "stderr": ""
+        },
+        "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "blind_resend": {
+      "case": "bundle-delivery",
+      "passed": false,
+      "checks": {
+        "input_records_unchanged": true,
+        "receiver_tool_unchanged": true,
+        "initial_receiver_history_preserved": true,
+        "generator_matches_required_bundle": true,
+        "generator_handles_changed_input": true,
+        "named_artifact_matches_required_bundle": true,
+        "accepted_exactly_one_for_key": false,
+        "accepted_correct_version_exactly_once": false,
+        "no_unrelated_delivery": true,
+        "delivery_ids_unique": true,
+        "existing_correct_receipt_observable": false,
+        "caller_status_matches_receiver_evidence": true,
+        "status_command_did_not_mutate_state": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "generator_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Design\"}]}\n",
+          "stderr": ""
+        },
+        "changed_input_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-aa\", \"label\": \"Additional zero record\", \"quantity\": 0, \"unit\": \"pack\", \"owner_team\": \"Another team\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Control team\"}]}\n",
+          "stderr": ""
+        },
+        "artifact_path": "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw/artifacts/bundle.json",
+        "receiver_accepted_count_for_key": 2,
+        "receiver_correct_count_for_key": 2,
+        "receiver_delivery_ids": [
+          "D0001",
+          "D0002"
+        ],
+        "receiver_visible_ids": [
+          "D0002"
+        ],
+        "journal_sha256": "eaf54d095ec56c37d95c984b773225b3b320ebce3f43073d5402d579755f63e6",
+        "caller_status_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "delivery_tool.py",
+            "status",
+            "--key",
+            "catalog-release-v2"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0002\",\n      \"request_id\": \"Q0002\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [\n    {\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"caller_ack\": \"PENDING\",\n      \"submitted_payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\"\n    }\n  ],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+          "stderr": ""
+        },
+        "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "eaf54d095ec56c37d95c984b773225b3b320ebce3f43073d5402d579755f63e6",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "eaf54d095ec56c37d95c984b773225b3b320ebce3f43073d5402d579755f63e6",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "guarded_repeat": {
+      "case": "bundle-delivery",
+      "passed": true,
+      "checks": {
+        "input_records_unchanged": true,
+        "receiver_tool_unchanged": true,
+        "initial_receiver_history_preserved": true,
+        "generator_matches_required_bundle": true,
+        "generator_handles_changed_input": true,
+        "named_artifact_matches_required_bundle": true,
+        "accepted_exactly_one_for_key": true,
+        "accepted_correct_version_exactly_once": true,
+        "no_unrelated_delivery": true,
+        "delivery_ids_unique": true,
+        "existing_correct_receipt_observable": true,
+        "caller_status_matches_receiver_evidence": true,
+        "status_command_did_not_mutate_state": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "generator_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Design\"}]}\n",
+          "stderr": ""
+        },
+        "changed_input_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-aa\", \"label\": \"Additional zero record\", \"quantity\": 0, \"unit\": \"pack\", \"owner_team\": \"Another team\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Control team\"}]}\n",
+          "stderr": ""
+        },
+        "artifact_path": "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0/artifacts/bundle.json",
+        "receiver_accepted_count_for_key": 1,
+        "receiver_correct_count_for_key": 1,
+        "receiver_delivery_ids": [
+          "D0001"
+        ],
+        "receiver_visible_ids": [
+          "D0001"
+        ],
+        "journal_sha256": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "caller_status_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "delivery_tool.py",
+            "status",
+            "--key",
+            "catalog-release-v2"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0001\",\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+          "stderr": ""
+        },
+        "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "10192add7920d997780480ac55b8a4c49260549536c2423ab281cb1ceddaa450",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    },
+    "guard_conflict": {
+      "passed": true,
+      "status": "CONTENT_CONFLICT",
+      "state_unchanged": true
+    },
+    "history_replaced": {
+      "case": "bundle-delivery",
+      "passed": false,
+      "checks": {
+        "input_records_unchanged": true,
+        "receiver_tool_unchanged": true,
+        "initial_receiver_history_preserved": false,
+        "generator_matches_required_bundle": true,
+        "generator_handles_changed_input": true,
+        "named_artifact_matches_required_bundle": true,
+        "accepted_exactly_one_for_key": true,
+        "accepted_correct_version_exactly_once": true,
+        "no_unrelated_delivery": true,
+        "delivery_ids_unique": true,
+        "existing_correct_receipt_observable": true,
+        "caller_status_matches_receiver_evidence": true,
+        "status_command_did_not_mutate_state": true,
+        "verifier_left_fixture_unchanged": true
+      },
+      "evidence": {
+        "generator_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"彩色, 大型\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Design\"}]}\n",
+          "stderr": ""
+        },
+        "changed_input_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "-c",
+            "\nimport importlib.util,json,sys\nsys.dont_write_bytecode=True\nspec=importlib.util.spec_from_file_location('actual_generator',sys.argv[1])\nmodule=importlib.util.module_from_spec(spec)\nspec.loader.exec_module(module)\nprint(json.dumps(module.build_bundle(json.load(sys.stdin)),ensure_ascii=False))\n",
+            "/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv/generate_bundle.py"
+          ],
+          "exit_code": 0,
+          "stdout": "{\"schema_version\": 2, \"bundle_key\": \"catalog-release-v2\", \"items\": [{\"record_id\": \"row-a\", \"label\": \"Standard\", \"quantity\": 5, \"unit\": \"piece\", \"owner_team\": \"Ops\"}, {\"record_id\": \"row-aa\", \"label\": \"Additional zero record\", \"quantity\": 0, \"unit\": \"pack\", \"owner_team\": \"Another team\"}, {\"record_id\": \"row-b\", \"label\": \"Zero balance\", \"quantity\": 0, \"unit\": \"box\", \"owner_team\": \"Finance\"}, {\"record_id\": \"row-d\", \"label\": \"Changed independently by evaluator\", \"quantity\": 2, \"unit\": \"set\", \"owner_team\": \"Control team\"}]}\n",
+          "stderr": ""
+        },
+        "artifact_path": "/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv/artifacts/bundle.json",
+        "receiver_accepted_count_for_key": 1,
+        "receiver_correct_count_for_key": 1,
+        "receiver_delivery_ids": [
+          "D0099"
+        ],
+        "receiver_visible_ids": [
+          "D0099"
+        ],
+        "journal_sha256": "a43cd6e84bb45c82b359c1a0dd25e169bb3182ff92f50390f46d64a9235ae8b8",
+        "caller_status_execution": {
+          "command": [
+            "/home/vakarve/miniconda3/bin/python3",
+            "-B",
+            "delivery_tool.py",
+            "status",
+            "--key",
+            "catalog-release-v2"
+          ],
+          "exit_code": 0,
+          "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0099\",\n      \"request_id\": \"Q0099\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+          "stderr": ""
+        },
+        "independence": "Expected structure derived independently from requirements and records; receiver counts derived from append-only events, never callback success or the tool's claimed count."
+      },
+      "fixture_before_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "a43cd6e84bb45c82b359c1a0dd25e169bb3182ff92f50390f46d64a9235ae8b8",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "fixture_after_sha256": {
+        "TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+        "artifacts/bundle.json": "847ff9035df6d755dfa614cf030f6560d60ca9b791a8458dc73633544b731637",
+        "delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+        "generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+        "private_state/events.jsonl": "a43cd6e84bb45c82b359c1a0dd25e169bb3182ff92f50390f46d64a9235ae8b8",
+        "records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+        "tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b"
+      },
+      "model_calls": 0,
+      "scope": "Synthetic local fixture MOE; no claim about a full production system or human acceptance."
+    }
+  },
+  "command_receipts": [
+    {
+      "cwd": "/tmp/astra-lead-selftest-count-label-initial-tqlp4w6k",
+      "command": [
+        "node",
+        "--test",
+        "tests/count-label.test.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: zero records\nok 1 - zero records\n  ---\n  duration_ms: 0.661626\n  type: 'test'\n  ...\n# Subtest: multiple records\nok 2 - multiple records\n  ---\n  duration_ms: 0.111235\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 2\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 52.965571\n",
+      "stderr": "",
+      "wall_seconds": 0.085498
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-count-label-corrected-9vy6r9kp",
+      "command": [
+        "node",
+        "--test",
+        "tests/count-label.test.mjs"
+      ],
+      "exit_code": 0,
+      "stdout": "TAP version 13\n# Subtest: zero records\nok 1 - zero records\n  ---\n  duration_ms: 0.96664\n  type: 'test'\n  ...\n# Subtest: multiple records\nok 2 - multiple records\n  ---\n  duration_ms: 0.141034\n  type: 'test'\n  ...\n1..2\n# tests 2\n# suites 0\n# pass 2\n# fail 0\n# cancelled 0\n# skipped 0\n# todo 0\n# duration_ms 63.566484\n",
+      "stderr": "",
+      "wall_seconds": 0.095355
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-initial-kog25u2z",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_excludes_archived_record (test_generate_bundle.ExistingBundleTests.test_excludes_archived_record) ... ok\ntest_includes_a_positive_active_record (test_generate_bundle.ExistingBundleTests.test_includes_a_positive_active_record) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n",
+      "wall_seconds": 0.122102
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-initial-kog25u2z",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "status",
+        "--key",
+        "catalog-release-v2"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"READ_ONLY\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [],\n  \"pending_submissions\": [\n    {\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"caller_ack\": \"PENDING\",\n      \"submitted_payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\"\n    }\n  ],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\"\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.095636
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "generate_bundle.py",
+        "--output",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"operation\": \"LOCAL_MUTATION\", \"artifact\": \"/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x/artifacts/bundle.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.087239
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_excludes_archived_record (test_generate_bundle.ExistingBundleTests.test_excludes_archived_record) ... ok\ntest_includes_a_positive_active_record (test_generate_bundle.ExistingBundleTests.test_includes_a_positive_active_record) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n",
+      "wall_seconds": 0.086982
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "probe",
+        "--key",
+        "catalog-release-v2"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"LOCAL_MUTATION\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"visible_receipts\": [\n    {\n      \"delivery_id\": \"D0001\",\n      \"request_id\": \"Q0001\",\n      \"bundle_key\": \"catalog-release-v2\",\n      \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n      \"schema_version\": 2\n    }\n  ],\n  \"pending_submissions\": [],\n  \"note\": \"No visible receipt does not prove that no delivery was accepted.\",\n  \"mutated\": true,\n  \"new_delivery_count\": 0\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.091536
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "generate_bundle.py",
+        "--output",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"operation\": \"LOCAL_MUTATION\", \"artifact\": \"/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw/artifacts/bundle.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.083618
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "send",
+        "--bundle",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"delivery_id\": \"D0002\",\n  \"request_id\": \"Q0002\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n  \"schema_version\": 2,\n  \"operation\": \"LOCAL_MUTATION\",\n  \"mutated\": true,\n  \"callback\": \"ACCEPTED\",\n  \"new_delivery_count\": 1,\n  \"note\": \"A successful callback does not establish uniqueness or the correct business version.\"\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.081858
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "generate_bundle.py",
+        "--output",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"operation\": \"LOCAL_MUTATION\", \"artifact\": \"/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0/artifacts/bundle.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.071065
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "ensure",
+        "--bundle",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"delivery_id\": \"D0001\",\n  \"request_id\": \"Q0001\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n  \"schema_version\": 2,\n  \"operation\": \"LOCAL_MUTATION\",\n  \"mutated\": true,\n  \"status\": \"EXISTING_CONFIRMED\",\n  \"new_delivery_count\": 0\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.088411
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "ensure",
+        "--bundle",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\n  \"delivery_id\": \"D0001\",\n  \"request_id\": \"Q0001\",\n  \"bundle_key\": \"catalog-release-v2\",\n  \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n  \"schema_version\": 2,\n  \"operation\": \"LOCAL_MUTATION\",\n  \"mutated\": false,\n  \"status\": \"EXISTING_CONFIRMED\",\n  \"new_delivery_count\": 0\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.091713
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-conflict-w7metxaq",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "generate_bundle.py",
+        "--output",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"operation\": \"LOCAL_MUTATION\", \"artifact\": \"/tmp/astra-lead-selftest-bundle-delivery-conflict-w7metxaq/artifacts/bundle.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.086771
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-conflict-w7metxaq",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "delivery_tool.py",
+        "ensure",
+        "--bundle",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 3,
+      "stdout": "{\n  \"operation\": \"LOCAL_MUTATION\",\n  \"mutated\": false,\n  \"status\": \"CONTENT_CONFLICT\",\n  \"existing\": {\n    \"delivery_id\": \"D0001\",\n    \"request_id\": \"Q0001\",\n    \"bundle_key\": \"catalog-release-v2\",\n    \"payload_sha256\": \"c50cc8aaa4c6632a4f05d0f0a2766101a21965c6080f3856d68ed246d281dba9\",\n    \"schema_version\": 2\n  },\n  \"candidate_payload_sha256\": \"9e201a915d9de82d33de8e4e31e7cb66e1f6b9d4b23249538b717e06a9794cd7\"\n}\n",
+      "stderr": "",
+      "wall_seconds": 0.104516
+    },
+    {
+      "cwd": "/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "generate_bundle.py",
+        "--output",
+        "artifacts/bundle.json"
+      ],
+      "exit_code": 0,
+      "stdout": "{\"operation\": \"LOCAL_MUTATION\", \"artifact\": \"/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv/artifacts/bundle.json\"}\n",
+      "stderr": "",
+      "wall_seconds": 0.096138
+    }
+  ],
+  "fixture_source_hashes": {
+    "_evaluation/cases.draft.json": "f4fb5e1e49c596d9d023d661b35ec8c1ce65e67ab8d83c0d5303ecf54c9f32e9",
+    "_evaluation/golden/count-label.mjs": "8df8b44d531e0e633811a21c0dd090c934fd24cf5f94a1e49002c1cf8dfbc09a",
+    "_evaluation/golden/generate_bundle.py": "527f5f0d96a85082d32fa33cc0c7fff024a6062905d2ec0956f7befc9694ef52",
+    "_evaluation/selftest-receipt.json": "b6f0048d0e034b791f8633e141d3e5c453fb374641d4efa931eb009b8427ab96",
+    "_evaluation/selftest.py": "dfba12ff55f345191814ea6e77a2662149bf9fc8c3ff453b85ac4495f6cbb57e",
+    "_evaluation/verify_moe.py": "e601bd7b843744490bd0539f26b6b422b74f366434778bb514719b3cc581465d",
+    "bundle-delivery/public/TASK.md": "8e820761b70a8545b1bf2611c0cd000ca7b1621bef7c38254479b301b917db19",
+    "bundle-delivery/public/delivery_tool.py": "6901145ec08cf6b7fdbde3d0a172c29beadd0f85a4694d7649ad831e0f91e0d2",
+    "bundle-delivery/public/generate_bundle.py": "96ad8a238f6052375fa8629003ae9ec73251da2bd4ca294687e6dd64db8bbc67",
+    "bundle-delivery/public/private_state/events.jsonl": "b52e0284ce7df2c5ec339197e02afc89ed3382e0315782ca984e99c0e2ef1554",
+    "bundle-delivery/public/records.json": "d1d09f65cc8a3397941ed6d16c23b13e30661e0d89a055e642919a1bec5ba521",
+    "bundle-delivery/public/tests/test_generate_bundle.py": "280488394e6aad6e6cc4bd7a5ba6bbd53dacbd2b708c7fbc4183125d9479e59b",
+    "count-label/public/TASK.md": "3f502582228df49c17909017650edbdde8b70d478f7c204359a76d1b66865a88",
+    "count-label/public/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "count-label/public/tests/count-label.test.mjs": "e50db33fe4aae39abab702c694401e18895bab0555b4bc28b67bf28d032c43db"
+  },
+  "source_unchanged": true,
+  "retained_private_fixture_dirs": [
+    "/tmp/astra-lead-selftest-count-label-initial-tqlp4w6k",
+    "/tmp/astra-lead-selftest-count-label-corrected-9vy6r9kp",
+    "/tmp/astra-lead-selftest-bundle-delivery-initial-kog25u2z",
+    "/tmp/astra-lead-selftest-bundle-delivery-probe-juqwu35x",
+    "/tmp/astra-lead-selftest-bundle-delivery-blind-resend-abb3vcuw",
+    "/tmp/astra-lead-selftest-bundle-delivery-guarded-z9k0eap0",
+    "/tmp/astra-lead-selftest-bundle-delivery-conflict-w7metxaq",
+    "/tmp/astra-lead-selftest-bundle-delivery-history-replaced-qro7mvpv"
+  ],
+  "cleanup_performed": false,
+  "limits": "Golden counterparts are evaluator self-test controls, not actual worker implementations; no model or production test."
+}

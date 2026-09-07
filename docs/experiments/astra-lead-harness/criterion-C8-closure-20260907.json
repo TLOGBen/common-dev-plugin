@@ -1,0 +1,50 @@
+{
+  "created_utc": "2026-09-06T16:48:15.552Z",
+  "criterion": "C8",
+  "result": "met-with-explicit-limits",
+  "reason": "Replace a superseded mutable presentation reference with a frozen, freshly reviewed conclusion and inspected per-batch evidence. Existing raw runs and old checkpoints preserved.",
+  "previous_checkpoint": "docs/experiments/common-lab/own-checkpoint-20260906-1950.json",
+  "previous_C8_reference_sha256": "34a8a2ad5f908c9564dd2295965a711b91454b565f5f31f5b79a02996706c6b0",
+  "observed_before_presentation_finalization_sha256": "d026c19a0a68431e2d45eb44962d608d1c41e988c58d56d31f5271febf1ff3bd",
+  "evidence": [
+    {
+      "path": "docs/experiments/astra-lead-harness/frozen-mechanism-verdicts-20260907.md",
+      "sha256": "47c32382935abd16b62913e561488ffb7470458f8d14ab790c76d4a1d8346df4"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/resume-v1-review/lead-disposition.md",
+      "sha256": "9672c252ea7055aa4de8030c8bda7fef0d59b8d3006497a8095b34dd00c3380b"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/campaign-noextra-v1-review/lead-disposition.md",
+      "sha256": "923dfa2212a23e86cb3536c0b4f1fe3f4bb8d1e4f07ceb1a856f544670f5c58f"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/extension-v1-review/lead-disposition.md",
+      "sha256": "5d9a122e97e9df88ed0ff0a6d8ba7cb99d51dbc8d7abec451868012eb4a937d7"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/delegate-context-v1-review/disposition.md",
+      "sha256": "ac099bd566c5bf274ec6b3f444e06168e9d01898db02f3b7c2d412d9dee13095"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/worker-fit-v1-review/lead-disposition.md",
+      "sha256": "c710e856243f04e0aa65b314a6ed35d64970382d461b18222056c0df1304bf13"
+    },
+    {
+      "path": "docs/experiments/astra-lead-harness/direct-policy-v1/lead-disposition.md",
+      "sha256": "69679d975bc5f7b644bfe03c7edd0b259fe1c07bfce7b35bd3adc3b945711cb8"
+    },
+    {
+      "path": ".codex/evolve/lab-verifier/measurement-addendum-3.md",
+      "sha256": "a6a8df47920a6ea1923822e5f10d01d45f5f73d70b81232d1a90aa1f5ae71221"
+    }
+  ],
+  "conclusion": "Actual Astra lead and bounded Luna implementation have artifact/acceptance evidence; original, Lab and no-extra-skill comparisons retain scope/carrier confounds. Worker-fit did not show stable extra-skill benefit, direct policy does not meet separation MOE. Retain purpose, reduce mandatory roles, keep human decisions and unknown effect reconciliation; no inferred model internals.",
+  "limits": [
+    "Small synthetic cases; none arm still has task/ownership scaffolding.",
+    "Fable policy denied and Opus untested; no universal ranking or invoice claim.",
+    "Frozen conclusion contains provisional field-trial judgments, not new experiments still running.",
+    "Historical checkpoint carries an obsolete C8 subsection; C1/C5/C7 continue relying only on their own unchanged subsections."
+  ]
+}

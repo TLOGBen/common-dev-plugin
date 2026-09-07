@@ -1,0 +1,24 @@
+{
+  "started_utc": "2026-09-06T12:48:33.741660+00:00",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/trace-visibility-v1-w7p9dk94/T3",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "plan_sha256": "af401fa646a41190b336512b317a7fe74f540cf264e67e8af656f068d4078283",
+  "runner_sha256": "8f3d4818b35c5a85f3466e1442b60e6cc3c18eb14b84c284d6922107fa90ec8d",
+  "fallback": false,
+  "timeout_seconds": 180
+}

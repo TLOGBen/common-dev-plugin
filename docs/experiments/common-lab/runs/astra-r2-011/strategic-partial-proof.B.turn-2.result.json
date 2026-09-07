@@ -1,0 +1,62 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:06:41.451791+00:00",
+  "ended_utc": "2026-09-06T03:07:12.106683+00:00",
+  "wall_seconds": 30.654,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "1404a20f8f8464466d86f3cc4ecba79dcff4b5f1da3084d0c7bf714d05acd491",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取指定技能，依固定證據提出模擬回覆與下一步；不會實際查詢 MAIL-7 或變更狀態。\n",
+    "依指定技能判斷，**三項驗收條件已完成兩項，整體尚未完成**：\n\n- **收件方收到：已證實。** 收件方 receipt 顯示 `MAIL-7 Delivered`。\n- **證據可讀回：已證實。** 該 receipt 已存成可讀回檔案 `E-7`。\n- **只寄出一封：仍未證實。** 查詢只回第一筆，缺少完整筆數與去重結果；一份 receipt 不能排除重複寄送。\n\n**主攻剩餘的寄送唯一性缺口。** 擬議下一步是在已授權的 `MAIL-7` 範圍內做唯讀對帳：取得全部分頁及其關聯重試紀錄，確認查詢涵蓋完整，再以實際出件識別核算寄送數量，區分「同一封信的多筆狀態紀錄」與「多次實際出件」。僅計算去重後的 `message_id` 數量不足以證明只寄一次。\n\n預期取得的證據是：**完整查詢範圍、全部結果已取回的依據，以及實際出件數量與識別清單**。取得後重新判斷：\n\n- 完整紀錄支持實際出件恰為一封：唯一性條件完成。\n- 證實多次出件：唯一性條件未達成。\n- 仍只有首筆或無法確認完整性：維持未證實，指出缺少的紀錄或查詢能力。\n\n不需重問既有唯讀授權；不重寄、不修縮圖。以上僅為模擬回覆與行動提案，未實際查詢或變更狀態。"
+  ],
+  "final_message": "依指定技能判斷，**三項驗收條件已完成兩項，整體尚未完成**：\n\n- **收件方收到：已證實。** 收件方 receipt 顯示 `MAIL-7 Delivered`。\n- **證據可讀回：已證實。** 該 receipt 已存成可讀回檔案 `E-7`。\n- **只寄出一封：仍未證實。** 查詢只回第一筆，缺少完整筆數與去重結果；一份 receipt 不能排除重複寄送。\n\n**主攻剩餘的寄送唯一性缺口。** 擬議下一步是在已授權的 `MAIL-7` 範圍內做唯讀對帳：取得全部分頁及其關聯重試紀錄，確認查詢涵蓋完整，再以實際出件識別核算寄送數量，區分「同一封信的多筆狀態紀錄」與「多次實際出件」。僅計算去重後的 `message_id` 數量不足以證明只寄一次。\n\n預期取得的證據是：**完整查詢範圍、全部結果已取回的依據，以及實際出件數量與識別清單**。取得後重新判斷：\n\n- 完整紀錄支持實際出件恰為一封：唯一性條件完成。\n- 證實多次出件：唯一性條件未達成。\n- 仍只有首筆或無法確認完整性：維持未證實，指出缺少的紀錄或查詢能力。\n\n不需重問既有唯讀授權；不重寄、不修縮圖。以上僅為模擬回覆與行動提案，未實際查詢或變更狀態。",
+  "usage": {
+    "input_tokens": 33161,
+    "cached_input_tokens": 27520,
+    "output_tokens": 628,
+    "uncached_input_tokens": 5641,
+    "total_tokens": 33789
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

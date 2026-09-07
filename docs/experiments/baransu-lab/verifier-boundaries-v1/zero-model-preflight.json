@@ -1,0 +1,219 @@
+{
+  "model_calls": 0,
+  "all_supplied_tests_pass": false,
+  "test_runs": [
+    {
+      "group": "R1",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_build (unittest.loader._FailedTest.test_build) ... ERROR\n\n======================================================================\nERROR: test_build (unittest.loader._FailedTest.test_build)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_build\nTraceback (most recent call last):\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n    ~~~~~~~~~~^^^^^^\n  File \"/tmp/verifier-boundaries-v1-957i18zd/R1/R/tests/test_build.py\", line 6, in <module>\n    from ops import canonical, query\nModuleNotFoundError: No module named 'ops'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "group": "R1",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R1",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R2",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_build (unittest.loader._FailedTest.test_build) ... ERROR\n\n======================================================================\nERROR: test_build (unittest.loader._FailedTest.test_build)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_build\nTraceback (most recent call last):\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n    ~~~~~~~~~~^^^^^^\n  File \"/tmp/verifier-boundaries-v1-957i18zd/R2/R/tests/test_build.py\", line 6, in <module>\n    from ops import canonical, query\nModuleNotFoundError: No module named 'ops'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "group": "R2",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R2",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R3",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_build (unittest.loader._FailedTest.test_build) ... ERROR\n\n======================================================================\nERROR: test_build (unittest.loader._FailedTest.test_build)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_build\nTraceback (most recent call last):\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n    ~~~~~~~~~~^^^^^^\n  File \"/tmp/verifier-boundaries-v1-957i18zd/R3/R/tests/test_build.py\", line 6, in <module>\n    from ops import canonical, query\nModuleNotFoundError: No module named 'ops'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "group": "R3",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R3",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R4",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 1,
+      "stdout": "",
+      "stderr": "test_build (unittest.loader._FailedTest.test_build) ... ERROR\n\n======================================================================\nERROR: test_build (unittest.loader._FailedTest.test_build)\n----------------------------------------------------------------------\nImportError: Failed to import test module: test_build\nTraceback (most recent call last):\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 396, in _find_test_path\n    module = self._get_module_from_name(name)\n  File \"/home/vakarve/miniconda3/lib/python3.13/unittest/loader.py\", line 339, in _get_module_from_name\n    __import__(name)\n    ~~~~~~~~~~^^^^^^\n  File \"/tmp/verifier-boundaries-v1-957i18zd/R4/R/tests/test_build.py\", line 6, in <module>\n    from ops import canonical, query\nModuleNotFoundError: No module named 'ops'\n\n\n----------------------------------------------------------------------\nRan 1 test in 0.000s\n\nFAILED (errors=1)\n"
+    },
+    {
+      "group": "R4",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R4",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    }
+  ],
+  "V_empty_allowlist_exposes_unauthorized_row": true,
+  "V_actual": [
+    {
+      "id": "x",
+      "active": true
+    }
+  ],
+  "inputs_unchanged": true,
+  "new_files": []
+}

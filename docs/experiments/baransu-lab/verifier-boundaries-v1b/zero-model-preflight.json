@@ -1,0 +1,219 @@
+{
+  "model_calls": 0,
+  "all_supplied_tests_pass": true,
+  "test_runs": [
+    {
+      "group": "R1",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_bundle_release_and_canonical_identity_are_stable_across_formatting (test_build.CatalogV3Tests.test_bundle_release_and_canonical_identity_are_stable_across_formatting) ... ok\ntest_catalog_fields_are_exact_and_values_keep_types_and_unicode (test_build.CatalogV3Tests.test_catalog_fields_are_exact_and_values_keep_types_and_unicode) ... ok\ntest_catalog_v3_filters_without_dropping_zero_capacity (test_build.CatalogV3Tests.test_catalog_v3_filters_without_dropping_zero_capacity) ... ok\ntest_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids (test_build.CatalogV3Tests.test_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids) ... ok\ntest_query_applies_region_and_tag_as_intersection_and_unknown_is_empty (test_build.CatalogV3Tests.test_query_applies_region_and_tag_as_intersection_and_unknown_is_empty) ... ok\ntest_active_positive_record (test_build.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (test_build.ExistingTests.test_single_tag_lookup) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "group": "R1",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "group": "R1",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R2",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_bundle_release_and_canonical_identity_are_stable_across_formatting (test_build.CatalogV3Tests.test_bundle_release_and_canonical_identity_are_stable_across_formatting) ... ok\ntest_catalog_fields_are_exact_and_values_keep_types_and_unicode (test_build.CatalogV3Tests.test_catalog_fields_are_exact_and_values_keep_types_and_unicode) ... ok\ntest_catalog_v3_filters_without_dropping_zero_capacity (test_build.CatalogV3Tests.test_catalog_v3_filters_without_dropping_zero_capacity) ... ok\ntest_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids (test_build.CatalogV3Tests.test_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids) ... ok\ntest_query_applies_region_and_tag_as_intersection_and_unknown_is_empty (test_build.CatalogV3Tests.test_query_applies_region_and_tag_as_intersection_and_unknown_is_empty) ... ok\ntest_active_positive_record (test_build.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (test_build.ExistingTests.test_single_tag_lookup) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "group": "R2",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R2",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R3",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_bundle_release_and_canonical_identity_are_stable_across_formatting (test_build.CatalogV3Tests.test_bundle_release_and_canonical_identity_are_stable_across_formatting) ... ok\ntest_catalog_fields_are_exact_and_values_keep_types_and_unicode (test_build.CatalogV3Tests.test_catalog_fields_are_exact_and_values_keep_types_and_unicode) ... ok\ntest_catalog_v3_filters_without_dropping_zero_capacity (test_build.CatalogV3Tests.test_catalog_v3_filters_without_dropping_zero_capacity) ... ok\ntest_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids (test_build.CatalogV3Tests.test_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids) ... ok\ntest_query_applies_region_and_tag_as_intersection_and_unknown_is_empty (test_build.CatalogV3Tests.test_query_applies_region_and_tag_as_intersection_and_unknown_is_empty) ... ok\ntest_active_positive_record (test_build.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (test_build.ExistingTests.test_single_tag_lookup) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "group": "R3",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R3",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R4",
+      "case": "R",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_bundle_release_and_canonical_identity_are_stable_across_formatting (test_build.CatalogV3Tests.test_bundle_release_and_canonical_identity_are_stable_across_formatting) ... ok\ntest_catalog_fields_are_exact_and_values_keep_types_and_unicode (test_build.CatalogV3Tests.test_catalog_fields_are_exact_and_values_keep_types_and_unicode) ... ok\ntest_catalog_v3_filters_without_dropping_zero_capacity (test_build.CatalogV3Tests.test_catalog_v3_filters_without_dropping_zero_capacity) ... ok\ntest_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids (test_build.CatalogV3Tests.test_index_collects_all_tags_and_shared_regions_with_deduped_sorted_ids) ... ok\ntest_query_applies_region_and_tag_as_intersection_and_unknown_is_empty (test_build.CatalogV3Tests.test_query_applies_region_and_tag_as_intersection_and_unknown_is_empty) ... ok\ntest_active_positive_record (test_build.ExistingTests.test_active_positive_record) ... ok\ntest_single_tag_lookup (test_build.ExistingTests.test_single_tag_lookup) ... ok\n\n----------------------------------------------------------------------\nRan 7 tests in 0.001s\n\nOK\n"
+    },
+    {
+      "group": "R4",
+      "case": "S",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_empty_and_limit (test_subject.Ranking.test_empty_and_limit) ... ok\ntest_order (test_subject.Ranking.test_order) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    },
+    {
+      "group": "R4",
+      "case": "V",
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        ".",
+        "-v"
+      ],
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": "test_active_row (test_subject.Visibility.test_active_row) ... ok\ntest_empty_rows (test_subject.Visibility.test_empty_rows) ... ok\n\n----------------------------------------------------------------------\nRan 2 tests in 0.000s\n\nOK\n"
+    }
+  ],
+  "V_empty_allowlist_exposes_unauthorized_row": true,
+  "V_actual": [
+    {
+      "id": "x",
+      "active": true
+    }
+  ],
+  "inputs_unchanged": true,
+  "new_files": []
+}

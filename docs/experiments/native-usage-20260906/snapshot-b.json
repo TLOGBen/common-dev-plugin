@@ -1,0 +1,799 @@
+{
+  "captured_utc": "2026-09-06T15:29:16.750689+00:00",
+  "scope": "Root after verified baseline plus exactly eight named native child sessions; CLI test runs separate.",
+  "method": "Subtract cumulative baseline, never sum cumulative events. For forks compare the identical (total,last) prefix while ignoring rewritten timestamps.",
+  "root_baseline_utc": "2026-09-06T02:09:30.850Z",
+  "accounting": "Cached read/write are subsets of input; reasoning subset of output.",
+  "rows": [
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/08/17/rollout-2026-08-17T09-40-20-01a00d60-74f5-7c10-8b87-96d80e3c2dc3.jsonl",
+      "source_prefix_bytes": 73744601,
+      "source_prefix_sha256": "2f031277fc7b1ee32093bfd5796514429d2c065bcfd23063f54c1fdad2474225",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+        "timestamp": "2026-08-17T01:40:20.401Z",
+        "source": "vscode",
+        "forked_from_id": null
+      },
+      "role": "root-after-explicit-baseline",
+      "inherited_identical_usage_prefix_events": 116,
+      "baseline_usage": {
+        "input_tokens": 14756528,
+        "cached_input_tokens": 14106496,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 47794,
+        "reasoning_output_tokens": 19211,
+        "total_tokens": 14804322
+      },
+      "last_event": {
+        "line": 9037,
+        "at": "2026-09-06T15:28:52.047Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 183859422,
+          "cached_input_tokens": 179066240,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 799587,
+          "reasoning_output_tokens": 321829,
+          "total_tokens": 184659009
+        },
+        "last": {
+          "input_tokens": 167928,
+          "cached_input_tokens": 167424,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 292,
+          "reasoning_output_tokens": 188,
+          "total_tokens": 168220
+        }
+      },
+      "first_own_event": {
+        "line": 699,
+        "at": "2026-09-06T02:09:59.306Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 14811178,
+          "cached_input_tokens": 14157568,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 48330,
+          "reasoning_output_tokens": 19484,
+          "total_tokens": 14859508
+        },
+        "last": {
+          "input_tokens": 54650,
+          "cached_input_tokens": 51072,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 536,
+          "reasoning_output_tokens": 273,
+          "total_tokens": 55186
+        }
+      },
+      "own_observed_event_count": 1283,
+      "own_usage_increment": {
+        "input_tokens": 169102894,
+        "cached_input_tokens": 164959744,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 751793,
+        "reasoning_output_tokens": 302618,
+        "total_tokens": 169854687
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T10-12-25-01a0747d-05e0-7b32-b955-f2992d0a6d03.jsonl",
+      "source_prefix_bytes": 17770280,
+      "source_prefix_sha256": "67b6a21850c2f4e3eb21c3c623a94036a9c5ec5f26210b41124c38abe9c1f56a",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a0747d-05e0-7b32-b955-f2992d0a6d03",
+        "timestamp": "2026-09-06T02:12:25.778Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/lab_author",
+              "agent_nickname": "Kierkegaard",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3"
+      },
+      "role": "lab_author",
+      "inherited_identical_usage_prefix_events": 123,
+      "baseline_usage": {
+        "input_tokens": 15269927,
+        "cached_input_tokens": 14587648,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 49995,
+        "reasoning_output_tokens": 20074,
+        "total_tokens": 15319922
+      },
+      "last_event": {
+        "line": 2573,
+        "at": "2026-09-06T08:40:59.203Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 61587826,
+          "cached_input_tokens": 59351680,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 296714,
+          "reasoning_output_tokens": 92216,
+          "total_tokens": 61884540
+        },
+        "last": {
+          "input_tokens": 93732,
+          "cached_input_tokens": 93440,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 130,
+          "reasoning_output_tokens": 24,
+          "total_tokens": 93862
+        }
+      },
+      "first_own_event": {
+        "line": 329,
+        "at": "2026-09-06T02:12:43.463Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 15321522,
+          "cached_input_tokens": 14587648,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 50073,
+          "reasoning_output_tokens": 20074,
+          "total_tokens": 15371595
+        },
+        "last": {
+          "input_tokens": 51595,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 78,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 51673
+        }
+      },
+      "own_observed_event_count": 369,
+      "own_usage_increment": {
+        "input_tokens": 46317899,
+        "cached_input_tokens": 44764032,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 246719,
+        "reasoning_output_tokens": 72142,
+        "total_tokens": 46564618
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T10-14-00-01a0747e-78d1-7151-bed5-6df933233894.jsonl",
+      "source_prefix_bytes": 2814734,
+      "source_prefix_sha256": "bb96c58b996a0d47eadba9736299e9035f0e66289dbd8b7a7a66aa1b216daace",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a0747e-78d1-7151-bed5-6df933233894",
+        "timestamp": "2026-09-06T02:14:00.740Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/campaign_scribe",
+              "agent_nickname": "Linnaeus",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3"
+      },
+      "role": "campaign_scribe",
+      "inherited_identical_usage_prefix_events": 126,
+      "baseline_usage": {
+        "input_tokens": 15437143,
+        "cached_input_tokens": 14753536,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 51529,
+        "reasoning_output_tokens": 20950,
+        "total_tokens": 15488672
+      },
+      "last_event": {
+        "line": 430,
+        "at": "2026-09-06T02:23:01.325Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 16616733,
+          "cached_input_tokens": 15904128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 60677,
+          "reasoning_output_tokens": 22721,
+          "total_tokens": 16677410
+        },
+        "last": {
+          "input_tokens": 78666,
+          "cached_input_tokens": 78336,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 105,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 78771
+        }
+      },
+      "first_own_event": {
+        "line": 336,
+        "at": "2026-09-06T02:14:19.707Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 15488729,
+          "cached_input_tokens": 14803968,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 51593,
+          "reasoning_output_tokens": 20950,
+          "total_tokens": 15540322
+        },
+        "last": {
+          "input_tokens": 51586,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 64,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 51650
+        }
+      },
+      "own_observed_event_count": 19,
+      "own_usage_increment": {
+        "input_tokens": 1179590,
+        "cached_input_tokens": 1150592,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9148,
+        "reasoning_output_tokens": 1771,
+        "total_tokens": 1188738
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T10-14-59-01a0747f-5e8c-7320-8dbe-45185f57d766.jsonl",
+      "source_prefix_bytes": 6609208,
+      "source_prefix_sha256": "1fbdebf6e66812633626eee0c58cf25de8533cb76b46c6cd4d537a477eaac791",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a0747f-5e8c-7320-8dbe-45185f57d766",
+        "timestamp": "2026-09-06T02:14:59.565Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/ab_harness",
+              "agent_nickname": "Galileo",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3"
+      },
+      "role": "ab_harness",
+      "inherited_identical_usage_prefix_events": 127,
+      "baseline_usage": {
+        "input_tokens": 15524278,
+        "cached_input_tokens": 14808064,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 52098,
+        "reasoning_output_tokens": 20999,
+        "total_tokens": 15576376
+      },
+      "last_event": {
+        "line": 1504,
+        "at": "2026-09-06T04:45:08.768Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 37907805,
+          "cached_input_tokens": 36627840,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 162056,
+          "reasoning_output_tokens": 62699,
+          "total_tokens": 38069861
+        },
+        "last": {
+          "input_tokens": 209794,
+          "cached_input_tokens": 209024,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 1169,
+          "reasoning_output_tokens": 396,
+          "total_tokens": 210963
+        }
+      },
+      "first_own_event": {
+        "line": 342,
+        "at": "2026-09-06T02:15:12.306Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 15576095,
+          "cached_input_tokens": 14858496,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 52281,
+          "reasoning_output_tokens": 21084,
+          "total_tokens": 15628376
+        },
+        "last": {
+          "input_tokens": 51817,
+          "cached_input_tokens": 50432,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 183,
+          "reasoning_output_tokens": 85,
+          "total_tokens": 52000
+        }
+      },
+      "own_observed_event_count": 198,
+      "own_usage_increment": {
+        "input_tokens": 22383527,
+        "cached_input_tokens": 21819776,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 109958,
+        "reasoning_output_tokens": 41700,
+        "total_tokens": 22493485
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T10-24-32-01a07488-1e08-74d0-80aa-aec2bcca3771.jsonl",
+      "source_prefix_bytes": 323530,
+      "source_prefix_sha256": "d3cef0f0b88853c9fa7f521d9e98aa5adbdadccee3b56da1b78e159b9217bda3",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a07488-1e08-74d0-80aa-aec2bcca3771",
+        "timestamp": "2026-09-06T02:24:32.873Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/lab_verifier",
+              "agent_nickname": "Raman",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": null
+      },
+      "role": "lab_verifier",
+      "inherited_identical_usage_prefix_events": 0,
+      "baseline_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "last_event": {
+        "line": 92,
+        "at": "2026-09-06T02:30:43.225Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 716634,
+          "cached_input_tokens": 657408,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 7289,
+          "reasoning_output_tokens": 2163,
+          "total_tokens": 723923
+        },
+        "last": {
+          "input_tokens": 60897,
+          "cached_input_tokens": 60160,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 662,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 61559
+        }
+      },
+      "first_own_event": {
+        "line": 17,
+        "at": "2026-09-06T02:24:59.308Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 38282,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 353,
+          "reasoning_output_tokens": 67,
+          "total_tokens": 38635
+        },
+        "last": {
+          "input_tokens": 38282,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 353,
+          "reasoning_output_tokens": 67,
+          "total_tokens": 38635
+        }
+      },
+      "own_observed_event_count": 15,
+      "own_usage_increment": {
+        "input_tokens": 716634,
+        "cached_input_tokens": 657408,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 7289,
+        "reasoning_output_tokens": 2163,
+        "total_tokens": 723923
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T10-32-57-01a0748f-d2ae-76f3-8cb8-1459d4fb2fd1.jsonl",
+      "source_prefix_bytes": 4526480,
+      "source_prefix_sha256": "567e1087313751da30d5de53f9f3d89f436ed251d136c8f36d902e0b3605d2d7",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a0748f-d2ae-76f3-8cb8-1459d4fb2fd1",
+        "timestamp": "2026-09-06T02:32:57.845Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/baransu_lab",
+              "agent_nickname": "Banach",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": null
+      },
+      "role": "baransu_lab",
+      "inherited_identical_usage_prefix_events": 0,
+      "baseline_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "last_event": {
+        "line": 1123,
+        "at": "2026-09-06T08:53:10.438Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 18934881,
+          "cached_input_tokens": 18322688,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 122550,
+          "reasoning_output_tokens": 49093,
+          "total_tokens": 19057431
+        },
+        "last": {
+          "input_tokens": 162402,
+          "cached_input_tokens": 161792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 216,
+          "reasoning_output_tokens": 111,
+          "total_tokens": 162618
+        }
+      },
+      "first_own_event": {
+        "line": 17,
+        "at": "2026-09-06T02:33:16.502Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 38566,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 345,
+          "reasoning_output_tokens": 63,
+          "total_tokens": 38911
+        },
+        "last": {
+          "input_tokens": 38566,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 345,
+          "reasoning_output_tokens": 63,
+          "total_tokens": 38911
+        }
+      },
+      "own_observed_event_count": 156,
+      "own_usage_increment": {
+        "input_tokens": 18934881,
+        "cached_input_tokens": 18322688,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 122550,
+        "reasoning_output_tokens": 49093,
+        "total_tokens": 19057431
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T11-09-30-01a074b1-490b-7e31-a170-b3537dc1ef6f.jsonl",
+      "source_prefix_bytes": 714490,
+      "source_prefix_sha256": "18e3077b5e0bb07e6e26add57d284565f0e14bf6f8e0c8995804e5d059c68f5c",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a074b1-490b-7e31-a170-b3537dc1ef6f",
+        "timestamp": "2026-09-06T03:09:30.874Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/reader_probe",
+              "agent_nickname": "Kant",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": null
+      },
+      "role": "reader_probe",
+      "inherited_identical_usage_prefix_events": 0,
+      "baseline_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "last_event": {
+        "line": 341,
+        "at": "2026-09-06T03:33:14.235Z",
+        "model": "gpt-5.6-sol",
+        "total": {
+          "input_tokens": 3148779,
+          "cached_input_tokens": 3037056,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 50234,
+          "reasoning_output_tokens": 14335,
+          "total_tokens": 3199013
+        },
+        "last": {
+          "input_tokens": 108295,
+          "cached_input_tokens": 107648,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 418,
+          "reasoning_output_tokens": 108,
+          "total_tokens": 108713
+        }
+      },
+      "first_own_event": {
+        "line": 18,
+        "at": "2026-09-06T03:09:52.816Z",
+        "model": "gpt-5.6-sol",
+        "total": {
+          "input_tokens": 34478,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 457,
+          "reasoning_output_tokens": 217,
+          "total_tokens": 34935
+        },
+        "last": {
+          "input_tokens": 34478,
+          "cached_input_tokens": 0,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 457,
+          "reasoning_output_tokens": 217,
+          "total_tokens": 34935
+        }
+      },
+      "own_observed_event_count": 43,
+      "own_usage_increment": {
+        "input_tokens": 3148779,
+        "cached_input_tokens": 3037056,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 50234,
+        "reasoning_output_tokens": 14335,
+        "total_tokens": 3199013
+      },
+      "models_observed_in_own_events": [
+        "gpt-5.6-sol"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T11-52-45-01a074d8-e0b5-7b83-bfef-5d0790d0e415.jsonl",
+      "source_prefix_bytes": 657895,
+      "source_prefix_sha256": "312405f987afdcd132b39982a9e69d9388435af38cc64e8b2786f1791310b2ce",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a074d8-e0b5-7b83-bfef-5d0790d0e415",
+        "timestamp": "2026-09-06T03:52:45.579Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/web_handoff",
+              "agent_nickname": "Confucius",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": null
+      },
+      "role": "web_handoff",
+      "inherited_identical_usage_prefix_events": 0,
+      "baseline_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "last_event": {
+        "line": 149,
+        "at": "2026-09-06T03:59:56.233Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 1790404,
+          "cached_input_tokens": 1711360,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 9440,
+          "reasoning_output_tokens": 2831,
+          "total_tokens": 1799844
+        },
+        "last": {
+          "input_tokens": 112942,
+          "cached_input_tokens": 112128,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 3579,
+          "reasoning_output_tokens": 78,
+          "total_tokens": 116521
+        }
+      },
+      "first_own_event": {
+        "line": 17,
+        "at": "2026-09-06T03:53:03.301Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 38281,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 300,
+          "reasoning_output_tokens": 82,
+          "total_tokens": 38581
+        },
+        "last": {
+          "input_tokens": 38281,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 300,
+          "reasoning_output_tokens": 82,
+          "total_tokens": 38581
+        }
+      },
+      "own_observed_event_count": 22,
+      "own_usage_increment": {
+        "input_tokens": 1790404,
+        "cached_input_tokens": 1711360,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 9440,
+        "reasoning_output_tokens": 2831,
+        "total_tokens": 1799844
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    },
+    {
+      "source": "/mnt/c/Users/jimts/.codex/sessions/2026/09/06/rollout-2026-09-06T12-14-52-01a074ed-1eda-7051-90c6-b9447168ad91.jsonl",
+      "source_prefix_bytes": 2010609,
+      "source_prefix_sha256": "c6fd76a94ff71ce4b7d48863aee9449487fca24a1aad05b440080b339a7fcbc2",
+      "ignored_incomplete_tail_bytes": 0,
+      "meta": {
+        "id": "01a074ed-1eda-7051-90c6-b9447168ad91",
+        "timestamp": "2026-09-06T04:14:52.188Z",
+        "source": {
+          "subagent": {
+            "thread_spawn": {
+              "parent_thread_id": "01a00d60-74f5-7c10-8b87-96d80e3c2dc3",
+              "depth": 1,
+              "agent_path": "/root/estimate_probe",
+              "agent_nickname": "Hume",
+              "agent_role": null
+            }
+          }
+        },
+        "forked_from_id": null
+      },
+      "role": "estimate_probe",
+      "inherited_identical_usage_prefix_events": 0,
+      "baseline_usage": {
+        "input_tokens": 0,
+        "cached_input_tokens": 0,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 0,
+        "reasoning_output_tokens": 0,
+        "total_tokens": 0
+      },
+      "last_event": {
+        "line": 500,
+        "at": "2026-09-06T08:41:23.830Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 8398615,
+          "cached_input_tokens": 8120832,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 65238,
+          "reasoning_output_tokens": 21956,
+          "total_tokens": 8463853
+        },
+        "last": {
+          "input_tokens": 50246,
+          "cached_input_tokens": 49792,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 93,
+          "reasoning_output_tokens": 0,
+          "total_tokens": 50339
+        }
+      },
+      "first_own_event": {
+        "line": 17,
+        "at": "2026-09-06T04:15:09.521Z",
+        "model": "gpt-6-astra",
+        "total": {
+          "input_tokens": 38294,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 251,
+          "reasoning_output_tokens": 102,
+          "total_tokens": 38545
+        },
+        "last": {
+          "input_tokens": 38294,
+          "cached_input_tokens": 37632,
+          "cache_write_input_tokens": 0,
+          "output_tokens": 251,
+          "reasoning_output_tokens": 102,
+          "total_tokens": 38545
+        }
+      },
+      "own_observed_event_count": 67,
+      "own_usage_increment": {
+        "input_tokens": 8398615,
+        "cached_input_tokens": 8120832,
+        "cache_write_input_tokens": 0,
+        "output_tokens": 65238,
+        "reasoning_output_tokens": 21956,
+        "total_tokens": 8463853
+      },
+      "models_observed_in_own_events": [
+        "gpt-6-astra"
+      ],
+      "actual_cost_usd": null
+    }
+  ],
+  "known_native_usage_subtotal": {
+    "input_tokens": 271973223,
+    "cached_input_tokens": 264543488,
+    "cache_write_input_tokens": 0,
+    "output_tokens": 1372369,
+    "reasoning_output_tokens": 508609,
+    "total_tokens": 273345592
+  },
+  "unknown_session_count": 0,
+  "actual_cost_usd": null,
+  "limits": [
+    "Snapshot, not final task total; later calls and snapshot-generation completion are absent.",
+    "Earlier root context before the explicit baseline is excluded, not counted as zero.",
+    "Automatic guardian sessions excluded because task-cost allocation is unproven.",
+    "CLI inference costs are separate and must not be confused with native authors.",
+    "Intervals across simultaneous workers must not be added as user elapsed time."
+  ]
+}

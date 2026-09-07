@@ -1,0 +1,140 @@
+{
+  "captured_at_utc": "2026-09-06T04:49:29.237117+00:00",
+  "actual_source": "/home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/actual-execution-browser-012",
+  "actual_source_files": {
+    "A/.common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md": "b0680b49be74fb6cc673bf0679cea6ac8c3209596f8fef4039bb80335f35ae24",
+    "A/.common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md": "eb2546a4146745bc4257c633144bc29407a61628abdb8c3ca83ef7a85cce86b2",
+    "A/.common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md": "4defc2f4d59abec7e13a5957bdbc868007dbf305fa89919eda632dbac187c6f2",
+    "A/.common-lab/wayfinder/privacy-rollout/map.html": "e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a",
+    "A/.common-lab/wayfinder/privacy-rollout/map.md": "e2e04b155141520018135a637159161191b7206b2c25ea0f4c1c5ff8f5510761",
+    "A/.common-lab/wayfinder/privacy-rollout/map.next.html": "f34f279fcf5d385429a71c3c6434f9e54ebe093957f8748380bbfc11a7117ff1",
+    "A/evidence/export-sample.csv": "7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4",
+    "A/evidence/export-schema.json": "196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4",
+    "A/product/index.js": "9b0ebcc5a2cf1ae2513dd50c99792957d6ac1416eb3cba644a19c7daf0ee2806",
+    "B/.common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md": "1f9759325876d7d1e438d8286eb89231256f6da7012724216b80277e3983c89c",
+    "B/.common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md": "bd6fa332a67f1c6d4a5ccf1cca3c18a21239e06f1b2d420323ad0edda91e1328",
+    "B/.common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md": "b9689cad53226ecfd493d5403d0d49f11be5a8aca7f189e4e43394167b7c006e",
+    "B/.common-lab/wayfinder/privacy-rollout/map.html": "e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a",
+    "B/.common-lab/wayfinder/privacy-rollout/map.md": "688784f54904cc9cd5afea02171e726a1dc013c2f488aa5b62bf3797082a17b3",
+    "B/.common-lab/wayfinder/privacy-rollout/map.next.html": "ff47a681239483f340a8c462c2814c8fdd3e26b6f193e2c8a7230de5363e8064",
+    "B/evidence/export-sample.csv": "7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4",
+    "B/evidence/export-schema.json": "196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4",
+    "B/product/index.js": "9b0ebcc5a2cf1ae2513dd50c99792957d6ac1416eb3cba644a19c7daf0ee2806"
+  },
+  "source_snapshot_files": {
+    ".claude-plugin/plugin.json": "ece707fb6f2271c5de6e5d7169850efd5bc683b93bc60df0bfde99ec19875c54",
+    "agents/lab-executor.md": "f8739a7858bbc4f57418d59ce54f28cffd24aee6fc1258ea077fa42bc8f294bd",
+    "skills/lab-better-prompts/SKILL.md": "8a9f76535e1940309770043e2ceeb73fdc906a6074d5e8e482871e5e909172a9",
+    "skills/lab-define-goal/SKILL.md": "e0e8033f92cfc32fe668b42980e1d533832a17c31ac69a3f9fd6539c0a2dcb1b",
+    "skills/lab-delegate/SKILL.md": "a2afe479bd779d1776a0057bb2fec20bd855926fa96efcd1251d5c7f8ab7b819",
+    "skills/lab-delegate/references/runtime.md": "e2468c78faaa497e316872abcbb448b7c0460005dcab704765a32f520e72a692",
+    "skills/lab-domain-modeling/SKILL.md": "4ac05fdb6374f10284da267092deaccb646789513877170fa6e4cfc5beb7f1bb",
+    "skills/lab-grilling/SKILL.md": "66f7decee6dbef461210251a7eeb7167b2cb6d4c878bbd2793b56e876330d5b4",
+    "skills/lab-prototype/SKILL.md": "eb46e1818b25f1352a719db97d70491a1bff4e83339ebdcbb1732c95716c1e42",
+    "skills/lab-research/SKILL.md": "015008f344f711a6abae91af0f68a5807f52e7ccf558b61b822c910ec4c729e0",
+    "skills/lab-strategic-advance/SKILL.md": "e0b7e11e71c7206382b59d4475b2d687deaaf8697c3b7d6c4b76ec6afb13c277",
+    "skills/lab-strategic-advance/references/campaign.md": "12d17bbf244abd1f2f16bbe9d0aa99a92016700e8893ef3009f7510fe707c31c",
+    "skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+    "skills/lab-wait-what/SKILL.md": "2151da59ef74a9c5db7cf71a8cfb9b4b37b492f86e39cff86fd1f7b73af7b494",
+    "skills/lab-wayfinder/SKILL.md": "f292c5f854e9245791cd6f0f8a180b7c29d43dcd887598ab0713d95b701ff42f",
+    "skills/lab-wayfinder/assets/map-template.html": "43f68aa3f418d2a841bec07174e84c79fde5e0ba8e4f221f73d2b3cfe974ffda",
+    "skills/lab-wayfinder/references/map-format.md": "eafe60686939c605dc8876ef8da877216aed4d5db79e2f8d9b0ca958cebf4007",
+    "skills/lab-wayfinder/scripts/render_map.py": "37653a66b9b330203a6ce3724b6f5f510f1da0d621c8b37c59a7d2ff5a1a0c47"
+  },
+  "observations": {
+    "A": {
+      "header": "3 張票券 — 3 張已解決 · 0 張現在可處理 · 0 張已認領 · 0 張受阻",
+      "tickets": [
+        {
+          "id": "02",
+          "sourceStatus": "resolved",
+          "displayStatus": "resolved",
+          "label": "已解決"
+        },
+        {
+          "id": "23",
+          "sourceStatus": "resolved",
+          "displayStatus": "resolved",
+          "label": "已解決"
+        },
+        {
+          "id": "24",
+          "sourceStatus": "resolved",
+          "displayStatus": "resolved",
+          "label": "已解決"
+        }
+      ],
+      "outOfScope": [
+        "[產品畫面實作](issues/24-implement-view.md) — 已以範圍外結案，程式仍未實作；產品修改、正式環境驗證及發布均不在本回合授權內。"
+      ]
+    },
+    "B": {
+      "header": "3 張票券 — 2 張已解決 · 1 張現在可處理 · 0 張已認領 · 0 張受阻",
+      "tickets": [
+        {
+          "id": "02",
+          "sourceStatus": "resolved",
+          "displayStatus": "resolved",
+          "label": "已解決"
+        },
+        {
+          "id": "23",
+          "sourceStatus": "resolved",
+          "displayStatus": "resolved",
+          "label": "已解決"
+        },
+        {
+          "id": "24",
+          "sourceStatus": "open",
+          "displayStatus": "frontier",
+          "label": "可處理"
+        }
+      ],
+      "outOfScope": [
+        "[產品畫面實作](issues/24-implement-view.md)：不在本回合授權內，不發布產品。",
+        "不改 product/、歷史 evidence 或既有 map.html；新的地圖檢視輸出為 map.next.html，使用 --no-open。"
+      ]
+    },
+    "unknown-status": {
+      "exit_code": 0,
+      "stdout": "wrote /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-regression-v0.1.3-repro/unknown-status/map.html (1 tickets)\n",
+      "stderr": "",
+      "rendered": {
+        "header": "1 張票券 — 0 張已解決 · 1 張現在可處理 · 0 張已認領 · 0 張受阻",
+        "tickets": [
+          {
+            "id": "01",
+            "sourceStatus": "mystery",
+            "displayStatus": "frontier",
+            "label": "可處理"
+          }
+        ],
+        "outOfScope": []
+      }
+    },
+    "claimed-blocked-observation": {
+      "exit_code": 0,
+      "stdout": "wrote /home/vakarve/projects/common-dev-plugin/docs/experiments/common-lab/wayfinder-regression-v0.1.3-repro/claimed-blocked-observation/map.html (2 tickets)\n",
+      "stderr": "",
+      "rendered": {
+        "header": "2 張票券 — 0 張已解決 · 1 張現在可處理 · 1 張已認領 · 0 張受阻",
+        "tickets": [
+          {
+            "id": "01",
+            "sourceStatus": "claimed",
+            "displayStatus": "claimed",
+            "label": "已認領"
+          },
+          {
+            "id": "02",
+            "sourceStatus": "open",
+            "displayStatus": "frontier",
+            "label": "可處理"
+          }
+        ],
+        "outOfScope": []
+      }
+    }
+  },
+  "limits": "Actual generated JavaScript evaluated with minimal DOM; no new model behavior or pixel QA claim. Claimed-with-blocked-dependency remains observation only."
+}

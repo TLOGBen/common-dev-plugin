@@ -1,0 +1,80 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:05:58.695733+00:00",
+  "ended_utc": "2026-09-06T03:06:41.451057+00:00",
+  "wall_seconds": 42.754,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "1577e87d86cf6242b5dd01cecf32e0c050b0cdcca9681e2b24eeb6e7e555f5e4",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-k7kn3cbo",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會依你指定的「戰略推進」技能判斷，僅讀取技能內容，提出模擬回覆與下一步描述。\n",
+    "依你固定的證據，**三項驗收條件已有兩項成立，整體仍未完成；唯一主攻是補齊「只寄一封」的證明。**以下僅為推演，未實際查詢或操作。\n\n| 驗收條件 | 判定 | 依據 |\n|---|---|---|\n| 收件方收到 | 已證明 | MAIL-7 的收件方 receipt 顯示 `Delivered` |\n| 證據可讀回 | 已證明 | receipt 已存為可讀回檔案 E-7 |\n| 只寄一封 | 未證明 | 查詢僅回第一筆，缺完整計數與重試／去重證據 |\n\n縮圖故障不影響 E-7 已成立的可讀回證據。`Delivered` 證明收到，但不能證明沒有重複寄送。\n\n**擬議下一步：在已授權的 MAIL-7 範圍，做一輪有界的唯讀寄送次數對帳。**優先取得權威寄送來源的完整聚合計數，核對相關重試與去重紀錄，確認計算的是實際寄出封數，而非資料列數、狀態事件數或唯一 message_id 數。查詢須能證明涵蓋完整結果，不能再以第一筆結果驗收；所得證據也須可讀回。\n\n判定分支為：\n\n- **完整證據支持實際寄出恰一封**：最後缺口可關閉，三項條件全部成立。\n- **證明寄出超過一封**：「只寄一封」不成立，保留收到與證據可讀回的成果，如實回報。\n- **仍只有部分結果**：維持未證明，改走 MAIL-7 範圍內可取得完整結果的唯讀途徑；相同截斷查詢不反覆重跑。\n\n這一步的預期成果是釐清寄送次數，不會新增投遞。你無須重複授權或介入；再寄與修縮圖均不在授權範圍。"
+  ],
+  "final_message": "依你固定的證據，**三項驗收條件已有兩項成立，整體仍未完成；唯一主攻是補齊「只寄一封」的證明。**以下僅為推演，未實際查詢或操作。\n\n| 驗收條件 | 判定 | 依據 |\n|---|---|---|\n| 收件方收到 | 已證明 | MAIL-7 的收件方 receipt 顯示 `Delivered` |\n| 證據可讀回 | 已證明 | receipt 已存為可讀回檔案 E-7 |\n| 只寄一封 | 未證明 | 查詢僅回第一筆，缺完整計數與重試／去重證據 |\n\n縮圖故障不影響 E-7 已成立的可讀回證據。`Delivered` 證明收到，但不能證明沒有重複寄送。\n\n**擬議下一步：在已授權的 MAIL-7 範圍，做一輪有界的唯讀寄送次數對帳。**優先取得權威寄送來源的完整聚合計數，核對相關重試與去重紀錄，確認計算的是實際寄出封數，而非資料列數、狀態事件數或唯一 message_id 數。查詢須能證明涵蓋完整結果，不能再以第一筆結果驗收；所得證據也須可讀回。\n\n判定分支為：\n\n- **完整證據支持實際寄出恰一封**：最後缺口可關閉，三項條件全部成立。\n- **證明寄出超過一封**：「只寄一封」不成立，保留收到與證據可讀回的成果，如實回報。\n- **仍只有部分結果**：維持未證明，改走 MAIL-7 範圍內可取得完整結果的唯讀途徑；相同截斷查詢不反覆重跑。\n\n這一步的預期成果是釐清寄送次數，不會新增投遞。你無須重複授權或介入；再寄與修縮圖均不在授權範圍。",
+  "usage": {
+    "input_tokens": 141661,
+    "cached_input_tokens": 115072,
+    "output_tokens": 815,
+    "uncached_input_tokens": 26589,
+    "total_tokens": 142476
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,180p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '181,360p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '361,560p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

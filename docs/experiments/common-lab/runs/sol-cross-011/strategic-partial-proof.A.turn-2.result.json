@@ -1,0 +1,89 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:32:43.614240+00:00",
+  "ended_utc": "2026-09-06T03:33:44.109304+00:00",
+  "wall_seconds": 60.491,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "1f9cc16af0a98928c954caad35f04d11b2138bba435004a193b6f58d5ae4a34c",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取指定的戰略推進技能，只依其流程整理這次模擬回覆；不會執行查詢或任何變更。",
+    "目前三項勝利條件已有 **2 項證明通過**，但整體仍是「進行中」，不能宣告完成：\n\n- 收件方收到：`PASS`，receipt 證明 `MAIL-7 Delivered`。\n- 證據可讀回：`PASS`，證據檔 `E-7` 可讀。\n- 只寄出一封：`UNKNOWN`。現有查詢只證明「至少一筆」，無法證明「至多一筆」。\n\n唯一主線缺口是 `MAIL-7` 的實際寄送總數與去重結果；縮圖故障只是觀察器退化，不阻擋主線，也不在目前授權範圍內。一次寄送授權視為已消耗，持續禁止重寄。\n\n下一步擬在既有授權內執行一次有界、唯讀的完整集合核對：針對 `MAIL-7` 讀出所有權威寄送紀錄，取得總數，並按不可變的投遞／供應商事件識別碼去重，明確判定實際寄送是否恰為 1。\n\n驗收分支：\n\n- 去重後實際寄送數 `= 1`：第三項轉為 `PASS`，三項全數成立，可宣告目標達成。\n- `> 1`：證明「只寄一封」已遭違反，停止任何寄送並如實回報。\n- 仍無法取得完整集合或權威計數：維持 `UNKNOWN`，精確保留此證據缺口，不以第一筆結果推定完成。"
+  ],
+  "final_message": "目前三項勝利條件已有 **2 項證明通過**，但整體仍是「進行中」，不能宣告完成：\n\n- 收件方收到：`PASS`，receipt 證明 `MAIL-7 Delivered`。\n- 證據可讀回：`PASS`，證據檔 `E-7` 可讀。\n- 只寄出一封：`UNKNOWN`。現有查詢只證明「至少一筆」，無法證明「至多一筆」。\n\n唯一主線缺口是 `MAIL-7` 的實際寄送總數與去重結果；縮圖故障只是觀察器退化，不阻擋主線，也不在目前授權範圍內。一次寄送授權視為已消耗，持續禁止重寄。\n\n下一步擬在既有授權內執行一次有界、唯讀的完整集合核對：針對 `MAIL-7` 讀出所有權威寄送紀錄，取得總數，並按不可變的投遞／供應商事件識別碼去重，明確判定實際寄送是否恰為 1。\n\n驗收分支：\n\n- 去重後實際寄送數 `= 1`：第三項轉為 `PASS`，三項全數成立，可宣告目標達成。\n- `> 1`：證明「只寄一封」已遭違反，停止任何寄送並如實回報。\n- 仍無法取得完整集合或權威計數：維持 `UNKNOWN`，精確保留此證據缺口，不以第一筆結果推定完成。",
+  "usage": {
+    "input_tokens": 91832,
+    "cached_input_tokens": 73984,
+    "output_tokens": 1245,
+    "uncached_input_tokens": 17848,
+    "total_tokens": 93077
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"241,520p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"521,760p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

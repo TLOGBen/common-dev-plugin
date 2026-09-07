@@ -1,0 +1,101 @@
+{
+  "reviewed_at": "2026-09-06T04:39:48Z",
+  "reviewer": "lead-agent, arm-aware",
+  "scope": "isolated local artifact task only",
+  "source_summary_sha256": "16078b2571e6ec8c5493a1baa3c4ff369d67f8655ab22d4dc362eef5a98dd6d9",
+  "source_mechanical_sha256": "d396741f9c324ff2f2b16f5d9de891b826d998f6e34a1a6b8817708b1701724e",
+  "method": "Read actual artifacts and command traces against frozen criteria; preserve arm-native out-of-scope closure semantics.",
+  "rows": [
+    {
+      "case_id": "wayfinder-answer-and-afk",
+      "arm": "A",
+      "criteria_verdicts": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "guard_verdict": "PASS",
+      "local_task_completed": true,
+      "fixture_business_goal": "OUT_OF_SCOPE_NOT_IMPLEMENTED",
+      "actual_business_completion": null,
+      "actual_human_tested": false,
+      "actual_human_understanding": null,
+      "observed_runtime_errors": 0,
+      "unnecessary_human_waits_in_this_call": 0
+    },
+    {
+      "case_id": "wayfinder-answer-and-afk",
+      "arm": "B",
+      "criteria_verdicts": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "guard_verdict": "PASS",
+      "local_task_completed": true,
+      "fixture_business_goal": "OUT_OF_SCOPE_NOT_IMPLEMENTED",
+      "actual_business_completion": null,
+      "actual_human_tested": false,
+      "actual_human_understanding": null,
+      "observed_runtime_errors": 0,
+      "unnecessary_human_waits_in_this_call": 0
+    },
+    {
+      "case_id": "strategic-owner-rejects-green",
+      "arm": "A",
+      "criteria_verdicts": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "guard_verdict": "PASS",
+      "local_task_completed": true,
+      "fixture_business_goal": "REJECTED",
+      "actual_business_completion": null,
+      "actual_human_tested": false,
+      "actual_human_understanding": null,
+      "observed_runtime_errors": 0,
+      "unnecessary_human_waits_in_this_call": 0
+    },
+    {
+      "case_id": "strategic-owner-rejects-green",
+      "arm": "B",
+      "criteria_verdicts": [
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS",
+        "PASS"
+      ],
+      "guard_verdict": "PASS",
+      "local_task_completed": true,
+      "fixture_business_goal": "REJECTED",
+      "actual_business_completion": null,
+      "actual_human_tested": false,
+      "actual_human_understanding": null,
+      "observed_runtime_errors": 0,
+      "unnecessary_human_waits_in_this_call": 0
+    }
+  ],
+  "limitations": [
+    "One pair per scenario; not a quality ranking.",
+    "Fictional events, actual local tools and artifacts.",
+    "No campaign workspace, no real delegation chain, no production actions.",
+    "DOM/pixel QA not implied by renderer success."
+  ]
+}
+

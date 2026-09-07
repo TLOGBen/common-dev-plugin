@@ -1,0 +1,600 @@
+{
+  "run_id": "sol-cross-011",
+  "kind": "behavioral_tabletop",
+  "started_utc": "2026-09-06T03:29:10.293074+00:00",
+  "ended_utc": "2026-09-06T03:33:44.110202+00:00",
+  "elapsed_wall_seconds": 273.81,
+  "planned_calls": 6,
+  "actual_calls": 6,
+  "model": "gpt-5.6-sol",
+  "effort": "high",
+  "revision": "common-lab-0.1.1-cross-sol",
+  "plugin_versions": {
+    "A": "1.35.2",
+    "B": "0.1.1"
+  },
+  "repeats": 1,
+  "totals_by_arm": {
+    "A": {
+      "calls": 3,
+      "completed": 3,
+      "usage_known_calls": 3,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 149.149,
+      "known_usage": {
+        "input_tokens": 301814,
+        "cached_input_tokens": 253824,
+        "uncached_input_tokens": 47990,
+        "output_tokens": 4147,
+        "total_tokens": 305961
+      }
+    },
+    "B": {
+      "calls": 3,
+      "completed": 3,
+      "usage_known_calls": 3,
+      "usage_unknown_calls": 0,
+      "wall_seconds_sum": 124.646,
+      "known_usage": {
+        "input_tokens": 170730,
+        "cached_input_tokens": 144384,
+        "uncached_input_tokens": 26346,
+        "output_tokens": 4258,
+        "total_tokens": 174988
+      }
+    }
+  },
+  "resource_drift": [],
+  "cases_changed_during_run": false,
+  "manual_review_status": "PENDING; rubric and pause categories frozen before calls",
+  "results": [
+    {
+      "case_id": "prototype-late-success",
+      "skill": "prototype",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:29:10.295869+00:00",
+      "ended_utc": "2026-09-06T03:29:52.705086+00:00",
+      "wall_seconds": 42.406,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md",
+      "skill_sha256": "391eaf5578ff0334f121d990a38f66f150168c0af6576221c95653590d2f0586",
+      "prompt_sha256": "71954f7d0e4676cba632d0193dd4ae919c8b6516ee654f914c547f1769b8d5ed",
+      "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先依指定技能的流程做唯讀檢查，接著只查看情境所需的證據，最後提供一個不預設產品政策的最小反例、可觀察訊號與模擬下一步。",
+        "要檢驗的命題是：當訂單已是 `cancelled`，一律拒絕後到的 `payment_succeeded`，是否仍能忠實反映已發生的金流事實。\n\n最小反例：\n\n1. 初始：訂單為 `open`。\n2. 金流完成扣款，但 `payment_succeeded` 通知尚未送達。\n3. `customer_cancel` 先抵達：`open → cancelled`。\n4. `payment_succeeded` 後抵達；依候選規則遭拒絕：訂單維持 `cancelled`。\n5. 此時外部事實是「已扣款」，內部狀態卻只留下「已取消」。\n\n因此，「拒絕並忽略所有付款事件」不是安全的完整規則：它會遺失不可逆的扣款事實。這個結論不代表應改成 `paid`、退款或轉人工；三者仍由產品決定。\n\n觀察時只需顯示一條記憶體內軌跡，不新增訂單狀態或平台：\n\n| 步驟 | 抵達事件 | 事件前狀態 | 處理結果 | 事件後狀態 | 已知外部事實 | 未解矛盾 |\n|---|---|---|---|---|---|---|\n| 1 | `customer_cancel` | `open` | 接受 | `cancelled` | 扣款通知未抵達 | 無 |\n| 2 | `payment_succeeded` | `cancelled` | 拒絕 | `cancelled` | 已確認扣款成功 | 已取消但已扣款 |\n\n判定訊號只有一個：**收到 `payment_succeeded` 後，系統是否仍能保留「確已扣款、尚待產品決策」這項事實。** 若拒絕等同丟棄，反例即成立。\n\n下一步：用這兩個按鈕順序做一次紙上／單頁原型走查，將最後的矛盾交給產品選擇「恢復、退款或人工」；在產品決定前，不擴充狀態機，也不實作任何處置。"
+      ],
+      "final_message": "要檢驗的命題是：當訂單已是 `cancelled`，一律拒絕後到的 `payment_succeeded`，是否仍能忠實反映已發生的金流事實。\n\n最小反例：\n\n1. 初始：訂單為 `open`。\n2. 金流完成扣款，但 `payment_succeeded` 通知尚未送達。\n3. `customer_cancel` 先抵達：`open → cancelled`。\n4. `payment_succeeded` 後抵達；依候選規則遭拒絕：訂單維持 `cancelled`。\n5. 此時外部事實是「已扣款」，內部狀態卻只留下「已取消」。\n\n因此，「拒絕並忽略所有付款事件」不是安全的完整規則：它會遺失不可逆的扣款事實。這個結論不代表應改成 `paid`、退款或轉人工；三者仍由產品決定。\n\n觀察時只需顯示一條記憶體內軌跡，不新增訂單狀態或平台：\n\n| 步驟 | 抵達事件 | 事件前狀態 | 處理結果 | 事件後狀態 | 已知外部事實 | 未解矛盾 |\n|---|---|---|---|---|---|---|\n| 1 | `customer_cancel` | `open` | 接受 | `cancelled` | 扣款通知未抵達 | 無 |\n| 2 | `payment_succeeded` | `cancelled` | 拒絕 | `cancelled` | 已確認扣款成功 | 已取消但已扣款 |\n\n判定訊號只有一個：**收到 `payment_succeeded` 後，系統是否仍能保留「確已扣款、尚待產品決策」這項事實。** 若拒絕等同丟棄，反例即成立。\n\n下一步：用這兩個按鈕順序做一次紙上／單頁原型走查，將最後的矛盾交給產品選擇「恢復、退款或人工」；在產品決定前，不擴充狀態機，也不實作任何處置。",
+      "usage": {
+        "input_tokens": 65101,
+        "cached_input_tokens": 52864,
+        "output_tokens": 1494,
+        "uncached_input_tokens": 12237,
+        "total_tokens": 66595
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"date '+%Y-%m-%d %H:%M:%S %Z (%z)' && sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,280p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/prototype/LOGIC.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'rg --files -uu .'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,260p' SCENARIO.txt\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "prototype-late-success",
+      "skill": "prototype",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:29:52.705851+00:00",
+      "ended_utc": "2026-09-06T03:30:44.879636+00:00",
+      "wall_seconds": 52.17,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md",
+      "skill_sha256": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+      "prompt_sha256": "9311c19673c3c8aabef336329f915635a890f059fa72830e27b21c81faa30ce6",
+      "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取指定的實驗技能，再只檢查它明確要求的必要情境證據；全程維持唯讀，不執行任何實作或業務動作。",
+        "不實作，只做一條事件序列的表格推演即可。\n\n| 步驟 | 輸入／已知事實 | 訂單狀態 | 候選規則的處理 |\n|---|---|---|---|\n| 0 | 初始狀態 | `open` | — |\n| 1 | `customer_cancel` | `cancelled` | 接受取消 |\n| 2 | 金流已扣款成功 | `cancelled` | 外部副作用已發生 |\n| 3 | 晚到的 `payment_succeeded(payment_id=P1)` | `cancelled` | 因「取消後拒絕所有付款事件」而拒絕 |\n\n最小反例的結果是：訂單仍為 `cancelled`，但客戶已被扣款；拒絕通知並不會撤銷扣款。因此，若「安全」至少要求系統不遺失已扣款事實，這項規則已被反例推翻。\n\n觀察時只記錄：\n\n- 事件抵達順序\n- 處理前後的訂單狀態\n- 事件被接受或拒絕\n- `payment_succeeded` 所證明的外部扣款事實\n- 是否留下「尚待產品決定」的處置需求\n\n最後一欄是實驗觀察標記，不是新增訂單狀態或平台功能。恢復為 `paid`、退款或轉人工都保持未選定。\n\n建議的下一步：把這條反例交給產品，只要求決定「已取消但確認扣款成功」的處置政策；在決定前，不把「拒絕事件」視為安全方案。"
+      ],
+      "final_message": "不實作，只做一條事件序列的表格推演即可。\n\n| 步驟 | 輸入／已知事實 | 訂單狀態 | 候選規則的處理 |\n|---|---|---|---|\n| 0 | 初始狀態 | `open` | — |\n| 1 | `customer_cancel` | `cancelled` | 接受取消 |\n| 2 | 金流已扣款成功 | `cancelled` | 外部副作用已發生 |\n| 3 | 晚到的 `payment_succeeded(payment_id=P1)` | `cancelled` | 因「取消後拒絕所有付款事件」而拒絕 |\n\n最小反例的結果是：訂單仍為 `cancelled`，但客戶已被扣款；拒絕通知並不會撤銷扣款。因此，若「安全」至少要求系統不遺失已扣款事實，這項規則已被反例推翻。\n\n觀察時只記錄：\n\n- 事件抵達順序\n- 處理前後的訂單狀態\n- 事件被接受或拒絕\n- `payment_succeeded` 所證明的外部扣款事實\n- 是否留下「尚待產品決定」的處置需求\n\n最後一欄是實驗觀察標記，不是新增訂單狀態或平台功能。恢復為 `paid`、退款或轉人工都保持未選定。\n\n建議的下一步：把這條反例交給產品，只要求決定「已取消但確認扣款成功」的處置政策；在決定前，不把「拒絕事件」視為安全方案。",
+      "usage": {
+        "input_tokens": 61307,
+        "cached_input_tokens": 51840,
+        "output_tokens": 1841,
+        "uncached_input_tokens": 9467,
+        "total_tokens": 63148
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'rg --files -uu .'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' SCENARIO.txt\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "skill": "strategic-advance",
+      "arm": "A",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:31:19.125908+00:00",
+      "ended_utc": "2026-09-06T03:32:05.382358+00:00",
+      "wall_seconds": 46.252,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+      "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+      "prompt_sha256": "ec81a557405fa56e549563856da1b644603e7eba7d3b93200d28040ad16ff655",
+      "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取你指定的技能文件，再只檢視它明確需要的參考資料；全程維持唯讀，不執行寄送或任何業務動作。",
+        "目前不得重寄：`Accepted` 表示 `MAIL-7` 可能已成功送出，盲目重試會違反「只寄一封」與一次寄送授權。縮圖故障屬觀察器退化，不應搶走主線。\n\n下一步是進行一次有界、唯讀的證據核對，不觸發寄送：\n\n- 從寄件稽核／供應商紀錄確認 `MAIL-7` 的實際寄送次數是否恰為 1。\n- 從收件端或權威投遞事件取得 `MAIL-7` 的 receipt。\n- 直接讀回原始 receipt、訊息或事件資料作為可讀證據，繞過故障的縮圖工具。\n\n在這三項讀回完成前，狀態維持「結果未完全確定」，禁止重寄。若證明寄送一次、收件方已收到且證據可讀，即可判定目標達成；若紀錄缺失或互相衝突，則停止任何變更並回報精確缺口，不先重寫縮圖系統。"
+      ],
+      "final_message": "目前不得重寄：`Accepted` 表示 `MAIL-7` 可能已成功送出，盲目重試會違反「只寄一封」與一次寄送授權。縮圖故障屬觀察器退化，不應搶走主線。\n\n下一步是進行一次有界、唯讀的證據核對，不觸發寄送：\n\n- 從寄件稽核／供應商紀錄確認 `MAIL-7` 的實際寄送次數是否恰為 1。\n- 從收件端或權威投遞事件取得 `MAIL-7` 的 receipt。\n- 直接讀回原始 receipt、訊息或事件資料作為可讀證據，繞過故障的縮圖工具。\n\n在這三項讀回完成前，狀態維持「結果未完全確定」，禁止重寄。若證明寄送一次、收件方已收到且證據可讀，即可判定目標達成；若紀錄缺失或互相衝突，則停止任何變更並回報精確缺口，不先重寫縮圖系統。",
+      "usage": {
+        "input_tokens": 144881,
+        "cached_input_tokens": 126976,
+        "output_tokens": 1408,
+        "uncached_input_tokens": 17905,
+        "total_tokens": 146289
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '241,520p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '521,760p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc 'rg --files -uu .'",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' SCENARIO.txt\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "skill": "strategic-advance",
+      "arm": "A",
+      "turn": 2,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:32:43.614240+00:00",
+      "ended_utc": "2026-09-06T03:33:44.109304+00:00",
+      "wall_seconds": 60.491,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+      "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+      "prompt_sha256": "1f9cc16af0a98928c954caad35f04d11b2138bba435004a193b6f58d5ae4a34c",
+      "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取指定的戰略推進技能，只依其流程整理這次模擬回覆；不會執行查詢或任何變更。",
+        "目前三項勝利條件已有 **2 項證明通過**，但整體仍是「進行中」，不能宣告完成：\n\n- 收件方收到：`PASS`，receipt 證明 `MAIL-7 Delivered`。\n- 證據可讀回：`PASS`，證據檔 `E-7` 可讀。\n- 只寄出一封：`UNKNOWN`。現有查詢只證明「至少一筆」，無法證明「至多一筆」。\n\n唯一主線缺口是 `MAIL-7` 的實際寄送總數與去重結果；縮圖故障只是觀察器退化，不阻擋主線，也不在目前授權範圍內。一次寄送授權視為已消耗，持續禁止重寄。\n\n下一步擬在既有授權內執行一次有界、唯讀的完整集合核對：針對 `MAIL-7` 讀出所有權威寄送紀錄，取得總數，並按不可變的投遞／供應商事件識別碼去重，明確判定實際寄送是否恰為 1。\n\n驗收分支：\n\n- 去重後實際寄送數 `= 1`：第三項轉為 `PASS`，三項全數成立，可宣告目標達成。\n- `> 1`：證明「只寄一封」已遭違反，停止任何寄送並如實回報。\n- 仍無法取得完整集合或權威計數：維持 `UNKNOWN`，精確保留此證據缺口，不以第一筆結果推定完成。"
+      ],
+      "final_message": "目前三項勝利條件已有 **2 項證明通過**，但整體仍是「進行中」，不能宣告完成：\n\n- 收件方收到：`PASS`，receipt 證明 `MAIL-7 Delivered`。\n- 證據可讀回：`PASS`，證據檔 `E-7` 可讀。\n- 只寄出一封：`UNKNOWN`。現有查詢只證明「至少一筆」，無法證明「至多一筆」。\n\n唯一主線缺口是 `MAIL-7` 的實際寄送總數與去重結果；縮圖故障只是觀察器退化，不阻擋主線，也不在目前授權範圍內。一次寄送授權視為已消耗，持續禁止重寄。\n\n下一步擬在既有授權內執行一次有界、唯讀的完整集合核對：針對 `MAIL-7` 讀出所有權威寄送紀錄，取得總數，並按不可變的投遞／供應商事件識別碼去重，明確判定實際寄送是否恰為 1。\n\n驗收分支：\n\n- 去重後實際寄送數 `= 1`：第三項轉為 `PASS`，三項全數成立，可宣告目標達成。\n- `> 1`：證明「只寄一封」已遭違反，停止任何寄送並如實回報。\n- 仍無法取得完整集合或權威計數：維持 `UNKNOWN`，精確保留此證據缺口，不以第一筆結果推定完成。",
+      "usage": {
+        "input_tokens": 91832,
+        "cached_input_tokens": 73984,
+        "output_tokens": 1245,
+        "uncached_input_tokens": 17848,
+        "total_tokens": 93077
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"241,520p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"521,760p\\\" /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md'\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "skill": "strategic-advance",
+      "arm": "B",
+      "turn": 1,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:30:44.880750+00:00",
+      "ended_utc": "2026-09-06T03:31:19.125193+00:00",
+      "wall_seconds": 34.251,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+      "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "prompt_sha256": "b398faa551cd3e16877ade66afcefb69a14450a966a29ce9e1fe888b097c68a1",
+      "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取指定技能，再查看它明確要求的相關材料；全程只讀，不會執行寄送或修改狀態。",
+        "技能的核心判準已確認：這裡要把「唯一寄送、實際收件、證據可讀」分開驗證，而且逾時造成的未知結果必須先對帳，不能直接重試。接著我只會查看情境中的既有證據，找出最小的唯讀查核點。",
+        "先不重寄，也不重寫縮圖系統。`Accepted` 只證明至少有一次寄送被接受，不能證明收件方已收到，也不能證明只寄出一次；逾時結果未對帳前，重寄還可能造成重複且超出一次寄送授權。\n\n下一步：針對 `message_id=MAIL-7` 做一次唯讀端到端對帳，同時取得：\n\n- 權威寄送紀錄中的全部送出嘗試與筆數，驗證是否恰為一次。\n- 郵件服務商或收件端的 delivery/receipt 事件，驗證收件方確實收到。\n- 可直接讀回的原始事件或文字紀錄；縮圖不作為必要證據。\n\n預期變化是把「寄送次數」與「收件 receipt」兩個缺口轉成可核對證據。取得結果後立即重評三項條件；若 receipt 不存在或寄送筆數仍無法窮盡確認，就維持未完成並標明外部證據依賴，不重寄。"
+      ],
+      "final_message": "先不重寄，也不重寫縮圖系統。`Accepted` 只證明至少有一次寄送被接受，不能證明收件方已收到，也不能證明只寄出一次；逾時結果未對帳前，重寄還可能造成重複且超出一次寄送授權。\n\n下一步：針對 `message_id=MAIL-7` 做一次唯讀端到端對帳，同時取得：\n\n- 權威寄送紀錄中的全部送出嘗試與筆數，驗證是否恰為一次。\n- 郵件服務商或收件端的 delivery/receipt 事件，驗證收件方確實收到。\n- 可直接讀回的原始事件或文字紀錄；縮圖不作為必要證據。\n\n預期變化是把「寄送次數」與「收件 receipt」兩個缺口轉成可核對證據。取得結果後立即重評三項條件；若 receipt 不存在或寄送筆數仍無法窮盡確認，就維持未完成並標明外部證據依賴，不重寄。",
+      "usage": {
+        "input_tokens": 62036,
+        "cached_input_tokens": 51200,
+        "output_tokens": 1051,
+        "uncached_input_tokens": 10836,
+        "total_tokens": 63087
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"rg --files -g '\"'!AGENTS.md'\"' .\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' ./SCENARIO.txt\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "skill": "strategic-advance",
+      "arm": "B",
+      "turn": 2,
+      "repeat": 1,
+      "started_utc": "2026-09-06T03:32:05.384219+00:00",
+      "ended_utc": "2026-09-06T03:32:43.612642+00:00",
+      "wall_seconds": 38.225,
+      "status": "completed",
+      "exit_code": 0,
+      "requested_model": "gpt-5.6-sol",
+      "requested_effort": "high",
+      "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+      "command": [
+        "codex",
+        "exec",
+        "--json",
+        "--ephemeral",
+        "--ignore-user-config",
+        "-m",
+        "gpt-5.6-sol",
+        "-c",
+        "model_reasoning_effort=high",
+        "-s",
+        "read-only",
+        "-C",
+        "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+        "--skip-git-repo-check",
+        "-"
+      ],
+      "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+      "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+      "prompt_sha256": "f9ab15e38f73c68e769a7992927103c293c56b1e099ee5160088bfb290348c80",
+      "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+      "timeout_seconds": 180,
+      "os_error": null,
+      "fixture_before_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "fixture_after_sha256": {
+        "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+      },
+      "reported_cost_usd": null,
+      "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+      "public_price_estimate_usd": null,
+      "completion_scope": {
+        "response_returned": true,
+        "tabletop_acceptance": null,
+        "actual_business_task": null,
+        "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+      },
+      "messages": [
+        "我會先完整讀取指定技能，僅在需要時查看它明確引用的材料，然後按其流程給出模擬推進。",
+        "完成程度：**2／3 已有證據支持，整體仍未完成。**\n\n- 「收件方收到」：已完成。Receipt 顯示 `MAIL-7 Delivered`。\n- 「證據可讀回」：已完成。Receipt 已成為可讀回檔案 `E-7`。\n- 「只寄出一封」：仍待證明。第一筆結果只能證明至少有一筆，無法排除更多寄送紀錄或重複事件。\n\n下一步：在已授權的 `MAIL-7` 範圍內，模擬進行一次唯讀、可窮盡的寄送對帳——取得全部分頁或等價的總筆數，並依權威嘗試 ID、服務商 message ID 或冪等鍵去重，產出「寄送嘗試總數」及「唯一寄送數」。\n\n重評點：\n\n- 若窮盡結果為唯一一封，三項條件全部完成。\n- 若發現多封，則「只寄一封」不成立。\n- 若資料介面無法窮盡或去重，完成度維持 2／3，缺口明確標為寄送唯一性不可證。\n\n不重寄，也不修縮圖。以上僅為擬議動作，未實際查詢。"
+      ],
+      "final_message": "完成程度：**2／3 已有證據支持，整體仍未完成。**\n\n- 「收件方收到」：已完成。Receipt 顯示 `MAIL-7 Delivered`。\n- 「證據可讀回」：已完成。Receipt 已成為可讀回檔案 `E-7`。\n- 「只寄出一封」：仍待證明。第一筆結果只能證明至少有一筆，無法排除更多寄送紀錄或重複事件。\n\n下一步：在已授權的 `MAIL-7` 範圍內，模擬進行一次唯讀、可窮盡的寄送對帳——取得全部分頁或等價的總筆數，並依權威嘗試 ID、服務商 message ID 或冪等鍵去重，產出「寄送嘗試總數」及「唯一寄送數」。\n\n重評點：\n\n- 若窮盡結果為唯一一封，三項條件全部完成。\n- 若發現多封，則「只寄一封」不成立。\n- 若資料介面無法窮盡或去重，完成度維持 2／3，缺口明確標為寄送唯一性不可證。\n\n不重寄，也不修縮圖。以上僅為擬議動作，未實際查詢。",
+      "usage": {
+        "input_tokens": 47387,
+        "cached_input_tokens": 41344,
+        "output_tokens": 1366,
+        "uncached_input_tokens": 6043,
+        "total_tokens": 48753
+      },
+      "usage_event_count": 1,
+      "malformed_jsonl_lines": [],
+      "tool_events": [
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md\"",
+          "status": "completed",
+          "exit_code": 0
+        },
+        {
+          "type": "command_execution",
+          "command": "/usr/bin/zsh -lc \"date '+%Y-%m-%d %H:%M:%S %Z (UTC%:z)'\"",
+          "status": "completed",
+          "exit_code": 0
+        }
+      ],
+      "errors": [],
+      "turn_completed": true
+    }
+  ],
+  "limits": "One fixture per skill, one tested model, no production acceptance or statistical significance."
+}

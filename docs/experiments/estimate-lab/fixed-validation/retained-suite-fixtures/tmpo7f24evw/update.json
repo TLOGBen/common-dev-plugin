@@ -1,0 +1,13 @@
+{
+  "currentDecision": {
+    "choiceDetails": {
+      "確認並產生交付成果": {
+        "effect": "confirm-estimate"
+      },
+      "工作範圍需要調整": {
+        "effect": "revise-estimate"
+      }
+    },
+    "requiresHuman": true
+  }
+}

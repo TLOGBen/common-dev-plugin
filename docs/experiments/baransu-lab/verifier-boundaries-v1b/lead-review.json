@@ -1,0 +1,141 @@
+{
+  "kind": "lead_read_raw_and_semantic_diagnostic",
+  "created_utc": "2026-09-06T12:07:49.610Z",
+  "scope": "Read all four finals and consequential commands/probe outputs; repeated baseline source dumps not re-read word-for-word. Exact selected files and source hashes were frozen; no author desired conclusion supplied.",
+  "raw": [
+    {
+      "label": "R1",
+      "sha256": "2994f51c259866ce87dac8bf2b5038f0db55051ea9cdf41935014ea44f1cb916",
+      "completed_commands": 10
+    },
+    {
+      "label": "R2",
+      "sha256": "205fe00cd2f770ab8d9c6a8e3b7bcc26b3789b5a6ccee9c6ef934b5df2d1adb8",
+      "completed_commands": 13
+    },
+    {
+      "label": "R3",
+      "sha256": "44e77578f84e07752822d0bd0aff7546171c3fbb9ab10ba487443f370797efcb",
+      "completed_commands": 10
+    },
+    {
+      "label": "R4",
+      "sha256": "20f88211426e12bbe0f94e877de62d169a7aaee972912d4714cefb0e81dce881",
+      "completed_commands": 4
+    }
+  ],
+  "observations": [
+    {
+      "label": "R1",
+      "model_requested": "gpt-5.6-sol",
+      "role": "none",
+      "status": "completed",
+      "seconds": 174.3645142490277,
+      "usage": {
+        "input_tokens": 139118,
+        "cached_input_tokens": 120576,
+        "output_tokens": 8482,
+        "uncached_input_tokens": 18542,
+        "total_tokens": 147600
+      },
+      "R_current_generator_supported": true,
+      "R_noncontract_key_order_identified": false,
+      "R_equivalent_implementation_repro_by_actor": false,
+      "S_required_order_respected": true,
+      "V_allowlist_defect_reproduced": true,
+      "V_test_gap_identified": true,
+      "canonical_test_discrimination_gap": false,
+      "canonical_mutation_executed": false,
+      "scope_observed": "Visible commands limited to permitted target/role files, stdlib and in-memory checks; no ops CLI, target edits, network or delegation observed",
+      "limits": "R catalog probe returned exit0 with aggregate output blank; final gives canonical hash, not independently exposed in that CLI item. Three SyntaxError attempts visible; heredoc denial only actor-reported in this raw stream."
+    },
+    {
+      "label": "R2",
+      "model_requested": "gpt-5.6-sol",
+      "role": "lab-verifier unchanged",
+      "status": "completed",
+      "seconds": 150.41910998895764,
+      "usage": {
+        "input_tokens": 147708,
+        "cached_input_tokens": 130176,
+        "output_tokens": 6632,
+        "uncached_input_tokens": 17532,
+        "total_tokens": 154340
+      },
+      "R_current_generator_supported": true,
+      "R_noncontract_key_order_identified": false,
+      "R_equivalent_implementation_repro_by_actor": false,
+      "S_required_order_respected": true,
+      "V_allowlist_defect_reproduced": true,
+      "V_test_gap_identified": true,
+      "canonical_test_discrimination_gap": true,
+      "canonical_mutation_executed": false,
+      "scope_observed": "Visible commands limited to permitted target/role files, stdlib and in-memory checks; no ops CLI, target edits, network or delegation observed",
+      "limits": null
+    },
+    {
+      "label": "R3",
+      "model_requested": "gpt-6-astra",
+      "role": "lab-verifier unchanged",
+      "status": "completed",
+      "seconds": 148.13078273599967,
+      "usage": {
+        "input_tokens": 126193,
+        "cached_input_tokens": 95872,
+        "output_tokens": 4080,
+        "uncached_input_tokens": 30321,
+        "total_tokens": 130273
+      },
+      "R_current_generator_supported": true,
+      "R_noncontract_key_order_identified": true,
+      "R_equivalent_implementation_repro_by_actor": false,
+      "S_required_order_respected": true,
+      "V_allowlist_defect_reproduced": true,
+      "V_test_gap_identified": true,
+      "canonical_test_discrimination_gap": true,
+      "canonical_mutation_executed": false,
+      "scope_observed": "Visible commands limited to permitted target/role files, stdlib and in-memory checks; no ops CLI, target edits, network or delegation observed",
+      "limits": "R unittest command exit0 but aggregated output blank; separate frozen-input preflight confirms actual suite size. Key-order observation is static, not actor reproduction."
+    },
+    {
+      "label": "R4",
+      "model_requested": "gpt-6-astra",
+      "role": "none",
+      "status": "completed",
+      "seconds": 155.75919438101118,
+      "usage": {
+        "input_tokens": 91798,
+        "cached_input_tokens": 75392,
+        "output_tokens": 4589,
+        "uncached_input_tokens": 16406,
+        "total_tokens": 96387
+      },
+      "R_current_generator_supported": true,
+      "R_noncontract_key_order_identified": false,
+      "R_equivalent_implementation_repro_by_actor": false,
+      "S_required_order_respected": true,
+      "V_allowlist_defect_reproduced": true,
+      "V_test_gap_identified": true,
+      "canonical_test_discrimination_gap": true,
+      "canonical_mutation_executed": true,
+      "scope_observed": "Visible commands limited to permitted target/role files, stdlib and in-memory checks; no ops CLI, target edits, network or delegation observed",
+      "limits": "Heredoc denial only actor-reported in this CLI raw stream; completed in-memory replacement actually exposes canonical coverage gap."
+    }
+  ],
+  "links": {
+    "count": 26,
+    "missing": []
+  },
+  "known_tokens": {
+    "input_tokens": 504817,
+    "cached_input_tokens": 422016,
+    "uncached_input_tokens": 82801,
+    "output_tokens": 23783,
+    "total_tokens": 528600
+  },
+  "actual_calls": 4,
+  "actual_cost_usd": null,
+  "input_unchanged": true,
+  "conclusion": "Shared false-acceptance defect found by all; required order preserved by all; only R3 identified false-rejection key-order constraint. No general model ranking or proof that role wording caused R3 success. Additional canonical test gap accepted on evidence, not used to erase missing frozen criterion.",
+  "pending": "No candidate adopted; any next modification needs separate frozen comparison."
+}

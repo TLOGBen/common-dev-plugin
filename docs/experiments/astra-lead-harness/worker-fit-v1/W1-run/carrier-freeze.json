@@ -1,0 +1,23 @@
+{
+  "carrier_sha256": "4599797e87900333acf0f7b086cfea01a769630381c5c5523a60768c444e32dc",
+  "usage_parser_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "raw_usage_parser_sha256": "7614c26c45052b285bb3df267a880b5eba4c1d749b8125eaadb6ef140ee241a0",
+  "packages": {},
+  "workspace_sha256": {
+    "TASK.md": "dc20113880ba36a52154567e409bc923caeeda65cf7d1df632537f47eb6a68e7",
+    "src/count-label.mjs": "a27a98ed15107fceaa5c4f2a42076938a171ffa1076a9a7e5ea42f2849473903",
+    "tests/count-label.test.mjs": "0c5e25986c607013e6c029e95be9a815fe09e849445902b434a1f0f4b577b1d7"
+  },
+  "profile_adapter_sha256": "eed8705e631aa97a6f7605e099af9816b23b15c37d284a4acad1c52382d3a56f",
+  "base_carrier_sha256": "c05e29c5a2f2c548969e97a14789bbd82c1b7a2051943b438db977eb279ed276",
+  "worker_profiles": {
+    "implementation": {
+      "model": "gpt-5.6-luna",
+      "effort": "high"
+    },
+    "implementation_sol": {
+      "model": "gpt-5.6-sol",
+      "effort": "high"
+    }
+  }
+}

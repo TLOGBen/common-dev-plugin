@@ -1,0 +1,27 @@
+{
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/A",
+  "started_utc": "2026-09-06T06:57:52.411168+00:00",
+  "pid": 807425,
+  "prompt_sha256": "f82aff1249e8272c8c58b188e95b5663a0daa65eb291dbea7f2e945b35727e44",
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "timeout_seconds": 600,
+  "fallback": false
+}

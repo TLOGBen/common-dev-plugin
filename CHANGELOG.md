@@ -2,6 +2,36 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## 實驗包 — Common Lab／Baransu Lab／Estimate Lab 0.2.0
+
+- 重新檢視全部 15 個 Lab 技能：以原目的、模型失敗模式、適用規模、證據和摩擦決定指引或機制；不再把縮短指令本身視為成效，也不以強模型或短測試推定長程風險消失。
+- Strategic Advance 回到長程耦合戰役：主手與實作分離，新增 fresh calibrator、事件／期限檢查點、有界修復及只暫停受影響支線的接續規則。新 `calibration.py` 檢查封包時效、狀態與來源雜湊、來源別名、宣告角色隔離及完成條件；明示它不證明語義、真實隔離或工具層強制執行。
+- Contract 明確先落檔再交付實作；Seal 按實際影響分配有限驗證，保留必要條件而不無限擴張突變測試。Estimate 保留案件 revision、PM 承諾及唯一計價來源，對長程跨包矛盾按需加入唯讀獨立核對。
+- 其餘技能補上不替換使用者主張、人的理解節奏、原始證據接續與成果交還等狹義指引；保留既有 renderer、campaign ledger、Estimate runtime、計算及核准控制。
+- 三包由 Claude source 經既有 transfer 產生全新 0.2.0 目錄與 package-local agents；舊包、正式來源與正式 catalogs 不替換。逐技能差異、真實測試收據及長程／跨模型限制見 `docs/experiments/lab-v0.2.0/README.md`。
+
+## 實驗包 — Common Lab 0.1.8／Baransu Lab 0.1.1／Estimate Lab 0.1.3
+
+- Common Lab 經分輪重測，修正 Wayfinder 的欄位讀取、當前焦點與前置就緒顯示；區分決策已釐清、產品已完成與執行授權，不以票券數代替成果。
+- Baransu Lab 以一份可驗證的驗收記錄串接 think、contract、review、seal；保留獨立驗證與授權邊界，不偽造原版 hook 或封緘。
+- Baransu 0.1.1 僅將 verifier 原有規則分組、加上具名限制；6 輪只採用此結構改動。封存新題目的 8 次實測兩版均抓到核心缺陷；3 位最終評審偏好分組版，2 位判嚴格改善，效果軸同分，不宣稱任務或真人理解改善。新目錄導出與隔離安裝逐檔一致；原 0.1.0 包保留。
+- Estimate Lab 新增独立精簡入口，保留依賴查證、唯一工作集合及 PM 承諾；修復人天確認後無法接續的狀態轉移，明確區分預覽、人天已核准待交付、交付完成。53 項測試在實際暫存安裝包內通過。
+- 三包均以原轉換器產生独立 Codex marketplace，原版來源、生成內容、穩定 catalog、隔壁 Baransu 與全域安裝不變。Estimate 的非標準 tests/ 由窄範圍 adapter 在原內容完整性檢查前補回並逐位元核對，原警告保留於導出報告。
+- 版本化包、試用方式、逐輪證據與測量限制見 `docs/experiments/README.md`。這是本地工作樹實驗，不代表遠端發佈、正式插件升級或真人驗收。
+
+- Common 0.1.5 修正 Grilling 批判方法時悄悄替換原主張的問題，保留未導出的 0.1.4 失敗樣本；Estimate 0.1.2 區分已交付的預覽與正式核准，補上真實表格渲染與成果入口的檢查。Common 0.1.5／Estimate 0.1.3 均通過全新暫存安裝。Estimate 0.1.3 修復責任或所選方案變更後沿用舊核准、連續變更的確認脈絡與鍵盤 Enter 誤關閉；已核准提醒回歸歷史紀錄，64 項 Python 與 5 項事件測試在安裝後包內通過。
+
+- Common 0.1.7 新增狹義 campaign extend 命令：追加新 criterion，不改舊成果或未知操作；只在 campaign reference 揭露，不加根技能指令。兩題 A/B/B/A 四次 Astra 主手均成功；採用便利性與歷史保存，不宣稱普遍速度／成本優勢。實際安裝包通過 12 新回歸及 16 原自測，全域與正式來源不動。
+
+- Common 0.1.8 新增可選唯讀 campaign 交接便箋：引用現有狀態與證據、提醒未決操作及雜湊變動，不改狀態、不冒充語義驗收；只在 campaign reference 按需揭露，根技能不變。四次 Sol reader proxy 都辨認未知作用與語法檢查不足，兩版都會回讀原始證據，故不宣稱省讀量或真人理解改善。導出及暫存安裝位元核對通過；安裝包內 21 新回歸、12 extend 與 16 帳本自測通過。
+
+## 實驗 marketplace `common-lab` 0.1.0 — Common Lab 初版
+
+- 新增 Common 的 10 個獨立 `lab-*` 技能，測試短描述、按需載入、成果與決策邊界取代固定流程的設計；保留實作／目標責任分離、人的決策節奏及大型工作防注意力失焦的目的。
+- Claude source 在 `plugins/common-lab`；Codex package 與獨立 marketplace 在 `experiments/common-lab`，由 transfer 產生。穩定 Common 1.35.2、四套穩定 catalogs 與現有安裝不變。
+- 加入相同情境 A/B 行為演練工具及時間／實際 token／品質／停頓紀錄。結果僅適用於記錄的模型、情境與執行環境；不是跨模型保證，也不是生產驗收。
+- 執行方式、實測結果與限制見 `docs/experiments/common-lab/`。此版本只在工作樹建立，不代表已對遠端 marketplace 發佈。
+
 ## marketplace `common-dev` 1.35.3 — Estimate PM 確認報告下鑽與主動發現
 
 - `analysis-estimation` 1.1.3／`estimate` 3.1.0 將 Gate 5 報告改為 PM-first 確認台：第一層先顯示本次摘要與七個評估項目的低／基準／高人天及原項目說明；點擊項目後以原生 dialog 開啟修改明細，關閉時回到原列與捲動位置。額外發現只跟隨所屬項目，不再脫離上下文獨立陳列。

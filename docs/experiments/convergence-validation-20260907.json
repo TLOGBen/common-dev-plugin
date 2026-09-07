@@ -1,0 +1,55 @@
+{
+  "created_utc": "2026-09-06T17:07:43.229Z",
+  "phase": "convergence-before-deadline",
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "json",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 -c \"import json,pathlib; files=list(pathlib.Path(\\\".\\\").rglob(\\\"*.json\\\")); [json.loads(p.read_text(encoding=\\\"utf-8\\\")) for p in files]; print(json.dumps({\\\"all_json_parse\\\":\\\"PASS\\\",\\\"files\\\":len(files)}))\"",
+      "exit_code": 0,
+      "stdout": "{\"all_json_parse\": \"PASS\", \"files\": 1067}\n",
+      "stderr": ""
+    },
+    {
+      "name": "layout",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 -c \"import pathlib,json; root=pathlib.Path(\\\".\\\"); required=[\\\".agents/plugins/marketplace.json\\\",\\\"codex/.agents/plugins/marketplace.json\\\",\\\"codex/plugins/test-utils/.codex-plugin/plugin.json\\\",\\\"codex/plugins/analysis-estimation/.codex-plugin/plugin.json\\\",\\\"codex/plugins/linkstart/.codex-plugin/plugin.json\\\"]; assert all((root/p).is_file() for p in required); print(json.dumps({\\\"required_layout\\\":\\\"PASS\\\",\\\"paths\\\":required}))\"",
+      "exit_code": 0,
+      "stdout": "{\"required_layout\": \"PASS\", \"paths\": [\".agents/plugins/marketplace.json\", \"codex/.agents/plugins/marketplace.json\", \"codex/plugins/test-utils/.codex-plugin/plugin.json\", \"codex/plugins/analysis-estimation/.codex-plugin/plugin.json\", \"codex/plugins/linkstart/.codex-plugin/plugin.json\"]}\n",
+      "stderr": ""
+    },
+    {
+      "name": "linkstart",
+      "command": "env PYTHONDONTWRITEBYTECODE=1 python3 scripts/validate_linkstart_release.py",
+      "exit_code": 0,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": ""
+    },
+    {
+      "name": "diff",
+      "command": "git diff --check",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "name": "stable",
+      "command": "git diff --name-only HEAD -- plugins/common plugins/analysis-estimation plugins/test-utils plugins/linkstart codex .agents .claude-plugin",
+      "exit_code": 0,
+      "stdout": "",
+      "stderr": ""
+    }
+  ],
+  "package_continuity": "docs/experiments/package-freshness-20260907.json",
+  "criterion_reference_freshness": "docs/experiments/criterion-freshness-20260907-0100b.json",
+  "private_path_scan": {
+    "searched": "jimts|vakarve|/home/|/mnt/c/ in three source and final exported plugin trees",
+    "observed_matches": 2,
+    "interpretation": "Both are the same generic local-path redaction regular expression in Estimate source/export, not concrete personal paths. No jimts or vakarve match."
+  },
+  "limits": [
+    "All 1067 JSON files existing at this check parse; later final-report metadata is checked when created.",
+    "No behavior suite was rerun on unchanged packages; installed behavior receipts remain separate.",
+    "Stable tracked source/catalog diff is empty; global installation was not modified in this workflow.",
+    "Not Windows App activation, full stable Seal, human readability, or deadline completion."
+  ]
+}

@@ -1,0 +1,61 @@
+{
+  "case_id": "grilling",
+  "skill": "grilling",
+  "arm": "B",
+  "turn": 1,
+  "started_utc": "2026-09-06T02:36:46.990894+00:00",
+  "ended_utc": "2026-09-06T02:37:22.764120+00:00",
+  "wall_seconds": 35.773,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-grilling-p_1c1qsm",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-grilling/SKILL.md",
+  "skill_sha256": "182020d2197261ede6d0b360179eea8c08b2b7d81c7ca1096c50c6a337aeba58",
+  "prompt_sha256": "c5efab284f4054c244d0d1af9b7e066a30d89f7e0c2f9fab71a1d7eee2e95c36",
+  "fixture_dir": "/tmp/common-lab-ab-grilling-p_1c1qsm",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會使用指定的 lab-grilling 技能，完整讀取其內容，再針對情境提出一個最關鍵的挑戰問題與模擬下一步。\n",
+    "**每 100 件退款，你最多願意承受多少元「因自動核准而新增的錯誤退款與詐欺損失」，超過就停用？**\n\n你目前最需要挑戰的假設是：效率收益足以抵銷新增損失。省下 30% 客服工時仍是估計，而缺少損失基準，代表你還無法判斷這筆交換是否划算。\n\n我的下一步會是根據你給的損失上限，檢驗方案是否有辦法在超標前發現問題並停止；這裡只做模擬推演，不執行上線。"
+  ],
+  "final_message": "**每 100 件退款，你最多願意承受多少元「因自動核准而新增的錯誤退款與詐欺損失」，超過就停用？**\n\n你目前最需要挑戰的假設是：效率收益足以抵銷新增損失。省下 30% 客服工時仍是估計，而缺少損失基準，代表你還無法判斷這筆交換是否划算。\n\n我的下一步會是根據你給的損失上限，檢驗方案是否有辦法在超標前發現問題並停止；這裡只做模擬推演，不執行上線。",
+  "usage": {
+    "input_tokens": 31606,
+    "cached_input_tokens": 18944,
+    "output_tokens": 618,
+    "uncached_input_tokens": 12662,
+    "total_tokens": 32224
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab/plugins/common-lab/skills/lab-grilling/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

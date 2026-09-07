@@ -1,0 +1,28 @@
+{
+  "episodes": [
+    {
+      "episode_id": "worker-fit-v1-W1",
+      "arm": "none",
+      "case_id": "count-label",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W1-run"
+    },
+    {
+      "episode_id": "worker-fit-v1-W2",
+      "arm": "lab",
+      "case_id": "count-label",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W2-run"
+    },
+    {
+      "episode_id": "worker-fit-v1-W3",
+      "arm": "lab",
+      "case_id": "event-projection",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W3-run"
+    },
+    {
+      "episode_id": "worker-fit-v1-W4",
+      "arm": "none",
+      "case_id": "event-projection",
+      "output": "/home/vakarve/projects/common-dev-plugin/docs/experiments/astra-lead-harness/worker-fit-v1/W4-run"
+    }
+  ]
+}

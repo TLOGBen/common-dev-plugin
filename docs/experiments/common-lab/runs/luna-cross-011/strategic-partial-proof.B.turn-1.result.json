@@ -1,0 +1,90 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:32:38.807013+00:00",
+  "ended_utc": "2026-09-06T03:33:16.450605+00:00",
+  "wall_seconds": 37.641,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "b398faa551cd3e16877ade66afcefb69a14450a966a29ce9e1fe888b097c68a1",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依指定的 `lab-strategic-advance` 技能處理，先完整讀取該 `SKILL.md`，再只檢查它明確引用且本情境需要的資源；全程保持唯讀，不執行寄送或其他業務操作。",
+    "技能要求把「寄送是否唯一、是否送達、證據是否可讀回」分開驗證；我現在只讀它指定的 campaign 參考與情境資料，避免把 `Accepted` 誤當成完整成功證明。",
+    "先不重寄，也不重寫縮圖系統。`Accepted` 只證明寄件系統接受請求，尚不能證明唯一寄送或收件成功；逾時使 `MAIL-7` 的結果仍屬未知。\n\n下一個 bounded move 是對 `message_id=MAIL-7` 做唯讀 reconciliation：\n\n- 查權威寄送紀錄，確認實際 dispatch 次數是否恰為 1。\n- 查收件方或傳遞服務的 receipt，確認是否真的收到。\n- 若縮圖不可用，改讀原始文字紀錄、寄送 metadata 或其他可讀的現有證據，不修縮圖子系統。\n- 將三項結果分別標記為已證實、未知或未滿足。\n\n在 reconciliation 完成前不再發送；若仍缺少寄送次數或 receipt，就停在外部依賴，不宣稱目標完成。"
+  ],
+  "final_message": "先不重寄，也不重寫縮圖系統。`Accepted` 只證明寄件系統接受請求，尚不能證明唯一寄送或收件成功；逾時使 `MAIL-7` 的結果仍屬未知。\n\n下一個 bounded move 是對 `message_id=MAIL-7` 做唯讀 reconciliation：\n\n- 查權威寄送紀錄，確認實際 dispatch 次數是否恰為 1。\n- 查收件方或傳遞服務的 receipt，確認是否真的收到。\n- 若縮圖不可用，改讀原始文字紀錄、寄送 metadata 或其他可讀的現有證據，不修縮圖子系統。\n- 將三項結果分別標記為已證實、未知或未滿足。\n\n在 reconciliation 完成前不再發送；若仍缺少寄送次數或 receipt，就停在外部依賴，不宣稱目標完成。",
+  "usage": {
+    "input_tokens": 65869,
+    "cached_input_tokens": 48128,
+    "output_tokens": 1462,
+    "uncached_input_tokens": 17741,
+    "total_tokens": 67331
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"date '+%Y-%m-%d %H:%M:%S %Z %z' && sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,260p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/references/campaign.md && echo '--- SCENARIO FILES ---' && rg --files -g '\"'!AGENTS.md'\"' -g '\"'!**/.git/**'\"' .\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,260p' SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

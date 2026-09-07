@@ -1,0 +1,24 @@
+{
+  "ok": true,
+  "stateRevision": 8,
+  "stateStatus": "estimate-ready",
+  "warnings": [],
+  "files": {
+    "assessment-report.md": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/retained-suite-fixtures/tmpi9cey8mi/case/outputs/assessment-report.md",
+      "sha256": "82ea6e6437ad2020ad1adc386a32428491d0153e2ac67b84b543b34cf9142cb9"
+    },
+    "assessment-report.html": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/retained-suite-fixtures/tmpi9cey8mi/case/outputs/assessment-report.html",
+      "sha256": "529b5ea663d790fac5b8a6bed60327225f1c3186b0bf95dcb7c4097cad387f3f"
+    },
+    "estimate-internal.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/retained-suite-fixtures/tmpi9cey8mi/case/outputs/estimate-internal.csv",
+      "sha256": "d3e0f10268da50c72ceb4570d64e4164f3eb849dd1ffc32b8a455e9f341d7161"
+    },
+    "estimate-external.csv": {
+      "path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/estimate-lab/fixed-validation/retained-suite-fixtures/tmpi9cey8mi/case/outputs/estimate-external.csv",
+      "sha256": "974f4cb293cebf8c59ab52b57910e1312f4978dffb0b73f65f6c072a6530f047"
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "case_id": "grilling",
+  "skill": "grilling",
+  "arm": "A",
+  "turn": 1,
+  "started_utc": "2026-09-06T02:36:10.450770+00:00",
+  "ended_utc": "2026-09-06T02:36:46.990372+00:00",
+  "wall_seconds": 36.539,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-grilling-p_1c1qsm",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/grilling/SKILL.md",
+  "skill_sha256": "d621b78d95bb600b0bbf177d166dc8ac13e9ed12b2cdad643d73f302191a71a7",
+  "prompt_sha256": "a444b120efa58f60150b238495515bb7807d0d4efa788ecd77be388170344aa8",
+  "fixture_dir": "/tmp/common-lab-ab-grilling-p_1c1qsm",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會完整讀取你指定的 grilling 技能，再依照情境提出一個最關鍵的挑戰問題與模擬下一步。\n",
+    "❓ **Q1 — 上線門檻**：如果省下的 30% 客服工時，可能被錯誤退款與詐欺損失吃掉，你是否願意把「先取得足以評估淨效益的證據」設為正式上線的必要條件？\n\n➡️ **建議：願意。** 目前只有收益估計，沒有損失基準；單筆上限 3,000 元也無法限制累積損失，因此還不足以支持全面自動核准。\n\n**擬議下一步**：讓系統只產生核准建議，退款仍由人工決定；記錄建議與人工判定的差異，再追查實際錯誤、詐欺損失及可省工時。人工判定也不能直接當成正確答案。這是待你回答後才細化的模擬方案，尚未執行。"
+  ],
+  "final_message": "❓ **Q1 — 上線門檻**：如果省下的 30% 客服工時，可能被錯誤退款與詐欺損失吃掉，你是否願意把「先取得足以評估淨效益的證據」設為正式上線的必要條件？\n\n➡️ **建議：願意。** 目前只有收益估計，沒有損失基準；單筆上限 3,000 元也無法限制累積損失，因此還不足以支持全面自動核准。\n\n**擬議下一步**：讓系統只產生核准建議，退款仍由人工決定；記錄建議與人工判定的差異，再追查實際錯誤、詐欺損失及可省工時。人工判定也不能直接當成正確答案。這是待你回答後才細化的模擬方案，尚未執行。",
+  "usage": {
+    "input_tokens": 31825,
+    "cached_input_tokens": 26880,
+    "output_tokens": 645,
+    "uncached_input_tokens": 4945,
+    "total_tokens": 32470
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/grilling/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

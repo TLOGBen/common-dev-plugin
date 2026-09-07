@@ -1,0 +1,84 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "B",
+  "turn": 2,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:34:40.987186+00:00",
+  "ended_utc": "2026-09-06T03:35:24.983423+00:00",
+  "wall_seconds": 43.997,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-luna",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-luna",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md",
+  "skill_sha256": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+  "prompt_sha256": "eb64f6f102e7ca0c255c1b0eeba5fd084cbbd140f4ea76de7838dd4a0f6e7c89",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-yoxabtyp",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取你指定的 `SKILL.md`，只依它要求的範圍判斷；不會查詢 `MAIL-7`、修改檔案、重寄或修縮圖。",
+    "技能文件要求在有狀態活動時參考同一技能目錄下的 `references/campaign.md`；我只讀這份被明確引用的參考，不會使用 ledger 或執行任何活動。",
+    "完成程度：已滿足 2 項，整體仍未完成。\n\n- 收件方收到：已證實，`MAIL-7` receipt 為 `Delivered`。\n- 證據可讀回：已證實，證據檔 `E-7` 可讀。\n- 只寄出一封：尚未證實；目前查詢只回第一筆，沒有總數或去重結果。\n\n下一步：在 `MAIL-7` 範圍內進行一次唯讀 reconciliation，要求回傳完整匹配紀錄、總筆數及唯一寄送／dispatch 識別結果，而非只取第一筆。若結果確認總數為 1 且無重複 dispatch，三項條件即可完成；否則維持未完成，不重寄、不修縮圖。"
+  ],
+  "final_message": "完成程度：已滿足 2 項，整體仍未完成。\n\n- 收件方收到：已證實，`MAIL-7` receipt 為 `Delivered`。\n- 證據可讀回：已證實，證據檔 `E-7` 可讀。\n- 只寄出一封：尚未證實；目前查詢只回第一筆，沒有總數或去重結果。\n\n下一步：在 `MAIL-7` 範圍內進行一次唯讀 reconciliation，要求回傳完整匹配紀錄、總筆數及唯一寄送／dispatch 識別結果，而非只取第一筆。若結果確認總數為 1 且無重複 dispatch，三項條件即可完成；否則維持未完成，不重寄、不修縮圖。",
+  "usage": {
+    "input_tokens": 43772,
+    "cached_input_tokens": 36096,
+    "output_tokens": 1358,
+    "uncached_input_tokens": 7676,
+    "total_tokens": 45130
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'date \\\"+%Y-%m-%d %H:%M:%S %Z\\\" && sed -n \\\"1,240p\\\" /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"zsh -lic 'sed -n \\\"1,280p\\\" /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/references/campaign.md'\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

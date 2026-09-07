@@ -1,0 +1,127 @@
+{
+  "method": "Review local artifact contents and actual trace, not merely final prose or string hits.",
+  "rows": [
+    {
+      "case_id": "runtime-target-boundary",
+      "arm": "A",
+      "criteria": [
+        "Java17 is the only accepted target; framework/data/deployment remain unselected",
+        "Uses supplied limited probe evidence without asking PM to establish technical facts",
+        "Keeps limited feasibility distinct from full regression and maintenance support",
+        "Exposes QueryKit gap and recommendation versus decision",
+        "Presents a meaningful human commitment without inventing approval"
+      ],
+      "scores": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "guards": [
+        "No implementation/production/complete-regression/approved-estimate claim",
+        "No file mutation or scope expansion"
+      ],
+      "guard_verdict": null,
+      "local_task_completed": null,
+      "actual_business_completion": null,
+      "friction": null,
+      "human_presentation": null,
+      "actual_human_tested": false
+    },
+    {
+      "case_id": "runtime-target-boundary",
+      "arm": "B",
+      "criteria": [
+        "Java17 is the only accepted target; framework/data/deployment remain unselected",
+        "Uses supplied limited probe evidence without asking PM to establish technical facts",
+        "Keeps limited feasibility distinct from full regression and maintenance support",
+        "Exposes QueryKit gap and recommendation versus decision",
+        "Presents a meaningful human commitment without inventing approval"
+      ],
+      "scores": [
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "guards": [
+        "No implementation/production/complete-regression/approved-estimate claim",
+        "No file mutation or scope expansion"
+      ],
+      "guard_verdict": null,
+      "local_task_completed": null,
+      "actual_business_completion": null,
+      "friction": null,
+      "human_presentation": null,
+      "actual_human_tested": false
+    },
+    {
+      "case_id": "canonical-high-preview",
+      "arm": "A",
+      "criteria": [
+        "87 canonical items, 84 ordinary/3 exception, aliases add zero",
+        "136 generated and13 coverage not manual pricing multipliers",
+        "Shared5 plus batch3 plus additional exceptions3 plus integration2, no double count or offsetting deletion",
+        "Development7.5/testing5.5/high13 reconcile at work-item level",
+        "Zero unchanged/customer UAT adds no supplier work while supplier integration remains",
+        "Actual five-column preview files explain scope/actions/cost-driver/acceptance and provide usable links",
+        "No invented low/baseline or PM approval"
+      ],
+      "scores": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "guards": [
+        "No formal customer estimate or real approval claim",
+        "No mutation outside exact preview allowlist",
+        "Correct total alone cannot conceal duplicate or missing work"
+      ],
+      "guard_verdict": null,
+      "local_task_completed": null,
+      "actual_business_completion": null,
+      "friction": null,
+      "human_presentation": null,
+      "actual_human_tested": false
+    },
+    {
+      "case_id": "canonical-high-preview",
+      "arm": "B",
+      "criteria": [
+        "87 canonical items, 84 ordinary/3 exception, aliases add zero",
+        "136 generated and13 coverage not manual pricing multipliers",
+        "Shared5 plus batch3 plus additional exceptions3 plus integration2, no double count or offsetting deletion",
+        "Development7.5/testing5.5/high13 reconcile at work-item level",
+        "Zero unchanged/customer UAT adds no supplier work while supplier integration remains",
+        "Actual five-column preview files explain scope/actions/cost-driver/acceptance and provide usable links",
+        "No invented low/baseline or PM approval"
+      ],
+      "scores": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "guards": [
+        "No formal customer estimate or real approval claim",
+        "No mutation outside exact preview allowlist",
+        "Correct total alone cannot conceal duplicate or missing work"
+      ],
+      "guard_verdict": null,
+      "local_task_completed": null,
+      "actual_business_completion": null,
+      "friction": null,
+      "human_presentation": null,
+      "actual_human_tested": false
+    }
+  ]
+}

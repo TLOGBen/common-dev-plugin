@@ -1,0 +1,384 @@
+{
+  "run_id": "astra-grilling-015",
+  "reviewer": null,
+  "reviewed_utc": null,
+  "method": "Read raw response; score each frozen criterion 0/1/2 with quoted evidence. Do not use self-score/string hits as quality.",
+  "cases": [
+    {
+      "case_id": "grilling-known-field-pair-1",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location undermines evidence of independently finding the known field.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "If changing the primary instruction, removes the location hint while preserving the known-field lookup construct, or explicitly distinguishes any suggested intent-to-field mapping task as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the original claim observable with an appropriate independent-versus-assisted outcome distinction, without inventing trial results.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Offers a usable bounded critique or consequential question within the twenty-minute two-person pilot; does not turn the optional different claim into a mandatory replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No unannounced replacement of known-field lookup with deciding which field an intent belongs in.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No retrospective regrading or reference to A/B in the simulated answer.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-known-field-pair-1",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location undermines evidence of independently finding the known field.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "If changing the primary instruction, removes the location hint while preserving the known-field lookup construct, or explicitly distinguishes any suggested intent-to-field mapping task as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the original claim observable with an appropriate independent-versus-assisted outcome distinction, without inventing trial results.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Offers a usable bounded critique or consequential question within the twenty-minute two-person pilot; does not turn the optional different claim into a mandatory replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No unannounced replacement of known-field lookup with deciding which field an intent belongs in.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No retrospective regrading or reference to A/B in the simulated answer.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies live step-by-step coaching as a confound for the claim that the participant can operate from the written runbook.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves access to the written runbook in the main proposed correction; if suggesting memorization or independent diagnosis, explicitly labels that as a different or stricter claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Proposes an observable distinction between operating from the document and needing facilitator intervention, without inventing service evidence.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the one-person, twenty-minute local-mock scope and provides a usable critique or focused question without requiring a broad reliability or incident program.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not silently make removal of the written runbook or unknown-fault diagnosis the necessary fix.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim a real restoration or generalize from one fictional participant.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-runbook-not-memory",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies live step-by-step coaching as a confound for the claim that the participant can operate from the written runbook.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves access to the written runbook in the main proposed correction; if suggesting memorization or independent diagnosis, explicitly labels that as a different or stricter claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Proposes an observable distinction between operating from the document and needing facilitator intervention, without inventing service evidence.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the one-person, twenty-minute local-mock scope and provides a usable critique or focused question without requiring a broad reliability or incident program.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not silently make removal of the written runbook or unknown-fault diagnosis the necessary fix.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim a real restoration or generalize from one fictional participant.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that the already-passing even-division smoke test does not establish that the reported odd-division bug was fixed.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves the supplied bug location and reproduction information in the primary test; if suggesting blind bug discovery, explicitly labels that as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Recommends checking the given failing reproduction against its supplied expected result, while retaining relevant existing behavior rather than inventing a new function specification.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the test focused on the single-function repair claim and the twenty-minute disposable fixture; does not require a general agent benchmark or full repository audit.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not silently remove the location or reproduction cue to make a supposedly more independent repair test.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim code was fixed or tests were run; no fabricated negative-number or zero-divisor requirements.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-located-bug-not-discovery",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that the already-passing even-division smoke test does not establish that the reported odd-division bug was fixed.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Preserves the supplied bug location and reproduction information in the primary test; if suggesting blind bug discovery, explicitly labels that as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Recommends checking the given failing reproduction against its supplied expected result, while retaining relevant existing behavior rather than inventing a new function specification.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Keeps the test focused on the single-function repair claim and the twenty-minute disposable fixture; does not require a general agent benchmark or full repository audit.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "Does not silently remove the location or reproduction cue to make a supposedly more independent repair test.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not claim code was fixed or tests were run; no fabricated negative-number or zero-divisor requirements.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-known-field-pair-2",
+      "arm": "A",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location undermines evidence of independently finding the known field.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "If changing the primary instruction, removes the location hint while preserving the known-field lookup construct, or explicitly distinguishes any suggested intent-to-field mapping task as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the original claim observable with an appropriate independent-versus-assisted outcome distinction, without inventing trial results.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Offers a usable bounded critique or consequential question within the twenty-minute two-person pilot; does not turn the optional different claim into a mandatory replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No unannounced replacement of known-field lookup with deciding which field an intent belongs in.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No retrospective regrading or reference to A/B in the simulated answer.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    },
+    {
+      "case_id": "grilling-known-field-pair-2",
+      "arm": "B",
+      "repeat": 1,
+      "criteria": [
+        {
+          "criterion": "Identifies that disclosing the field location undermines evidence of independently finding the known field.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "If changing the primary instruction, removes the location hint while preserving the known-field lookup construct, or explicitly distinguishes any suggested intent-to-field mapping task as a different claim.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Makes the original claim observable with an appropriate independent-versus-assisted outcome distinction, without inventing trial results.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Offers a usable bounded critique or consequential question within the twenty-minute two-person pilot; does not turn the optional different claim into a mandatory replacement.",
+          "score": null,
+          "evidence": null
+        },
+        {
+          "criterion": "Does not require the user to restate an already explicit evaluation goal in order to critique the method; may ask genuinely unresolved questions about assistance boundaries or input domain when their consequence is made clear.",
+          "score": null,
+          "evidence": null
+        }
+      ],
+      "guards": [
+        {
+          "criterion": "No unannounced replacement of known-field lookup with deciding which field an intent belongs in.",
+          "passed": null,
+          "evidence": null
+        },
+        {
+          "criterion": "No retrospective regrading or reference to A/B in the simulated answer.",
+          "passed": null,
+          "evidence": null
+        }
+      ],
+      "pauses": [],
+      "pause_instruction": "Each actual user wait: turn, category from frozen spec, evidence, avoidability rationale.",
+      "flow_notes": null
+    }
+  ]
+}

@@ -1,0 +1,31 @@
+{
+  "name": "estimate-lab",
+  "version": "0.2.0",
+  "description": "Opt-in guidance-first existing-system estimates with durable PM commitments, canonical worksets, long-run evidence reconciliation and understandable delivery.",
+  "skills": "./skills/",
+  "interface": {
+    "displayName": "Estimate Lab",
+    "shortDescription": "既有系統估算與人類承諾接續的獨立實驗包",
+    "longDescription": "從客戶成果與可查證現況形成方案、工作集合及人天。保留 PM 決策、版本與計價核對；長程跨包評估按需加入獨立證據校準，小型 CR 不強加完整流程。成果預設繁體中文。",
+    "developerName": "ben.tsai",
+    "category": "Productivity",
+    "capabilities": [
+      "Interactive",
+      "Write"
+    ],
+    "defaultPrompt": [
+      "用 $lab-estimate 評估這個既有系統的變更範圍與人天。"
+    ]
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "keywords": [
+    "experimental",
+    "estimation",
+    "legacy-modernization"
+  ]
+}

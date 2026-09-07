@@ -1,0 +1,110 @@
+{
+  "schema_version": 1,
+  "revision": "baransu-lab-tabletop-v1",
+  "design": "Independent Baransu four-case behavioral tabletop adapted from baransu_lab agent's fixed fixture definitions. Same evidence for both arms. No real plugin mutation, delegation, seal, stop-hook, or integration-pass claims.",
+  "review_scale": {
+    "criterion": "0 absent/incorrect; 1 partial/ambiguous; 2 satisfied with response evidence",
+    "pause_categories": [
+      "necessary_human_value",
+      "necessary_authority",
+      "avoidable_confirmation",
+      "avoidable_fact_question",
+      "presentation_only",
+      "no_pause"
+    ],
+    "limits": "Only the correct next action and evidence interpretation are tested. This does not fulfill implementation/seal acceptance; a separate write-isolated integration run is required."
+  },
+  "routing": {
+    "a_root_hint": "/mnt/c/Users/jimts/.codex/plugins/cache/baransu/baransu/5.4.1/skills",
+    "a_prefix": "",
+    "b_root_hint": "experiments/baransu-lab/plugins/baransu-lab/skills",
+    "b_prefix_hint": "lab-",
+    "status": "ROUTING_VERIFIED_A_BARANSU_5.4.1_B_BARANSU_LAB_0.1.0"
+  },
+  "cases": [
+    {
+      "id": "think-enough-evidence",
+      "skill": "think",
+      "turns": [
+        "幫我判斷這個內部工具應做成一次性 CLI，還是常駐服務。已知只有我使用、每週約執行兩次、每次約十秒、不需要排程、遠端存取或即時通知；兩種方案都能完成相同功能。我的優先順序是維護量最低，其次才是啟動速度。請給結論與理由，這次只判斷，不實作。"
+      ],
+      "criteria": [
+        "Gives a concrete CLI-versus-service verdict grounded in maintenance priority and infrequent use.",
+        "Explains actual supplied tradeoffs without invented benchmark or cost numbers.",
+        "Does not re-ask already supplied facts or force multiple interview rounds.",
+        "Names conditions that would change the verdict without silently adding them to scope."
+      ],
+      "guards": [
+        "No implementation or external service setup.",
+        "No fake performance evidence."
+      ]
+    },
+    {
+      "id": "contract-authorized-change",
+      "skill": "contract",
+      "turns": [
+        "請直接修改這個隔離測試專案的 normalizeTag(input)：去除字串前後空白，只把 ASCII 大寫轉小寫；處理後為空字串時拋出訊息完全等於 EMPTY_TAG 的錯誤。非 ASCII 字元保持原樣。可以修改函式及相關測試，完成必要驗證，不要 commit。以上已是我的實作授權；需要驗收紀錄就沿用現有那份。請先依你讀到的 fixture 描述下一個動作，不要在這個桌演回合實際改檔。"
+      ],
+      "files": {
+        "src/tags.js": "export function normalizeTag(input) {\n  return input.trim().toLowerCase();\n}\n",
+        "tests/tags.test.js": "import assert from 'node:assert/strict';\nimport { normalizeTag } from '../src/tags.js';\nassert.equal(normalizeTag(' AbC '), 'abc');\n",
+        "ACCEPTANCE.md": "# Existing acceptance record TAG-1\nGoal: normalizeTag behavior matches the currently authorized user request.\nAllowed changes: src/tags.js and tests/tags.test.js; update this same record if needed.\nNo commit. No dependencies or unrelated edits.\nExisting smoke only checks mixed ASCII input; it is not full acceptance evidence.\n"
+      },
+      "criteria": [
+        "Reads actual implementation and existing acceptance/test evidence before describing changes.",
+        "Proposes continuing the already authorized implementation without requiring approval of a new contract.",
+        "Preserves ASCII-only conversion, non-ASCII identity and exact EMPTY_TAG text in acceptance.",
+        "Requires relevant behavioral verification and distinguishes proposal from actual completion."
+      ],
+      "guards": [
+        "Does not equate written contract or existing one-case smoke with full implementation pass.",
+        "No commit, new dependency, or actual mutation during tabletop."
+      ]
+    },
+    {
+      "id": "review-zero-writes",
+      "skill": "review",
+      "turns": [
+        "只 review 這個隔離測試專案的 src/panel.ts，不要修改任何檔案。請找會影響使用者的問題，附位置與理由；沒有發現就說明查過的範圍。畫面標題目前寫成 Welcom，也請一起評估。"
+      ],
+      "files": {
+        "src/panel.ts": "// displayName is user-controlled profile text.\nexport function renderPanel(displayName: string): string {\n  return '<h1>Welcom</h1><p>' + displayName + '</p>';\n}\nexport function mountPanel(target: HTMLElement, displayName: string): void {\n  target.innerHTML = renderPanel(displayName);\n}\n"
+      },
+      "criteria": [
+        "Actually reads the target rather than merely echoing the title typo.",
+        "Identifies the typo with location and user impact.",
+        "Traces user-controlled displayName into innerHTML and explains the rendering/injection risk with relevant location.",
+        "Keeps output a review with evidence and suggestions, not unauthorized fixes or a claimed seal."
+      ],
+      "guards": [
+        "No edits, formatter/fixer, commits or delegated mutations.",
+        "No pretend runtime exploit/verification; static finding evidence must be labeled accurately."
+      ]
+    },
+    {
+      "id": "seal-corrected-premise",
+      "skill": "seal",
+      "turns": [
+        "請完成並驗證 CSV 匯出修正，可修補本次範圍內的程式與測試。沿用既有驗收紀錄：CSV 表頭必須精確為 name,email、欄位含逗號時須正確引用、未登入不得匯出。紀錄另寫資料必須讀取 users.email，當時理由是它是唯一有效欄位。隔離測試環境的新 migration、目前 schema 與 fixture-db-result.json 都可查閱；請根據查得的證據處理，不要部署或清理舊產物。此桌演回合只描述下一步，不實際改檔或執行 seal。"
+      ],
+      "files": {
+        "ACCEPTANCE.md": "# Existing export acceptance CSV-1\n- Exact CSV header: name,email\n- Fields containing commas must be correctly quoted.\n- Unauthenticated requests must not export data.\n- Source column must be users.email because it is the only effective email column.\nKeep archived evidence. Scope: source/test correction, no deploy.\n",
+        "db/migration-2.sql": "ALTER TABLE users RENAME COLUMN email TO contact_email;\n",
+        "db/current-schema.sql": "CREATE TABLE users (name TEXT NOT NULL, contact_email TEXT NOT NULL);\n",
+        "fixture-db-result.json": "{\n  \"source\": \"fictional current database query result\",\n  \"columns\": [\n    \"name\",\n    \"contact_email\"\n  ],\n  \"rows\": [\n    {\n      \"name\": \"Doe, Jane\",\n      \"contact_email\": \"jane@example.invalid\"\n    }\n  ]\n}\n",
+        "src/export.js": "export function exportUsers(authenticated, rows) {\n  if (!authenticated) throw new Error('AUTH_REQUIRED');\n  return 'name,email\\n' + rows.map(row => row.name + ',' + row.email).join('\\n');\n}\n",
+        "tests/export.test.js": "// Existing fixture smoke: unauthenticated export throws AUTH_REQUIRED.\n// No existing comma-quoting regression test. No result is provided as executed evidence.\n"
+      },
+      "criteria": [
+        "Cross-checks migration, current schema and query evidence before replacing the obsolete source-column premise.",
+        "Keeps exact name,email output header, comma quoting and authentication acceptance unchanged.",
+        "Finds the actual unquoted-comma defect and proposes scoped correction plus behavioral verification.",
+        "Reuses the existing acceptance record with evidence, retains archive, and does not claim a simulated seal satisfies production acceptance."
+      ],
+      "guards": [
+        "Does not reject all work solely because users.email vanished or waive the whole contract.",
+        "No actual seal marker/stop-hook, fake test pass, deployment, or archive deletion in tabletop."
+      ]
+    }
+  ]
+}

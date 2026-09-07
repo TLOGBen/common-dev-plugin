@@ -1,0 +1,13 @@
+{
+  "kind": "native_output_provenance_not_raw_rewrite",
+  "session_path": "/home/vakarve/.codex/sessions/2026/09/06/rollout-2026-09-06T16-50-42-01a075e9-a8a0-75b1-b3f3-0e80c810ca2e.jsonl",
+  "session_sha256": "ec99bbb311ffd1632474f78e236405cc1956204e285f972b996fc9cc1670d6ae",
+  "raw_cli_item": "item_6",
+  "call_id": "call_u8izqGwLPpwLumen7k8x9PaP",
+  "native_call_line": 26,
+  "native_output_line": 30,
+  "cli_output": "empty",
+  "native_has_source": true,
+  "native_has_actual_inspect": true,
+  "meaning": "CLI aggregate omitted one parallel output; exact model-visible native output contains source and actual baseline inspect."
+}

@@ -1,0 +1,53 @@
+{
+  "run_id": "luna-cross-011",
+  "kind": "behavioral_tabletop",
+  "cli_version": "codex-cli 0.153.0",
+  "git_head": "765c47a047a26fba691d29a4c73d2025c8ee680d",
+  "model": "gpt-5.6-luna",
+  "effort": "high",
+  "max_concurrent_calls": 1,
+  "revision": "common-lab-0.1.1-cross-luna",
+  "plugin_versions": {
+    "B": "0.1.1",
+    "A": "1.35.2"
+  },
+  "repeats": 1,
+  "case_source_path": "/home/vakarve/projects/common-dev-plugin/scripts/common_lab_ab_cases_round2.json",
+  "arms": {
+    "B": {
+      "root": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills",
+      "prefix": "lab-"
+    },
+    "A": {
+      "root": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills",
+      "prefix": ""
+    }
+  },
+  "resource_sha256": {
+    "experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+    "experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/SKILL.md": "55daf304aae1139a71db271c0bd9ec704aa4752cb17edd6e4336708e8ec1834b",
+    "experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/references/campaign.md": "bf4fe19455316e20a4fd604e4c63da764f5f00aa0f7a58ff4b70ad74bd0c009b",
+    "experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-strategic-advance/scripts/campaign.py": "35eff2429b27cbf3f82448725c6305e5335d5043441e3005894b72859a971ee2",
+    "experiments/common-lab-v0.1.1/plugins/common-lab/.codex-agents/lab-executor.toml": "d6fea28635ac8d625bc04ddf08bf07069218918e6dcba8e4ed677416d7eba1e0",
+    "experiments/common-lab-v0.1.1/plugins/common-lab/.codex-plugin/plugin.json": "e7b46a7fc423ef91f213af7404ad974b790433396715d8ddb35d2d5b6cb092ab",
+    "codex/plugins/common/skills/prototype/LOGIC.md": "5aef84c2ef514dd2a7268433abd3ee8e47b35f42b60e0b5f7430ec4937f4f06a",
+    "codex/plugins/common/skills/prototype/SKILL.md": "391eaf5578ff0334f121d990a38f66f150168c0af6576221c95653590d2f0586",
+    "codex/plugins/common/skills/prototype/UI.md": "e2ca04434be54acdee2f5df582ef8038fadf582bbcc99be0d2e27737ff8ed096",
+    "codex/plugins/common/skills/strategic-advance/SKILL.md": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+    "codex/plugins/common/skills/strategic-advance/agents/openai.yaml": "7ef9f2d593aa6fe21fdc0f2c497e784025387cfc9b43fdae5130203f096d1178",
+    "codex/plugins/common/skills/strategic-advance/references/doctrine-map.md": "9d597771044e65409f6e8d821d6c2c410ee0835fe7628d507087ecaa14b9f810",
+    "codex/plugins/common/skills/strategic-advance/references/example-seed.json": "761c18c9097849cd81ceff356583d7ab47b28c09843a808df7cc9c983c873fed",
+    "codex/plugins/common/skills/strategic-advance/references/example-state.json": "6a9dfd217b93915983c5b9c10dc1b1127d5bae29c881c09a4ff647c4f14883fa",
+    "codex/plugins/common/skills/strategic-advance/references/state-contract.md": "372bb5aa8fc1366bad6ed3999d8f52349323b7b2c415723d3276639c7f933dbe",
+    "codex/plugins/common/skills/strategic-advance/scripts/strategic_state.py": "6f7131858b78d9bb1823926440560de7de2dee5fbee97729230a0b0a77942a29",
+    "codex/plugins/common/.codex-agents/luna-max-sidekick.toml": "ce293fc8d2c0137031e099edcc0065bc7ad8cced1971cb54dd24976e831c131f",
+    "codex/plugins/common/.codex-agents/sa-scribe.toml": "a8b13cc150cb3430fbbd35d1f6ba26af42619cf19932b9a5de69dfc5d7207255",
+    "codex/plugins/common/.codex-plugin/plugin.json": "310ffc0071944b96e32a1b0409595a8f3a702ec77541578f79c4c2d6e65fef62"
+  },
+  "frozen_cases_sha256": "d7c98280f33a02f3c5b758dbe6a6b2f3563fe7f47af99d279456ae245a29f5f9",
+  "case_source_sha256": "6aae37c9d2cb99ea5e244d6d49e485448825619302eaa43f502140fd0138deb4",
+  "harness_sha256": "f3106545f64e01fe1ec8603f8d68b906ff5a305aadf2b110f88ec0e079675f63",
+  "runtime_model_resolution": "requested exact ID; no deliberate fallback configured",
+  "isolation": "ephemeral; ignore-user-config; read-only sandbox; execpolicy retained; no network authorized",
+  "limits": "One fixture per skill, one tested model, no production acceptance or statistical significance."
+}

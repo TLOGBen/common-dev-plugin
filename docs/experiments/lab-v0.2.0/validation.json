@@ -1,0 +1,295 @@
+{
+  "status": "FAIL",
+  "started_utc": "2026-09-06T23:56:51.209145+00:00",
+  "ended_utc": "2026-09-06T23:56:59.573714+00:00",
+  "elapsed_seconds": 8.365,
+  "steps": [
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/test_lab_v020_calibration.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.674,
+      "stdout": "RETAINED_FIXTURES=/tmp/lab020-calibration-tests-320qzkie\n",
+      "stderr": "test_activity_only_cannot_complete (__main__.CalibrationTests.test_activity_only_cannot_complete) ... ok\ntest_brief_cannot_be_raw_source (__main__.CalibrationTests.test_brief_cannot_be_raw_source) ... ok\ntest_changed_brief (__main__.CalibrationTests.test_changed_brief) ... ok\ntest_changed_source (__main__.CalibrationTests.test_changed_source) ... ok\ntest_changed_state (__main__.CalibrationTests.test_changed_state) ... ok\ntest_citing_only_lead_story_rejected (__main__.CalibrationTests.test_citing_only_lead_story_rejected) ... ok\ntest_citing_unprovided_source_rejected (__main__.CalibrationTests.test_citing_unprovided_source_rejected) ... ok\ntest_complete_requires_ready_verdict (__main__.CalibrationTests.test_complete_requires_ready_verdict) ... ok\ntest_complete_with_current_evidence (__main__.CalibrationTests.test_complete_with_current_evidence) ... ok\ntest_decision_bound_to_packet (__main__.CalibrationTests.test_decision_bound_to_packet) ... ok\ntest_executor_reviewer_rejected (__main__.CalibrationTests.test_executor_reviewer_rejected) ... ok\ntest_expired_packet (__main__.CalibrationTests.test_expired_packet) ... ok\ntest_future_packet (__main__.CalibrationTests.test_future_packet) ... ok\ntest_hardlink_cannot_disguise_brief (__main__.CalibrationTests.test_hardlink_cannot_disguise_brief) ... ok\ntest_hold_does_not_allow_continuation (__main__.CalibrationTests.test_hold_does_not_allow_continuation) ... ok\ntest_invalid_purpose_rejected (__main__.CalibrationTests.test_invalid_purpose_rejected) ... ok\ntest_lead_executor_rejected (__main__.CalibrationTests.test_lead_executor_rejected) ... ok\ntest_malformed_decision_types_rejected (__main__.CalibrationTests.test_malformed_decision_types_rejected) ... ok\ntest_malformed_packet_types_rejected (__main__.CalibrationTests.test_malformed_packet_types_rejected) ... ok\ntest_missing_reason (__main__.CalibrationTests.test_missing_reason) ... ok\ntest_no_raw_source (__main__.CalibrationTests.test_no_raw_source) ... ok\ntest_nonactive_campaign_rejected (__main__.CalibrationTests.test_nonactive_campaign_rejected) ... ok\ntest_parallel_workers_allowed (__main__.CalibrationTests.test_parallel_workers_allowed) ... ok\ntest_prepare_refuses_existing_packet (__main__.CalibrationTests.test_prepare_refuses_existing_packet) ... ok\ntest_prepare_rejects_source_brief_alias (__main__.CalibrationTests.test_prepare_rejects_source_brief_alias) ... ok\ntest_replan_does_not_allow_continuation (__main__.CalibrationTests.test_replan_does_not_allow_continuation) ... ok\ntest_same_lead_reviewer_rejected (__main__.CalibrationTests.test_same_lead_reviewer_rejected) ... ok\ntest_state_cannot_be_raw_source (__main__.CalibrationTests.test_state_cannot_be_raw_source) ... ok\ntest_summary_cannot_replace_goal (__main__.CalibrationTests.test_summary_cannot_replace_goal) ... ok\ntest_symlink_cannot_disguise_brief (__main__.CalibrationTests.test_symlink_cannot_disguise_brief) ... ok\ntest_timezone_required (__main__.CalibrationTests.test_timezone_required) ... ok\ntest_unresolved_operation_prevents_completion (__main__.CalibrationTests.test_unresolved_operation_prevents_completion) ... ok\n\n----------------------------------------------------------------------\nRan 32 tests in 0.543s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/tmp/lab-install-v020-0755/common-lab/plugins/cache/common-lab/common-lab/0.2.0/skills/lab-strategic-advance/scripts/campaign.py",
+        "self-test"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.18,
+      "stdout": "{\n  \"self_test\": \"PASS\",\n  \"checks\": 16\n}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/test_common_lab_campaign_extend.py",
+        "--tool",
+        "/tmp/lab-install-v020-0755/common-lab/plugins/cache/common-lab/common-lab/0.2.0/skills/lab-strategic-advance/scripts/campaign.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.809,
+      "stdout": "",
+      "stderr": "............\n----------------------------------------------------------------------\nRan 12 tests in 0.670s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/test_campaign_brief.py",
+        "--script",
+        "/tmp/lab-install-v020-0755/common-lab/plugins/cache/common-lab/common-lab/0.2.0/skills/lab-strategic-advance/scripts/campaign_brief.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.703,
+      "stdout": "",
+      "stderr": ".....................\n----------------------------------------------------------------------\nRan 21 tests in 0.561s\n\nOK\n"
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/test_common_lab_wayfinder.py",
+        "--artifact-root",
+        "/tmp/lab020-wayfinder-regression-0800"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 2.617,
+      "stdout": "{\"result\": \"PASS\", \"checks\": 76, \"artifacts\": \"/tmp/lab020-wayfinder-regression-0800\"}\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-c",
+        "import json,pathlib; fs=list(pathlib.Path('.').rglob('*.json')); [json.load(open(f,encoding='utf-8')) for f in fs]; print('JSON_VALID',len(fs))"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.221,
+      "stdout": "JSON_VALID 1084\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-c",
+        "import pathlib; r=pathlib.Path('.'); assert all((r/p).is_file() for p in ['.agents/plugins/marketplace.json','codex/.agents/plugins/marketplace.json','codex/plugins/test-utils/.codex-plugin/plugin.json','codex/plugins/analysis-estimation/.codex-plugin/plugin.json','codex/plugins/linkstart/.codex-plugin/plugin.json']); print('STABLE_LAYOUT_PRESENT')"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.078,
+      "stdout": "STABLE_LAYOUT_PRESENT\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "scripts/validate_linkstart_release.py"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.273,
+      "stdout": "LINKSTART_RELEASE_VALID\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0,
+      "elapsed_seconds": 0.008,
+      "stdout": "",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-better-prompts"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.183,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-define-goal"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.214,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-delegate"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.186,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-domain-modeling"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.185,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-grilling"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.177,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-prototype"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.187,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-research"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.18,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-strategic-advance"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.197,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-wait-what"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.179,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.2.0/plugins/common-lab/skills/lab-wayfinder"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.189,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-contract"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.189,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-review"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.197,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-seal"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.179,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/baransu-lab-v0.2.0/plugins/baransu-lab/skills/lab-think"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.176,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "/home/vakarve/miniconda3/bin/python3",
+        "-B",
+        "/mnt/c/Users/jimts/.codex/skills/.system/skill-creator/scripts/quick_validate.py",
+        "/home/vakarve/projects/common-dev-plugin/experiments/estimate-lab-v0.2.0/plugins/estimate-lab/skills/lab-estimate"
+      ],
+      "exit_code": 1,
+      "elapsed_seconds": 0.18,
+      "stdout": "Unexpected key(s) in SKILL.md frontmatter: compatibility. Allowed properties are: allowed-tools, description, license, metadata, name\n",
+      "stderr": ""
+    }
+  ],
+  "limits": "Mechanical checks; no model inference, real browser or long-duration campaign."
+}

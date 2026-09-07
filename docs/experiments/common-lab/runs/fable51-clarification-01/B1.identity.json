@@ -1,0 +1,27 @@
+{
+  "session_id": "069581ac-e92c-4f65-8ed0-bcb5f5eeab8f",
+  "cwd": "/tmp/common-lab-claude-qjjbjsmr",
+  "command": [
+    "claude",
+    "-p",
+    "--session-id",
+    "069581ac-e92c-4f65-8ed0-bcb5f5eeab8f",
+    "--model",
+    "claude-fable-5-1",
+    "--effort",
+    "high",
+    "--output-format",
+    "stream-json",
+    "--verbose",
+    "--permission-mode",
+    "plan",
+    "--permission-prompts",
+    "none",
+    "--restricted",
+    "--safe-mode",
+    "--no-session-persistence",
+    "--tools",
+    ""
+  ],
+  "started_utc": "2026-09-06T03:29:42.891778+00:00"
+}

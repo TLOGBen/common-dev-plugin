@@ -1,0 +1,79 @@
+{
+  "case_id": "small-prompt-already-clear",
+  "skill": "better-prompts",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:28:02.786310+00:00",
+  "ended_utc": "2026-09-06T05:28:22.793984+00:00",
+  "wall_seconds": 20.003,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md",
+  "skill_sha256": "76ea657db80edfe6f5247ac2bb92c5b34e2856fca033ead0e6b1506a223b3f52",
+  "prompt_sha256": "e0c67e22ac354b897ed286a71112df6560c0e8cc1111f2ae22cd4241a04a302f",
+  "fixture_dir": "/tmp/common-lab-ab-small-prompt-already-clear-kglpctqs",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+    "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b",
+    "docs/guide.md": "069840be17bb3880326b0ec873d339111ee0867f703dcc2b86aaac2b92f0aa01"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會依你指定的 better-prompts 技能，完整讀取該檔案後整理成可直接貼上的提示。\n",
+    "```text\n僅將 docs/guide.md 中唯一一處 sucess 改為 success。其餘所有字元（包含空白與換行）保持原樣，不修改其他檔案，也不要 commit。\n```"
+  ],
+  "final_message": "```text\n僅將 docs/guide.md 中唯一一處 sucess 改為 success。其餘所有字元（包含空白與換行）保持原樣，不修改其他檔案，也不要 commit。\n```",
+  "usage": {
+    "input_tokens": 32240,
+    "cached_input_tokens": 26880,
+    "output_tokens": 300,
+    "uncached_input_tokens": 5360,
+    "total_tokens": 32540
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/better-prompts/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

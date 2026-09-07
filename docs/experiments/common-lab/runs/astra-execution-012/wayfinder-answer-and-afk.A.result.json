@@ -1,0 +1,288 @@
+{
+  "case_id": "wayfinder-answer-and-afk",
+  "arm": "A",
+  "repeat": 1,
+  "kind": "isolated_local_artifact_execution",
+  "started_utc": "2026-09-06T03:54:27.243624+00:00",
+  "ended_utc": "2026-09-06T03:56:46.903347+00:00",
+  "wall_seconds": 139.651,
+  "status": "completed",
+  "exit_code": 0,
+  "os_error": null,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "workspace-write",
+    "-C",
+    "/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "model_metadata_basis": "Exact CLI request; no fallback. Runtime JSONL may not echo resolved model.",
+  "fixture_dir": "/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum",
+  "fixture_before_sha256": {
+    ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md": "6ecca8d4d7690453f04ed6da9c04eedd8258bffdc2f12a7e6f35b9b93ad2eadc",
+    ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md": "65c52080c47753513d2eb37ecb52714afaafd6794d3bb6f1544c9cb134d0fda4",
+    ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md": "4542e2af0c193b27809145e2d21ccf25def031d92f9b6bd2c07218c81de105b7",
+    ".common-lab/wayfinder/privacy-rollout/map.html": "e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a",
+    ".common-lab/wayfinder/privacy-rollout/map.md": "a92a7319bd3bfe9346893d0fd9f316fd2b5c8399db0dfcb25f1b30f6e1e05029",
+    "evidence/export-sample.csv": "7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4",
+    "evidence/export-schema.json": "196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4",
+    "product/index.js": "9b0ebcc5a2cf1ae2513dd50c99792957d6ac1416eb3cba644a19c7daf0ee2806"
+  },
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wayfinder/SKILL.md",
+  "skill_sha256": "dadb7cc1f6a335c830080b529ae68576c5a97abe3cf68466f02eabac5bdecccb",
+  "reported_cost_usd": null,
+  "public_price_estimate_usd": null,
+  "actual_business_completion": null,
+  "actual_business_status": "NOT_EXECUTED",
+  "local_execution_acceptance": null,
+  "messages": [
+    "我會使用指定的 wayfinder skill，先完整讀取操作規範與既有地圖，再把「遮蔽姓名」寫回票 23，查核票 02 的本地證據，並產生新的 map.next.html。\n",
+    "本地 fixture 的 schema 已宣告穩定 `user_id` 與上游遮蔽姓名；CSV 樣本也含這兩欄，未含全名欄位。我會補做格式與樣本一致性檢查，並明確記錄：這只能證實虛構 fixture，不能證明正式環境已驗證。另將「產品畫面實作」以範圍外結案，註明程式仍未實作，避免被視為可自動接續的工作。\n",
+    "已更新[地圖與交接說明](/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout/map.md)，票 ID 保持不變。\n\n- **已定案**：「名單姓名呈現」已寫回遮蔽姓名，不再重問。\n- **已查核**：「現有匯出欄位事實」的虛構 schema 與兩筆 CSV 樣本檢查通過，具穩定 ID 宣告與遮蔽姓名欄位；正式環境尚未驗證。\n- **仍未做**：「產品畫面實作」以範圍外結案，並非實作完成。未修改產品。\n- **人工介入**：本回合不需要；產品實作與驗收需另行授權。\n\n已用 renderer 產生 [map.next.html](/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout/map.next.html)（`--no-open`）。原 map.html 與兩份 evidence 的雜湊均保持一致。"
+  ],
+  "final_message": "已更新[地圖與交接說明](/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout/map.md)，票 ID 保持不變。\n\n- **已定案**：「名單姓名呈現」已寫回遮蔽姓名，不再重問。\n- **已查核**：「現有匯出欄位事實」的虛構 schema 與兩筆 CSV 樣本檢查通過，具穩定 ID 宣告與遮蔽姓名欄位；正式環境尚未驗證。\n- **仍未做**：「產品畫面實作」以範圍外結案，並非實作完成。未修改產品。\n- **人工介入**：本回合不需要；產品實作與驗收需另行授權。\n\n已用 renderer 產生 [map.next.html](/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout/map.next.html)（`--no-open`）。原 map.html 與兩份 evidence 的雜湊均保持一致。",
+  "usage": {
+    "input_tokens": 195021,
+    "cached_input_tokens": 175872,
+    "output_tokens": 3816,
+    "uncached_input_tokens": 19149,
+    "total_tokens": 198837
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wayfinder/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wayfinder/TRACKER.md'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"cat .common-lab/wayfinder/privacy-rollout/map.md\nrg --files -g 'AGENTS.md' -g '*' .common-lab/wayfinder/privacy-rollout\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat .common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md .common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md .common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md\ncat /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wayfinder/scripts/render_map.py'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "file_change",
+      "command": null,
+      "status": "completed",
+      "exit_code": null
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat evidence/export-schema.json evidence/export-sample.csv\nsha256sum evidence/export-schema.json evidence/export-sample.csv .common-lab/wayfinder/privacy-rollout/map.html\ntest ! -e .common-lab/wayfinder/privacy-rollout/map.next.html'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport csv, json\nfrom pathlib import Path\nschema = json.loads(Path('evidence/export-schema.json').read_text())\nwith Path('evidence/export-sample.csv').open(newline='') as f:\n    reader = csv.DictReader(f)\n    header = reader.fieldnames\n    rows = list(reader)\nfields = {f['name']: f for f in schema['fields']}\nassert header == list(fields)\nassert fields['user_id']['stable_identifier'] is True\nassert fields['display_name_masked']['masked_upstream'] is True\nassert schema['includes_full_name'] is False\nassert schema['production_verified'] is False\nassert len(rows) == 2\nassert all(set(row) == set(header) and all(row.values()) for row in rows)\nassert len({row['user_id'] for row in rows}) == len(rows)\nassert all('○' in row['display_name_masked'] for row in rows)\nprint(json.dumps({'schema_version': schema['schema_version'], 'source_kind': schema['source_kind'], 'columns': header, 'sample_rows': len(rows), 'sample_ids_nonempty_and_unique': True, 'sample_mask_marker_present': True, 'production_verified': schema['production_verified'], 'check': 'PASS'}, ensure_ascii=False))\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "file_change",
+      "command": null,
+      "status": "completed",
+      "exit_code": null
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'python3 /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/wayfinder/scripts/render_map.py .common-lab/wayfinder/privacy-rollout .common-lab/wayfinder/privacy-rollout/map.next.html --language zh-TW --no-open'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"python3 - <<'PY'\nimport hashlib, json, re\nfrom pathlib import Path\nroot = Path('.common-lab/wayfinder/privacy-rollout')\nexpected = {\n'evidence/export-schema.json': '196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4',\n'evidence/export-sample.csv': '7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4',\nstr(root / 'map.html'): 'e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a'\n}\nfor name, digest in expected.items():\n    assert hashlib.sha256(Path(name).read_bytes()).hexdigest() == digest, name\nhtml = (root / 'map.next.html').read_text()\nmatch = re.search(r'\\\\{\\\"effort\\\":.*', html)\nassert match\npayload, _ = json.JSONDecoder().raw_decode(match.group().replace('<\\\\\\\\/', '</'))\ntickets = {t['id']: t for t in payload['tickets']}\nassert set(tickets) == {'02', '23', '24'}\nassert all(t['status'] == 'resolved' for t in tickets.values())\nassert '使用者決定：客服名單預設採用遮蔽姓名' in tickets['23']['answer']\nassert 'production_verified: false' in tickets['02']['answer']\nassert '範圍外結案，未實作' in tickets['24']['answer']\nassert tickets['24']['blockedBy'] == ['23']\nassert not any('issues/24-' in x for x in payload['decisions'])\nassert any('issues/24-' in x for x in payload['outOfScope'])\nassert '__WAYFINDER_DATA_JSON__' not in html\nfor file in [root / 'map.md', *root.glob('issues/*.md')]:\n    for link in re.findall(r'\\\\]\\\\(([\"'^)]+)'\"\\\\)', file.read_text()):\n        assert (file.parent / link).is_file(), (str(file), link)\nprint('PASS: rendered ticket IDs/status/answers/scope/dependency and Markdown links; no active frontier.')\nprint('PASS: original map.html and both evidence files retain their SHA-256 hashes.')\nPY\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true,
+  "artifact_observations": {
+    "fixture_after_sha256": {
+      ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md": "b0680b49be74fb6cc673bf0679cea6ac8c3209596f8fef4039bb80335f35ae24",
+      ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md": "eb2546a4146745bc4257c633144bc29407a61628abdb8c3ca83ef7a85cce86b2",
+      ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md": "4defc2f4d59abec7e13a5957bdbc868007dbf305fa89919eda632dbac187c6f2",
+      ".common-lab/wayfinder/privacy-rollout/map.html": "e36ddf4f874349369def1c30cd9a9ef20ffcd8a30fa8638a41e5211623a3dd8a",
+      ".common-lab/wayfinder/privacy-rollout/map.md": "e2e04b155141520018135a637159161191b7206b2c25ea0f4c1c5ff8f5510761",
+      ".common-lab/wayfinder/privacy-rollout/map.next.html": "f34f279fcf5d385429a71c3c6434f9e54ebe093957f8748380bbfc11a7117ff1",
+      "evidence/export-sample.csv": "7055157cd217855de79aac1b6c52ea527a7c14ec761d4d9d7dfcb0c2e79281e4",
+      "evidence/export-schema.json": "196da71ccf0b13ceb3e0557a06eb8e51b60aec82f3651a53a9d8cf1097c66fd4",
+      "product/index.js": "9b0ebcc5a2cf1ae2513dd50c99792957d6ac1416eb3cba644a19c7daf0ee2806"
+    },
+    "changed_paths": [
+      ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md",
+      ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md",
+      ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md",
+      ".common-lab/wayfinder/privacy-rollout/map.md",
+      ".common-lab/wayfinder/privacy-rollout/map.next.html"
+    ],
+    "outside_allowlist_changes": [],
+    "required_outputs_present": {
+      ".common-lab/wayfinder/privacy-rollout/map.next.html": true
+    },
+    "semantic_acceptance": null,
+    "manual_review_required": true,
+    "map_sections": {
+      "Destination": "把名單姓名呈現與現有匯出資料的事實釐清，交給後續實作；本回合不改產品。",
+      "Notes": "- 此圖沿用既有 ticket ID；02 是獨立本地研究，23 是人的取捨，24 是後續產品實作。\n- 現有登入與權限不變。\n- 本回合只更新本圖與既有票券、查核本地 evidence，並產生 `map.next.html`（`--no-open`）；保留既有 `map.html` 與歷史證據。\n- 使用者已親自提供姓名呈現答案；本回合不委派、不載入其他 skills、不連網、不執行產品實作。\n- 本地資料均為虛構 fixture；本圖的完成不代表真實業務事件、正式環境驗證或產品發布。",
+      "Decisions so far": "- 沿用現有內網與登入流程。\n- [名單姓名呈現](issues/23-name-presentation.md) — 使用者已定案遮蔽姓名，無須重問。\n- [現有匯出欄位事實](issues/02-export-columns.md) — 本地 schema 與兩筆樣本已查核，具穩定 ID 宣告與遮蔽姓名；正式環境未驗證。",
+      "Not yet specified": "- 無；本回合目的地所需的決策與本地查核均已完成。",
+      "Out of scope": "- [產品畫面實作](issues/24-implement-view.md) — 已以範圍外結案，程式仍未實作；產品修改、正式環境驗證及發布均不在本回合授權內。",
+      "Current focus": "決策與本地查核完成，無待回答選擇、無本回合可接續的執行票券。交接依據為[名單姓名呈現](issues/23-name-presentation.md)與[現有匯出欄位事實](issues/02-export-columns.md)。\n\n本回合無須人介入；若要達成產品實際顯示遮蔽姓名的結果，需另行授權[產品畫面實作](issues/24-implement-view.md)與驗收。範圍外結案不等於產品完成。"
+    },
+    "tickets": {
+      "02": {
+        "path": ".common-lab/wayfinder/privacy-rollout/issues/02-export-columns.md",
+        "status": "resolved",
+        "answer": "本地事實查核完成：這份虛構匯出格式已提供穩定識別欄位 `user_id` 與遮蔽姓名欄位 `display_name_masked`，不含全名欄位。\n\n- [匯出 schema](../../../../evidence/export-schema.json)：`schema_version: 3`、`source_kind: fictional_primary_fixture`；`user_id` 為字串且 `stable_identifier: true`；`display_name_masked` 為字串且 `masked_upstream: true`；`includes_full_name: false`。\n- [匯出樣本](../../../../evidence/export-sample.csv)：欄頭依序為 `user_id,display_name_masked,exported_at`，與 schema 完全一致。兩筆資料的 ID 分別為 `U-101`、`U-102`，均非空且互不重複；姓名為 `林○安`、`陳○明`，均有遮蔽符號，沒有全名欄位。\n- 本地以 Python JSON／CSV 解析檢查欄頭、schema 旗標、兩筆資料欄位完整性、ID 非空與唯一性、遮蔽符號，全部通過。未改寫 evidence。\n\n查核界線：穩定性是 schema 的宣告，兩筆樣本不能證明跨匯出批次的 ID 穩定性或完整資料品質。`production_verified: false` 明確表示正式環境未驗證；本票只完成虛構 fixture 查核，不代表正式匯出、產品畫面或部署已完成。\n\n此項查核不需要人的偏好判斷，無須再詢問姓名呈現選擇。後續實作可依本地證據評估上述欄位，但正式資料與產品行為驗收仍屬後續工作。"
+      },
+      "23": {
+        "path": ".common-lab/wayfinder/privacy-rollout/issues/23-name-presentation.md",
+        "status": "resolved",
+        "answer": "使用者決定：客服名單預設採用遮蔽姓名。此為使用者親自給定的答案，並非代理人代選。\n\n必要辨識沿用既有授權流程，現有登入與權限不變。本票完成的是姓名呈現決策；[產品畫面實作](24-implement-view.md) 尚未執行，亦不在本回合授權範圍。"
+      },
+      "24": {
+        "path": ".common-lab/wayfinder/privacy-rollout/issues/24-implement-view.md",
+        "status": "resolved",
+        "answer": "範圍外結案，未實作。`Status: resolved` 僅表示本票已從這張決策地圖的可處理前線移除，不表示產品程式完成或驗收通過；票 ID 與既有依賴保留。\n\n使用者已在[名單姓名呈現](23-name-presentation.md)決定遮蔽姓名；[現有匯出欄位事實](02-export-columns.md)已完成虛構 fixture 查核。上述結果可交給後續實作，但本回合未修改 `product/`，未發布產品，未驗證正式環境。\n\n若要實際套用遮蔽姓名，需由人另行授權產品實作及相應驗收範圍；本回合無須人介入或重答姓名選擇。"
+      }
+    },
+    "current_focus": "決策與本地查核完成，無待回答選擇、無本回合可接續的執行票券。交接依據為[名單姓名呈現](issues/23-name-presentation.md)與[現有匯出欄位事實](issues/02-export-columns.md)。\n\n本回合無須人介入；若要達成產品實際顯示遮蔽姓名的結果，需另行授權[產品畫面實作](issues/24-implement-view.md)與驗收。範圍外結案不等於產品完成。",
+    "rendered_data": {
+      "effort": "客服名單隱私交棒",
+      "destination": "把名單姓名呈現與現有匯出資料的事實釐清，交給後續實作；本回合不改產品。",
+      "notes": [
+        "此圖沿用既有 ticket ID；02 是獨立本地研究，23 是人的取捨，24 是後續產品實作。",
+        "現有登入與權限不變。",
+        "本回合只更新本圖與既有票券、查核本地 evidence，並產生 `map.next.html`（`--no-open`）；保留既有 `map.html` 與歷史證據。",
+        "使用者已親自提供姓名呈現答案；本回合不委派、不載入其他 skills、不連網、不執行產品實作。",
+        "本地資料均為虛構 fixture；本圖的完成不代表真實業務事件、正式環境驗證或產品發布。"
+      ],
+      "decisions": [
+        "沿用現有內網與登入流程。",
+        "[名單姓名呈現](issues/23-name-presentation.md) — 使用者已定案遮蔽姓名，無須重問。",
+        "[現有匯出欄位事實](issues/02-export-columns.md) — 本地 schema 與兩筆樣本已查核，具穩定 ID 宣告與遮蔽姓名；正式環境未驗證。"
+      ],
+      "fog": [
+        "無；本回合目的地所需的決策與本地查核均已完成。"
+      ],
+      "outOfScope": [
+        "[產品畫面實作](issues/24-implement-view.md) — 已以範圍外結案，程式仍未實作；產品修改、正式環境驗證及發布均不在本回合授權內。"
+      ],
+      "tickets": [
+        {
+          "id": "02",
+          "title": "現有匯出欄位事實",
+          "type": "research",
+          "status": "resolved",
+          "blockedBy": [],
+          "question": "既有匯出格式是否已提供穩定 user_id 與遮蔽姓名？直接查看本地 evidence/export-schema.json 及 evidence/export-sample.csv，不需要人的偏好判斷，也不存取外網。",
+          "answer": "本地事實查核完成：這份虛構匯出格式已提供穩定識別欄位 `user_id` 與遮蔽姓名欄位 `display_name_masked`，不含全名欄位。\n\n- [匯出 schema](../../../../evidence/export-schema.json)：`schema_version: 3`、`source_kind: fictional_primary_fixture`；`user_id` 為字串且 `stable_identifier: true`；`display_name_masked` 為字串且 `masked_upstream: true`；`includes_full_name: false`。\n- [匯出樣本](../../../../evidence/export-sample.csv)：欄頭依序為 `user_id,display_name_masked,exported_at`，與 schema 完全一致。兩筆資料的 ID 分別為 `U-101`、`U-102`，均非空且互不重複；姓名為 `林○安`、`陳○明`，均有遮蔽符號，沒有全名欄位。\n- 本地以 Python JSON／CSV 解析檢查欄頭、schema 旗標、兩筆資料欄位完整性、ID 非空與唯一性、遮蔽符號，全部通過。未改寫 evidence。\n\n查核界線：穩定性是 schema 的宣告，兩筆樣本不能證明跨匯出批次的 ID 穩定性或完整資料品質。`production_verified: false` 明確表示正式環境未驗證；本票只完成虛構 fixture 查核，不代表正式匯出、產品畫面或部署已完成。\n\n此項查核不需要人的偏好判斷，無須再詢問姓名呈現選擇。後續實作可依本地證據評估上述欄位，但正式資料與產品行為驗收仍屬後續工作。",
+          "comments": "",
+          "file": "issues/02-export-columns.md"
+        },
+        {
+          "id": "23",
+          "title": "名單姓名呈現",
+          "type": "grilling",
+          "status": "resolved",
+          "blockedBy": [],
+          "question": "客服名單應預設顯示全名還是遮蔽姓名？這是隱私與辨識便利的取捨，必須由使用者決定。",
+          "answer": "使用者決定：客服名單預設採用遮蔽姓名。此為使用者親自給定的答案，並非代理人代選。\n\n必要辨識沿用既有授權流程，現有登入與權限不變。本票完成的是姓名呈現決策；[產品畫面實作](24-implement-view.md) 尚未執行，亦不在本回合授權範圍。",
+          "comments": "上回停在等待使用者選擇；尚未寫入答案。\n\n本回合使用者已明確回答「遮蔽姓名」，以上等待紀錄保留作為歷史；不再等待或重問同一選擇。",
+          "file": "issues/23-name-presentation.md"
+        },
+        {
+          "id": "24",
+          "title": "產品畫面實作",
+          "type": "task",
+          "status": "resolved",
+          "blockedBy": [
+            "23"
+          ],
+          "question": "在產品畫面套用定案的姓名呈現。這是後續實作，超出本回合授權；關閉人類決策不等於這段程式已完成。",
+          "answer": "範圍外結案，未實作。`Status: resolved` 僅表示本票已從這張決策地圖的可處理前線移除，不表示產品程式完成或驗收通過；票 ID 與既有依賴保留。\n\n使用者已在[名單姓名呈現](23-name-presentation.md)決定遮蔽姓名；[現有匯出欄位事實](02-export-columns.md)已完成虛構 fixture 查核。上述結果可交給後續實作，但本回合未修改 `product/`，未發布產品，未驗證正式環境。\n\n若要實際套用遮蔽姓名，需由人另行授權產品實作及相應驗收範圍；本回合無須人介入或重答姓名選擇。",
+          "comments": "",
+          "file": "issues/24-implement-view.md"
+        }
+      ],
+      "generatedAt": "2026-09-06 03:56 UTC",
+      "source": "/tmp/common-lab-exec-wayfinder-answer-and-afk-6bmhpgum/.common-lab/wayfinder/privacy-rollout",
+      "language": "zh-TW",
+      "labels": {
+        "htmlLang": "zh-Hant",
+        "pageTitle": "Wayfinder 共識地圖",
+        "eyebrow": "Wayfinder · 共識地圖",
+        "routeChartAria": "決策路線圖",
+        "routeChart": "決策路線圖",
+        "graphAria": "票券阻擋關係圖",
+        "legendFrontier": "前線 — 現在可處理",
+        "legendClaimed": "已認領",
+        "legendResolved": "已解決",
+        "legendBlocked": "受阻",
+        "legendHint": "滑過：標亮依賴鏈 · 點擊：開啟票券",
+        "ticketsAria": "決策票券",
+        "tickets": "決策票券",
+        "filterAria": "依狀態篩選",
+        "decisions": "目前已定案",
+        "fog": "尚未釐清",
+        "outOfScope": "範圍外",
+        "status": {
+          "frontier": "可處理",
+          "claimed": "已認領",
+          "blocked": "受阻",
+          "resolved": "已解決"
+        },
+        "type": {
+          "research": "研究",
+          "prototype": "原型",
+          "grilling": "決策釐清",
+          "task": "任務"
+        },
+        "metaTemplate": "{total} 張票券 — {resolved} 張已解決 · {frontier} 張現在可處理 · {claimed} 張已認領 · {blocked} 張受阻",
+        "generated": "產生時間",
+        "source": "來源",
+        "documentTitle": "Wayfinder 共識地圖",
+        "destination": "目的地",
+        "prerequisite": "前置",
+        "question": "要回答的問題",
+        "answer": "定案",
+        "comments": "補充",
+        "openTicket": "開啟 Markdown 票券",
+        "all": "全部",
+        "empty": "目前沒有內容"
+      }
+    },
+    "html_note": "Payload inspection only; browser layout/interaction NOT_TESTED."
+  },
+  "post_fixture_snapshot_error": null
+}

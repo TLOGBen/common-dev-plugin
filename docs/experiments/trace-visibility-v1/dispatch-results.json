@@ -1,0 +1,26 @@
+[
+  {
+    "label": "T1",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 41.1722002250026, \"usage\": {\"input_tokens\": 124584, \"cached_input_tokens\": 105216, \"output_tokens\": 613, \"uncached_input_tokens\": 19368, \"total_tokens\": 125197}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  },
+  {
+    "label": "T2",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 26.56601467198925, \"usage\": {\"input_tokens\": 35546, \"cached_input_tokens\": 26880, \"output_tokens\": 499, \"uncached_input_tokens\": 8666, \"total_tokens\": 36045}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  },
+  {
+    "label": "T3",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 19.197992755041923, \"usage\": {\"input_tokens\": 33638, \"cached_input_tokens\": 25088, \"output_tokens\": 573, \"uncached_input_tokens\": 8550, \"total_tokens\": 34211}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  },
+  {
+    "label": "T4",
+    "exit_code": 0,
+    "stdout": "{\"status\": \"completed\", \"elapsed_seconds\": 36.43301636597607, \"usage\": {\"input_tokens\": 118234, \"cached_input_tokens\": 108800, \"output_tokens\": 786, \"uncached_input_tokens\": 9434, \"total_tokens\": 119020}, \"input_unchanged\": true}\n",
+    "stderr": ""
+  }
+]

@@ -1,0 +1,89 @@
+{
+  "case_id": "prototype-late-success",
+  "skill": "prototype",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:29:52.705851+00:00",
+  "ended_utc": "2026-09-06T03:30:44.879636+00:00",
+  "wall_seconds": 52.17,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md",
+  "skill_sha256": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+  "prompt_sha256": "9311c19673c3c8aabef336329f915635a890f059fa72830e27b21c81faa30ce6",
+  "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-0oljocuh",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取指定的實驗技能，再只檢查它明確要求的必要情境證據；全程維持唯讀，不執行任何實作或業務動作。",
+    "不實作，只做一條事件序列的表格推演即可。\n\n| 步驟 | 輸入／已知事實 | 訂單狀態 | 候選規則的處理 |\n|---|---|---|---|\n| 0 | 初始狀態 | `open` | — |\n| 1 | `customer_cancel` | `cancelled` | 接受取消 |\n| 2 | 金流已扣款成功 | `cancelled` | 外部副作用已發生 |\n| 3 | 晚到的 `payment_succeeded(payment_id=P1)` | `cancelled` | 因「取消後拒絕所有付款事件」而拒絕 |\n\n最小反例的結果是：訂單仍為 `cancelled`，但客戶已被扣款；拒絕通知並不會撤銷扣款。因此，若「安全」至少要求系統不遺失已扣款事實，這項規則已被反例推翻。\n\n觀察時只記錄：\n\n- 事件抵達順序\n- 處理前後的訂單狀態\n- 事件被接受或拒絕\n- `payment_succeeded` 所證明的外部扣款事實\n- 是否留下「尚待產品決定」的處置需求\n\n最後一欄是實驗觀察標記，不是新增訂單狀態或平台功能。恢復為 `paid`、退款或轉人工都保持未選定。\n\n建議的下一步：把這條反例交給產品，只要求決定「已取消但確認扣款成功」的處置政策；在決定前，不把「拒絕事件」視為安全方案。"
+  ],
+  "final_message": "不實作，只做一條事件序列的表格推演即可。\n\n| 步驟 | 輸入／已知事實 | 訂單狀態 | 候選規則的處理 |\n|---|---|---|---|\n| 0 | 初始狀態 | `open` | — |\n| 1 | `customer_cancel` | `cancelled` | 接受取消 |\n| 2 | 金流已扣款成功 | `cancelled` | 外部副作用已發生 |\n| 3 | 晚到的 `payment_succeeded(payment_id=P1)` | `cancelled` | 因「取消後拒絕所有付款事件」而拒絕 |\n\n最小反例的結果是：訂單仍為 `cancelled`，但客戶已被扣款；拒絕通知並不會撤銷扣款。因此，若「安全」至少要求系統不遺失已扣款事實，這項規則已被反例推翻。\n\n觀察時只記錄：\n\n- 事件抵達順序\n- 處理前後的訂單狀態\n- 事件被接受或拒絕\n- `payment_succeeded` 所證明的外部扣款事實\n- 是否留下「尚待產品決定」的處置需求\n\n最後一欄是實驗觀察標記，不是新增訂單狀態或平台功能。恢復為 `paid`、退款或轉人工都保持未選定。\n\n建議的下一步：把這條反例交給產品，只要求決定「已取消但確認扣款成功」的處置政策；在決定前，不把「拒絕事件」視為安全方案。",
+  "usage": {
+    "input_tokens": 61307,
+    "cached_input_tokens": 51840,
+    "output_tokens": 1841,
+    "uncached_input_tokens": 9467,
+    "total_tokens": 63148
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'rg --files -uu .'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,19 @@
+{
+  "synthetic": true,
+  "current": {
+    "java": 8,
+    "framework": "AcmeMVC 4",
+    "dataLayer": "StoreLayer 2",
+    "privateLibrary": "QueryKit 1.4",
+    "packaging": "WAR"
+  },
+  "approvedTarget": {
+    "java": 17
+  },
+  "unselectedDecisions": [
+    "framework strategy",
+    "data-layer strategy",
+    "production deployment",
+    "maintenance-risk acceptance"
+  ]
+}

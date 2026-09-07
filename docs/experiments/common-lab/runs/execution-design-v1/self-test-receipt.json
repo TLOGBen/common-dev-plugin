@@ -1,0 +1,32 @@
+{
+  "kind": "local_harness_self_test",
+  "actual_inference_calls": 0,
+  "elapsed_wall_seconds": 0.338,
+  "usage": null,
+  "reported_cost_usd": null,
+  "self_test": {
+    "status": "PASS",
+    "inference_calls": 0,
+    "retained_task_owned_temp_dirs": [
+      "/tmp/common-lab-exec-wayfinder-answer-and-afk-dtwhoo0o",
+      "/tmp/common-lab-exec-strategic-owner-rejects-green-d7djyppm"
+    ],
+    "checks": {
+      "checker_intentionally_wrong_pass": {
+        "artifact_sha256": "c87588874016940f9c86336451613dd413175da88fcb4dccca07d67f1cb345b8",
+        "count_basis": "distinct intent_id among DELIVERED rows",
+        "counts": {
+          "failed-then-success": 1,
+          "main": 1,
+          "same-receipt-log": 1
+        },
+        "result": "PASS"
+      },
+      "independent_effect_counts": {
+        "main": 2,
+        "same-receipt-log": 1,
+        "failed-then-success": 1
+      }
+    }
+  }
+}

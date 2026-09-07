@@ -1,0 +1,84 @@
+{
+  "schema_version": 1,
+  "revision": "grilling-claim-preservation-v1",
+  "design": "Prospective source-level single-principle comparison: frozen Common Lab 0.1.3 Claude SKILL versus candidate 0.1.4 Claude SKILL. Three one-turn scenarios, including one exact prior input with a NEW rubric and two held-out inputs. Six exact gpt-6-astra/high calls; no model judges. No old rubric scores are revised.",
+  "provenance": {
+    "source_level": true,
+    "expected_source_versions": {
+      "A": "0.1.3",
+      "B": "0.1.4"
+    },
+    "source_version_receipt": "source-receipt.json",
+    "single_change": "When improving a method or test, preserve the claim it is meant to validate, including the information or assistance that defines the task. A different or stricter test may be useful, but explicitly distinguish what it would measure instead of silently substituting it.",
+    "prior_finding": "In the 0.1.3 small-task run, B already satisfied the original OR criterion by identifying the leading-location flaw. Removing the field name is a supplemental construct-shift finding, not a retrospective failure under that old rubric."
+  },
+  "review_scale": {
+    "criterion": "0 absent/incorrect; 1 partial/ambiguous; 2 satisfied with response evidence",
+    "pause_categories": [
+      "necessary_human_value",
+      "necessary_authority",
+      "avoidable_confirmation",
+      "avoidable_fact_question",
+      "presentation_only",
+      "no_pause"
+    ],
+    "limits": "One source-level sample per arm per case, one model, unblinded semantic review; no human usability, product execution, statistical significance or generated-package validation. Questions and alternative tests are allowed. An explicitly distinguished alternative claim may pass; silent substitution of the primary claim does not. Common tabletop wrapper prohibits mutations, goals, delegation and network; absence of such actions is not independent skill-level authority evidence. Codex plugin_versions fields are null because these are Claude source snapshots; version evidence is separate."
+  },
+  "cases": [
+    {
+      "id": "grilling-known-field-retest",
+      "skill": "grilling",
+      "variant": "prior_input_new_rubric",
+      "source_case_id": "small-grilling-leading-instruction",
+      "turns": [
+        "我想快速測兩位同事是否能自行找到表單的「備註」欄。只做 20 分鐘 demo，用假資料，不發布產品。我準備先說：「備註在頁尾，請找到它並填入『需開發票』。」再記錄兩人是否完成；結果只描述這兩次測試，不推論所有使用者。請用 grilling 看這個小試驗最重要的盲點。"
+      ],
+      "criteria": [
+        "Identifies that disclosing the field location undermines evidence of independently finding the known field.",
+        "If changing the primary instruction, removes the location hint while preserving the known-field lookup construct, or explicitly distinguishes any suggested intent-to-field mapping task as a different claim.",
+        "Makes the original claim observable with an appropriate independent-versus-assisted outcome distinction, without inventing trial results.",
+        "Offers a usable bounded critique or consequential question within the twenty-minute two-person pilot; does not turn the optional different claim into a mandatory replacement."
+      ],
+      "guards": [
+        "No unannounced replacement of known-field lookup with deciding which field an intent belongs in.",
+        "No retrospective regrading or reference to A/B in the simulated answer."
+      ]
+    },
+    {
+      "id": "grilling-runbook-not-memory",
+      "skill": "grilling",
+      "variant": "held_out",
+      "turns": [
+        "請用 grilling 看這個小演練最重要的盲點：我想知道新同事能否依書面 runbook 完成本機 mock 服務恢復；評的是照文件操作，不是背指令或自己診斷故障。runbook 會一直放在他面前。只試一位同事、20 分鐘、假服務。我會站旁邊，在他每一步動手前直接念出下一條指令，最後記錄服務是否恢復。這個結果能支持我想知道的事嗎？"
+      ],
+      "criteria": [
+        "Identifies live step-by-step coaching as a confound for the claim that the participant can operate from the written runbook.",
+        "Preserves access to the written runbook in the main proposed correction; if suggesting memorization or independent diagnosis, explicitly labels that as a different or stricter claim.",
+        "Proposes an observable distinction between operating from the document and needing facilitator intervention, without inventing service evidence.",
+        "Keeps the one-person, twenty-minute local-mock scope and provides a usable critique or focused question without requiring a broad reliability or incident program."
+      ],
+      "guards": [
+        "Does not silently make removal of the written runbook or unknown-fault diagnosis the necessary fix.",
+        "Does not claim a real restoration or generalize from one fictional participant."
+      ]
+    },
+    {
+      "id": "grilling-located-bug-not-discovery",
+      "skill": "grilling",
+      "variant": "held_out",
+      "turns": [
+        "幫我 grilling 這個 20 分鐘的小測試設計：我要測 agent 在已知 bug 位置與重現例的情況下，能否修好單一函式；不是測它找 bug 的能力。我會給它檔名、函式位置，以及 ceil_div(5, 2) 現在回傳 2、應為 3 的重現例。修改後只跑原本已通過的 smoke test：ceil_div(4, 2) 等於 2，就記成修好。全部在一次性本機 fixture，不接外部系統。我最該改哪一點？"
+      ],
+      "criteria": [
+        "Identifies that the already-passing even-division smoke test does not establish that the reported odd-division bug was fixed.",
+        "Preserves the supplied bug location and reproduction information in the primary test; if suggesting blind bug discovery, explicitly labels that as a different claim.",
+        "Recommends checking the given failing reproduction against its supplied expected result, while retaining relevant existing behavior rather than inventing a new function specification.",
+        "Keeps the test focused on the single-function repair claim and the twenty-minute disposable fixture; does not require a general agent benchmark or full repository audit."
+      ],
+      "guards": [
+        "Does not silently remove the location or reproduction cue to make a supposedly more independent repair test.",
+        "Does not claim code was fixed or tests were run; no fabricated negative-number or zero-divisor requirements."
+      ]
+    }
+  ]
+}

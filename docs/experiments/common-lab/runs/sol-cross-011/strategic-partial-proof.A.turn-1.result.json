@@ -1,0 +1,101 @@
+{
+  "case_id": "strategic-partial-proof",
+  "skill": "strategic-advance",
+  "arm": "A",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:31:19.125908+00:00",
+  "ended_utc": "2026-09-06T03:32:05.382358+00:00",
+  "wall_seconds": 46.252,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-5.6-sol",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-5.6-sol",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md",
+  "skill_sha256": "b26ed5b2c0ef7525c9bac2599fabf34cd0ba1de9262159b604dbc436e2d999ba",
+  "prompt_sha256": "ec81a557405fa56e549563856da1b644603e7eba7d3b93200d28040ad16ff655",
+  "fixture_dir": "/tmp/common-lab-ab-strategic-partial-proof-04i30a8l",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整讀取你指定的技能文件，再只檢視它明確需要的參考資料；全程維持唯讀，不執行寄送或任何業務動作。",
+    "目前不得重寄：`Accepted` 表示 `MAIL-7` 可能已成功送出，盲目重試會違反「只寄一封」與一次寄送授權。縮圖故障屬觀察器退化，不應搶走主線。\n\n下一步是進行一次有界、唯讀的證據核對，不觸發寄送：\n\n- 從寄件稽核／供應商紀錄確認 `MAIL-7` 的實際寄送次數是否恰為 1。\n- 從收件端或權威投遞事件取得 `MAIL-7` 的 receipt。\n- 直接讀回原始 receipt、訊息或事件資料作為可讀證據，繞過故障的縮圖工具。\n\n在這三項讀回完成前，狀態維持「結果未完全確定」，禁止重寄。若證明寄送一次、收件方已收到且證據可讀，即可判定目標達成；若紀錄缺失或互相衝突，則停止任何變更並回報精確缺口，不先重寫縮圖系統。"
+  ],
+  "final_message": "目前不得重寄：`Accepted` 表示 `MAIL-7` 可能已成功送出，盲目重試會違反「只寄一封」與一次寄送授權。縮圖故障屬觀察器退化，不應搶走主線。\n\n下一步是進行一次有界、唯讀的證據核對，不觸發寄送：\n\n- 從寄件稽核／供應商紀錄確認 `MAIL-7` 的實際寄送次數是否恰為 1。\n- 從收件端或權威投遞事件取得 `MAIL-7` 的 receipt。\n- 直接讀回原始 receipt、訊息或事件資料作為可讀證據，繞過故障的縮圖工具。\n\n在這三項讀回完成前，狀態維持「結果未完全確定」，禁止重寄。若證明寄送一次、收件方已收到且證據可讀，即可判定目標達成；若紀錄缺失或互相衝突，則停止任何變更並回報精確缺口，不先重寫縮圖系統。",
+  "usage": {
+    "input_tokens": 144881,
+    "cached_input_tokens": 126976,
+    "output_tokens": 1408,
+    "uncached_input_tokens": 17905,
+    "total_tokens": 146289
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '241,520p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '521,760p' /home/vakarve/projects/common-dev-plugin/codex/plugins/common/skills/strategic-advance/SKILL.md\"",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'rg --files -uu .'",
+      "status": "completed",
+      "exit_code": 0
+    },
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc \"sed -n '1,240p' SCENARIO.txt\"",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,39 @@
+{
+  "target_identity": {
+    "original_read_only_root": "/tmp/common-lab-exec-normalize-tag-zukrn7al",
+    "disposable_target": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target",
+    "artifact_sha256": {
+      "acceptance.md": "4e3bd05d2f545e628d3b43d2e772ad87c1d5692b05f19683f34cad00329c14af",
+      "handoff.md": "922eec9fe92561c3f0acaf6b37a3f0b53bcb9446cebf34773b465fab2cb78675",
+      "src/normalize-tag.mjs": "ecaf5531eff75d51b9ecbf2e19bbe1ed040dbf19c95de1f99199615bef172828",
+      "tests/normalize-tag.test.mjs": "31f29a8ab946d328485356ab5857c65943ed58bdb6c8ada9edd3de7c52dd0840"
+    },
+    "baseline_artifact_sha256": {
+      "acceptance.md": "3368fab70eaed304f51f686cd4b04be1f0433dfb89b5e75eecc01d8fccd45f54",
+      "src/normalize-tag.mjs": "86fc7b4635db933845c5b99de15515bce37283305bb283f734f478546c55d9e6",
+      "tests/normalize-tag.test.mjs": "8b2337ac9f21a3446572a78cbd1095ddbc807011ebd9b43d040bc05d73c0a9d6"
+    },
+    "change_diff_sha256": "1742d2d2cea06ed3b3cbaeccdbbb0acba17182b654fb2c1683b44fcdad47fb80",
+    "git_base": null,
+    "note": "Explicit named artifact comparison, not a fabricated Git ref."
+  },
+  "acceptance_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/acceptance.md",
+  "diff_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/change.diff",
+  "baseline_result": {
+    "command": "node --test tests/normalize-tag.test.mjs",
+    "cwd": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target",
+    "started_utc": "2026-09-06T06:46:31.758153+00:00",
+    "ended_utc": "2026-09-06T06:46:31.862325+00:00",
+    "wall_seconds": 0.103642,
+    "exit_code": 0,
+    "pre_existing_red_set": [],
+    "degradation_flag": false,
+    "stdout_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/baseline-suite.stdout.txt",
+    "stdout_sha256": "cdd3b4db1659848163671303c1cb981958d66977987f7ed057983b0af17c99ab",
+    "stderr_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/baseline-suite.stderr.txt",
+    "stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "permitted_scope": "Read supplied artifacts; run actual local behavior checks. No repairs, test edits, or acceptance changes.",
+  "mutation_scope": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/target/src/normalize-tag.mjs",
+  "scratch_path": "/home/vakarve/projects/common-dev-plugin/docs/experiments/baransu-lab/contract-execution-v1-verification/dispatch/B/scratch"
+}

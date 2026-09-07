@@ -1,0 +1,43 @@
+{
+  "verdict": "TARGET_MATCH",
+  "target": "/home/vakarve/projects/common-dev-plugin/.common-lab/strategic/skill-strengthening-20260906/state.json",
+  "sha256": "f7f7959efdbdd88bb728815948593c6e7716becbe11adec41c857123e8627f40",
+  "revision": 8,
+  "status": "active",
+  "criteria": {
+    "C1": "met",
+    "C2": "unmet",
+    "C3": "unmet",
+    "C4": "unmet",
+    "C5": "met",
+    "C6": "unmet",
+    "C7": "unmet",
+    "C8": "unmet"
+  },
+  "history_root": "/home/vakarve/projects/common-dev-plugin/.common-lab/strategic/skill-strengthening-20260906/state.json.history",
+  "history_entries": [
+    "1-89ff8d67ea984f6badb63cdce1bb919b.json",
+    "2-f2553b874a0640c19fc97de4feb62153.json",
+    "3-038ac5c4c9ae4e4eb70fa85b64cbf350.json",
+    "4-14f01d08e0554ce18a10d306318ede26.json",
+    "5-072c4064992f40d4b6180c7a84fd5a77.json",
+    "6-862c4d40145142b8b02e263eb03bbdd9.json",
+    "7-fe70fdaa0f0140548bd1ca9944e88129.json"
+  ],
+  "planned_changes": [
+    "record C1 latest installed version",
+    "record C5 actual lead-worker-owner acceptance",
+    "record C7 Estimate experiment acceptance",
+    "record C8 completed scoped Astra comparisons",
+    "focus C4 existing verifier diagnostic"
+  ],
+  "preserve": [
+    "objective",
+    "scope",
+    "deadline",
+    "all prior criteria and history",
+    "operations"
+  ],
+  "ownership": "Own experimental campaign created for this user request",
+  "recovery": "campaign.py atomic mutation creates exact prior JSON .history snapshot each time; no deletion; pre-checkpoint frozen receipt retained"
+}

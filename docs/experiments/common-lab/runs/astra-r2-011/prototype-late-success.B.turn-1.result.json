@@ -1,0 +1,62 @@
+{
+  "case_id": "prototype-late-success",
+  "skill": "prototype",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T03:04:31.989386+00:00",
+  "ended_utc": "2026-09-06T03:05:10.192129+00:00",
+  "wall_seconds": 38.202,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-prototype-late-success-qh7a_l_t",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md",
+  "skill_sha256": "4f6f0d3b7defdf41fd8598fd9c9b90cb14c8b1e80524ef2cb019ca8f7b24b049",
+  "prompt_sha256": "9311c19673c3c8aabef336329f915635a890f059fa72830e27b21c81faa30ce6",
+  "fixture_dir": "/tmp/common-lab-ab-prototype-late-success-qh7a_l_t",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "messages": [
+    "我會先完整閱讀指定技能，再依情境提出最小反例與觀察方式；僅描述實驗，不執行或修改狀態。\n",
+    "最小反例只需一張訂單、兩個事件。要檢驗的是：**拒絕成功付款通知，是否把已扣款但尚未處理的問題隱藏了。** 恢復訂單、退款或轉人工，仍由產品決定。\n\n以下是紙上推演，未執行實驗；所有資料均為模擬：\n\n| 步驟 | 情境／輸入 | 訂單狀態 | 金流事實 |\n|---|---|---|---|\n| 前提 | 訂單為 `open`；金流已扣款成功，通知尚未抵達 | `open` | 已扣款 |\n| 1 | 收到 `customer_cancel` | `cancelled` | 已扣款 |\n| 2 | 收到 `payment_succeeded`，依待驗規則拒絕 | `cancelled` | 仍然已扣款 |\n\n**觀察方式：** 用同一張紙上追蹤表，分開記錄：\n\n- 訂單狀態：是否仍為 `cancelled`。\n- 外部事實：成功扣款是否被辨識、保留。\n- 待處理事項：是否明確呈現「已扣款、訂單已取消，處置待产品決策」。這是觀察欄位，不是新增訂單狀態。\n\n如果「拒絕」代表直接丟棄通知，且沒有其他處理途徑，上述序列就是反例：**拒絕通知不會撤銷扣款，卻可能讓待處理問題消失於系統視野。** 若只拒絕訂單狀態轉移，同時保留扣款事實與待處理事項，則不能僅憑此反例判定不安全，需再檢查後續處理規則。\n\n建議下一步是在紙上套用這兩種「拒絕」語意，比較待處理事項是否仍可見；不建檔、不實作、不接金流，也不預先選擇補救方案。"
+  ],
+  "final_message": "最小反例只需一張訂單、兩個事件。要檢驗的是：**拒絕成功付款通知，是否把已扣款但尚未處理的問題隱藏了。** 恢復訂單、退款或轉人工，仍由產品決定。\n\n以下是紙上推演，未執行實驗；所有資料均為模擬：\n\n| 步驟 | 情境／輸入 | 訂單狀態 | 金流事實 |\n|---|---|---|---|\n| 前提 | 訂單為 `open`；金流已扣款成功，通知尚未抵達 | `open` | 已扣款 |\n| 1 | 收到 `customer_cancel` | `cancelled` | 已扣款 |\n| 2 | 收到 `payment_succeeded`，依待驗規則拒絕 | `cancelled` | 仍然已扣款 |\n\n**觀察方式：** 用同一張紙上追蹤表，分開記錄：\n\n- 訂單狀態：是否仍為 `cancelled`。\n- 外部事實：成功扣款是否被辨識、保留。\n- 待處理事項：是否明確呈現「已扣款、訂單已取消，處置待产品決策」。這是觀察欄位，不是新增訂單狀態。\n\n如果「拒絕」代表直接丟棄通知，且沒有其他處理途徑，上述序列就是反例：**拒絕通知不會撤銷扣款，卻可能讓待處理問題消失於系統視野。** 若只拒絕訂單狀態轉移，同時保留扣款事實與待處理事項，則不能僅憑此反例判定不安全，需再檢查後續處理規則。\n\n建議下一步是在紙上套用這兩種「拒絕」語意，比較待處理事項是否仍可見；不建檔、不實作、不接金流，也不預先選擇補救方案。",
+  "usage": {
+    "input_tokens": 48049,
+    "cached_input_tokens": 43008,
+    "output_tokens": 765,
+    "uncached_input_tokens": 5041,
+    "total_tokens": 48814
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.1/plugins/common-lab/skills/lab-prototype/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}

@@ -1,0 +1,18 @@
+{
+  "name": "estimate-lab",
+  "displayName": "Estimate Lab",
+  "version": "0.2.0",
+  "description": "Opt-in guidance-first existing-system estimates with durable PM commitments, canonical worksets, long-run evidence reconciliation and understandable delivery.",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "keywords": [
+    "experimental",
+    "estimation",
+    "legacy-modernization"
+  ],
+  "defaultEnabled": false
+}

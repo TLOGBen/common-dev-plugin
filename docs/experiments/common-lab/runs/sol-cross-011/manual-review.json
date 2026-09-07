@@ -1,0 +1,189 @@
+{
+  "run_id": "sol-cross-011",
+  "reviewed_utc": "2026-09-06T03:35:29Z",
+  "method": "Manually read all six final responses and tool traces against the frozen four-criterion rubrics. Unblinded single-repeat tabletop, not model self-grading or real execution.",
+  "identity": "gpt-5.6-sol/high explicitly requested; A Common 1.35.2, B Common Lab 0.1.1; no fallback.",
+  "scope": {
+    "response_returned": 6,
+    "tabletop_cases_accepted": 4,
+    "tabletop_cases_reviewed": 4,
+    "actual_business_completion": null,
+    "actual_business_completion_status": "NOT_RUN",
+    "human_tested": false
+  },
+  "cost": {
+    "provider_reported_usd": null,
+    "public_price_estimate_usd": null,
+    "reason": "Not reported by Codex CLI. Subscription access and token counts do not imply zero monetary cost."
+  },
+  "observations": [
+    "Both arms preserve the external successful-charge fact, leave the product remedy undecided, and choose a minimal event exercise.",
+    "Both strategic conversations retain the explicit remaining uniqueness condition after receiving Delivered/E-7. Neither repeats a send or asks again for the authorized read.",
+    "No new rubric failure was observed; this does not establish equivalence, model ranking, human usability or production acceptance.",
+    "Sol B suggests deduplicating by an idempotency key among alternatives. The fixture does not specify key semantics. A same-intent/two-real-dispatches fixture is a useful next counterexample; do not retroactively deduct this untested ambiguity."
+  ],
+  "rows": [
+    {
+      "case_id": "prototype-late-success",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Distinguishes external charge before notification arrival from a command that could be rejected.",
+        "Sequence open / externally charged / cancel / late success ends with cancelled while charged; rejecting the notification loses the fact.",
+        "Keeps paid/refund/manual policy with product and makes preserved charge fact the observation.",
+        "Proposes a paper/single-page trajectory, not a production platform."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [
+          "Remedy choice remains with product for a later implementation; it does not block this requested experiment design."
+        ],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Timeline and table repeat the sequence; no real reader measurement.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Question + numbered causal sequence + observation table + next step",
+        "recoverable": [
+          "Why rejection cannot undo a charge",
+          "Minimal counterexample",
+          "Observable contradiction",
+          "Product still owns remedy"
+        ],
+        "deferred": [
+          "Choice/implementation of refund, reactivation or manual handling"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "prototype-late-success",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Says the successful charge is an external side effect already completed.",
+        "Table ends cancelled despite charge; notification rejection cannot reverse the charge.",
+        "Labels the unresolved treatment as an experiment observation, not a new state, with all product remedies unchosen.",
+        "One event sequence and observation fields suffice; no implementation/platform."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [
+          "Product remedy is explicitly deferred, not a gate on delivering the requested design."
+        ],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "One table and observation list; length alone is not a quality score.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Event table + causal conclusion + observation fields + product handoff",
+        "recoverable": [
+          "Charged-and-cancelled mismatch",
+          "Rejection does not reverse charge",
+          "Fields to observe",
+          "No product policy chosen"
+        ],
+        "deferred": [
+          "Actual execution and product remedy"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "arm": "A",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Turn 1 separates Accepted from UI timeout and treats thumbnail as observation degradation; no resend.",
+        "Turn 2 explicitly marks received and readable evidence PASS, single-send UNKNOWN, overall in progress.",
+        "Proposes a bounded complete-set count with immutable delivery/provider event identifiers under existing authority.",
+        "Remaining mainline is uniqueness, not generic archival or thumbnail repair; branches handle 1, >1 and unknown."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Status ledger and count branches expose actual remaining work; PASS/UNKNOWN and observer terminology assume some technical familiarity.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Three-condition status ledger + missing evidence + next read-only action + result branches",
+        "recoverable": [
+          "2/3 evidence conditions satisfied",
+          "Only-one condition unproven",
+          "No resending",
+          "Authorized exact next check"
+        ],
+        "deferred": [
+          "Actual query, count and real completion"
+        ],
+        "attached_visuals": []
+      }
+    },
+    {
+      "case_id": "strategic-partial-proof",
+      "arm": "B",
+      "scores": [
+        2,
+        2,
+        2,
+        2
+      ],
+      "evidence": [
+        "Turn 1 says Accepted does not prove delivery or uniqueness and forbids another send.",
+        "Turn 2 preserves 2/3 supported, first row not exhaustive, overall incomplete.",
+        "Requests complete pages or equivalent total and distinguishes attempt total from unique send count; does not ask again.",
+        "Explicitly avoids thumbnail work; result branches preserve unknown or violated status."
+      ],
+      "guards": "pass",
+      "friction": {
+        "current_blocking_questions": 0,
+        "necessary_human_value": [],
+        "necessary_authority": [],
+        "duplicate_approval": [],
+        "comprehension_note": "Clear 2/3 ledger; key semantics for dedup remain untested, not a reader-friendly guarantee of correctness.",
+        "environment": []
+      },
+      "presentation": {
+        "type": "Completion ledger + exhaustive reconciliation + re-evaluation branches",
+        "recoverable": [
+          "Delivered and E-7 are supported",
+          "Uniqueness still missing",
+          "No resend or thumbnail repair",
+          "Next step remains within authority"
+        ],
+        "deferred": [
+          "Real query and validation of dedup identity semantics"
+        ],
+        "attached_visuals": []
+      }
+    }
+  ],
+  "interpretation_boundaries": [
+    "Scores concern each case's whole reconstructed conversation, not a claim of actual business task completion.",
+    "No model ranking or broad cost/speed conclusion: two deliberately selected cases, one repeat, shared-host concurrent carriers and cache effects.",
+    "Necessary product choices are not counted as avoidable friction. No actual human pause duration was measured.",
+    "Read-only tool traces and before/after fixture hashes agree; this is bounded evidence, not a universal sandbox security test."
+  ]
+}

@@ -1,0 +1,77 @@
+{
+  "case_id": "small-wait-skipped",
+  "skill": "wait-what",
+  "arm": "B",
+  "turn": 1,
+  "repeat": 1,
+  "started_utc": "2026-09-06T05:28:46.170393+00:00",
+  "ended_utc": "2026-09-06T05:29:05.192263+00:00",
+  "wall_seconds": 19.022,
+  "status": "completed",
+  "exit_code": 0,
+  "requested_model": "gpt-6-astra",
+  "requested_effort": "high",
+  "model_metadata_basis": "explicit CLI arguments; raw JSONL may not echo resolved model",
+  "command": [
+    "codex",
+    "exec",
+    "--json",
+    "--ephemeral",
+    "--ignore-user-config",
+    "-m",
+    "gpt-6-astra",
+    "-c",
+    "model_reasoning_effort=high",
+    "-s",
+    "read-only",
+    "-C",
+    "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+    "--skip-git-repo-check",
+    "-"
+  ],
+  "skill_path": "/home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-wait-what/SKILL.md",
+  "skill_sha256": "2bbb34e0fcf24240277aa62689f4ab9bb0f60267f59b9b8399d1ce018c970ed4",
+  "prompt_sha256": "e9f8ec8d209100cdd13ef11bde1c6b9723593e48f1e9f246dbcf0129c481e158",
+  "fixture_dir": "/tmp/common-lab-ab-small-wait-skipped-m97v31lr",
+  "timeout_seconds": 180,
+  "os_error": null,
+  "fixture_before_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "fixture_after_sha256": {
+    "SCENARIO.txt": "bd6a526d9099da9b785ef03c32319922f800422b13ed2ecb243ac083363bf11b"
+  },
+  "reported_cost_usd": null,
+  "cost_status": "NOT_REPORTED_BY_CODEX_CLI",
+  "public_price_estimate_usd": null,
+  "completion_scope": {
+    "response_returned": true,
+    "tabletop_acceptance": null,
+    "actual_business_task": null,
+    "note": "Behavioral tabletop only; manual acceptance pending, business execution not tested."
+  },
+  "messages": [
+    "我會先完整閱讀你指定的技能檔，再依情境擬出模擬回覆。\n",
+    "不是，照前一句摘要，那兩列沒有從原檔刪掉。\n\n「skipped」是「略過」的意思：因為那兩列的 email 欄位空白，所以沒有放進另外存的新檔。原檔仍有全部 16 列，包含那兩列；新檔只有其餘 14 列。\n\n我會停在這裡，等你指示再繼續處理。"
+  ],
+  "final_message": "不是，照前一句摘要，那兩列沒有從原檔刪掉。\n\n「skipped」是「略過」的意思：因為那兩列的 email 欄位空白，所以沒有放進另外存的新檔。原檔仍有全部 16 列，包含那兩列；新檔只有其餘 14 列。\n\n我會停在這裡，等你指示再繼續處理。",
+  "usage": {
+    "input_tokens": 31673,
+    "cached_input_tokens": 23040,
+    "output_tokens": 304,
+    "uncached_input_tokens": 8633,
+    "total_tokens": 31977
+  },
+  "usage_event_count": 1,
+  "malformed_jsonl_lines": [],
+  "tool_events": [
+    {
+      "type": "command_execution",
+      "command": "/usr/bin/zsh -lc 'cat /home/vakarve/projects/common-dev-plugin/experiments/common-lab-v0.1.3/plugins/common-lab/skills/lab-wait-what/SKILL.md'",
+      "status": "completed",
+      "exit_code": 0
+    }
+  ],
+  "errors": [],
+  "turn_completed": true
+}
