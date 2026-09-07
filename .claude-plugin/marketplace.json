@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.41.0"
+    "version": "1.41.1"
   },
   "plugins": [
     {
@@ -30,7 +30,7 @@
       "source": "./plugins/common",
       "description": "Common utilities (enabled by default): better-prompts — audit, rewrite, draft, or migrate prompts and agent instructions against official Claude and GPT-5.x guidance; delegate — hand bounded, verifiable execution slices to native sub-agents, Codex CLI, or Claude CLI with a worth-it gate and live model-catalog lookup; define-goal — turn a fuzzy intention into a measurable goal with explicit validators; strategic-advance — keep a locked objective moving through long-running, cross-tool execution with a stateless campaign scribe; wayfinder — Matt Pocock's wayfinder on a local-markdown tracker with a bundled self-contained HTML map renderer (manual /wayfinder invocation); grilling, domain-modeling, research, prototype, wait-what — Matt Pocock's originals with Traditional Chinese output; show-me — HumanLayer's visual explainer (diagrams, code-shape sketches, focused HTML). User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Disable with `claude plugin disable common` if unwanted.",
       "displayName": "Common",
-      "version": "1.36.1",
+      "version": "1.36.2",
       "defaultEnabled": true
     },
     {

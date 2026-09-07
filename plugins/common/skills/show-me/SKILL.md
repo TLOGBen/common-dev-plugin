@@ -114,13 +114,7 @@ function expandSkill(command: string): string {
 }
 ```
 
-- For a visual UI, layout, state comparison, or concept too dense for Mermaid, write one focused HTML file — a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. Then open it for the user:
-
-```
-Bash(f=path/to/show-me-{description}.html; wslview "$f" 2>/dev/null || xdg-open "$f" 2>/dev/null || open "$f")
-```
-
-That order works on WSL2, Linux desktops, and macOS; use whichever succeeds and do not just print the path.
+- For a visual UI, layout, state comparison, or concept too dense for Mermaid, write one focused HTML file — a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. Then open it in the user's default browser with whatever the current environment provides (for example `wslview` or `pwsh.exe Start-Process` on WSL2, `xdg-open` on Linux, `open` on macOS); do not just print the path.
 
 ### guidance
 

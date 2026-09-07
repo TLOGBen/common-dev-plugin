@@ -2,6 +2,10 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.36.2 — show-me 開啟 HTML 改為一句意圖
+
+- 拿掉寫死的 `wslview || xdg-open || open` 指令鏈（錯誤全導向 /dev/null，機器上沒裝 wslu 時會靜默失敗，HTML 寫出來卻沒打開），改為「用當前環境有的工具在使用者預設瀏覽器打開，不要只印路徑」，並舉 WSL2 的 `wslview`／`pwsh.exe Start-Process` 為例。Claude 與 Codex 兩載體同步。marketplace 1.41.1。
+
 ## Common Lab 0.8.0 — think／contract／seal／review 回歸 baransu 穩定版
 
 - 四個源自 baransu 的實驗技能定稿後直接更新進 baransu 5.5.0（輸出目錄回歸 `.claude/think/`、根目錄 `CONTRACT.md`、`.claude/seal/`、`.claude/review/`），Lab 不再保留副本；`agents/verifier.md` 隨之移入 baransu。Lab 剩 5 個技能（delegate、strategic-advance、define-goal、better-prompts、estimate）與 3 個 bundled agents。marketplace 1.41.0。
