@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.5.0 — Think Lab 實驗版：以復述對焦
+
+- 開場改為「復述對焦」：先用幾句話復述使用者要的結果、目的、不能動的東西與規模，缺的欄位標「未知，先不問」；樹的節點是復述裡猜的詞，只問會改變答案形狀的題，選項須種類不同並附推薦；收斂條件是使用者確認復述，或一輪回答後復述不變。對焦期間使用者只看到復述與一題，模型可讀 code 查事實但不得展示方案；復述裝不下的大題目指向 wayfinder。
+- 攻擊階段加「反向攻擊」：拿掉某塊復述會少什麼，什麼都不少就砍進 Not building 並註明何時才需要；方案不得超過復述的規模。
+- 新增「呈現」段：落檔前先整體再局部、用最小視圖與白話講清推薦（參照 wait-what／show-me）；對話是理解版，檔案是持久版。
+- 反駁若是「我要的不是這個」則回到復述而非修計畫。Codex 鏡像同步，互動點加入復述確認。marketplace 1.37.0。
+
 ## Common Lab 0.4.1 — 安裝後預設啟用
 
 - `common-lab` 改為 `defaultEnabled: true`（Claude marketplace 條目與兩份 plugin.json）：安裝完即出現在技能選單，不再需要手動 enable；不需要者可 `claude plugin disable common-lab`。marketplace 1.36.1。

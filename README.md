@@ -39,7 +39,7 @@ codex plugin add linkstart@common-dev
 
 ### Skills Lab：實驗版
 
-實驗技能統一由 **Common Lab 0.4.1** 提供，已列入 Claude 與 Codex marketplace，需自行選擇安裝。原 Common、Baransu、Estimate Lab 合併成單一套件；以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。
+實驗技能統一由 **Common Lab 0.5.0** 提供，已列入 Claude 與 Codex marketplace，需自行選擇安裝。原 Common、Baransu、Estimate Lab 合併成單一套件；以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。
 
 - [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
 - [三個實驗包的歷史紀錄](docs/experiments/README.md)
@@ -47,7 +47,7 @@ codex plugin add linkstart@common-dev
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.4.1，整合 16 個技能與 4 個 bundled agents。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `show-me`、`strategic-advance`、`estimate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。既有 `experiments/` 與 `docs/experiments/` 保留為歷史快照／測量，不能代表目前套件；暫存安裝驗證也不代表目前 App 已載入新版。
+目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.5.0，整合 16 個技能與 4 個 bundled agents。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `show-me`、`strategic-advance`、`estimate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。既有 `experiments/` 與 `docs/experiments/` 保留為歷史快照／測量，不能代表目前套件；暫存安裝驗證也不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
