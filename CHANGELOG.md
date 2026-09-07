@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.3.0 — 統一 Lab 套件與完整 Show Me
+
+- 將 Common、Baransu、Estimate 的 Lab source 與 UI metadata 合併至 `common-lab`，共 16 個技能與 4 個 bundled agents；正式版及歷史實驗快照保留。
+- Skill／agent 名稱、資料夾與套件內引用移除 `lab-` 前綴；舊技能名稱不保留別名，與正式版並存時需選取 Common Lab 所屬技能。
+- Show Me 完整採用 HumanLayer 上游 SKILL.md，保留所有圖解、diff、完整區塊與 HTML 範例；MIT 聲明留在同目錄 LICENSE。
+- 重新產生單一 Codex 套件，保留 Estimate tests、UI metadata、明確呼叫政策與 agent resolver。既有 campaign／assessment 資料格式與工作目錄不遷移。
+
 ## Codex 主 marketplace — Common Lab 0.2.2
 
 - 將 `Common Lab（實驗性）` 的 11 個 `lab-*` skills 與兩個 package-local agent definitions 加入 Codex Layout A／B catalogs，安裝識別為 `common-lab@common-dev`。

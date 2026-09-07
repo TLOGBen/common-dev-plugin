@@ -14,7 +14,7 @@ REPO = Path(__file__).resolve().parents[1]
 
 
 def seed_state(workspace):
-    tool = REPO / 'plugins/common-lab/skills/lab-strategic-advance/scripts/campaign.py'
+    tool = REPO / 'plugins/common-lab/skills/strategic-advance/scripts/campaign.py'
     spec = importlib.util.spec_from_file_location('original_campaign_extension_seed', tool)
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)

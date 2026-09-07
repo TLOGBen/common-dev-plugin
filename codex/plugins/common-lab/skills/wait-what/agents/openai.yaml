@@ -1,0 +1,6 @@
+interface:
+  display_name: Wait What
+  short_description: Re-explain the last confusing answer for the user's audience
+    without advancing the underlying task
+policy:
+  allow_implicit_invocation: false

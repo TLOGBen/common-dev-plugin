@@ -43,7 +43,7 @@ def main():
     if ROOT not in output.parents:
         parser.error("Output must be task-owned under the repository.")
     stable = ROOT / "plugins/common/skills/wait-what/SKILL.md"
-    lab = ROOT / "plugins/common-lab/skills/lab-wait-what/SKILL.md"
+    lab = ROOT / "plugins/common-lab/skills/wait-what/SKILL.md"
     cases = json.loads((ROOT / "scripts/common_lab_presentation_cases.json").read_text(encoding="utf-8"))
     case = next(c for c in cases["cases"] if c["id"] == "presentation-wait-what")
     roots = {"A": stable.read_text(encoding="utf-8"), "B": lab.read_text(encoding="utf-8")}

@@ -21,9 +21,11 @@ REPO = Path(__file__).resolve().parent.parent
 ROOT_TOKEN = "${CLAUDE_PLUGIN_ROOT}"
 RESOURCE_TOKEN = "${LAB_SKILL_DIR}"
 PLUGIN_SPECS = {
-    "common-lab": {"skills": 11, "explicit": ["lab-wait-what"],
-                   "roles": {"lab-executor": ["lab-delegate", "lab-strategic-advance"],
-                             "lab-calibrator": ["lab-strategic-advance"]}},
+    "common-lab": {"skills": 16, "explicit": ["wait-what"],
+                   "roles": {"executor": ["delegate", "strategic-advance"],
+                             "calibrator": ["strategic-advance"],
+                             "verifier": ["review", "seal"],
+                             "estimate-auditor": ["estimate"]}},
     "baransu-lab": {"skills": 4, "explicit": [],
                     "roles": {"lab-verifier": ["lab-review", "lab-seal"]}},
     "estimate-lab": {"skills": 1, "explicit": [],
@@ -109,7 +111,7 @@ def preserve_estimate_tests(module, source):
     No other skill or non-standard directory is implicitly accepted.
     """
     original = module.copy_aux
-    expected = (source / "skills/lab-estimate").resolve()
+    expected = (source / "skills" / ("estimate" if source.name == "common-lab" else "lab-estimate")).resolve()
 
     def copy_aux_with_tests(skill_source, target, report, known_skills=frozenset()):
         original(skill_source, target, report, known_skills)
@@ -255,7 +257,7 @@ def export(args):
     source, target, staging, report_dir = (Path(audit[name]) for name in
         ("source", "output", "staging", "report_dir"))
     module = load_transfer(audit["transfer"])
-    if audit["plugin"] == "estimate-lab":
+    if audit["plugin"] in ("common-lab", "estimate-lab"):
         preserve_estimate_tests(module, source)
     reports, summary = module.transfer_plugin(source, staging)
     require(not summary.get("unhandled_components") and summary.get("content_closure_verified"),
@@ -280,7 +282,7 @@ def export(args):
     for report in reports:
         require(not report.skipped, "Skipped skill content requires review")
         for item in report.dropped:
-            require(audit["plugin"] == "estimate-lab" and report.skill_name == "lab-estimate"
+            require((audit["plugin"], report.skill_name) in (("common-lab", "estimate"), ("estimate-lab", "lab-estimate"))
                     and item == ESTIMATE_TESTS_DROP, "Unclassified dropped skill content: " + item)
             followups.append({"skill": report.skill_name, "item": item, "action": "refresh-mapping",
                               "resolved_by": "tests copied before unchanged content-closure guard; bytes verified"})

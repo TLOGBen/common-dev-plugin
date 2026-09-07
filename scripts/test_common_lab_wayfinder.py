@@ -18,7 +18,7 @@ artifact_root = args.artifact_root.resolve()
 if artifact_root.exists():
     raise SystemExit("ARTIFACT_ROOT_EXISTS: choose a new path; retained runs are not overwritten")
 repo = Path(__file__).resolve().parent.parent
-skill = repo / "plugins/common-lab/skills/lab-wayfinder"
+skill = repo / "plugins/common-lab/skills/wayfinder"
 renderer = skill / "scripts/render_map.py"
 spec = importlib.util.spec_from_file_location("lab_wayfinder_renderer", renderer)
 module = importlib.util.module_from_spec(spec)

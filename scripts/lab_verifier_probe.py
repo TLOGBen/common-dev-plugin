@@ -17,7 +17,7 @@ from common_lab_ab import parse_events, save
 ROOT = Path(__file__).resolve().parents[1]
 PREP = ROOT / 'docs/experiments/baransu-lab/verifier-boundaries-v1b'
 SOURCE = Path('/tmp/astra-lead-noextra-20260906-a/workspaces/01-campaign-none')
-ROLE = ROOT / 'plugins/baransu-lab/agents/lab-verifier.md'
+ROLE = ROOT / 'plugins/common-lab/agents/verifier.md'
 
 def sha(p):
     return hashlib.sha256(p.read_bytes()).hexdigest()

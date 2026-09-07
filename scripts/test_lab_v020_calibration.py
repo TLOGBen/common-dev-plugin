@@ -10,7 +10,7 @@ import tempfile
 import unittest
 
 ROOT = Path(__file__).resolve().parent.parent
-SKILL = Path(os.environ.get("LAB_CALIBRATION_SCRIPTS", ROOT / "plugins/common-lab/skills/lab-strategic-advance/scripts"))
+SKILL = Path(os.environ.get("LAB_CALIBRATION_SCRIPTS", ROOT / "plugins/common-lab/skills/strategic-advance/scripts"))
 sys.path.insert(0, str(SKILL))
 import calibration
 import campaign

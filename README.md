@@ -38,20 +38,20 @@ codex plugin add linkstart@common-dev
 
 ### Skills Lab：實驗版
 
-另提供 **Common Lab 0.2.2、Baransu Lab 0.2.0、Estimate Lab 0.2.0**。Common Lab 已列入 Codex 主 marketplace，仍需自行選擇安裝；Baransu Lab 與 Estimate Lab 維持獨立實驗 marketplace。三者都不替換現有穩定安裝；本版以「指引優先，針對反覆失誤設置控制」重新檢視技能，不以全面瘦身為目標。
+實驗技能統一由 **Common Lab 0.3.0** 提供，已列入 Codex 主 marketplace，需自行選擇安裝。原 Common、Baransu、Estimate Lab 合併成單一套件；以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。
 
 - [0.2.0 逐技能改動、規模邊界與驗證結果](docs/experiments/lab-v0.2.0/README.md)
-- [三個實驗包與試用入口](docs/experiments/README.md)
+- [三個實驗包的歷史紀錄](docs/experiments/README.md)
 - [Common 0.1.x 歷史實驗說明](docs/experiments/common-lab/README.md)
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-最新版套件位於 `experiments/common-lab/`、`experiments/baransu-lab-v0.2.0/` 與 `experiments/estimate-lab-v0.2.0/`。Git 只保留最新版套件；舊版與候選包不再追蹤。歷史版本可由 Git 歷史取回，實驗紀錄不代表目前套件。使用 `$lab-delegate`、`$lab-wayfinder`、`$lab-strategic-advance` 等獨立名稱選用；穩定版仍使用原名稱。暫存安裝驗證不代表目前 App 已載入新版。
+目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.3.0，整合 16 個技能與 4 個 bundled agents。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `show-me`、`strategic-advance`、`estimate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。既有 `experiments/` 與 `docs/experiments/` 保留為歷史快照／測量，不能代表目前套件；暫存安裝驗證也不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
 | [`common`](#common--通用工具) | 10 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
-| `common-lab` | 11 | 🧪 自行安裝 | Common 的實驗性替代技能，包含新版 Wait What、Show Me 與長程戰役控制 |
+| `common-lab` | 16 | 🧪 自行安裝 | 統一 Common、Baransu、Estimate 實驗技能：指引、派工、視覺說明、戰略推進、驗收與估算 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
 | [`analysis-estimation`](#analysis-estimation--分析與評估) | 6 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
 | [`linkstart`](#linkstart--htmlapp-回連-origin-session-preview) | 1 | ✅ 預設啟用 | 用單一入口把 agent 產出的互動 HTML／localhost App 接回產出它的同一條 Claude Code session 或 Codex thread |
@@ -201,3 +201,7 @@ Claude Code 原則上是 source of truth，`codex/` 下的檔案由 `codex-skill
 ## License
 
 MIT
+
+### Common Lab 的 Show Me 來源
+
+`show-me/SKILL.md` 完整保留 [HumanLayer 上游](https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md) 原文；Codex 版本由 transfer 產生平台適配。HumanLayer 的完整 MIT 版權與許可聲明保留在技能目錄的 `LICENSE`，不重複放進技能正文。

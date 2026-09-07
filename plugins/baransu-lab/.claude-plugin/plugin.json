@@ -1,9 +1,0 @@
-{
-  "name": "baransu-lab",
-  "displayName": "Baransu Lab",
-  "version": "0.2.0",
-  "description": "Opt-in guidance-first decisions and durable acceptance with independent, impact-bounded verification. Traditional Chinese handoffs.",
-  "author": {"name": "ben.tsai"},
-  "keywords": ["experimental", "acceptance", "independent-review", "decision"],
-  "defaultEnabled": false
-}
