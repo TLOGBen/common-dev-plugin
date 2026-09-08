@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.6.0 — Cold 2.9.0 工項定價與責任邊界
+
+- 互斥方案優先選目標相容、持續維護且後續可升版的路線；必要施工與語意驗證直接估入基準，不混合不同路線的低高價。
+- 剩餘工作的低高中點併入對應工項；同一工項累計加值超過其原基準 20% 時，回查漏估／重複並重拆重大異動，不截斷、膨脹分母或改名照加。
+- 承接使用者確認的甲方責任與固定額度，先移除重疊再計一次；沒有指定的固定人天不設為通用預設，未拆 E／V 不補造。
+- 取消交付的獨立風險區塊，已定價工作集中主表；未定價的必要工作保留待估，已估小計不冒稱全案總價。Excel 保留摘要與工項人天，不展示原始 E／V 小時欄，原始計算保留內部。
+- Claude source 與 Codex 生成版同步，marketplace 1.50.0。此次規則晚於六組 Cold 2.8.0 模型／effort 比較，該比較不作為新版行為已驗證的證據。
+
 ## Analysis Estimation 1.5.0 — Cold 2.8.0 風險工項與交付定版
 
 - 定版已隔離測試的 Cold 候選：清冊後先形成工項草稿，依官方 release 的時間、目標世代與實際使用訊號分流；只補查會改變主要工項或量級的缺口。
