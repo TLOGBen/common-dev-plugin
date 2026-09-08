@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.5.0 — Cold 2.8.0 風險工項與交付定版
+
+- 定版已隔離測試的 Cold 候選：清冊後先形成工項草稿，依官方 release 的時間、目標世代與實際使用訊號分流；只補查會改變主要工項或量級的缺口。
+- 以 QueryDSL 的公開 `GroupBy／transform` 跨 Hibernate 世代失效案例，示範完整方法選樣、同一失效的候選修復、結果語意與記憶體驗證；列必要工作及局部修補／替代路線的互斥淨增量，不將所有可能後果加入基準。
+- 交付第一塊直接總結、第二塊列工項與人天，關鍵風險緊接主表；開發與驗證各自向上取整到整人天，零工時保持零，總計只加總。
+- 恢復按需 Excel 交付：估算完成後由同一數據產生摘要／彙總及工項明細，內外版總數一致、必要風險與責任保留；此交付補充晚於四組估算試跑，未另做模型 A/B。
+- Claude source 與 Codex 生成版同步；既有清冊工具、其他 Skill、模板與載體適配保留。候選的實驗版本號收斂為正式 Cold 2.8.0；marketplace 1.49.0。
+
 ## Analysis Estimation 1.4.0 — 移除 Estimate，發布已選定 Cold
 
 - 移除 `estimate` 的 Claude source、Codex Skill、測試／資產／腳本與獨立 UI metadata；同步清除 README、套件描述與 marketplace 的呼叫入口。既有系統與需求文件的初估改由 `cold-estimation` 承接。

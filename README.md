@@ -88,7 +88,7 @@ codex plugin add linkstart@common-dev
 
 ## `analysis-estimation` — 分析與評估
 
-`analysis-estimation` 1.4.0 的 Cold 2.7.0 採單一 producer 三步初估：先形成必要工作，補查會改變路線的依賴與例外，再依施工／驗證工時計算、一次覆核並交付。程式來源可用唯讀清冊減少重複盤點；未知轉成條件與風險，不以完整 SBOM 或正式環境驗證作為初估前置。`estimate` 已移除；需求文件與既有系統的新估算統一由 `cold-estimation` 承接。
+`analysis-estimation` 1.5.0 的 Cold 2.8.0 先用唯讀清冊形成工項草稿，依維護時間與實際用途挑選可能跨代失效的接點，再將查證接成必要施工、語意驗證及互斥補救的淨增量。QueryDSL 的公開分組查詢失效案例示範如何判斷修復是否對應同一問題，不預設每案都須替換套件。交付先總結、再列工項與人天；每列開發與驗證各自向上取整到整人天，未知以條件交付，不等待完整 SBOM 或供應商證明。需要 Excel 時，估算完成後由同一數據生成摘要／彙總及工項明細，按需求提供內部與對外版。`estimate` 已移除；需求文件與既有系統的新估算統一由 `cold-estimation` 承接。
 
 把一份陌生的 RFP / SOW 展成可追溯的分析、架構、驗收規格與工時估算。用 `/analysis-estimation:<skill>` 呼叫，輸出繁體中文。
 
