@@ -1,7 +1,0 @@
-interface:
-  display_name: "estimate"
-  short_description: "盤點升版與 CR，產出 PM 可說明的方案及人天"
-  default_prompt: "使用 $estimate 盤點這個既有系統，產出 PM 可向客戶說明的遷移方案與人天評估。"
-
-policy:
-  allow_implicit_invocation: true

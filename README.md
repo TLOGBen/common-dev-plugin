@@ -51,10 +51,10 @@ codex plugin add linkstart@common-dev
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
-| [`common`](#common--通用工具) | 11 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
+| [`common`](#common--通用工具) | 12 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
 | `common-lab` | 2 | 🧪 自行安裝 | 仍在實驗的技能：delegate 派工、strategic-advance 戰略推進 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
-| [`analysis-estimation`](#analysis-estimation--分析與評估) | 6 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
+| [`analysis-estimation`](#analysis-estimation--分析與評估) | 5 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
 | [`linkstart`](#linkstart--htmlapp-回連-origin-session-preview) | 1 | ✅ 預設啟用 | 用單一入口把 agent 產出的互動 HTML／localhost App 接回產出它的同一條 Claude Code session 或 Codex thread |
 
 <img src="docs/images/marketplace-overview.svg" alt="common-dev marketplace 結構" width="100%">
@@ -67,7 +67,6 @@ codex plugin add linkstart@common-dev
 
 | Skill | 做什麼 | 什麼時候用 |
 |-------|--------|-----------|
-| `estimate` | 盤點陌生既有系統的升版、CR 或混合需求，從客戶成果、成功鏈與技術證據形成可行方案及 PM 可說明的人天估算。 | 既有系統要先理解現況、比較方案再估人天；不執行實際改造或正式商務報價。 |
 | `gen-e2e-test` | 產出一個**自帶相依、可雙擊執行**的 Playwright 測試：跑完整流程、被動側錄每一個 API 呼叫，並輸出 Markdown + HTML 報告。產物是一個自帶 `package.json` 的資料夾，可直接交給同事。 | 由 AI 直接撰寫測試，不需人工錄製。 |
 | `gen-e2e-record` | 開 Playwright **codegen** 讓人實際操作錄一遍，再把錄製轉成 `gen-e2e-test` 風格的測試（用真實互動產生的真實 selector）。依賴 `gen-e2e-test`。 | 流程互動多、selector 難猜時。 |
 | `dev-browser` | 透過 `dev-browser` CLI 做具持久頁面狀態的 **agent 端**瀏覽器除錯：檢查 console、DOM、API response、畫面與修正後結果。 | agent 要直接互動式排查或驗證 UI，而不是產出可散佈測試時。 |
@@ -89,18 +88,19 @@ codex plugin add linkstart@common-dev
 
 ## `analysis-estimation` — 分析與評估
 
+`analysis-estimation` 1.4.0 的 Cold 2.7.0 採單一 producer 三步初估：先形成必要工作，補查會改變路線的依賴與例外，再依施工／驗證工時計算、一次覆核並交付。程式來源可用唯讀清冊減少重複盤點；未知轉成條件與風險，不以完整 SBOM 或正式環境驗證作為初估前置。`estimate` 已移除；需求文件與既有系統的新估算統一由 `cold-estimation` 承接。
+
 把一份陌生的 RFP / SOW 展成可追溯的分析、架構、驗收規格與工時估算。用 `/analysis-estimation:<skill>` 呼叫，輸出繁體中文。
 
 | Skill | 做什麼 | 什麼時候用 |
 |-------|--------|-----------|
-| `estimate` | 盤點既有系統的升版／CR，從成果與證據形成方案及人天；HTML 可逐包展開頁面、API、檔案、基準公式與會改變估算的主動發現。 | PM 要確認陌生既有系統「改什麼、為何是這些人天」時。 |
 | `rfp-requirement-analysis` | 把 RFP / 需求規格書展成「需求分析報告 + 逐模組功能/API 分析」，全程可追溯。**鏈的第 1 段。** | 手上有原始 RFP/SOW，要先盤出可機械比對的功能清單。 |
 | `rfp-architecture-design` | 把第 1 段輸出落成架構文件（總覽 + 請求生命週期、前端、後端分層、命名規範、ER 模型）。**第 2 段。** 預設 Vue3/Spring Boot，可覆寫。 | 已有需求分析，要出系統架構。 |
 | `rfp-sa-bdd` | 把每個功能展成 BDD 驗收規格（Goal／三段式 REQ 編號／繁中 Gherkin），銜接下游 TDD 的 `requirement.md`。**第 3 段。** | 要可機械驗收的驗收條件。 |
-| `cold-estimation` | 對陌生專案做冷啟動功能盤點 + 人天估算：subagent fan-out、批判到乾涸、套費率算術。 | 「估一下這個案子要多少人天。」 |
+| `cold-estimation` | 單人三步完成新建／升版／CR 初估：必要工作、依賴維護與整合路線、唯讀清冊、共用／批次去重、施工／驗證與風險人天。 | 「估一下這個案子要多少人天。」 |
 | `quality-orchestrator` | 通用 writer→reviewer→fixer 審查迴圈，驅動上述 producer 跑到 PASS，最後做跨 task 覆蓋對帳。 | 要帶審查把關地批次產出上述文件。 |
 
-三個 `rfp-*` skill 串成一條鏈（需求分析 → 架構設計 → SA/BDD）；`estimate` 面向既有系統的成果／方案／人天推導，`cold-estimation` 則面向陌生專案文件的冷啟動估算。所有技術棧與領域預設都可覆寫：skill 只帶通用預設，不綁定特定專案。
+三個 `rfp-*` skill 串成一條鏈（需求分析 → 架構設計 → SA/BDD）；`cold-estimation` 面向需求文件或原始碼，先交付有改法、計價理由與風險區間的初估，不等待全部相容性實測或新增 PM gate。所有技術棧與領域預設都可覆寫：skill 只帶通用預設，不綁定特定專案。
 
 <img src="docs/images/rfp-pipeline.svg" alt="RFP 三段鏈" width="100%">
 
@@ -116,7 +116,8 @@ codex plugin add linkstart@common-dev
 | `strategic-advance` | 鎖定可驗收的戰略目標，以即時情報、單一主攻與可驗證的一動持續推進長期任務；內建自含 HTML 沙盤 renderer，直接 render，不另設環境 preflight 或 legacy mode。 |
 | `wait-what` | 停下目前工作，從斷掉的那個連結開始，按「哪裡沒懂」挑講法重講；純文字，圖另叫 show-me；只在明確叫用時觸發。 |
 | `wayfinder` | 把一個 session 裝不下的大工作畫成決策票地圖，逐票或以 drain 模式推進到路線清楚；內建自含 HTML 地圖 renderer。 |
-| `show-me` | HumanLayer 原版：用最小的視圖（pseudocode、call tree、diff、mermaid，必要時一頁 HTML）把當前話題講清楚。 |
+| `token-lens` | 唯讀分析 Codex session：逐回應 token、重複讀取、巨大輸出與壓縮成本；附可篩選時間線與工項貢獻標記，協助驗證 Skill 改進假設。 |
+| `show-me` | 用最小的視圖（pseudocode、call tree、diff、Mermaid、HTML）講清楚；Mermaid 同時產生並開啟 HTML 預覽。 |
 | `grilling` | Matt Pocock 原版：以設計樹分輪訪談，事實模型自查、決定由人下，直到前線為空。 |
 | `domain-modeling` | 釐清專案領域語言，將共識寫入 `CONTEXT.md`，必要時記錄 ADR。 |
 | `research` | 派背景 agent 查證一手來源，將附引用的發現整理成 repo 內的 Markdown。 |
@@ -173,13 +174,13 @@ common-dev-plugin/
 │   ├── common/
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/               # luna-max-sidekick
-│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me（+ grilling/domain-modeling/research/prototype）
+│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me, token-lens（+ grilling/domain-modeling/research/prototype）
 │   ├── test-utils/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/               # gen-e2e-test, gen-e2e-record, dev-browser
 │   ├── analysis-estimation/
 │   │   ├── .claude-plugin/plugin.json
-│   │   └── skills/               # estimate, rfp-*, cold-estimation, quality-orchestrator
+│   │   └── skills/               # rfp-*, cold-estimation, quality-orchestrator
 │   └── linkstart/
 │       ├── .claude-plugin/plugin.json
 │       └── skills/link-start/    # 單一 public skill；Claude/Codex adapter references 與 exact Runtime assets

@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.43.0"
+    "version": "1.48.0"
   },
   "plugins": [
     {
@@ -20,23 +20,23 @@
     {
       "name": "analysis-estimation",
       "source": "./plugins/analysis-estimation",
-      "description": "Analysis & estimation suite (enabled by default): estimate evaluates unfamiliar existing systems from customer outcomes and evidence; rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation estimates greenfield scope; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
+      "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
       "displayName": "分析與評估 (Analysis & Estimation)",
-      "version": "1.1.3",
+      "version": "1.4.0",
       "defaultEnabled": true
     },
     {
       "name": "common",
       "source": "./plugins/common",
-      "description": "Common utilities (enabled by default): better-prompts — audit, rewrite, draft, or migrate prompts and agent instructions against official Claude and GPT-5.x guidance; delegate — hand bounded, verifiable execution slices to native sub-agents, Codex CLI, or Claude CLI with a worth-it gate and live model-catalog lookup; define-goal — turn a fuzzy intention into a measurable goal with explicit validators; strategic-advance — keep a locked objective moving through long-running, cross-tool execution with a stateless campaign scribe; wayfinder — chart an effort too big for one session as a local-markdown map of decision tickets (blocking, frontier, fog of war) with an interactive HTML map view, resolved one ticket per session, backed by companion skills grilling, domain-modeling, research, and prototype, with an operator posture (the lead session judges and intervenes while execution slices route through delegate) and a drain mode that auto-resolves AFK tickets in parallel and stops hard at the human-decision boundary, plus optional routing to the baransu suite (think/read/learn/design/contract/seal/hunt/review/ship) when installed. User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Enabled by default; grilling, domain-modeling, research, prototype, wait-what — Matt Pocock's originals with Traditional Chinese output; show-me — HumanLayer's visual explainer (diagrams, code-shape sketches, focused HTML). User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Disable with `claude plugin disable common` if unwanted.",
+      "description": "Common utilities (enabled by default): token-lens — read-only Codex usage timelines, compaction accounting and skill experiment diagnosis; better-prompts — audit, rewrite, draft, or migrate prompts and agent instructions against official Claude and GPT-5.x guidance; delegate — hand bounded, verifiable execution slices to native sub-agents, Codex CLI, or Claude CLI with a worth-it gate and live model-catalog lookup; define-goal — turn a fuzzy intention into a measurable goal with explicit validators; strategic-advance — keep a locked objective moving through long-running, cross-tool execution with a stateless campaign scribe; wayfinder — chart an effort too big for one session as a local-markdown map of decision tickets (blocking, frontier, fog of war) with an interactive HTML map view, resolved one ticket per session, backed by companion skills grilling, domain-modeling, research, and prototype, with an operator posture (the lead session judges and intervenes while execution slices route through delegate) and a drain mode that auto-resolves AFK tickets in parallel and stops hard at the human-decision boundary, plus optional routing to the baransu suite (think/read/learn/design/contract/seal/hunt/review/ship) when installed. User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Enabled by default; grilling, domain-modeling, research, prototype, wait-what — Matt Pocock's originals with Traditional Chinese output; show-me — HumanLayer's visual explainer (diagrams, code-shape sketches, focused HTML). User-facing prose defaults to Traditional Chinese unless another language is explicitly requested. Disable with `claude plugin disable common` if unwanted.",
       "displayName": "Common",
-      "version": "1.37.0",
+      "version": "1.39.0",
       "defaultEnabled": true
     },
     {
       "name": "common-lab",
       "source": "./plugins/common-lab",
-      "description": "Common Lab (experimental): 2 lab-variant skills — delegate, strategic-advance — plus 2 bundled agents (calibrator, executor). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu 5.5.0. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0; use analysis-estimation:estimate, common:define-goal and common:better-prompts. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
+      "description": "Common Lab (experimental): 2 lab-variant skills — delegate, strategic-advance — plus 2 bundled agents (calibrator, executor). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu 5.5.0. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0; use analysis-estimation:cold-estimation, common:define-goal and common:better-prompts. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
       "version": "0.9.0",
       "defaultEnabled": true

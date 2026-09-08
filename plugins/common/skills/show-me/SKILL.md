@@ -43,7 +43,7 @@ src/
 └── transport/      # sends API requests
 ```
 
-- Show component interaction, control flow, or data flow with Mermaid:
+- Show component interaction, control flow, or data flow with Mermaid. A terminal cannot render Mermaid, so a Mermaid block alone is not enough: whenever the reply contains Mermaid, also write every Mermaid diagram of the reply into one HTML file under `.claude/show-me/` (load Mermaid from a CDN, one `<pre class="mermaid">` per diagram with a one-line caption) and open it in the browser the same way as the HTML rule below. Keep the Mermaid source in the reply so it survives in the transcript:
 
 ```mermaid
 sequenceDiagram
@@ -114,7 +114,7 @@ function expandSkill(command: string): string {
 }
 ```
 
-- For a visual UI, layout, state comparison, or concept too dense for Mermaid, write one focused HTML file — a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. Then open it in the user's default browser with whatever the current environment provides (for example `wslview` or `pwsh.exe Start-Process` on WSL2, `xdg-open` on Linux, `open` on macOS); do not just print the path.
+- For a visual UI, layout, state comparison, or concept too dense for Mermaid, write one focused HTML file under `.claude/show-me/` — a diagram, an infographic, or a short slide deck, whichever fits the point. Match the product's colors, type, spacing, and components; use real labels and data; support desktop and mobile. Then open it in the user's default browser with whatever the current environment provides (for example `wslview` or `pwsh.exe Start-Process` on WSL2, `xdg-open` on Linux, `open` on macOS); do not just print the path.
 
 ### guidance
 

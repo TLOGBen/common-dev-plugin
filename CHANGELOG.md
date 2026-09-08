@@ -2,6 +2,31 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.4.0 — 移除 Estimate，發布已選定 Cold
+
+- 移除 `estimate` 的 Claude source、Codex Skill、測試／資產／腳本與獨立 UI metadata；同步清除 README、套件描述與 marketplace 的呼叫入口。既有系統與需求文件的初估改由 `cold-estimation` 承接。
+- 發布先前已選定的 Cold 2.7.0 精簡基線與唯讀清冊，不合併未通過風險品質評估的後續實驗版本；既有歷史實驗資料保留作研究紀錄。
+- 同批發布 Common 1.39.0，包含 show-me 的 Mermaid HTML 預覽及 Token Lens。marketplace 1.48.0。
+
+## Common 1.39.0 — Token Lens 用量與行為分析
+
+- 新增 `token-lens`：唯讀解析指定 Codex session 或隔離試跑目錄，將公開工具操作、回傳量、逐回應 usage 與壓縮事件串成可篩選 HTML 時間線。
+- 一般執行與壓縮依 response ID 分列；可選配 CLI JSON 紀錄核帳。重複與巨大輸出只作診斷線索，工項影響另行核對，不以 token 數冒充內部思考或因果證明。
+- 支援人工工項貢獻標記與匯出；不啟動模型、不修改日誌或正在執行的任務，不匯出原始命令、來源內容、隱藏推理或壓縮摘要。首版 parser 驗證於 Codex CLI 0.153.4；Claude 端可呼叫分析器，但不解析 Claude transcript。
+- Claude source 與生成的 Codex Skill 同步，加入核帳、壓縮、重複、缺件、格式錯誤及保留既有報告測試。marketplace 1.47.0。
+
+## Common 1.38.0 — show-me 有 Mermaid 就預設開 HTML
+
+- 終端機無法渲染 Mermaid，只印文字區塊反而更難懂。改為：回覆只要含 Mermaid，就把該回覆的所有 Mermaid 圖寫成 `.claude/show-me/` 下的一個 HTML（CDN 載入 Mermaid，每張圖一個 `<pre class="mermaid">` 加一行說明），並沿用既有的「用當前環境的工具開瀏覽器」規則打開；Mermaid 原始碼仍留在回覆裡以便留存。原本的專用 HTML 產物也統一放該目錄；Codex 生成版使用對應的 `.codex/show-me/`，兩者皆忽略產物目錄。Claude 與 Codex 兩載體同步。marketplace 1.46.0。
+
+## Analysis Estimation 1.3.0 — Cold 工作優先初估與讀取接續
+
+- Cold 2.7.0 採單一 producer 三步：形成必要工作、補查依賴路線與例外、計算並一次覆核。完整讀取入口與三份手冊，截斷補讀；未知用條件與風險交付，不等待完整 SBOM、全面相容性實測或新增 PM gate。
+- 既有改造按目標差異、共同機制、批次與獨立例外計價；施工／驗證的原始工時只能歸屬一次，普通除錯與共享驗證不再重複加價。新增通用唯讀清冊，Markdown 預設輸出宣告、來源規模、import／擴充與私有成品位置，不冒充 resolved SBOM 或支援結論。
+- 維護搜尋先確認原上游與替代來源，再核對目標整合者的支援限制；不能以版本號、classifier 或編譯成功代替執行與維護風險。Cold 的 quality-orchestrator 消費契約同步為單一初估 task，避免重啟內層盤點／代理。
+- 26 組隔離 Luna Max 實驗後，選回重複測過 7 次的精簡基線，未合併後期的強制證據讀取器／路線表／情境規則。觀察到較短時間與較少輸出，但未證明所有 token 都降低，也未達穩定估準；實驗中間版本不作已發布版本列示。
+- Claude source 與生成的 Codex 套件同步；補回 transfer 未涵蓋的原有 tests／templates／UI metadata，限定放置本次檔案。marketplace 1.45.0。
+
 ## Common 1.37.0 — wayfinder 回歸 1.36.0 之前的自訂版
 
 - 實測 1.36.0 改成 Matt Pocock 原版流程的 wayfinder 後體驗不如舊版，整包回歸 b84a6b7 之前的版本（Claude 與 Codex 兩載體）：SKILL.md 恢復 operator 原則、baransu 路由表、strategic-advance 條件交棒、Speak plainly 與 drain 模式；tracker 說明回到 `TRACKER.md`（刪除 `references/tracker.md`）；`render_map.py` 與 `map-template.html` 回到舊版 renderer（無 Current focus 檢視）；移除 `disable-model-invocation: true`，恢復自動觸發。skill 目錄的 MIT LICENSE 保留。marketplace 1.43.0。

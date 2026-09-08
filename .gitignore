@@ -5,6 +5,8 @@
 .claude/jobs/
 .claude/archived/
 .claude/wait-what/
+.claude/show-me/
+/.codex/show-me/
 /.codex/wait-what/
 .claude/.tmp/
 .agent-workspace/
