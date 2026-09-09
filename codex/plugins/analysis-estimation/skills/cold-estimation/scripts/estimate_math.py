@@ -1,6 +1,6 @@
 """Operation-input arithmetic and reproducible pricing artifact helper."""
 import json,sys
-from decimal import Decimal,InvalidOperation,ROUND_CEILING
+from decimal import Decimal,InvalidOperation,ROUND_CEILING,ROUND_HALF_UP
 D=Decimal
 
 def number(x):
@@ -11,6 +11,19 @@ def number(x):
     return v
 
 def ceil(v):return int(v.to_integral_value(rounding=ROUND_CEILING))
+def half_up(v):return int(v.to_integral_value(rounding=ROUND_HALF_UP))
+
+def operation_hours(op):
+    hours=number(op['hours'])
+    if 'batch' not in op:return hours*number(op.get('count',1)),None
+    if 'count' in op:raise ValueError('batch ratio and operation count cannot both be applied')
+    batch=op['batch']
+    baseline=number(batch['baseline_count']);actual=number(batch['actual_count'])
+    if baseline==0:raise ValueError('batch baseline_count must be positive')
+    if not str(batch.get('unit','')).strip():raise ValueError('batch needs a comparable count unit')
+    multiplier=actual/baseline
+    scaled=hours*actual/baseline
+    return scaled,{'operation_id':op['id'],'unit':batch['unit'],'baseline_count':baseline,'actual_count':actual,'multiplier':multiplier,'baseline_hours':hours,'scaled_hours':scaled}
 
 def calculate(data):
     hours_day=number(data.get('hours_per_day',8))
@@ -29,16 +42,18 @@ def calculate(data):
             fixed=number(row['fixed_pd']);known+=fixed
             rows.append({'id':rid,'status':'fixed','E_pd':None,'V_pd':None,'unsplit_pd':fixed,'total_pd':fixed});continue
         if not row.get('operations') and not str(row.get('zero_reason','')).strip():raise ValueError('no operations: explicitly state why baseline is zero, or mark pending')
-        eh=vh=D(0)
+        eh=vh=D(0);batches=[]
         for op in row.get('operations',[]):
             oid=op['id']
             if not oid or oid in seen_operations:raise ValueError(f'operation {oid} priced more than once')
             seen_operations[oid]=rid
-            h=number(op['hours'])*number(op.get('count',1))
+            h,batch=operation_hours(op)
+            if batch is not None:batches.append(batch)
             if op['kind']=='E':eh+=h
             elif op['kind']=='V':vh+=h
             else:raise ValueError('operation kind must be E or V')
-        ep=ceil(eh/hours_day);vp=ceil(vh/hours_day);base=ep+vp
+        rounding=half_up if batches else ceil
+        ep=rounding(eh/hours_day);vp=rounding(vh/hours_day);base=ep+vp
         ae=av=au=0;additions=[]
         for add in row.get('additions',[]):
             parts={};unit=add['unit']
@@ -62,6 +77,7 @@ def calculate(data):
         total=base+extra if accepted else None
         known+=total if accepted else base
         rows.append({'id':rid,'status':'priced' if accepted else 'scope_review_required','E_hours':eh,'V_hours':vh,'B_pd':base,'A_pd':extra,'limit_pd':limit,'addition_inputs':additions,'E_pd':ep+ae if accepted else ep,'V_pd':vp+av if accepted else vp,'unsplit_pd':au if accepted else None,'total_pd':total,'baseline_only_pd':base if not accepted else None})
+        if batches:rows[-1].update({'baseline_rounding':'half_up','batch_inputs':batches})
     return {'items':rows,'known_subtotal_pd':known,'unresolved_item_ids':unresolved,'complete':not unresolved,'limits':['Arithmetic only: different IDs may still describe duplicate work.','No judgment of route viability, scope necessity, rate realism or customer responsibility.','Above-cap additions are flagged; never clamped or moved into baseline.']}
 
 
@@ -91,9 +107,17 @@ def render(data,result,input_hash):
         for key,title in [('references','引用已承接'),('basis','工程依據'),('zero_reason','零工時理由'),('pending_reason','待估原因')]:
             if key in source:lines += [f"{title}：{md(source[key])}",'']
         if source.get('operations'):
-            lines += ['| 操作 ID | 類別 | 實際動作／結果 | 每次小時 | 次數 |','|---|---|---|---:|---:|']
+            lines += ['| 操作 ID | 類別 | 實際動作／結果 | 每次或基準批次小時 | 次數或數量倍率 |','|---|---|---|---:|---|']
             for op in source['operations']:
-                lines.append('| '+' | '.join(md(x) for x in [op['id'],op['kind'],op.get('description',''),op['hours'],op.get('count',1)])+' |')
+                factor=op.get('count',1)
+                if 'batch' in op:
+                    b=op['batch'];factor=f"{b['actual_count']} / {b['baseline_count']} {b['unit']}"
+                lines.append('| '+' | '.join(md(x) for x in [op['id'],op['kind'],op.get('description',''),op['hours'],factor])+' |')
+            lines.append('')
+        if row.get('batch_inputs'):
+            lines += ['批次數量換算：僅縮放指定操作；本列 E／V 各自加總換算後小時、除以每日小時，最後四捨五入（ROUND_HALF_UP），不先進位倍率或每支工時。一般加值仍依原規則另算。','']
+            for batch in row['batch_inputs']:
+                lines += [f"- {batch['operation_id']}：基準 {batch['baseline_hours']} 小時 × ({batch['actual_count']} / {batch['baseline_count']}) = {batch['scaled_hours']} 小時。"]
             lines.append('')
         for i,add in enumerate(row.get('addition_inputs',[]),1):
             original=source['additions'][i-1]

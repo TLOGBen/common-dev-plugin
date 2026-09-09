@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.14.1 — Cold 2.20.1 參考批次倍率與四捨五入
+
+- 以參考系統支數校準 API／頁面／DAO 批次，只換算已定工項的人天：基準批次工時 × 本案受影響支數／同類基準支數，按自然工項彙整後 E／V 分欄四捨五入。
+- 移除逐支 3／4／3 小時的加價。各類確有批次修改才套公式；框架 30＋10 固定額度、共用一次與獨立例外不縮放，維持原路線、工項與驗證涵蓋。
+- 計算工具保存基準數量、實際數量、原始工時與倍率，拒絕重乘 count；一般操作及加值沿用既有取整，新增數學與產物一致性回歸。Claude／Codex 同步，marketplace 1.58.1。
+
 ## Analysis Estimation 1.14.0 — Cold 2.20.0 新框架搬移的線性計價
 
 - 開場連同框架選擇確認施工路線：原專案升版，或建立相容新骨架、對齊共用能力並搬移既有業務；不把框架替換只當 migration guide 的局部修補。
