@@ -1,6 +1,6 @@
 {
   "name": "analysis-estimation",
-  "version": "1.14.1",
+  "version": "1.15.0",
   "description": "Project-agnostic analysis & estimation suite: turn a cold RFP/SOW into traceable requirement analysis (rfp-requirement-analysis), architecture design (rfp-architecture-design), and BDD acceptance specs (rfp-sa-bdd); produce method-based initial estimates with explicit risk effort for greenfield, modernization, and mixed scope (cold-estimation); and run a writer→reviewer→fixer quality loop (quality-orchestrator).",
   "skills": "./skills/",
   "interface": {

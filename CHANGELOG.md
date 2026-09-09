@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.15.0 — Cold 2.21.0 開場方案比較與視覺解釋
+
+- Grilling 每題通常提供 2–3 個有依據的可行方案，明示一個最推薦；以長期可維護與本次修改成本適中為預設，從必要施工、驗證及後續更新／交接解釋取捨，不固定選最便宜、最新或中間方案。
+- 開場實際調用 `common:show-me`，以相同選項編號為 PM／SD 說明現況問題、保留／改動與維護方式，依 Skill 規則提供視覺預覽；缺少能力如實揭露，不把提到技能名稱當成已執行。
+- 沿用已確認決策、六類路線覆蓋及待答邊界；不硬湊不可行候選、不提前估多套人天，也不更動原人天公式與施工範圍。Claude／Codex 同步，marketplace 1.59.0。
+
 ## Analysis Estimation 1.14.1 — Cold 2.20.1 參考批次倍率與四捨五入
 
 - 以參考系統支數校準 API／頁面／DAO 批次，只換算已定工項的人天：基準批次工時 × 本案受影響支數／同類基準支數，按自然工項彙整後 E／V 分欄四捨五入。
