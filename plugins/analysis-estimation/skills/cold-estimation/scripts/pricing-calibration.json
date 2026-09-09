@@ -1,0 +1,12 @@
+{
+  "version": "candidate-04",
+  "basis": "原地升版依主要已估施工樣本的最小最大偏差區間中值校準；框架搬移沿用主要批次已定價樣本的條件式係數。核心缺項不由係數補齊；尚未通過各輪目標。",
+  "profiles": {
+    "in_place_upgrade": {
+      "coefficient": "1.03"
+    },
+    "framework_migration": {
+      "coefficient": "4.30"
+    }
+  }
+}
