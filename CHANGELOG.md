@@ -2,6 +2,20 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.12.0 — Cold 2.18.0 直接支援候選優先
+
+- Gotchas 優先選維護者官方明示支援目標、且活躍維護的路線；用 QueryDSL／OpenFeign 示範，拒絕以新版或 classifier 代替承接依據。候選支援與本案特殊用法驗證仍分開。
+- 因完整試跑未見足夠正向收益，撤回定價前草稿 reviewer、補正迴圈、固定分支表及其三年信心欄位；保留獨立定價、PM 撰文及文字校稿；不再要求固定表格中的前後置版本欄位。
+- Claude／Codex 候選同步，marketplace 1.56.0；以同一日常短提示隔離試跑 Terra medium／low 與 Luna max，均完成報告與可重算定價；此結果不代表桌面日常使用已等效，後段主線改寫仍可能造成文字漂移。
+
+## Analysis Estimation 1.11.0 — Cold 2.17.0 固定分支草稿與窄稽核（未發布候選）
+
+- 把簡短日常需求也須完整交付、角色交接與工具失敗退路寫入 Skill；沿用既有獨立定價與 PM 文案流程。
+- 固定分支表分開前置／目標／後置版本、證據、結論、狀態與工項；找到高風險用法只能進入候選承接判定，不直接標已成立。
+- 定價前使用 Luna medium 窄稽核，接受共用引用與明示未知，補正有上限；不展開完整相容矩陣或重估人天。
+- 新增三年穩定信心 1–5／未知及原因，評估持續維護與合理升版下的路線前景；不是保證或人天倍率，保留到最終報告。
+- Claude／Codex 候選同步，marketplace 候選 1.55.0；另以隔離 Terra medium、原始日常短提示完整驗證，結果以實驗報告為準。
+
 ## Analysis Estimation 1.10.0 — Cold 2.14.0 前後置版本盤點
 
 - 盤點元件時條列前置需求／後置影響的官方預設支援或配套版本；未明示標未知。只新增此盤點指引，既有派工、計價、查證與交付規則不變。
