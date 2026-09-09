@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.16.0 — Cold 2.22.0 Terra Mid 最終實質覆核
+
+- 將既有文字 reviewer 擴為新上下文的 gpt-5.6-terra / medium 最終 reviewer；交付前驗證方案可行性、報告前後矛盾，以及人天是否匹配實際修改方式，並保留文字、表格與計算明細核對。
+- 主導成本回到代表改法、剩餘操作、次數及 E／V 依據；鎖定數列可被具體證據質疑，問題交回原工項／定價角色修正，實質變更後再覆核，不由 reviewer 自行另估或倒推總額。
+- 記錄指定 profile、受審版本及分面證據；模型不可用、覆核未完成或實質缺口未解時只交待覆核草稿。條件式初估保留待估及未實測限制，穩定算法、開場選項與 show-me 不變。Claude／Codex 同步，marketplace 1.60.0。
+
 ## Analysis Estimation 1.15.0 — Cold 2.21.0 開場方案比較與視覺解釋
 
 - Grilling 每題通常提供 2–3 個有依據的可行方案，明示一個最推薦；以長期可維護與本次修改成本適中為預設，從必要施工、驗證及後續更新／交接解釋取捨，不固定選最便宜、最新或中間方案。
