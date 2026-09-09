@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.13.1 — Cold 2.19.1 最終交付完整性
+
+- Writer 從交付規格及既有定價資料組裝完整報告；既有文字 reviewer 同時查六欄主表、施工說明、計算依據與來源對應，不能只以數字 token 一致視為通過。
+- 主線最後寫入後重開實際交付檔，按欄與 ID 核對列數、各列 E／V、合計及來源；review 後刪欄、改 ID 或轉 Excel 必須重查受影響內容。只補漏、修正及覆核，不新增完整審查產線或重估。
+- Claude／Codex 同步，marketplace 1.57.1。
+
 ## Analysis Estimation 1.13.0 — Cold 2.19.0 重大路線先確認
 
 - 補入 Jakarta／Servlet／容器與 Struts 版本交叉查證，以及 JSON Action 改寫的 Gotchas：已定目標引發的框架替換不得漏估，也不能由單一不相容組合推成全面重寫；JSON 不等於沒有 OGNL，同質入口依共用／批次／例外估算，不以 Action 映射數乘完整重寫單價。
