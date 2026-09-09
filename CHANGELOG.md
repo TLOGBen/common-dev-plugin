@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.14.0 — Cold 2.20.0 新框架搬移的線性計價
+
+- 開場連同框架選擇確認施工路線：原專案升版，或建立相容新骨架、對齊共用能力並搬移既有業務；不把框架替換只當 migration guide 的局部修補。
+- 新框架搬移採每獨立部署包執行 30＋驗證 10 人天的經驗基礎費；頁面 E2/V1、API E3/V1、受影響 DAO 方法 E2/V1 小時乘實際單位，於自然工項彙整取整。線性增加單位搬移與驗證，不另用規模級距／指數或追歷史總額。
+- 區分 mapping、類別、檔案與實際方法；共用能力、單位局部驗證及跨層結果去重，已含能力不再收一次。單位費是待實績校準的預設，使用者約定優先；真實例外列剩餘工作。
+- 沿用現有操作輸入與計算工具，明示經驗費率換算；同步定價交接、交付檢查與 Claude／Codex，marketplace 1.58.0。
+
 ## Analysis Estimation 1.13.1 — Cold 2.19.1 最終交付完整性
 
 - Writer 從交付規格及既有定價資料組裝完整報告；既有文字 reviewer 同時查六欄主表、施工說明、計算依據與來源對應，不能只以數字 token 一致視為通過。
