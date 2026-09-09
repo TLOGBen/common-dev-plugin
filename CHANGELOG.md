@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.13.0 — Cold 2.19.0 重大路線先確認
+
+- 補入 Jakarta／Servlet／容器與 Struts 版本交叉查證，以及 JSON Action 改寫的 Gotchas：已定目標引發的框架替換不得漏估，也不能由單一不相容組合推成全面重寫；JSON 不等於沒有 OGNL，同質入口依共用／批次／例外估算，不以 Action 映射數乘完整重寫單價。
+- 開場最小盤點後即用 Grilling 確認應用架構、主要框架、語言／執行平台、關鍵業務核心套件、關鍵處理基礎設施及部署環境；所有適用且未決類別都要問，不等細部研究或不相容證據出現才問，也不把現況直接當沿用決策。包含既有頁面改 SPA、報表產製引擎替換、核心套件換維護線／fork 及離開既有應用伺服器。
+- 等使用者選定路線或明確授權推薦後才詳細定價；未決先交付路線差異與待決問題。已有決策且無新衝突不重問，一般局部適配與已定路線的資料缺口仍可採假設完成初估。
+- 同步收斂主線、窄技術覆核、獨立定價與交付檢查的選路權限；提問方式內含於 cold-estimation，不新增 Grilling 外掛依賴。Claude／Codex 同步，marketplace 1.57.0。
+
 ## Analysis Estimation 1.12.0 — Cold 2.18.0 直接支援候選優先
 
 - Gotchas 優先選維護者官方明示支援目標、且活躍維護的路線；用 QueryDSL／OpenFeign 示範，拒絕以新版或 classifier 代替承接依據。候選支援與本案特殊用法驗證仍分開。
