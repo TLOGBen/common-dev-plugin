@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.17.0 — Cold 2.23.0 一次建議與主線修正
+
+- Terra Mid reviewer 一次提供有證據的問題、具體修正建議及完成判準；主線最多修一輪，不再往返派 writer、reviewer 或定價者。
+- 數字修正限於既有證據可確定的操作與計次，另存輸入並重跑既有工具；需新工時或路線判斷的部分保留待估。區分原稿獨立覆核與主線修正版，不把舊稿 PASS 沿用到實質修改後的報告。
+- 定向檢查「批次修改」是否可重用同一改法；同批逐點須微調或不同改法列「多點批次修改」，拆出同質小批與剩餘操作，不把所有點套同質倍率或完整重寫價。保留原計算公式，Claude／Codex 同步，marketplace 1.61.0。
+
 ## Analysis Estimation 1.16.0 — Cold 2.22.0 Terra Mid 最終實質覆核
 
 - 將既有文字 reviewer 擴為新上下文的 gpt-5.6-terra / medium 最終 reviewer；交付前驗證方案可行性、報告前後矛盾，以及人天是否匹配實際修改方式，並保留文字、表格與計算明細核對。
