@@ -2,7 +2,7 @@
 name: cold-estimation
 description: 從陌生需求或既有程式形成可討論的完整初估。盤出必要工作、依賴路線、實際施工與驗證方法、風險及人天；適用新建、升版、CR 與混合案，不執行產品改造或正式報價。
 metadata:
-  version: 2.23.1
+  version: 2.24.0
 compatibility: Designed for Claude Code; ported to Codex.
 ---
 
@@ -20,15 +20,15 @@ compatibility: Designed for Claude Code; ported to Codex.
 
 在使用者已確認的目標、範圍與路線邊界內，自行形成技術推薦；資料不足採明確假設，區分已估與待估。缺正式簽核、一般環境資料或費率不阻擋可成立的初估，但不能用假設代替尚未決定的重大路線。使用者已指定的版本與範圍優先；新證據與其衝突時先說明並確認，不自行換成另一種成果。
 
-依本 Skill 執行獨立定價、撰文及交付前的 Terra Mid 最終覆核；把角色所需手冊與原始工項完整交給指定角色。僅委派 Skill 指定工作，不額外盤點或重估。主模型沿用使用者設定，子代理依手冊指定 profile；載體不支援時依手冊明示退化，不把主線自做稱為獨立結果。
+依本 Skill 執行獨立定價與撰文；把角色所需手冊與原始工項完整交給指定角色。僅委派 Skill 指定工作，不額外盤點或重估。主模型沿用使用者設定，子代理依手冊指定 profile；載體不支援時依手冊明示退化，不把主線自做稱為獨立結果。
 
-先把完整交付保存成任務產物目錄的 final.md：總結、含施工與完成結果的工項人天表、主導成本施工說明、計算依據與成立條件都在同一份報告；內部稿件連結只供覆核。Writer 完成後，必須由新上下文的獨立 Terra Mid reviewer（gpt-5.6-terra / medium）依 pm-delivery.md 做最後驗證：方案是否可行、內容是否矛盾，以及人天是否匹配實際施工方式；同時依 checks.md 核對文字與交付完整性。Reviewer 一次回傳有證據的問題、具體修正建議與完成判準；主線依 pm-delivery.md 最多修一輪，不再派 writer、reviewer 或定價者往返。最後重開實際交付檔，核對修正、數列及未解事項，區分原稿的獨立覆核與主線修正版；未取得覆核或仍有影響成立的問題，只交明示待覆核的草稿，不把主線修正冒稱新版獨立 PASS。最後聊天給結論與該完整報告連結。使用者要直接在聊天展開時，使用同一份完整正文；要求其他格式則沿用同一數據轉出。
+先把完整交付保存成任務產物目錄的 final.md：總結、含施工與完成結果的工項人天表、主導成本施工說明、計算依據與成立條件都在同一份報告；內部稿件連結只供追溯。Writer 完成後，由主線依 checks.md 重開實際交付檔，核對欄位、數列、責任、條件及待估；來源已有資訊但報告漏掉時補回，仍缺依據則明示缺口與已估小計。最後聊天給結論與該完整報告連結。使用者要直接在聊天展開時，使用同一份完整正文；要求其他格式則沿用同一數據轉出。
 
 可用網路查證，使用 Skill 附帶的 inventory.py 或適合的唯讀工具，不安裝建置工具。單一命令或讀取方法失敗時，在既有蒐證預算內換可用方法；仍無證據便記錄限制並交付能成立的部分，不把工具失敗誤當整項評估無法進行。以繁體中文交付。
 
 ## 執行方式
 
-主 Agent 在已確認的路線邊界內負責以下三步的技術判斷、工項及最終接受；工時與人天由獨立定價 subagent 提出。其他委派處理會改變主要工項的窄技術疑點、已定稿內容的撰文，以及交付前的獨立最終覆核；沿用現有 writer → reviewer，不另加重複校稿角色或完整估算審查產線。開始委派或準備交付前，讀 references/pm-delivery.md，依其輸入、角色與停止條件執行。重大路線先依下節確認；一般技術細節與已定範圍內的資料缺口仍以證據及清楚假設處理，不擅自擴大成果。
+主 Agent 在已確認的路線邊界內負責以下三步的技術判斷、工項及最終接受；工時與人天由獨立定價 subagent 提出。其他委派限於會改變主要工項的窄技術疑點及已定稿內容的撰文，不設交付前的獨立 reviewer。開始委派或準備交付前，讀 references/pm-delivery.md，依其輸入、角色與停止條件執行。重大路線先依下節確認；一般技術細節與已定範圍內的資料缺口仍以證據及清楚假設處理，不擅自擴大成果。
 
 ## 開場先用 Grilling 確認解決方案
 
@@ -117,7 +117,7 @@ compatibility: Designed for Claude Code; ported to Codex.
 
 讀 references/work-pricing.md，由一個新上下文 subagent 接收完整工項清單並獨立定價，不逐項各派一人。它完整讀 granularity.md 與 rate-card.md，對同一操作只計一次，依步驟形成原始 E／V、計次、一般加值與固定額度，再用工具核對取整和總數。輸出按原 ID 對回工項，保留可重算的明細。沒有完成這次定價交接，就不能把主線自估冒稱獨立定價成果。
 
-主線只接受可追溯且算式一致的價格；發現漏項、重複、責任混淆或工時缺乏操作依據時，向定價者指出具體列並補事實，依 work-pricing.md 有限修正，不私下重估另一套數字。必要工作無法定價就明列待估並交付已估小計。最後鎖定工項、路線、人天、責任及已驗證／待確認狀態，再依 pm-delivery.md 交給 writer 與獨立 Terra Mid 最終 reviewer，不以定價子代理代替這兩個角色。鎖定是交付版本的對帳基準，不禁止 reviewer 質疑方案或估工依據；reviewer 一次提出具體建議，主線依 pm-delivery.md 完成至多一輪修正與必要重算，仍無依據的工作列待估，不由 reviewer 另估一套數字。
+主線只接受可追溯且算式一致的價格；發現漏項、重複、責任混淆或工時缺乏操作依據時，向定價者指出具體列並補事實，依 work-pricing.md 有限修正，不私下重估另一套數字。必要工作無法定價就明列待估並交付已估小計。最後鎖定工項、路線、人天、責任及已驗證／待確認狀態，再依 pm-delivery.md 交給 writer 整理文字，由主線核對實際交付檔。鎖定數列用於版本對帳；有新證據指出價格問題時，仍沿用 work-pricing.md 的修正邊界，不另開交付覆核產線或追加修正額度。
 
 ## 交付
 
@@ -144,3 +144,11 @@ compatibility: Designed for Claude Code; ported to Codex.
 - **把所有可能後果都加進基準。** 會把粗估膨脹成全面翻修，還可能重複收取互斥方案。選定路線的已知必做與合格一般加值合併成主表工作；未選替代、甲方責任與範圍外工作不累加。
 
 命中上述情況時，只補足會改變工項或量級的證據；重大路線已確認，且能列出選定工作、驗證、計價依據與待定範圍便交付。Gotchas 的候選優先順序用於推薦，不取代重大路線的使用者決策或授權。
+
+## Say what you mean
+
+Mannered prose substitutes metaphor and flourish for direct statement: "a dial worth turning" for "a parameter worth varying", "this point earns its keep" for "this point still matters". The phrases exist to display the writer, not to convey the idea, and readers can tell; they also drag in connotations the writer did not choose. Say what you mean. When a literal phrase is available, use it. Technical prose is no exception.
+
+Use lists and bullet points only when asked to, or when the content is multifaceted enough that they help with clarity. If the person explicitly requests minimal formatting, format without bullet points, headers, lists, or bold emphasis. In conversational, personal, or emotional exchanges, keep to plain prose.
+
+Hand understanding back lightly, then wait. Do not resume the underlying task or turn clarification into a test unless the user asks.

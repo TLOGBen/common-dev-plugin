@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.18.0 / Common 1.39.1 — 移除最終 reviewer，加入直接表達指引
+
+- Cold 2.24.0 移除交付前強制的 Terra Mid reviewer、三面向覆核及其後續修正流程；保留獨立定價、必要時的窄技術覆核與 writer，交付由主線核對實際檔案。
+- Cold 2.24.0 末尾加入使用者指定的 `Say what you mean` 完整原文：直接表達意思、按內容需要使用清單，釐清後停下等待。
+- show-me 保留既有兩段寫作指引，統一章節標題並補上最後的對話收束段落；Claude／Codex 同步，marketplace 1.62.0。
+
 ## Analysis Estimation 1.17.1 — Cold 2.23.1 開場逐題以聊天內 show-me 說明
 
 - Cold 開場每個決策問題各配一段 `common:show-me` 講解，緊鄰該題選項與推薦；限定聊天內的文字流程、前後對照或 Markdown 方案表；不產生 Mermaid／HTML，也不開啟瀏覽器或預覽面板。
