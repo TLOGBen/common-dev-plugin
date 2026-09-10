@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.17.1 — Cold 2.23.1 開場逐題以聊天內 show-me 說明
+
+- Cold 開場每個決策問題各配一段 `common:show-me` 講解，緊鄰該題選項與推薦；限定聊天內的文字流程、前後對照或 Markdown 方案表；不產生 Mermaid／HTML，也不開啟瀏覽器或預覽面板。
+- 同步開場交付檢查與說明，保留選項編號及推薦依據，同輪共用既有證據，不逐題重跑研究；通用 show-me 的其他使用情境維持原規則。Claude／Codex 同步，marketplace 1.61.1。
+
 ## Analysis Estimation 1.17.0 — Cold 2.23.0 一次建議與主線修正
 
 - Terra Mid reviewer 一次提供有證據的問題、具體修正建議及完成判準；主線最多修一輪，不再往返派 writer、reviewer 或定價者。
