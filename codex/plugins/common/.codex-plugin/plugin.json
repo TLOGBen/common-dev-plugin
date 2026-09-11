@@ -1,6 +1,6 @@
 {
   "name": "common",
-  "version": "1.40.0",
+  "version": "1.40.1",
   "description": "General-purpose Codex utilities for token usage and behavior diagnosis, prompt work, measurable goals, bounded delegation, strategic execution, plain-language recovery, and large decision maps. Skill instructions stay in English; user-facing prose and newly generated human-readable artifacts default to Traditional Chinese unless the user explicitly requests another language.",
   "skills": "./skills/",
   "interface": {

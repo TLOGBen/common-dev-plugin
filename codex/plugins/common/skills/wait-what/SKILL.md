@@ -4,10 +4,10 @@ description: Re-explain the last confusing answer for the user's audience withou
 disable-model-invocation: true
 compatibility: Designed for Claude Code; ported to Codex.
 metadata:
-  version: 0.3.0-codex
+  version: 0.3.1-codex
 ---
 
-# Wait What Lab
+Wait, I don't understand where you've got to here. Re-pitch that: give me a little bit of context, talk in ASD-STE100 Simplified Technical English or 標準台灣繁體中文白話文, and use the ubiquitous language from `CONTEXT.md` (follow `CONTEXT-MAP.md` to the right one if the repo has more than one).
 
 Pause the underlying task and help the user see what did not land. Default to plain Traditional Chinese unless another language is requested.
 

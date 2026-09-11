@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.40.1 — wait-what 拔掉 Lab 標題、補回上游第一句
+
+- 移除 `# Wait What Lab` 標題（Lab 畢業後殘留）。
+- 補回 Matt Pocock 上游原版第一句，僅把 「talk in ASD-STE100 Simplified Technical English」 改為 「... or 標準台灣繁體中文白話文」，其餘照原文。
+- Claude 與 Codex 兩載體同步。marketplace 1.63.1。
+
 ## Common 1.40.0 — strategic-advance 補結構決策 gate 與固定邊界校準
 
 - §1 戰略目標合約：contract 未釘住的不可逆結構決策（persistence schema、對外 API／訊息形狀、state machine、模組邊界）屬未決決策，第一個會提交它的 mutation 之前須經 `/baransu:contract`（或使用者）釘住並記入 `constraints`；executor 只能提議、不能決定，執行速度不縮短這一步。
