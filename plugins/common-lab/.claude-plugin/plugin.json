@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.9.0",
-  "description": "Unified opt-in laboratory: 2 experimental skills for delegation and strategic execution.",
+  "version": "0.10.0",
+  "description": "Unified opt-in laboratory: 1 experimental skill for delegation.",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
@@ -12,8 +12,7 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation",
-    "strategic-execution"
+    "delegation"
   ],
   "defaultEnabled": true
 }

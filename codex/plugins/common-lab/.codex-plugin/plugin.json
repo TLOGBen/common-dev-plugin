@@ -1,12 +1,12 @@
 {
   "name": "common-lab",
-  "version": "0.9.0",
-  "description": "Unified opt-in laboratory: 2 experimental skills for delegation and strategic execution.",
+  "version": "0.10.0",
+  "description": "Unified opt-in laboratory: 1 experimental skill for delegation.",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "統一收納派工與戰略推進的 2 個實驗技能",
-    "longDescription": "整合 Common 的實驗技能，以單一 Common Lab 套件提供派工與戰略推進。正式版與歷史實驗快照維持獨立。",
+    "shortDescription": "收納派工的 1 個實驗技能",
+    "longDescription": "整合 Common 的實驗技能，以單一 Common Lab 套件提供派工。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [
@@ -14,7 +14,6 @@
       "Write"
     ],
     "defaultPrompt": [
-      "用 Common Lab 的 strategic-advance 推進已確認的目標。",
       "用 Common Lab 的 delegate 把這個有界任務派給便宜模型。"
     ]
   },
@@ -27,7 +26,6 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation",
-    "strategic-execution"
+    "delegation"
   ]
 }

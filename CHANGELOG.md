@@ -2,6 +2,19 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.40.0 — strategic-advance 補結構決策 gate 與固定邊界校準
+
+- §1 戰略目標合約：contract 未釘住的不可逆結構決策（persistence schema、對外 API／訊息形狀、state machine、模組邊界）屬未決決策，第一個會提交它的 mutation 之前須經 `/baransu:contract`（或使用者）釘住並記入 `constraints`；executor 只能提議、不能決定，執行速度不縮短這一步。
+- §7 arm gate 加一條 checklist：mutation 不得提交 `constraints` 中沒有的不可逆結構決策，會的話先停下釘住。
+- 對齊 auditor：「Trigger it only when」改為「Trigger it when」，新增兩個觸發點（tactical takeover 完成、organ fix loop 修復輪數用盡）；校準不以指揮官先察覺混亂為前提，無法派出獨立 auditor 時在 ledger 記 degraded coverage 並保留安全接續點，不得以自我核准替代。
+- Claude 與 Codex 兩載體同步（Codex 以 `$contract` 指稱）；validator、state contract、scripts 不變。
+- common 的 Claude plugin 與 marketplace 簡介縮成一句（原本逐技能列舉，在 TUI 過擠）。marketplace 1.63.0。
+
+## Common Lab 0.10.0 — 淘汰 strategic-advance Lab 變體
+
+- 從 Lab 移除 strategic-advance（含 `agents/calibrator.md`、Codex 的 `calibrator.toml`；Claude 與 Codex 兩載體），Lab 的 delegate 在 Codex 的 bundled agent 清單同步只剩 `executor`。改用穩定版 `common:strategic-advance`。
+- Lab 剩 1 個技能（delegate）與 1 個 bundled agent（executor）。marketplace 1.63.0。
+
 ## Analysis Estimation 1.18.0 / Common 1.39.1 — 移除最終 reviewer，加入直接表達指引
 
 - Cold 2.24.0 移除交付前強制的 Terra Mid reviewer、三面向覆核及其後續修正流程；保留獨立定價、必要時的窄技術覆核與 writer，交付由主線核對實際檔案。

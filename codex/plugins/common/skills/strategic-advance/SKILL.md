@@ -152,6 +152,8 @@ Record:
 
 If the objective is only "make it work" or "finish everything," make the end state measurable before execution.
 
+An irreversible structural decision the contract does not fix — persistence schema, external API or message shape, state machine, module boundary — is an unresolved decision, not an implementation detail. Before the first mutation that would commit it, pin it through `$contract` (or the user) and record the result under `constraints`. The executor may propose; it may not decide. Speed of the executor never shortens this step.
+
 ### 2. Reconstruct battlefield information
 
 Directly observe the current UI, API, database, processes, files, actor identity, and time. Each fact becomes an evidence claim with source, predicate, `observedAt`, `validUntil`, `authorityRank`, and `PASS`, `FAIL`, or `UNKNOWN`.
@@ -251,6 +253,7 @@ Before a mutation, release, destructive action, or external side effect, verify:
 - validator-derived `READY` recovery;
 - the same mutation has not already succeeded;
 - permissions and constraints authorize it;
+- the mutation commits no irreversible structural decision absent from `constraints` (see §1); if it would, stop and pin first;
 - the sand table reflects the pending move and any intervention is `REQUESTED`.
 
 #### Tactical-takeover gate
@@ -455,7 +458,9 @@ Enforcement is behavioral+auditable, not mechanical: nothing below is a gate; ev
 
 ## Event-driven strategy alignment auditor
 
-Use an independent read-only auditor as a calibration event, never as a permanent monitor or second command chain. Trigger it only when the main effort changes, the same failure fingerprint reaches its escape limit, a move consumes its hard budget without a world delta, authority or constraints may have changed, a posture downgrade is proposed (Force posture), the main session reconstructs after compaction or handoff, or a terminal claim is about to be accepted.
+Use an independent read-only auditor as a calibration event, never as a permanent monitor or second command chain. Trigger it when the main effort changes, the same failure fingerprint reaches its escape limit, a move consumes its hard budget without a world delta, authority or constraints may have changed, a posture downgrade is proposed (Force posture), the main session reconstructs after compaction or handoff, a tactical takeover completes, an organ fix loop exhausts its repair rounds, or a terminal claim is about to be accepted.
+
+Calibration is not conditional on the commander first noticing confusion: saturation destroys the instrument that detects it. The triggers above fire on their own evidence, and a commander who feels on course still runs the audit when one fires. If no independent auditor can be dispatched, record degraded coverage in the ledger and preserve a safe continuation point; never substitute self-approval.
 
 A security or other specialist review requires a review contract **before** dispatch: exact scope, risk taxonomy, severity or acceptance threshold, evidence bar, time or round budget, and stop condition. Do not start open-ended discovery without that contract. Findings below its threshold go to a later backlog and cannot change the current main effort. End the review when its budget or stop condition is reached; further review requires a new contract explicitly approved by the commander — by the user only when the review would act outside the declared mutation scope.
 

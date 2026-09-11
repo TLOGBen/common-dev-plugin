@@ -18,7 +18,7 @@ Before reading a bundled reference or running a bundled script, resolve the abso
 
 This plugin does not assume package-local TOMLs are auto-registered as custom
 agents. The required definitions for this skill are bundled at
-`../../.codex-agents/<agent-name>.toml`: `calibrator`, `executor`.
+`../../.codex-agents/<agent-name>.toml`: `executor`.
 
 Before every named-agent dispatch:
 
