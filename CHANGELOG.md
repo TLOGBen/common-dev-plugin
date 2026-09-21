@@ -2,6 +2,15 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.11.0 — 新增 Jev 三件：init-jev、jev、dev-browser Lab 變體
+
+- 新增 `common-lab:init-jev`：讓 agent 的 shell 取得 `TYPESAFE_API_KEY`（不印出金鑰），用一次最小呼叫驗證；涵蓋 bash/zsh（含 WSL）與 PowerShell 7+（`$PROFILE`、SecretManagement），並提醒送出資料的條款。
+- 新增 `common-lab:jev`：三種用法各兩三句＋一段 `questions` 範例——Gate（Noul 是非閘門）、Pick（Choice 從既有清單挑一個）、Score（Score 分級評分當影子評審）。
+
+- 新增 `common-lab:dev-browser`：以 `test-utils:dev-browser` 1.1.2 為底，多一個「找要操作的元素」情境。`scripts/case/element-table.js` 把頁面上看得到的可操作元素編號（掛 `data-jev-idx`），`scripts/jev-pick.mjs` 以一題 Choice 請 TypeSafe Jev 挑出前幾名，agent 只讀候選、不讀整份 DOM；做法參考 browser-use/jev-ultrafast。
+- 無 `TYPESAFE_API_KEY`、API 失敗、低信心（< 50%）或挑中 `none` 時退回 `snapshotForAI()`；Jev 的答案只是候選，操作後照樣驗證。
+- 目前只有 Claude 載體；Codex 載體尚未移植。marketplace 1.64.0。
+
 ## Common 1.40.1 — wait-what 拔掉 Lab 標題、補回上游第一句
 
 - 移除 `# Wait What Lab` 標題（Lab 畢業後殘留）。

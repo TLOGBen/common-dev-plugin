@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.10.0",
-  "description": "Unified opt-in laboratory: 1 experimental skill for delegation.",
+  "version": "0.11.0",
+  "description": "Unified opt-in laboratory: 4 experimental skills for delegation and TypeSafe Jev (setup, usage patterns, Jev-assisted browser debugging).",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
@@ -12,7 +12,8 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation"
+    "delegation",
+    "browser"
   ],
   "defaultEnabled": true
 }
