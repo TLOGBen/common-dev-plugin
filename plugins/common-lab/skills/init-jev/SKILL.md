@@ -1,6 +1,6 @@
 ---
 name: init-jev
-description: Set up TypeSafe Jev access — make TYPESAFE_API_KEY available to the agent's shell without exposing the key, then verify with one cheap call. Invoke explicitly as /common-lab:init-jev before using /common-lab:jev or /common-lab:jev-browser.
+description: Set up TypeSafe Jev access — make TYPESAFE_API_KEY available to the agent's shell without exposing the key, then verify with one cheap call. Use when the user asks to set up Jev or a TypeSafe key, or when a jev-gate, jev-pick, jev-score, or jev-browser call fails because TYPESAFE_API_KEY is unset or rejected (401). Also triggers on 設定 Jev, Jev 金鑰, TypeSafe key.
 ---
 
 # Init Jev Lab

@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.12.0 — jev 拆成 jev-gate、jev-pick、jev-score，改為可自動觸發
+
+- 移除 `common-lab:jev`，依三種模式拆成三個技能：`jev-gate`（Noul 是非機率）、`jev-pick`（Choice 從既有清單挑一個）、`jev-score`（Score 分級評分）。
+- 描述改寫為自動觸發：模型在工作中遇到對應判斷（指令是否危險／外洩、該點哪個元素或選哪個分類、完成聲明的證據強度等）時自行使用，建構閘門、路由、評分時也會觸發；附中英文觸發詞。內文各兩三句＋一段可直接執行的 `curl` 範例（已對 API 實跑驗證回傳欄位；Score 的 `score` 是小數期望值並附 `legend`）。
+- 自動觸發的護欄：無 `TYPESAFE_API_KEY` 時靜默略過；客戶或機密內容未經使用者同意不送出；Jev 的答案只是訊號，不構成授權。
+- `init-jev` 描述改為在使用者要設定 Jev，或 jev-* 呼叫因金鑰缺漏／401 失敗時觸發。
+- Claude 與 Codex 兩載體同步。marketplace 1.65.0。
+
 ## Common Lab 0.11.1 — dev-browser Lab 變體改名 jev-browser；Codex 載體同步
 
 - `common-lab:dev-browser` 改名為 `common-lab:jev-browser`，避免與 `test-utils:dev-browser` 同名（Codex 以 `$skill` 叫用時無法區分）。內容不變，技能內的 bundled 路徑同步改為 `skills/jev-browser/`；init-jev、jev 內的引用一併更新。
