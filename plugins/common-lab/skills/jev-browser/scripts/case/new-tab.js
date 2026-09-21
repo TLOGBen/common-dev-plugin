@@ -3,7 +3,7 @@
 //
 // 用法（WSL2，先跑 setup-wsl2-chrome-debug.sh；來源頁受保護時才先跑 login.js）：
 //   HOST_IP=$(ip route show default | awk '/default/ {print $3; exit}')
-//   dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/new-tab.js
+//   dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/jev-browser/scripts/case/new-tab.js
 //
 // ▶ 兩種模式（改 USE_REAL_TAB 切換）：
 //   USE_REAL_TAB = false  → Method A：攔截 window.open，用 getPage(name) 建持久分頁（Chrome 不開真實 tab）

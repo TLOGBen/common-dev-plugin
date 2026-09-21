@@ -1,7 +1,7 @@
 # SPA Login + Basic Debug — Golden Template
 
 > **🔗 現成腳本**：`scripts/case/login.js`（帳號直填模式）
-> 跑：`dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/login.js`
+> 跑：先依 `SKILL.md` 的 Codex bundled-path resolution 設定 `$DevBrowserSkillDir`，再執行 `dev-browser --connect http://127.0.0.1:9222 run "$DevBrowserSkillDir\scripts\case\login.js"`。
 > 換帳號：改檔頭 `USER_ID`。其他變化（自訂下拉/角色卡登入 / 快速登入面板）見下方內嵌腳本。
 
 ---

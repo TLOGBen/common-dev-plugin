@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.11.1 — dev-browser Lab 變體改名 jev-browser；Codex 載體同步
+
+- `common-lab:dev-browser` 改名為 `common-lab:jev-browser`，避免與 `test-utils:dev-browser` 同名（Codex 以 `$skill` 叫用時無法區分）。內容不變，技能內的 bundled 路徑同步改為 `skills/jev-browser/`；init-jev、jev 內的引用一併更新。
+- Claude 與 Codex 兩載體同步：Codex 的 jev-browser 以既有 `test-utils` Codex 版 dev-browser 為底（沿用 `$DevBrowserSkillDir`／`DEV_BROWSER_SKILL_DIR` 路徑解析），init-jev、jev 由 transfer 產生後改寫 Claude 專屬的叫用語法；Codex `plugin.json` 的 interface 手動更新。marketplace 1.64.1。
+
 ## Common Lab 0.11.0 — 新增 Jev 三件：init-jev、jev、dev-browser Lab 變體
 
 - 新增 `common-lab:init-jev`：讓 agent 的 shell 取得 `TYPESAFE_API_KEY`（不印出金鑰），用一次最小呼叫驗證；涵蓋 bash/zsh（含 WSL）與 PowerShell 7+（`$PROFILE`、SecretManagement），並提醒送出資料的條款。

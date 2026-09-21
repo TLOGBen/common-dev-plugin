@@ -21,13 +21,22 @@
 
 ## 跑法
 
+路徑變數依 SKILL.md「Codex bundled-path resolution」先設好。
+
 ```bash
-# 1. 產生編號表（連線方式同其他 template；PowerShell 改用 127.0.0.1:9222）
-dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/element-table.js
+# WSL2 / POSIX
+# 1. 產生編號表
+dev-browser --connect http://${HOST_IP}:9333 run "$DEV_BROWSER_SKILL_DIR/scripts/case/element-table.js"
 
 # 2. 請 Jev 挑元素（需要 TYPESAFE_API_KEY）
-node ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/jev-pick.mjs "查詢按鈕"
-node ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/jev-pick.mjs "填寫出發日期的欄位" --top 5
+node "$DEV_BROWSER_SKILL_DIR/scripts/jev-pick.mjs" "查詢按鈕"
+node "$DEV_BROWSER_SKILL_DIR/scripts/jev-pick.mjs" "填寫出發日期的欄位" --top 5
+```
+
+```powershell
+# Windows native（PowerShell）
+dev-browser --connect http://127.0.0.1:9222 run "$DevBrowserSkillDir\scripts\case\element-table.js"
+node "$DevBrowserSkillDir\scripts\jev-pick.mjs" "查詢按鈕"
 ```
 
 輸出範例：

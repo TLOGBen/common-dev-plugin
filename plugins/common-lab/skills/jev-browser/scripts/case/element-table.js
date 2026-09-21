@@ -2,8 +2,8 @@
 // 完整說明：references/case-jev-pick.md
 //
 // 用法（連線與 dev-browser 其他 template 相同）：
-//   PowerShell：dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}\skills\dev-browser\scripts\case\element-table.js
-//   WSL2：      dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/element-table.js
+//   PowerShell：dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}\skills\jev-browser\scripts\case\element-table.js
+//   WSL2：      dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/jev-browser/scripts/case/element-table.js
 //
 // 產出：~/.dev-browser/tmp/elements.json，並在每個元素掛上 data-jev-idx，
 // 之後可用 page.locator('[data-jev-idx="7"]') 直接操作同一個節點。

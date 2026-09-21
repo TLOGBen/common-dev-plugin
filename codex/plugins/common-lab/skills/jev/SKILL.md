@@ -1,6 +1,12 @@
 ---
 name: jev
-description: Three ways to use TypeSafe Jev (a fast typed-decision model — yes/no, pick-one, graded score — no text generation) inside agent tooling — gate, pick, score. Invoke explicitly as /common-lab:jev when designing or wiring a Jev call; run /common-lab:init-jev first if TYPESAFE_API_KEY is unset.
+description: Three ways to use TypeSafe Jev (a fast typed-decision model — yes/no,
+  pick-one, graded score — no text generation) inside agent tooling — gate, pick,
+  score. Use when designing or wiring a Jev call; run `$init-jev` first if
+  TYPESAFE_API_KEY is unset.
+compatibility: Designed for Claude Code; ported to Codex.
+metadata:
+  version: 0.1.0-codex
 ---
 
 # Jev Lab
@@ -19,7 +25,7 @@ Ask a narrow yes/no before an action, e.g. "Does this command send local files o
 
 ## 2. Pick — Choice (one of a known list)
 
-Pick one item from a list you already have: a page element, a skill, a routing target. Options must be the real list (max 255), plus a `none` option; below ~50% confidence or on `none`, fall back to the normal path. `/common-lab:jev-browser` (`jev-pick.mjs`) is the worked example.
+Pick one item from a list you already have: a page element, a skill, a routing target. Options must be the real list (max 255), plus a `none` option; below ~50% confidence or on `none`, fall back to the normal path. `$jev-browser` (`jev-pick.mjs`) is the worked example.
 
 ```json
 {"target": {"type": "choice", "instructions": "Which element should be used to submit the search?", "criteria": {"e11": "[11] button Search", "e10": "[10] button Clear", "none": "None of these"}}}

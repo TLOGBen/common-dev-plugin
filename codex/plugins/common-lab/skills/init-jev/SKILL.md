@@ -1,6 +1,11 @@
 ---
 name: init-jev
-description: Set up TypeSafe Jev access — make TYPESAFE_API_KEY available to the agent's shell without exposing the key, then verify with one cheap call. Invoke explicitly as /common-lab:init-jev before using /common-lab:jev or /common-lab:jev-browser.
+description: Set up TypeSafe Jev access — make TYPESAFE_API_KEY available to the agent's
+  shell without exposing the key, then verify with one cheap call. Use before `$jev`
+  or `$jev-browser`, or when the user asks to set up Jev.
+compatibility: Designed for Claude Code; ported to Codex.
+metadata:
+  version: 0.1.0-codex
 ---
 
 # Init Jev Lab
@@ -20,7 +25,7 @@ Detect the shell first and use the matching column: bash/zsh (Linux, macOS, WSL)
    - PowerShell (`$PROFILE`), 1Password example: `$env:TYPESAFE_API_KEY = op read "op://<vault>/<item>/credential"`
    - PowerShell without a password manager: `Set-Secret TYPESAFE_API_KEY` once (Microsoft.PowerShell.SecretManagement), then `$env:TYPESAFE_API_KEY = Get-Secret TYPESAFE_API_KEY -AsPlainText` in `$PROFILE`. Avoid `[Environment]::SetEnvironmentVariable(..., 'User')`: it stores the key in plain text in the registry.
 
-   Never put the raw key in a startup file, repo, or command the agent runs; if the user must paste it, have them run the command themselves with the `!` prefix. After changing a startup file, the user must open a new terminal (or `source` / `. $PROFILE`) and restart the agent session so it inherits the variable.
+   Never put the raw key in a startup file, repo, or command the agent runs; if the user must paste it, have them run the command themselves in their own terminal. After changing a startup file, the user must open a new terminal (or `source` / `. $PROFILE`) and restart Codex from it so it inherits the variable.
 4. **Verify.** Run one call and report only the HTTP status and latency. `200` means done; `401` means a wrong or revoked key; `402` means billing; `429` means rate limit; `503`/`529` are transient upstream overload — wait a few seconds and retry once before concluding anything.
    - bash/zsh:
      ```bash

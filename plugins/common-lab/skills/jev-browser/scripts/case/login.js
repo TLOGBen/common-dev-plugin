@@ -3,11 +3,11 @@
 //
 // 用法：
 //   PowerShell（Windows native，先跑 setup-chrome-debug.ps1 啟動 Chrome）：
-//     dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}\skills\dev-browser\scripts\case\login.js
+//     dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}\skills\jev-browser\scripts\case\login.js
 //
 //   WSL2（先跑 setup-wsl2-chrome-debug.sh）：
 //     HOST_IP=$(ip route show default | awk '/default/ {print $3; exit}')
-//     dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/login.js
+//     dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/jev-browser/scripts/case/login.js
 //
 // PowerShell：現成 template 用 `run <file>`；臨時多行腳本可依 `dev-browser --help` 使用 here-string pipe。
 //

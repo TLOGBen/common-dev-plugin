@@ -1,12 +1,12 @@
 {
   "name": "common-lab",
-  "version": "0.10.0",
-  "description": "Unified opt-in laboratory: 1 experimental skill for delegation.",
+  "version": "0.11.1",
+  "description": "Unified opt-in laboratory: 4 experimental skills for delegation and TypeSafe Jev (setup, usage patterns, Jev-assisted browser debugging).",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "收納派工的 1 個實驗技能",
-    "longDescription": "整合 Common 的實驗技能，以單一 Common Lab 套件提供派工。正式版與歷史實驗快照維持獨立。",
+    "shortDescription": "派工與 TypeSafe Jev 的 4 個實驗技能",
+    "longDescription": "整合 Common 的實驗技能：派工（delegate），以及 TypeSafe Jev 的設定（init-jev）、三種用法（jev）與用 Jev 挑元素的 jev-browser（以 dev-browser 為底）。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [
@@ -14,7 +14,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "用 Common Lab 的 delegate 把這個有界任務派給便宜模型。"
+      "用 Common Lab 的 delegate 把這個有界任務派給便宜模型。",
+      "用 Common Lab 的 init-jev 設定 TypeSafe Jev 金鑰並驗證。"
     ]
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
@@ -26,6 +27,7 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation"
+    "delegation",
+    "browser"
   ]
 }

@@ -1,22 +1,24 @@
 ---
-name: dev-browser
-description: >
-  Lab variant of test-utils dev-browser that adds TypeSafe Jev element picking: index the visible interactive
-  elements, let Jev pick the target in one Choice call, and read only the candidates instead of the whole DOM.
-  Invoke explicitly as /common-lab:dev-browser; use test-utils dev-browser for normal browser debugging.
-allowed-tools: Bash, WebFetch, Read, Grep, Glob, Edit, AskUserQuestion
+name: jev-browser
+description: Browser debugging with TypeSafe Jev element picking, built on test-utils
+  dev-browser — index the visible interactive elements, let Jev pick the target in one
+  Choice call, and read only the candidates instead of the whole DOM. Use when the user
+  asks for `$jev-browser` or Jev element picking; use `$dev-browser` for normal browser
+  debugging.
 metadata:
-  version: "1.1.2-lab.1"
+  version: 1.1.2-lab.1
   scope: browser-debug-and-review
-  produces_artifact: "false"
+  produces_artifact: 'false'
   priority: primary
+compatibility: Designed for Claude Code; ported to Codex.
+allowed-tools: Bash, WebFetch, Read, Grep, Glob, Edit, AskUserQuestion
 ---
 
-# Dev Browser Lab — Frontend Browser Validation + Jev Element Picking
+# Jev Browser — Frontend Browser Validation + Jev Element Picking
 
-> **Lab 差異**：與 `test-utils:dev-browser` 相同，只多一個情境「找要操作的元素」（Section 3 最後一列）。要在頁面上找元素時，先跑 `element-table.js` 再跑 `jev-pick.mjs`，只讀候選，不要把整份 `snapshotForAI()` 印出來截斷。Jev 的答案是候選不是證據，操作後照樣要驗證。
+> **Lab 差異**：與 `test-utils` 的 `dev-browser` 相同，只多一個情境「找要操作的元素」（Section 3 最後一列）。要在頁面上找元素時，先跑 `element-table.js` 再跑 `jev-pick.mjs`，只讀候選，不要把整份 `snapshotForAI()` 印出來截斷。Jev 的答案是候選不是證據，操作後照樣要驗證。
 
-> Use this for **stateful, interactive diagnosis** against a live browser. Use Playwright for repeatable automation and `gen-e2e-*` when the outcome is a distributable test artifact. ⛔ No guessing — observe facts in the browser.
+> Use this for **stateful, interactive diagnosis** against a live browser. Use `$playwright` for repeatable automation and `gen-e2e-*` when the outcome is a distributable test artifact. ⛔ No guessing — observe facts in the browser.
 
 > Output all reports, diagnostics, and user-facing messages in **繁體中文**.
 
@@ -31,6 +33,15 @@ Step 1: 啟動 Chrome debug 連線（Section 1–2）
 Step 2: 若任務需要登入，再跑 login.js 確認 authenticated state
 Step 3: 執行任務（Section 3 選對應 template）
 ```
+
+## Codex bundled-path resolution（必做）
+
+執行任何 bundled script 前，先從目前讀取的 `SKILL.md` 絕對路徑取得其所在目錄，並設成 shell-native 變數：
+
+- PowerShell：`$DevBrowserSkillDir` 指向本 `SKILL.md` 所在目錄。
+- POSIX / WSL2：`DEV_BROWSER_SKILL_DIR` 指向本 `SKILL.md` 所在目錄。
+
+先確認該目錄同時含有 `SKILL.md` 與 `scripts/`。若無法解析或檔案不存在，停止並回報 `DEV_BROWSER_SKILL_DIR_MISSING`；不得從使用者專案 cwd 猜路徑。
 
 ---
 
@@ -69,7 +80,7 @@ If not running, inform the user:
 **A1 — Native Windows（PowerShell）**：直接連 `127.0.0.1:9222`，不需 portproxy/防火牆。
 
 ```powershell
-pwsh ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-chrome-debug.ps1
+pwsh "$DevBrowserSkillDir\scripts\setup-chrome-debug.ps1"
 ```
 
 | 參數 | 用途 |
@@ -81,7 +92,7 @@ pwsh ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-chrome-debug.ps1
 **A2 — WSL2 連 Windows Chrome**：需 portproxy 跨 WSL2 ↔ Windows。
 
 ```bash
-bash ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-wsl2-chrome-debug.sh
+bash "$DEV_BROWSER_SKILL_DIR/scripts/setup-wsl2-chrome-debug.sh"
 ```
 
 | 參數 | 用途 |
@@ -99,13 +110,13 @@ bash ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-wsl2-chrome-debug.sh
 
 ```powershell
 # A1 Windows PowerShell
-dev-browser --connect http://127.0.0.1:9222 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/login.js
+dev-browser --connect http://127.0.0.1:9222 run "$DevBrowserSkillDir\scripts\case\login.js"
 ```
 
 ```bash
 # A2 WSL2
 HOST_IP=$(ip route show default | awk '/default/ {print $3; exit}')
-dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/case/login.js
+dev-browser --connect http://${HOST_IP}:9333 run "$DEV_BROWSER_SKILL_DIR/scripts/case/login.js"
 ```
 
 > **登入驗證（必檢）**：login.js 跑完後，登入成功的可觀察判準是 console 印出 token 存在的標記（例如 `localStorage.getItem('[your-token-key]')` 非空、或 login.js 輸出 `LOGIN_OK` 之類的明確標記）。
@@ -117,11 +128,11 @@ dev-browser --connect http://${HOST_IP}:9333 run ${CLAUDE_PLUGIN_ROOT}/skills/de
 **收工時務必清掉 debug Chrome**（避免進程殘留 + port 佔用）：
 ```powershell
 # Windows
-pwsh ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-chrome-debug.ps1 -Cleanup
+pwsh "$DevBrowserSkillDir\scripts\setup-chrome-debug.ps1" -Cleanup
 ```
 ```bash
 # WSL2
-bash ${CLAUDE_PLUGIN_ROOT}/skills/dev-browser/scripts/setup-wsl2-chrome-debug.sh --cleanup
+bash "$DEV_BROWSER_SKILL_DIR/scripts/setup-wsl2-chrome-debug.sh" --cleanup
 ```
 
 **Mode B — headless Chromium（Chrome 未開或 portproxy 未設時的備用）**
@@ -152,7 +163,7 @@ EOF
 
 ### 新增情境的標準三件套
 
-跑完不在上表的新流程後，**主動以 `AskUserQuestion` 詢問使用者是否新增情境**。確認後一次完成：
+跑完不在上表的新流程後，**主動以 `request_user_input` 詢問使用者是否新增情境**。確認後一次完成：
 
 1. **Template** — 寫 `scripts/case/<name>.js`（檔頭加反向連結 → reference）
 2. **Reference** — 新增或擴充 `references/case-<name>.md`（頂端加 🔗 指向 template + 跑法 + 參數說明）
@@ -183,4 +194,4 @@ EOF
 | Use `domcontentloaded` on dev servers | `load` can hang on HMR connections |
 | PowerShell：現成 template 用 `run <file>`；臨時多行腳本用 here-string pipe | 目前 CLI 兩者皆支援；以 `dev-browser --help` 的 live guide 為準 |
 | 收工時跑 `setup-chrome-debug.ps1 -Cleanup`（PS）/ `--cleanup`（WSL2） | debug Chrome 用獨立 profile 不會自己關，殘留會佔 9222 port |
-| 跑完新情境流程後，主動以 `AskUserQuestion` 問是否新增「情境 + template」三件套 | 重複手寫腳本浪費時間；單存 .js 沒被 SKILL/Reference 索引等於沒存 |
+| 跑完新情境流程後，主動以 `request_user_input` 問是否新增「情境 + template」三件套 | 重複手寫腳本浪費時間；單存 .js 沒被 SKILL/Reference 索引等於沒存 |
