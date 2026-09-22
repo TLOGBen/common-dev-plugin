@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.16.1 — jever 加上案例庫
+
+- `jever` 新增 `references/examples.md`：本 plugin 已做過並實測的 Jev 整合，依目標類型分八類（agent 自己的停下／提問／路由／問題措辭、context 壓縮取捨、規劃與審議、驗證、戰役與派工、UI 建置、估算、動作與程式碼），每例附實際送出的題目、單次實測結果與用法，最後整理出題經驗（拆開合併題、一個選項一題 Noul、措辭影響、Choice 分散時改問 Noul、該由分類推導的是非題不另問、數量會高估等）。SKILL.md 加一段：出題前先讀這份，套用相符的形狀並在候選中引用。
+- 新增 context 壓縮案例並實測：目標「修好失敗的結帳測試」下，失敗的測試輸出「仍需要」0.85、完整保留 0.82；無關的權限檔 0.06、丟棄 0.95；`npm install` 輸出 0.10、丟棄但信心僅 0.46。以「仍需要」是非題為主、三選一為輔。
+- Claude 與 Codex 兩載體同步。marketplace 1.69.1。
+
 ## Common Lab 0.16.0 — 新增 wayfinder-jever
 
 - 新增 `common-lab:wayfinder-jever` 疊加版，在六個判斷點加上 Jev：grilling 每輪先判斷每題是否查得到（查得到就自己查）、是否會改變設計（不會就不問），剩下的依影響分數排出 Q1 起的提問順序；drain 前判斷票是否其實需要人（只能擋下、不能把 HITL 放行成 AFK）；迷霧或票的精確度；每次決策後掃描開著的票是否超出終點或被推翻；給人看之前的白話檢查；最後一張票關閉時的交接建議。另外把 wayfinder 原本「每張票要用哪個技能處理」（Ecosystem routing）改交給 `suggest-jev`：Notes 已釘選就照 Notes，否則以票的問題、類型、終點與本 session 實際可用的技能跑一次路由，選定後照 wayfinder 原規則寫回 Notes。
