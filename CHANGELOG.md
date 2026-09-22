@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.16.2 — jever 併入 jevify 的調查方法，並明列不適用情境
+
+- 併入 ryana/jevify 的調查結構：先理解目標的用途與成本所在；找判斷點時多看「為了預算縮減涵蓋範圍」「同一段 context 反覆處理」「延後批次處理」；新增「從第一原理重新思考」（直接省錢、更好的結果、新能力三類，並點出只因語意判斷昂貴才存在的設計假設）、「算清楚經濟性」（端到端路徑、關鍵路徑、與更簡單替代方案比較、損益平衡條件）、「設計能證明它沒用的評估」（保留案例、不對稱錯誤成本、措辭敏感度、門檻與退路驗證、go/no-go）；交付改為先給整體評估、依三類分開的排序表、第一原理草圖，並標明廠商說法、實測與推測。
+- 新增「Jev 不適合的情境」一節，逐項寫明原因與替代做法：要產生內容、需要多步推理或往後推想、關鍵事實不在 state 裡、程式能精確判定、精確數字與計算、Jev 是不可逆或高代價決策的唯一依據、有利害關係的一方寫題目或 state、會花資源的數量判斷、目標或選項模糊、低頻決策、已有更簡單的替代方案、下游沒有檢查也沒有退路。各項皆對應本 plugin 實測或公開案例（西洋棋超時、真錢交易觸發停損、授權措辭 6% 變 80%、subagent 數量高估、console.log 缺路徑等）。
+- Claude 與 Codex 兩載體同步。marketplace 1.69.2。
+
 ## Common Lab 0.16.1 — jever 加上案例庫
 
 - `jever` 新增 `references/examples.md`：本 plugin 已做過並實測的 Jev 整合，依目標類型分八類（agent 自己的停下／提問／路由／問題措辭、context 壓縮取捨、規劃與審議、驗證、戰役與派工、UI 建置、估算、動作與程式碼），每例附實際送出的題目、單次實測結果與用法，最後整理出題經驗（拆開合併題、一個選項一題 Noul、措辭影響、Choice 分散時改問 Noul、該由分類推導的是非題不另問、數量會高估等）。SKILL.md 加一段：出題前先讀這份，套用相符的形狀並在候選中引用。

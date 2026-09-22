@@ -1,6 +1,6 @@
 {
   "name": "common-lab",
-  "version": "0.16.1",
+  "version": "0.16.2",
   "description": "Unified opt-in laboratory: 22 experimental skills: delegation, TypeSafe Jev basics (a request router, setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation.",
   "skills": "./skills/",
   "interface": {
