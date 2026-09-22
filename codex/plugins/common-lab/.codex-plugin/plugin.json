@@ -1,12 +1,12 @@
 {
   "name": "common-lab",
-  "version": "0.13.0",
-  "description": "Unified opt-in laboratory: 8 experimental skills for delegation and TypeSafe Jev (setup, gate, pick, score, finding Jev opportunities, Jev-checked goals, Jev-assisted browser debugging).",
+  "version": "0.14.0",
+  "description": "Unified opt-in laboratory: 20 experimental skills: delegation, TypeSafe Jev basics (setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, and cold-estimation.",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "派工與 TypeSafe Jev 的 8 個實驗技能",
-    "longDescription": "整合 Common 的實驗技能：派工（delegate），以及 TypeSafe Jev 的設定（init-jev）、是非閘門（jev-gate）、清單挑選（jev-pick）、分級評分（jev-score）、找出可導入 Jev 之處（jever）、加上 Jev 檢查的目標定義（define-goal-jever），與用 Jev 挑元素的 jev-browser（以 dev-browser 為底）。正式版與歷史實驗快照維持獨立。",
+    "shortDescription": "派工與 TypeSafe Jev 的 20 個實驗技能",
+    "longDescription": "整合 Common 的實驗技能：派工（delegate），以及 TypeSafe Jev 的設定（init-jev）、是非閘門（jev-gate）、清單挑選（jev-pick）、分級評分（jev-score）、找出可導入 Jev 之處（jever）、用 Jev 挑元素的 jev-browser（以 dev-browser 為底）、停下前檢查（none-stop-jever）、提問前檢查（is-truely-need-to-ask-user-jev），以及在 define-goal、strategic-advance、delegate、contract、seal、review、think、ui、show-me、wait-what、cold-estimation 的判斷點加上 Jev 的疊加版（*-jever）。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [

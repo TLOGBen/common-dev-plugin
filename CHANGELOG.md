@@ -2,6 +2,23 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.14.0 — 十個 Jev 疊加版，以及停下前、提問前兩個獨立檢查
+
+- 新增十個 `*-jever` 疊加技能（strategic-advance、contract、seal、delegate、review、think、cold-estimation、ui、show-me、wait-what）。與 define-goal-jever 不同，這十個不複製原技能：原技能帶有大型腳本、bundled agent 或屬於 baransu／analysis-estimation 另一個 plugin，整份複製會斷路徑、變成需同步維護的分支。疊加版的內容是「照原技能原樣執行，在指定判斷點加上 Jev」，原技能更新時自動跟上。每個判斷點都寫明 state 放什麼、題目原文、怎麼讀分數、以及 Jev 不能決定的事；題目固定寫在技能裡，無金鑰或呼叫失敗時照原技能執行，客戶或機密內容未經同意不送出。
+- `strategic-advance-jever`：scribe 彙整前逐則判斷情報與各勝利條件的關聯（全部偏低＝偏離 MOE；有關但未回報結果＝MOP）、固定自檢時的兵力態勢（重裝／輕裝／解編）、重組前的拆分／合併／退役信心、選主攻時各戰線的優先度分數。Jev 在 operator 端呼叫（scribe 不能連網），結果以情報行進入 event packet，永不成為 gating 證據或命令。
+- `contract-jever`：寫作前的重要度分數與拆分檢查、每條驗收條件是否可斷言、Surface Inventory 每列的影響類別建議（封緘層級仍由類別推導，並經使用者確認）。
+- `seal-jever`：派工前以重要度分數決定驗證額度、未被 contract 分類之表面的 finding 分級（只能調高、不能蓋過一手證據）、可執行探測的嚴重度排序，以及每個突變測試執行前檢查它能否改變「完成」判定，或只是 MOP。
+- `delegate-jever`：四個規模面向的 0–2 評分決定路徑、模型家族與起始 effort、監督模式每次巡檢的偏離／重複假設／進展判讀（越界寫入改用程式比對路徑）、失敗分類。
+- `cold-estimation-jever`（中文）：工項困難度（決定先做窄技術覆核的順序）、必要性（抓範圍擴張）、定價後每列人天的依據可信度（決定向定價者追問哪幾列）；分數不得變成人天係數或緩衝。
+- `ui-jever`：建構前以五種常見 AI 設計套路檢查設計計畫、每個區塊對計畫的符合度加套路檢查、元素的版面方式與色彩角色挑選。
+- `review-jever`：每個保留的 finding 加上 Jev 信心評分（證據對所稱後果的支持度 0–3、缺陷／未知／可選改善分類），報告多一節「Jev 信心評分」；與審查自身判斷不一致時取較弱的分類，分數不構成新證據。
+- `think-jever`：對齊時判斷猜測的措辭是否會改變解法形狀、每個押注與整體立場的證據支持度、剩下的選擇是否真屬使用者；呈現時多一節「Jev 信心評分」，計畫檔仍維持五節，低分押注寫進「做法」的承重前提。
+- `show-me-jever`、`wait-what-jever`：輸出前先以 Jev 判斷讀者第一次看能不能懂（0–3）；低於約 2 時，從原技能自己的呈現方式寫出二到四個候選交給 Jev 選，改寫後再檢查一次，取分數高的版本送出，不再迴圈。wait-what-jever 與原版一樣只能手動叫用（Codex 以 `agents/openai.yaml` 的 `allow_implicit_invocation: false` 對應，原始檔在 `codex-metadata/common-lab/wait-what-jever/`）。
+- 新增兩個獨立的簡短技能：`none-stop-jever`（每次要停下或結束這一輪前問 Jev：使用者的需求真的完成了嗎？還有能自己做的事嗎？）與 `is-truely-need-to-ask-user-jev`（每次要問使用者前問 Jev：這真的需要使用者嗎？能不能自己查到？）。使用者的指示、偏好、授權、不可逆動作永遠優先於 Jev。
+- 為避免同一時刻觸發兩次，`jev-pick` 描述拿掉「停下這一輪之前」、`jev-gate` 描述拿掉「向使用者提問之前」的觸發，改由上述兩個專門技能負責；兩者內文的細分題目保留作參考（五選一的下一步、加上清晰度分數的提問檢查）。
+- 各判斷點題目皆已對 API 實跑（各一次，非校準）：情報關聯改用「即使是部分證據」措辭後，相關 0.81–0.84、無關 0.12–0.14；contract 範例三列影響類別全對（0.78–0.87）；delegate 規模評分與模型家族合理；人天依據可信度 1.89 對 0.27；UI 套路區塊符合度 0.23、依計畫區塊 2.25；突變測試「能否改變判定」0.86 對 0.12–0.16；review finding 證據支持度 1.99 對 0.75；可讀性（給非技術讀者）術語版 0.17、白話版 2.55；停下檢查「只跑部分測試」完成度 0.09、「全套通過」0.92；提問檢查「npm 或 pnpm」可自行查到 0.80、「刪除三年資料的表」需問使用者 0.96。三選一的突變用途題與 contract 的「是否擋下封緘」是非題分不開，已改用其他題型。
+- Claude 與 Codex 兩載體同步。marketplace 1.67.0。
+
 ## Common Lab 0.13.0 — 新增 jever、define-goal-jever；jev-pick／jev-gate 加上停下前、提問前檢查
 
 - 新增 `common-lab:jever`：純引導型技能（同 wait-what、show-me 的寫法），開頭即「Use Jev to strengthen anywhere that only needs a judgment — yes/no, choose one, score.」。對當下目標（進行中的工作、prompt、skill、MCP、hook、agent 迴圈）找出藏著的判斷點，依「兩秒內從固定選項挑出答案、挑錯代價低」判斷適不適合，區分「附加 Jev」與「以 Jev 為主架構」（jev-ultrafast 範本），列出社群常見用法，並涵蓋 agent 自己的決策點（停下前、提問前）。只交付排序過的候選、淘汰清單與最小實驗，不改檔、不呼叫 Jev。

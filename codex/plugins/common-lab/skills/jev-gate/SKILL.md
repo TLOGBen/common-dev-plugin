@@ -1,6 +1,6 @@
 ---
 name: jev-gate
-description: Get a fast, calibrated yes/no probability from TypeSafe Jev (Noul) on a piece of text. Use it on your own whenever you face a yes/no judgment that a quick second opinion would settle — is this command destructive, does it leak credentials or files, is it beyond what the user asked, is this line user-facing — right before you ask the user a question, to check whether you could answer it yourself and whether it really needs their decision; and when building gates, guardrails, permission checks, or PreToolUse/hook filters in code. Also triggers on 閘門, 擋下, 放行, 是否危險, 權限檢查, guardrail, gate this.
+description: Get a fast, calibrated yes/no probability from TypeSafe Jev (Noul) on a piece of text. Use it on your own whenever you face a yes/no judgment that a quick second opinion would settle — is this command destructive, does it leak credentials or files, is it beyond what the user asked, is this line user-facing; and when building gates, guardrails, permission checks, or PreToolUse/hook filters in code. Also triggers on 閘門, 擋下, 放行, 是否危險, 權限檢查, guardrail, gate this.
 compatibility: Designed for Claude Code; ported to Codex.
 metadata:
   version: 0.1.0-codex
@@ -24,7 +24,7 @@ The reply's `answers.<id>.noul` is the probability of "yes". Skip silently when 
 
 ## Before asking the user
 
-Before you send the user a question, ask these in one request with the exact draft question plus the facts you already have as the state:
+The ask trigger itself belongs to is-truely-need-to-ask-user-jev, which runs every time; this version adds a clarity score for when the question will be sent. When you use it, ask these in one request with the exact draft question plus the facts you already have as the state:
 
 ```json
 {"answerable_locally": {"type": "noul", "instructions": "Can this question be answered from the repository, logs, or earlier conversation without the user?"},

@@ -1,0 +1,5 @@
+interface:
+  display_name: "Wait What (Jev)"
+  short_description: "Re-explain for the audience, checked by Jev for understandability before sending"
+policy:
+  allow_implicit_invocation: false
