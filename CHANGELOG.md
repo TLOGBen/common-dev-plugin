@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.15.0 — 新增 suggest-jev 路由
+
+- 新增 `common-lab:suggest-jev`：做任何事之前先載入的路由技能。開始時一次請求讓 Jev 建議起始技能（從本 session 的技能清單挑）、之後會用到的技能、流程、完成策略、subagent 數量、模型家族與 effort、難度、影響範圍，轉成一行路由告知使用者後開工；一件事結束、要暫停或停下時交給 `none-stop-jever`；要問使用者時先交給 `is-truely-need-to-ask-user-jev`，真的得問時再以 Jev 檢查問題是否白話、是否講清要使用者做什麼、是否問到卡住的主因，低分就改寫一次。
+- 使用者的指示永遠優先（指定的技能、subagent 上限、工作方式）。實測兩個請求路由正確（hunt 0.92、read 0.99），但 subagent 數量有高估傾向（0.83–1.47），因此預設不派、需分數約 1.5 且信心約 0.6 以上才派，並交給 delegate／delegate-jever。問題檢查以「白話」分得最開（0.06 對 0.62）。
+- `init-jev` 改為預設快取金鑰 30 天（`JEV_KEY_TTL_DAYS`，設 0 即不快取）：新 shell 靜默載入快取，過期則維持未設定、由使用者手動跑 `jev_key_refresh`／`Update-JevKey` 重抓一次，不會每開一個 shell 就跳密碼管理器的解鎖。bash/zsh 快取為僅本人可讀的明文檔（目錄 700、檔案 600，`~/.config/typesafe/`）；PowerShell 為 DPAPI 加密檔（`%APPDATA%\typesafe\`）。兩段程式碼皆以假的 `op` 在暫存目錄實跑：權限、新 shell 載入、31 天後不載入、PowerShell 檔內無明文，皆符合。
+- 「先載入」仰賴模型選用此技能；要保證每個請求都跑需另做 hook，本版未做。Claude 與 Codex 兩載體同步。marketplace 1.68.0。
+
 ## Common Lab 0.14.0 — 十個 Jev 疊加版，以及停下前、提問前兩個獨立檢查
 
 - 新增十個 `*-jever` 疊加技能（strategic-advance、contract、seal、delegate、review、think、cold-estimation、ui、show-me、wait-what）。與 define-goal-jever 不同，這十個不複製原技能：原技能帶有大型腳本、bundled agent 或屬於 baransu／analysis-estimation 另一個 plugin，整份複製會斷路徑、變成需同步維護的分支。疊加版的內容是「照原技能原樣執行，在指定判斷點加上 Jev」，原技能更新時自動跟上。每個判斷點都寫明 state 放什麼、題目原文、怎麼讀分數、以及 Jev 不能決定的事；題目固定寫在技能裡，無金鑰或呼叫失敗時照原技能執行，客戶或機密內容未經同意不送出。
