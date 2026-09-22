@@ -1,6 +1,6 @@
 ---
 name: jev-pick
-description: Pick one option from a known list with TypeSafe Jev (Choice), with a probability for every option. Use it on your own whenever you must choose among enumerable options for a piece of text — which page element to click, which skill or tool fits a request, which category, team, or failure type something belongs to — especially when the list is long enough that reading it all would waste context; and when building routers or classifiers in code. Also triggers on 分類, 路由, 選一個, 挑元素, 該交給誰, route this, classify into, which of these.
+description: Pick one option from a known list with TypeSafe Jev (Choice), with a probability for every option. Use it on your own whenever you must choose among enumerable options for a piece of text — which page element to click, which skill or tool fits a request, which category, team, or failure type something belongs to — especially when the list is long enough that reading it all would waste context; right before you stop or end a turn, to pick between stopping and the ways to keep going; and when building routers or classifiers in code. Also triggers on 分類, 路由, 選一個, 挑元素, 該交給誰, route this, classify into, which of these.
 ---
 
 # Jev Pick
@@ -17,3 +17,18 @@ curl -s https://api.typesafe.ai/v1/systemone -H "Authorization: Bearer $TYPESAFE
 ```
 
 The reply's `answers.target` holds `choice`, `confidence`, and `probabilities`. Skip silently when `TYPESAFE_API_KEY` is unset (/common-lab:init-jev sets it up), and never send client or confidential content unless the user has said TypeSafe is allowed — the text leaves the machine.
+
+## Before stopping a turn
+
+Before you stop, ask this fixed question with a state of facts only — the goal as the user stated it, what was done with its evidence, what is unfinished, and why you want to stop. Keep the options as written; changing them per call lets the wish to stop steer the answer.
+
+```json
+{"next": {"type": "choice", "instructions": "Given the goal, the work done, the unfinished items, and the reason for stopping, what should the agent do next?",
+  "criteria": {"stop_done": "Goal met and verified; stop and report",
+               "continue_check_evidence": "An open point can be answered from existing files, logs, or earlier results; check it and continue",
+               "continue_next_item": "Unfinished items remain that need no user input; continue",
+               "ask_user": "A decision only the user can make (preference, authorization, irreversible action) blocks progress",
+               "stop_blocked": "Blocked by something outside the agent's reach; stop and explain"}}}
+```
+
+Follow a confident answer; below ~50% use your own judgment and say the check was inconclusive. It never overrides the user: if they told you to stop or to ask, do that, and a preference, authorization, or irreversible choice still goes to them whatever Jev says.

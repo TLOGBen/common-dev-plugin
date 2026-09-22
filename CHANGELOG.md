@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.13.0 — 新增 jever、define-goal-jever；jev-pick／jev-gate 加上停下前、提問前檢查
+
+- 新增 `common-lab:jever`：純引導型技能（同 wait-what、show-me 的寫法），開頭即「Use Jev to strengthen anywhere that only needs a judgment — yes/no, choose one, score.」。對當下目標（進行中的工作、prompt、skill、MCP、hook、agent 迴圈）找出藏著的判斷點，依「兩秒內從固定選項挑出答案、挑錯代價低」判斷適不適合，區分「附加 Jev」與「以 Jev 為主架構」（jev-ultrafast 範本），列出社群常見用法，並涵蓋 agent 自己的決策點（停下前、提問前）。只交付排序過的候選、淘汰清單與最小實驗，不改檔、不呼叫 Jev。
+- 新增 `common-lab:define-goal-jever`：以 define-goal 為底，在四個判斷點加上 Jev 第二意見——釘住目標前的品質檢查（五題 Noul 加目標類型 Choice，一次請求）、提問前檢查、與已釘住目標的比對、依目標類型選量化方法。品質檢查已用技能自己的範例實跑：好目標在結果、驗證、門檻、範圍四項為 0.93–0.99，弱目標為 0.06–0.44；好目標的停止條件僅 0.15（範例本身確實沒寫）。無金鑰或呼叫失敗時照 define-goal 原流程。Codex 版以 Codex 的 define-goal（`get_goal`／`create_goal`）為底。
+- `jev-pick` 加「停下這一輪之前」的固定選項檢查，`jev-gate` 加「向使用者提問之前」的檢查（可否自行查到、是否只有使用者能決定、清晰度）；兩者的描述都加上對應觸發時機。選項固定寫在技能裡、state 只放事實，且不能取代使用者的授權。
+- Claude 與 Codex 兩載體同步。marketplace 1.66.0。
+
 ## Common Lab 0.12.0 — jev 拆成 jev-gate、jev-pick、jev-score，改為可自動觸發
 
 - 移除 `common-lab:jev`，依三種模式拆成三個技能：`jev-gate`（Noul 是非機率）、`jev-pick`（Choice 從既有清單挑一個）、`jev-score`（Score 分級評分）。
