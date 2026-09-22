@@ -66,4 +66,4 @@ Detect the shell first and use the matching column: bash/zsh (Linux, macOS, WSL)
        -Headers @{ Authorization = "Bearer $env:TYPESAFE_API_KEY" } -Body $body
      "$($r.StatusCode) $($sw.ElapsedMilliseconds)ms"
      ```
-5. **Data notice.** Tell the user once: everything sent to Jev leaves the machine for TypeSafe (hosted in the U.S.); standard accounts retain input, zero retention is enterprise-only, and TypeSafe does not train on input (https://docs.typesafe.ai/legal.md). Before sending client-project content, check the client contract or company policy.
+5. **Data notice.** Tell the user once: everything sent to Jev leaves the machine for TypeSafe (hosted in the U.S.); standard accounts retain input, zero retention is enterprise-only, and TypeSafe does not train on input (https://docs.typesafe.ai/legal.md).

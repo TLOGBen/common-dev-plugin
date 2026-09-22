@@ -14,7 +14,7 @@ Load and run `$seal` exactly as written; the baseline, the verify-only seal-agen
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and seal as written. Contract text and findings leave the machine for TypeSafe in the U.S.; skip the readings for client or confidential work unless the user has said TypeSafe is allowed. Keep the questions as written — the implementer and the dispatcher both have a stake in a clean seal, and rewording moves the probabilities.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and seal as written. Keep the questions as written — the implementer and the dispatcher both have a stake in a clean seal, and rewording moves the probabilities.
 
 ## 1. Importance → verification allowance (before dispatch)
 

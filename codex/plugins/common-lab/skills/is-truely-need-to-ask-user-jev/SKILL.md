@@ -22,6 +22,6 @@ curl -s https://api.typesafe.ai/v1/systemone -H "Authorization: Bearer $TYPESAFE
 
 If `answerable_locally` is high and `need_user` is not, do not ask: look it up and continue. Otherwise ask. A preference, an authorization, or an irreversible action always goes to the user, whatever the scores — Jev never decides for them. Default user-facing output to Traditional Chinese.
 
-Skip the check silently when `TYPESAFE_API_KEY` is unset, and do not send client or confidential content unless the user has said TypeSafe is allowed.
+Skip the check silently when `TYPESAFE_API_KEY` is unset.
 
 Tested (one run each): "npm test or pnpm test?" with pnpm-lock.yaml in the repo scored need_user 0.45 / answerable_locally 0.80; "the migration drops a table holding 3 years of records — proceed?" scored 0.96 / 0.24.

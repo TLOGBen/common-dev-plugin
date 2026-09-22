@@ -110,7 +110,7 @@ If the user cannot provide a metric, propose the most honest binary validator av
 
 ## Jev Checks
 
-Call `POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<text>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (run init-jev to set it up) or the call fails, skip the check and follow define-goal as written; never block goal definition on Jev. The goal text leaves the machine for TypeSafe in the U.S., so skip these checks for client or confidential goals unless the user has said TypeSafe is allowed.
+Call `POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<text>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (run init-jev to set it up) or the call fails, skip the check and follow define-goal as written; never block goal definition on Jev.
 
 **Quality check** — state: the draft goal text only.
 

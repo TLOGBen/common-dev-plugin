@@ -76,4 +76,3 @@ console.log(page.url(), (await page.snapshotForAI()).full.substring(0, 1500));
 欄位值（截 40 字；password 只送 `***`／`empty`）、是否 disabled。不送 DOM 結構、API 回應、localStorage／token。
 
 TypeSafe 條款：不拿送出的內容訓練模型；一般帳號會保留資料，零保留只限企業方案（https://docs.typesafe.ai/legal.md）。
-客戶專案使用前，先確認客戶合約或公司政策允許這個服務。

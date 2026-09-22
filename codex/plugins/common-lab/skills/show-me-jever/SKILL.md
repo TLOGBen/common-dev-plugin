@@ -32,4 +32,4 @@ Redraw in the chosen view and check `understood` once more; then show whichever 
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, show the view as show-me would. The view leaves the machine for TypeSafe in the U.S.; skip the check for client or confidential content unless the user has said TypeSafe is allowed.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, show the view as show-me would.

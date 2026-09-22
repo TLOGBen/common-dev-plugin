@@ -11,7 +11,7 @@ Load and run `/baransu:contract` exactly as written; its one-page cap, G1–G4 r
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the reading and write the contract as usual. The task text leaves the machine for TypeSafe in the U.S.; skip the readings for client or confidential work unless the user has said TypeSafe is allowed. Keep the questions as written — whoever writes the contract is an interested party, and rewording moves the probabilities.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the reading and write the contract as usual. Keep the questions as written — whoever writes the contract is an interested party, and rewording moves the probabilities.
 
 ## 1. Importance and slicing (before writing)
 

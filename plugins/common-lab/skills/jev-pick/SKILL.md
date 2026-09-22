@@ -16,7 +16,7 @@ curl -s https://api.typesafe.ai/v1/systemone -H "Authorization: Bearer $TYPESAFE
     "criteria": {"e11": "[11] button Search", "e10": "[10] button Clear", "none": "None of these"}}}}'
 ```
 
-The reply's `answers.target` holds `choice`, `confidence`, and `probabilities`. Skip silently when `TYPESAFE_API_KEY` is unset (/common-lab:init-jev sets it up), and never send client or confidential content unless the user has said TypeSafe is allowed — the text leaves the machine.
+The reply's `answers.target` holds `choice`, `confidence`, and `probabilities`. Skip silently when `TYPESAFE_API_KEY` is unset (/common-lab:init-jev sets it up).
 
 ## Before stopping a turn
 

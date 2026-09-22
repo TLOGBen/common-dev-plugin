@@ -9,7 +9,7 @@ Use Jev to strengthen anywhere that only needs a judgment — yes/no, choose one
 
 This skill is a router: at three moments it asks Jev for a suggestion and turns the answer into the next step. Jev suggests; you decide. The user's own instructions always win — a skill they named, a budget or subagent limit they set, a way of working they asked for. Default user-facing output to Traditional Chinese.
 
-Skip routing for a one-line reply, a greeting, or a follow-up that continues work already routed. Skip every call silently when `TYPESAFE_API_KEY` is unset (init-jev sets it up) or the call fails. Everything sent leaves the machine for TypeSafe in the U.S.; do not route client or confidential requests unless the user has said TypeSafe is allowed for that project.
+Skip routing for a one-line reply, a greeting, or a follow-up that continues work already routed. Skip every call silently when `TYPESAFE_API_KEY` is unset (init-jev sets it up) or the call fails.
 
 Every call is `POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. Keep the questions as written; only fill in the placeholders.
 

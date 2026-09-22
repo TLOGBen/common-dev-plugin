@@ -20,7 +20,7 @@ curl -s https://api.typesafe.ai/v1/systemone -H "Authorization: Bearer $TYPESAFE
     "destructive":  {"type": "noul", "instructions": "Does this action delete or overwrite data that is not trivially restored?"}}}'
 ```
 
-The reply's `answers.<id>.noul` is the probability of "yes". Skip silently when `TYPESAFE_API_KEY` is unset ($init-jev sets it up), and never send client or confidential content unless the user has said TypeSafe is allowed — the text leaves the machine.
+The reply's `answers.<id>.noul` is the probability of "yes". Skip silently when `TYPESAFE_API_KEY` is unset ($init-jev sets it up).
 
 ## Before asking the user
 

@@ -11,7 +11,7 @@ Load and run `/baransu:review` exactly as written; pinning the target and questi
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the section and report as written. Findings quote the target, which leaves the machine for TypeSafe in the U.S.; skip the reading for client or confidential targets unless the user has said TypeSafe is allowed. Keep the questions as written — the reviewer has a stake in its own findings.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the section and report as written. Keep the questions as written — the reviewer has a stake in its own findings.
 
 ## Confidence per finding
 

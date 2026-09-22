@@ -9,11 +9,11 @@ Use Jev to strengthen anywhere that only needs a judgment — yes/no, choose one
 
 照原樣載入並執行 `/analysis-estimation:cold-estimation`：開場路線確認、查證、合併、獨立定價 subagent、交付格式全部不變。本疊加版只在三個判斷點加上 Jev，作為主 Agent 的第二意見。Jev 的分數**只決定「該先查哪裡、該追問哪一列」，不直接改人天**：原技能禁止用泛用緩衝代替未知，所以困難度分數絕不能變成加乘係數，依據可信度低也不能自行重估另一套數字。以繁體中文交付。
 
-## 呼叫方式與資料邊界
+## 呼叫方式
 
 `POST https://api.typesafe.ai/v1/systemone`，body 為 `{"model": "jev-latest", "state": "<事實>", "questions": {...}}`，標頭 `Authorization: Bearer $TYPESAFE_API_KEY`。沒有金鑰（用 `/common-lab:init-jev` 設定）或呼叫失敗時略過，照原技能估算。
 
-**初估多半是客戶需求與客戶程式碼。** 送給 Jev 的工項內容會離開本機、送到美國的 TypeSafe。除非使用者明確表示這個專案允許使用 TypeSafe，否則客戶或機密專案一律不呼叫，直接照原技能做。題目照下方原文使用，不要每次改寫：估算的人本身有立場，措辭一變機率就會跟著變。
+題目照下方原文使用，不要每次改寫：估算的人本身有立場，措辭一變機率就會跟著變。
 
 ## 1. 困難度（工項清單形成後、定價前）
 

@@ -11,7 +11,7 @@ Load and run `/common:delegate` exactly as written; its worth-it test, live mode
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the reading and delegate as written. Task text, ledgers, and diffs leave the machine for TypeSafe in the U.S.; skip the readings for client or confidential work unless the user has said TypeSafe is allowed. Keep the questions as written — the lead wants the task to fit a cheap path, and rewording moves the probabilities.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, skip the reading and delegate as written. Keep the questions as written — the lead wants the task to fit a cheap path, and rewording moves the probabilities.
 
 ## 1. Task size → path (before dispatch)
 

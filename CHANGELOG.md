@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.16.0 — 新增 wayfinder-jever
+
+- 新增 `common-lab:wayfinder-jever` 疊加版，在六個判斷點加上 Jev：grilling 每輪先判斷每題是否查得到（查得到就自己查）、是否會改變設計（不會就不問），剩下的依影響分數排出 Q1 起的提問順序；drain 前判斷票是否其實需要人（只能擋下、不能把 HITL 放行成 AFK）；迷霧或票的精確度；每次決策後掃描開著的票是否超出終點或被推翻；給人看之前的白話檢查；最後一張票關閉時的交接建議。另外把 wayfinder 原本「每張票要用哪個技能處理」（Ecosystem routing）改交給 `suggest-jev`：Notes 已釘選就照 Notes，否則以票的問題、類型、終點與本 session 實際可用的技能跑一次路由，選定後照 wayfinder 原規則寫回 Notes。
+- 實測（各一次）：影響分數排序正確（核准流程 2.43、資料庫 2.28、Node 版本 1.07、按鈕顏色 0.01）；「值不值得問」合成一題時把按鈕排在資料庫之前，拆成「查得到嗎」「會改變設計嗎」兩題後分開（Node 版本查得到 0.98、按鈕改變設計 0.15）；「需要人嗎」0.05 對 0.91；精確度 0.51 對 0.20，只用來抓迷霧。
+- 移除所有 Jev 技能中「客戶或機密內容未經同意不送」的資料邊界句（含 cold-estimation-jever 的資料邊界段、jev-browser 參考文件的客戶合約提醒）：預設直接呼叫、不詢問也不從內容判斷，是否在某專案使用由使用者自行決定。保留「無金鑰或呼叫失敗時靜默略過」，以及 init-jev 設定時一次性告知 TypeSafe 的資料條款。Claude 與 Codex 兩載體同步。marketplace 1.69.0。
+
 ## Common Lab 0.15.0 — 新增 suggest-jev 路由
 
 - 新增 `common-lab:suggest-jev`：做任何事之前先載入的路由技能。開始時一次請求讓 Jev 建議起始技能（從本 session 的技能清單挑）、之後會用到的技能、流程、完成策略、subagent 數量、模型家族與 effort、難度、影響範圍，轉成一行路由告知使用者後開工；一件事結束、要暫停或停下時交給 `none-stop-jever`；要問使用者時先交給 `is-truely-need-to-ask-user-jev`，真的得問時再以 Jev 檢查問題是否白話、是否講清要使用者做什麼、是否問到卡住的主因，低分就改寫一次。

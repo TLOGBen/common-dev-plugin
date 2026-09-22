@@ -16,7 +16,7 @@ The scribe cannot call Jev (its Bash set excludes network calls), so every readi
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and run the campaign as written. Campaign packets often carry the live project's content, which leaves the machine for TypeSafe in the U.S.; skip every reading on client or confidential campaigns unless the user has said TypeSafe is allowed for them. Keep the questions as written here — the operator is an interested party, and rewording moves the probabilities.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and run the campaign as written. Keep the questions as written here — the operator is an interested party, and rewording moves the probabilities.
 
 ## 1. Intelligence vs the MOE (at each consolidation)
 

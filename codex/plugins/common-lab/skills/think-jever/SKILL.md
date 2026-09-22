@@ -14,7 +14,7 @@ Load and run `$think` exactly as written; the restatement-first alignment, the s
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the readings and deliberate as written. The restatement and repo facts leave the machine for TypeSafe in the U.S.; skip the readings for client or confidential work unless the user has said TypeSafe is allowed. Keep the questions as written — you are the author of the stance being scored.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the readings and deliberate as written. Keep the questions as written — you are the author of the stance being scored.
 
 ## 1. Guessed phrases (during alignment)
 

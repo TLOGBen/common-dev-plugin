@@ -14,7 +14,7 @@ Load and run `$ui` exactly as written; the design-lead stance, the plan → revi
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and design as written. Markup, copy, and the plan leave the machine for TypeSafe in the U.S.; skip the readings for client or confidential products unless the user has said TypeSafe is allowed. Keep the questions as written — the designer grading their own work is an interested party.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`$init-jev`) or the call fails, skip the reading and design as written. Keep the questions as written — the designer grading their own work is an interested party.
 
 The five default checks, reused below (all Noul):
 

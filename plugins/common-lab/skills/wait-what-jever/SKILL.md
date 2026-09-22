@@ -30,6 +30,6 @@ Rewrite in the chosen shape and check `understood` once more; then send whicheve
 
 ## Calling Jev
 
-`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, send the re-explanation as wait-what would. The explanation leaves the machine for TypeSafe in the U.S.; skip the check for client or confidential content unless the user has said TypeSafe is allowed.
+`POST https://api.typesafe.ai/v1/systemone` with `{"model": "jev-latest", "state": "<facts>", "questions": {...}}` and `Authorization: Bearer $TYPESAFE_API_KEY`. If the key is unset (`/common-lab:init-jev`) or the call fails, send the re-explanation as wait-what would.
 
 Tested (one run each), audience a project manager with no programming background: a jargon-heavy explanation of a stale git lock scored 0.17; a "do not disturb sign" explanation of the same thing scored 2.55; Jev picked `plain_mechanism` for both.
