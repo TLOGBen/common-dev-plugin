@@ -37,6 +37,7 @@ Instead of summarizing a whole context with an LLM, judge each tool output again
 `still_needed` (Noul) "Does this tool output contain information still needed to finish the current goal?" + `keep` (Choice) keep_full / keep_summary / drop.
 Result, goal "fix the failing checkout test": the failing test output → 0.85, keep_full 0.82; an unrelated admin-roles file read → 0.06, drop 0.95; `npm install` noise → 0.10, drop but only 0.46 confident.
 Use: `still_needed` is the reliable signal; treat the Choice as a hint. Drop below ~0.2, keep verbatim above ~0.7, summarize in between. Code decides what is actually removed, and the current goal must be stated precisely — a vague goal makes everything look relevant.
+Caveat: these outputs were short and made up. Real tool outputs are often longer than the 32k state limit, and a public Claude Code compaction plugin that truncated them to fit ended up judging only the tool name and length — no better than a stub that always answered 0. Before trusting these thresholds, check how much of a real output fits and compare against that stub.
 
 ## 3. Planning and deliberation
 
@@ -92,3 +93,7 @@ Result: an import log with 0 failures → 0.84 / 0.81, outcome 0.95; a logging r
 - Score returns an expected level as a decimal plus a `legend`; read the probabilities when two levels split.
 - Counts are over-estimated (subagents ~1 for trivial work); set conservative thresholds for anything that spends resources.
 - Put everything the judgment needs into the state; Jev sees nothing else (the CLI vs server `console.log` case).
+- A Noul near 0.5 (the 0.45, 0.51, 0.55 results above) means "as likely yes as no", not a weak yes; treat that band as undecided.
+- Separate questions do not obey arithmetic identities. The vendor's docs show a Noul and a yes/no Choice on the same ticket disagreeing (0.22 vs 0.01), and a question and its negation as two Nouls summing to 1.19. Don't carry a threshold tuned on a Noul over to a Choice, and don't cross-check one against the other.
+- Avoid double negatives, a property of a property, and a Noul whose "yes" means no; keep `instructions` and `criteria` saying the same thing.
+- Vendor examples write a Noul as a statement ("The message conveys urgency or time-sensitivity") and the API returns the probability it is true; the questions here are written as questions. Whether the two forms score differently is untested.

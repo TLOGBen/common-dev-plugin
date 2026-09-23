@@ -2,6 +2,18 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.16.3 — jever 補上成本結構、評估基準與官方已知限制
+
+- `jever` 依三篇公開文章（darkzodchi 的 Jev 設定指南、LangChain 的 Building a Harness with Jev、huangserva 的實測清單）與 TypeSafe 官方 models／jev-1.13 jaggedness 文件補強：
+  - 開頭寫明只收文字、state 加最長一題上限 32k、英文最準，中文要用中文測。
+  - 「不適用情境」新增：狀態上限砍掉關鍵內容（Claude Code 壓縮插件等同常數回答）、日期比較、state 含不可信內容而答案用於放行、訂閱制下唯一好處是使用者不付的錢（Codex 路由代理反而多花 59%–184%）；「已有更簡單的替代方案」加入現行流程、AI 味檢測淨值為零、與輕量 LLM 準確率和費用打平只贏長尾延遲、LangChain 現成中介層。
+  - 經濟性：按請求計價、state 只收一次，應一次送出所有可能用到的題目（含推測性的）；計算邊際成本由誰付、插入中間層造成的請求變大與快取失效；廠商比較數字的折扣。
+  - 評估：與常數回答及現行流程兩個基準比較、記錄 `model` 與 `usage`、換模型就重跑評估、0.7–0.9 信心區間要有足夠樣本。
+  - 交付：state 由程式篩到只剩必要欄位、證據與原始請求分開、Choice 每步重建選項並加 `none`、門檻起點（破壞性約 0.9、唯讀約 0.5）、題目與門檻放同一檔；路由要說明是每個 run 一次還是每步；LangChain 的 AutoModeMiddleware 直接擋，上線前先量誤擋率。
+- `examples.md`：compaction 案例加上真實輸出可能超過上限的警告；出題經驗新增 Noul 0.5 代表「無法判斷」、分開的題目不符合算術恆等式（官方例：Noul 0.22 對 Choice 0.01、正反兩題相加 1.19）、避免雙重否定與指令／判準矛盾、陳述句與問句寫法的差異尚未測試。
+- OpenRouter 通道未加入 `init-jev`：OpenRouter 模型清單與 TypeSafe 文件都查不到，無法確認呼叫方式。
+- Claude 與 Codex 兩載體同步。marketplace 1.69.3。
+
 ## Common Lab 0.16.2 — jever 併入 jevify 的調查方法，並明列不適用情境
 
 - 併入 ryana/jevify 的調查結構：先理解目標的用途與成本所在；找判斷點時多看「為了預算縮減涵蓋範圍」「同一段 context 反覆處理」「延後批次處理」；新增「從第一原理重新思考」（直接省錢、更好的結果、新能力三類，並點出只因語意判斷昂貴才存在的設計假設）、「算清楚經濟性」（端到端路徑、關鍵路徑、與更簡單替代方案比較、損益平衡條件）、「設計能證明它沒用的評估」（保留案例、不對稱錯誤成本、措辭敏感度、門檻與退路驗證、go/no-go）；交付改為先給整體評估、依三類分開的排序表、第一原理草圖，並標明廠商說法、實測與推測。
