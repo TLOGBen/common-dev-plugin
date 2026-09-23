@@ -18,11 +18,11 @@ Real integrations built and tested in this plugin, grouped by the kind of target
 
 **Stop check** (none-stop-jever). Before ending a turn. State: the request in the user's words, what was done with evidence, what is unfinished, why stopping.
 `request_done` (Noul) "Has the user's request been fully done, with evidence that it works?" + `can_continue_alone` (Noul) "Is there remaining work toward the request that the agent can do now without the user?"
-Result: "fixed the test, full suite not run" → 0.09 / 0.94; "full suite passed" → 0.92 / 0.06. Use: not done and can continue → keep working.
+Result: "fixed the test, full suite not run" → 0.09 / 0.94; "full suite passed" → 0.92 / 0.06. Use: not done and can continue → keep working. Added from a field report (untested as worded): `repeats_failed` (Noul) "Does the planned next step repeat an approach that already failed, without any new information that would change the result?" — continuing often only restated known facts; when high, the next step must change approach.
 
 **Ask check** (is-truely-need-to-ask-user-jev). Before asking the user. State: the draft question plus known facts.
 `need_user` (Noul) + `answerable_locally` (Noul).
-Result: "npm or pnpm?" with pnpm-lock.yaml present → 0.45 / 0.80; "drop a table with 3 years of records?" → 0.96 / 0.24. Use: answerable and not user-only → look it up instead.
+Result: "npm or pnpm?" with pnpm-lock.yaml present → 0.45 / 0.80; "drop a table with 3 years of records?" → 0.96 / 0.24. Use: answerable and not user-only → look it up instead. Added from a field report (untested as worded): `agent_can_do` + `tried_and_blocked` (Noul each), with attempts so far as a separate state field — asking the user to start a local service had scored 0.09 on an ad-hoc "proven it cannot be done automatically?", and the agent could start it.
 
 **Question wording** (suggest-jev). When a question must go to the user.
 `plain`, `actionable`, `main_blocker` (Noul each).

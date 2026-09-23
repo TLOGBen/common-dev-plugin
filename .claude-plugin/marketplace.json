@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.69.3"
+    "version": "1.69.4"
   },
   "plugins": [
     {
@@ -38,7 +38,7 @@
       "source": "./plugins/common-lab",
       "description": "Common Lab (experimental): 22 lab skills — delegate; a Jev request router (suggest-jev), TypeSafe Jev setup (init-jev), yes/no gate (jev-gate), list pick (jev-pick), rubric score (jev-score), Jev opportunity finder (jever), jev-browser (dev-browser with Jev element picking), a stop check (none-stop-jever), an ask-the-user check (is-truely-need-to-ask-user-jev), and Jev overlays that add Jev readings to define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation (*-jever) — plus 1 bundled agent (executor). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu 5.5.0. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0 and the Lab strategic-advance variant in 0.10.0; use analysis-estimation:cold-estimation, common:define-goal, common:better-prompts and common:strategic-advance. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.16.3",
+      "version": "0.16.4",
       "defaultEnabled": true
     },
     {

@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.16.4 — 依 Codex 實測補強求助檢查與停止檢查
+
+- `is-truely-need-to-ask-user-jev`：新增 `agent_can_do`（agent 能否自己做）與 `tried_and_blocked`（是否真的試過而受阻）兩題，涵蓋「請使用者代為動手」（例如啟動服務），state 另列已嘗試的做法與結果；有外部副作用的動作一律照問。來源是 Codex 實測中臨場自編題目得到 0.09 的案例，現改為固定題目；新題目的措辭尚未實測。
+- `none-stop-jever`：新增 `repeats_failed`；在「未完成、可自行繼續」時若下一步在重複失敗做法，必須換做法，否則照實說明卡在哪裡。state 另列失敗做法與預定下一步。措辭尚未實測。
+- `strategic-advance-jever`：寫明 `ev_*` 只判斷「是否相關」而非「是否涵蓋」，須與 `outcome` 一起讀，涵蓋範圍由操作者自行判斷；Tested 補上流程證據被高估的實測案例。
+- 兩個 agent 自身檢查在金鑰未設定時改為指向 `init-jev`，與其他 Jev 技能一致；`examples.md` 同步補註。
+- Claude 與 Codex 兩載體同步。marketplace 1.69.4。
+
 ## Common Lab 0.16.3 — jever 補上成本結構、評估基準與官方已知限制
 
 - `jever` 依三篇公開文章（darkzodchi 的 Jev 設定指南、LangChain 的 Building a Harness with Jev、huangserva 的實測清單）與 TypeSafe 官方 models／jev-1.13 jaggedness 文件補強：
