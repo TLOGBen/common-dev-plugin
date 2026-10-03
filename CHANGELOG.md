@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.17.0 — 新增第一個 Claude Code mod：recall
+
+- 新增 `recall` mod（`hooks/` 的 function hooks 模組，Claude Code 2.1.287 起支援）：在輸入框打 `@@關鍵字`，prompt 上方的 band 即時列出符合的過去對話（Claude Code 終端機、桌面 Code 分頁、Cowork、SSH），點選或按數字即插入 `@@chat:<id>`；直接送出未選定的 `@@關鍵字` 時自動取最符合的一段。送出時把該段對話的標題、時間、當時問過的句子、最後一則回答節錄與原始 jsonl 路徑附成 context，畫面上只留 `〔回想：標題〕`。
+- `/recall` 開啟 pane：上方以 Raster 色塊畫出各專案最近 120 天的「記憶地層」，選中的對話所在日期以藍色標出；下方為最近對話清單與預覽，可插入輸入框。
+- 索引由 node 掃描 `~/.claude/projects`，依檔案大小與修改時間快取在 `~/.claude/recall-index.json`；略過 SDK 驅動的 session（例如自動 security review）。新增 userConfig `recallExtraRoots`（分號分隔）可多掃 WSL 或其他機器同步來的資料夾。
+- 狀態合約在 `types/index.d.ts`（`common-lab.recall*`）；`claude plugin validate`、`claude plugin test`（6 項，含終端機與桌面兩種 surface、參數傳遞）與 `tsc` 皆通過。尚未在多數人的實際 session 中長期使用，Raster 與點選插入的實際呈現以實機為準。
+- mod 為 Claude Code 專屬，Codex 載體不變。marketplace 1.70.0。
+
 ## Common Lab 0.16.4 — 依 Codex 實測補強求助檢查與停止檢查
 
 - `is-truely-need-to-ask-user-jev`：新增 `agent_can_do`（agent 能否自己做）與 `tried_and_blocked`（是否真的試過而受阻）兩題，涵蓋「請使用者代為動手」（例如啟動服務），state 另列已嘗試的做法與結果；有外部副作用的動作一律照問。來源是 Codex 實測中臨場自編題目得到 0.09 的案例，現改為固定題目；新題目的措辭尚未實測。
