@@ -105,7 +105,8 @@ async function scan(file, dir) {
     if (e) sessions.push({ ...e, size: st.size, mtimeMs: st.mtimeMs })
   }
   sessions.sort((a, b) => (b.last || '').localeCompare(a.last || ''))
-  fs.writeFileSync(OUT, JSON.stringify({ builtAt: Date.now(), sessions }))
+  // Same contents as the transcripts it reads, so the same owner-only reach
+  fs.writeFileSync(OUT, JSON.stringify({ builtAt: Date.now(), sessions }), { mode: 0o600 })
   process.stdout.write(OUT)
 })()
 `

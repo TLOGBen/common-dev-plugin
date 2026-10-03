@@ -59,13 +59,16 @@ test('a prompt without @@ is sent untouched', async ($, on) => {
   expect(seen).toBe('幫我看一下 log')
 })
 
-test('extra roots from the settings reach the indexer', { options: { recallExtraRoots: 'D:/a ; //wsl/b' } }, async ($, on) => {
+test('the indexer runs from home with the extra roots from the settings', { options: { recallExtraRoots: 'D:/a ; //wsl/b' } }, async ($, on) => {
   engine(on)
+  mock.env(on, { USERPROFILE: 'C:/Users/me' })
   let argv: readonly string[] = []
+  let cwd: string | undefined
   let ran = () => {}
   const indexed = new Promise<void>(resolve => (ran = resolve))
   on('process.run', (_$, e) => {
     argv = e.argv
+    cwd = e.init?.cwd
     ran()
     return { value: { exitCode: 1, stdout: '', stderr: 'stub', isStdoutTruncated: false, isStderrTruncated: false } }
   })
@@ -73,4 +76,5 @@ test('extra roots from the settings reach the indexer', { options: { recallExtra
   await prompt.edit(type('@@', 'x'))
   await indexed
   expect(argv).toEqual(['node', '-', 'D:/a', '//wsl/b'])
+  expect(cwd).toBe('C:/Users/me')
 })
