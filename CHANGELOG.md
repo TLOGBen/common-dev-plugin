@@ -2,6 +2,17 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.1.0 — 新 plugin：把 mod 從 common-lab 獨立出來，加入 side
+
+- 新增 `common-mod` plugin，專放 Claude Code mod（function hooks，在 CLI 與桌面 Code 分頁裡畫 UI）。一個 plugin 只能有一個 hooks 入口：`hooks/register.ts` 註冊共用事件（`session.start` 註冊指令、`/clear`／`/resume` 歸零），各 mod 在 `hooks/recall/`、`hooks/side/` 掛自己的事件；`$` 不跨檔傳遞，子模組只交出指令規格等純資料。Claude 專屬，Codex 載體沒有對應版本。
+- **recall**（從 common-lab 0.17.1 搬來，狀態改掛 `common-mod.*`，userConfig `recallExtraRoots` 一起搬）新增三項：附上的過去對話總長受 24,000 字上限約束，超過時截短並註明，空間不足 600 字的整段不附上、標記為〔回想（未附上）：…〕並在狀態列說明；`/clear`、`/resume` 會清掉搜尋字與選中的對話；非全螢幕版面 `/recall` 改開 30 列對話框，引擎放不下（`isPlaced: false`）時立即收回並說明。索引改為第一次打 `@@` 或開 `/recall` 時才建立，session 啟動時不再掃描。
+- **side**：`/side [問題]` 在主對話旁開側聊面板，用 `$.model.fork` 以主線脈絡回答（不用工具、不寫進主對話、關掉即清空），可連續追問並「帶回主對話」。回覆上滑鼠停留會出現「看不懂」（照 wait-what 的方式重講那則回覆，不推進主線）與「畫給我看」（純文字示意圖，正式圖解仍用 `/common:show-me`），鍵盤用 `/side ?`、`/side 畫` 對最後一則回覆做同樣的事。手機上 `/side` 會提示改用 `/btw`。
+- 20 項 `claude plugin test`（終端機與桌面兩種 surface、長度上限、歸零、對話框、按鈕行為）、`claude plugin validate`、`tsc` 通過。滑鼠停留顯示按鈕的效果與實際畫面以實機為準。
+
+## Common Lab 0.18.0 — recall 移到 common-mod
+
+- recall mod 連同 `hooks/`、`types/`、userConfig 移到新的 `common-mod` plugin；common-lab 回到只放實驗性 skill。已裝 common-lab 0.17.x 的使用者請另外安裝或啟用 `common-mod`。marketplace 1.71.0。
+
 ## Common Lab 0.17.1 — recall 依推送後安全審查修正
 
 - 索引器改以使用者家目錄為工作目錄執行 `node`：Windows 會先在工作目錄找執行檔，原本在不可信的 repo 開 session 時，repo 內的 `node.exe` 可能在 session 啟動時被執行。找不到家目錄時略過索引並提示。

@@ -1,0 +1,28 @@
+{
+  "name": "common-mod",
+  "displayName": "Common Mod",
+  "version": "0.1.0",
+  "description": "Claude Code mods (function hooks that draw inside the CLI and the desktop Code tab): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it, with 看不懂 (re-explain a reply) and 畫給我看 (a plain-text diagram of a reply) on hover.",
+  "author": {
+    "name": "ben.tsai",
+    "email": "vakarve@csie.io"
+  },
+  "repository": "https://github.com/TLOGBen/common-dev-plugin",
+  "license": "MIT",
+  "keywords": [
+    "mod",
+    "hooks",
+    "recall",
+    "side-chat"
+  ],
+  "types": "./types/index.d.ts",
+  "userConfig": {
+    "recallExtraRoots": {
+      "type": "string",
+      "title": "recall：其他對話紀錄資料夾",
+      "description": "除了 ~/.claude/projects 之外要一起搜尋的資料夾，用分號分隔，例如 WSL 的 \\\\wsl.localhost\\Ubuntu\\home\\<you>\\.claude\\projects",
+      "default": ""
+    }
+  },
+  "defaultEnabled": true
+}

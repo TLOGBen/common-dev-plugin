@@ -22,6 +22,7 @@
 /plugin install linkstart@common-dev
 /plugin install common@common-dev
 /plugin install common-lab@common-dev   # 實驗版
+/plugin install common-mod@common-dev   # Claude Code mod（Claude 專屬）
 ```
 
 ### Codex
@@ -53,6 +54,7 @@ codex plugin add linkstart@common-dev
 |--------|:------:|:--------:|--------|
 | [`common`](#common--通用工具) | 12 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
 | `common-lab` | 1 | 🧪 自行安裝 | 仍在實驗的技能：delegate 派工 |
+| `common-mod` | 0（mod） | ✅ 預設啟用 | Claude Code 專屬的 mod：`@@` 叫回過去的對話（recall）、`/side` 側聊面板，回覆上的「看不懂」「畫給我看」；Codex 沒有對應版本 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
 | [`analysis-estimation`](#analysis-estimation--分析與評估) | 5 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
 | [`linkstart`](#linkstart--htmlapp-回連-origin-session-preview) | 1 | ✅ 預設啟用 | 用單一入口把 agent 產出的互動 HTML／localhost App 接回產出它的同一條 Claude Code session 或 Codex thread |

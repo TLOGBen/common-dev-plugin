@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.17.1",
-  "description": "Unified opt-in laboratory: 22 experimental skills: delegation, TypeSafe Jev basics (a request router, setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation. Plus one Claude Code mod: recall (type @@ to pull a past conversation into the prompt).",
+  "version": "0.18.0",
+  "description": "Unified opt-in laboratory: 22 experimental skills: delegation, TypeSafe Jev basics (a request router, setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation.",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
@@ -13,17 +13,7 @@
     "experimental",
     "skills",
     "delegation",
-    "browser",
-    "mod"
+    "browser"
   ],
-  "types": "./types/index.d.ts",
-  "userConfig": {
-    "recallExtraRoots": {
-      "type": "string",
-      "title": "recall：其他對話紀錄資料夾",
-      "description": "除了 ~/.claude/projects 之外要一起搜尋的資料夾，用分號分隔，例如 WSL 的 \\\\wsl.localhost\\Ubuntu\\home\\<you>\\.claude\\projects",
-      "default": ""
-    }
-  },
   "defaultEnabled": true
 }

@@ -1,13 +1,13 @@
 import { atom, read, update } from 'claude-code'
-import type { EngineInterface, Register } from 'claude-code'
+import type { EngineInterface, On, PluginOptions } from 'claude-code'
 
-import type { RecallSession, RecallSource } from '../types'
+import type { RecallSession, RecallSource } from '../../types'
 import { INDEXER } from './indexer'
 
 const PANE = 'recall'
-const query = atom({ plugin: 'common-lab', key: 'recallQuery' } as const, null)
-const picked = atom({ plugin: 'common-lab', key: 'recallPicked' } as const, null)
-const builtAt = atom({ plugin: 'common-lab', key: 'recallBuiltAt' } as const, 0)
+const query = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
+const picked = atom({ plugin: 'common-mod', key: 'recallPicked' } as const, null)
+const builtAt = atom({ plugin: 'common-mod', key: 'recallBuiltAt' } as const, 0)
 
 // Color only ever encodes a project; every word stays in the terminal's own
 // foreground so the light theme reads as well as the dark one.
@@ -26,6 +26,11 @@ const STRATA_DAYS = 120
 const STRATA_ROWS = 6
 const BAND_ROWS = 4
 const RESCAN_MS = 5 * 60 * 1000
+const DIALOG_ROWS = 30
+// What one prompt may carry of past conversations, after whatever context it
+// already has: a session that would push past it is cut, or dropped and said so.
+const CONTEXT_BUDGET = 24_000
+const CONTEXT_MIN_BLOCK = 600
 
 // The token being typed: `@@` then anything up to the caret; `@@chat:<id>`
 // is a token already resolved to one session.
@@ -37,6 +42,9 @@ let sessions: RecallSession[] = []
 let hueOf = new Map<string, string>()
 let scanning: Promise<void> | null = null
 let extraRoots: string[] = []
+// Whether the surface docks a pane beside the transcript; null until a
+// drawing or a command says, and until then a dialog is the safe shape.
+let isDocked: boolean | null = null
 
 const short = (s: RecallSession) => s.id.slice(0, 8)
 const byShort = (id: string) => sessions.find(s => short(s) === id)
@@ -188,6 +196,38 @@ function contextFor(s: RecallSession) {
     .join('\n')
 }
 
+// Docked beside the transcript where the layout allows it, a focused dialog
+// elsewhere; an open the engine leaves waiting is withdrawn so no later
+// resize seats it by surprise.
+async function openPane($: EngineInterface): Promise<string | null> {
+  const opened = await $.ui.open({
+    id: PANE,
+    title: '回想',
+    focus: true,
+    closeOnEscape: true,
+    ...(isDocked === true ? {} : { rows: DIALOG_ROWS }),
+  })
+  if (opened.isPlaced) return null
+  await $.ui.close({ id: PANE })
+  return '終端機太窄，放不下回想面板；把視窗拉寬一點再試。'
+}
+
+// Each attached session's block, cut to what is left of the budget; a block
+// with too little room is dropped rather than sent as a stub.
+function fitted(blocks: string[], used: number) {
+  let room = CONTEXT_BUDGET - used
+  return blocks.map(block => {
+    if (block.length <= room) {
+      room -= block.length
+      return block
+    }
+    if (room < CONTEXT_MIN_BLOCK) return null
+    const cut = `${block.slice(0, room - 60)}\n…（超過長度上限，已截斷；完整內容請讀原始紀錄）`
+    room = 0
+    return cut
+  })
+}
+
 // Little-endian u32 triplets [codePoint, fg, bg], base64 — the Raster's cells.
 function cells(grid: [number, number, number][]) {
   const bytes = new Uint8Array(grid.length * 12)
@@ -214,7 +254,13 @@ const GLYPH = [0x20, 0x2591, 0x2592, 0x2593, 0x2588] // ' ░▒▓█'
 const glyph = (n: number) => GLYPH[level(n)] ?? 0x20
 const level = (n: number) => (n === 0 ? 0 : n === 1 ? 1 : n <= 3 ? 2 : n <= 7 ? 3 : 4)
 
-export const register: Register = (on, options) => {
+// Registered by the hooks module's entry, which owns the shared session.start.
+export const RECALL_COMMAND = {
+  name: 'recall',
+  description: '瀏覽過去的對話：記憶地層與預覽',
+}
+
+export function registerRecall(on: On, options: PluginOptions) {
   // Folders holding more `projects/<dir>/<session>.jsonl` trees, `;`-separated:
   // a WSL home's `.claude/projects`, a laptop's synced copy.
   extraRoots = String(options.recallExtraRoots ?? '')
@@ -222,21 +268,14 @@ export const register: Register = (on, options) => {
     .map(p => p.trim())
     .filter(Boolean)
 
-  on('session.start', async ($, e, next) => {
-    await $.command.register({
-      name: 'recall',
-      description: '瀏覽過去的對話：記憶地層與預覽',
-    })
-    void scan($)
+  on('command.run', { command: 'recall' }, async ($, e) => {
+    isDocked = e.presentation.isFullscreen
+    if ((await read($, builtAt)) === 0) void scan($)
+    const why = await openPane($)
 
-    return next(e)
+    return { text: why ?? '回想面板已開啟。' }
   })
 
-  on('command.run', { command: 'recall' }, async $ => {
-    await $.ui.open({ id: PANE, title: '回想', focus: true, closeOnEscape: true })
-
-    return { text: '回想面板已開啟。' }
-  })
 
   on('prompt.edit', async ($, e, next) => {
     const box = await next(e)
@@ -256,24 +295,35 @@ export const register: Register = (on, options) => {
     if (e.text.startsWith('/') || !e.text.includes('@@')) return next(e)
 
     const attached: RecallSession[] = []
-    const text = e.text.replace(ANY, (whole, ref: string) => {
+    e.text.replace(ANY, (whole, ref: string) => {
       const s = ref.startsWith('chat:') ? byShort(ref.slice(5)) : search(ref)[0]?.session
-      if (!s) return whole
-      if (!attached.includes(s)) attached.push(s)
-      return `〔回想：${s.title}〕`
+      if (s && !attached.includes(s)) attached.push(s)
+      return whole
     })
     if (attached.length === 0) return next(e)
 
-    await update($, query, () => null)
-    $.ui.toast(`已附上 ${attached.length} 段過去的對話`)
+    const used = (e.context ?? []).reduce((sum, block) => sum + block.length, 0)
+    const blocks = fitted(attached.map(contextFor), used)
+    const dropped = new Set(attached.filter((_, i) => blocks[i] === null))
+    const text = e.text.replace(ANY, (whole, ref: string) => {
+      const s = ref.startsWith('chat:') ? byShort(ref.slice(5)) : search(ref)[0]?.session
+      if (!s) return whole
+      return dropped.has(s) ? `〔回想（未附上）：${s.title}〕` : `〔回想：${s.title}〕`
+    })
 
-    return next({ ...e, text, context: [...(e.context ?? []), ...attached.map(contextFor)] })
+    await update($, query, () => null)
+    const sent = attached.length - dropped.size
+    if (sent > 0) $.ui.toast(`已附上 ${sent} 段過去的對話`)
+    if (dropped.size > 0) $.ui.status(`回想：${dropped.size} 段超過長度上限，沒有附上`)
+
+    return next({ ...e, text, context: [...(e.context ?? []), ...blocks.filter((b): b is string => b !== null)] })
   })
 
   // The band: live results while `@@` is being typed, nothing otherwise.
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     const q = await read($, query)
     if (q === null || e.props.hasSurvey) return next(e)
+    isDocked = e.viewport?.isFullscreen ?? isDocked
 
     const { Box, Text, Button } = $.ui.resolve(e)
     const ready = (await read($, builtAt)) > 0
@@ -297,7 +347,7 @@ export const register: Register = (on, options) => {
               plain
               dimColor
               label="地層與預覽"
-              onPress={() => $.ui.open({ id: PANE, title: '回想', focus: true, closeOnEscape: true })}
+              onPress={() => void openPane($).then(why => why && $.ui.toast(why))}
             />
           </Box>
         </Box>
