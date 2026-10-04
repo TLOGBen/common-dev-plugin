@@ -155,9 +155,10 @@ export function registerSide(on: On) {
   let isDocked = true
 
   on('command.run', { command: 'side' }, async ($, e) => {
-    // The phone app has no field to type into; /btw already covers it there
-    if ((await $.session.surface()) === 'mobile') {
-      return { text: '手機上請直接用 /btw。' }
+    // From the phone or web remote the pane has no field to type into; /btw
+    // already covers it there.
+    if (e.origin.kind === 'bridge') {
+      return { text: '手機或遠端操作時請直接用 /btw。' }
     }
     isDocked = e.presentation.isFullscreen
 

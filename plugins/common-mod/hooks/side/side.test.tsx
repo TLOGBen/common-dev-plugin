@@ -84,6 +84,23 @@ test('a follow-up carries the earlier side exchange', async ($, on) => {
   expect(prompts[1]).toContain('問題：第二題')
 })
 
+test('/side from the phone or web remote points to /btw instead of a pane', async ($, on) => {
+  let opened = false
+  on('ui.open', () => {
+    opened = true
+    return { value: { isPlaced: true } } as never
+  })
+  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
+  const answer = await kit.command.run({
+    command: 'side',
+    args: '這是什麼',
+    origin: { kind: 'bridge' },
+    presentation: { isFullscreen: true, columns: 200 },
+  })
+  expect(answer.text).toBe('手機或遠端操作時請直接用 /btw。')
+  expect(opened).toBe(false)
+})
+
 test('看不懂 re-pitches that reply as quoted data, without tools', async ($, on) => {
   const prompts = engine(on)
   const ui = await mount($, {

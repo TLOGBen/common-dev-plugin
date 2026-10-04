@@ -6,8 +6,13 @@ All notable changes to this marketplace and its plugins. Plugin versions are ind
 
 - 新增 `common-mod` plugin，專放 Claude Code mod（function hooks，在 CLI 與桌面 Code 分頁裡畫 UI）。一個 plugin 只能有一個 hooks 入口：`hooks/register.ts` 註冊共用事件（`session.start` 註冊指令、`/clear`／`/resume` 歸零），各 mod 在 `hooks/recall/`、`hooks/side/` 掛自己的事件；`$` 不跨檔傳遞，子模組只交出指令規格等純資料。Claude 專屬，Codex 載體沒有對應版本。
 - **recall**（從 common-lab 0.17.1 搬來，狀態改掛 `common-mod.*`，userConfig `recallExtraRoots` 一起搬）新增三項：附上的過去對話總長受 24,000 字上限約束，超過時截短並註明，空間不足 600 字的整段不附上、標記為〔回想（未附上）：…〕並在狀態列說明；`/clear`、`/resume` 會清掉搜尋字與選中的對話；非全螢幕版面 `/recall` 改開 30 列對話框，引擎放不下（`isPlaced: false`）時立即收回並說明。索引改為第一次打 `@@` 或開 `/recall` 時才建立，session 啟動時不再掃描。
-- **side**：`/side [問題]` 在主對話旁開側聊面板，用 `$.model.fork` 以主線脈絡回答（不用工具、不寫進主對話、關掉即清空），可連續追問並「帶回主對話」。回覆上滑鼠停留會出現「看不懂」（照 wait-what 的方式重講那則回覆，不推進主線）與「畫給我看」（純文字示意圖，正式圖解仍用 `/common:show-me`），鍵盤用 `/side ?`、`/side 畫` 對最後一則回覆做同樣的事。手機上 `/side` 會提示改用 `/btw`。
-- 20 項 `claude plugin test`（終端機與桌面兩種 surface、長度上限、歸零、對話框、按鈕行為）、`claude plugin validate`、`tsc` 通過。滑鼠停留顯示按鈕的效果與實際畫面以實機為準。
+- **side**：`/side [問題]` 在主對話旁開側聊面板，用 `$.model.fork` 以主線脈絡回答（不用工具、不寫進主對話、關掉即清空），可連續追問並「帶回主對話」。回覆上滑鼠停留會出現「看不懂」（照 wait-what 的方式重講那則回覆，不推進主線）與「畫給我看」（純文字示意圖，正式圖解仍用 `/common:show-me`），鍵盤用 `/side ?`、`/side 畫` 對最後一則回覆做同樣的事。從手機或網頁遙控（Remote Control）下 `/side` 會提示改用 `/btw`（依指令來源判斷，不看裝置清單）。
+- **依獨立 review 修正（發布前）**：
+  - recall 送出時只解析在結果列親手選過的 `@@chat:<id>`，而且只處理使用者本人送出的 prompt（終端機輸入或 Remote Control）；沒選定的 `@@字` 原樣送出，不再模糊搜尋自動附上。原因：貼上的文字或其他 session 送來的訊息只要含有 `@@字`，就能決定把哪一段過去的對話（可能來自別的專案）附進目前的 context，review 期間實際發生過。這也代表 common-lab 0.17.0 的「直接送出未選定的 `@@關鍵字` 會自動取最符合的一段」行為已移除。
+  - 索引還沒建好（剛開 session、從遙控端送出）或模組重新載入後記憶體清空時，送出 `@@chat:` 會先等索引建好再替換，不再原樣送出；`/recall` 與結果列改以「記憶體裡沒有資料」判斷是否重建。
+  - 附上的內容不再叫主模型「直接讀原始 jsonl」，改為只在使用者要求更多細節時才讀；長度上限的狀態列提示在下次正常送出時清除。
+  - 換到 common-mod 後，原本在 common-lab 填的 `recallExtraRoots` 不會自動帶過來，需要在設定裡重填。
+- 24 項 `claude plugin test`（終端機與桌面兩種 surface、長度上限、歸零、對話框、按鈕行為、只認親手選定的 token、來源過濾、索引未建好時等待、遙控端的 /side）、`claude plugin validate`、`tsc` 通過。滑鼠停留顯示按鈕的效果與實際畫面以實機為準。
 
 ## Common Lab 0.18.0 — recall 移到 common-mod
 

@@ -97,9 +97,9 @@ function captureSubmit(on: On) {
     sent.context = e.context
     return { text: e.text }
   })
-  return async ($: unknown, text: string, context: string[] = []) => {
+  return async ($: unknown, text: string, context: string[] = [], origin: { kind: string } = { kind: 'composer' }) => {
     const kit = $ as { prompt: { submit: (e: unknown) => Promise<unknown> } }
-    await kit.prompt.submit({ text, context, wait: false })
+    await kit.prompt.submit({ text, context, origin, wait: false })
     return sent
   }
 }
@@ -133,6 +133,44 @@ test('a session with no room left is not attached, and its token says so', async
   const sent = await submitted($, '看 @@chat:aaaaaaaa', ['y'.repeat(23_600)])
   expect(sent.context?.length).toBe(1)
   expect(sent.text).toBe('看 〔回想（未附上）：甲對話〕')
+})
+
+test('a bare @@word is sent as typed: pasted text never picks a conversation', async ($, on) => {
+  engine(on)
+  const ready = indexed(on, 200)
+  const submitted = captureSubmit(on)
+  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
+  await prompt.edit(type('@@', 'x'))
+  await ready
+  await new Promise<void>(resolve => setTimeout(resolve, 10))
+
+  const sent = await submitted($, '貼上的 issue 寫了 @@甲對話 @@token')
+  expect(sent.text).toBe('貼上的 issue 寫了 @@甲對話 @@token')
+  expect(sent.context?.length ?? 0).toBe(0)
+})
+
+test('a pick inside another session\'s message is left alone', async ($, on) => {
+  engine(on)
+  const ready = indexed(on, 200)
+  const submitted = captureSubmit(on)
+  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
+  await prompt.edit(type('@@', 'x'))
+  await ready
+  await new Promise<void>(resolve => setTimeout(resolve, 10))
+
+  const sent = await submitted($, '報告提到 @@chat:aaaaaaaa', [], { kind: 'peer' })
+  expect(sent.text).toBe('報告提到 @@chat:aaaaaaaa')
+  expect(sent.context?.length ?? 0).toBe(0)
+})
+
+test('a pick sent before the index is built waits for it instead of going bare', async ($, on) => {
+  engine(on)
+  indexed(on, 200)
+  const submitted = captureSubmit(on)
+
+  const sent = await submitted($, '接著 @@chat:bbbbbbbb 做', [], { kind: 'bridge' })
+  expect(sent.text).toBe('接著 〔回想：乙對話〕 做')
+  expect(sent.context?.length).toBe(1)
 })
 
 test('/clear empties the band of the last conversation', async ($, on) => {
