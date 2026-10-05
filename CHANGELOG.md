@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.8.0 — 拿掉 `/side` 與 `/recall` 指令，只留 bar 按鈕
+
+- **side**：拿掉 `/side` 指令，連同它的 `[問題]` 參數、遠端操作時指向 `/btw` 的提示，以及只有指令在用的 `openSide`。側聊面板照舊由 bar 的「側聊」打開。
+- **recall**：拿掉 `/recall` 指令；回想由輸入框打 `#` 或 bar 的「回想」叫出。
+- session 開始時不再註冊任何指令；bar 測試確認沒有註冊指令，recall 測試改成按「回想」開啟。
+- 34 項 `claude plugin test`、`claude plugin validate` 通過；`tsc --noEmit` 只剩 bar 既有的 `focus` 型別錯誤（side 那處隨 `openSide` 一起移除）。bar 在畫面上不顯示時（例如輸入框上方出現問卷），側聊打不開，要等 bar 再出現。marketplace 1.79.0。
+
 ## Common Mod 0.7.0 — 回想改回可用 `#` 叫出，點一段就放進輸入框
 
 - **recall**：在輸入框打 `#`（開頭或空白之後，`C#` 這種字中間的不算）會展開回想區塊，以 `#` 後面的字搜尋；按鍵留在輸入框，打完一個空白就收起。`/recall` 與 bar 的「回想」照舊展開有自己搜尋框的區塊。

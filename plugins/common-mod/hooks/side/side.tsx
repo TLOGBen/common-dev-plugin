@@ -80,16 +80,6 @@ async function ask($: EngineInterface, question: string) {
 export const SIDE_PANE = { id: PANE, title: '側聊', focus: true, closeOnEscape: true, rows: INLINE_ROWS }
 export const SIDE_TOO_NARROW = '終端機太窄，放不下側聊面板；把視窗拉寬一點再試。'
 
-async function openSide($: EngineInterface): Promise<string | null> {
-  const opened = await $.ui.open(SIDE_PANE)
-  if (opened.isPlaced) {
-    await followEnd($)
-    return null
-  }
-  await $.ui.close({ id: PANE })
-  return SIDE_TOO_NARROW
-}
-
 async function carryBack($: EngineInterface, entry: SideEntry) {
   if (!entry.answer?.isAnswered) return
   const answer = entry.answer.text.slice(0, CARRY_BACK_CHARS)
@@ -130,29 +120,7 @@ async function forget($: EngineInterface) {
   await update($, entries, () => [])
 }
 
-// Registered by the hooks module's entry, which owns the shared session.start.
-export const SIDE_COMMAND = {
-  name: 'side',
-  description: '在旁邊開側聊面板：問跟主線無關的事，主線照跑；要換模型或動手做，從面板開新視窗分支',
-  argumentHint: '[問題]',
-}
-
 export function registerSide(on: On) {
-  on('command.run', { command: 'side' }, async ($, e) => {
-    // From the phone or web remote the pane has no field to type into; /btw
-    // already covers it there.
-    if (e.origin.kind === 'bridge') {
-      return { text: '手機或遠端操作時請直接用 /btw。' }
-    }
-
-    const arg = e.args.trim()
-    const why = await openSide($)
-    if (why) return { text: why }
-    if (arg) void ask($, arg).catch(() => undefined)
-
-    return {}
-  })
-
   // Closing is the end of the side chat: nothing of it outlives the pane.
   on('ui.close', { id: PANE }, async ($, e, next) => {
     const result = await next(e)

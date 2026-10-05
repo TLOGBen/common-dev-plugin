@@ -69,23 +69,6 @@ test('a follow-up carries the earlier side exchange', async ($, on) => {
   expect(prompts[1]).toContain('問題：第二題')
 })
 
-test('/side from the phone or web remote points to /btw instead of a pane', async ($, on) => {
-  let opened = false
-  on('ui.open', () => {
-    opened = true
-    return { value: { isPlaced: true } } as never
-  })
-  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
-  const answer = await kit.command.run({
-    command: 'side',
-    args: '這是什麼',
-    origin: { kind: 'bridge' },
-    presentation: { isFullscreen: true, columns: 200 },
-  })
-  expect(answer.text).toBe('手機或遠端操作時請直接用 /btw。')
-  expect(opened).toBe(false)
-})
-
 const SELF = '11111111-2222-3333-4444-555555555555'
 
 function branching(on: On, turns: number, env: Record<string, string>) {

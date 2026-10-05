@@ -127,10 +127,16 @@ test('側聊 opens the side pane, docked where the surface docks panes', async (
 
 test('a branch window takes the id its opener left, and 帶回主線 sends a summary there', async ($, on) => {
   const { sent } = engine(on, '查到了：x.ts 第 12 行', {}, { branchParent: { id: PARENT, at: Date.now() } })
-  on('command.register', (_$, e) => ({ value: { command: e.name } }) as never)
+  // No slash commands any more: 側聊 and 回想 live on the bar alone.
+  const registered: string[] = []
+  on('command.register', (_$, e) => {
+    registered.push(e.name)
+    return { value: { command: e.name } } as never
+  })
   on('session.start', (_$, e) => ({ cwd: e.cwd }) as never)
   const kit = $ as unknown as { session: { start: (e: unknown) => Promise<unknown> } }
   await kit.session.start({ cwd: 'C:\\work', surface: 'terminal', isInteractive: true })
+  expect(registered).toEqual([])
 
   const ui = await mount($, band(160))
   await ui.press({ key: 'bar-back' })

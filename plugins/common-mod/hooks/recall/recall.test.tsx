@@ -83,8 +83,13 @@ function engine(on: On) {
 
 const kit = ($: unknown) =>
   $ as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
-const recall = ($: unknown) =>
-  kit($).command.run({ command: 'recall', args: '', presentation: { isFullscreen: false, columns: 160 } })
+// The band opened by hand: the bar's 回想, pressed.
+async function openByHand($: { ui: { mount: (t: never) => Promise<unknown> } }, surface = 'terminal') {
+  const ui = await mount($, surface)
+  await ui.press({ key: 'bar-recall' })
+  await settle()
+  return ui
+}
 
 // prompt.edit is the composer's event; the kit raises it though its noun omits it.
 const typeInto = ($: unknown, draft: string, typed: string) =>
@@ -120,13 +125,9 @@ for (const surface of SURFACES) {
     expect(await ui.find({ key: 'bar-recall' })).toBeDefined()
   })
 
-  test(`/recall opens the band under the bar, with its own search field (${surface})`, async ($, on) => {
+  test(`the bar's 回想 opens the band under the bar, with its own search field (${surface})`, async ($, on) => {
     engine(on)
-    const answer = await recall($)
-    expect(answer.text).toBe('回想已展開在輸入框上方。')
-    await settle()
-
-    const ui = await mount($, surface)
+    const ui = await openByHand($, surface)
     expect(await ui.find({ key: 'bar-side' })).toBeDefined()
     expect(await ui.find({ key: 'recall-q' })).toBeDefined()
     expect(await ui.find({ key: `pick-${OLD.slice(0, 8)}` })).toBeDefined()
@@ -174,9 +175,7 @@ test('the bar\'s 回想 opens the band and the index runs from home with the ext
 
 test('searching narrows the list', async ($, on) => {
   engine(on)
-  await recall($)
-  await settle()
-  const ui = await mount($)
+  const ui = await openByHand($)
   await ui.input({ key: 'recall-q', text: '乙' })
 
   expect(await ui.find({ key: `pick-${FAR.slice(0, 8)}` })).toBeDefined()
@@ -201,9 +200,7 @@ test('a pick from the band opened by hand goes after what is in the prompt box',
   const { filled, box } = engine(on)
   box.text = '接著做'
   box.cursor = 3
-  await recall($)
-  await settle()
-  const ui = await mount($)
+  const ui = await openByHand($)
   await ui.press({ key: `pick-${FAR.slice(0, 8)}` })
   await settle()
 
@@ -212,9 +209,7 @@ test('a pick from the band opened by hand goes after what is in the prompt box',
 
 test('the band offers no 分支 or 總結', async ($, on) => {
   engine(on)
-  await recall($)
-  await settle()
-  const ui = await mount($)
+  const ui = await openByHand($)
   await ui.press({ key: `pick-${OLD.slice(0, 8)}` })
   await settle()
 
@@ -225,8 +220,7 @@ test('the band offers no 分支 or 總結', async ($, on) => {
 test('sending a # token attaches that conversation as quoted data', async ($, on) => {
   engine(on)
   const submitted = captureSubmit(on)
-  await recall($)
-  await settle()
+  await openByHand($)
 
   const sent = await submitted($, '比較 #chat:aaaaaaaa 和 #chat:ffffffff')
   expect(sent.text).toBe('比較 〔回想：甲對話〕 和 〔回想：乙對話〕')
@@ -237,8 +231,7 @@ test('sending a # token attaches that conversation as quoted data', async ($, on
 test('a session past the context budget is dropped, and said so', async ($, on) => {
   engine(on)
   const submitted = captureSubmit(on)
-  await recall($)
-  await settle()
+  await openByHand($)
 
   const sent = await submitted($, '看 #chat:aaaaaaaa', ['y'.repeat(23_900)])
   expect(sent.context?.length).toBe(1)
@@ -248,8 +241,7 @@ test('a session past the context budget is dropped, and said so', async ($, on) 
 test('a # token from another session, or a bare #word, stays as it is', async ($, on) => {
   engine(on)
   const submitted = captureSubmit(on)
-  await recall($)
-  await settle()
+  await openByHand($)
 
   const peer = await submitted($, '報告提到 #chat:aaaaaaaa', [], { kind: 'peer' })
   expect(peer.text).toBe('報告提到 #chat:aaaaaaaa')
@@ -261,9 +253,9 @@ test('a # token from another session, or a bare #word, stays as it is', async ($
 test('/clear closes the band', async ($, on) => {
   engine(on)
   on('command.run', () => ({}) as never)
-  await recall($)
+  const ui = await openByHand($)
   await kit($).command.run({ command: 'clear', args: '', presentation: { isFullscreen: true, columns: 200 } })
+  await settle()
 
-  const ui = await mount($)
   expect(await ui.find({ key: 'recall-q' })).toBeUndefined()
 })

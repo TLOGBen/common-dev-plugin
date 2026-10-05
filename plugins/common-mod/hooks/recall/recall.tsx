@@ -5,8 +5,7 @@ import type { RecallSession, RecallSource } from '../../types'
 import { INDEXER } from './indexer'
 
 // The band grows under the bar while open: typing `#` in the prompt box opens
-// it on what follows, the bar's 回想 or /recall opens it with its own search
-// field. A press on a conversation puts `#chat:<id>` in the prompt box, and
+// it on what follows, the bar's 回想 opens it with its own search field. A press on a conversation puts `#chat:<id>` in the prompt box, and
 // sending the prompt attaches that conversation as quoted context.
 const query = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
 const builtAt = atom({ plugin: 'common-mod', key: 'recallBuiltAt' } as const, 0)
@@ -228,12 +227,6 @@ async function setQuery($: EngineInterface, text: string) {
   await refresh($)
 }
 
-// Registered by the hooks module's entry, which owns the shared session.start.
-export const RECALL_COMMAND = {
-  name: 'recall',
-  description: '在輸入框上方展開或收起回想：搜尋過去的對話，點一段放進輸入框（也可以直接打 #）',
-}
-
 export function registerRecall(on: On, options: PluginOptions) {
   // Folders holding more `projects/<dir>/<session>.jsonl` trees, `;`-separated:
   // a WSL home's `.claude/projects`, a laptop's synced copy.
@@ -241,15 +234,6 @@ export function registerRecall(on: On, options: PluginOptions) {
     .split(';')
     .map(p => p.trim())
     .filter(Boolean)
-
-  on('command.run', { command: 'recall' }, async ($, e) => {
-    const isOpen = (await read($, query)) === null
-    isTyped = false
-    await update($, query, () => (isOpen ? '' : null))
-    if (isOpen) await refresh($)
-
-    return { text: isOpen ? '回想已展開在輸入框上方。' : '回想已收起。' }
-  })
 
   // The bar's 回想 button opens and closes the band (its own handler); once
   // open, the index is read and the keys go to the search field.

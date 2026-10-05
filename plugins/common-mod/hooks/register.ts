@@ -3,8 +3,8 @@ import type { Register } from 'claude-code'
 
 import { registerBar } from './bar/bar'
 import { BRANCH_PARENT, isSessionId, PARENT_FRESH_MS } from './branch'
-import { RECALL_COMMAND, registerRecall } from './recall/recall'
-import { registerSide, retireSideReplies, SIDE_COMMAND } from './side/side'
+import { registerRecall } from './recall/recall'
+import { registerSide, retireSideReplies } from './side/side'
 
 // The same state the mods own, named here by literal reference: the scan reads
 // a state ref only where its plugin and key are spelled out.
@@ -14,7 +14,7 @@ const branchParent = atom({ plugin: 'common-mod', key: 'branchParent' } as const
 
 // A plugin carries one hooks module, and that module registers an event once,
 // so each mod hooks its own events and the shared ones live here. `$` never
-// leaves this file: the mods hand over plain data (command specs).
+// leaves this file: the mods hand over plain data.
 export const register: Register = (on, options) => {
   // First: recall draws its band under what the bar draws.
   registerRecall(on, options)
@@ -22,9 +22,6 @@ export const register: Register = (on, options) => {
   registerBar(on)
 
   on('session.start', async ($, e, next) => {
-    await $.command.register(RECALL_COMMAND)
-    await $.command.register(SIDE_COMMAND)
-
     // A branch window, just opened: the id its opener left, taken once.
     const left = (await $.store.get(BRANCH_PARENT)) as { id?: unknown; at?: unknown } | undefined
     const self = await $.session.id()
