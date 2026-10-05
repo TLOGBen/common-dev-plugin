@@ -19,13 +19,7 @@ const mount = async ($: { ui: { mount: (t: never) => Promise<unknown> } }, targe
   (await $.ui.mount(target)) as unknown as Drawn
 
 // What the session reports; the figures the old statusline showed.
-function engine(
-  on: On,
-  suggestions = '[]',
-  env: Record<string, string> = {},
-  store: Record<string, unknown> = {},
-  usageFails = false,
-) {
+function engine(on: On, suggestions = '[]', env: Record<string, string> = {}, store: Record<string, unknown> = {}) {
   const ran: string[] = []
   const filled: string[] = []
   const stored: [string, unknown][] = []
@@ -36,9 +30,8 @@ function engine(
     stored.push([e.key, e.value])
     return { value: undefined } as never
   })
-  on('session.usage', () => {
-    if (usageFails) throw new Error('no figures yet')
-    return {
+  on('session.usage', () =>
+    ({
       value: {
         context: { tokens: 94_000, window: 200_000, percent: 47 },
         rateLimits: [
@@ -46,8 +39,8 @@ function engine(
           { kind: 'seven_day', percentUsed: 12 },
         ],
       },
-    } as never
-  })
+    }) as never,
+  )
   on('session.model', () => ({ value: 'claude-sonnet-5-5' }) as never)
   on('session.cwd', () => ({ value: 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin' }) as never)
   on('env.get', (_$, e) => ({ value: env[e.name] }) as never)
@@ -152,26 +145,11 @@ test('a window that is no branch has no 帶回主線', async ($, on) => {
   expect(await ui.find({ key: 'bar-back' })).toBeUndefined()
 })
 
-test('資料夾 and VS Code hand the folder to the system opener, run from home', async ($, on) => {
-  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
+test('資料夾 and VS Code are gone from the bar', async ($, on) => {
+  engine(on)
   const ui = await mount($, band(160))
-  await ui.press({ key: 'bar-folder' })
-  await ui.press({ key: 'bar-editor' })
-
-  expect(runs).toEqual([
-    { argv: ['explorer.exe', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin'], cwd: 'C:\\Users\\jimts' },
-    { argv: ['explorer.exe', 'vscode://file/C:/Users/jimts/workspace/Gits/common-dev-plugin'], cwd: 'C:\\Users\\jimts' },
-  ])
-})
-
-// The folder used to be read only after the usage figures, so a failed read
-// of those left 資料夾 doing nothing at all.
-test('資料夾 still opens when the usage figures could not be read', async ($, on) => {
-  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' }, {}, true)
-  const ui = await mount($, band(160))
-  await ui.press({ key: 'bar-folder' })
-
-  expect(runs[0]?.argv).toEqual(['explorer.exe', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin'])
+  expect(await ui.find({ key: 'bar-folder' })).toBeUndefined()
+  expect(await ui.find({ key: 'bar-editor' })).toBeUndefined()
 })
 
 test('下一步 offers the forked suggestions, drops unknown commands, and fills the pick as a draft', async ($, on) => {

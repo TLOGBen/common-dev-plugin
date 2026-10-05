@@ -11,7 +11,7 @@ const branchParent = atom({ plugin: 'common-mod', key: 'branchParent' } as const
 // The status line, drawn in the band above the prompt as two rails hung on
 // one neon spine:
 //   ▌ telemetry: folder and model, then ctx, 5h and 7d as gauges of one shape
-//   ▌ actions: views in Claude Code ╱ apps outside it ╱ asks to Claude
+//   ▌ actions: views in Claude Code ╱ asks to Claude
 //   below: next-step suggestions, after next-steps, when asked for
 // The spine flows while Claude works and a number decodes when it changes;
 // the rest holds still.
@@ -27,7 +27,6 @@ const TRACK = 0x3a3f5a
 const WHITE = 0xffffff
 // Button grounds, one per group, all deep enough to keep the default text legible.
 const VIEW_BG = 0x0f3640
-const APP_BG = 0x23283d
 const ASK_BG = 0x3d1238
 
 const FRAME_MS = 33
@@ -60,7 +59,6 @@ const ICONS: Record<string, string> = {
   diff: '',
   artifacts: '',
   folder: '',
-  editor: '',
   explain: '',
   draw: '',
   next: '',
@@ -71,7 +69,6 @@ const SLANT_OUT = ''
 let isWorking = false
 let started = false
 let frame = 0
-let cwd = ''
 let folder = ''
 let model = ''
 let effort = ''
@@ -218,49 +215,12 @@ async function homeOf($: EngineInterface) {
 }
 
 async function locate($: EngineInterface) {
-  cwd = (await $.session.cwd()).replace(/[\\/]+$/, '')
+  const cwd = (await $.session.cwd()).replace(/[\\/]+$/, '')
   const home = await homeOf($)
   folder =
     home && cwd.toLowerCase() === home.toLowerCase() ? '~' : (cwd.split(/[\\/]/).pop() || cwd).replace(/[\x00-\x1f]/g, '')
 }
 
-// Hands a folder or a URL to the system's opener. It runs from home with the
-// target as an argument, never through a shell and never from the session's
-// folder: Windows looks for a program in the working directory before PATH,
-// so an untrusted repo could ship one. Explorer exits 1 even when it opened.
-async function openOutside($: EngineInterface, target: string) {
-  const home = await homeOf($)
-  const options = { cwd: home || undefined, timeoutMs: 10_000 }
-  if ((await $.env.get('OS')) === 'Windows_NT') {
-    await $.process.run(['explorer.exe', target], options)
-    return
-  }
-  const ran = await $.process.run(['xdg-open', target], options).catch(() => null)
-  if (ran === null || ran.exitCode !== 0) await $.process.run(['open', target], options)
-}
-
-// The folder is read at the first drawing, after the usage figures; when those
-// failed it was never read, so it is read here. Windows may seat the new
-// window behind the terminal, so a toast says it was handed over.
-async function sessionFolder($: EngineInterface) {
-  if (!cwd) await locate($)
-  return cwd
-}
-
-async function openFolder($: EngineInterface) {
-  const at = await sessionFolder($)
-  if (!at) return $.ui.toast('讀不到目前的資料夾')
-  await openOutside($, at)
-  $.ui.toast(`已交給系統開啟：${at}`)
-}
-
-// VS Code answers its own URL scheme, so no `code` launcher is looked up.
-async function openEditor($: EngineInterface) {
-  const at = await sessionFolder($)
-  if (!at) return $.ui.toast('讀不到目前的資料夾')
-  await openOutside($, `vscode://file/${encodeURI(at.replace(/\\/g, '/'))}`)
-  $.ui.toast('已交給 VS Code 開啟')
-}
 
 // Next steps follow next-steps (anthropics/claude-plugins-community, MIT), on
 // a button press rather than after every turn: the session is forked for up
@@ -578,14 +538,6 @@ export function registerBar(on: On) {
           },
           { key: 'diff', label: 'diff', press: () => run('diff') },
           { key: 'artifacts', label: 'artifacts', press: () => run('artifacts') },
-        ],
-      },
-      {
-        key: 'app',
-        bg: APP_BG,
-        buttons: [
-          { key: 'folder', label: '資料夾', press: () => void openFolder($).catch(() => $.ui.toast('沒辦法開資料夾')) },
-          { key: 'editor', label: 'VS Code', press: () => void openEditor($).catch(() => $.ui.toast('沒辦法開 VS Code')) },
         ],
       },
       {

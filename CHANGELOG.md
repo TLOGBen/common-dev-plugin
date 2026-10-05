@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.6.0 — bar 拿掉「資料夾」與「VS Code」
+
+- 動作軌拿掉「資料夾」「VS Code」兩顆按鈕，以及整組外部程式（深靛底色）；交給系統開啟程式的 `openOutside` 一併移除。遙測軌照舊顯示資料夾名稱。
+- 30 項 `claude plugin test`、`claude plugin validate` 通過。marketplace 1.77.0。
+
 ## Common Mod 0.5.0 — 側聊改回停靠在對話旁的面板，新視窗分支改成面板裡的按鈕
 
 - **side**：`/side` 與 bar 的「側聊」改回開 `side` Pane：全螢幕版面、寬度至少 110 欄時停靠在對話旁（和 diff 面板同一個位置），其他情況顯示在輸入框上方（24 列）。答案來自 `$.model.fork`，看得到主對話到目前為止的內容，不會用工具；「帶回主對話」把問答引用放進輸入框。面板底部新增「開新視窗分支（可換模型、可動手做）」按鈕，沿用 0.4.0 的 `claude --resume --fork-session` 與「帶回主線」。
