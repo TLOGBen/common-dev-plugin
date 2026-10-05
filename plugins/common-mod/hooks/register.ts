@@ -9,7 +9,6 @@ import { registerSide, retireSideReplies, SIDE_COMMAND } from './side/side'
 // The same state the mods own, named here by literal reference: the scan reads
 // a state ref only where its plugin and key are spelled out.
 const recallQuery = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
-const recallPicked = atom({ plugin: 'common-mod', key: 'recallPicked' } as const, null)
 const sideEntries = atom({ plugin: 'common-mod', key: 'sideEntries' } as const, [])
 const branchParent = atom({ plugin: 'common-mod', key: 'branchParent' } as const, null)
 
@@ -45,7 +44,6 @@ export const register: Register = (on, options) => {
     retireSideReplies()
     await update($, sideEntries, () => [])
     await update($, recallQuery, () => null)
-    await update($, recallPicked, () => null)
 
     return result
   })

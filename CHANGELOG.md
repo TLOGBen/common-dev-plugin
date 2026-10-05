@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.7.0 — 回想改回可用 `#` 叫出，點一段就放進輸入框
+
+- **recall**：在輸入框打 `#`（開頭或空白之後，`C#` 這種字中間的不算）會展開回想區塊，以 `#` 後面的字搜尋；按鍵留在輸入框，打完一個空白就收起。`/recall` 與 bar 的「回想」照舊展開有自己搜尋框的區塊。
+- 點一段對話會把 `#chat:<id 前 8 碼>` 放進輸入框（取代正在打的 `#…`，或接在原本的文字後面），並收起區塊。送出時，本人打的（終端機或 Remote Control）`#chat:` 標記會換成「〔回想：標題〕」，那段對話的標題、問過的話與最後回答以資料框住附在 context，超過長度上限的不附上並說明；其他 session 傳來的與單純的 `#字` 保持原樣。
+- 拿掉「分支」「總結」與選中後的往返預覽，`recallPicked` 狀態與 indexer 的 `EXCERPT` 一併移除。
+- 35 項 `claude plugin test`、`claude plugin validate` 通過；recall 沒有型別錯誤（`tsc --noEmit` 只剩 bar、side 既有的 `focus` 型別錯誤）。marketplace 1.78.0。
+
 ## Common Mod 0.6.0 — bar 拿掉「資料夾」與「VS Code」
 
 - 動作軌拿掉「資料夾」「VS Code」兩顆按鈕，以及整組外部程式（深靛底色）；交給系統開啟程式的 `openOutside` 一併移除。遙測軌照舊顯示資料夾名稱。

@@ -30,8 +30,6 @@ declare module 'claude-code' {
     'common-mod': {
       /** recall: the search text while the band is open; null when it is closed. */
       recallQuery: string | null
-      /** recall: the session the band previews. */
-      recallPicked: string | null
       /** recall: when the index was last loaded, 0 before the first scan. */
       recallBuiltAt: number
       /** side: newest first; gone when the pane closes. */

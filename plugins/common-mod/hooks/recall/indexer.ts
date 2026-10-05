@@ -3,7 +3,7 @@
 // cache keyed by size + mtime so a rescan touches only the sessions that grew,
 // writes the index next to the cache and prints that path on stdout.
 
-// What both scripts read a transcript line by.
+// What the script reads a transcript line by.
 const COMMON = String.raw`
 const fs = require('fs')
 const os = require('os')
@@ -128,36 +128,3 @@ async function scan(file, dir, root) {
 })()
 `
 
-// One session's last exchanges, each prompt with the answer text that followed
-// it, clipped: argv is the transcript, how many exchanges, how many characters
-// each side keeps. Prints the JSON array on stdout.
-export const EXCERPT = String.raw`
-${COMMON}
-const [file, turnsArg, charsArg] = process.argv.slice(2)
-const TURNS = Number(turnsArg) || 3
-const CHARS = Number(charsArg) || 200
-
-;(async () => {
-  const out = []
-  let current = null
-  const rl = readline.createInterface({ input: fs.createReadStream(file), crlfDelay: Infinity })
-  for await (const line of rl) {
-    if (!line) continue
-    let r
-    try { r = JSON.parse(line) } catch { continue }
-    if (r.isSidechain) continue
-    if (r.type === 'user' && !r.isMeta) {
-      const t = promptText(r.message)
-      if (!t) continue
-      current = { you: t, me: '' }
-      out.push(current)
-      if (out.length > TURNS) out.shift()
-    }
-    if (r.type === 'assistant' && current) {
-      const t = answerText(r.message)
-      if (t) current.me = current.me ? current.me + '\n' + t : t
-    }
-  }
-  process.stdout.write(JSON.stringify(out.map(x => ({ you: clip(x.you, CHARS), me: clip(x.me, CHARS) }))))
-})()
-`
