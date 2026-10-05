@@ -2,6 +2,16 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.4.0 — 側聊改成新視窗分支，回想改長在輸入框上方並可分支或總結
+
+- **side**：`/side` 與 bar 的「側聊」改成在新的 Windows Terminal 視窗執行 `claude --resume <目前 session id> --fork-session`。分支是完整的 session：可以 `/model` 換模型、可以用工具，關掉後紀錄留著。開分支時把主 session 的 id 存進 `$.store`（`branchParent`），分支啟動時只認 60 秒內留下、且不是自己的 id，取用後清掉。分支視窗的 bar 多一顆「帶回主線」：用 `$.model.fork` 整理分支裡的進展，以 `$.session.send` 送回主 session，送不到會說原因。原本 `$.model.fork` 的側聊面板、「帶回主對話」引用一併移除。非 Windows 不開視窗，改成說出要自己執行的指令；手機或遠端照舊指向 `/btw`。
+- **recall**：拿掉 `@@` 與記憶地層面板。`/recall` 與 bar 的「回想」改成展開／收起 bar 下方的區塊：自己的搜尋框、前 5 筆符合的對話，選中一段後顯示最後 3 輪「你／我」往返，以及兩顆按鈕：
+  - **分支**：在那段對話當時的資料夾開新視窗分支；WSL、其他電腦（額外資料夾）或 Cowork 的紀錄無法在這台接續，按了會說明。
+  - **總結**：讀取最後 40 輪往返交給目前的模型總結，以「〔回想總結：標題〕」開頭放進輸入框當草稿，不會自動送出。紀錄以資料框住，模型輸出先清掉跳脫序列與控制字元。
+- **indexer**：索引多記 `cwd` 與 `isLocal`（只有家目錄 `~/.claude/projects` 下、非 Cowork 的才算），舊快取缺欄位的會重讀；新增 `EXCERPT`，用 node 串流讀單一對話的往返。
+- **bar**：「側聊」「回想」按鈕不再走 `$.command.run`，因為 plugin 自己的 `$.command.run` 觸不到它自己的 `command.run` hook，按了會回報「no command.run hook answered it」。ctx 的最近幾輪長條圖拿掉，只留 token 數與上一輪增量。
+- 23 項 `claude plugin test`、`claude plugin validate`、`tsc --noEmit` 通過；兩段 node 腳本在本機真實紀錄上跑過。新視窗、band 的實際畫面與輸入框焦點以實機為準。已知未解：本 session 直接打 `/recall` 也回報沒有 hook 接住，原因未查明。marketplace 1.75.0。
+
 ## Common Mod 0.3.0 — bar 的 Nerd Font 圖示開關
 
 - 動作軌最後新增「○ 圖示」按鈕，切換 Nerd Font 圖示模式（開啟時顯示「● 圖示」）：按鈕兩端改用 powerline 斜切字元 `U+E0BA`／`U+E0BC`，每顆按鈕前加圖示（側聊、回想、diff、artifacts、資料夾、VS Code、看不懂、畫給我看、下一步），資料夾名稱前加資料夾圖示。只用 Font Awesome 與 Octicons 長期穩定的碼位，避開新版才有的擴充區。
