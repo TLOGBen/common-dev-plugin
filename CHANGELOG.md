@@ -2,6 +2,22 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.2.0 — 新增 bar：輸入框上方的狀態列，取代 settings.json 的 statusLine
+
+- 新增 **bar** mod（`hooks/bar/`），在輸入框上方的 band 畫兩道掛在同一根霓虹脊柱上的「軌」，輕度賽博龐克配色：脊柱是兩列高的 `Raster`，由霓虹青漸變到洋紅，量表的綠／黃／紅推向霓虹（`#3cf2a0`／`#ffd23f`／`#ff3864`），其餘用鋼藍灰。數字來自 `$.session.usage()`、`session.measure` 與 `turn.complete`；設了 `CLAUDE_CODE_AUTO_COMPACT_WINDOW` 時，ctx 照舊以該值為分母。
+  - **遙測軌（第一列）**：資料夾（青色粗體，家目錄顯示 `~`）與模型（ID 轉成 `Sonnet 5.5` 這類名字，有 effort 時加 `[high]`），接著 ctx、5h、7d 三個同形量表：標籤、等長進度條、百分比、補充。ctx 的補充取自官方範例 token-weather（anthropics/claude-code-playground，Apache-2.0）：`94k/200k`、最近 12 輪主對話的小長條圖、上一輪增量 `▲+98k`；5h／7d 的補充是重置倒數。天氣圖示沒有採用：在部分字型會畫成彩色 emoji，破壞對齊。寬度不足時整列依序收：進度條 14→10→6 格、拿掉長條圖與增量、拿掉模型與倒數、最後只剩數字。
+  - 進度條用 `Raster` 畫：已填 `━`、半格 `╸`、軌道用虛線 `┈`，避免被看成輸入框框線的碎片；填色依位置漸變（約 70% 起轉黃、90% 起轉紅）。
+  - 進度條頭部的前幾格逐格提亮，像霓虹燈管點亮的那一端。
+  - **動畫**只在動的時候重繪：數值變化時進度條平滑滑動（約 0.3 秒），百分比先亂碼再由左到右定格（約 0.4 秒，只在整數值改變時觸發）；Claude 工作中脊柱的顏色沿著它流動、ctx 條有流光；任一條 ≥90% 時尾端脈動；閒置時不重繪。
+- **動作軌（第二列）**：按鈕分三組，以 `╱` 隔開、各有底色（`Button` 沒有顏色屬性，所以包在有底色的 `Box` 裡，滑鼠停留時文字變亮加粗）；兩端各接一個與底色同色的 `◢` `◤`，切成平行四邊形：Claude Code 內的檢視「側聊」`/side`、「回想」`/recall`、「diff」`/diff`、「artifacts」`/artifacts`（深青）；外部程式「資料夾」「VS Code」（深靛）；問 Claude「看不懂」`/common:wait-what`、「畫給我看」`/common:show-me`、「下一步」（深洋紅）。指令類按鈕用 `$.command.run` 當作使用者親手輸入執行，所以 skill 是送進主對話，與直接打指令效果相同。
+- 「資料夾」把目前資料夾交給系統開啟程式（Windows `explorer.exe`、其他 `xdg-open`，失敗再試 `open`）；「VS Code」開 `vscode://file/<資料夾>` 連結，由系統交給 VS Code，不需要 `code` 指令。兩者都從家目錄執行、路徑當參數傳、不經過 shell：Windows 會先在工作目錄找程式，不可信的 repo 可能放了同名檔。
+- **下一步**改寫自 next-steps（anthropics/claude-plugins-community，MIT），改成按按鈕才問：用 `$.model.fork` 請模型猜最多三句你接下來會打的話，列在狀態列下方，按 1／2／3（或點選）放進輸入框當草稿，0 收起，下一輪開始時自動收起；不會自動送出。建議是模型輸出，顯示與放進輸入框前先清掉跳脫序列、控制與隱藏字元，含 Unicode tag 字元的整句丟棄；不存在的 `/指令` 也丟棄。
+- band 與輸入框之間那一列空白是引擎輸入框自己的 `marginTop: 1`（除 `/brief` 模式外固定存在），mod 無法消除。
+- **side 收掉自己的「看不懂」「畫給我看」**：每則回覆旁 hover 出現的兩個按鈕、`/side ?` 與 `/side 畫`、以及它們用的側聊版簡化提示詞一併移除，改由 bar 的按鈕直接送 `/common:wait-what`、`/common:show-me`，只留一套行為。`/side` 回到單純的側聊。
+- 「回想」「側聊」按鈕走 `$.command.run`，因為驗證器不允許把 `$` 傳進別檔的函式。`/recall` 照舊會在對話裡留一行「回想面板已開啟。」。
+- Raster 的編碼函式從 recall 抽到 `hooks/raster.ts`，recall 與 bar 共用。recall 測試裡判斷「@@ 之前 band 不出現」改認 band 標題 `回想 `（尾端有空格），避免誤中 bar 的按鈕。
+- 26 項 `claude plugin test`、`claude plugin validate`、以 2.1.289 型別檔跑的 `tsc --noEmit` 通過。動畫、配色與按鈕實際畫面無法由測試斷言，以實機為準；`$.command.run` 能否直接執行 skill 也需實機確認。要停用原本的 statusLine，需自行把 `~/.claude/settings.json` 的 `statusLine` 區塊移除。marketplace 1.73.0。
+
 ## Common Mod 0.1.1 — side 面板改成舊的在上、新的在下，輸入框在最底並貼底
 
 - side 面板的版面反過來：最舊的問答在上、最新的在下，輸入框移到最底，像一般聊天。資料仍是新的在前（`historyOf` 依此取最近幾輪），只在畫面上反轉。

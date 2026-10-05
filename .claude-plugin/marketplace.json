@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.72.0"
+    "version": "1.73.0"
   },
   "plugins": [
     {
@@ -52,9 +52,9 @@
     {
       "name": "common-mod",
       "source": "./plugins/common-mod",
-      "description": "Claude Code mods (Claude only; enabled by default): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata and preview; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it, plus 看不懂 (re-explain a reply, wait-what style) and 畫給我看 (a plain-text diagram of a reply, a quick show-me) on hovering a reply or via /side ? and /side 畫.",
+      "description": "Claude Code mods (Claude only; enabled by default): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata and preview; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, the folder, VS Code, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft).",
       "displayName": "Common Mod",
-      "version": "0.1.1",
+      "version": "0.2.0",
       "defaultEnabled": true
     }
   ]

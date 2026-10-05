@@ -15,7 +15,7 @@ export type RecallSession = {
 
 export type SideEntry = {
   id: number
-  /** What the row shows: the typed question, or 「看不懂：…」／「畫給我看：…」. */
+  /** What the row shows: the typed question. */
   question: string
   /** The reply, or why there is none; absent while it is being asked. */
   answer?: { isAnswered: true; text: string } | { isAnswered: false; reason: string }

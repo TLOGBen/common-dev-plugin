@@ -40,6 +40,9 @@ auth.session.json
 # --- Recording output from gen-e2e-record ---
 recording.js
 
+# --- Written by `claude --plugin-dir` to point at the build's mod types ---
+/plugins/*/tsconfig.json
+
 # --- Python ---
 __pycache__/
 *.pyc

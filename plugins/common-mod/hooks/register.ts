@@ -1,6 +1,7 @@
 import { atom, update } from 'claude-code'
 import type { Register } from 'claude-code'
 
+import { registerBar } from './bar/bar'
 import { RECALL_COMMAND, registerRecall } from './recall/recall'
 import { registerSide, retireSideReplies, SIDE_COMMAND } from './side/side'
 
@@ -16,6 +17,9 @@ const sideEntries = atom({ plugin: 'common-mod', key: 'sideEntries' } as const, 
 export const register: Register = (on, options) => {
   registerRecall(on, options)
   registerSide(on)
+  // After recall: both draw the band, and the first to draw without calling
+  // next keeps it.
+  registerBar(on)
 
   on('session.start', async ($, e, next) => {
     await $.command.register(RECALL_COMMAND)

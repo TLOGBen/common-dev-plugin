@@ -36,7 +36,8 @@ for (const surface of SURFACES) {
   test(`band stays out of the way until @@ is typed (${surface})`, async ($, on) => {
     engine(on)
     const ui = await $.ui.mount({ ...(BAND as object), surface } as never)
-    expect(await ui.find({ text: /回想/ })).toBeUndefined()
+    // The bar's own 回想 button is always there; the band's heading has a space after it.
+    expect(await ui.find({ text: /^回想 / })).toBeUndefined()
   })
 
   test(`typing @@ opens the band and paints the token (${surface})`, async ($, on) => {
@@ -48,6 +49,7 @@ for (const surface of SURFACES) {
 
     const ui = await $.ui.mount({ ...(BAND as object), surface } as never)
     expect(await ui.find({ text: /skse/ })).toBeDefined()
+    expect(await ui.find({ text: /^回想 / })).toBeDefined()
     expect(await ui.find({ key: 'strata' })).toBeDefined()
   })
 }
@@ -182,7 +184,7 @@ test('/clear empties the band of the last conversation', async ($, on) => {
   await kit.command.run({ command: 'clear', args: '', presentation: { isFullscreen: true, columns: 200 } })
 
   const ui = await $.ui.mount({ ...(BAND as object), surface: 'terminal' } as never)
-  expect(await ui.find({ text: /回想/ })).toBeUndefined()
+  expect(await ui.find({ text: /^回想 / })).toBeUndefined()
 })
 
 for (const isPlaced of [true, false]) {
