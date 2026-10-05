@@ -1,6 +1,12 @@
+import { atom, read, update } from 'claude-code'
 import type { EngineInterface, On } from 'claude-code'
 
+import { BRANCH_PARENT, branchArgv, branchCommand } from '../branch'
 import { cells, DEFAULT } from '../raster'
+
+// Recall's band opens and closes on this; the session this one branched from.
+const recallQuery = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
+const branchParent = atom({ plugin: 'common-mod', key: 'branchParent' } as const, null)
 
 // The status line, drawn in the band above the prompt as two rails hung on
 // one neon spine:
@@ -165,21 +171,13 @@ function modelName(id: string) {
 }
 
 // The ctx figures follow token-weather (anthropics/claude-code-playground,
-// Apache-2.0): tokens used of the window, a chart of the recent turns, and
-// what the last one added.
+// Apache-2.0): tokens used of the window and what the last turn added.
 const HISTORY = 12
-const BARS = '▁▂▃▄▅▆▇█'
 
 function short(n: number) {
   if (n >= 1_000_000) return `${(n / 1_000_000).toFixed(n % 1_000_000 === 0 ? 0 : 1)}M`
   if (n >= 1_000) return `${(n / 1_000).toFixed(n % 1_000 === 0 ? 0 : 1)}k`
   return String(n)
-}
-
-// Bars scale to the busiest turn shown, so growth shows at any fill.
-function chart() {
-  const top = Math.max(...turns, 1)
-  return turns.map(t => BARS[Math.min(BARS.length - 1, Math.floor((t / top) * (BARS.length - 1)))]).join('')
 }
 
 function trend() {
@@ -276,8 +274,8 @@ const NEXT_QUESTION =
 // Suggestions are model output, and the model reads untrusted text. Before
 // any of it reaches the screen or the prompt box, keep only what a person can
 // see; text carrying Unicode tag characters is refused outright.
-const ESCAPES = /\x1b\[[0-?]*[ -/]*[@-~]|\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)|\x1b[@-Z\\-_]/g
-const TAGS = /[\u{E0000}-\u{E007F}]/u
+export const ESCAPES = /\x1b\[[0-?]*[ -/]*[@-~]|\x1b\][^\x07\x1b]*(?:\x07|\x1b\\)|\x1b[@-Z\\-_]/g
+export const TAGS = /[\u{E0000}-\u{E007F}]/u
 const UNSEEN = /[\p{Cc}\p{Cf}\p{Cn}\p{Co}\p{Cs}\p{Variation_Selector}ᅟᅠㅤﾠ]/gu
 
 function clean(text: string, max: number) {
@@ -341,6 +339,33 @@ async function pickNext($: EngineInterface, item: Suggestion) {
   if (!filled?.isFilled) $.ui.toast('沒辦法放進輸入框')
 }
 
+// 側聊 is a branch of this conversation in a new window: a whole session, so
+// it can switch model and use tools. Its 帶回主線 sends a summary back here.
+async function branchHere($: EngineInterface): Promise<string | null> {
+  const id = await $.session.id()
+  const folder = cwd || (await $.session.cwd())
+  await $.store.set(BRANCH_PARENT, { id, at: await $.clock.now() })
+  const argv = branchArgv((await $.env.get('OS')) === 'Windows_NT', id, folder)
+  if (!argv) return `在新的終端機執行：${branchCommand(id, folder)}`
+  const ran = await $.process.run(argv, { cwd: (await homeOf($)) || undefined, timeoutMs: 10_000 })
+  return ran.exitCode === 0 ? null : `開不了新視窗：${branchCommand(id, folder)}`
+}
+
+const BRING_BACK =
+  '不要接續工作。這個對話是從主對話分出來的分支；把分出來之後的進展寫成一份給主對話看的精簡回報：' +
+  '問了什麼、查到或做了什麼、結論是什麼、主線要接手的事。用繁體中文，只寫回報本身。'
+
+async function bringBack($: EngineInterface, to: string) {
+  $.ui.toast('正在整理分支的進展…')
+  const reply = await $.model.fork({ prompt: BRING_BACK })
+  if (!reply.isAnswered) {
+    $.ui.toast(reply.reason === 'nothing-to-fork' ? '分支裡還沒有回覆，先聊一輪再帶回' : `沒辦法整理：${reply.reason}`)
+    return
+  }
+  const sent = await $.session.send({ to: { sessionId: to }, text: `[分支回報]\n${reply.text}` })
+  $.ui.toast(sent.isDelivered ? '已送回主線' : `送不回主線：${sent.reason}`)
+}
+
 // Ticks run all the time but redraw only while something moves: a value
 // easing to a new reading, Claude working, or a gauge past 90 pulsing.
 function tick($: EngineInterface) {
@@ -399,10 +424,10 @@ async function recordTurn($: EngineInterface) {
 }
 
 // How much of the telemetry rail fits, richest first: bar length, how many of
-// the ctx extras (tokens, chart, trend), the reset countdowns, the model.
+// the ctx extras (tokens, trend), the reset countdowns, the model.
 const FITS = [
-  { bar: 14, extras: 3, reset: true, model: true },
-  { bar: 10, extras: 3, reset: true, model: true },
+  { bar: 14, extras: 2, reset: true, model: true },
+  { bar: 10, extras: 2, reset: true, model: true },
   { bar: 10, extras: 1, reset: true, model: true },
   { bar: 6, extras: 1, reset: true, model: true },
   { bar: 6, extras: 0, reset: true, model: false },
@@ -410,7 +435,24 @@ const FITS = [
 ]
 const RAIL = '▌'
 
+// Registered by the hooks module's entry, which owns the shared session.start.
+export const SIDE_COMMAND = {
+  name: 'side',
+  description: '在新視窗開出目前對話的分支：可以換模型、可以動手做，「帶回主線」把結果送回來',
+}
+
 export function registerBar(on: On) {
+  on('command.run', { command: 'side' }, async ($, e) => {
+    // From the phone or web remote there is no window to open here; /btw
+    // covers a side question there.
+    if (e.origin.kind === 'bridge') {
+      return { text: '手機或遠端操作時請直接用 /btw。' }
+    }
+    const why = await branchHere($)
+
+    return { text: why ?? '已在新視窗開出分支；要換模型就在那邊用 /model。' }
+  })
+
   on('session.measure', async ($, e, next) => {
     await absorb($, e)
     $.ui.invalidate('ui.render')
@@ -436,7 +478,7 @@ export function registerBar(on: On) {
     return next(e)
   })
 
-  // One chart bar per main-loop turn; a subagent's turns are not the session's.
+  // One reading per main-loop turn; a subagent's turns are not the session's.
   on('turn.complete', async ($, e, next) => {
     const result = await next(e)
     if (!e.agentId) await recordTurn($)
@@ -444,7 +486,7 @@ export function registerBar(on: On) {
     return result
   })
 
-  // Registered after recall's, so its @@ results take the band first.
+  // Registered after recall's, which draws its band under this one.
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     await start($)
@@ -454,8 +496,10 @@ export function registerBar(on: On) {
     const els = $.ui.resolve(e)
     const { Box, Text, Button } = els
     const Raster = e.surface === 'terminal' && 'Raster' in els ? els.Raster : null
+    const parent = await read($, branchParent)
     // Most buttons run the commands a person would type, so each opens what
-    // that command opens, the way it does.
+    // that command opens, the way it does. 側聊 and 回想 are this plugin's own,
+    // which its `$.command.run` does not reach, so they act here.
     const run = (command: string) => void $.command.run({ command }).catch(() => undefined)
     const room = e.props.bodyColumns - 2
 
@@ -466,7 +510,6 @@ export function registerBar(on: On) {
     const numberOf = (g: Gauge) => (g.target === null ? '--' : `${Math.round(g.shown)}%`)
     const ctxExtras = [
       { key: 'tokens', text: windowSize ? `${short(tokens)}/${short(windowSize)}` : '', color: null },
-      { key: 'chart', text: turns.length > 0 ? chart() : '', color: CYAN },
       { key: 'trend', text: trend(), color: null },
     ]
     const gauges = (fit: (typeof FITS)[number]) => [
@@ -534,8 +577,19 @@ export function registerBar(on: On) {
         key: 'view',
         bg: VIEW_BG,
         buttons: [
-          { key: 'side', label: '側聊', press: () => run('side') },
-          { key: 'recall', label: '回想', press: () => run('recall') },
+          {
+            key: 'side',
+            label: '側聊',
+            press: () =>
+              void branchHere($)
+                .then(why => $.ui.toast(why ?? '已在新視窗開出分支'))
+                .catch(() => $.ui.toast('沒辦法開分支')),
+          },
+          {
+            key: 'recall',
+            label: '回想',
+            press: () => void update($, recallQuery, q => (q === null ? '' : null)).catch(() => undefined),
+          },
           { key: 'diff', label: 'diff', press: () => run('diff') },
           { key: 'artifacts', label: 'artifacts', press: () => run('artifacts') },
         ],
@@ -555,6 +609,15 @@ export function registerBar(on: On) {
           { key: 'explain', label: '看不懂', press: () => run('common:wait-what') },
           { key: 'draw', label: '畫給我看', press: () => run('common:show-me') },
           { key: 'next', label: '下一步', press: () => void askNext($).catch(() => undefined) },
+          ...(parent
+            ? [
+                {
+                  key: 'back',
+                  label: '帶回主線',
+                  press: () => void bringBack($, parent).catch(() => $.ui.toast('沒辦法送回主線')),
+                },
+              ]
+            : []),
         ],
       },
     ]

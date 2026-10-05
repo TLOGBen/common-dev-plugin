@@ -52,9 +52,9 @@
     {
       "name": "common-mod",
       "source": "./plugins/common-mod",
-      "description": "Claude Code mods (Claude only; enabled by default): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata and preview; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, the folder, VS Code, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft).",
+      "description": "Claude Code mods (Claude only; enabled by default): recall — /recall or the 回想 button opens a band above the prompt to search past Claude Code, desktop and Cowork conversations, preview their exchanges, branch one into a new window or put a summary of it in the prompt box; side — /side opens a branch of this conversation in a new window (switch model there, use tools), whose 帶回主線 sends a summary back to the main session; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, the folder, VS Code, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft).",
       "displayName": "Common Mod",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "defaultEnabled": true
     }
   ]

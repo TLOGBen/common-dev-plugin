@@ -1,230 +1,219 @@
 import { expect, mock, test } from 'claude-code/testing'
-import type { On, PromptEditResult } from 'claude-code'
+import type { On } from 'claude-code'
 
 // The test runner's timers exist at run time; the environment's typings leave them out.
 declare function setTimeout(fn: () => void, ms: number): unknown
+const settle = () => new Promise<void>(resolve => setTimeout(resolve, 20))
+
+type Drawn = {
+  find: (q: { type?: string; key?: string; text?: RegExp }) => Promise<{ key?: string } | undefined>
+  input: (t: { key: string; text: string }) => Promise<unknown>
+  press: (t: { key: string }) => Promise<unknown>
+}
 
 const SURFACES = ['terminal', 'desktop'] as const
-// Only `hasSurvey` matters to the band; the rest of the site's props are the
-// engine's and left to it.
-const BAND = { plugin: 'common-mod', component: 'AbovePrompt', props: { hasSurvey: false } } as never
 
-// Beneath the plugin: the engine's own band draws nothing, and its editor
-// applies the splice so the plugin sees the draft after each keystroke.
+const band = (surface: string) =>
+  ({
+    plugin: 'common-mod',
+    component: 'AbovePrompt',
+    requestId: 'band',
+    surface,
+    props: { hasSurvey: false, isWorking: false, maxRows: 30, bodyColumns: 160, scroll: { bodyRows: 30 } },
+  }) as never
+
+const mount = async ($: { ui: { mount: (t: never) => Promise<unknown> } }, surface = 'terminal') =>
+  (await $.ui.mount(band(surface))) as unknown as Drawn
+
+const SELF = '11111111-2222-3333-4444-555555555555'
+const OLD = 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee'
+const FAR = 'ffffffff-bbbb-cccc-dddd-eeeeeeeeeeee'
+
+const session = (id: string, title: string, isLocal: boolean) => ({
+  id,
+  file: `C:/Users/me/.claude/projects/p/${id}.jsonl`,
+  source: 'code',
+  project: 'demo',
+  cwd: 'C:/work/demo',
+  isLocal,
+  title,
+  first: '2026-10-01T00:00:00Z',
+  last: '2026-10-02T00:00:00Z',
+  prompts: ['那個 bug 怎麼修'],
+  days: { '2026-10-02': 1 },
+  answer: '改好了',
+})
+
+// Beneath the plugin: the engine's own band draws nothing; the index holds two
+// sessions, one this machine can resume; a transcript's excerpt is two exchanges.
 function engine(on: On) {
+  const runs: { argv: readonly string[]; cwd?: string }[] = []
+  const toasts: string[] = []
+  const stored: [string, unknown][] = []
+  const filled: string[] = []
+  const asked: { system?: string; prompt: string }[] = []
   mock.clock(on, { now: Date.parse('2026-10-03T12:00:00Z') })
+  mock.env(on, { USERPROFILE: 'C:/Users/me', OS: 'Windows_NT' })
   on('ui.render', ($, e) => {
     const { Box } = $.ui.resolve(e)
     return <Box />
   })
-  on('prompt.edit', (_$, e) => {
-    const text = e.text.slice(0, e.start) + e.inputText + e.text.slice(e.end)
-    return { text, cursor: e.start + e.inputText.length }
+  on('ui.toast', (_$, e) => {
+    toasts.push(JSON.stringify(e))
+    return { value: undefined } as never
   })
+  on('ui.focus', () => ({ value: {} }) as never)
+  on('session.id', () => ({ value: SELF }) as never)
+  on('session.model', () => ({ value: 'claude-opus-5-5' }) as never)
+  on('store.get', () => ({ value: undefined }) as never)
+  on('store.set', (_$, e) => {
+    stored.push([e.key, e.value])
+    return { value: undefined } as never
+  })
+  on('process.run', (_$, e) => {
+    runs.push({ argv: e.argv, cwd: e.init?.cwd })
+    const stdout =
+      e.argv[0] === 'node' && e.argv.length === 5
+        ? JSON.stringify([
+            { you: '那個 bug 怎麼修', me: '在 x.ts 第 12 行' },
+            { you: '幫我改掉', me: '改好了' },
+          ])
+        : e.argv[0] === 'node'
+          ? 'C:/Users/me/.claude/recall-index.json'
+          : ''
+    return { value: { exitCode: 0, stdout, stderr: '', isStdoutTruncated: false, isStderrTruncated: false } }
+  })
+  on('fs.read', () =>
+    ({ value: JSON.stringify({ builtAt: 1, sessions: [session(OLD, '甲對話', true), session(FAR, '乙對話', false)] }) }) as never,
+  )
+  on('model.complete', (_$, e) => {
+    asked.push({ system: e.system, prompt: e.prompt })
+    return { value: { isAnswered: true, text: '當時在修 x.ts 的 bug，已改好。', usage: {} } } as never
+  })
+  on('prompt.read', () => ({ value: { text: '', cursor: 0 } }) as never)
+  on('prompt.fill', (_$, e) => {
+    filled.push(e.text)
+    return { value: { isFilled: true } } as never
+  })
+  return { runs, toasts, stored, filled, asked }
 }
 
-const type = (draft: string, typed: string) => ({
-  origin: { kind: 'composer' } as const,
-  text: draft,
-  cursor: draft.length,
-  start: draft.length,
-  end: draft.length,
-  inputText: typed,
-})
+const kit = ($: unknown) =>
+  $ as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
+const recall = ($: unknown) =>
+  kit($).command.run({ command: 'recall', args: '', presentation: { isFullscreen: false, columns: 160 } })
 
 for (const surface of SURFACES) {
-  test(`band stays out of the way until @@ is typed (${surface})`, async ($, on) => {
+  test(`the band stays closed until asked for (${surface})`, async ($, on) => {
     engine(on)
-    const ui = await $.ui.mount({ ...(BAND as object), surface } as never)
-    // The bar's own 回想 button is always there; the band's heading has a space after it.
-    expect(await ui.find({ text: /^回想 / })).toBeUndefined()
+    const ui = await mount($, surface)
+    expect(await ui.find({ key: 'recall-q' })).toBeUndefined()
+    expect(await ui.find({ key: 'bar-recall' })).toBeDefined()
   })
 
-  test(`typing @@ opens the band and paints the token (${surface})`, async ($, on) => {
+  test(`/recall opens the band under the bar, with its own search field (${surface})`, async ($, on) => {
     engine(on)
-    // prompt.edit is the composer's event; the kit raises it though its noun omits it
-    const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-    const edited = await prompt.edit(type('上次那個 @@sks', 'e'))
-    expect(edited.decorations?.some(d => d.start === 5 && d.end === 11)).toBe(true)
+    const answer = await recall($)
+    expect(answer.text).toBe('回想已展開在輸入框上方。')
+    await settle()
 
-    const ui = await $.ui.mount({ ...(BAND as object), surface } as never)
-    expect(await ui.find({ text: /skse/ })).toBeDefined()
-    expect(await ui.find({ text: /^回想 / })).toBeDefined()
-    expect(await ui.find({ key: 'strata' })).toBeDefined()
+    const ui = await mount($, surface)
+    expect(await ui.find({ key: 'bar-side' })).toBeDefined()
+    expect(await ui.find({ key: 'recall-q' })).toBeDefined()
+    expect(await ui.find({ key: `pick-${OLD.slice(0, 8)}` })).toBeDefined()
   })
 }
 
-test('a prompt without @@ is sent untouched', async ($, on) => {
-  let seen = ''
-  on('prompt.submit', async (_$, e) => {
-    seen = e.text
-    return { text: e.text }
-  })
-  await $.prompt.submit({ text: '幫我看一下 log', wait: false } as never)
-  expect(seen).toBe('幫我看一下 log')
+test('the bar\'s 回想 opens the band and the index runs from home with the extra roots', { options: { recallExtraRoots: 'D:/a ; //wsl/b' } }, async ($, on) => {
+  const { runs } = engine(on)
+  const ui = await mount($)
+  await ui.press({ key: 'bar-recall' })
+  await settle()
+
+  expect(runs[0]?.argv).toEqual(['node', '-', 'D:/a', '//wsl/b'])
+  expect(runs[0]?.cwd).toBe('C:/Users/me')
+  expect(await ui.find({ key: 'recall-q' })).toBeDefined()
+
+  await ui.press({ key: 'recall-close' })
+  expect(await ui.find({ key: 'recall-q' })).toBeUndefined()
 })
 
-// An index of two sessions whose last answers are long enough to test the budget.
-function indexed(on: On, answerChars: number) {
-  mock.env(on, { USERPROFILE: 'C:/Users/me' })
-  const session = (id: string, title: string) => ({
-    id,
-    file: `C:/Users/me/.claude/projects/p/${id}.jsonl`,
-    source: 'code',
-    project: 'demo',
-    title,
-    first: '2026-10-01T00:00:00Z',
-    last: '2026-10-02T00:00:00Z',
-    prompts: ['怎麼修'],
-    days: { '2026-10-02': 1 },
-    answer: 'x'.repeat(answerChars),
-  })
-  let loaded = () => {}
-  const ready = new Promise<void>(resolve => (loaded = resolve))
-  on('process.run', () => ({
-    value: { exitCode: 0, stdout: 'C:/Users/me/.claude/recall-index.json', stderr: '', isStdoutTruncated: false, isStderrTruncated: false },
-  }))
-  on('fs.read', () => {
-    setTimeout(loaded, 0)
-    return { value: JSON.stringify({ builtAt: 1, sessions: [session('aaaaaaaa-1', '甲對話'), session('bbbbbbbb-2', '乙對話')] }) } as never
-  })
-  return ready
-}
-
-// Beneath the plugin: what reaches the engine once recall has rewritten the prompt.
-function captureSubmit(on: On) {
-  const sent: { text: string; context?: readonly string[] } = { text: '' }
-  on('prompt.submit', async (_$, e) => {
-    sent.text = e.text
-    sent.context = e.context
-    return { text: e.text }
-  })
-  return async ($: unknown, text: string, context: string[] = [], origin: { kind: string } = { kind: 'composer' }) => {
-    const kit = $ as { prompt: { submit: (e: unknown) => Promise<unknown> } }
-    await kit.prompt.submit({ text, context, origin, wait: false })
-    return sent
-  }
-}
-
-test('a session past the context budget is cut, the cut said in the block', async ($, on) => {
+test('searching narrows the list', async ($, on) => {
   engine(on)
-  const ready = indexed(on, 20_000)
-  const submitted = captureSubmit(on)
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@', 'x'))
-  await ready
-  await new Promise<void>(resolve => setTimeout(resolve, 10))
+  await recall($)
+  await settle()
+  const ui = await mount($)
+  await ui.input({ key: 'recall-q', text: '乙' })
 
-  const sent = await submitted($, '比較 @@chat:aaaaaaaa 和 @@chat:bbbbbbbb')
-  const blocks = sent.context ?? []
-  expect(blocks.length).toBe(2)
-  expect(blocks.reduce((n, b) => n + b.length, 0) <= 24_000).toBe(true)
-  expect(blocks[1]?.includes('超過長度上限，已截斷')).toBe(true)
-  expect(sent.text).toBe('比較 〔回想：甲對話〕 和 〔回想：乙對話〕')
+  expect(await ui.find({ key: `pick-${FAR.slice(0, 8)}` })).toBeDefined()
+  expect(await ui.find({ key: `pick-${OLD.slice(0, 8)}` })).toBeUndefined()
 })
 
-test('a session with no room left is not attached, and its token says so', async ($, on) => {
+test('a pick previews what was asked and answered', async ($, on) => {
   engine(on)
-  const ready = indexed(on, 2_000)
-  const submitted = captureSubmit(on)
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@', 'x'))
-  await ready
-  await new Promise<void>(resolve => setTimeout(resolve, 10))
+  await recall($)
+  await settle()
+  const ui = await mount($)
+  await ui.press({ key: `pick-${OLD.slice(0, 8)}` })
+  await settle()
 
-  const sent = await submitted($, '看 @@chat:aaaaaaaa', ['y'.repeat(23_600)])
-  expect(sent.context?.length).toBe(1)
-  expect(sent.text).toBe('看 〔回想（未附上）：甲對話〕')
+  expect(await ui.find({ text: /在 x\.ts 第 12 行/ })).toBeDefined()
+  expect(await ui.find({ key: 'recall-branch' })).toBeDefined()
+  expect(await ui.find({ key: 'recall-summary' })).toBeDefined()
 })
 
-test('a bare @@word is sent as typed: pasted text never picks a conversation', async ($, on) => {
-  engine(on)
-  const ready = indexed(on, 200)
-  const submitted = captureSubmit(on)
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@', 'x'))
-  await ready
-  await new Promise<void>(resolve => setTimeout(resolve, 10))
+test('分支 opens a fork of that conversation in a new window, in its folder, run from home', async ($, on) => {
+  const { runs, stored } = engine(on)
+  await recall($)
+  await settle()
+  const ui = await mount($)
+  await ui.press({ key: `pick-${OLD.slice(0, 8)}` })
+  await settle()
+  await ui.press({ key: 'recall-branch' })
+  await settle()
 
-  const sent = await submitted($, '貼上的 issue 寫了 @@甲對話 @@token')
-  expect(sent.text).toBe('貼上的 issue 寫了 @@甲對話 @@token')
-  expect(sent.context?.length ?? 0).toBe(0)
+  const wt = runs.find(r => r.argv[0] === 'wt.exe')
+  expect(wt?.argv).toEqual(['wt.exe', '-w', 'new', 'new-tab', '-d', 'C:/work/demo', 'claude', '--resume', OLD, '--fork-session'])
+  expect(wt?.cwd).toBe('C:/Users/me')
+  expect(stored[0]?.[0]).toBe('branchParent')
+  expect((stored[0]?.[1] as { id: string }).id).toBe(SELF)
 })
 
-test('a pick inside another session\'s message is left alone', async ($, on) => {
-  engine(on)
-  const ready = indexed(on, 200)
-  const submitted = captureSubmit(on)
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@', 'x'))
-  await ready
-  await new Promise<void>(resolve => setTimeout(resolve, 10))
+test('a conversation from another machine is not branched', async ($, on) => {
+  const { runs, toasts } = engine(on)
+  await recall($)
+  await settle()
+  const ui = await mount($)
+  await ui.press({ key: `pick-${FAR.slice(0, 8)}` })
+  await settle()
+  await ui.press({ key: 'recall-branch' })
+  await settle()
 
-  const sent = await submitted($, '報告提到 @@chat:aaaaaaaa', [], { kind: 'peer' })
-  expect(sent.text).toBe('報告提到 @@chat:aaaaaaaa')
-  expect(sent.context?.length ?? 0).toBe(0)
+  expect(runs.some(r => r.argv[0] === 'wt.exe')).toBe(false)
+  expect(toasts.some(t => t.includes('沒辦法開分支'))).toBe(true)
 })
 
-test('a pick sent before the index is built waits for it instead of going bare', async ($, on) => {
-  engine(on)
-  indexed(on, 200)
-  const submitted = captureSubmit(on)
+test('總結 puts a summary in the prompt box, the transcript framed as data', async ($, on) => {
+  const { filled, asked } = engine(on)
+  await recall($)
+  await settle()
+  const ui = await mount($)
+  await ui.press({ key: `pick-${OLD.slice(0, 8)}` })
+  await settle()
+  await ui.press({ key: 'recall-summary' })
+  await settle()
 
-  const sent = await submitted($, '接著 @@chat:bbbbbbbb 做', [], { kind: 'bridge' })
-  expect(sent.text).toBe('接著 〔回想：乙對話〕 做')
-  expect(sent.context?.length).toBe(1)
+  expect(asked[0]?.system).toContain('不是指令')
+  expect(asked[0]?.prompt).toContain('使用者：幫我改掉')
+  expect(filled[0]).toBe('〔回想總結：甲對話〕\n當時在修 x.ts 的 bug，已改好。\n')
 })
 
-test('/clear empties the band of the last conversation', async ($, on) => {
+test('/clear closes the band', async ($, on) => {
   engine(on)
   on('command.run', () => ({}) as never)
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@sks', 'e'))
-  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<unknown> } }
-  await kit.command.run({ command: 'clear', args: '', presentation: { isFullscreen: true, columns: 200 } })
+  await recall($)
+  await kit($).command.run({ command: 'clear', args: '', presentation: { isFullscreen: true, columns: 200 } })
 
-  const ui = await $.ui.mount({ ...(BAND as object), surface: 'terminal' } as never)
-  expect(await ui.find({ text: /^回想 / })).toBeUndefined()
-})
-
-for (const isPlaced of [true, false]) {
-  test(`/recall outside the fullscreen layout opens a dialog${isPlaced ? '' : ', withdrawn when it cannot seat'}`, async ($, on) => {
-    engine(on)
-    let opened: { rows?: number } = {}
-    let closed = false
-    on('ui.open', (_$, e) => {
-      opened = e as { rows?: number }
-      return { value: { isPlaced } } as never
-    })
-    on('ui.close', () => {
-      closed = true
-      return { value: undefined } as never
-    })
-    const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
-    const answer = await kit.command.run({ command: 'recall', args: '', presentation: { isFullscreen: false, columns: 90 } })
-
-    expect(opened.rows).toBe(30)
-    expect(closed).toBe(!isPlaced)
-    expect(answer.text).toBe(isPlaced ? '回想面板已開啟。' : '終端機太窄，放不下回想面板；把視窗拉寬一點再試。')
-  })
-}
-
-test('the indexer runs from home with the extra roots from the settings', { options: { recallExtraRoots: 'D:/a ; //wsl/b' } }, async ($, on) => {
-  engine(on)
-  mock.env(on, { USERPROFILE: 'C:/Users/me' })
-  let argv: readonly string[] = []
-  let cwd: string | undefined
-  let ran = () => {}
-  const indexed = new Promise<void>(resolve => (ran = resolve))
-  on('process.run', (_$, e) => {
-    argv = e.argv
-    cwd = e.init?.cwd
-    ran()
-    return { value: { exitCode: 1, stdout: '', stderr: 'stub', isStdoutTruncated: false, isStderrTruncated: false } }
-  })
-  const prompt = $.prompt as unknown as { edit: (e: unknown) => Promise<PromptEditResult> }
-  await prompt.edit(type('@@', 'x'))
-  await indexed
-  expect(argv).toEqual(['node', '-', 'D:/a', '//wsl/b'])
-  expect(cwd).toBe('C:/Users/me')
+  const ui = await mount($)
+  expect(await ui.find({ key: 'recall-q' })).toBeUndefined()
 })

@@ -19,11 +19,13 @@ const mount = async ($: { ui: { mount: (t: never) => Promise<unknown> } }, targe
   (await $.ui.mount(target)) as unknown as Drawn
 
 // What the session reports; the figures the old statusline showed.
-function engine(on: On, suggestions = '[]', env: Record<string, string> = {}) {
+function engine(on: On, suggestions = '[]', env: Record<string, string> = {}, store: Record<string, unknown> = {}) {
   const ran: string[] = []
   const filled: string[] = []
   const stored: [string, unknown][] = []
-  on('store.get', () => ({ value: undefined }) as never)
+  const runs: { argv: readonly string[]; cwd?: string }[] = []
+  const sent: { to: unknown; text: string }[] = []
+  on('store.get', (_$, e) => ({ value: store[e.key] }) as never)
   on('store.set', (_$, e) => {
     stored.push([e.key, e.value])
     return { value: undefined } as never
@@ -55,8 +57,20 @@ function engine(on: On, suggestions = '[]', env: Record<string, string> = {}) {
     ran.push(e.command)
     return { value: {} } as never
   })
-  return { ran, filled, stored }
+  on('session.id', () => ({ value: SELF }) as never)
+  on('process.run', (_$, e) => {
+    runs.push({ argv: e.argv, cwd: e.init?.cwd })
+    return { value: { exitCode: 0, stdout: '', stderr: '', isStdoutTruncated: false, isStderrTruncated: false } }
+  })
+  on('session.send', (_$, e) => {
+    sent.push({ to: e.to, text: e.text })
+    return { isDelivered: true } as never
+  })
+  return { ran, filled, stored, runs, sent }
 }
+
+const SELF = '11111111-2222-3333-4444-555555555555'
+const PARENT = '99999999-2222-3333-4444-555555555555'
 
 test('the telemetry rail names the folder and model, then ctx, 5h and 7d', async ($, on) => {
   engine(on)
@@ -87,18 +101,71 @@ test('the buttons run the commands a person would type', async ($, on) => {
   const ui = await mount($, band(160))
   expect(await ui.find({ key: 'chip-side' })).toBeDefined()
 
-  for (const key of ['side', 'recall', 'diff', 'artifacts', 'explain', 'draw']) await ui.press({ key: `bar-${key}` })
+  for (const key of ['diff', 'artifacts', 'explain', 'draw']) await ui.press({ key: `bar-${key}` })
 
-  expect(ran).toEqual(['side', 'recall', 'diff', 'artifacts', 'common:wait-what', 'common:show-me'])
+  expect(ran).toEqual(['diff', 'artifacts', 'common:wait-what', 'common:show-me'])
+})
+
+// This plugin's own commands never reach its command.run hooks through
+// `$.command.run`, so 側聊 opens the branch itself.
+test('側聊 opens a branch of this conversation in a new window and leaves its id for it', async ($, on) => {
+  const { ran, runs, stored } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
+  const ui = await mount($, band(160))
+
+  await ui.press({ key: 'bar-side' })
+
+  expect(ran).toEqual([])
+  expect(runs[0]?.argv).toEqual([
+    'wt.exe', '-w', 'new', 'new-tab', '-d', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin',
+    'claude', '--resume', SELF, '--fork-session',
+  ])
+  expect(runs[0]?.cwd).toBe('C:\\Users\\jimts')
+  expect(stored[0]?.[0]).toBe('branchParent')
+  expect((stored[0]?.[1] as { id: string }).id).toBe(SELF)
+})
+
+test('/side does the same, and from the phone points to /btw', async ($, on) => {
+  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
+  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
+  const remote = await kit.command.run({ command: 'side', args: '', origin: { kind: 'bridge' }, presentation: { isFullscreen: true, columns: 200 } })
+  expect(remote.text).toBe('手機或遠端操作時請直接用 /btw。')
+  expect(runs).toEqual([])
+
+  const here = await kit.command.run({ command: 'side', args: '', origin: { kind: 'composer' }, presentation: { isFullscreen: true, columns: 200 } })
+  expect(here.text).toBe('已在新視窗開出分支；要換模型就在那邊用 /model。')
+  expect(runs[0]?.argv[0]).toBe('wt.exe')
+})
+
+test('off Windows, 側聊 says what to run instead', async ($, on) => {
+  const { runs } = engine(on, '[]', { OS: 'Darwin' })
+  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
+  const answer = await kit.command.run({ command: 'side', args: '', origin: { kind: 'composer' }, presentation: { isFullscreen: true, columns: 200 } })
+  expect(answer.text).toContain(`claude --resume ${SELF} --fork-session`)
+  expect(runs).toEqual([])
+})
+
+test('a branch window takes the id its opener left, and 帶回主線 sends a summary there', async ($, on) => {
+  const { sent } = engine(on, '查到了：x.ts 第 12 行', {}, { branchParent: { id: PARENT, at: Date.now() } })
+  on('command.register', (_$, e) => ({ value: { command: e.name } }) as never)
+  on('session.start', (_$, e) => ({ cwd: e.cwd }) as never)
+  const kit = $ as unknown as { session: { start: (e: unknown) => Promise<unknown> } }
+  await kit.session.start({ cwd: 'C:\\work', surface: 'terminal', isInteractive: true })
+
+  const ui = await mount($, band(160))
+  await ui.press({ key: 'bar-back' })
+
+  expect(sent[0]?.to).toBe(PARENT)
+  expect(sent[0]?.text).toBe('[分支回報]\n查到了：x.ts 第 12 行')
+})
+
+test('a window that is no branch has no 帶回主線', async ($, on) => {
+  engine(on)
+  const ui = await mount($, band(160))
+  expect(await ui.find({ key: 'bar-back' })).toBeUndefined()
 })
 
 test('資料夾 and VS Code hand the folder to the system opener, run from home', async ($, on) => {
-  engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
-  const runs: { argv: string[]; cwd?: string }[] = []
-  on('process.run', (_$, e) => {
-    runs.push({ argv: [...e.argv], cwd: e.init?.cwd })
-    return { value: { exitCode: 1, stdout: '', stderr: '' } } as never
-  })
+  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
   const ui = await mount($, band(160))
   await ui.press({ key: 'bar-folder' })
   await ui.press({ key: 'bar-editor' })
