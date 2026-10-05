@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.1.1 — side 面板改成舊的在上、新的在下，輸入框在最底並貼底
+
+- side 面板的版面反過來：最舊的問答在上、最新的在下，輸入框移到最底，像一般聊天。資料仍是新的在前（`historyOf` 依此取最近幾輪），只在畫面上反轉。
+- 開面板與每次問答寫入後呼叫一次 `$.ui.scroll({ in: 'side', to: 'end' })`，捲到底後引擎會持續貼底，使用者往上捲才解除。內容放得下時此呼叫是否生效、焦點是否因輸入框 key 變動而掉落，需實機確認。
+- 24 項 `claude plugin test`、`claude plugin validate` 通過；測試無法斷言順序與貼底，視覺效果以實機為準。marketplace 1.72.0。
+
 ## Common Mod 0.1.0 — 新 plugin：把 mod 從 common-lab 獨立出來，加入 side
 
 - 新增 `common-mod` plugin，專放 Claude Code mod（function hooks，在 CLI 與桌面 Code 分頁裡畫 UI）。一個 plugin 只能有一個 hooks 入口：`hooks/register.ts` 註冊共用事件（`session.start` 註冊指令、`/clear`／`/resume` 歸零），各 mod 在 `hooks/recall/`、`hooks/side/` 掛自己的事件；`$` 不跨檔傳遞，子模組只交出指令規格等純資料。Claude 專屬，Codex 載體沒有對應版本。

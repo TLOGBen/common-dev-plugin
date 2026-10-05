@@ -75,6 +75,12 @@ function labelOf(kind: string, reply: string) {
   return `${kind}：${one.length > LABEL_CHARS ? `${one.slice(0, LABEL_CHARS - 1)}…` : one}`
 }
 
+// The newest exchange sits at the bottom: once the pane has scrolled to its
+// end it keeps following as the chat grows, until the person scrolls up.
+async function followEnd($: EngineInterface) {
+  await $.ui.scroll({ in: PANE, to: 'end' }).catch(() => undefined)
+}
+
 async function ask($: EngineInterface, question: string, prompt?: string) {
   const text = question.trim()
   if (!text) return
@@ -83,6 +89,7 @@ async function ask($: EngineInterface, question: string, prompt?: string) {
   const entry: SideEntry = { id: nextId++, question: text }
   const asked = generation
   await update($, entries, list => [entry, ...list])
+  await followEnd($)
 
   const reply = await $.model.fork({ prompt: prompt ?? promptOf(text, before) })
   if (asked !== generation) return
@@ -91,6 +98,7 @@ async function ask($: EngineInterface, question: string, prompt?: string) {
     ? { isAnswered: true, text: reply.text }
     : { isAnswered: false, reason: WHY[reply.reason] ?? reply.reason }
   await update($, entries, list => list.map(one => (one.id === entry.id ? { ...one, answer } : one)))
+  await followEnd($)
 }
 
 async function lastReply($: EngineInterface) {
@@ -106,7 +114,10 @@ async function openPane($: EngineInterface, isDocked: boolean): Promise<string |
     closeOnEscape: true,
     ...(isDocked ? {} : { rows: INLINE_ROWS }),
   })
-  if (opened.isPlaced) return null
+  if (opened.isPlaced) {
+    await followEnd($)
+    return null
+  }
   await $.ui.close({ id: PANE })
   return '終端機太窄，放不下側聊面板；把視窗拉寬一點再試。'
 }
@@ -240,15 +251,13 @@ export function registerSide(on: On) {
 
     return (
       <Box flexDirection="column" gap={1} paddingX={1}>
-        {field}
-
         {list.length === 0 && (
           <Text dimColor>
             答案只看得到主對話到目前為止的內容，不會用工具、不會動檔案，也不會寫進主對話。
           </Text>
         )}
 
-        {list.map(entry => (
+        {[...list].reverse().map(entry => (
           <Box key={`entry-${entry.id}`} flexDirection="column">
             <Text bold>› {entry.question}</Text>
             {!entry.answer && <Text dimColor>正在想…</Text>}
@@ -271,6 +280,8 @@ export function registerSide(on: On) {
             )}
           </Box>
         ))}
+
+        {field}
 
         <Text dimColor>Esc 回到主線；面板一關，這些側聊就不見了。</Text>
       </Box>

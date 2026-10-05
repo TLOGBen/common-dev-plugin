@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.71.0"
+    "version": "1.72.0"
   },
   "plugins": [
     {
@@ -54,7 +54,7 @@
       "source": "./plugins/common-mod",
       "description": "Claude Code mods (Claude only; enabled by default): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata and preview; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it, plus 看不懂 (re-explain a reply, wait-what style) and 畫給我看 (a plain-text diagram of a reply, a quick show-me) on hovering a reply or via /side ? and /side 畫.",
       "displayName": "Common Mod",
-      "version": "0.1.0",
+      "version": "0.1.1",
       "defaultEnabled": true
     }
   ]

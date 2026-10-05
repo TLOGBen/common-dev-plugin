@@ -23,6 +23,7 @@ const REPLY = '這裡用 fork 是因為它沿用主線的快取前綴。'
 
 function engine(on: On, reply = '在 src/x.ts 第 12 行') {
   const prompts: string[] = []
+  on('ui.scroll', () => ({ value: {} }) as never)
   on('ui.render', ($, e) => {
     const { Box, Text } = $.ui.resolve(e)
     return e.component === 'AssistantMessage' ? <Text>{REPLY}</Text> : <Box />
@@ -45,7 +46,7 @@ for (const surface of SURFACES) {
     expect(await ui.find({ text: /不會寫進主對話/ })).toBeDefined()
   })
 
-  test(`a question is answered from a fork, newest first (${surface})`, async ($, on) => {
+  test(`a question is answered from a fork (${surface})`, async ($, on) => {
     const prompts = engine(on)
     const ui = await mount($, { ...(PANE as object), surface })
     const field = await ui.find({ type: 'Input' })
