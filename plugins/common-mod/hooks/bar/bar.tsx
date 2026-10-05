@@ -1,8 +1,8 @@
 import { atom, read, update } from 'claude-code'
 import type { EngineInterface, On } from 'claude-code'
 
-import { BRANCH_PARENT, branchArgv, branchCommand } from '../branch'
 import { cells, DEFAULT } from '../raster'
+import { SIDE_PANE, SIDE_TOO_NARROW } from '../side/side'
 
 // Recall's band opens and closes on this; the session this one branched from.
 const recallQuery = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
@@ -239,13 +239,27 @@ async function openOutside($: EngineInterface, target: string) {
   if (ran === null || ran.exitCode !== 0) await $.process.run(['open', target], options)
 }
 
+// The folder is read at the first drawing, after the usage figures; when those
+// failed it was never read, so it is read here. Windows may seat the new
+// window behind the terminal, so a toast says it was handed over.
+async function sessionFolder($: EngineInterface) {
+  if (!cwd) await locate($)
+  return cwd
+}
+
 async function openFolder($: EngineInterface) {
-  if (cwd) await openOutside($, cwd)
+  const at = await sessionFolder($)
+  if (!at) return $.ui.toast('讀不到目前的資料夾')
+  await openOutside($, at)
+  $.ui.toast(`已交給系統開啟：${at}`)
 }
 
 // VS Code answers its own URL scheme, so no `code` launcher is looked up.
 async function openEditor($: EngineInterface) {
-  if (cwd) await openOutside($, `vscode://file/${encodeURI(cwd.replace(/\\/g, '/'))}`)
+  const at = await sessionFolder($)
+  if (!at) return $.ui.toast('讀不到目前的資料夾')
+  await openOutside($, `vscode://file/${encodeURI(at.replace(/\\/g, '/'))}`)
+  $.ui.toast('已交給 VS Code 開啟')
 }
 
 // Next steps follow next-steps (anthropics/claude-plugins-community, MIT), on
@@ -339,18 +353,6 @@ async function pickNext($: EngineInterface, item: Suggestion) {
   if (!filled?.isFilled) $.ui.toast('沒辦法放進輸入框')
 }
 
-// 側聊 is a branch of this conversation in a new window: a whole session, so
-// it can switch model and use tools. Its 帶回主線 sends a summary back here.
-async function branchHere($: EngineInterface): Promise<string | null> {
-  const id = await $.session.id()
-  const folder = cwd || (await $.session.cwd())
-  await $.store.set(BRANCH_PARENT, { id, at: await $.clock.now() })
-  const argv = branchArgv((await $.env.get('OS')) === 'Windows_NT', id, folder)
-  if (!argv) return `在新的終端機執行：${branchCommand(id, folder)}`
-  const ran = await $.process.run(argv, { cwd: (await homeOf($)) || undefined, timeoutMs: 10_000 })
-  return ran.exitCode === 0 ? null : `開不了新視窗：${branchCommand(id, folder)}`
-}
-
 const BRING_BACK =
   '不要接續工作。這個對話是從主對話分出來的分支；把分出來之後的進展寫成一份給主對話看的精簡回報：' +
   '問了什麼、查到或做了什麼、結論是什麼、主線要接手的事。用繁體中文，只寫回報本身。'
@@ -435,24 +437,7 @@ const FITS = [
 ]
 const RAIL = '▌'
 
-// Registered by the hooks module's entry, which owns the shared session.start.
-export const SIDE_COMMAND = {
-  name: 'side',
-  description: '在新視窗開出目前對話的分支：可以換模型、可以動手做，「帶回主線」把結果送回來',
-}
-
 export function registerBar(on: On) {
-  on('command.run', { command: 'side' }, async ($, e) => {
-    // From the phone or web remote there is no window to open here; /btw
-    // covers a side question there.
-    if (e.origin.kind === 'bridge') {
-      return { text: '手機或遠端操作時請直接用 /btw。' }
-    }
-    const why = await branchHere($)
-
-    return { text: why ?? '已在新視窗開出分支；要換模型就在那邊用 /model。' }
-  })
-
   on('session.measure', async ($, e, next) => {
     await absorb($, e)
     $.ui.invalidate('ui.render')
@@ -581,9 +566,10 @@ export function registerBar(on: On) {
             key: 'side',
             label: '側聊',
             press: () =>
-              void branchHere($)
-                .then(why => $.ui.toast(why ?? '已在新視窗開出分支'))
-                .catch(() => $.ui.toast('沒辦法開分支')),
+              void $.ui
+                .open(SIDE_PANE)
+                .then(opened => opened.isPlaced || $.ui.toast(SIDE_TOO_NARROW))
+                .catch(() => $.ui.toast('沒辦法開側聊')),
           },
           {
             key: 'recall',

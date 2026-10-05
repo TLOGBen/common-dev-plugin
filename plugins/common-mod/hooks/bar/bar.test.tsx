@@ -19,7 +19,13 @@ const mount = async ($: { ui: { mount: (t: never) => Promise<unknown> } }, targe
   (await $.ui.mount(target)) as unknown as Drawn
 
 // What the session reports; the figures the old statusline showed.
-function engine(on: On, suggestions = '[]', env: Record<string, string> = {}, store: Record<string, unknown> = {}) {
+function engine(
+  on: On,
+  suggestions = '[]',
+  env: Record<string, string> = {},
+  store: Record<string, unknown> = {},
+  usageFails = false,
+) {
   const ran: string[] = []
   const filled: string[] = []
   const stored: [string, unknown][] = []
@@ -30,8 +36,9 @@ function engine(on: On, suggestions = '[]', env: Record<string, string> = {}, st
     stored.push([e.key, e.value])
     return { value: undefined } as never
   })
-  on('session.usage', () =>
-    ({
+  on('session.usage', () => {
+    if (usageFails) throw new Error('no figures yet')
+    return {
       value: {
         context: { tokens: 94_000, window: 200_000, percent: 47 },
         rateLimits: [
@@ -39,8 +46,8 @@ function engine(on: On, suggestions = '[]', env: Record<string, string> = {}, st
           { kind: 'seven_day', percentUsed: 12 },
         ],
       },
-    }) as never,
-  )
+    } as never
+  })
   on('session.model', () => ({ value: 'claude-sonnet-5-5' }) as never)
   on('session.cwd', () => ({ value: 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin' }) as never)
   on('env.get', (_$, e) => ({ value: env[e.name] }) as never)
@@ -107,41 +114,22 @@ test('the buttons run the commands a person would type', async ($, on) => {
 })
 
 // This plugin's own commands never reach its command.run hooks through
-// `$.command.run`, so 側聊 opens the branch itself.
-test('側聊 opens a branch of this conversation in a new window and leaves its id for it', async ($, on) => {
-  const { ran, runs, stored } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
+// `$.command.run`, so 側聊 opens the side pane itself.
+test('側聊 opens the side pane, docked where the surface docks panes', async ($, on) => {
+  const { ran, runs } = engine(on)
+  const opened: unknown[] = []
+  on('ui.open', (_$, e) => {
+    opened.push(e)
+    return { value: { isPlaced: true } } as never
+  })
+  on('ui.scroll', () => ({ value: {} }) as never)
   const ui = await mount($, band(160))
 
   await ui.press({ key: 'bar-side' })
 
   expect(ran).toEqual([])
-  expect(runs[0]?.argv).toEqual([
-    'wt.exe', '-w', 'new', 'new-tab', '-d', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin',
-    'claude', '--resume', SELF, '--fork-session',
-  ])
-  expect(runs[0]?.cwd).toBe('C:\\Users\\jimts')
-  expect(stored[0]?.[0]).toBe('branchParent')
-  expect((stored[0]?.[1] as { id: string }).id).toBe(SELF)
-})
-
-test('/side does the same, and from the phone points to /btw', async ($, on) => {
-  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' })
-  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
-  const remote = await kit.command.run({ command: 'side', args: '', origin: { kind: 'bridge' }, presentation: { isFullscreen: true, columns: 200 } })
-  expect(remote.text).toBe('手機或遠端操作時請直接用 /btw。')
   expect(runs).toEqual([])
-
-  const here = await kit.command.run({ command: 'side', args: '', origin: { kind: 'composer' }, presentation: { isFullscreen: true, columns: 200 } })
-  expect(here.text).toBe('已在新視窗開出分支；要換模型就在那邊用 /model。')
-  expect(runs[0]?.argv[0]).toBe('wt.exe')
-})
-
-test('off Windows, 側聊 says what to run instead', async ($, on) => {
-  const { runs } = engine(on, '[]', { OS: 'Darwin' })
-  const kit = $ as unknown as { command: { run: (e: unknown) => Promise<{ text?: string }> } }
-  const answer = await kit.command.run({ command: 'side', args: '', origin: { kind: 'composer' }, presentation: { isFullscreen: true, columns: 200 } })
-  expect(answer.text).toContain(`claude --resume ${SELF} --fork-session`)
-  expect(runs).toEqual([])
+  expect((opened[0] as { id: string }).id).toBe('side')
 })
 
 test('a branch window takes the id its opener left, and 帶回主線 sends a summary there', async ($, on) => {
@@ -174,6 +162,16 @@ test('資料夾 and VS Code hand the folder to the system opener, run from home'
     { argv: ['explorer.exe', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin'], cwd: 'C:\\Users\\jimts' },
     { argv: ['explorer.exe', 'vscode://file/C:/Users/jimts/workspace/Gits/common-dev-plugin'], cwd: 'C:\\Users\\jimts' },
   ])
+})
+
+// The folder used to be read only after the usage figures, so a failed read
+// of those left 資料夾 doing nothing at all.
+test('資料夾 still opens when the usage figures could not be read', async ($, on) => {
+  const { runs } = engine(on, '[]', { OS: 'Windows_NT', USERPROFILE: 'C:\\Users\\jimts' }, {}, true)
+  const ui = await mount($, band(160))
+  await ui.press({ key: 'bar-folder' })
+
+  expect(runs[0]?.argv).toEqual(['explorer.exe', 'C:\\Users\\jimts\\workspace\\Gits\\common-dev-plugin'])
 })
 
 test('下一步 offers the forked suggestions, drops unknown commands, and fills the pick as a draft', async ($, on) => {

@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.5.0 — 側聊改回停靠在對話旁的面板，新視窗分支改成面板裡的按鈕
+
+- **side**：`/side` 與 bar 的「側聊」改回開 `side` Pane：全螢幕版面、寬度至少 110 欄時停靠在對話旁（和 diff 面板同一個位置），其他情況顯示在輸入框上方（24 列）。答案來自 `$.model.fork`，看得到主對話到目前為止的內容，不會用工具；「帶回主對話」把問答引用放進輸入框。面板底部新增「開新視窗分支（可換模型、可動手做）」按鈕，沿用 0.4.0 的 `claude --resume --fork-session` 與「帶回主線」。
+- **修正**：還沒有任何一輪對話時，session 紀錄檔還沒寫到硬碟，新視窗會顯示 `No conversation found with session ID` 後馬上結束。現在先檢查 `$.session.turns()`，是 0 就不開視窗，改成提示「先聊一輪再開」。
+- **bar**：「側聊」直接呼叫 `$.ui.open` 開同一個面板（面板設定以純資料從 side 匯入，因為 `$` 不能跨 import 傳遞）。
+- **bar 修正**：資料夾路徑原本在第一次繪製時才讀，而且排在用量數字之後；用量讀不到時資料夾就沒讀，「資料夾」「VS Code」按了完全沒反應。現在按下時若還沒讀過，會當場讀；開啟後跳出提示（Windows 可能把新視窗開在終端機後面）。讀不到資料夾時也會說明。
+- 31 項 `claude plugin test`、`claude plugin validate` 通過；本機沒有 tsc，這次沒跑 `tsc --noEmit`。停靠的實際畫面以實機為準。marketplace 1.76.0。
+
 ## Common Mod 0.4.0 — 側聊改成新視窗分支，回想改長在輸入框上方並可分支或總結
 
 - **side**：`/side` 與 bar 的「側聊」改成在新的 Windows Terminal 視窗執行 `claude --resume <目前 session id> --fork-session`。分支是完整的 session：可以 `/model` 換模型、可以用工具，關掉後紀錄留著。開分支時把主 session 的 id 存進 `$.store`（`branchParent`），分支啟動時只認 60 秒內留下、且不是自己的 id，取用後清掉。分支視窗的 bar 多一顆「帶回主線」：用 `$.model.fork` 整理分支裡的進展，以 `$.session.send` 送回主 session，送不到會說原因。原本 `$.model.fork` 的側聊面板、「帶回主對話」引用一併移除。非 Windows 不開視窗，改成說出要自己執行的指令；手機或遠端照舊指向 `/btw`。
