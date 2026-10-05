@@ -22,6 +22,12 @@ const mount = async ($: { ui: { mount: (t: never) => Promise<unknown> } }, targe
 function engine(on: On, suggestions = '[]', env: Record<string, string> = {}) {
   const ran: string[] = []
   const filled: string[] = []
+  const stored: [string, unknown][] = []
+  on('store.get', () => ({ value: undefined }) as never)
+  on('store.set', (_$, e) => {
+    stored.push([e.key, e.value])
+    return { value: undefined } as never
+  })
   on('session.usage', () =>
     ({
       value: {
@@ -49,7 +55,7 @@ function engine(on: On, suggestions = '[]', env: Record<string, string> = {}) {
     ran.push(e.command)
     return { value: {} } as never
   })
-  return { ran, filled }
+  return { ran, filled, stored }
 }
 
 test('the telemetry rail names the folder and model, then ctx, 5h and 7d', async ($, on) => {
@@ -122,6 +128,19 @@ test('下一步 offers the forked suggestions, drops unknown commands, and fills
   await ui.press({ key: 'next-1' })
   expect(filled).toEqual(['跑一下 bar 的測試'])
   expect(await ui.find({ key: 'next-1' })).toBeUndefined()
+})
+
+test('圖示 turns the Nerd Font glyphs on and keeps the choice for later sessions', async ($, on) => {
+  const { stored } = engine(on)
+  const ui = await mount($, band(160))
+  expect(await ui.find({ text: /^○ 圖示$/ })).toBeDefined()
+  expect(await ui.find({ text: /^側聊$/ })).toBeDefined()
+
+  await ui.press({ key: 'bar-glyphs' })
+
+  expect(stored).toEqual([['barGlyphs', true]])
+  expect(await ui.find({ text: /^● 圖示$/ })).toBeDefined()
+  expect(await ui.find({ text: /^ 側聊$/ })).toBeDefined()
 })
 
 test('a survey keeps the band', async ($, on) => {

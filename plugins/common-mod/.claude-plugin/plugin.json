@@ -1,7 +1,7 @@
 {
   "name": "common-mod",
   "displayName": "Common Mod",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Claude Code mods (function hooks that draw inside the CLI and the desktop Code tab): recall — type @@ to pull a past Claude Code, desktop or Cowork conversation into the prompt, /recall for a per-project activity strata; side — /side opens a throwaway side chat beside the transcript, answered from the main conversation without touching it; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, the folder, VS Code, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft).",
   "author": {
     "name": "ben.tsai",

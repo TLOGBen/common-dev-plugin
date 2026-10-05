@@ -43,6 +43,25 @@ const fiveHour = gauge()
 const sevenDay = gauge()
 const all = [context, fiveHour, sevenDay]
 
+// Nerd Font glyphs, drawn only once the person turns them on with the 圖示
+// button, since a terminal without a Nerd Font shows boxes for them: Font
+// Awesome and Octicons from the long-stable ranges, and the powerline slants
+// for the chips' ends. The choice is kept in $.store, for every session here.
+let nerd = false
+const ICONS: Record<string, string> = {
+  side: '',
+  recall: '',
+  diff: '',
+  artifacts: '',
+  folder: '',
+  editor: '',
+  explain: '',
+  draw: '',
+  next: '',
+}
+const SLANT_IN = ''
+const SLANT_OUT = ''
+
 let isWorking = false
 let started = false
 let frame = 0
@@ -354,11 +373,18 @@ async function start($: EngineInterface) {
     await absorb($, await $.session.usage())
     model = await $.session.model()
     await locate($)
+    nerd = (await $.store.get('barGlyphs')) === true
   } catch {
     // Figures arrive with the next session.measure.
   }
   $.clock.every(FRAME_MS, () => tick($))
   $.clock.every(COUNTDOWN_MS, () => $.ui.invalidate('ui.render'))
+}
+
+async function toggleGlyphs($: EngineInterface) {
+  nerd = !nerd
+  $.ui.invalidate('ui.render')
+  await $.store.set('barGlyphs', nerd)
 }
 
 async function recordTurn($: EngineInterface) {
@@ -434,6 +460,7 @@ export function registerBar(on: On) {
     const room = e.props.bodyColumns - 2
 
     // ── telemetry rail. Three gauges of one shape: label, bar, number, extras.
+    const folderText = folder && nerd ? `${ICONS.folder} ${folder}` : folder
     const name = modelName(model)
     const modelText = model ? (effort ? `${name} [${effort}]` : name) : ''
     const numberOf = (g: Gauge) => (g.target === null ? '--' : `${Math.round(g.shown)}%`)
@@ -460,7 +487,7 @@ export function registerBar(on: On) {
       }),
     ]
     const railWide = (fit: (typeof FITS)[number]) => {
-      const identity = wide(folder) + (fit.model && modelText ? 2 + wide(modelText) : 0)
+      const identity = wide(folderText) + (fit.model && modelText ? 2 + wide(modelText) : 0)
       const parts = gauges(fit).map(
         g => wide(g.label) + 1 + (fit.bar ? fit.bar + 1 : 0) + wide(numberOf(g.g)) + g.extras.reduce((n, x) => n + 1 + wide(x.text), 0),
       )
@@ -472,7 +499,7 @@ export function registerBar(on: On) {
     const telemetry = (
       <Box flexDirection="row" columnGap={3}>
         <Box flexDirection="row" columnGap={2}>
-          {folder ? <Text color={css(CYAN)} bold>{folder}</Text> : null}
+          {folder ? <Text color={css(CYAN)} bold>{folderText}</Text> : null}
           {fit.model && modelText ? <Text color={css(STEEL)}>{modelText}</Text> : null}
         </Box>
         {gauges(fit).map(g => (
@@ -532,21 +559,38 @@ export function registerBar(on: On) {
       },
     ]
 
-    // Each chip is cut on the slant: a triangle in its own ground at each end.
+    // Each chip is cut on the slant: a triangle in its own ground at each end,
+    // the powerline ones once Nerd Font glyphs are on. The last button turns
+    // them on and off.
     const actions = (
       <Box flexDirection="row" flexWrap="wrap" columnGap={1}>
         {groups.flatMap((group, i) => [
           ...(i > 0 ? [<Text key={`slash-${group.key}`} color={css(TRACK)}>╱</Text>] : []),
           ...group.buttons.map(b => (
             <Box key={`chip-${b.key}`} flexDirection="row">
-              <Text color={css(group.bg)}>◢</Text>
+              <Text color={css(group.bg)}>{nerd ? SLANT_IN : '◢'}</Text>
               <Box backgroundColor={css(group.bg)} paddingX={1}>
-                <Button key={`bar-${b.key}`} plain label={b.label} hover={{ color: css(WHITE), bold: true }} onPress={b.press} />
+                <Button
+                  key={`bar-${b.key}`}
+                  plain
+                  label={nerd && ICONS[b.key] ? `${ICONS[b.key]} ${b.label}` : b.label}
+                  hover={{ color: css(WHITE), bold: true }}
+                  onPress={b.press}
+                />
               </Box>
-              <Text color={css(group.bg)}>◤</Text>
+              <Text color={css(group.bg)}>{nerd ? SLANT_OUT : '◤'}</Text>
             </Box>
           )),
         ])}
+        <Box key="glyphs" marginLeft={2}>
+          <Button
+            key="bar-glyphs"
+            plain
+            dimColor={!nerd}
+            label={nerd ? '● 圖示' : '○ 圖示'}
+            onPress={() => void toggleGlyphs($).catch(() => undefined)}
+          />
+        </Box>
       </Box>
     )
 

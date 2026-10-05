@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.3.0 — bar 的 Nerd Font 圖示開關
+
+- 動作軌最後新增「○ 圖示」按鈕，切換 Nerd Font 圖示模式（開啟時顯示「● 圖示」）：按鈕兩端改用 powerline 斜切字元 `U+E0BA`／`U+E0BC`，每顆按鈕前加圖示（側聊、回想、diff、artifacts、資料夾、VS Code、看不懂、畫給我看、下一步），資料夾名稱前加資料夾圖示。只用 Font Awesome 與 Octicons 長期穩定的碼位，避開新版才有的擴充區。
+- 預設關閉：沒有 Nerd Font 的終端機會把這些字畫成方塊。選擇存在 `$.store`（`barGlyphs`），同一台電腦的每個 session 共用，重開也記得。
+- 已知限制：Claude Desktop 內建的引擎若低於 2.1.287，mod 不會完整運作，狀態列不出現、`/side`／`/recall` 也可能回報沒有 hook 接住；等桌面版更新內建引擎即可。
+- 27 項 `claude plugin test`、`claude plugin validate`、`tsc --noEmit` 通過。Nerd Font 圖示的實際外觀以實機為準。marketplace 1.74.0。
+
 ## Common Mod 0.2.0 — 新增 bar：輸入框上方的狀態列，取代 settings.json 的 statusLine
 
 - 新增 **bar** mod（`hooks/bar/`），在輸入框上方的 band 畫兩道掛在同一根霓虹脊柱上的「軌」，輕度賽博龐克配色：脊柱是兩列高的 `Raster`，由霓虹青漸變到洋紅，量表的綠／黃／紅推向霓虹（`#3cf2a0`／`#ffd23f`／`#ff3864`），其餘用鋼藍灰。數字來自 `$.session.usage()`、`session.measure` 與 `turn.complete`；設了 `CLAUDE_CODE_AUTO_COMPACT_WINDOW` 時，ctx 照舊以該值為分母。
