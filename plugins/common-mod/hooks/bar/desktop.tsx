@@ -13,6 +13,19 @@ import type { Gauge } from './model'
 // pressable whole. The gauges are SVG, which the app draws as an image and
 // which knows nothing of the theme, so their colors read on light and dark
 // alike. No Nerd Font glyphs, no per-frame animation.
+// A native button holds text alone, so each label leads with an emoji, which
+// the app's font draws in color; a project button may bring its own.
+const EMOJI: Record<string, string> = {
+  side: '💬',
+  recall: '🕘',
+  explain: '🤔',
+  draw: '🎨',
+  next: '👉',
+  back: '↩️',
+  project: '📄',
+}
+const emojiOf = (key: string, own?: string) => EMOJI[key] ?? (key.startsWith('project-') ? (own ?? EMOJI.project) : undefined)
+
 const TONES = { ok: '#2a9d5c', warn: '#c0841a', crit: '#d64545' }
 const TRACK = '#8a8f98'
 const BAR_WIDTH = 56
@@ -48,7 +61,9 @@ export function drawDesktop(els: ElementTable<'desktop' | 'vscode'>, hands: Hand
   // Bars only where there is room for them; the numbers always.
   const hasBars = hands.bodyColumns >= 80
 
-  const groups = (['view', 'ask'] as const).map(key => hands.buttons.filter(a => a.group === key)).filter(g => g.length > 0)
+  const groups = (['view', 'ask', 'project'] as const)
+    .map(key => hands.buttons.filter(a => a.group === key))
+    .filter(g => g.length > 0)
   const buttons = (
     <Box flexDirection="row" flexWrap="wrap" columnGap={3}>
       {groups.map((group, i) => (
@@ -57,8 +72,8 @@ export function drawDesktop(els: ElementTable<'desktop' | 'vscode'>, hands: Hand
             <Button
               key={`bar-${a.key}`}
               variant="secondary"
-              dimColor={hands.pending !== null && a.command !== undefined}
-              label={a.label}
+              dimColor={hands.pending !== null && a.command !== undefined && !a.fill}
+              label={emojiOf(a.key, a.icon) ? `${emojiOf(a.key, a.icon)} ${a.label}` : a.label}
               onPress={a.onPress}
             />
           ))}

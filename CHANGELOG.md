@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.12.0 — 按鈕接上專案自己的 skill；專案可加按鈕；更多圖示
+
+- **自動接上專案的 skill**：「看不懂」「畫給我看」依序找 `common:wait-what`／`wait-what`、`common:show-me`／`show-me`，用 session 裡第一個有的；沒裝 common 但專案自己有這兩個 skill 時（例如 GA_workspace），按鈕照樣出現並接到專案的版本。
+- **專案自己的按鈕**：讀 session 資料夾的 `.claude/common-mod.json`（`{"buttons":[{"label","command","fill","icon"}]}`），畫在 bar 最後一組；`fill: true` 時在輸入框放好 `/指令 ` 讓人接著打字，不直接執行。指令不存在、名稱不合法、標籤過長的按鈕不畫；每輪重新讀一次。
+- **更多圖示**：desktop 的按鈕前面加 emoji（💬 側聊、🕘 回想、🤔 看不懂、🎨 畫給我看、👉 下一步、↩️ 帶回主線、📄 專案按鈕，專案可自訂）；terminal 開了「圖示」時，帶回主線、專案按鈕與 ctx／5h／7d 三個量表也有 Nerd Font 圖示。terminal 的圖示改用 `\u` 跳脫字元寫在原始碼裡。
+- 63 項 `claude plugin test`、`claude plugin validate` 通過；`tsc --noEmit` 只剩既有的 `focus` 型別錯誤。marketplace 1.83.0。
+
 ## Common Mod 0.11.1 — 「已送出」留到模型開始輸出；拿掉時間記錄
 
 - 時間記錄顯示：按下後約 1.4 秒就開始呼叫模型，剩下的幾秒是模型開始輸出前的時間。「已送出」原本在呼叫模型時就消失，中間又空了幾秒；改成等這一輪模型第一次輸出（文字、思考或工具呼叫）才消失。

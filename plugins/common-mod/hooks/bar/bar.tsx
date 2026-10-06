@@ -2,8 +2,8 @@ import { atom, read, update } from 'claude-code'
 import type { EngineInterface, On } from 'claude-code'
 
 import { SIDE_PANE, SIDE_TOO_NARROW } from '../side/side'
-import { actionsFor } from './actions'
-import type { Action, Hands } from './actions'
+import { actionsFor, projectActions } from './actions'
+import type { Drawn, Hands } from './actions'
 import { drawDesktop } from './desktop'
 import {
   absorbUsage,
@@ -56,6 +56,14 @@ async function learnCommands($: EngineInterface) {
   state.known = commands === null ? null : new Set(commands.map(c => c.name))
 }
 
+// The project's own buttons, from .claude/common-mod.json in the session's
+// folder; none when the file is missing or unreadable.
+async function readProject($: EngineInterface) {
+  const cwd = (await $.session.cwd()).replace(/[\\/]+$/, '')
+  const text = await $.fs.read(`${cwd}/.claude/common-mod.json`).catch(() => null)
+  state.project = typeof text === 'string' ? projectActions(text) : []
+}
+
 function showNext($: EngineInterface, view: Next) {
   state.nextView = view
   $.ui.invalidate('ui.render')
@@ -102,7 +110,7 @@ async function openSide($: EngineInterface) {
 // What each button does. Most run the command a person would type, so each
 // opens what that command opens, the way it does. 側聊 and 回想 are this
 // plugin's own, which its `$.command.run` does not reach, so they act here.
-async function act($: EngineInterface, action: Action, parent: string | null) {
+async function act($: EngineInterface, action: Drawn, parent: string | null) {
   switch (action.key) {
     case 'side':
       return openSide($)
@@ -114,6 +122,11 @@ async function act($: EngineInterface, action: Action, parent: string | null) {
       return parent === null ? undefined : bringBack($, parent)
     default:
       if (action.command === undefined) return
+      if (action.fill) {
+        const filled = await $.prompt.fill({ text: `/${action.command} ` })
+        if (!filled.isFilled) $.ui.toast('沒辦法放進輸入框')
+        return
+      }
       state.pending = { label: action.label, at: Date.now(), isQueued: state.isWorking, isDispatched: false }
       $.ui.invalidate('ui.render')
       try {
@@ -137,8 +150,8 @@ function clearPending($: EngineInterface) {
 
 // A press that fails says so, rather than doing nothing.
 // A command already on its way is not sent twice.
-function press($: EngineInterface, action: Action, parent: string | null) {
-  if (action.command !== undefined && state.pending) return
+function press($: EngineInterface, action: Drawn, parent: string | null) {
+  if (action.command !== undefined && !action.fill && state.pending) return
   void act($, action, parent).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
 }
 
@@ -158,6 +171,7 @@ async function start($: EngineInterface) {
     state.model = await $.session.model()
     await locate($)
     await learnCommands($)
+    await readProject($)
   } catch {
     // Figures arrive with the next session.measure.
   }
@@ -172,6 +186,7 @@ async function start($: EngineInterface) {
 // install or reload plugins.
 async function recordTurn($: EngineInterface) {
   await learnCommands($)
+  await readProject($)
   try {
     await absorb($, await $.session.usage())
   } catch {
@@ -229,7 +244,7 @@ export function registerBar(on: On) {
     const parent = await read($, branchParent)
     const hands: Hands = {
       now: await $.clock.now(),
-      buttons: actionsFor(e.surface, state.known, parent !== null).map(a => ({ ...a, onPress: () => press($, a, parent) })),
+      buttons: actionsFor(e.surface, state.known, parent !== null, state.project).map(a => ({ ...a, onPress: () => press($, a, parent) })),
       pending: pendingText(),
       pick: item => void pickNext($, item).catch(() => undefined),
       hideNext: () => showNext($, { kind: 'hidden' }),

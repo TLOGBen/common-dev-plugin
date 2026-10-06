@@ -31,10 +31,12 @@ type Options = {
   store?: Record<string, unknown>
   commands?: string[]
   failing?: string
+  // The project's .claude/common-mod.json; absent, there is none.
+  project?: string
 }
 
 // What the session reports; the figures the old statusline showed.
-function engine(on: On, { suggestions = '[]', env = {}, store = {}, commands = COMMANDS, failing }: Options = {}) {
+function engine(on: On, { suggestions = '[]', env = {}, store = {}, commands = COMMANDS, failing, project }: Options = {}) {
   const ran: string[] = []
   const filled: string[] = []
   const stored: [string, unknown][] = []
@@ -71,6 +73,10 @@ function engine(on: On, { suggestions = '[]', env = {}, store = {}, commands = C
     return { value: undefined } as never
   })
   on('command.list', () => ({ value: commands.map(name => ({ name })) }) as never)
+  on('fs.read', (_$, e) => {
+    if (project !== undefined && /[\\/]\.claude[\\/]common-mod\.json$/.test(e.path)) return { value: project } as never
+    throw new Error('ENOENT')
+  })
   on('model.fork', () => ({ value: { isAnswered: true, text: suggestions, usage: {} } }) as never)
   on('prompt.fill', (_$, e) => {
     filled.push(e.text)
@@ -147,6 +153,34 @@ for (const surface of SURFACES) {
 
     await ui.press({ key: 'bar-draw' })
     expect(ran).toEqual(['common:wait-what'])
+  })
+
+  test(`without the common plugin, 看不懂 and 畫給我看 run the project's own skills (${surface})`, async ($, on) => {
+    const { ran } = engine(on, { commands: ['wait-what', 'show-me'] })
+    const ui = await mount($, band(160, { surface }))
+
+    await ui.press({ key: 'bar-explain' })
+    expect(ran).toEqual(['wait-what'])
+    expect(await ui.find({ key: 'bar-draw' })).toBeDefined()
+  })
+
+  test(`a project's own button puts its command in the prompt box (${surface})`, async ($, on) => {
+    const { filled, ran } = engine(on, {
+      commands: [...COMMANDS, 'sa-align'],
+      project: JSON.stringify({
+        buttons: [
+          { label: 'SA 怎麼說', command: '/sa-align', fill: true },
+          { label: '不存在', command: 'no-such-skill' },
+          { label: '壞掉的', command: 'rm -rf /' },
+        ],
+      }),
+    })
+    const ui = await mount($, band(160, { surface }))
+
+    expect(await ui.find({ key: 'bar-project-1' })).toBeUndefined()
+    await ui.press({ key: 'bar-project-0' })
+    expect(filled).toEqual(['/sa-align '])
+    expect(ran).toEqual([])
   })
 
   test(`a command the session lacks draws no button (${surface})`, async ($, on) => {
@@ -303,7 +337,7 @@ test('the desktop draws native buttons, SVG gauges, and no glyph toggle', async 
   const ui = await mount($, band(160, { surface: 'desktop' }))
 
   expect((await ui.find({ key: 'bar-side' }))?.props.variant).toBe('secondary')
-  expect(await ui.find({ key: 'bar-side', text: /^側聊$/ })).toBeDefined()
+  expect(await ui.find({ key: 'bar-side', text: /^💬 側聊$/ })).toBeDefined()
   expect(await ui.find({ key: 'bar-glyphs' })).toBeUndefined()
   expect(read).not.toContain('barGlyphs')
   expect(await ui.find({ text: /◢/ })).toBeUndefined()

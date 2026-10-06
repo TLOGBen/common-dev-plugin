@@ -1,5 +1,7 @@
 import type { RenderSurface } from 'claude-code'
 
+import type { Action } from './actions'
+
 // What the bar shows, whatever draws it: the gauges, the session's figures,
 // the next-step offer. One model for every surface, since a session may draw
 // on the terminal and the desktop at once and both should read the same.
@@ -34,6 +36,8 @@ export const state = {
   nextView: { kind: 'hidden' } as Next,
   // The session's command names; null until read, or when the list fails.
   known: null as ReadonlySet<string> | null,
+  // The project's own buttons (.claude/common-mod.json).
+  project: [] as Action[],
   // Surfaces that have drawn the bar: only the terminal's animates per frame.
   seen: new Set<RenderSurface>(),
   // A command a button sent and its turn has not reached the model yet: said

@@ -24,7 +24,7 @@ const TRACK = 0x3a3f5a
 const WHITE = 0xffffff
 const TONES = { ok: OK, warn: WARN, crit: CRIT }
 // Button grounds, one per group, all deep enough to keep the default text legible.
-const GROUND = { view: 0x0f3640, ask: 0x3d1238 }
+const GROUND = { view: 0x0f3640, ask: 0x3d1238, project: 0x2b3512 }
 
 const PULSE_MS = 1200
 const SHIMMER_MS = 1800
@@ -40,17 +40,22 @@ const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', 
 // session here; only the terminal reads it. Written as escapes, since the
 // private-use characters are invisible in most editors.
 const ICONS: Record<string, string> = {
-  side: '',
-  recall: '',
-  diff: '',
-  artifacts: '',
-  folder: '',
-  explain: '',
-  draw: '',
-  next: '',
+  side: '\uf086',
+  recall: '\uf1da',
+  diff: '\uf440',
+  artifacts: '\uf1b2',
+  folder: '\uf07c',
+  explain: '\uf059',
+  draw: '\uf1fc',
+  next: '\uf400',
+  back: '\uf112',
+  project: '\uf15c',
+  ctx: '\uf2db',
+  five: '\uf017',
+  seven: '\uf073',
 }
-const SLANT_IN = ''
-const SLANT_OUT = ''
+const SLANT_IN = '\ue0ba'
+const SLANT_OUT = '\ue0bc'
 
 const css = (c: number) => `#${c.toString(16).padStart(6, '0')}`
 const channel = (c: number, shift: number) => (c >> shift) & 255
@@ -159,7 +164,7 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
   const railWide = (fit: (typeof FITS)[number]) => {
     const identity = wide(folderText) + (fit.model && model ? 2 + wide(model) : 0)
     const parts = fitted(fit).map(
-      g => wide(g.label) + 1 + (fit.bar ? fit.bar + 1 : 0) + wide(numberOf(g.g)) + g.extras.reduce((n, x) => n + 1 + wide(x.text), 0),
+      g => wide(g.label) + (nerd ? 2 : 0) + 1 + (fit.bar ? fit.bar + 1 : 0) + wide(numberOf(g.g)) + g.extras.reduce((n, x) => n + 1 + wide(x.text), 0),
     )
     return 2 + identity + parts.reduce((n, w) => n + 3 + w, 0)
   }
@@ -175,7 +180,7 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
       </Box>
       {fitted(fit).map(g => (
         <Box key={`gauge-${g.key}`} flexDirection="row" columnGap={1}>
-          <Text color={css(STEEL)}>{g.label}</Text>
+          <Text color={css(STEEL)}>{nerd && ICONS[g.key] ? `${ICONS[g.key]} ${g.label}` : g.label}</Text>
           {Raster && fit.bar > 0 ? (
             <Raster
               key={`bar-${g.key}`}
@@ -193,12 +198,12 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
     </Box>
   )
 
-  // ── action rail. Two groups, each its own ground, split by ╱.
-  const groups = (['view', 'ask'] as const).map(key => ({
-    key,
-    bg: GROUND[key],
-    buttons: hands.buttons.filter(a => a.group === key),
-  }))
+  // ── action rail. Up to three groups (the project's own last), each its own
+  // ground, split by ╱.
+  const groups = (['view', 'ask', 'project'] as const)
+    .map(key => ({ key, bg: GROUND[key], buttons: hands.buttons.filter(a => a.group === key) }))
+    .filter(g => g.buttons.length > 0)
+  const iconOf = (key: string, own?: string) => ICONS[key] ?? (key.startsWith('project-') ? (own ?? ICONS.project) : undefined)
 
   // Each chip is cut on the slant: a triangle in its own ground at each end,
   // the powerline ones once Nerd Font glyphs are on. The chip's padding is in
@@ -214,8 +219,8 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
               <Button
                 key={`bar-${a.key}`}
                 plain
-                dimColor={hands.pending !== null && a.command !== undefined}
-                label={nerd && ICONS[a.key] ? ` ${ICONS[a.key]} ${a.label} ` : ` ${a.label} `}
+                dimColor={hands.pending !== null && a.command !== undefined && !a.fill}
+                label={nerd && iconOf(a.key, a.icon) ? ` ${iconOf(a.key, a.icon)} ${a.label} ` : ` ${a.label} `}
                 hover={{ color: css(WHITE), bold: true }}
                 onPress={a.onPress}
               />
