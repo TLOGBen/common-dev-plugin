@@ -66,6 +66,7 @@ function engine(on: On, { suggestions = '[]', env = {}, store = {}, commands = C
   on('env.get', (_$, e) => ({ value: env[e.name] }) as never)
   on('clock.now', () => ({ value: Date.now() }) as never)
   on('clock.every', () => ({ value: null }) as never)
+  on('ui.log', () => ({ value: undefined }) as never)
   on('ui.toast', (_$, e) => {
     toasts.push(e.text)
     return { value: undefined } as never
@@ -109,14 +110,19 @@ for (const surface of SURFACES) {
     expect(await ui.find({ text: /^12%$/ })).toBeDefined()
   })
 
-  test(`看不懂 and 畫給我看 run the commands a person would type (${surface})`, async ($, on) => {
-    const { ran } = engine(on)
-    const ui = await mount($, band(160, { surface }))
+  for (const [key, command] of [
+    ['explain', 'common:wait-what'],
+    ['draw', 'common:show-me'],
+  ]) {
+    test(`bar-${key} runs ${command}, as a person would type it (${surface})`, async ($, on) => {
+      const { ran } = engine(on)
+      const ui = await mount($, band(160, { surface }))
 
-    for (const key of ['explain', 'draw']) await ui.press({ key: `bar-${key}` })
+      await ui.press({ key: `bar-${key}` })
 
-    expect(ran).toEqual(['common:wait-what', 'common:show-me'])
-  })
+      expect(ran).toEqual([command])
+    })
+  }
 
   test(`a button whose command fails says why (${surface})`, async ($, on) => {
     const { toasts } = engine(on, { failing: 'common:wait-what' })
@@ -125,6 +131,23 @@ for (const surface of SURFACES) {
     await ui.press({ key: 'bar-explain' })
 
     expect(toasts.some(t => t.startsWith('看不懂：'))).toBe(true)
+    expect(await ui.find({ text: /已送出/ })).toBeUndefined()
+  })
+
+  test(`a sent command shows at once, and a second press sends nothing more (${surface})`, async ($, on) => {
+    const { ran } = engine(on)
+    const ui = await mount($, band(160, { surface }))
+
+    await ui.press({ key: 'bar-explain' })
+    expect(await ui.find({ text: /^ ?已送出：看不懂…$/ })).toBeDefined()
+    if (surface === 'desktop') {
+      const dots = (await ui.findAll({ type: 'Svg' })).find(s => s.props.alt === '送出中')
+      expect(dots?.props.isInteractive).toBe(true)
+      expect(String(dots?.props.source)).toContain('<animate')
+    }
+
+    await ui.press({ key: 'bar-draw' })
+    expect(ran).toEqual(['common:wait-what'])
   })
 
   test(`a command the session lacks draws no button (${surface})`, async ($, on) => {
@@ -236,13 +259,20 @@ test('a wide terminal draws a bar for every gauge, a narrow one only the numbers
   expect(await narrow.find({ text: /^23%$/ })).toBeDefined()
 })
 
-test('diff and artifacts are the terminal’s, and run its commands', async ($, on) => {
-  const { ran } = engine(on)
+for (const key of ['diff', 'artifacts']) {
+  test(`bar-${key} runs /${key} on the terminal`, async ($, on) => {
+    const { ran } = engine(on)
+    const ui = await mount($, band(160))
+    await ui.press({ key: `bar-${key}` })
+    expect(ran).toEqual([key])
+  })
+}
+
+test('diff and artifacts are the terminal’s alone', async ($, on) => {
+  engine(on)
   const ui = await mount($, band(160))
   expect(await ui.find({ key: 'chip-side' })).toBeDefined()
-
-  for (const key of ['diff', 'artifacts']) await ui.press({ key: `bar-${key}` })
-  expect(ran).toEqual(['diff', 'artifacts'])
+  expect(await ui.find({ key: 'bar-diff' })).toBeDefined()
 
   const desk = await mount($, band(160, { requestId: 'band-desktop', surface: 'desktop' }))
   expect(await desk.find({ key: 'bar-diff' })).toBeUndefined()

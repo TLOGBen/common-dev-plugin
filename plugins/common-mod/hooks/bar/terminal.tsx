@@ -30,6 +30,8 @@ const PULSE_MS = 1200
 const SHIMMER_MS = 1800
 const FLOW_MS = 2400
 const GLITCH = '#%&@$*+=?!0123456789'
+// A sent command's spinner, one step every third frame.
+const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', '⠏']
 
 // Nerd Font glyphs, drawn only once the person turns them on with the 圖示
 // button, since a terminal without a Nerd Font shows boxes for them: Font
@@ -212,6 +214,7 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
               <Button
                 key={`bar-${a.key}`}
                 plain
+                dimColor={hands.pending !== null && a.command !== undefined}
                 label={nerd && ICONS[a.key] ? ` ${ICONS[a.key]} ${a.label} ` : ` ${a.label} `}
                 hover={{ color: css(WHITE), bold: true }}
                 onPress={a.onPress}
@@ -230,6 +233,12 @@ export function drawTerminal(els: ElementTable<'terminal'>, hands: TerminalHands
           onPress={hands.toggleGlyphs}
         />
       </Box>
+      {hands.pending ? (
+        <Box key="pending" marginLeft={2}>
+          <Text color={css(CYAN)}>{SPINNER[Math.floor(state.frame / 3) % SPINNER.length]}</Text>
+          <Text dimColor> {hands.pending}</Text>
+        </Box>
+      ) : null}
     </Box>
   )
 

@@ -36,6 +36,20 @@ export const state = {
   known: null as ReadonlySet<string> | null,
   // Surfaces that have drawn the bar: only the terminal's animates per frame.
   seen: new Set<RenderSurface>(),
+  // A command a button sent and its turn has not reached the model yet: said
+  // on the bar at once, since the app can take seconds to show the turn.
+  // `isQueued` while a turn was running at the press; `isDispatched` once the
+  // engine took the command, so the next model request is its own.
+  pending: null as { label: string; at: number; isQueued: boolean; isDispatched: boolean } | null,
+}
+
+// Pending past this is put away whatever happened.
+export const PENDING_MS = 30_000
+
+export const pendingText = () => {
+  const { pending } = state
+  if (!pending) return null
+  return pending.isQueued && !pending.isDispatched ? `排隊中：${pending.label}（等這一輪結束）` : `已送出：${pending.label}…`
 }
 
 export const tone = (percent: number, crit: number) => (percent >= crit ? 'crit' : percent >= 70 ? 'warn' : 'ok')
@@ -159,7 +173,8 @@ export function advance() {
     }
   }
   const isHot = all.some(g => (g.target ?? 0) >= 90)
-  return moving || (state.seen.has('terminal') && (state.isWorking || (isHot && state.frame % 2 === 0)))
+  const isSpinning = state.pending !== null && state.frame % 3 === 0
+  return moving || (state.seen.has('terminal') && (state.isWorking || isSpinning || (isHot && state.frame % 2 === 0)))
 }
 
 // Next steps follow next-steps (anthropics/claude-plugins-community, MIT), on

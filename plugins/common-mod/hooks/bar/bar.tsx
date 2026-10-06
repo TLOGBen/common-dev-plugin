@@ -11,6 +11,8 @@ import {
   BRING_BACK,
   folderOf,
   NEXT_QUESTION,
+  PENDING_MS,
+  pendingText,
   recordTokens,
   state,
   suggestionsOf,
@@ -113,15 +115,33 @@ async function act($: EngineInterface, action: Action, parent: string | null) {
     default:
       if (action.command === undefined) return
       trace($, `run ${action.command} start`)
-      await $.command.run({ command: action.command })
+      state.pending = { label: action.label, at: Date.now(), isQueued: state.isWorking, isDispatched: false }
+      $.ui.invalidate('ui.render')
+      try {
+        await $.command.run({ command: action.command })
+      } catch (err) {
+        clearPending($)
+        throw err
+      }
       trace($, `run ${action.command} resolved`)
+      if (state.pending) {
+        state.pending.isDispatched = true
+        $.ui.invalidate('ui.render')
+      }
   }
+}
+
+function clearPending($: EngineInterface) {
+  if (!state.pending) return
+  state.pending = null
+  $.ui.invalidate('ui.render')
 }
 
 // Temporary: where a press of 看不懂 or 畫給我看 waits before its command shows.
 // Each step's time goes to ~/.claude/common-mod-bar-trace.log (the last 200)
 // and to the debug log.
 const TRACE: string[] = []
+let stepTraced = false
 function trace($: EngineInterface, text: string) {
   const line = `${new Date().toISOString()} ${text}`
   TRACE.push(line)
@@ -136,8 +156,10 @@ async function writeTrace($: EngineInterface) {
 }
 
 // A press that fails says so, rather than doing nothing.
+// A command already on its way is not sent twice.
 function press($: EngineInterface, action: Action, parent: string | null) {
   trace($, `press ${action.key} isWorking=${state.isWorking}`)
+  if (action.command !== undefined && state.pending) return
   void act($, action, parent).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
 }
 
@@ -161,6 +183,7 @@ async function start($: EngineInterface) {
     // Figures arrive with the next session.measure.
   }
   $.clock.every(FRAME_MS, () => {
+    if (state.pending && Date.now() - state.pending.at > PENDING_MS) clearPending($)
     if (advance()) $.ui.invalidate('ui.render')
   })
   $.clock.every(COUNTDOWN_MS, () => $.ui.invalidate('ui.render'))
@@ -187,7 +210,13 @@ export function registerBar(on: On) {
   })
 
   // The effort rides on each model request; the model's name, as /model shows it.
+  // The first model request of the turn a button sent ends its pending line.
   on('turn.step', async function* ($, e, next) {
+    if (!stepTraced) {
+      stepTraced = true
+      trace($, 'turn.step: first model request')
+    }
+    if (state.pending?.isDispatched) clearPending($)
     const was = `${state.model}|${state.effort}`
     state.effort = e.effort === undefined ? '' : String(e.effort)
     state.model = await $.session.model().catch(() => state.model)
@@ -199,6 +228,7 @@ export function registerBar(on: On) {
   // A new turn puts away suggestions made for the last one.
   on('turn.start', async ($, e, next) => {
     trace($, 'turn.start')
+    stepTraced = false
     asking += 1
     if (state.nextView.kind !== 'hidden') showNext($, { kind: 'hidden' })
 
@@ -228,6 +258,7 @@ export function registerBar(on: On) {
     const hands: Hands = {
       now: await $.clock.now(),
       buttons: actionsFor(e.surface, state.known, parent !== null).map(a => ({ ...a, onPress: () => press($, a, parent) })),
+      pending: pendingText(),
       pick: item => void pickNext($, item).catch(() => undefined),
       hideNext: () => showNext($, { kind: 'hidden' }),
     }

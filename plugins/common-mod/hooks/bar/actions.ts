@@ -44,6 +44,8 @@ export type Pressable = Action & { onPress: () => void }
 export type Hands = {
   now: number
   buttons: readonly Pressable[]
+  // What a press just sent, while its turn has not started answering.
+  pending: string | null
   pick: (item: Suggestion) => void
   hideNext: () => void
 }

@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.11.0 — bar 按下命令按鈕後立刻顯示「已送出」
+
+- 0.10.1 的時間記錄顯示：按鈕送出指令與引擎開始新一輪都在 0.1～1.3 秒內，每輪結束讀用量只花幾毫秒；按下後感覺到的約 5 秒延遲在引擎開工之後，外掛縮短不了。
+- 按下「看不懂」「畫給我看」（terminal 另有 diff、artifacts）後，bar 立刻顯示「已送出：看不懂…」；這一輪還在跑時按下則顯示「排隊中：…（等這一輪結束）」。desktop 旁邊是三個輪流亮起的點（SVG 動畫由 desktop 自己播放，外掛不逐格重畫），terminal 是旋轉字元。那一輪開始呼叫模型、指令失敗或過了 30 秒就消失。
+- 顯示期間其他命令按鈕變淡，再按不會重送，避免連按排成好幾輪。
+- 時間記錄多一個「這一輪第一次呼叫模型」的時間點，用來分辨剩下的延遲在 desktop 畫面還是模型；確認後拿掉。
+- 59 項 `claude plugin test`、`claude plugin validate` 通過；`tsc --noEmit` 只剩既有的 `focus` 型別錯誤。marketplace 1.82.0。
+
 ## Common Mod 0.10.1 — bar 暫時記錄按鈕的時間點
 
 - 查「看不懂」「畫給我看」按下後約 5 秒才出現的延遲：按下、指令開始與結束、這一輪開始與結束（含讀用量的時間）、`isWorking` 變化，各記一行時間到 `~/.claude/common-mod-bar-trace.log`（最後 200 行）與 debug log。查完會拿掉。

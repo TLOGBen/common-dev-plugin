@@ -29,6 +29,20 @@ function barSource(g: Gauge, crit: number) {
   )
 }
 
+// Three dots that pulse in turn while a sent command waits for its turn. The
+// app plays the SMIL itself in its sandboxed frame (`isInteractive`), so the
+// bar draws it once and never redraws per frame.
+const DOTS =
+  '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="8" viewBox="0 0 22 8">' +
+  [3, 11, 19]
+    .map(
+      (x, i) =>
+        `<circle cx="${x}" cy="4" r="2.6" fill="${TRACK}">` +
+        `<animate attributeName="opacity" values="0.25;1;0.25" dur="1s" begin="${i * 0.2}s" repeatCount="indefinite"/></circle>`,
+    )
+    .join('') +
+  '</svg>'
+
 export function drawDesktop(els: ElementTable<'desktop' | 'vscode'>, hands: Hands & { bodyColumns: number }): RenderElement {
   const { Box, Text, Button, Svg } = els
   // Bars only where there is room for them; the numbers always.
@@ -40,10 +54,22 @@ export function drawDesktop(els: ElementTable<'desktop' | 'vscode'>, hands: Hand
       {groups.map((group, i) => (
         <Box key={`group-${i}`} flexDirection="row" columnGap={1}>
           {group.map(a => (
-            <Button key={`bar-${a.key}`} variant="secondary" label={a.label} onPress={a.onPress} />
+            <Button
+              key={`bar-${a.key}`}
+              variant="secondary"
+              dimColor={hands.pending !== null && a.command !== undefined}
+              label={a.label}
+              onPress={a.onPress}
+            />
           ))}
         </Box>
       ))}
+      {hands.pending ? (
+        <Box key="pending" flexDirection="row" columnGap={1} alignItems="center">
+          <Svg source={DOTS} alt="送出中" width={22} height={8} isInteractive />
+          <Text dimColor>{hands.pending}</Text>
+        </Box>
+      ) : null}
     </Box>
   )
 
