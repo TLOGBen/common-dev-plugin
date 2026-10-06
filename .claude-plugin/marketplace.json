@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.81.0"
+    "version": "1.81.1"
   },
   "plugins": [
     {
@@ -54,7 +54,7 @@
       "source": "./plugins/common-mod",
       "description": "Claude Code mods (Claude only; enabled by default; no slash commands): recall — typing # in the prompt box or the 回想 button opens a band above the prompt to search past Claude Code, desktop and Cowork conversations; pressing one puts its #chat:<id> token in the prompt box, and sending the prompt attaches that conversation as quoted context; side — the 側聊 button opens a side-chat pane docked beside the transcript like the diff panel (answers from a fork of this conversation, no tools), with a button to go on as a branch in a new window (switch model there, use tools), whose 帶回主線 sends a summary back to the main session; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft); the terminal and the desktop each draw it their own way: the terminal with neon gauges and chips, the desktop with native buttons and SVG gauges and without diff and artifacts.",
       "displayName": "Common Mod",
-      "version": "0.10.0",
+      "version": "0.10.1",
       "defaultEnabled": true
     }
   ]

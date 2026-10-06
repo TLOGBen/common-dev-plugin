@@ -111,12 +111,33 @@ async function act($: EngineInterface, action: Action, parent: string | null) {
     case 'back':
       return parent === null ? undefined : bringBack($, parent)
     default:
-      if (action.command !== undefined) await $.command.run({ command: action.command })
+      if (action.command === undefined) return
+      trace($, `run ${action.command} start`)
+      await $.command.run({ command: action.command })
+      trace($, `run ${action.command} resolved`)
   }
+}
+
+// Temporary: where a press of 看不懂 or 畫給我看 waits before its command shows.
+// Each step's time goes to ~/.claude/common-mod-bar-trace.log (the last 200)
+// and to the debug log.
+const TRACE: string[] = []
+function trace($: EngineInterface, text: string) {
+  const line = `${new Date().toISOString()} ${text}`
+  TRACE.push(line)
+  if (TRACE.length > 200) TRACE.shift()
+  $.ui.log(`[bar] ${line}`, { to: 'debug' })
+  void writeTrace($).catch(() => undefined)
+}
+
+async function writeTrace($: EngineInterface) {
+  const home = ((await $.env.get('USERPROFILE')) ?? (await $.env.get('HOME')) ?? '').replace(/[\\/]+$/, '')
+  if (home) await $.fs.write(`${home}/.claude/common-mod-bar-trace.log`, `${TRACE.join('\n')}\n`)
 }
 
 // A press that fails says so, rather than doing nothing.
 function press($: EngineInterface, action: Action, parent: string | null) {
+  trace($, `press ${action.key} isWorking=${state.isWorking}`)
   void act($, action, parent).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
 }
 
@@ -177,6 +198,7 @@ export function registerBar(on: On) {
 
   // A new turn puts away suggestions made for the last one.
   on('turn.start', async ($, e, next) => {
+    trace($, 'turn.start')
     asking += 1
     if (state.nextView.kind !== 'hidden') showNext($, { kind: 'hidden' })
 
@@ -186,7 +208,11 @@ export function registerBar(on: On) {
   // One reading per main-loop turn; a subagent's turns are not the session's.
   on('turn.complete', async ($, e, next) => {
     const result = await next(e)
-    if (!e.agentId) await recordTurn($)
+    if (!e.agentId) {
+      trace($, 'turn.complete: reading usage')
+      await recordTurn($)
+      trace($, 'turn.complete: done')
+    }
 
     return result
   })
@@ -195,6 +221,7 @@ export function registerBar(on: On) {
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     await start($)
+    if (state.isWorking !== e.props.isWorking) trace($, `isWorking=${e.props.isWorking} (${e.surface})`)
     state.isWorking = e.props.isWorking
     state.seen.add(e.surface)
     const parent = await read($, branchParent)

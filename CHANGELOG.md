@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.10.1 — bar 暫時記錄按鈕的時間點
+
+- 查「看不懂」「畫給我看」按下後約 5 秒才出現的延遲：按下、指令開始與結束、這一輪開始與結束（含讀用量的時間）、`isWorking` 變化，各記一行時間到 `~/.claude/common-mod-bar-trace.log`（最後 200 行）與 debug log。查完會拿掉。
+- 53 項 `claude plugin test`、`claude plugin validate` 通過。marketplace 1.81.1。
+
 ## Common Mod 0.10.0 — desktop 版的 bar、側聊、回想重新排版
 
 只動 desktop（與 VS Code）；terminal 不變。
