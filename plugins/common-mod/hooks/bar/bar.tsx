@@ -135,8 +135,11 @@ async function act($: EngineInterface, action: Drawn, parent: string | null) {
         clearPending($)
         throw err
       }
+      // A queued command resolves when its turn is taken: its wait for an
+      // answer is timed from here, not from the press.
       if (state.pending) {
         state.pending.isDispatched = true
+        state.pending.at = Date.now()
         $.ui.invalidate('ui.render')
       }
   }
@@ -213,10 +216,12 @@ export function registerBar(on: On) {
     state.model = await $.session.model().catch(() => state.model)
     if (`${state.model}|${state.effort}` !== was) $.ui.invalidate('ui.render')
 
-    for await (const chunk of next(e)) {
+    const stream = next(e)
+    for await (const chunk of stream) {
       if (chunk.kind !== 'engine' && state.pending?.isDispatched) clearPending($)
       yield chunk
     }
+    return await stream.result
   })
 
   // A new turn puts away suggestions made for the last one.

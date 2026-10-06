@@ -77,7 +77,7 @@ async function ask($: EngineInterface, question: string) {
 // Docked beside the transcript where the surface docks panes, as the diff
 // panel is (the dock ignores `rows`); above the prompt elsewhere. Plain data,
 // so the bar's 側聊 opens the same pane.
-export const SIDE_PANE = { id: PANE, title: '側聊', focus: true, closeOnEscape: true, rows: INLINE_ROWS }
+export const SIDE_PANE = { id: PANE, title: '側聊', focus: true as const, closeOnEscape: true as const, rows: INLINE_ROWS }
 export const SIDE_TOO_NARROW = '終端機太窄，放不下側聊面板；把視窗拉寬一點再試。'
 
 async function carryBack($: EngineInterface, entry: SideEntry) {

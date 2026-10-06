@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.12.1 — 修正 turn.step 回傳值、排隊計時與 tsc 型別錯誤
+
+- **turn.step**：0.11.1 改成邊讀邊轉送串流後沒有回傳這一步的結果，外層 hook 讀到 `undefined`；改成讀完串流後 `return await stream.result`。
+- **排隊中的計時**：「已送出／排隊中」的 30 秒上限原本從按下就開始算，前一輪跑超過 30 秒時提示會在指令真正送出前消失；改成送出後重新計時。
+- **型別**：`SIDE_PANE` 的 `focus`、`closeOnEscape` 標成常數 `true`，`tsc --noEmit` 現在沒有錯誤。
+- 63 項 `claude plugin test`、`claude plugin validate`、`tsc --noEmit` 都通過。marketplace 1.83.1。
+
 ## Common Mod 0.12.0 — 按鈕接上專案自己的 skill；專案可加按鈕；更多圖示
 
 - **自動接上專案的 skill**：「看不懂」「畫給我看」依序找 `common:wait-what`／`wait-what`、`common:show-me`／`show-me`，用 session 裡第一個有的；沒裝 common 但專案自己有這兩個 skill 時（例如 GA_workspace），按鈕照樣出現並接到專案的版本。
