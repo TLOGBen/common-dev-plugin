@@ -15,6 +15,8 @@ const builtAt = atom({ plugin: 'common-mod', key: 'recallBuiltAt' } as const, 0)
 const INK = '#7AA2D6'
 const HUES = ['#8DB580', '#D4A84B', '#A08CC8', '#6FB7B0']
 const REST = '#8A9BB0'
+// The desktop row under the pointer: a gray thin enough for light and dark.
+const HOVER = 'rgba(138, 143, 152, 0.16)'
 
 const SOURCE: Record<RecallSource, string> = {
   code: '終端機',
@@ -138,6 +140,13 @@ function when(iso: string | null, now: number) {
   if (days < 30) return `${days} 天前`
   const d = new Date(iso)
   return `${d.getMonth() + 1} 月 ${d.getDate()} 日`
+}
+
+// The desktop band's day groups: one heading per group instead of a date per row.
+function dayOf(iso: string | null, now: number) {
+  if (!iso) return '更早'
+  const days = Math.floor((now - Date.parse(iso)) / 86_400_000)
+  return days <= 0 ? '今天' : days === 1 ? '昨天' : days < 7 ? '本週' : '更早'
 }
 
 // A run of text with every occurrence of the words painted in ink.
@@ -314,6 +323,80 @@ export function registerRecall(on: On, options: PluginOptions) {
     const hits = search(q)
     const now = await $.clock.now()
 
+    const count = !ready ? '正在讀取對話紀錄…' : words.length ? `${hits.length} 段符合` : `共 ${sessions.length} 段`
+    const close = () => {
+      isTyped = false
+      return update($, query, () => null)
+    }
+    const pick = (session: RecallSession) => void insert($, session).catch(() => $.ui.toast('沒辦法放進輸入框'))
+
+    // The desktop's band: a full-width field, the conversations grouped by
+    // day, two lines each (title and project, then the matching snippet).
+    if (e.surface !== 'terminal') {
+      const groups: { day: string; hits: Hit[] }[] = []
+      for (const hit of hits.slice(0, ROWS)) {
+        const day = dayOf(hit.session.last, now)
+        const last = groups[groups.length - 1]
+        if (last?.day === day) last.hits.push(hit)
+        else groups.push({ day, hits: [hit] })
+      }
+      return (
+        <Box flexDirection="column" rowGap={1}>
+          {above}
+          <Box flexDirection="column">
+            <Box flexDirection="row" columnGap={2} alignItems="center">
+              <Box flexGrow={1}>
+                {!isTyped && 'Input' in els ? (
+                  <els.Input
+                    key={FIELD}
+                    placeholder="搜尋標題、專案、問過的話"
+                    value={q}
+                    submitLabel="搜尋"
+                    onInput={(value: string) => void setQuery($, value).catch(() => undefined)}
+                    onSubmit={(value: string) => void setQuery($, value).catch(() => undefined)}
+                  />
+                ) : (
+                  <Text>
+                    回想 {q ? <Text bold>#{q}</Text> : <Text dimColor>最近的對話</Text>}
+                  </Text>
+                )}
+              </Box>
+              <Text dimColor>{count}</Text>
+              <Button key="recall-close" variant="secondary" label="收起" onPress={close} />
+            </Box>
+            {ready && words.length > 0 && hits.length === 0 && <Text dimColor>沒有對話提到「{q}」，換個關鍵字試試。</Text>}
+            {groups.map(group => (
+              <Box key={`day-${group.day}`} flexDirection="column" marginTop={1}>
+                <Text dimColor>{group.day}</Text>
+                {group.hits.map(({ session, snippet }) => (
+                  <Box
+                    key={`row-${short(session)}`}
+                    flexDirection="row"
+                    columnGap={1}
+                    paddingX={1}
+                    hover={{ backgroundColor: HOVER }}
+                  >
+                    <Text color={hueOf.get(session.project) ?? REST}>●</Text>
+                    <Box flexDirection="column" flexGrow={1} flexShrink={1} overflow="hidden">
+                      <Button key={`pick-${short(session)}`} plain label={session.title} onPress={() => pick(session)} />
+                      {snippet && (
+                        <Text dimColor wrap="truncate-end">
+                          {marked(snippet, words).map(run => (run.isHit ? <Text bold>{run.text}</Text> : run.text))}
+                        </Text>
+                      )}
+                    </Box>
+                    <Box flexShrink={0}>
+                      <Text dimColor>{session.project}</Text>
+                    </Box>
+                  </Box>
+                ))}
+              </Box>
+            ))}
+          </Box>
+        </Box>
+      )
+    }
+
     // While `#` is typed the keys stay in the prompt box: the band shows the
     // query it reads from there instead of a field of its own.
     const field =
@@ -341,19 +424,8 @@ export function registerRecall(on: On, options: PluginOptions) {
           <Box justifyContent="space-between">
             <Box flexGrow={1}>{field}</Box>
             <Box gap={2} flexShrink={0}>
-              <Text dimColor>
-                {!ready ? '正在讀取對話紀錄…' : words.length ? `${hits.length} 段符合` : `共 ${sessions.length} 段`}
-              </Text>
-              <Button
-                key="recall-close"
-                plain
-                dimColor
-                label="收起"
-                onPress={() => {
-                  isTyped = false
-                  return update($, query, () => null)
-                }}
-              />
+              <Text dimColor>{count}</Text>
+              <Button key="recall-close" plain dimColor label="收起" onPress={close} />
             </Box>
           </Box>
           {ready && words.length > 0 && hits.length === 0 && <Text dimColor>沒有對話提到「{q}」，換個關鍵字試試。</Text>}
@@ -365,7 +437,7 @@ export function registerRecall(on: On, options: PluginOptions) {
                   key={`pick-${short(session)}`}
                   plain
                   label={session.title}
-                  onPress={() => void insert($, session).catch(() => $.ui.toast('沒辦法放進輸入框'))}
+                  onPress={() => pick(session)}
                 />
               </Box>
               <Box flexGrow={1} flexShrink={1} overflow="hidden">

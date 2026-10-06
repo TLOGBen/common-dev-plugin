@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.10.0 — desktop 版的 bar、側聊、回想重新排版
+
+只動 desktop（與 VS Code）；terminal 不變。
+- **bar**：收成一列，按鈕在左、量表在右；寬度不夠時三個量表整組換到第二列。拿掉資料夾、模型（desktop 頂端與輸入框下方已有）與兩組按鈕間的「│」；量表條縮短；「下一步」的建議改成原生按鈕。
+- **側聊**：空的時候說明放在面板中間；問題加外框靠右，回答在下面，附「帶回主對話」按鈕；輸入框與「在新視窗分支」按鈕放在面板底部，輸入框撐滿寬度、提示文字縮短；拿掉「Esc 回到主線」（desktop 有關閉鈕）。
+- **回想**：搜尋框撐滿寬度、提示縮短，段數與「收起」靠右；結果依今天／昨天／本週／更早分組，每段第一行標題與專案（前面是專案色點），第二行是符合的片段；滑過整列換底色。
+- 53 項 `claude plugin test`、`claude plugin validate` 通過；`tsc --noEmit` 只剩既有的 `focus` 型別錯誤。輸入框能不能真的固定在側聊底部、整列能不能都按得到，要在 desktop 上實測。marketplace 1.81.0。
+
 ## Common Mod 0.9.0 — bar 的 terminal 與 desktop 各自一種畫法
 
 - **架構**：bar 拆成 `model.ts`（共用狀態與純函式）、`actions.ts`（按鈕清單，每顆寫明在哪些介面畫）、`terminal.tsx` 與 `desktop.tsx`（兩種畫法，純函式）。引擎的 `$` 不能跨 import，所以只有 `bar.tsx` 碰引擎，其餘檔案只收資料與綁好的 callback。

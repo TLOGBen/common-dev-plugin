@@ -97,12 +97,10 @@ const SELF = '11111111-2222-3333-4444-555555555555'
 const PARENT = '99999999-2222-3333-4444-555555555555'
 
 for (const surface of SURFACES) {
-  test(`the telemetry rail names the folder and model, then ctx, 5h and 7d (${surface})`, async ($, on) => {
+  test(`the gauges show ctx, 5h and 7d with their extras (${surface})`, async ($, on) => {
     engine(on)
     const ui = await mount($, band(160, { surface }))
 
-    expect(await ui.find({ text: /common-dev-plugin/ })).toBeDefined()
-    expect(await ui.find({ text: /Sonnet 5\.5/ })).toBeDefined()
     expect(await ui.find({ text: /^ctx$/ })).toBeDefined()
     expect(await ui.find({ text: /^47%$/ })).toBeDefined()
     expect(await ui.find({ text: /^94k\/200k$/ })).toBeDefined()
@@ -214,6 +212,19 @@ for (const surface of SURFACES) {
     expect(await ui.find({ key: 'bar-side' })).toBeUndefined()
   })
 }
+
+// The desktop shows both already, above and under the prompt.
+test('the terminal names the folder and model; the desktop leaves them to the app', async ($, on) => {
+  engine(on)
+  const term = await mount($, band(160))
+  expect(await term.find({ text: /common-dev-plugin/ })).toBeDefined()
+  expect(await term.find({ text: /Sonnet 5\.5/ })).toBeDefined()
+
+  const desk = await mount($, band(160, { requestId: 'band-desktop', surface: 'desktop' }))
+  expect(await desk.find({ text: /common-dev-plugin/ })).toBeUndefined()
+  expect(await desk.find({ text: /Sonnet 5\.5/ })).toBeUndefined()
+  expect(await desk.find({ text: /│/ })).toBeUndefined()
+})
 
 test('a wide terminal draws a bar for every gauge, a narrow one only the numbers', async ($, on) => {
   engine(on)

@@ -259,3 +259,13 @@ test('/clear closes the band', async ($, on) => {
 
   expect(await ui.find({ key: 'recall-q' })).toBeUndefined()
 })
+
+test('the desktop band groups the conversations under a day heading', async ($, on) => {
+  engine(on)
+  const ui = await openByHand($, 'desktop')
+
+  expect(await ui.find({ text: /^(今天|昨天|本週|更早)$/ })).toBeDefined()
+  expect(await ui.find({ text: /^共 \d+ 段$/ })).toBeDefined()
+  const close = (await ui.find({ key: 'recall-close' })) as { props?: { variant?: string } } | undefined
+  expect(close?.props?.variant).toBe('secondary')
+})

@@ -126,3 +126,14 @@ test('off Windows, the branch button says what to run instead', async ($, on) =>
   expect(runs).toEqual([])
   expect(toasts[0]).toContain(`claude --resume ${SELF} --fork-session`)
 })
+
+// The desktop pane has its own close control, and real buttons at its foot.
+test('the desktop pane drops the Esc hint and draws native buttons', async ($, on) => {
+  engine(on)
+  const ui = await mount($, { ...(PANE as object), surface: 'desktop' })
+
+  expect(await ui.find({ text: /^問點別的，主線不會被打斷$/ })).toBeDefined()
+  expect(await ui.find({ text: /Esc/ })).toBeUndefined()
+  const branch = (await ui.find({ key: 'branch' })) as { props?: { variant?: string } } | undefined
+  expect(branch?.props?.variant).toBe('secondary')
+})

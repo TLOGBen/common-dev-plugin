@@ -134,6 +134,70 @@ export function registerSide(on: On) {
     const { Box, Text, Button, Markdown } = els
     const list = await read($, entries)
     const isAsking = list.some(entry => !entry.answer)
+    const submit = (value: string) => void ask($, value).catch(() => undefined)
+    const carry = (entry: SideEntry) => void carryBack($, entry).catch(() => undefined)
+    const branch = () =>
+      void branchHere($)
+        .then(why => $.ui.toast(why ?? '已在新視窗開出分支；要換模型就在那邊用 /model'))
+        .catch(() => $.ui.toast('沒辦法開分支'))
+
+    // The desktop's pane: the chat fills it, the field and the branch button
+    // sit at its foot. A question is boxed to the right, its answer under it.
+    // The pane has its own close control, so no word about Esc.
+    if (e.surface !== 'terminal') {
+      return (
+        <Box flexDirection="column" height="100%" paddingX={1} rowGap={1}>
+          <Box flexDirection="column" flexGrow={1} rowGap={1} justifyContent={list.length === 0 ? 'center' : 'flex-start'}>
+            {list.length === 0 && (
+              <Box flexDirection="column">
+                <Text bold>問點別的，主線不會被打斷</Text>
+                <Text dimColor>只看得到主對話到目前為止的內容；不用工具、不動檔案，也不會寫進主對話。</Text>
+              </Box>
+            )}
+            {[...list].reverse().map(entry => (
+              <Box key={`entry-${entry.id}`} flexDirection="column" rowGap={1}>
+                <Box alignSelf="flex-end" borderStyle="round" borderDimColor paddingX={1}>
+                  <Text>{entry.question}</Text>
+                </Box>
+                {!entry.answer && <Text dimColor>正在想…</Text>}
+                {entry.answer && !entry.answer.isAnswered && <Text dimColor>沒有回答：{entry.answer.reason}</Text>}
+                {entry.answer?.isAnswered && (
+                  <Box flexDirection="column" rowGap={1}>
+                    <Markdown key={`answer-${entry.id}`} text={entry.answer.text} />
+                    <Box>
+                      <Button key={`carry-${entry.id}`} variant="secondary" label="帶回主對話" onPress={() => carry(entry)} />
+                    </Box>
+                  </Box>
+                )}
+              </Box>
+            ))}
+          </Box>
+
+          <Box flexDirection="column" rowGap={1}>
+            {'Input' in els ? (
+              <Box flexDirection="row" width="100%">
+                <Box flexGrow={1}>
+                  <els.Input
+                    key={`ask-${nextId}`}
+                    autoFocus
+                    placeholder={isAsking ? '上一題還在想，也可以先問' : '問點別的…'}
+                    submitLabel="問"
+                    onSubmit={submit}
+                  />
+                </Box>
+              </Box>
+            ) : (
+              <Text dimColor>這個介面沒有輸入框，請改用 /btw。</Text>
+            )}
+            <Box flexDirection="row" columnGap={2} alignItems="center" flexWrap="wrap">
+              <Button key="branch" variant="secondary" label="在新視窗分支" onPress={branch} />
+              <Text dimColor>可換模型、可動手做</Text>
+            </Box>
+            <Text dimColor>關掉面板，這些側聊就不見了。</Text>
+          </Box>
+        </Box>
+      )
+    }
 
     const field =
       'Input' in els ? (
@@ -142,7 +206,7 @@ export function registerSide(on: On) {
           autoFocus
           placeholder={isAsking ? '上一題還在想，也可以先問下一題' : '問點別的，主線不會被打斷'}
           submitLabel="問"
-          onSubmit={(value: string) => void ask($, value).catch(() => undefined)}
+          onSubmit={submit}
         />
       ) : (
         <Text dimColor>這個介面沒有輸入框，請改用 /btw。</Text>
@@ -172,7 +236,7 @@ export function registerSide(on: On) {
                     plain
                     dimColor
                     label="帶回主對話"
-                    onPress={() => void carryBack($, entry).catch(() => undefined)}
+                    onPress={() => carry(entry)}
                   />
                 </Box>
               </Box>
@@ -188,11 +252,7 @@ export function registerSide(on: On) {
             plain
             dimColor
             label="開新視窗分支（可換模型、可動手做）"
-            onPress={() =>
-              void branchHere($)
-                .then(why => $.ui.toast(why ?? '已在新視窗開出分支；要換模型就在那邊用 /model'))
-                .catch(() => $.ui.toast('沒辦法開分支'))
-            }
+            onPress={branch}
           />
         </Box>
 
