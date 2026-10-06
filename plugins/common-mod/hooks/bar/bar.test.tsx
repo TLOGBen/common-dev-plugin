@@ -66,7 +66,6 @@ function engine(on: On, { suggestions = '[]', env = {}, store = {}, commands = C
   on('env.get', (_$, e) => ({ value: env[e.name] }) as never)
   on('clock.now', () => ({ value: Date.now() }) as never)
   on('clock.every', () => ({ value: null }) as never)
-  on('ui.log', () => ({ value: undefined }) as never)
   on('ui.toast', (_$, e) => {
     toasts.push(e.text)
     return { value: undefined } as never

@@ -114,7 +114,6 @@ async function act($: EngineInterface, action: Action, parent: string | null) {
       return parent === null ? undefined : bringBack($, parent)
     default:
       if (action.command === undefined) return
-      trace($, `run ${action.command} start`)
       state.pending = { label: action.label, at: Date.now(), isQueued: state.isWorking, isDispatched: false }
       $.ui.invalidate('ui.render')
       try {
@@ -123,7 +122,6 @@ async function act($: EngineInterface, action: Action, parent: string | null) {
         clearPending($)
         throw err
       }
-      trace($, `run ${action.command} resolved`)
       if (state.pending) {
         state.pending.isDispatched = true
         $.ui.invalidate('ui.render')
@@ -137,28 +135,9 @@ function clearPending($: EngineInterface) {
   $.ui.invalidate('ui.render')
 }
 
-// Temporary: where a press of 看不懂 or 畫給我看 waits before its command shows.
-// Each step's time goes to ~/.claude/common-mod-bar-trace.log (the last 200)
-// and to the debug log.
-const TRACE: string[] = []
-let stepTraced = false
-function trace($: EngineInterface, text: string) {
-  const line = `${new Date().toISOString()} ${text}`
-  TRACE.push(line)
-  if (TRACE.length > 200) TRACE.shift()
-  $.ui.log(`[bar] ${line}`, { to: 'debug' })
-  void writeTrace($).catch(() => undefined)
-}
-
-async function writeTrace($: EngineInterface) {
-  const home = ((await $.env.get('USERPROFILE')) ?? (await $.env.get('HOME')) ?? '').replace(/[\\/]+$/, '')
-  if (home) await $.fs.write(`${home}/.claude/common-mod-bar-trace.log`, `${TRACE.join('\n')}\n`)
-}
-
 // A press that fails says so, rather than doing nothing.
 // A command already on its way is not sent twice.
 function press($: EngineInterface, action: Action, parent: string | null) {
-  trace($, `press ${action.key} isWorking=${state.isWorking}`)
   if (action.command !== undefined && state.pending) return
   void act($, action, parent).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
 }
@@ -210,25 +189,23 @@ export function registerBar(on: On) {
   })
 
   // The effort rides on each model request; the model's name, as /model shows it.
-  // The first model request of the turn a button sent ends its pending line.
+  // The model's first output (text, thinking or a tool call) in the turn a
+  // button sent ends its pending line: the request itself goes out seconds
+  // before anything shows.
   on('turn.step', async function* ($, e, next) {
-    if (!stepTraced) {
-      stepTraced = true
-      trace($, 'turn.step: first model request')
-    }
-    if (state.pending?.isDispatched) clearPending($)
     const was = `${state.model}|${state.effort}`
     state.effort = e.effort === undefined ? '' : String(e.effort)
     state.model = await $.session.model().catch(() => state.model)
     if (`${state.model}|${state.effort}` !== was) $.ui.invalidate('ui.render')
 
-    yield* next(e)
+    for await (const chunk of next(e)) {
+      if (chunk.kind !== 'engine' && state.pending?.isDispatched) clearPending($)
+      yield chunk
+    }
   })
 
   // A new turn puts away suggestions made for the last one.
   on('turn.start', async ($, e, next) => {
-    trace($, 'turn.start')
-    stepTraced = false
     asking += 1
     if (state.nextView.kind !== 'hidden') showNext($, { kind: 'hidden' })
 
@@ -238,11 +215,7 @@ export function registerBar(on: On) {
   // One reading per main-loop turn; a subagent's turns are not the session's.
   on('turn.complete', async ($, e, next) => {
     const result = await next(e)
-    if (!e.agentId) {
-      trace($, 'turn.complete: reading usage')
-      await recordTurn($)
-      trace($, 'turn.complete: done')
-    }
+    if (!e.agentId) await recordTurn($)
 
     return result
   })
@@ -251,7 +224,6 @@ export function registerBar(on: On) {
   on('ui.render', { component: 'AbovePrompt' }, async ($, e, next) => {
     if (e.props.hasSurvey) return next(e)
     await start($)
-    if (state.isWorking !== e.props.isWorking) trace($, `isWorking=${e.props.isWorking} (${e.surface})`)
     state.isWorking = e.props.isWorking
     state.seen.add(e.surface)
     const parent = await read($, branchParent)

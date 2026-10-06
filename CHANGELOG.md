@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.11.1 — 「已送出」留到模型開始輸出；拿掉時間記錄
+
+- 時間記錄顯示：按下後約 1.4 秒就開始呼叫模型，剩下的幾秒是模型開始輸出前的時間。「已送出」原本在呼叫模型時就消失，中間又空了幾秒；改成等這一輪模型第一次輸出（文字、思考或工具呼叫）才消失。
+- 拿掉 0.10.1 起的暫時時間記錄（`~/.claude/common-mod-bar-trace.log` 不再寫入，舊檔可以自行刪除）。
+- 59 項 `claude plugin test`、`claude plugin validate` 通過；`tsc --noEmit` 只剩既有的 `focus` 型別錯誤。marketplace 1.82.1。
+
 ## Common Mod 0.11.0 — bar 按下命令按鈕後立刻顯示「已送出」
 
 - 0.10.1 的時間記錄顯示：按鈕送出指令與引擎開始新一輪都在 0.1～1.3 秒內，每輪結束讀用量只花幾毫秒；按下後感覺到的約 5 秒延遲在引擎開工之後，外掛縮短不了。
