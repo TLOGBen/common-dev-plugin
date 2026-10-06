@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Mod 0.9.0 — bar 的 terminal 與 desktop 各自一種畫法
+
+- **架構**：bar 拆成 `model.ts`（共用狀態與純函式）、`actions.ts`（按鈕清單，每顆寫明在哪些介面畫）、`terminal.tsx` 與 `desktop.tsx`（兩種畫法，純函式）。引擎的 `$` 不能跨 import，所以只有 `bar.tsx` 碰引擎，其餘檔案只收資料與綁好的 callback。
+- **desktop**：原生按鈕（整顆可按）、SVG 量表（綠／琥珀／紅，淺色與深色主題都看得清）、文字用主題色；不畫 Nerd Font 字元、不畫「圖示」開關，也不讀它的設定；不畫 diff 與 artifacts（那是 terminal 的對話框指令，desktop 自己有 diff 入口）；沒有逐格動畫。VS Code 用同一種畫法。
+- **terminal**：外觀不變；chip 的內距移進按鈕文字，空白處也按得到。「圖示」開關只影響 terminal。
+- **兩邊共用**：按鈕失敗時跳提示說原因（原本什麼都不顯示）；session 沒有的指令（例如沒裝 common 時的看不懂、畫給我看）不畫按鈕，指令清單每輪更新；Claude 工作中的 30 fps 重畫只在 terminal 畫過 bar 之後才跑。
+- 50 項 `claude plugin test`（共用行為在 terminal 與 desktop 各跑一次）、`claude plugin validate` 通過；`tsc --noEmit` 只剩既有的 `focus` 型別錯誤。marketplace 1.80.0。
+
 ## Common Mod 0.8.0 — 拿掉 `/side` 與 `/recall` 指令，只留 bar 按鈕
 
 - **side**：拿掉 `/side` 指令，連同它的 `[問題]` 參數、遠端操作時指向 `/btw` 的提示，以及只有指令在用的 `openSide`。側聊面板照舊由 bar 的「側聊」打開。
