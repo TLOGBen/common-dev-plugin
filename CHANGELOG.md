@@ -2,6 +2,15 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis Estimation 1.19.0 — Cold 2.25.0 逐件分級單價、逐件清單與對外版為主交付
+
+- **逐件分級單價**：重寫路線（前後端分離、每支 API 與每個畫面重做）預設改用「件數 × 每件單價」，API 依業務步驟數與對外接觸分 CRUD／輕量／中等／複雜，畫面分 S／M／L，介接每端點計價；使用者的單價表優先，手冊附經驗預設。`estimate_math.py` 新增 `units` 列型（件數 × 每件 E／V 人天，預設保留小數可選四捨五入），拒絕與 operations／fixed_pd／additions 混用。N÷N₀ 批次換算退為同框架升版的口徑。
+- **逐件清單與去重**：granularity 新增「逐件分級與去重」：逐支 API、逐頁畫面、逐個介接端點的清單是任務產物，主表件數要能逐列加回；去重規則明寫（純導頁、只載下拉的 init、跨模組複製品以相似度合併、共用彈窗群組折價）；逐件盤點可分 3–5 組平行委派，合併前核對口徑。
+- **對外版為主交付**：報告分對外版與內部版，對外版禁類別名、表名、小時與公式，客戶報價後才決定的項目只寫「待討論」，客戶自理的事列責任不列施工；逐件清單彙整成功能明細，程式名稱放最後一欄。Excel 加「逐件計價」「功能明細」頁。
+- **產物集與情境版本**：版本目錄加索引、不覆寫；逐件清單與 result.json 是唯一資料源，所有衍生檔由產生器重產；基準鎖定後可用同一件數換單價表出情境版本；稽核型升版案另出套件升版清單、弱點清單、介接端點清單與容量建議。
+- **其他**：「給客戶的問題清單」列為產物，未決技術細節預設列條件繼續；使用者問哪個數字合理時要給有理由的意見；show-me 同輪可一次調用；用詞「界接」改「介接」；移除 pm-delivery／work-pricing 寫死的 Codex 模型名稱。
+- 以遠傳升版案做 A/B 實測：舊版 2.24.0 得 1,932 人天、本版 1,648、參考值 1,439；頁面與介接三邊接近，差距集中在 API 分級。Codex 副本同步。marketplace 1.84.0。
+
 ## Common Mod 0.12.1 — 修正 turn.step 回傳值、排隊計時與 tsc 型別錯誤
 
 - **turn.step**：0.11.1 改成邊讀邊轉送串流後沒有回傳這一步的結果，外層 hook 讀到 `undefined`；改成讀完串流後 `return await stream.result`。
