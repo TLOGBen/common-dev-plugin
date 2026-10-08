@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 1.88.1 — 修正 Codex skill 圖示路徑
+
+- 將 22 個 skill 的 `icon-small.png`／`icon-large.png` 原檔移至各 skill 的 `assets/`，同步 `agents/openai.yaml` 與 `codex-metadata/`。Codex 0.161.0 會忽略 `agents/` 下的圖示並回報 `icon path must be under assets/`。
+- 版本：common 1.41.2、analysis-estimation 1.20.2、test-utils 1.2.5、linkstart 0.4.4；Claude 與 Codex manifest 同步，LinkStart 發行檢查版號同步。
+
 ## 全部 plugin — 加上 plugin icon 與 skill icon（Krea 2 產生）
 
 - 每個 plugin 新增 `assets/icon.png`（256）、`logo.png`、`logo-dark.png`（512）：Claude 版 `plugin.json` 設 `icon`（供 Anthropic plugin 目錄使用，Claude Code 執行時不讀）；Codex 版 `interface` 設 `composerIcon`、`logo`、`logoDark`、`brandColor`。common-mod 只有 Claude 版。

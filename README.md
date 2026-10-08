@@ -8,6 +8,8 @@
 
 `common-dev` 是一個 Claude Code marketplace，同時附上 Codex 版本。裡面的 skill 不綁定任何專案的品牌、路由、port 或帳號，裝進哪個 repo 都能用。
 
+Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引用；維護來源位於 `codex-metadata/`。圖示路徑修正版為 common 1.41.2、analysis-estimation 1.20.2、test-utils 1.2.5、linkstart 0.4.4，既有安裝需更新對應 plugin。
+
 ## 設計理念
 
 - **通用，不認專案。** skill 只帶通用預設，技術棧與領域預設都可覆寫；專案自己的事實寫在使用者專案裡（例如 `.claude/test-template/`），不寫死進 skill。

@@ -1,4 +1,4 @@
 interface:
-  icon_small: "./agents/icon-small.png"
-  icon_large: "./agents/icon-large.png"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
   brand_color: "#3E6E8E"

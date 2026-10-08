@@ -1,6 +1,6 @@
 interface:
-  icon_small: "./agents/icon-small.png"
-  icon_large: "./agents/icon-large.png"
+  icon_small: "./assets/icon-small.png"
+  icon_large: "./assets/icon-large.png"
   brand_color: "#2F7F78"
   display_name: "Strategic Advance"
   short_description: "持續推進長期、跨工具任務，直到達成可驗證的戰略終局"

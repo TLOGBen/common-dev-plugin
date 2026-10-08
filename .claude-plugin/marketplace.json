@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.88.0"
+    "version": "1.88.1"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
       "source": "./plugins/test-utils",
       "description": "E2E and browser-debugging utilities (enabled by default): gen-e2e-test authors self-contained Playwright tests with API reports, gen-e2e-record turns codegen recordings into tests, and dev-browser provides agent-side UI debugging.",
       "displayName": "Test Utilities",
-      "version": "1.2.4",
+      "version": "1.2.5",
       "defaultEnabled": true
     },
     {
@@ -22,7 +22,7 @@
       "source": "./plugins/analysis-estimation",
       "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; itemized-estimate turns a locked estimate into a one-page customer-facing itemized sheet in the customer's own Excel template; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
       "displayName": "分析與評估 (Analysis & Estimation)",
-      "version": "1.20.1",
+      "version": "1.20.2",
       "defaultEnabled": true
     },
     {
@@ -30,7 +30,7 @@
       "source": "./plugins/common",
       "description": "Everyday dev toolkit: token-usage diagnosis, prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
       "displayName": "Common",
-      "version": "1.41.1",
+      "version": "1.41.2",
       "defaultEnabled": true
     },
     {
@@ -46,7 +46,7 @@
       "source": "./plugins/linkstart",
       "description": "LinkStart v1 Preview integration (enabled by default): one link-start workflow reconnects an interactive HTML or localhost app to the same Claude Code session or Codex thread through the exact bundled Runtime, private session context, and one-call arm/respond monitor flow.",
       "displayName": "LinkStart",
-      "version": "0.4.3",
+      "version": "0.4.4",
       "defaultEnabled": true
     },
     {
