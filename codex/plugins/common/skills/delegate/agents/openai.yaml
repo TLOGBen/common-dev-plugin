@@ -1,4 +1,7 @@
 interface:
+  icon_small: "./agents/icon-small.png"
+  icon_large: "./agents/icon-large.png"
+  brand_color: "#2F7F78"
   display_name: "Delegate"
   short_description: "Delegate bounded work to a sidekick model"
   default_prompt: "Use $delegate --fast to hand a bounded task to a Codex sidekick with Fast service tier."

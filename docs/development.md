@@ -40,8 +40,7 @@ common-dev-plugin/
 ├── scripts/                      # 驗證與實驗用腳本（含 validate_linkstart_release.py）
 ├── tests/                        # 契約測試
 ├── AGENTS.md                     # Codex 對應結構、移植規則與驗證流程
-├── CHANGELOG.md
-└── LICENSE
+└── CHANGELOG.md
 ```
 
 ## Claude source 與 Codex 移植
@@ -86,6 +85,6 @@ python3 scripts/validate_linkstart_release.py
 - 安裝路徑、marketplace 佈局或散佈內容改變時，同步更新 `README.md`、`docs/` 與 `CHANGELOG.md`。
 - Commit 遵循 conventional commits（`feat`、`fix`、`refactor`、`docs`、`chore`）。
 
-## License
+## 授權
 
-MIT，見 [`LICENSE`](../LICENSE)。部分 `common` skill 目錄帶有上游的 `LICENSE`，例如 [show-me 的來源說明](plugins/common.md#show-me-的來源)。
+目前仍在內部測試，repo 本身暫不附授權。部分 `common` skill 目錄帶有上游的 `LICENSE`（第三方來源授權，須保留），例如 [show-me 的來源說明](plugins/common.md#show-me-的來源)。

@@ -1,6 +1,6 @@
 {
   "name": "common-lab",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "description": "Unified opt-in laboratory: 16 experimental TypeSafe Jev skills: basics (a request router, setup, gate, pick with a before-stopping check, score, finding Jev opportunities, Jev-assisted browser debugging, an ask-the-user check) and Jev overlays on define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation.",
   "skills": "./skills/",
   "interface": {
@@ -16,10 +16,13 @@
     "defaultPrompt": [
       "用 Common Lab 的 init-jev 設定 TypeSafe Jev 金鑰並驗證。",
       "用 Common Lab 的 jever 看這裡哪些判斷可以交給 Jev。"
-    ]
+    ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "brandColor": "#B9822F"
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
-  "license": "MIT",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"

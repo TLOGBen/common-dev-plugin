@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.87.0"
+    "version": "1.88.0"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
       "source": "./plugins/test-utils",
       "description": "E2E and browser-debugging utilities (enabled by default): gen-e2e-test authors self-contained Playwright tests with API reports, gen-e2e-record turns codegen recordings into tests, and dev-browser provides agent-side UI debugging.",
       "displayName": "Test Utilities",
-      "version": "1.2.3",
+      "version": "1.2.4",
       "defaultEnabled": true
     },
     {
@@ -22,7 +22,7 @@
       "source": "./plugins/analysis-estimation",
       "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; itemized-estimate turns a locked estimate into a one-page customer-facing itemized sheet in the customer's own Excel template; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
       "displayName": "分析與評估 (Analysis & Estimation)",
-      "version": "1.20.0",
+      "version": "1.20.1",
       "defaultEnabled": true
     },
     {
@@ -30,7 +30,7 @@
       "source": "./plugins/common",
       "description": "Everyday dev toolkit: token-usage diagnosis, prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
       "displayName": "Common",
-      "version": "1.41.0",
+      "version": "1.41.1",
       "defaultEnabled": true
     },
     {
@@ -38,7 +38,7 @@
       "source": "./plugins/common-lab",
       "description": "Common Lab (experimental): 16 TypeSafe Jev lab skills — a Jev request router (suggest-jev), Jev setup (init-jev), yes/no gate (jev-gate), list pick (jev-pick, incl. a before-stopping check), rubric score (jev-score), Jev opportunity finder (jever), jev-browser (dev-browser with Jev element picking), an ask-the-user check (is-truely-need-to-ask-user-jev), and Jev overlays that add Jev readings to define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation (*-jever). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0, the Lab strategic-advance variant in 0.10.0; 0.19.0 retired ui-jever, seal-jever, show-me-jever, none-stop-jever, and both Lab delegate variants with the executor agent; use analysis-estimation:cold-estimation, common:define-goal, common:better-prompts, common:strategic-advance, common:delegate, baransu:ui / baransu:draw, baransu:seal and common:show-me. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.19.1",
+      "version": "0.19.2",
       "defaultEnabled": true
     },
     {
@@ -46,7 +46,7 @@
       "source": "./plugins/linkstart",
       "description": "LinkStart v1 Preview integration (enabled by default): one link-start workflow reconnects an interactive HTML or localhost app to the same Claude Code session or Codex thread through the exact bundled Runtime, private session context, and one-call arm/respond monitor flow.",
       "displayName": "LinkStart",
-      "version": "0.4.2",
+      "version": "0.4.3",
       "defaultEnabled": true
     },
     {
@@ -54,7 +54,7 @@
       "source": "./plugins/common-mod",
       "description": "Claude Code mods (Claude only; enabled by default; no slash commands): recall — typing # in the prompt box or the 回想 button opens a band above the prompt to search past Claude Code, desktop and Cowork conversations; pressing one puts its #chat:<id> token in the prompt box, and sending the prompt attaches that conversation as quoted context; side — the 側聊 button opens a side-chat pane docked beside the transcript like the diff panel (answers from a fork of this conversation, no tools), with a button to go on as a branch in a new window (switch model there, use tools), whose 帶回主線 sends a summary back to the main session; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 側聊, 回想, diff, artifacts, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft); the terminal and the desktop each draw it their own way: the terminal with neon gauges and chips, the desktop with native buttons and SVG gauges and without diff and artifacts; 看不懂 and 畫給我看 fall back to a project's own wait-what and show-me skills, and a project adds its own buttons in .claude/common-mod.json.",
       "displayName": "Common Mod",
-      "version": "0.12.1",
+      "version": "0.12.2",
       "defaultEnabled": true
     }
   ]

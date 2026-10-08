@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## 全部 plugin — 加上 plugin icon 與 skill icon（Krea 2 產生）
+
+- 每個 plugin 新增 `assets/icon.png`（256）、`logo.png`、`logo-dark.png`（512）：Claude 版 `plugin.json` 設 `icon`（供 Anthropic plugin 目錄使用，Claude Code 執行時不讀）；Codex 版 `interface` 設 `composerIcon`、`logo`、`logoDark`、`brandColor`。common-mod 只有 Claude 版。
+- Codex 版每個 skill（common-lab 除外）在 `agents/` 放 `icon-small.png`（128）、`icon-large.png`（512），`agents/openai.yaml` 設 `icon_small`、`icon_large`、`brand_color`；`codex-metadata/` 既有的兩份 openai.yaml 同步。Claude 沒有 skill 層的 icon 欄位。
+- 版本：analysis-estimation 1.20.1、common 1.41.1、common-lab 0.19.2、common-mod 0.12.2、linkstart 0.4.3、test-utils 1.2.4；marketplace 1.88.0。
+- 授權暫時拿掉（仍在內部測試）：刪除根目錄 `LICENSE`，各 plugin manifest 移除 `license`，README 與 `docs/development.md` 的授權連結改為說明。skill 目錄內上游第三方的 `LICENSE` 保留；linkstart 的 `license` 描述的是上游 LinkStart 專案，保留。
+
 ## Analysis & Estimation 1.20.0 — 新增 itemized-estimate：一次產出對外條列版評估表
 
 - 新 skill `itemized-estimate`：估算鎖定後，照客戶給的舊案 Excel 範本，把同一組人天整理成一頁對外評估表（序號／系統功能／功能說明／人天／報價），完整版與情境版（例如遷移版）各一份。規則來自一次實案裡使用者逐輪調整的結果：內部計價工項依工作包合併（後端升級、前端遷移、各重構項、無原始碼元件、環境、整合測試）、固定排序、合計只搬移不加天數、說明句照對外版刪減而不改寫、範本句留在原位置換成本案事實、紅字只標範圍排除（甲方自建、無資料搬移、資料庫端不動、情境差異），「另計」條件與 UAT 責任留在報告。

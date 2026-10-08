@@ -1,6 +1,6 @@
 {
   "name": "common",
-  "version": "1.41.0",
+  "version": "1.41.1",
   "description": "General-purpose Codex utilities for token usage and behavior diagnosis, prompt work, measurable goals, bounded delegation, strategic execution, plain-language recovery, and large decision maps. Skill instructions stay in English; user-facing prose and newly generated human-readable artifacts default to Traditional Chinese unless the user explicitly requests another language.",
   "skills": "./skills/",
   "interface": {
@@ -10,10 +10,13 @@
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [],
-    "defaultPrompt": "Use $better-prompts to improve this prompt while preserving its intent and constraints."
+    "defaultPrompt": "Use $better-prompts to improve this prompt while preserving its intent and constraints.",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "brandColor": "#2F7F78"
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
-  "license": "MIT",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"

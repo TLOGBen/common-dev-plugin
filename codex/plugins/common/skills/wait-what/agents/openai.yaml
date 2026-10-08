@@ -1,4 +1,7 @@
 interface:
+  icon_small: "./agents/icon-small.png"
+  icon_large: "./agents/icon-large.png"
+  brand_color: "#2F7F78"
   display_name: "Wait What"
   short_description: "Re-pitch shallow-to-deep for a chosen audience in plain Traditional Chinese, with a visual HTML companion"
 policy:

@@ -1,0 +1,4 @@
+interface:
+  icon_small: "./agents/icon-small.png"
+  icon_large: "./agents/icon-large.png"
+  brand_color: "#A8623A"

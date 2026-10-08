@@ -1,14 +1,14 @@
 {
   "name": "common",
   "displayName": "Common",
-  "version": "1.41.0",
+  "version": "1.41.1",
   "description": "Everyday dev toolkit: token-usage diagnosis, prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
+  "icon": "./assets/logo.png",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
-  "license": "MIT",
   "keywords": [
     "prompt",
     "prompt-engineering",

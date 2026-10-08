@@ -1,14 +1,14 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.19.1",
+  "version": "0.19.2",
   "description": "Unified opt-in laboratory: 16 experimental TypeSafe Jev skills: basics (a request router, setup, gate, pick with a before-stopping check, score, finding Jev opportunities, Jev-assisted browser debugging, an ask-the-user check) and Jev overlays on define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation.",
+  "icon": "./assets/logo.png",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
-  "license": "MIT",
   "keywords": [
     "experimental",
     "skills",

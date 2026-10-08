@@ -1,8 +1,9 @@
 {
   "name": "linkstart",
   "displayName": "LinkStart",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "LinkStart v1 Preview integration: reconnect an interactive HTML or localhost app to the same Claude Code session or Codex thread, with persistent Claude channel/monitor and Codex host leases plus foreground compatibility.",
+  "icon": "./assets/logo.png",
   "mcpServers": {
     "linkstart": {
       "command": "python3",

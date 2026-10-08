@@ -1,14 +1,17 @@
 {
   "name": "analysis-estimation",
-  "version": "1.20.0",
+  "version": "1.20.1",
   "description": "Project-agnostic analysis & estimation suite: turn a cold RFP/SOW into traceable requirement analysis (rfp-requirement-analysis), architecture design (rfp-architecture-design), and BDD acceptance specs (rfp-sa-bdd); produce method-based initial estimates with explicit risk effort for greenfield, modernization, and mixed scope (cold-estimation); turn a locked estimate into a one-page customer-facing itemized .xlsx in the customer's own template (itemized-estimate); and run a writer→reviewer→fixer quality loop (quality-orchestrator).",
   "skills": "./skills/",
   "interface": {
     "displayName": "Analysis Estimation",
-    "shortDescription": "Project-agnostic analysis & estimation suite: turn a cold RFP/SOW into traceable requirement analysis (rfp-requirement-a"
+    "shortDescription": "Project-agnostic analysis & estimation suite: turn a cold RFP/SOW into traceable requirement analysis (rfp-requirement-a",
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "brandColor": "#A8623A"
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
-  "license": "MIT",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"

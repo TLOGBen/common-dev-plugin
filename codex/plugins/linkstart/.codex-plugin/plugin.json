@@ -1,6 +1,6 @@
 {
   "name": "linkstart",
-  "version": "0.4.2",
+  "version": "0.4.3",
   "description": "LinkStart v1 Preview integration: reconnect an interactive HTML or localhost app to the same Claude Code session or Codex thread, with a persistent Codex host lease and foreground compatibility. Opt-in.",
   "skills": "./skills/",
   "interface": {
@@ -15,7 +15,11 @@
     ],
     "defaultPrompt": [
       "$link-start Connect this app to the current Origin Session."
-    ]
+    ],
+    "composerIcon": "./assets/icon.png",
+    "logo": "./assets/logo.png",
+    "logoDark": "./assets/logo-dark.png",
+    "brandColor": "#4F8A6E"
   },
   "homepage": "https://github.com/TLOGBen/LinkStart",
   "repository": "https://github.com/TLOGBen/LinkStart",
