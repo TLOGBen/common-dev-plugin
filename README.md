@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="docs/images/hero.png" alt="common-dev：一個可以帶進任何 repo 的開發工具箱" width="100%">
+  <img src="docs/images/hero.jpg" alt="common-dev：一個可以帶進任何 repo 的開發工具箱" width="100%">
 </p>
 
 <h1 align="center">common-dev</h1>

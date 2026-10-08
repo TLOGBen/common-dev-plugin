@@ -39,4 +39,4 @@
 
 ## 圖片
 
-`images/` 收錄首頁主視覺（`hero.png`）、各 plugin 概念圖（`plugin-<name>.png`），以及 [`marketplace-overview.svg`](images/marketplace-overview.svg)、[`rfp-pipeline.svg`](images/rfp-pipeline.svg) 兩張結構圖。
+`images/` 收錄首頁主視覺（`hero.jpg`，Krea 2 產生）、各 plugin 概念圖（`plugin-<name>.png`），以及 [`marketplace-overview.svg`](images/marketplace-overview.svg)、[`rfp-pipeline.svg`](images/rfp-pipeline.svg) 兩張結構圖。
