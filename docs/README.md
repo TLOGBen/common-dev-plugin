@@ -10,7 +10,7 @@
 | [`common-lab`](plugins/common-lab.md) | 16 | 🧪 實驗性（安裝後預設啟用） | TypeSafe Jev 的實驗技能：設定、是非／挑選／評分、Jev 輔助的瀏覽器除錯、提問前檢查，以及在正式技能判斷點加上 Jev 讀數的疊加版 | ✅ |
 | [`common-mod`](plugins/common-mod.md) | 0（mod） | ✅ 預設啟用 | Claude Code 專屬的 mod：狀態列、回想過去的對話、側聊面板 | — |
 | [`test-utils`](plugins/test-utils.md) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 | ✅ |
-| [`analysis-estimation`](plugins/analysis-estimation.md) | 5 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 | ✅ |
+| [`analysis-estimation`](plugins/analysis-estimation.md) | 6 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 | ✅ |
 | [`linkstart`](plugins/linkstart.md) | 1 | ✅ 預設啟用 | 用單一入口把 agent 產出的互動 HTML／localhost App 接回產出它的同一條 Claude Code session 或 Codex thread | ✅ |
 
 各 plugin 的目前版本以 `plugins/<name>/.claude-plugin/plugin.json` 與 [CHANGELOG](../CHANGELOG.md) 為準。

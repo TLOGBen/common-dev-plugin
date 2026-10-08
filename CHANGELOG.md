@@ -2,6 +2,13 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis & Estimation 1.20.0 — 新增 itemized-estimate：一次產出對外條列版評估表
+
+- 新 skill `itemized-estimate`：估算鎖定後，照客戶給的舊案 Excel 範本，把同一組人天整理成一頁對外評估表（序號／系統功能／功能說明／人天／報價），完整版與情境版（例如遷移版）各一份。規則來自一次實案裡使用者逐輪調整的結果：內部計價工項依工作包合併（後端升級、前端遷移、各重構項、無原始碼元件、環境、整合測試）、固定排序、合計只搬移不加天數、說明句照對外版刪減而不改寫、範本句留在原位置換成本案事實、紅字只標範圍排除（甲方自建、無資料搬移、資料庫端不動、情境差異），「另計」條件與 UAT 責任留在報告。
+- 附 `scripts/build_itemized_sheet.py`：`inspect` 讀範本，`build` 依 spec JSON 產出，沿用範本樣式、合計與報價公式、只留評估表頁，紅字段落不空行，列高依換行估算（依使用者手調的列校正）。
+- A/B 測試（同一組 v6 來源，一句指令，各跑兩次，逐格比對使用者最終檔）：放在 cold-estimation 最後一步的版本，說明文字相似度 0.75～0.78、約 15.6 萬 token；獨立 skill 0.78～0.80、約 12.7 萬 token，所以獨立成 skill。收緊寫法規則後再跑兩輪，結構、9 列名稱與人天、紅字位置全部一致，說明文字相似度 0.91～0.92；其餘差異是措辭，以及範本版號與估算版號不同處依估算寫。
+- Codex 副本手動同步（腳本路徑改為相對本 Skill）。marketplace 1.87.0。
+
 ## Repo — README 改為概念首頁，細節移到 docs/
 
 - README 改寫為短首頁：橫幅概念圖、設計理念、plugin 卡片牆（每個 plugin 一張概念圖）、快速開始與範例 prompt。

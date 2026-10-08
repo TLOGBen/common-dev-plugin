@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.86.0"
+    "version": "1.87.0"
   },
   "plugins": [
     {
@@ -20,9 +20,9 @@
     {
       "name": "analysis-estimation",
       "source": "./plugins/analysis-estimation",
-      "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
+      "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; itemized-estimate turns a locked estimate into a one-page customer-facing itemized sheet in the customer's own Excel template; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
       "displayName": "分析與評估 (Analysis & Estimation)",
-      "version": "1.19.0",
+      "version": "1.20.0",
       "defaultEnabled": true
     },
     {
