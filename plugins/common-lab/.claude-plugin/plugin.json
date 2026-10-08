@@ -1,8 +1,8 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.18.0",
-  "description": "Unified opt-in laboratory: 22 experimental skills: delegation, TypeSafe Jev basics (a request router, setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation.",
+  "version": "0.19.0",
+  "description": "Unified opt-in laboratory: 16 experimental TypeSafe Jev skills: basics (a request router, setup, gate, pick with a before-stopping check, score, finding Jev opportunities, Jev-assisted browser debugging, an ask-the-user check) and Jev overlays on define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation.",
   "author": {
     "name": "ben.tsai",
     "email": "vakarve@csie.io"
@@ -12,7 +12,7 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation",
+    "jev",
     "browser"
   ],
   "defaultEnabled": true

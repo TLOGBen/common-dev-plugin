@@ -9,7 +9,7 @@ Claude Code is the source of truth:
 - Claude skills: `plugins/<name>/skills/<skill>/SKILL.md`
 - Claude bundled agents: `plugins/<name>/agents/<agent>.md`
 
-Codex output is generated from the Claude source:
+The Codex copy is a hand-maintained port of the Claude source:
 
 - Root Codex marketplace (Layout A): `.agents/plugins/marketplace.json`
 - Self-contained Codex marketplace (Layout B): `codex/.agents/plugins/marketplace.json`
@@ -17,29 +17,27 @@ Codex output is generated from the Claude source:
 - Codex skills: `codex/plugins/<name>/skills/<skill>/SKILL.md`
 - Codex package-local agent definitions: `codex/plugins/<name>/.codex-agents/<agent>.toml`
 
-Do not hand-edit generated files under `codex/` unless the user explicitly asks for an inline port. Regenerate a plugin's Codex skills/manifest with the `codex-skill-transfer` script (point it at a throwaway dir, then place the generated `plugins/<name>/` subtree under `codex/`):
+Port every distributed change by hand in the same change set; do not regenerate `codex/` with the `codex-skill-transfer` script. Keep the substance identical and limit differences to what Codex needs (platform reference: `docs/experiments/claude-codex-plugin-parity-20261008.md`):
 
-```bash
-python3 "$CODEX_HOME/plugins/cache/baransu/baransu/<ver>/skills/codex-skill-transfer/scripts/transfer.py" plugins/<name> <out-dir>
-cp -r <out-dir>/plugins/<name> codex/plugins/<name>
-```
+- Frontmatter: Codex reads only `name`, `description`, and `metadata`; Claude-only keys go, and the Codex copy may carry `compatibility` / `metadata.version`. Explicit-only invocation becomes `agents/openai.yaml` `policy.allow_implicit_invocation: false`.
+- Mentions: `/plugin:skill` becomes `$skill` (or `$plugin:skill`); Codex has no `$ARGUMENTS` or `!` command injection.
+- Paths: Codex expands no plugin path variables inside skill text. Replace `${CLAUDE_PLUGIN_ROOT}/...` with a runtime-resolved directory declared once in the Codex `SKILL.md` (as `DELEGATE_DIR`, `LAB_SKILL_DIR`, or `SKILLS_ROOT` do), failing closed when it cannot be resolved.
+- Keep every skill subfolder (`scripts/`, `references/`, `assets/`, `templates/`, `evals/`).
+- Claude-only components — mods, monitors, `userConfig`, plugin `dependencies`, LSP — have no Codex counterpart; leave them out of the Codex copy and say so in the Codex description when it matters. A mod's `hooks/hooks.json` must never be copied, because Codex reads that file as ordinary hooks.
+- Compare the two copies with `diff --strip-trailing-cr` before shipping; only the differences above may remain.
 
-Caveat: the transfer copies `scripts/`, `references/`, `assets/`, and `evals/` under each skill. Plugin-level `agents/` are converted separately, while non-standard skill subdirs such as `templates/` are **dropped**. `analysis-estimation`'s `rfp-*` skills carry `templates/`; after porting restore them by hand (`cp -r plugins/<name>/skills/<skill>/<subdir> codex/plugins/<name>/skills/<skill>/<subdir>`).
+Codex-only skill UI metadata that has no Claude frontmatter equivalent lives under `codex-metadata/<plugin>/<skill>/openai.yaml` and is kept in sync with `codex/plugins/<plugin>/skills/<skill>/agents/openai.yaml`. Do not place it under the Claude skill's own `agents/` directory.
 
-Codex-only skill UI metadata that has no Claude frontmatter equivalent lives under `codex-metadata/<plugin>/<skill>/openai.yaml`. After porting, restore it to `codex/plugins/<plugin>/skills/<skill>/agents/openai.yaml`. Do not place this source under the Claude skill's own `agents/` directory: plugin transfer treats that directory as an unrepresented executable component and fails content closure.
+Plugin-level `agents/*.md` are ported to package-local `.codex-agents/*.toml`. Codex does not auto-register that private directory; the consuming skill keeps a resolver that loads the TOML's `developer_instructions` and fails closed with `AGENT_DEFINITION_MISSING`. Model and reasoning settings remain runtime policy unless the consuming skill explicitly pins a user-requested profile.
 
-For `common/delegate`, the transfer report flags remaining `${CLAUDE_PLUGIN_ROOT}` tokens for manual review. Preserve the generated bundled-agent resolver, then restore the existing `DELEGATE_DIR` fail-closed adapter and rewrite those tokens in the Codex `SKILL.md` and CLI references before replacing the live subtree.
-
-Plugin-level `agents/*.md` are converted into package-local `.codex-agents/*.toml`. Codex does not auto-register that private directory; keep the generated consuming-skill resolver and its `AGENT_DEFINITION_MISSING` fail-closed behavior. Model and reasoning settings remain runtime policy unless the consuming skill explicitly pins a user-requested profile.
-
-The two marketplace catalogs are **hand-maintained** — the transfer script does not merge them. Both use the `common-dev` marketplace id and list every plugin: Layout A (`.agents/plugins/marketplace.json`) paths are `./codex/plugins/<name>`; Layout B (`codex/.agents/plugins/marketplace.json`) paths are `./plugins/<name>`. Keep both aligned with the `codex/plugins/<name>` trees. Layout A is the git URL install entrypoint for Codex.
+The two marketplace catalogs are **hand-maintained**. Both use the `common-dev` marketplace id and list every plugin: Layout A (`.agents/plugins/marketplace.json`) paths are `./codex/plugins/<name>`; Layout B (`codex/.agents/plugins/marketplace.json`) paths are `./plugins/<name>`. Keep both aligned with the `codex/plugins/<name>` trees. Layout A is the git URL install entrypoint for Codex.
 
 ## Invariants
 
 - Keep skills generic: no project-specific branding, routes, ports, accounts, or private workflow assumptions.
 - Keep `common` Skill instructions in English. Default user-facing prose and generated human-readable artifacts to Traditional Chinese; switch only when the user explicitly requests another language.
 - For Claude source, reference skill-local files through `${CLAUDE_PLUGIN_ROOT}/skills/<skill>/...`; reference plugin-level bundled agents through `${CLAUDE_PLUGIN_ROOT}/agents/<agent>.md`.
-- For Codex output, generated rewrites may replace Claude-only APIs or dynamic injection with Codex-facing instructions. Preserve the transfer report's dropped/manual-review items when judging portability.
+- For the Codex copy, replace Claude-only APIs or dynamic injection with Codex-facing instructions; never leave `${CLAUDE_PLUGIN_ROOT}` in Codex skill text.
 - Bump the plugin version on every distributed change so Codex and Claude plugin caches refresh predictably.
 - Update `README.md` and `CHANGELOG.md` when install paths, marketplace layout, or distributed package contents change.
 

@@ -1,6 +1,6 @@
 ---
 name: luna-max-sidekick
-description: Reusable execution sidekick role for bounded, independently verifiable work. An explicit Luna Max request uses GPT-5.6 Luna with max reasoning through a native Codex sub-agent when the live spawn schema can pin both, with Codex CLI as the exact-profile fallback; this file is not an auto-registered native agent.
+description: Reusable execution sidekick role for bounded, independently verifiable work. An explicit Luna Max request uses the current-generation Luna from the live Codex catalog with max reasoning through a native Codex sub-agent when the live spawn schema can pin both, with Codex CLI as the exact-profile fallback; this file is not an auto-registered native agent.
 model: inherit
 ---
 

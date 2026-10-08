@@ -1,4 +1,4 @@
 interface:
   display_name: "Better Prompts"
-  short_description: "Improve and audit prompts for GPT-5.6"
+  short_description: "Improve and audit prompts for Claude and GPT"
   default_prompt: "Use $better-prompts to improve this prompt while preserving its intent and constraints."

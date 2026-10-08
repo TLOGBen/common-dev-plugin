@@ -1,7 +1,7 @@
 {
   "name": "test-utils",
   "displayName": "Test Utilities",
-  "version": "1.2.2",
+  "version": "1.2.3",
   "description": "E2E and browser-debugging utilities: author self-contained Playwright tests with API reports (gen-e2e-test), record a flow via codegen and turn it into a test (gen-e2e-record), or debug and verify a live UI from the agent (dev-browser).",
   "author": {
     "name": "ben.tsai",

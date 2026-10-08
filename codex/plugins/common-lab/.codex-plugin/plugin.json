@@ -1,12 +1,12 @@
 {
   "name": "common-lab",
-  "version": "0.16.4",
-  "description": "Unified opt-in laboratory: 22 experimental skills: delegation, TypeSafe Jev basics (a request router, setup, gate, pick, score, finding Jev opportunities, Jev-assisted browser debugging, a stop check, an ask-the-user check), and Jev overlays on define-goal, strategic-advance, delegate, contract, seal, review, think, ui, show-me, wait-what, wayfinder, and cold-estimation.",
+  "version": "0.19.0",
+  "description": "Unified opt-in laboratory: 16 experimental TypeSafe Jev skills: basics (a request router, setup, gate, pick with a before-stopping check, score, finding Jev opportunities, Jev-assisted browser debugging, an ask-the-user check) and Jev overlays on define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation.",
   "skills": "./skills/",
   "interface": {
     "displayName": "Common Lab（實驗性）",
-    "shortDescription": "派工與 TypeSafe Jev 的 22 個實驗技能",
-    "longDescription": "整合 Common 的實驗技能：派工（delegate），以及 TypeSafe Jev 的路由（suggest-jev）、設定（init-jev）、是非閘門（jev-gate）、清單挑選（jev-pick）、分級評分（jev-score）、找出可導入 Jev 之處（jever）、用 Jev 挑元素的 jev-browser（以 dev-browser 為底）、停下前檢查（none-stop-jever）、提問前檢查（is-truely-need-to-ask-user-jev），以及在 define-goal、strategic-advance、delegate、contract、seal、review、think、ui、show-me、wait-what、wayfinder、cold-estimation 的判斷點加上 Jev 的疊加版（*-jever）。正式版與歷史實驗快照維持獨立。",
+    "shortDescription": "TypeSafe Jev 的 16 個實驗技能",
+    "longDescription": "TypeSafe Jev 的實驗技能：路由（suggest-jev）、設定（init-jev）、是非閘門（jev-gate）、清單挑選（jev-pick，含停下前檢查）、分級評分（jev-score）、找出可導入 Jev 之處（jever）、用 Jev 挑元素的 jev-browser（以 dev-browser 為底）、提問前檢查（is-truely-need-to-ask-user-jev），以及在 define-goal、strategic-advance、contract、review、think、wait-what、wayfinder、cold-estimation 的判斷點加上 Jev 的疊加版（*-jever）。派工請用 Common 的 delegate。正式版與歷史實驗快照維持獨立。",
     "developerName": "ben.tsai",
     "category": "Productivity",
     "capabilities": [
@@ -14,8 +14,8 @@
       "Write"
     ],
     "defaultPrompt": [
-      "用 Common Lab 的 delegate 把這個有界任務派給便宜模型。",
-      "用 Common Lab 的 init-jev 設定 TypeSafe Jev 金鑰並驗證。"
+      "用 Common Lab 的 init-jev 設定 TypeSafe Jev 金鑰並驗證。",
+      "用 Common Lab 的 jever 看這裡哪些判斷可以交給 Jev。"
     ]
   },
   "repository": "https://github.com/TLOGBen/common-dev-plugin",
@@ -27,7 +27,7 @@
   "keywords": [
     "experimental",
     "skills",
-    "delegation",
+    "jev",
     "browser"
   ]
 }

@@ -48,12 +48,12 @@ codex plugin add linkstart@common-dev
 - [A/B 計畫與測量限制](docs/experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](docs/experiments/common-lab/RESULTS.md)
 
-目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.10.0，整合 1 個技能（delegate）與 1 個 bundled agent（executor）。Skill 名稱與資料夾移除 `lab-` 前綴，例如 `delegate`；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。`docs/experiments/` 保留為歷史測量紀錄，不能代表目前套件；舊版凍結包已移出工作樹，需要時從 Git 歷史取回；暫存安裝驗證也不代表目前 App 已載入新版。
+目前統一 Lab 套件位於 `plugins/common-lab/`（Claude source）與 `codex/plugins/common-lab/`（Codex 產出），版本 0.19.0，16 個 TypeSafe Jev 實驗技能（基礎的 init-jev、jev-gate、jev-pick、jev-score、jever、suggest-jev、jev-browser、is-truely-need-to-ask-user-jev，以及各正式技能的 `*-jever` 疊加版）。派工一律用 `common:delegate`。Skill 名稱與資料夾移除 `lab-` 前綴；與正式版並存時，從技能選單選取 Common Lab 所屬項目，或使用帶套件識別的技能連結。Claude 使用 `/common-lab:<skill>`。`docs/experiments/` 保留為歷史測量紀錄，不能代表目前套件；舊版凍結包已移出工作樹，需要時從 Git 歷史取回；暫存安裝驗證也不代表目前 App 已載入新版。
 
 | Plugin | Skills | 預設啟用 | 做什麼 |
 |--------|:------:|:--------:|--------|
 | [`common`](#common--通用工具) | 12 | ✅ 預設啟用 | Prompt 優化、sidekick 派工、目標定義、戰略推進、白話重講，以及 wayfinder 決策地圖與四個附屬 Skill |
-| `common-lab` | 1 | 🧪 自行安裝 | 仍在實驗的技能：delegate 派工 |
+| `common-lab` | 16 | 🧪 實驗性（安裝後預設啟用） | TypeSafe Jev 的實驗技能：設定、是非／挑選／評分、Jev 輔助的瀏覽器除錯、提問前檢查，以及在正式技能判斷點加上 Jev 讀數的疊加版 |
 | `common-mod` | 0（mod） | ✅ 預設啟用 | Claude Code 專屬的 mod：輸入框上方的狀態列；回想（打 `#` 或按「回想」搜尋過去的對話，點一段放進輸入框，送出時附上那段對話）、按「側聊」在對話旁開側聊面板（像 diff 面板那樣停靠），要換模型或動手做時從面板開新視窗分支（「帶回主線」送回總結）；Codex 沒有對應版本 |
 | [`test-utils`](#test-utils--e2e-測試工具) | 3 | ✅ 預設啟用 | E2E 與瀏覽器工具：AI 撰寫測試、人工錄製轉測試、agent 端 UI 除錯 |
 | [`analysis-estimation`](#analysis-estimation--分析與評估) | 5 | ✅ 預設啟用 | 既有系統方案／人天評估，以及把陌生 RFP / SOW 展成可追溯的需求、架構、BDD 驗收與工時估算 |
@@ -116,7 +116,7 @@ Gotchas 明定先找維護者直接宣稱支援目標世代、且持續更新該
 
 | Skill | 簡介 |
 |-------|------|
-| `better-prompts` | 依 Claude 與 GPT-5.x prompting guidance 審核、改寫、起草或遷移 prompts 與 agent instructions。 |
+| `better-prompts` | 依 Claude 與 GPT 官方 prompting guidance 審核、改寫、起草或遷移 prompts 與 agent instructions。 |
 | `delegate` | 將邊界清楚、可驗證的工作派給 native sub-agent、Codex CLI 或 Claude CLI；Codex 可原生 pin model／effort，Fast 與精確 profile 另保留 CLI fallback。 |
 | `define-goal` | 把模糊意圖整理成有驗證證據、明確邊界與停止條件的可驗收目標。 |
 | `strategic-advance` | 鎖定可驗收的戰略目標，以即時情報、單一主攻與可驗證的一動持續推進長期任務；內建自含 HTML 沙盤 renderer，直接 render，不另設環境 preflight 或 legacy mode。 |

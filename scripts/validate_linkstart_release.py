@@ -5,8 +5,10 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 from pathlib import Path
 import stat
+import subprocess
 import sys
 
 
@@ -28,6 +30,17 @@ TARGET_FILES = {
 
 def digest(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def is_executable(path: Path) -> bool:
+    # Windows filesystems carry no exec bit; the mode that ships is the one git records.
+    if os.name == "nt":
+        listed = subprocess.run(
+            ["git", "-C", str(ROOT), "ls-files", "-s", "--", str(path.relative_to(ROOT))],
+            capture_output=True, text=True,
+        ).stdout
+        return listed.startswith("100755")
+    return bool(path.stat().st_mode & stat.S_IXUSR)
 
 
 def load(path: Path, errors: list[str]) -> dict:
@@ -153,7 +166,7 @@ def main() -> int:
             errors.append(f"runtime_binary_invalid: {target} workflow provenance")
         if record.get("path") != rel.as_posix() or record.get("size") != src.stat().st_size or record.get("sha256") != digest(src):
             errors.append(f"runtime_binary_invalid: {target} metadata/hash/size")
-        if target != "windows-x64" and not (src.stat().st_mode & stat.S_IXUSR):
+        if target != "windows-x64" and not is_executable(src):
             errors.append(f"runtime_binary_invalid: {target} source mode is not executable")
         if not dst.is_file():
             errors.append(f"generated_binary_missing: {target}")

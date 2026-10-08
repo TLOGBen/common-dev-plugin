@@ -240,7 +240,7 @@ LABEL=<目標文字> CLICK=<前置點擊> node inspect.mjs
 3. 驗證：`node --check test.mjs`、`PREVIEW=1 node test.mjs`。
 4. 交付：使用者雙擊執行檔跑真實測試 + 出報告。`recording.js` 與錄製啟動檔留著，之後流程變了可重錄重產。
 
-> 最關鍵的兩條環境眉角直接記在這裡：(1) 執行用 `.bat` 內容**必須全 ASCII 英文**，任何非 ASCII 字元都可能因 codepage 讓批次檔壞掉；(2) **瀏覽器必須與受測後端同機**執行，跨機時 localhost 會指錯地方。完整環境眉角見 `${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-test/references/gotchas.md`（也列於 gen-e2e-record SKILL.md 參考檔表）與站台 env template。
+> 最關鍵的兩條環境眉角直接記在這裡：(1) 執行用 `.bat` 內容**必須全 ASCII 英文**，任何非 ASCII 字元都可能因 codepage 讓批次檔壞掉；(2) **瀏覽器必須與受測後端同機**執行，跨機時 localhost 會指錯地方。完整環境眉角見 `$SKILLS_ROOT/gen-e2e-test/references/gotchas.md`（也列於 gen-e2e-record SKILL.md 參考檔表）與站台 env template。
 
 ---
 

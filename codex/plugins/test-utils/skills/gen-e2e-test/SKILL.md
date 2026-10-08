@@ -17,6 +17,8 @@ compatibility: Designed for Claude Code; ported to Codex.
 
 # gen-e2e-test — 自包含 Playwright 測試 + API 報告產生器
 
+> **`SKILLS_ROOT`**: Codex does not expand plugin path variables inside skills. The first time a bundled script or reference is needed, resolve the absolute path of the directory that holds this skill's folder (the parent of the folder containing this `SKILL.md`) and use it as `SKILLS_ROOT` in every path below. If it cannot be resolved, stop and ask the user; never fall back to a cwd-relative path.
+
 把「一段操作流程」變成一個**別人也能雙擊執行**的自動化測試，並自動彙整流程期間所有 API 呼叫成一份漂亮的報告。
 
 核心價值：使用者通常只想要「跑一下、給我報告、能交給同事」。所以產物刻意做成**自包含資料夾**（自帶 `package.json`、首次雙擊自動 `npm install`）、**純 Windows 原生**（瀏覽器跑在本機，`localhost` API 才打得通）、**`.bat` 全 ASCII**（避免中文在 cmd 被 Big5 誤解析成亂碼指令）。這些都是踩過坑換來的，照做能省下對方一堆環境地獄。
@@ -102,7 +104,7 @@ tests/<name>/
 
 專案根的 `.claude/test-template/` 是站台專屬事實的記憶庫（登入片段、環境眉角、跑過的流程、難搞 selector）。動手前先確認它在不在、本站台有沒有現成可用的片段：
 
-- 若 `.claude/test-template/` **不存在** → 先跑 `python ${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/init-test-template.py` 把骨架鋪好，再繼續。
+- 若 `.claude/test-template/` **不存在** → 先跑 `python $SKILLS_ROOT/gen-e2e-record/assets/init-test-template.py` 把骨架鋪好，再繼續。
 - 若存在 → 用速查工具找本站台是否已有 `login` / `env` / `flow` / `selector` template：
 
   ```bash
@@ -182,7 +184,7 @@ PREVIEW=1 node test.mjs        # 用假資料產 reports/preview.html，確認�
 
 `PREVIEW=1` 不開瀏覽器、不需目標站台，純驗報告版型。
 
-**能跑真站台時，AI 應自驅自測收斂，不要只丟給使用者**：在 app 主機 headless 跑 `test.mjs`、失敗就執行 `node ${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/inspect.mjs` 找穩定 selector 自動修、受停損保護、收斂後附「變更摘要」請使用者 headed 確認一次。完整迴圈見 **`references/verify-loop.md`**。
+**能跑真站台時，AI 應自驅自測收斂，不要只丟給使用者**：在 app 主機 headless 跑 `test.mjs`、失敗就執行 `node $SKILLS_ROOT/gen-e2e-record/assets/inspect.mjs` 找穩定 selector 自動修、受停損保護、收斂後附「變更摘要」請使用者 headed 確認一次。完整迴圈見 **`references/verify-loop.md`**。
 
 ⛔ **不要在 WSL 端用 WSL 自己的瀏覽器對「後端只綁 Windows localhost」的站台跑**（localhost 不通）——改用 `verify-loop.md` 的 `powershell.exe` 橋接在 Windows 端 headless 跑。站台是否有此綁定限制，去 test-template 的 `env` template 查。
 

@@ -77,7 +77,7 @@ These patterns come from public projects and posts around the September 2026 lau
 - **Shadow judge**: Score questions per rubric dimension, weighted in code, recorded beside an existing reviewer until they have agreed on real data.
 - **Context compaction**: judge each tool output against the current goal — keep verbatim, keep a one-line summary, or drop — instead of summarizing the whole context with an LLM.
 
-Before drafting questions for a target, read `${CLAUDE_PLUGIN_ROOT}/skills/jever/references/examples.md`. It holds the integrations already built and tested in this plugin — the agent's own stop and ask checks, request routing, context compaction, grilling order, goal and contract checks, mutation-probe triage, MOE tagging, delegation sizing, UI plan fit and element choice, estimation basis — each with the exact question, a test result, and the question-writing lessons learned (split combined questions, one Noul per option, wording effects). Reuse a shape that matches before inventing a new one, and cite it in the candidate you present.
+Before drafting questions for a target, read `${CLAUDE_PLUGIN_ROOT}/skills/jever/references/examples.md`. It holds the integrations already built and tested in this plugin — the agent's own ask check, request routing, context compaction, grilling order, goal and contract checks, MOE tagging, browser element picking, estimation basis — each with the exact question, a test result, and the question-writing lessons learned (split combined questions, one Noul per option, wording effects). Reuse a shape that matches before inventing a new one, and cite it in the candidate you present.
 
 ## The agent's own decision points
 

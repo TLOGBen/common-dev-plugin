@@ -45,7 +45,7 @@ loop:
           - 「無資料 / 無權限」（inspect 命中 0 且頁面文字含「無資料 / No data / 權限」）→ 不可自行修，停損回報
           - 「authed 白頁」（用了 auth.json 跳過登入、但頁面整片空白：nav 不出來、`document.body.innerText` 幾乎為空、console 有 `pageerror`）→ 多半是 **sessionStorage 沒還原**（SPA 把 Vuex/Pinia 存 sessionStorage，而 storageState 不含它）。確認 `auth.session.json` 有產出且引擎有印「已還原 sessionStorage」；缺檔就重跑 capture-auth。**不要把它當 selector 壞了一直改 selector**（畫面根本沒 render，改什麼都命中 0）。
           - 「selector 不對」→ 可修
-       b. 可修：執行 `LABEL=<目標文字> GOTO=<目標頁 path> node ${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/inspect.mjs`
+       b. 可修：執行 `LABEL=<目標文字> GOTO=<目標頁 path> node $SKILLS_ROOT/gen-e2e-record/assets/inspect.mjs`
           （需前置點擊時改用 `LABEL=<目標文字> CLICK=<前置點擊> node ...`）
           列出候選 selector，從中挑穩定的（結構/icon，禁用 hover-tooltip 的 description），
           改 flow 的那一步，並把這次改動記進「變更摘要」
@@ -77,7 +77,7 @@ loop:
 
 不要硬湊綠。帶以下回報，把球交回使用者：
 - 卡在哪個 step、症狀（timeout / 0 元素 / 點不到）
-- 執行 `LABEL=<目標文字> GOTO=<目標頁 path> node ${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/inspect.mjs` 得到的候選命中數 + 表格列按鈕 icon
+- 執行 `LABEL=<目標文字> GOTO=<目標頁 path> node $SKILLS_ROOT/gen-e2e-record/assets/inspect.mjs` 得到的候選命中數 + 表格列按鈕 icon
 - 已試過哪些 selector / 等待（變更摘要）
 - 研判：是 selector 問題還是「該帳號/此時段清單無資料、需有資料帳號或測試單據」
 
@@ -94,4 +94,4 @@ loop:
 | MUST | authed 白頁 + pageerror → 先查 sessionStorage 還原（auth.session.json），別當 selector 問題 | storageState 不含 sessionStorage；SPA 的 Vuex/Pinia 常存那 |
 | MUST NOT | 為了湊綠，無限改 selector / 放寬到 force click 點到別的元素 | 假綠比紅燈更糟 |
 | MUST NOT | 把自測寫死成 WSL+powershell | 同機就直接 `node`，只有 WSL→Windows 才橋接 |
-| MUST NOT | 用 hover-tooltip 的 `description` 當 selector | tooltip 隱藏時 aria 失效，命中 0（見 `${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/references/codegen-to-flow.md` §5b） |
+| MUST NOT | 用 hover-tooltip 的 `description` 當 selector | tooltip 隱藏時 aria 失效，命中 0（見 `$SKILLS_ROOT/gen-e2e-record/references/codegen-to-flow.md` §5b） |

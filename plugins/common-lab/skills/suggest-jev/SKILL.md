@@ -1,6 +1,6 @@
 ---
 name: suggest-jev
-description: Router that lets TypeSafe Jev suggest how to handle a request before any work starts — which skill to load first, which others will be needed, the workflow, how to prove it is done, whether to dispatch subagents (how many, which model family and effort), the difficulty, and the impact — then hands stopping to none-stop-jever and asking to is-truely-need-to-ask-user-jev, with a plain-language check on any question that must go to the user. Load this first, before doing anything on a new request; use it again when a piece of work ends, before pausing or stopping, and before asking the user a question.
+description: Router that lets TypeSafe Jev suggest how to handle a request before any work starts — which skill to load first, which others will be needed, the workflow, how to prove it is done, whether to dispatch subagents (how many, which model family and effort), the difficulty, and the impact — then hands stopping to the before-stopping check in jev-pick and asking to is-truely-need-to-ask-user-jev, with a plain-language check on any question that must go to the user. Load this first, before doing anything on a new request; use it again when a piece of work ends, before pausing or stopping, and before asking the user a question.
 ---
 
 # Suggest Jev
@@ -42,14 +42,14 @@ Turn the answers into a route:
 
 - **Skills.** Load `start_skill` when its confidence is about 0.6 or higher; below that, pick yourself from the top two. Any other skill with probability above ~0.15 is a candidate to keep in view — load it when its step arrives, not all at once.
 - **Workflow and completion.** Follow `workflow`, and decide now how you will prove it is done using `completion`. `ask_first` goes through moment 3 before any work.
-- **Subagents.** Default to none. Dispatch only when `subagents` is about 1.5 or higher with confidence of at least ~0.6 and the work splits into independent slices; round down, and stay within any limit the user set. Hand the dispatch to the delegate skill (or delegate-jever), using `family` and `effort` as its starting point; `xhigh` and above need the user's explicit request.
+- **Subagents.** Default to none. Dispatch only when `subagents` is about 1.5 or higher with confidence of at least ~0.6 and the work splits into independent slices; round down, and stay within any limit the user set. Hand the dispatch to `/common:delegate`, using `family` and `effort` as its starting point; `xhigh` and above need the user's explicit request.
 - **Difficulty and impact.** At level 3 on either, or 2 on both, consider pinning the goal or acceptance first (define-goal, contract) or deliberating (think) before building; at level 0–1 on both, just do it.
 
 Tell the user the route in one line before starting, for example: 「路由：先用 hunt，先排查再修，以測試通過為完成標準，不派 subagent。」 Then do the work.
 
 ## 2. End, pause, or stop
 
-When a piece of work ends, or you are about to pause, stop, or end your turn, run none-stop-jever. If it says the request is not done and you can continue alone, continue.
+When a piece of work ends, or you are about to pause, stop, or end your turn, run the before-stopping check in jev-pick and follow its `next` answer: `continue_check_evidence` or `continue_next_item` → keep working; `ask_user` → go through moment 3; `stop_done` or `stop_blocked` → stop and report.
 
 ## 3. Before asking the user
 

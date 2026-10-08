@@ -1,64 +1,111 @@
 ---
 name: better-prompts
-description: Optimizes prompts — use when the user says "improve this prompt", "optimize my system prompt", "幫我改 prompt", "優化 prompt", "審 prompt", or "migrate this prompt to a newer model", wants a prompt improved, reviewed, shortened, or written from scratch, or asks why a model ignores instructions or burns tokens. Audits, rewrites, drafts, and migrates system prompts, agent instructions, tool descriptions, CLAUDE.md files, and full prompt stacks against official Claude and GPT-5.x prompting guidance. Not for polishing prose that isn't a prompt.
+description: Optimizes prompts — use when the user says "improve this prompt", "optimize my system prompt", "幫我改 prompt", "優化 prompt", "審 prompt", or "migrate this prompt to a newer model", wants a prompt improved, reviewed, shortened, or written from scratch, or asks why a model ignores instructions or burns tokens. Audits, rewrites, drafts, and migrates system prompts, agent instructions, tool descriptions, CLAUDE.md / AGENTS.md / skill files, and full prompt stacks against official Claude and GPT prompting guidance. Not for polishing prose that isn't a prompt, scored SKILL.md evolution (/baransu:evolve), or skill evals and trigger tuning (skill-creator).
+compatibility: Designed for Claude Code; ported to Codex.
+metadata:
+  version: 0.2.0-codex
 ---
 
-# Better Prompts
+# better-prompts
 
 ## Output language
 
 Keep these skill instructions in English. Default user-facing explanations and newly authored human-readable text to Traditional Chinese. If the user explicitly requests another language, use it instead. Preserve code, identifiers, commands, quoted source text, and the supplied prompt's language unless translation is part of the request.
 
-Turn an existing prompt or rough intent into a lean, outcome-first prompt. Preserve the user's explicit values, real constraints, and required behavior; remove detail only when it does not change the contract.
+Make prompts lean, outcome-first, and contradiction-free. Core principle (shared by both vendors' official guidance): **define the outcome, the hard constraints, the available evidence, and the completion bar — then leave the path to the model.** OpenAI's internal testing (directional only): leaner system prompts improved eval scores ~10–15% while cutting tokens 41–66%. Anthropic's migration guides: over-prescriptive prompts written for older models actively reduce output quality on current ones.
 
-## Establish the task
+## Workflow
 
-1. Identify the artifact: single prompt, prompt template, tool description, agent instructions, or layered prompt stack.
-2. Identify the requested operation: create, improve, audit, or migrate.
-3. Extract the user-visible outcome, true invariants, available evidence, authorized actions, required output, validation, and completion bar.
-4. Preserve the original language unless the user requests another language.
-5. For a prompt stack, respect instruction precedence and locate each rule at the highest appropriate stable layer. Do not duplicate a rule across layers for emphasis.
+Copy this checklist and track progress:
 
-If essential context is absent, ask only for the smallest missing input. Otherwise, make conservative assumptions and label them.
+```
+Prompt Optimization:
+- [ ] 1. Identify the target model/runtime and pick the reference guide
+- [ ] 2. Classify the request mode (audit / rewrite / draft / migrate)
+- [ ] 3. Read the full input prompt (file or inline)
+- [ ] 4. Run the diagnostic checklist
+- [ ] 5. Produce output in the required format
+- [ ] 6. Self-check: no invented constraints, invariants preserved, deletions listed for review
+```
 
-## Improve the prompt
+## Step 1 — Target model and reference guide
 
-Apply the smallest changes that materially improve behavior:
+Read the matching reference **before editing anything**. Reference paths are relative to the directory containing this `SKILL.md`. If the target is unclear from the prompt content or the user's words, ask once.
 
-- Lead with the outcome and measurable success criteria.
-- State constraints once. Reserve absolute words such as `always`, `never`, `must`, and `only` for true invariants.
-- Replace rigid process scripts with decision rules when more than one valid path exists.
-- Preserve explicit user values instead of replacing them with universal defaults or keyword maps.
-- Define what evidence is required and what to do when it is missing. Do not turn missing evidence into a factual negative.
-- Separate personality from collaboration behavior. Describe observable writing choices instead of vague labels.
-- Define autonomy and approval boundaries in one place. Distinguish read/review/diagnose work from implementation and from external, destructive, costly, or scope-expanding actions.
-- Expose only relevant tools. Describe when to use each tool, important outputs, failure behavior, and prerequisite retrieval.
-- Add output requirements and stop rules, including retry, fallback, ask, abstain, and completion conditions where relevant.
-- Remove repeated rules, non-behavior-changing examples, obsolete scaffolding, irrelevant tools, and instructions for behavior the model already performs reliably.
-- Check the resulting contract for contradictions and impossible combinations.
+| Target | Read |
+|---|---|
+| GPT / OpenAI API / Codex (incl. AGENTS.md, skills) | [references/gpt-prompting-guide.md](references/gpt-prompting-guide.md) |
+| Claude / Claude API / Claude Code (incl. CLAUDE.md, agent configs) | [references/claude-prompting-guide.md](references/claude-prompting-guide.md) |
+| Other or unknown model | Either guide's structural sections; apply only vendor-neutral principles |
 
-Read [references/gpt-5p6-guidance.md](references/gpt-5p6-guidance.md) when the task involves tool routing, grounded research, long-running agents, reasoning effort, visual work, migration, or a full prompt-stack audit.
+The structural principles (outcome-first, stopping conditions, autonomy boundaries, lean-prompt diet) are shared. Vendor-specific advice — API parameters, model-version behavior shifts, CLAUDE.md/skill mechanics — only applies to its own target; when the target differs, say so in the output rather than silently applying it. If the user asks for the *latest* official wording, fetch the live URLs listed at the top of each reference.
 
-## Handle migration safely
+## Step 2 — Mode
 
-When migrating an evaluated application prompt to GPT-5.6:
+| Mode | Signals | Deliverable |
+|---|---|---|
+| **Audit** | "review this prompt", "why does the model ignore X" | Diagnosis only — no rewritten prompt |
+| **Rewrite** | "improve/optimize" + an existing prompt | Full rewritten prompt + change log |
+| **Draft** | "write me a prompt for ___", no existing text | New prompt |
+| **Migrate** | "moving to model X", "behavior changed after upgrade" | Migration steps + targeted edits |
 
-1. Preserve the current reasoning effort and establish a baseline on representative evals.
-2. Change the model before rewriting the prompt.
-3. Remove obsolete or repeated instructions one coherent group at a time.
-4. Add only the smallest targeted rule needed to correct a measured regression.
-5. Re-run the same evals after every prompt or reasoning change.
-6. Treat lower token use, latency, or cost as an improvement only when required quality still passes.
+Input may be inline text or a file path — read the complete file before working. Output the result in the conversation; do not overwrite the source file unless asked.
 
-Do not claim an improvement from prose inspection alone when eval results are available or requested.
+## Step 3 — Diagnostic checklist
 
-## Deliver the result
+Check each item; each maps to a section in the reference guides:
 
-Match the requested output. If the user does not specify a format, return:
+1. **Contradictions** — rules that cannot both be satisfied, including conflicts between the prompt and the skills, AGENTS.md, or CLAUDE.md files loaded beside it. The top source of instability in frontier models — some current models stop early on conflicting skill instructions (officially noted for GPT-6 Astra); fix first.
+2. **Redundancy** — the same rule restated, style/process instructions that don't change behavior, examples that prove unnecessary.
+3. **Over-prescribed process** — step-by-step scripts where a goal + success criteria + fallback would do. Current models find efficient paths when told what "done" looks like.
+4. **Missing stopping conditions** — tool-using prompts need "when to stop, when to fall back, when to give up". Unbounded conditions ("until fully confident") create runaway loops.
+5. **Absolute-language misuse** — ALWAYS/NEVER reserved for true invariants (safety, required fields); judgment calls become decision rules. Aggressive language ("CRITICAL: you MUST") overtriggers on current models.
+6. **Vague tone words** — "friendly", "professional" replaced with concrete writing behaviors.
+7. **Missing autonomy boundaries** — what analytical vs. action vs. sensitive requests each permit; safe local actions named explicitly; when to keep working instead of checking in (current models from both vendors can stop to ask or report before the task is done).
+8. **Incomplete tool descriptions** — each tool: what it does, *when to call it* (trigger conditions give measurable lift), key return fields, error behavior. Irrelevant tools removed.
+9. **Missing evidence policy** — for grounded prompts: which claims need support, the sufficiency bar, and behavior when evidence is missing.
+10. **No verification loop** — ask the model to run the most relevant validation before finishing, and to say what it would check when it can't.
 
-1. `Revised prompt` — ready to paste, without commentary inside the prompt.
-2. `Key changes` — only behaviorally meaningful changes and their purpose.
-3. `Assumptions or risks` — unresolved conflicts, missing evidence, or migration risks; omit when empty.
-4. `Eval cases` — a small set of representative success, boundary, and failure cases for substantial prompt-stack changes; omit for simple rewrites.
+## Rewrite rules
 
-Keep the revised prompt no longer than necessary. Do not add sections merely to match a template; use only sections that change behavior.
+- Organize with the eight-section skeleton (Role / Personality / Goal / Success criteria / Constraints / Tools / Output / Stop rules) — **omit sections that don't apply**; never pad for symmetry.
+- Cut before adding. New instructions exist only to fix an observed behavior problem.
+- Preserve invariants: safety rules, business constraints, required output fields, and permission limits from the original stay, unless the user says otherwise.
+- Never invent constraints. Ask about uncertain business rules instead of guessing.
+- Keep the prompt's original language (a Chinese prompt stays Chinese after rewriting).
+
+## Output formats
+
+**Audit:**
+
+```markdown
+## Diagnosis: <prompt name>
+### High-impact issues (change behavior)
+- <issue> → <recommendation> (guide §N)
+### Trimmable (no behavior change)
+- ...
+### Keep as-is
+- ... (and why)
+```
+
+**Rewrite / Draft / Migrate:**
+
+```markdown
+## Result
+<complete prompt in a code block>
+
+## Changes
+| Change | Reason | Guide § |
+|---|---|---|
+
+## Risks — for your review
+- <deleted items that might have been load-bearing; the user gets veto power over every removal>
+```
+
+**Migrate** additionally follows the reference guide's migration section: establish a baseline with evals on real tasks first, then make targeted edits — never rewrite a working prompt stack wholesale; every change must be attributable.
+
+## Boundaries
+
+- One prompt (or one clearly related prompt stack) per pass; split unrelated prompts into separate passes.
+- Rewrites are proposals, not silent applications — every deletion appears under "Risks" so the user can veto it.
+- This skill does not execute or benchmark the target prompt. For A/B validation, recommend running real task samples on the target model before/after.

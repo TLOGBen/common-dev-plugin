@@ -1,0 +1,9 @@
+# Text files are LF in the repo and in every working tree, regardless of core.autocrlf.
+* text=auto eol=lf
+
+# Windows batch files need CRLF to run reliably.
+*.bat text eol=crlf
+*.cmd text eol=crlf
+
+# Frozen experiment snapshots keep their original bytes.
+docs/experiments/**/frozen/** -text

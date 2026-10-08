@@ -2,6 +2,54 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Test Utilities 1.2.3 — Codex 版改為執行時解析 skill 路徑
+
+- Codex 不會展開 skill 文字裡的 `${CLAUDE_PLUGIN_ROOT}`，gen-e2e-test、gen-e2e-record 的 Codex 版原本指向一個不存在的路徑。改成在 `SKILL.md` 開頭宣告 `SKILLS_ROOT`（執行時解析成本 skill 資料夾的上一層絕對路徑，解析不到就停下來問），所有內建腳本與參考檔路徑改用它。Claude 版不變。
+
+## Repo — Codex 版改為手動維護；統一換行字元為 LF
+
+- `AGENTS.md`、`CLAUDE.md`：Codex 版不再用 `codex-skill-transfer` 重新產生，改為同一個變更裡手動移植；列出兩版可以不同的地方（frontmatter、`$skill` 寫法、路徑變數、Claude 專屬元件），依據 `docs/experiments/claude-codex-plugin-parity-20261008.md`。
+- 移除已退役 Lab estimate 留下的 `codex-metadata/common-lab/estimate`。
+- `scripts/validate_linkstart_release.py`：Windows 檔案系統沒有執行位元，Linux／macOS 執行檔一律被判「not executable」；在 Windows 上改看 git 記錄的檔案模式（100755），其他平台照舊看檔案系統。
+
+- 新增 `.gitattributes`：文字檔在 repo 與工作目錄一律 LF，不受各機器 `core.autocrlf` 影響；`.bat`／`.cmd` 保留 CRLF；`docs/experiments/**/frozen/**` 的凍結快照保留原始位元組。過去 Windows 工作目錄被 autocrlf 轉成 CRLF，Claude 與 Codex 副本比對時會出現整檔差異，現在兩邊都是 LF。repo 內容本身沒有變動。
+
+## Common 1.41.0 — delegate 與 better-prompts 對齊新一代模型；strategic-advance 接受 Windows 絕對路徑
+
+### delegate
+
+- **每次派工都明確指定模型與 effort**：兩邊的 sub-agent 沒指定時都會繼承父代模型，Codex 連 effort 也繼承；lead 跑最高階加 high 時，連 grep 掃描都會用同一個組合。目錄標為 older／previous generation 的型號要有理由才選。
+- **先升 effort、再換模型**：一次仍只升一個維度，但先把 effort 升到 `high`，仍不夠才換大一號的模型（兩家官方都說調 effort 常比換模型划算）。
+- **新增「工作 × 起點」表**（用產品線名稱，不寫版本）：掃描／摘要／分類 → Haiku 線、Luna 線；範圍清楚的實作 → Sonnet 線、Sol 線；diff 審查 → Opus 線 `high`、Sol 線 `high`；最難問題與高風險終審 → Fable 線、Astra 線，且要在 Opus 線 `high` 不夠時才升。
+- **family-fit 表標為經驗法則**：官方沒有「GPT 偏原則、Claude 偏步驟」的比較，換代時重新檢查。
+- **`ultra` 與 `ultracode`**：Codex `ultra` 是讓 sidekick 自己再開 sub-agent 的編排，不是更深的推理，與有界切片的定位衝突，即使使用者要求也先確認；Claude Code 的 `ultracode` 是設定，不是 effort。
+- **Luna Max 不再寫死 `gpt-5.6-luna`**：改為 live Codex 目錄中現行世代的 Luna（目前解析為 `gpt-6-luna`）加 `max`，派工時說出解析到的 ID。`luna-max-sidekick` 說明同步。
+- 依據：`docs/experiments/model-lineup-20261008.md`（兩家官方文件與本機 CLI 實測）。
+
+### better-prompts
+- **GPT 指引改為 GPT-6 世代**：參考檔改名為不帶版本的 `gpt-prompting-guide.md`，標註「截至 2026-10-08」與來源；新增 Astra 對 skill／AGENTS.md 指示衝突較敏感（可能提早停下）、較常問使用者、較少分派、Astra 與 6.1 Sol 不支援 `none` 等官方說明，拿掉已不成立的 GPT-5.6 專屬說法。
+- **Claude 指引對齊 5.5 世代**：無人看管時提早停下、各型號預設 effort、Opus 5.5 不能強制工具呼叫、進度更新、對話只能往後追加、子代理與時間預算等。
+- **Codex 版重建**：原本是只有 GPT 指引、從未同步的舊版；改為手動移植 Claude 版，兩份指引都在。`openai.yaml`、README 與 plugin keyword 拿掉 GPT-5.6／5.x 字樣。
+
+### strategic-advance
+- `carrierRoots` 驗證原本只認 `/` 開頭的路徑，Windows 的 `C:\...` 會被判為非絕對路徑，`set-front --carrier-root` 在 Windows 上直接失敗；改為 POSIX 或 Windows 絕對路徑皆可。
+
+### 測試
+- `test_delegate_luna_carrier_contract` 改驗 Luna Max 走「現行世代 Luna」且不再寫死 `gpt-5.6-luna`。全部 42 項測試通過（`test_delegate_fast_contract` 需在 node 可用的 shell 執行；Git Bash 的 nvm 墊片會讓 node 失敗）。
+- Codex 副本皆手動同步（不經 codex-skill-transfer）。marketplace 1.85.0。
+
+## Common Lab 0.19.0 — 依 9/17–10/08 實測退役六個技能與 executor，派工回歸 common:delegate
+
+依 Claude 與 Codex 兩邊的使用紀錄判定（Claude 10 個 session、Codex 一場約 457 次 Jev 呼叫的戰役）：
+
+- **`ui-jever`**：Jev 判定「沒有樣板感、符合計畫」，使用者的評語卻是「還是醜」，讀數沒有改變任何決定；UI 與視覺改用 `baransu:ui`、`baransu:draw`。
+- **`seal-jever`**：結構上做不到——它要 dispatcher 在突變前問 Jev，但 baransu seal 把選 probe 與注入突變都放在 seal-agent 的乾淨 context 裡，dispatcher 沒有那個時點；實測也沒有任何 probe 因 Jev 被略過。改用 `baransu:seal`。
+- **`none-stop-jever`**：會替錯誤的停下背書（判 stop_blocked 0.91 後，使用者一句提醒，agent 一分鐘內就把後端啟動），換個寫法重問也會從 continue 翻成 stop。需要停下前檢查時用 `jev-pick` 的五選一版本；`suggest-jev` 的停下時機改指向它。
+- **`show-me-jever`**：給「看得懂」高分，使用者下一句就問術語；改用 `common:show-me`。
+- **Lab `delegate`、`delegate-jever` 與 bundled agent `executor`**：派工一律以 `common:delegate`（1.41.0 已依新模型陣容更新）為準；`suggest-jev` 改把派工交給它。
+- `jever` 範例庫拿掉上述技能的案例並調整目錄；README、三份 manifest 的說明同步（Lab 技能 22 → 16，不再帶 agent）。
+- Codex 副本以手動同步（不經 codex-skill-transfer）；Codex manifest 版本原停在 0.16.4，對齊為 0.19.0。marketplace 1.85.0。
+
 ## Analysis Estimation 1.19.0 — Cold 2.25.0 逐件分級單價、逐件清單與對外版為主交付
 
 - **逐件分級單價**：重寫路線（前後端分離、每支 API 與每個畫面重做）預設改用「件數 × 每件單價」，API 依業務步驟數與對外接觸分 CRUD／輕量／中等／複雜，畫面分 S／M／L，介接每端點計價；使用者的單價表優先，手冊附經驗預設。`estimate_math.py` 新增 `units` 列型（件數 × 每件 E／V 人天，預設保留小數可選四捨五入），拒絕與 operations／fixed_pd／additions 混用。N÷N₀ 批次換算退為同框架升版的口徑。

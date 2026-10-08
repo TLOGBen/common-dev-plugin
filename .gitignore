@@ -4,6 +4,9 @@
 .claude/worktrees/
 .claude/jobs/
 .claude/archived/
+/.claude/archived/
+.claude/read/
+.claude/draw/
 .claude/wait-what/
 .claude/show-me/
 /.codex/show-me/

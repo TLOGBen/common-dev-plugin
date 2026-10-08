@@ -17,6 +17,8 @@ compatibility: Designed for Claude Code; ported to Codex.
 
 # gen-e2e-record — 錄製操作 → 自動產生測試
 
+> **`SKILLS_ROOT`**: Codex does not expand plugin path variables inside skills. The first time a bundled script or reference is needed, resolve the absolute path of the directory that holds this skill's folder (the parent of the folder containing this `SKILL.md`) and use it as `SKILLS_ROOT` in every path below. If it cannot be resolved, stop and ask the user; never fall back to a cwd-relative path.
+
 讓使用者**親手在瀏覽器點一遍**要測的流程，把這段操作錄下來，再自動長成一支完整的自動化測試（自包含、可雙擊、攔截 API、出報告）。
 
 為什麼要錄而不直接寫？因為 selector 用猜的最不可靠（尤其用動態 class 的前端框架，class 名每次 build 都可能變）。讓使用者實際操作，由 Playwright 官方錄製器 `codegen` 記下真實互動，遠比讀 code 猜畫面準。本 skill 的真正價值在「錄完之後」——把生硬的錄製檔轉成可執行測試，補上 API 攔截與報告。
@@ -58,7 +60,7 @@ compatibility: Designed for Claude Code; ported to Codex.
 
 ```bash
 # 沒有 test-template 目錄 → 先鋪好
-python ${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/init-test-template.py
+python $SKILLS_ROOT/gen-e2e-record/assets/init-test-template.py
 
 # 有了 → 查本站台是否已沉澱可用片段（kind 換成 login / env / flow / selector）
 python .claude/test-template/query.py [關鍵字] --site <站台> --kind login
@@ -171,5 +173,5 @@ node walk.mjs            # 重播 recording.js，逐步截圖 + dump
 | `../gen-e2e-test/SKILL.md` | 測試引擎 / 報告 / 交付規範（本 skill 沿用其產物形態） |
 | `../gen-e2e-test/references/gotchas.md` | Stage 5/6 環境眉角（`.bat` 全 ASCII、瀏覽器與後端同機等） |
 | `.claude/test-template/README.md` | **Stage 0 必讀**：記憶庫切分、frontmatter schema、目錄規則、回填方式 |
-| `${CLAUDE_PLUGIN_ROOT}/skills/gen-e2e-record/assets/init-test-template.py` | Stage 0：無 test-template 目錄時鋪好骨架 |
+| `$SKILLS_ROOT/gen-e2e-record/assets/init-test-template.py` | Stage 0：無 test-template 目錄時鋪好骨架 |
 | `.claude/test-template/query.py` | Stage 0：查本站台已沉澱的 login / env / flow / selector |

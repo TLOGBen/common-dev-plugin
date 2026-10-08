@@ -118,13 +118,15 @@ Selection is driven by a **candidate catalog** — the candidate models per carr
 - Codex native sub-agents: inspect the live native spawn tool schema for its advertised model overrides and reasoning-effort values. Treat those entries as native candidates and use a successful launch as the availability check; do not use the CLI catalog as proof of native support.
 - Codex CLI: `codex debug models` **must be piped through the `$DELEGATE_DIR/scripts/parse-cli-json.js models` filter**, keeping only model names, descriptions, supported reasoning levels, and Fast eligibility. The raw output exceeds 200 KB and must never be read into context in full.
 - Claude CLI: the aliases listed by `claude --help` (usable directly as the `--model` argument).
-- Claude native sub-agents: they inherit the session model or the agent definition — no query needed.
+- Claude native sub-agents: the aliases the native spawn tool accepts (or the agent definition's `model:`) — no query needed.
 
 If the query fails (no network, CLI error) → use a configuration already known to work in this session, or ask the user. Never guess a model name from memory.
 
+**Pin model and effort on every dispatch.** Both runtimes let an unpinned sub-agent inherit the parent's model, and Codex also inherits the parent's effort — a lead running the top tier at high effort silently hands the same cost to a grep sweep. Prefer current-generation catalog entries; one the catalog describes as older or previous generation needs a reason.
+
 **Selection has two axes, in this order — family fit first, then tier.** A model is not simply stronger or weaker than another; families think differently, and a bad fit does not improve by paying for a bigger model in the same family.
 
-1. **Family fit** — match the family to the *shape* of the work, never to a version number. Resolve concrete model IDs from the live catalog above; never hardcode a version, because families outlive their releases.
+1. **Family fit** — match the family to the *shape* of the work, never to a version number. Resolve concrete model IDs from the live catalog above; never hardcode a version, because families outlive their releases. The table is a working heuristic from observed runs, not vendor documentation — re-check it when a generation changes.
 
    | Work shape | Family | Why |
    |---|---|---|
@@ -132,17 +134,26 @@ If the query fails (no network, CLI error) → use a configuration already known
    | Long multi-step procedures that must be followed exactly; structured or templated output; work whose value is in compliance with a checklist | **Claude family** | Mechanics-driven: follows detailed step-by-step instructions closely and reproduces required structure. |
    | Mechanical scanning, single-shot verification, grep-shaped inventory | **either — take the cheapest tier available** | Fit barely matters at this size; cost does. |
 
-2. **Tier** — inside the chosen family, start at the lowest viable tier and effort. Escalate only after a failure or on concrete evidence that the configuration is too weak, and **raise exactly one dimension at a time** — model or effort, never both.
+2. **Tier** — inside the chosen family, start at the lowest viable tier and effort. Escalate only after a failure or on concrete evidence that the configuration is too weak, and **raise exactly one dimension at a time** — model or effort, never both. **Raise effort first** (up to `high`), after confirming the briefing already states the goal and success criteria — a missing completion bar fails more often than a low effort; move to a larger model only when the current one still falls short at `high`. Anthropic's guidance names effort tuning as often the cheaper lever than switching models.
+
+   | Work | Claude side | GPT side |
+   |---|---|---|
+   | Scanning, summaries, compaction, classification, no-judgment writing | Haiku line at `medium` (`low` on a long agent prompt tends to skip searches and stop early) | Luna line (Codex suggests `high` as the start for explicit settings) |
+   | Well-scoped implementation, everyday bug fixes | Sonnet line, `medium`; `high` for hard bugs | Sol line |
+   | Independent review of a diff | Opus line at `high`, fresh context | Sol line at `high` |
+   | Hardest problems, high-risk final review | Fable line, only after the Opus line at `high` falls short | Astra line, same condition |
+
+   Read the rows as starting points inside a family, not as a fixed roster. For long-context bulk work compare long-prompt pricing: the cheapest per-token model may not stay cheapest past its long-prompt threshold. A cross-family second opinion is worth its cost for high-risk review; routine review is not.
 
 **Before escalating tier, re-check family fit.** A sidekick that produced confident-but-wrong structure, drifted off the goal, or ignored parts of the briefing is usually a family mismatch, not an under-powered tier; escalating within the wrong family spends more and still fails.
 
-`xhigh` / `max` / `ultra` require an explicit user request. If a user-specified model does not support the specified effort, stop and report; do not silently substitute a different model.
+`xhigh` / `max` / `ultra` require an explicit user request. Codex `ultra` is maximum reasoning plus proactive delegation: the sidekick may spawn sub-agents of its own, which breaks the bounded-slice contract, so even on request confirm the user wants that before using it. Claude Code's `ultracode` is a setting, not an effort level. If a user-specified model does not support the specified effort, stop and report; do not silently substitute a different model.
 
 ### Bundled Luna Max sidekick role
 
-When the user explicitly requests **Luna Max**, require the exact `gpt-5.6-luna` model with `max` effort. A Codex lead must prefer a native Codex sub-agent when the live spawn schema exposes both model and effort overrides. Load the complete bundled role at `$DELEGATE_DIR/../../.codex-agents/luna-max-sidekick.toml` and place its `developer_instructions` verbatim before the task briefing for either carrier; never infer support from this file alone.
+When the user explicitly requests **Luna Max**, require the current-generation Luna model from the live Codex catalog — the Luna entry not described as older or previous generation — with `max` effort, and name the resolved ID when announcing the dispatch. If more than one candidate remains, list them and ask the user; never pick by guess. A Codex lead must prefer a native Codex sub-agent when the live spawn schema exposes both model and effort overrides. Load the complete bundled role at `$DELEGATE_DIR/../../.codex-agents/luna-max-sidekick.toml` and place its `developer_instructions` verbatim before the task briefing for either carrier; never infer support from this file alone.
 
-- For native Codex, call the native spawn tool with `model="gpt-5.6-luna"`, `reasoning_effort="max"`, and `fork_turns="none"`; the briefing is self-contained, so the clean context is intentional. The bundled agent file supplies role instructions but is not an auto-registered native agent.
+- For native Codex, call the native spawn tool with `model="<resolved Luna ID>"`, `reasoning_effort="max"`, and `fork_turns="none"`; the briefing is self-contained, so the clean context is intentional. The bundled agent file supplies role instructions but is not an auto-registered native agent.
 - A Claude lead cannot launch this GPT profile through a Claude native sub-agent. Use Codex CLI with the same exact model, effort, role, and briefing. A Codex lead also crosses to Codex CLI when its native schema or launch cannot pin the exact profile.
 - If the same request supplies `--fast` and the native carrier cannot pin Fast, apply Fast to the Codex CLI invocation per `references/codex-cli.md`; it changes only the service tier.
 - If neither Codex carrier can provide the exact model, effort, and bundled role, report the precise incompatibility. Never silently substitute another model, effort, carrier family, or improvised role.

@@ -4,21 +4,17 @@ Real integrations built and tested in this plugin, grouped by the kind of target
 
 ## Contents
 
-1. The agent's own turn — stop, ask, route, word the question
+1. The agent's own turn — ask, route, word the question
 2. Context compaction — what to keep, summarize, or drop
 3. Planning and deliberation — goals, maps, grilling, bets, findings
-4. Verification — contracts, seals, mutation probes
-5. Campaigns and delegation — MOE, posture, task size, patrols
-6. UI building — plan defaults, block fit, element and layout choice, element picking
+4. Verification — contracts
+5. Campaigns — MOE, posture
+6. Browser — element picking
 7. Estimation — difficulty and the basis behind a number
 8. Actions and code — pre-action gates, user-facing output
 9. Question-writing lessons
 
 ## 1. The agent's own turn
-
-**Stop check** (none-stop-jever). Before ending a turn. State: the request in the user's words, what was done with evidence, what is unfinished, why stopping.
-`request_done` (Noul) "Has the user's request been fully done, with evidence that it works?" + `can_continue_alone` (Noul) "Is there remaining work toward the request that the agent can do now without the user?"
-Result: "fixed the test, full suite not run" → 0.09 / 0.94; "full suite passed" → 0.92 / 0.06. Use: not done and can continue → keep working. Added from a field report (untested as worded): `repeats_failed` (Noul) "Does the planned next step repeat an approach that already failed, without any new information that would change the result?" — continuing often only restated known facts; when high, the next step must change approach.
 
 **Ask check** (is-truely-need-to-ask-user-jev). Before asking the user. State: the draft question plus known facts.
 `need_user` (Noul) + `answerable_locally` (Noul).
@@ -56,20 +52,12 @@ Result on an expense-app design: Node version lookup 0.98 (don't ask); button co
 
 **Impact class per surface** (contract-jever). Choice over 不可逆／資料, 邏輯核心, 上下游契約, 穩定性可靠性, UI/UX. The contract's own export example: all three rows matched (0.78–0.87). Asking "should this block the seal?" as a Noul separated poorly (0.42–0.66) — derive blocking from the class instead.
 
-**Mutation probe: decides "done" or only MOP** (seal-jever). `changes_verdict` (Noul) "Could the result of this probe change whether a required criterion is judged met?" Hollow-judge probe (test computes its expected value with the same helper) 0.86; debug-log helper 0.16; color token 0.12. A three-way Choice misread the hollow-judge probe (0.19) — use the Noul.
-
-## 5. Campaigns and delegation
+## 5. Campaigns
 
 **Intelligence vs MOE** (strategic-advance-jever). One Noul per victory criterion: "Does this item bear on this victory criterion, even as partial evidence: <criterion>?" plus `outcome` (observed result vs work performed).
 Result: an import log with 0 failures → 0.84 / 0.81, outcome 0.95; a logging refactor → 0.14 / 0.12 (off-MOE); "applied the patch and redeployed" → 0.55 / 0.65, outcome 0.24 (MOP). "Direct evidence about whether it is met" scored the relevant log only 0.25 / 0.37 — the wording mattered. A single Choice over criteria could not express an item bearing on two.
 
-**Task size and model family** (delegate-jever). Four Scores (stages, write surface, duration, drift cost) + Choice family + Choice effort. "List files and count" → drift_cost 0.03, family either 0.98, write_surface confidence 0.0 (honestly uncertain → take the higher path); "cross-service type migration" → ~2 on each, family gpt.
-
-## 6. UI building
-
-**Plan defaults and block fit** (ui-jever). Five Nouls, one per generic AI-design default, plus Score `fit` against the plan (palette, type roles, layout, principles). A hero with an ALL-CAPS eyebrow, identical shadowed cards, and "Learn more →" → fit 0.23, cards 0.95, template chrome 0.90; a block following the plan → fit 2.25, both defaults 0.01–0.02. Use: revise blocks below ~1.5 fit or above ~0.7 on a default the brief left free.
-
-**Element and layout choice** (ui-jever). When the plan does not settle it: Choice `layout` over flow / stack / row / grid / overlay / sticky, and Choice `color_role` over the plan's own named colors. The accent reserved for one element should rarely come back.
+## 6. Browser
 
 **Element picking** (jev-browser). Index visible interactive elements as `[n] role name · value`, one Choice over them plus `none`. "Where to fly" → the destination combobox 1.0; "submit the search" → the Search button 1.0; "upload a passport photo" (absent) → none 0.99. Model output becomes `[data-jev-idx]`, never a selector; the action is verified afterward.
 

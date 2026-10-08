@@ -18,7 +18,7 @@ import tempfile
 import time
 import webbrowser
 from datetime import datetime, timedelta
-from pathlib import Path
+from pathlib import Path, PureWindowsPath
 from typing import Any
 
 
@@ -1562,7 +1562,9 @@ def validate_state(state: dict[str, Any]) -> list[str]:
         if "carrierRoots" in battlefield:
             carrier_roots = battlefield.get("carrierRoots")
             if not isinstance(carrier_roots, list) or any(
-                not isinstance(item, str) or not item.strip() or not item.startswith("/")
+                not isinstance(item, str)
+                or not item.strip()
+                or not (item.startswith("/") or PureWindowsPath(item).is_absolute())
                 for item in carrier_roots
             ):
                 errors.append(f"{prefix}.carrierRoots 必須是絕對路徑字串列表")
