@@ -49,7 +49,7 @@ Tell the user the route in one line before starting, for example: 「路由：�
 
 ## 2. End, pause, or stop
 
-When a piece of work ends, or you are about to pause, stop, or end your turn, run the before-stopping check in jev-pick and follow its `next` answer: `continue_check_evidence` or `continue_next_item` → keep working; `ask_user` → go through moment 3; `stop_done` or `stop_blocked` → stop and report.
+When a piece of work ends, or you are about to pause, stop, or end your turn, run the before-stopping check in jev-pick and follow its `next` answer: `continue_check_evidence` or `continue_next_item` → keep working; `continue_change_approach` → keep working on a different route than the one that failed; `ask_user` → go through moment 3; `stop_done` or `stop_blocked` → stop and report.
 
 ## 3. Before asking the user
 

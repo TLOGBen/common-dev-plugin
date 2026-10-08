@@ -23,13 +23,14 @@ The reply's `answers.target` holds `choice`, `confidence`, and `probabilities`. 
 
 ## Before stopping a turn
 
-When you use this check, ask this fixed question with a state of facts only — the goal as the user stated it, what was done with its evidence, what is unfinished, and why you want to stop. Keep the options as written; changing them per call lets the wish to stop steer the answer.
+When you use this check, ask this fixed question with a state of facts only — the goal as the user stated it, what was done with its evidence, which approaches were already tried and how each failed, what is unfinished, and why you want to stop. Listing the failed approaches matters: without them a stop after one dead end reads as blocked, when another route was still open. Keep the options as written; changing them per call lets the wish to stop steer the answer.
 
 ```json
 {"next": {"type": "choice", "instructions": "Given the goal, the work done, the unfinished items, and the reason for stopping, what should the agent do next?",
   "criteria": {"stop_done": "Goal met and verified; stop and report",
                "continue_check_evidence": "An open point can be answered from existing files, logs, or earlier results; check it and continue",
                "continue_next_item": "Unfinished items remain that need no user input; continue",
+               "continue_change_approach": "The planned next step repeats an approach that already failed with no new information; continue with a different approach",
                "ask_user": "A decision only the user can make (preference, authorization, irreversible action) blocks progress",
                "stop_blocked": "Blocked by something outside the agent's reach; stop and explain"}}}
 ```

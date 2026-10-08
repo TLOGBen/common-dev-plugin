@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "1.85.0"
+    "version": "1.86.0"
   },
   "plugins": [
     {
@@ -38,7 +38,7 @@
       "source": "./plugins/common-lab",
       "description": "Common Lab (experimental): 16 TypeSafe Jev lab skills — a Jev request router (suggest-jev), Jev setup (init-jev), yes/no gate (jev-gate), list pick (jev-pick, incl. a before-stopping check), rubric score (jev-score), Jev opportunity finder (jever), jev-browser (dev-browser with Jev element picking), an ask-the-user check (is-truely-need-to-ask-user-jev), and Jev overlays that add Jev readings to define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation (*-jever). Graduated skills now live in the stable plugins: grilling, domain-modeling, research, prototype, wait-what, wayfinder, show-me in common; think, contract, seal, review in baransu. The Lab estimate, define-goal and better-prompts variants were retired in 0.9.0, the Lab strategic-advance variant in 0.10.0; 0.19.0 retired ui-jever, seal-jever, show-me-jever, none-stop-jever, and both Lab delegate variants with the executor agent; use analysis-estimation:cold-estimation, common:define-goal, common:better-prompts, common:strategic-advance, common:delegate, baransu:ui / baransu:draw, baransu:seal and common:show-me. Invoke as /common-lab:<skill>. Enabled by default once installed; disable with `claude plugin disable common-lab` if unwanted.",
       "displayName": "Common Lab（實驗性）",
-      "version": "0.19.0",
+      "version": "0.19.1",
       "defaultEnabled": true
     },
     {
@@ -46,7 +46,7 @@
       "source": "./plugins/linkstart",
       "description": "LinkStart v1 Preview integration (enabled by default): one link-start workflow reconnects an interactive HTML or localhost app to the same Claude Code session or Codex thread through the exact bundled Runtime, private session context, and one-call arm/respond monitor flow.",
       "displayName": "LinkStart",
-      "version": "0.4.1",
+      "version": "0.4.2",
       "defaultEnabled": true
     },
     {

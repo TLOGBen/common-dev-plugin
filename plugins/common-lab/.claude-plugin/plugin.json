@@ -1,7 +1,7 @@
 {
   "name": "common-lab",
   "displayName": "Common Lab（實驗性）",
-  "version": "0.19.0",
+  "version": "0.19.1",
   "description": "Unified opt-in laboratory: 16 experimental TypeSafe Jev skills: basics (a request router, setup, gate, pick with a before-stopping check, score, finding Jev opportunities, Jev-assisted browser debugging, an ask-the-user check) and Jev overlays on define-goal, strategic-advance, contract, review, think, wait-what, wayfinder, and cold-estimation.",
   "author": {
     "name": "ben.tsai",

@@ -2,6 +2,16 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common Lab 0.19.1 — 停下前檢查補「換做法再繼續」
+
+- `jev-pick` 的停下前檢查新增選項 `continue_change_approach`（下一步在重複已失敗的做法、又沒有新資訊 → 換一條路繼續），補回 none-stop-jever 退役時一起消失的 `repeats_failed` 判斷。送給 Jev 的狀態要多列「已試過哪些做法、各自怎麼失敗」：少了這段，碰壁一次就停會被讀成 blocked（Codex 實測 9/23 判 stop_blocked 0.91，實際上還有路可走）。`suggest-jev` 的停下規則同步對應新選項。尚未用 Jev 實測新選項。
+- Codex 副本手動同步。
+
+## LinkStart 0.4.2 — Codex 版本對齊、移除 Codex 端無效的 monitors
+
+- Codex 版版本字串原為 `0.3.0+codex.20260828033021`（內容其實已與 Claude 0.4.1 相同，只差 frontmatter `compatibility`），兩邊統一為 0.4.2，也避開 Codex 未記載是否支援的 `+` 版本字串。
+- 移除 `codex/plugins/linkstart/monitors/monitors.json`：Codex 沒有 monitors，且該檔指向 Claude 的 `${CLAUDE_PLUGIN_ROOT}`。Claude 版不變。`validate_linkstart_release.py` 的版本釘選同步更新。marketplace 1.86.0。
+
 ## Test Utilities 1.2.3 — Codex 版改為執行時解析 skill 路徑
 
 - Codex 不會展開 skill 文字裡的 `${CLAUDE_PLUGIN_ROOT}`，gen-e2e-test、gen-e2e-record 的 Codex 版原本指向一個不存在的路徑。改成在 `SKILL.md` 開頭宣告 `SKILLS_ROOT`（執行時解析成本 skill 資料夾的上一層絕對路徑，解析不到就停下來問），所有內建腳本與參考檔路徑改用它。Claude 版不變。
