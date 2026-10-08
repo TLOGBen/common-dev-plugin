@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Repo — README 改為概念首頁，細節移到 docs/
+
+- README 改寫為短首頁：橫幅概念圖、設計理念、plugin 卡片牆（每個 plugin 一張概念圖）、快速開始與範例 prompt。
+- 細節移到 `docs/`：`docs/README.md`（索引）、`docs/install.md`、`docs/development.md`、`docs/plugins/<name>.md`（六個 plugin 的完整說明，舊 README 內容逐段搬入）。
+- 新增概念圖 `docs/images/hero.png`、`docs/images/plugin-*.png`（GPT-6 Astra 產生，同一套色盤與主題）。plugin 內容未變，不升版號。
+
 ## Common Lab 0.19.1 — 停下前檢查補「換做法再繼續」
 
 - `jev-pick` 的停下前檢查新增選項 `continue_change_approach`（下一步在重複已失敗的做法、又沒有新資訊 → 換一條路繼續），補回 none-stop-jever 退役時一起消失的 `repeats_failed` 判斷。送給 Jev 的狀態要多列「已試過哪些做法、各自怎麼失敗」：少了這段，碰壁一次就停會被讀成 blocked（Codex 實測 9/23 判 stop_blocked 0.91，實際上還有路可走）。`suggest-jev` 的停下規則同步對應新選項。尚未用 Jev 實測新選項。
