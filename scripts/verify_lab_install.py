@@ -103,9 +103,9 @@ def main():
                 if dialog_test.is_file():
                     run(["node", "--test", str(dialog_test)], test_env)
         env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1")
-        stable = ["plugins/common", "plugins/analysis-estimation", "plugins/test-utils", "plugins/linkstart", "codex", ".agents", ".claude-plugin"]
+        stable = ["plugins/common", "plugins/analysis-estimation", "plugins/test-utils", "codex", ".agents", ".claude-plugin"]
         assert not run(["git", "diff", "--name-only", "HEAD", "--", *stable], env).strip(), "Stable distribution changed"
-        assert "LINKSTART_RELEASE_VALID" in run(["python3", "scripts/validate_linkstart_release.py"], env)
+        assert "MARKETPLACE_VALID" in run(["python3", "scripts/validate_marketplace.py"], env)
         for name, _, source in packages:
             assert inventory(ROOT / source) == sources[name], "Frozen source changed"
         result["status"] = "PASS"

@@ -24,20 +24,17 @@ common-dev-plugin/
 │   ├── test-utils/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/               # gen-e2e-test, gen-e2e-record, dev-browser
-│   ├── analysis-estimation/
-│   │   ├── .claude-plugin/plugin.json
-│   │   └── skills/               # rfp-*, cold-estimation, quality-orchestrator
-│   └── linkstart/
+│   └── analysis-estimation/
 │       ├── .claude-plugin/plugin.json
-│       └── skills/link-start/    # 單一 public skill；Claude/Codex adapter references 與 exact Runtime assets
+│       └── skills/               # rfp-*, cold-estimation, quality-orchestrator
 ├── codex/                        # 手工維護的 Codex 移植
 │   ├── .agents/plugins/
 │   │   └── marketplace.json      # Codex marketplace（Layout B，自包含佈局）
-│   └── plugins/                  # common / common-lab / test-utils / analysis-estimation / linkstart
+│   └── plugins/                  # common / common-lab / test-utils / analysis-estimation
 │       └── common/.codex-agents/ # luna-max-sidekick.toml 等 package-local agent 定義
 ├── codex-metadata/               # Codex 專屬的 skill UI metadata（openai.yaml）
 ├── docs/                         # 文件、圖片與 experiments/ 歷史紀錄
-├── scripts/                      # 驗證與實驗用腳本（含 validate_linkstart_release.py）
+├── scripts/                      # 驗證與實驗用腳本（含 validate_marketplace.py）
 ├── tests/                        # 契約測試
 ├── AGENTS.md                     # Codex 對應結構、移植規則與驗證流程
 └── CHANGELOG.md
@@ -70,8 +67,8 @@ Codex marketplace 改動，至少跑 `AGENTS.md` 列出的檢查：
 
 ```bash
 python3 -c "import json, pathlib; [json.load(open(f, encoding='utf-8')) for f in pathlib.Path('.').rglob('*.json')]"
-python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/linkstart/.codex-plugin/plugin.json').is_file()"
-python3 scripts/validate_linkstart_release.py
+python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
+python3 scripts/validate_marketplace.py
 ```
 
 再用暫存 Codex home 試裝，指令見 [安裝與管理](install.md#用暫存-codex-home-試裝)。

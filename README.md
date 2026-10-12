@@ -8,7 +8,7 @@
 
 `common-dev` 是一個 Claude Code marketplace，同時附上 Codex 版本。裡面的 skill 不綁定任何專案的品牌、路由、port 或帳號，裝進哪個 repo 都能用。
 
-Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引用；維護來源位於 `codex-metadata/`。圖示路徑修正版為 common 1.41.2、analysis-estimation 1.20.2、test-utils 1.2.5、linkstart 0.4.4，既有安裝需更新對應 plugin。
+Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引用；維護來源位於 `codex-metadata/`。圖示路徑修正版為 common 1.41.2、analysis-estimation 1.20.2、test-utils 1.2.5，既有安裝需更新對應 plugin。
 
 ## 設計理念
 
@@ -41,17 +41,12 @@ Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引�
       E2E 與瀏覽器工具：AI 撰寫可雙擊執行的 Playwright 測試、人工錄製轉測試、agent 端 UI 除錯。
     </td>
     <td valign="top">
-      <img src="docs/images/plugin-linkstart.png" alt="linkstart" width="100%"><br>
-      <strong><a href="docs/plugins/linkstart.md">linkstart</a></strong> · 預設啟用 · Preview<br>
-      讓 agent 產出的互動 HTML 或 localhost App，在回合結束後仍能把事件送回產出它的同一條 session。
-    </td>
-  </tr>
-  <tr>
-    <td valign="top">
       <img src="docs/images/plugin-common-mod.png" alt="common-mod" width="100%"><br>
       <strong><a href="docs/plugins/common-mod.md">common-mod</a></strong> · 預設啟用 · Claude 專屬<br>
       Claude Code 介面裡的 mod：輸入框上方的狀態列、回想過去的對話、側聊面板。
     </td>
+  </tr>
+  <tr>
     <td valign="top">
       <img src="docs/images/plugin-common-lab.png" alt="common-lab" width="100%"><br>
       <strong><a href="docs/plugins/common-lab.md">common-lab</a></strong> · 實驗性（需自行安裝）<br>
@@ -76,7 +71,6 @@ codex plugin marketplace add https://github.com/TLOGBen/common-dev-plugin.git
 codex plugin add common@common-dev
 codex plugin add analysis-estimation@common-dev
 codex plugin add test-utils@common-dev
-codex plugin add linkstart@common-dev
 ```
 
 Claude 用 `/<plugin>:<skill>` 呼叫，Codex 用 `$<skill>`。試試看：

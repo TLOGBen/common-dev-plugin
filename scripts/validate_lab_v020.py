@@ -35,8 +35,8 @@ def main():
         [sys.executable, "-B", "scripts/test_campaign_brief.py", "--script", str(scripts / "campaign_brief.py")],
         [sys.executable, "-B", "scripts/test_common_lab_wayfinder.py", "--artifact-root", str(args.wayfinder_fixtures)],
         [sys.executable, "-c", "import json,pathlib; fs=list(pathlib.Path('.').rglob('*.json')); [json.load(open(f,encoding='utf-8')) for f in fs]; print('JSON_VALID',len(fs))"],
-        [sys.executable, "-c", "import pathlib; r=pathlib.Path('.'); assert all((r/p).is_file() for p in ['.agents/plugins/marketplace.json','codex/.agents/plugins/marketplace.json','codex/plugins/test-utils/.codex-plugin/plugin.json','codex/plugins/analysis-estimation/.codex-plugin/plugin.json','codex/plugins/linkstart/.codex-plugin/plugin.json']); print('STABLE_LAYOUT_PRESENT')"],
-        [sys.executable, "-B", "scripts/validate_linkstart_release.py"],
+        [sys.executable, "-c", "import pathlib; r=pathlib.Path('.'); assert all((r/p).is_file() for p in ['.agents/plugins/marketplace.json','codex/.agents/plugins/marketplace.json','codex/plugins/test-utils/.codex-plugin/plugin.json','codex/plugins/analysis-estimation/.codex-plugin/plugin.json']); print('STABLE_LAYOUT_PRESENT')"],
+        [sys.executable, "-B", "scripts/validate_marketplace.py"],
         ["git", "diff", "--check"],
     ]
     for name in ("common-lab", "baransu-lab", "estimate-lab"):

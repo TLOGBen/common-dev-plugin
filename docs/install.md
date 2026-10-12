@@ -2,7 +2,7 @@
 
 回到 [文件索引](README.md)。
 
-`common-dev` 以 Claude Code marketplace（id：`common-dev`）形式發佈，並附 Codex 版本。五個穩定 plugin（`common`、`analysis-estimation`、`test-utils`、`linkstart`、`common-mod`）都設為 `defaultEnabled: true`；Claude 與 Codex marketplace 另提供需自行安裝、裝後即啟用的 `Common Lab（實驗性）`，不會取代穩定版 Common。`common-mod` 只有 Claude Code 版本。
+`common-dev` 以 Claude Code marketplace（id：`common-dev`）形式發佈，並附 Codex 版本。四個穩定 plugin（`common`、`analysis-estimation`、`test-utils`、`common-mod`）都設為 `defaultEnabled: true`；Claude 與 Codex marketplace 另提供需自行安裝、裝後即啟用的 `Common Lab（實驗性）`，不會取代穩定版 Common。`common-mod` 只有 Claude Code 版本。
 
 ## Claude Code
 
@@ -19,7 +19,6 @@
 ```text
 /plugin install test-utils@common-dev
 /plugin install analysis-estimation@common-dev
-/plugin install linkstart@common-dev
 /plugin install common@common-dev
 /plugin install common-lab@common-dev   # 實驗版
 /plugin install common-mod@common-dev   # Claude Code mod（Claude 專屬）
@@ -53,10 +52,9 @@ codex plugin add test-utils@common-dev
 codex plugin add analysis-estimation@common-dev
 codex plugin add common@common-dev
 codex plugin add common-lab@common-dev
-codex plugin add linkstart@common-dev
 ```
 
-Codex 沒有 `common-mod` 的對應版本。Codex skill 以 `$<skill>` 呼叫，例如 `$delegate`、`$link-start`。
+Codex 沒有 `common-mod` 的對應版本。Codex skill 以 `$<skill>` 呼叫，例如 `$delegate`、`$show-me`。
 
 ### 確認已安裝的版本
 
@@ -92,5 +90,4 @@ env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-cod
 |--------|------|
 | `test-utils` | Node.js；`dev-browser` 另需外部 CLI，見 [test-utils 相依](plugins/test-utils.md#相依) |
 | `common-lab` | TypeSafe Jev 金鑰 `TYPESAFE_API_KEY`，用 `init-jev` 設定，見 [common-lab](plugins/common-lab.md) |
-| `linkstart` | 不需另外安裝；plugin 內嵌 exact Runtime binary，見 [linkstart](plugins/linkstart.md#runtime-來源) |
 | `common-mod` | 只支援 Claude Code（CLI 與桌面版 Code 分頁），見 [common-mod](plugins/common-mod.md) |

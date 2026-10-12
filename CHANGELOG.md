@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 1.89.0 — 移除 LinkStart（2026-10-12）
+
+- LinkStart 整合確認失敗，停止散佈；移除 Claude／Codex 套件、三平台內嵌 Runtime、Codex metadata，以及三份 marketplace catalog 的 LinkStart entry。
+- 同步移除首頁卡片、安裝指令、專屬文件與圖片；以通用 marketplace 結構驗證取代 LinkStart 專屬發行檢查，更新 Lab 檢查的相依。
+- 其他 plugin 內容與版號不變。既有安裝不會因目錄下架自動解除安裝；Git 歷史中的舊版本仍保留。
+
 ## Marketplace 1.88.1 — 修正 Codex skill 圖示路徑
 
 - 將 22 個 skill 的 `icon-small.png`／`icon-large.png` 原檔移至各 skill 的 `assets/`，同步 `agents/openai.yaml` 與 `codex-metadata/`。Codex 0.161.0 會忽略 `agents/` 下的圖示並回報 `icon path must be under assets/`。

@@ -12,7 +12,7 @@ LABS = ("common-lab", "baransu-lab", "estimate-lab")
 EDITABLE = ["plugins/" + name for name in LABS] + [
     "codex-metadata/" + name for name in LABS] + [
     "scripts/export_common_lab.py", "README.md", "CHANGELOG.md"]
-PROTECTED = ["plugins/common", "plugins/analysis-estimation", "plugins/linkstart",
+PROTECTED = ["plugins/common", "plugins/analysis-estimation",
              "plugins/test-utils", "codex", ".agents", ".claude-plugin", "experiments"]
 
 

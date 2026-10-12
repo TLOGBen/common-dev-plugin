@@ -55,8 +55,8 @@ For Codex marketplace work, at minimum run:
 
 ```bash
 python3 -c "import json, pathlib; [json.load(open(f, encoding='utf-8')) for f in pathlib.Path('.').rglob('*.json')]"
-python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/linkstart/.codex-plugin/plugin.json').is_file()"
-python3 scripts/validate_linkstart_release.py
+python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
+python3 scripts/validate_marketplace.py
 ```
 
 Then install through a temporary Codex home:
