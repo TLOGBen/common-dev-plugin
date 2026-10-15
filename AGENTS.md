@@ -17,7 +17,7 @@ The Codex copy is a hand-maintained port of the Claude source:
 - Codex skills: `codex/plugins/<name>/skills/<skill>/SKILL.md`
 - Codex package-local agent definitions: `codex/plugins/<name>/.codex-agents/<agent>.toml`
 
-Port every distributed change by hand in the same change set; do not regenerate `codex/` with the `codex-skill-transfer` script. Keep the substance identical and limit differences to what Codex needs (platform reference: `docs/experiments/claude-codex-plugin-parity-20261008.md`):
+Port every distributed change by hand in the same change set; do not regenerate `codex/` with the `codex-skill-transfer` script. Keep the substance identical and limit differences to what Codex needs (platform reference: `docs/claude-codex-plugin-parity.md`):
 
 - Frontmatter: Codex reads only `name`, `description`, and `metadata`; Claude-only keys go, and the Codex copy may carry `compatibility` / `metadata.version`. Explicit-only invocation becomes `agents/openai.yaml` `policy.allow_implicit_invocation: false`.
 - Mentions: `/plugin:skill` becomes `$skill` (or `$plugin:skill`); Codex has no `$ARGUMENTS` or `!` command injection.

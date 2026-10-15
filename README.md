@@ -16,7 +16,7 @@ Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引�
 - **Claude 為本，Codex 手工移植。** `plugins/` 是 source of truth，`codex/plugins/` 在同一個變更裡手動移植，兩邊內容相同，只保留 Codex 必要的差異。
 - **主線決策，副手執行。** 邊界清楚、可以獨立驗證的工作派給較便宜的 sidekick；分析、決策與驗收留在主線。
 - **驗證勝過宣稱。** 宣告完成前先跑機器檢查；build、mock、health response 不能替代真正的結果；條件不足時 fail closed，不猜、不頂替。
-- **實驗與穩定分開。** 實驗技能放在需自行安裝的 Common Lab，不取代穩定版；測量紀錄留在 `docs/experiments/` 當歷史。
+- **實驗與穩定分開。** 實驗技能放在需自行安裝的 Common Lab，不取代穩定版；實驗紀錄、受測專案與探針不進 repo，需要時從 Git 歷史取回。
 - **說繁體中文。** 給人看的輸出預設用繁體中文，使用者明確要求才換語言。
 
 ## Plugin 一覽
