@@ -57,10 +57,4 @@
 
 ## 實驗紀錄
 
-實驗紀錄與舊版凍結包不進 repo，需要時從 Git 歷史取回；暫存安裝驗證也不代表目前 App 已載入新版。
-
-- [0.2.0 逐技能改動、規模邊界與驗證結果](../experiments/lab-v0.2.0/README.md)
-- [三個實驗包的歷史紀錄](../experiments/README.md)
-- [Common 0.1.x 歷史實驗說明](../experiments/common-lab/README.md)
-- [A/B 計畫與測量限制](../experiments/common-lab/RUN.md)
-- [實測發現與限制（持續補充，非終報）](../experiments/common-lab/RESULTS.md)
+實驗紀錄與舊版凍結包不進 repo，需要時從 Git 歷史取回；暫存安裝驗證也不代表目前 App 已載入新版。Git 歷史裡的 `docs/experiments/` 曾有：0.2.0 逐技能改動、規模邊界與驗證結果、三個實驗包的歷史紀錄、Common 0.1.x 歷史實驗說明、A/B 計畫與測量限制，以及實測發現與限制（持續補充，非終報）。
