@@ -1,9 +1,9 @@
 ---
 name: jev-browser
 description: >
-  Browser debugging with TypeSafe Jev element picking, built on test-utils dev-browser: index the visible
+  Browser debugging with TypeSafe Jev element picking, built on the external dev-browser CLI: index the visible
   interactive elements, let Jev pick the target in one Choice call, and read only the candidates instead of
-  the whole DOM. Invoke explicitly as /common-lab:jev-browser; use test-utils dev-browser for normal browser debugging.
+  the whole DOM. Invoke explicitly as /common-lab:jev-browser; use the dev-browser CLI directly for normal browser debugging.
 allowed-tools: Bash, WebFetch, Read, Grep, Glob, Edit, AskUserQuestion
 metadata:
   version: "1.1.2-lab.1"
@@ -14,9 +14,9 @@ metadata:
 
 # Jev Browser — Frontend Browser Validation + Jev Element Picking
 
-> **Lab 差異**：與 `test-utils:dev-browser` 相同，只多一個情境「找要操作的元素」（Section 3 最後一列）。要在頁面上找元素時，先跑 `element-table.js` 再跑 `jev-pick.mjs`，只讀候選，不要把整份 `snapshotForAI()` 印出來截斷。Jev 的答案是候選不是證據，操作後照樣要驗證。
+> **Lab 差異**：與直接使用外部 `dev-browser` CLI（`npm install -g dev-browser && dev-browser install`）相同，只多一個情境「找要操作的元素」（Section 3 最後一列）。要在頁面上找元素時，先跑 `element-table.js` 再跑 `jev-pick.mjs`，只讀候選，不要把整份 `snapshotForAI()` 印出來截斷。Jev 的答案是候選不是證據，操作後照樣要驗證。
 
-> Use this for **stateful, interactive diagnosis** against a live browser. Use Playwright for repeatable automation and `gen-e2e-*` when the outcome is a distributable test artifact. ⛔ No guessing — observe facts in the browser.
+> Use this for **stateful, interactive diagnosis** against a live browser. Use Playwright for repeatable automation and when the outcome is a distributable test artifact. ⛔ No guessing — observe facts in the browser.
 
 > Output all reports, diagnostics, and user-facing messages in **繁體中文**.
 

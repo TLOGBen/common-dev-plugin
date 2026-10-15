@@ -16,11 +16,9 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--receipt", type=Path, required=True)
     parser.add_argument("--install-root", type=Path, required=True)
-    parser.add_argument("--wayfinder-fixtures", type=Path, required=True)
     parser.add_argument("--quick-validator", type=Path, required=True)
     args = parser.parse_args()
     assert not args.receipt.exists() and not args.receipt.is_symlink(), "Use a new receipt"
-    assert not args.wayfinder_fixtures.exists(), "Use a new fixture directory"
     common = args.install_root / "common-lab/plugins/cache/common-lab/common-lab/0.2.0"
     scripts = common / "skills/lab-strategic-advance/scripts"
     assert scripts.is_dir() and args.quick_validator.is_file()
@@ -29,13 +27,9 @@ def main():
     steps = []
     env = dict(os.environ, PYTHONDONTWRITEBYTECODE="1", LAB_CALIBRATION_SCRIPTS=str(scripts))
     commands = [
-        [sys.executable, "-B", "scripts/test_lab_v020_calibration.py"],
         [sys.executable, "-B", str(scripts / "campaign.py"), "self-test"],
-        [sys.executable, "-B", "scripts/test_common_lab_campaign_extend.py", "--tool", str(scripts / "campaign.py")],
-        [sys.executable, "-B", "scripts/test_campaign_brief.py", "--script", str(scripts / "campaign_brief.py")],
-        [sys.executable, "-B", "scripts/test_common_lab_wayfinder.py", "--artifact-root", str(args.wayfinder_fixtures)],
         [sys.executable, "-c", "import json,pathlib; fs=list(pathlib.Path('.').rglob('*.json')); [json.load(open(f,encoding='utf-8')) for f in fs]; print('JSON_VALID',len(fs))"],
-        [sys.executable, "-c", "import pathlib; r=pathlib.Path('.'); assert all((r/p).is_file() for p in ['.agents/plugins/marketplace.json','codex/.agents/plugins/marketplace.json','codex/plugins/test-utils/.codex-plugin/plugin.json','codex/plugins/analysis-estimation/.codex-plugin/plugin.json']); print('STABLE_LAYOUT_PRESENT')"],
+        [sys.executable, "-c", "import pathlib; r=pathlib.Path('.'); assert all((r/p).is_file() for p in ['.agents/plugins/marketplace.json','codex/.agents/plugins/marketplace.json','codex/plugins/common/.codex-plugin/plugin.json','codex/plugins/analysis-estimation/.codex-plugin/plugin.json']); print('STABLE_LAYOUT_PRESENT')"],
         [sys.executable, "-B", "scripts/validate_marketplace.py"],
         ["git", "diff", "--check"],
     ]

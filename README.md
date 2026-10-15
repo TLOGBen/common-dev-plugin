@@ -8,7 +8,7 @@
 
 `common-dev` 是一個 Claude Code marketplace，同時附上 Codex 版本。裡面的 skill 不綁定任何專案的品牌、路由、port 或帳號，裝進哪個 repo 都能用。
 
-Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引用；維護來源位於 `codex-metadata/`。圖示路徑修正版為 common 1.41.2、analysis-estimation 1.20.2、test-utils 1.2.5，既有安裝需更新對應 plugin。
+Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引用；維護來源位於 `codex-metadata/`。圖示路徑修正版為 common 1.41.2、analysis-estimation 1.20.2，既有安裝需更新對應 plugin。
 
 ## 設計理念
 
@@ -36,17 +36,10 @@ Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引�
   </tr>
   <tr>
     <td valign="top">
-      <img src="docs/images/plugin-test-utils.png" alt="test-utils" width="100%"><br>
-      <strong><a href="docs/plugins/test-utils.md">test-utils</a></strong> · 預設啟用<br>
-      E2E 與瀏覽器工具：AI 撰寫可雙擊執行的 Playwright 測試、人工錄製轉測試、agent 端 UI 除錯。
-    </td>
-    <td valign="top">
       <img src="docs/images/plugin-common-mod.png" alt="common-mod" width="100%"><br>
       <strong><a href="docs/plugins/common-mod.md">common-mod</a></strong> · 預設啟用 · Claude 專屬<br>
       Claude Code 介面裡的 mod：輸入框上方的狀態列、回想過去的對話、側聊面板。
     </td>
-  </tr>
-  <tr>
     <td valign="top">
       <img src="docs/images/plugin-common-lab.png" alt="common-lab" width="100%"><br>
       <strong><a href="docs/plugins/common-lab.md">common-lab</a></strong> · 實驗性（需自行安裝）<br>
@@ -70,14 +63,12 @@ Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引�
 codex plugin marketplace add https://github.com/TLOGBen/common-dev-plugin.git
 codex plugin add common@common-dev
 codex plugin add analysis-estimation@common-dev
-codex plugin add test-utils@common-dev
 ```
 
 Claude 用 `/<plugin>:<skill>` 呼叫，Codex 用 `$<skill>`。試試看：
 
 ```text
 /analysis-estimation:cold-estimation 估一下這個案子要多少人天（附上需求文件或 repo 路徑）
-/test-utils:gen-e2e-test 幫登入到下單這條流程寫一個 E2E 測試
 /common:delegate 把這批 log 掃描派給便宜的 sidekick，找出所有逾時錯誤
 ```
 

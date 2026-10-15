@@ -145,7 +145,7 @@ Record:
 
 If the objective is only "make it work" or "finish everything," make the end state measurable before execution.
 
-An irreversible structural decision the contract does not fix — persistence schema, external API or message shape, state machine, module boundary — is an unresolved decision, not an implementation detail. Before the first mutation that would commit it, pin it through `/baransu:contract` (or the user) and record the result under `constraints`. The executor may propose; it may not decide. Speed of the executor never shortens this step.
+An irreversible structural decision the contract does not fix — persistence schema, external API or message shape, state machine, module boundary — is an unresolved decision, not an implementation detail. Before the first mutation that would commit it, settle it with the user (deliberate under `/baransu:think` when the choice is contested) and record the result under `constraints`. The executor may propose; it may not decide. Speed of the executor never shortens this step.
 
 ### 2. Reconstruct battlefield information
 

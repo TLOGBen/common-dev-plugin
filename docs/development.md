@@ -17,25 +17,21 @@ common-dev-plugin/
 │   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me, token-lens（+ grilling/domain-modeling/research/prototype）
 │   ├── common-lab/
 │   │   ├── .claude-plugin/plugin.json
-│   │   └── skills/               # 16 個 TypeSafe Jev 實驗技能
+│   │   └── skills/               # 15 個 TypeSafe Jev 實驗技能
 │   ├── common-mod/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── hooks/                # bar / recall / side 等 function hooks（Claude 專屬，無 Codex 版）
-│   ├── test-utils/
-│   │   ├── .claude-plugin/plugin.json
-│   │   └── skills/               # gen-e2e-test, gen-e2e-record, dev-browser
 │   └── analysis-estimation/
 │       ├── .claude-plugin/plugin.json
 │       └── skills/               # rfp-*, cold-estimation, quality-orchestrator
 ├── codex/                        # 手工維護的 Codex 移植
 │   ├── .agents/plugins/
 │   │   └── marketplace.json      # Codex marketplace（Layout B，自包含佈局）
-│   └── plugins/                  # common / common-lab / test-utils / analysis-estimation
+│   └── plugins/                  # common / common-lab / analysis-estimation
 │       └── common/.codex-agents/ # luna-max-sidekick.toml 等 package-local agent 定義
 ├── codex-metadata/               # Codex 專屬的 skill UI metadata（openai.yaml）
 ├── docs/                         # 文件、圖片與 experiments/ 歷史紀錄
 ├── scripts/                      # 驗證與實驗用腳本（含 validate_marketplace.py）
-├── tests/                        # 契約測試
 ├── AGENTS.md                     # Codex 對應結構、移植規則與驗證流程
 └── CHANGELOG.md
 ```
@@ -67,7 +63,7 @@ Codex marketplace 改動，至少跑 `AGENTS.md` 列出的檢查：
 
 ```bash
 python3 -c "import json, pathlib; [json.load(open(f, encoding='utf-8')) for f in pathlib.Path('.').rglob('*.json')]"
-python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
+python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/common/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
 python3 scripts/validate_marketplace.py
 ```
 
@@ -75,7 +71,7 @@ python3 scripts/validate_marketplace.py
 
 ## 貢獻
 
-- **保持 skill 通用**：不寫死專案品牌、路由、port 或帳號；skill 引用自帶檔案用 `${CLAUDE_PLUGIN_ROOT}/skills/<skill>/...`，plugin 層 agent 用 `${CLAUDE_PLUGIN_ROOT}/agents/<agent>.md`。只有 skill 在使用者專案裡建立的路徑（`tests/<name>/`、`.claude/test-template/`）維持專案相對路徑。
+- **保持 skill 通用**：不寫死專案品牌、路由、port 或帳號；skill 引用自帶檔案用 `${CLAUDE_PLUGIN_ROOT}/skills/<skill>/...`，plugin 層 agent 用 `${CLAUDE_PLUGIN_ROOT}/agents/<agent>.md`。只有 skill 在使用者專案裡建立的路徑（例如 `.claude/wait-what/`、`.strategic-advance/`）維持專案相對路徑。
 - **語言**：`common` 的 Skill 指令用英文；給人看的輸出與產物預設繁體中文。
 - **每次散佈變更都要 bump plugin `version`**（Claude Code 與 Codex 都有快取）。
 - 改完 Claude source 後，在同一個變更裡手動移植對應的 `codex/` 副本（見上節）。

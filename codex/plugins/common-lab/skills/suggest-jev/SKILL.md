@@ -46,7 +46,7 @@ Turn the answers into a route:
 - **Skills.** Load `start_skill` when its confidence is about 0.6 or higher; below that, pick yourself from the top two. Any other skill with probability above ~0.15 is a candidate to keep in view — load it when its step arrives, not all at once.
 - **Workflow and completion.** Follow `workflow`, and decide now how you will prove it is done using `completion`. `ask_first` goes through moment 3 before any work.
 - **Subagents.** Default to none. Dispatch only when `subagents` is about 1.5 or higher with confidence of at least ~0.6 and the work splits into independent slices; round down, and stay within any limit the user set. Hand the dispatch to `$delegate` (from the common plugin), using `family` and `effort` as its starting point; `xhigh` and above need the user's explicit request.
-- **Difficulty and impact.** At level 3 on either, or 2 on both, consider pinning the goal or acceptance first (define-goal, contract) or deliberating (think) before building; at level 0–1 on both, just do it.
+- **Difficulty and impact.** At level 3 on either, or 2 on both, consider pinning the goal first (define-goal) or deliberating (think) before building; at level 0–1 on both, just do it.
 
 Tell the user the route in one line before starting, for example: 「路由：先用 hunt，先排查再修，以測試通過為完成標準，不派 subagent。」 Then do the work.
 

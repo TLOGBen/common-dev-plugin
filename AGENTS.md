@@ -34,6 +34,7 @@ The two marketplace catalogs are **hand-maintained**. Both use the `common-dev` 
 
 ## Invariants
 
+- 此 plugin 不做任何單元測試。Whether a skill works has nothing to do with unit tests — when skills change it is the tests that break, not the skills — so structural validation (`scripts/validate_marketplace.py`, JSON validity) is the only machine check.
 - Keep skills generic: no project-specific branding, routes, ports, accounts, or private workflow assumptions.
 - Keep `common` Skill instructions in English. Default user-facing prose and generated human-readable artifacts to Traditional Chinese; switch only when the user explicitly requests another language.
 - For Claude source, reference skill-local files through `${CLAUDE_PLUGIN_ROOT}/skills/<skill>/...`; reference plugin-level bundled agents through `${CLAUDE_PLUGIN_ROOT}/agents/<agent>.md`.
@@ -55,7 +56,7 @@ For Codex marketplace work, at minimum run:
 
 ```bash
 python3 -c "import json, pathlib; [json.load(open(f, encoding='utf-8')) for f in pathlib.Path('.').rglob('*.json')]"
-python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/test-utils/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
+python3 -c "import json, pathlib; root=pathlib.Path('.'); assert (root/'.agents/plugins/marketplace.json').is_file(); assert (root/'codex/.agents/plugins/marketplace.json').is_file(); assert (root/'codex/plugins/common/.codex-plugin/plugin.json').is_file(); assert (root/'codex/plugins/analysis-estimation/.codex-plugin/plugin.json').is_file()"
 python3 scripts/validate_marketplace.py
 ```
 
@@ -65,5 +66,5 @@ Then install through a temporary Codex home:
 mkdir -p /tmp/common-dev-plugin-codex-test
 env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin marketplace add /path/to/common-dev-plugin --json
 env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin list --available --json
-env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin add test-utils@common-dev --json
+env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin add common@common-dev --json
 ```

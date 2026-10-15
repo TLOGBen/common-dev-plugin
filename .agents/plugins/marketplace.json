@@ -5,18 +5,6 @@
   },
   "plugins": [
     {
-      "name": "test-utils",
-      "source": {
-        "source": "local",
-        "path": "./codex/plugins/test-utils"
-      },
-      "policy": {
-        "installation": "AVAILABLE",
-        "authentication": "ON_INSTALL"
-      },
-      "category": "Productivity"
-    },
-    {
       "name": "analysis-estimation",
       "source": {
         "source": "local",

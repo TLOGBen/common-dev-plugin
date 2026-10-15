@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 2.0.0 — 退役 test-utils、全部單元測試與 contract-jever（2026-10-15）
+
+- **退役 `test-utils`**（gen-e2e-test、gen-e2e-record、dev-browser）：它當初是為了在模型還跑不穩 Playwright 的年代自動化 E2E 測試；現在每個前沿模型都能一次做對，plugin 已無存在理由。移除 Claude／Codex 套件、Codex metadata、三份 marketplace catalog 的 entry、專屬文件與圖片，以及首頁卡片與安裝指令。`common-lab:jev-browser` 保留：它在執行時只依賴外部 `dev-browser` CLI 與自帶腳本，不依賴 test-utils 任何檔案，說明文字改為指向外部 CLI。既有安裝不會因目錄下架自動解除安裝；Git 歷史中的舊版本仍保留。移除散佈 plugin 會讓 `/plugin install test-utils@common-dev` 失效，所以 marketplace 升 2.0.0。
+- **退役全部單元測試並寫入政策**：skill 好不好用與單元測試無關，skill 壞掉也與單元測試無關，而 skill 一改，壞的是沒用的測試而不是 skill——這是刻意的實驗。移除根目錄 `tests/`、`token-lens/evals/test_token_lens.py`（Claude 與 Codex）、common-mod 三個 `*.test.tsx`、`scripts/test_*.py` 與 Lab 檢查腳本裡對它們的呼叫。`CLAUDE.md` 與 `AGENTS.md` 新增「此 plugin 不做任何單元測試」；結構驗證（`scripts/validate_marketplace.py`、JSON 合法性）是唯一機器檢查。`docs/experiments/` 內的凍結紀錄不動。
+- **Common Lab 0.20.0 — 退役 `contract-jever`**：baransu 的 contract／seal 技能同步退役（合約釘選與封緘變異檢查對模型做對任務沒有差別），這個 Jev 疊加版隨之下架；16 → 15 個技能。`suggest-jev` 的路由、`jever` 的範例與 `wayfinder-jever` 的路由清單同步移除 contract／seal。
+- **Common 1.41.3**：`wayfinder` 與 `strategic-advance` 原本路由到 `baransu:contract`／`baransu:seal` 的段落改為直接在紅綠 TDD 下實作、以 `baransu:review` 獨立重驗證；結構性決策改為與使用者定案（有爭議時用 `baransu:think`）。Codex 副本手動同步。
+- **Common Mod 0.12.3**：僅移除 plugin 目錄內的測試檔。
+
 ## Analysis & Estimation 1.21.0 — cold-estimation 借鑒 code-modernization 的蒐證做法（2026-10-15）
 
 - 參考 `anthropics/claude-plugins-official` 的 `code-modernization` plugin。它刻意不估人天，所以只借估算前段的蒐證方法，定價規則不變。
