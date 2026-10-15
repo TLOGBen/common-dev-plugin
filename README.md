@@ -38,7 +38,7 @@ Codex skill 圖示放在各 skill 的 `assets/`，由 `agents/openai.yaml` 引�
     <td valign="top">
       <img src="docs/images/plugin-common-mod.png" alt="common-mod" width="100%"><br>
       <strong><a href="docs/plugins/common-mod.md">common-mod</a></strong> · 預設啟用 · Claude 專屬<br>
-      Claude Code 介面裡的 mod：輸入框上方的狀態列、回想過去的對話、側聊面板。
+      Claude Code 介面裡的 mod：輸入框上方的狀態列、回想過去的對話。
     </td>
     <td valign="top">
       <img src="docs/images/plugin-common-lab.png" alt="common-lab" width="100%"><br>

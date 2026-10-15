@@ -20,7 +20,7 @@ common-dev-plugin/
 │   │   └── skills/               # 15 個 TypeSafe Jev 實驗技能
 │   ├── common-mod/
 │   │   ├── .claude-plugin/plugin.json
-│   │   └── hooks/                # bar / recall / side 等 function hooks（Claude 專屬，無 Codex 版）
+│   │   └── hooks/                # bar / recall 兩個 function hooks（Claude 專屬，無 Codex 版）
 │   └── analysis-estimation/
 │       ├── .claude-plugin/plugin.json
 │       └── skills/               # rfp-*, cold-estimation, quality-orchestrator

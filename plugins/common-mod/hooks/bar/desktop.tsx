@@ -7,7 +7,7 @@ import type { Gauge } from './model'
 // The desktop's bar (and the editor's): one row in the app's own look, the
 // buttons on the left and the gauges on the right; where the row is too
 // narrow the gauges move down together.
-//   [側聊] [回想]   [看不懂] [畫給我看] [下一步]        ctx ▬── 26% 263k/1M   5h ▬ 6% 3h42m   7d ▬ 2% 3d17h
+//   [回想]   [看不懂] [畫給我看] [下一步]        ctx ▬── 26% 263k/1M   5h ▬ 6% 3h42m   7d ▬ 2% 3d17h
 // No folder or model: the app shows both already, above and under the prompt.
 // Text keeps the theme's own color; the buttons are the app's native ones,
 // pressable whole. The gauges are SVG, which the app draws as an image and
@@ -16,12 +16,10 @@ import type { Gauge } from './model'
 // A native button holds text alone, so each label leads with an emoji, which
 // the app's font draws in color; a project button may bring its own.
 const EMOJI: Record<string, string> = {
-  side: '💬',
   recall: '🕘',
   explain: '🤔',
   draw: '🎨',
   next: '👉',
-  back: '↩️',
   project: '📄',
 }
 const emojiOf = (key: string, own?: string) => EMOJI[key] ?? (key.startsWith('project-') ? (own ?? EMOJI.project) : undefined)

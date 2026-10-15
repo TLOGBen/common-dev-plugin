@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 2.2.0 — 退役 common-mod 的 side 側聊（2026-10-15）
+
+- **Common Mod 0.13.0 — 退役 `side` mod**：Claude Code 內建的 `btw` 側問已經夠用，側聊面板沒有存在理由。移除 `hooks/side/` 與只為它服務的 `hooks/branch.ts`（新視窗分支、`branchParent` 狀態與 `session.start` 接手），`types/index.d.ts` 拿掉 `SideEntry`、`sideEntries`、`branchParent`；plugin／marketplace 描述、文件與 README 同步。
+- **bar 拿掉「側聊」按鈕**，連同只在分支視窗出現的「帶回主線」；回想、diff、artifacts、看不懂、畫給我看、下一步與三個儀表照舊。按鈕消失是使用者可見變更，common-mod 升 0.13.0、marketplace 升 2.2.0。
+
 ## Marketplace 2.1.0 — code-modernization 的核心做法分進各 skill，每項帶觸發條件（2026-10-15）
 
 - 延續 1.21.0 只借蒐證方法的做法，這次把 `anthropics/claude-plugins-official` 的 `code-modernization` 剩下的核心想法——算式、破壞性變更判斷、分析方法——各自放進最合適的 skill，每一項都寫明何時必做、何時略過、留下什麼證據；沒有觸發條件的機制不收。量化判斷的模型寫一次在 references，算出來的數字放在它改變的決定旁；對人說明用白話一句，算式只放報告後段。

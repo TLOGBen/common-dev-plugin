@@ -5,7 +5,7 @@ export type RecallSession = {
   file: string
   source: RecallSource
   project: string
-  /** The folder it ran in, where a branch of it starts. */
+  /** The folder it ran in. */
   cwd: string | null
   /** Whether this machine's Claude Code can resume it. */
   isLocal: boolean
@@ -17,14 +17,6 @@ export type RecallSession = {
   answer: string
 }
 
-export type SideEntry = {
-  id: number
-  /** What the row shows: the typed question. */
-  question: string
-  /** The reply, or why there is none; absent while it is being asked. */
-  answer?: { isAnswered: true; text: string } | { isAnswered: false; reason: string }
-}
-
 declare module 'claude-code' {
   interface PluginState {
     'common-mod': {
@@ -32,10 +24,6 @@ declare module 'claude-code' {
       recallQuery: string | null
       /** recall: when the index was last loaded, 0 before the first scan. */
       recallBuiltAt: number
-      /** side: newest first; gone when the pane closes. */
-      sideEntries: SideEntry[]
-      /** bar: the session this branch was opened from; null when it is no branch. */
-      branchParent: string | null
     }
   }
 }
