@@ -50,3 +50,7 @@ __pycache__/
 # --- Misc ---
 *.log
 .DS_Store
+
+# 實驗紀錄、受測專案與探針不進 repo
+/docs/experiments/
+/experiments/

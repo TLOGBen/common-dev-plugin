@@ -13,7 +13,6 @@
 
 各 plugin 的目前版本以 `plugins/<name>/.claude-plugin/plugin.json` 與 [CHANGELOG](../CHANGELOG.md) 為準。
 
-<img src="images/marketplace-overview.svg" alt="common-dev marketplace 結構" width="100%">
 
 > 上圖是較早期的結構圖（當時只有三個 plugin，部分標示為 opt-in），保留作為 skill 分組的示意；目前的 plugin 數量與啟用狀態以上表為準。Claude skill 以 `/<plugin>:<skill>` 呼叫，Codex skill 以 `$<skill>` 呼叫。
 
@@ -26,15 +25,15 @@
 
 ## 實驗紀錄（歷史）
 
-`docs/experiments/` 保留為歷史測量紀錄，不能代表目前套件。
+實驗紀錄、受測專案與探針不進 repo（2026-10-15 起），需要時從 Git 歷史取回。
 
 - [三個實驗包的歷史紀錄](experiments/README.md)
 - [0.2.0 逐技能改動、規模邊界與驗證結果](experiments/lab-v0.2.0/README.md)
 - [Common 0.1.x 歷史實驗說明](experiments/common-lab/README.md)
 - [A/B 計畫與測量限制](experiments/common-lab/RUN.md)
 - [實測發現與限制（持續補充，非終報）](experiments/common-lab/RESULTS.md)
-- [Claude 與 Codex plugin 平台對照（2026-10-08）](experiments/claude-codex-plugin-parity-20261008.md)
+- [Claude 與 Codex plugin 平台對照（2026-10-08）](claude-codex-plugin-parity.md)
 
 ## 圖片
 
-`images/` 收錄首頁主視覺（`hero.jpg`，Krea 2 產生）、各 plugin 概念圖（`plugin-<name>.png`），以及 [`marketplace-overview.svg`](images/marketplace-overview.svg)、[`rfp-pipeline.svg`](images/rfp-pipeline.svg) 兩張結構圖。
+`images/` 收錄首頁主視覺（`hero.jpg`，Krea 2 產生）、各 plugin 概念圖（`plugin-<name>.png`），以及 [`rfp-pipeline.svg`](images/rfp-pipeline.svg) 結構圖。

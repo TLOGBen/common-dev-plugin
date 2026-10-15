@@ -30,8 +30,8 @@ common-dev-plugin/
 │   └── plugins/                  # common / common-lab / analysis-estimation
 │       └── common/.codex-agents/ # luna-max-sidekick.toml 等 package-local agent 定義
 ├── codex-metadata/               # Codex 專屬的 skill UI metadata（openai.yaml）
-├── docs/                         # 文件、圖片與 experiments/ 歷史紀錄
-├── scripts/                      # 驗證與實驗用腳本（含 validate_marketplace.py）
+├── docs/                         # 文件與圖片（實驗紀錄不進 repo）
+├── scripts/                      # 結構驗證腳本（validate_marketplace.py）
 ├── AGENTS.md                     # Codex 對應結構、移植規則與驗證流程
 └── CHANGELOG.md
 ```

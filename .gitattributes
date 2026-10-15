@@ -6,4 +6,3 @@
 *.cmd text eol=crlf
 
 # Frozen experiment snapshots keep their original bytes.
-docs/experiments/**/frozen/** -text
