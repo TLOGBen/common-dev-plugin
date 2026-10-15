@@ -23,7 +23,7 @@ common-dev-plugin/
 │   │   └── hooks/                # bar / recall 兩個 function hooks（Claude 專屬，無 Codex 版）
 │   └── analysis-estimation/
 │       ├── .claude-plugin/plugin.json
-│       └── skills/               # rfp-*, cold-estimation, quality-orchestrator
+│       └── skills/               # rfp-*, cold-estimation, itemized-estimate, quality-orchestrator
 ├── codex/                        # 手工維護的 Codex 移植
 │   ├── .agents/plugins/
 │   │   └── marketplace.json      # Codex marketplace（Layout B，自包含佈局）
@@ -47,7 +47,7 @@ Claude Code 是 source of truth：
 
 Codex 版是 Claude source 的**手工移植**：每個散佈變更都在同一個變更裡手動移植到 `codex/plugins/<name>/`，**不要**用 `codex-skill-transfer` 腳本重新產生 `codex/`。（舊版 README 曾寫「`codex/` 由 `codex-skill-transfer` 從 `plugins/` 生成、勿手改，轉換會丟掉 `templates/` 等非標準子目錄需手動補回」；這個流程已由 `AGENTS.md` 的手工移植規則取代。）
 
-兩版可以不同的地方只有 Codex 需要的部分：frontmatter 欄位、`/plugin:skill` 改成 `$skill`、路徑變數改成執行時解析的目錄、Claude 專屬元件（mod、monitors、`userConfig`、plugin `dependencies`、LSP）不移植。完整清單見 [`AGENTS.md`](../AGENTS.md) 與 [Claude 與 Codex plugin 平台對照](experiments/claude-codex-plugin-parity-20261008.md)。出貨前用 `diff --strip-trailing-cr` 比對兩份副本。
+兩版可以不同的地方只有 Codex 需要的部分：frontmatter 欄位、`/plugin:skill` 改成 `$skill`、路徑變數改成執行時解析的目錄、Claude 專屬元件（mod、monitors、`userConfig`、plugin `dependencies`、LSP）不移植。完整清單見 [`AGENTS.md`](../AGENTS.md) 與 [Claude 與 Codex plugin 平台對照](claude-codex-plugin-parity.md)。出貨前用 `diff --strip-trailing-cr` 比對兩份副本。
 
 兩份 Codex marketplace catalog（Layout A、Layout B）也是手工維護，見 [安裝與管理](install.md#marketplace-佈局)。
 

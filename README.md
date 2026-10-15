@@ -76,6 +76,6 @@ Claude 用 `/<plugin>:<skill>` 呼叫，Codex 用 `$<skill>`。試試看：
 
 ## 延伸閱讀
 
-- [文件索引](docs/README.md)：各 plugin 完整說明、安裝、開發與實驗紀錄
+- [文件索引](docs/README.md)：各 plugin 完整說明、安裝與開發
 - [開發指南](docs/development.md)與 [`AGENTS.md`](AGENTS.md)：repo 結構、Codex 移植規則、驗證指令
 - [CHANGELOG](CHANGELOG.md)

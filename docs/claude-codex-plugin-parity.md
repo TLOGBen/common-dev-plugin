@@ -17,7 +17,7 @@
 
 ## 摘要：最重要的 10 個移植差異
 
-1. **Codex skill 內文沒有任何路徑變數。** Claude 會在 skill、command、agent 內文中直接替換 `${CLAUDE_PLUGIN_ROOT}`、`${CLAUDE_SKILL_DIR}`、`${CLAUDE_PLUGIN_DATA}` 等變數【官方】(C1, C2)。Codex 的 `PLUGIN_ROOT`／`PLUGIN_DATA`，以及相容用的 `CLAUDE_PLUGIN_ROOT`／`CLAUDE_PLUGIN_DATA`，只會設給 plugin hook command 的環境【官方】(O6, O13；原始碼 `codex-rs/hooks/src/engine/discovery.rs`)。Codex 的 skill 系統提示要求「`SKILL.md` 裡的相對路徑以該 `SKILL.md` 所在目錄解析」【官方】(G-catalog)。所以 Codex 版要改寫成相對路徑。本 repo 的 `codex/plugins/test-utils`、`codex/plugins/linkstart` 內文仍有 `${CLAUDE_PLUGIN_ROOT}`【本機】。
+1. **Codex skill 內文沒有任何路徑變數。** Claude 會在 skill、command、agent 內文中直接替換 `${CLAUDE_PLUGIN_ROOT}`、`${CLAUDE_SKILL_DIR}`、`${CLAUDE_PLUGIN_DATA}` 等變數【官方】(C1, C2)。Codex 的 `PLUGIN_ROOT`／`PLUGIN_DATA`，以及相容用的 `CLAUDE_PLUGIN_ROOT`／`CLAUDE_PLUGIN_DATA`，只會設給 plugin hook command 的環境【官方】(O6, O13；原始碼 `codex-rs/hooks/src/engine/discovery.rs`)。Codex 的 skill 系統提示要求「`SKILL.md` 裡的相對路徑以該 `SKILL.md` 所在目錄解析」【官方】(G-catalog)。所以 Codex 版要改寫成相對路徑。本 repo 的 `codex/plugins/test-utils`、`codex/plugins/linkstart` 內文當時仍有 `${CLAUDE_PLUGIN_ROOT}`【本機】（兩個 plugin 已分別於 marketplace 2.0.0、1.89.0 退役）。
 2. **Codex 的 `SKILL.md` frontmatter 只讀 `name`、`description`、`metadata.short-description`**，其他欄位一律靜默忽略【官方】(G-parser)。`disable-model-invocation`、`when_to_use`、`context: fork`、`model`、`effort`、`allowed-tools`、`arguments` 在 Codex 都沒有作用。唯一有對應的是在 `agents/openai.yaml` 寫 `policy.allow_implicit_invocation: false`【官方】(O1)。
 3. **呼叫與命名空間不同。** Claude 的 plugin skill 叫 `/plugin:skill`【官方】(C1)。Codex 用 `/skills` 或 `$` 提及【官方】(O1)，plugin skill 的名稱是 `<plugin>:<skill>`，提及字元允許 `:`【官方】(G-mentions)，所以寫成 `$plugin:skill`。Codex 沒有 `$ARGUMENTS` 這類引數替換，也沒有 `` !`cmd` `` 動態注入【推論，parser 與 catalog 都沒有這類處理】。
 4. **Plugin 內附的 agent。** Claude 會自動註冊 `agents/*.md`（命名為 `plugin:agent`），但 plugin agent 的 `hooks`、`mcpServers`、`permissionMode` 會被忽略【官方】(C10)。Codex 0.161 的 plugin manifest 沒有 agents 欄位；custom agent 只從設定層的 `agents/` 目錄（`~/.codex/agents/`、`.codex/agents/`）與 `[agents.<name>] config_file` 載入【官方】(O5, O7；G-roles)。plugin 裡的 TOML 目前**仍不會自動註冊**。OpenAI 官方的 Claude 移植指引是「把 agent 程序併入 skill」【官方】(O15)。
@@ -165,6 +165,8 @@
 ---
 
 ## 本 repo 現況落差（`codex/plugins/*` 相對於 Codex 0.161 實際支援）
+
+> 2026-10-08 的本機快照，已不代表現況：test-utils 與 linkstart 已退役，`executor.toml` 與 `codex-metadata/common-lab/estimate` 已移除，`AGENTS.md` 已改寫為手工移植規則，本機安裝版本隨時在變。保留供對照，不據此改 repo；上方的平台規則才是本文件存在的理由。
 
 1. **skill 內文仍有 `${CLAUDE_PLUGIN_ROOT}`**【本機】：`codex/plugins/test-utils/skills/gen-e2e-record/SKILL.md`（第 61、174 行）、`gen-e2e-test/SKILL.md`（第 105、185 行）、`gen-e2e-test/references/verify-loop.md`、`linkstart/skills/link-start/SKILL.md`（第 19–32 行）與 `references/claude-code.md`。Codex 不替換這些變數（摘要 #1），只能靠模型自己猜。建議改成相對 `SKILL.md` 的路徑（例如 `../gen-e2e-record/assets/init-test-template.py`）。`common/delegate` 已經用 `DELEGATE_DIR` 解決，可以照抄【本機】。
 2. **`codex/plugins/linkstart/monitors/monitors.json` 是無效檔案**【本機】【官方】。Codex 沒有 monitors（O15 要求移除 `experimental.monitors`），而且裡面的指令還用 `${CLAUDE_PLUGIN_ROOT}`。建議從 Codex 版刪除。

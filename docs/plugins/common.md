@@ -46,4 +46,4 @@ Codex 版放在 `codex/plugins/common/.codex-agents/*.toml`；Codex 不會自動
 
 ## Show Me 的來源
 
-`show-me/SKILL.md` 以 [HumanLayer 上游](https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md) 原文為基礎，末尾補上 `Say what you mean` 的對話收束指引；Codex 版本由 transfer 產生平台適配。HumanLayer 的完整 MIT 版權與許可聲明保留在技能目錄的 `LICENSE`，不重複放進技能正文。（舊版 README 將這段放在「Common Lab 的 Show Me 來源」標題下；show-me 已畢業到穩定版 `common`。）
+`show-me/SKILL.md` 以 [HumanLayer 上游](https://github.com/humanlayer/skills/blob/main/plugins/show-me/skills/show-me/SKILL.md) 原文為基礎，末尾補上 `Say what you mean` 的對話收束指引；Codex 版本是手動移植的平台適配。HumanLayer 的完整 MIT 版權與許可聲明保留在技能目錄的 `LICENSE`，不重複放進技能正文。（舊版 README 將這段放在「Common Lab 的 Show Me 來源」標題下；show-me 已畢業到穩定版 `common`。）
