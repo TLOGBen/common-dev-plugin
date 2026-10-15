@@ -2,6 +2,16 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis & Estimation 1.21.0 — cold-estimation 借鑒 code-modernization 的蒐證做法（2026-10-15）
+
+- 參考 `anthropics/claude-plugins-official` 的 `code-modernization` plugin。它刻意不估人天，所以只借估算前段的蒐證方法，定價規則不變。
+- 開場 Grilling 附問五個量級前提（完整系統或其中一塊、能否建置測試、自製建置機制、前人嘗試、不能動的部分），可答不知道，不擋初估。
+- 第一步加範圍邊界（裡面依賴外面／外面依賴裡面）與缺件計數（找不到的 include、只有二進位、缺部署描述或資料定義），先讀 CI 與上層建置設定。
+- 同框架升版先建破壞性變更清單：只收「目標版本的變更 ∩ 本案實際用到」，附 file:line；遷移工具的結果分清有裝、能跑、實際跑過三種狀態，只有實際跑過的才併入。
+- 重寫或替換核心元件時列 P0 業務規則（Given／When／Then＋file:line），作為等價驗證案例族的計數依據；舊系統能執行時，以同一批輸入跑新舊兩邊比對輸出。
+- 端到端驗證次數依 2–4 條代表業務流；有監控或批次日誌時依實際負載挑效能案例。Gotcha：不採用 scc 的 COCOMO 時程或金額。報告遮罩憑證。
+- checks.md 加 9a、10b；cold-estimation 2.26.0；Codex 副本手動同步；marketplace 1.90.0。
+
 ## Marketplace 1.89.0 — 移除 LinkStart（2026-10-12）
 
 - LinkStart 整合確認失敗，停止散佈；移除 Claude／Codex 套件、三平台內嵌 Runtime、Codex metadata，以及三份 marketplace catalog 的 LinkStart entry。
