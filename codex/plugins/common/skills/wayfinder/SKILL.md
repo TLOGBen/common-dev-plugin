@@ -39,10 +39,10 @@ Wayfinder is self-contained: its companion skills (`$grilling`, `$domain-modelin
 - **Grilling** tickets whose question is a worth-it / existence judgment (值不值得、有沒有必要) or a design-approach choice → `$think` (a Kill/Keep/Pivot or A-or-B verdict, or an intent handoff sheet) alongside the grilling round — the human still answers; think structures the judgment.
 - **Research** tickets that need sources captured or digested, not just facts → `$read` (offline capture) or `$learn` (structured brief); link the product from the ticket as an asset. When the findings deserve a human-readable rendering, `$book` turns them into a browser-ready artifact.
 - **Prototype** tickets asking "how should it look" → `$design` can generate or lint the DESIGN.md the prototype variants should obey — spec first, throwaway variants second.
-- **Task** tickets carrying execution: pin a medium slice with `$contract` and close it with `$seal` (drain mode does the same for AFK tasks it executes); a symptom-to-root-cause chase runs under `$hunt`.
+- **Task** tickets carrying execution: implement the slice directly under red/green TDD and close it with an independent re-verification under `$review` (drain mode does the same for AFK tasks it executes); a symptom-to-root-cause chase runs under `$hunt`.
 - **Second opinions**: after a heavyweight resolution, `$review` gives an isolated cross-perspective check before the decision is recorded.
 - **Session end**: a wayfinder session edits tracker files in the user's repo — `$ship` is the natural wrap-up (archive, commit, push) when the user wants the map's progress landed.
-- **Beyond the map**: when the way is clear and the destination is a multi-module build, hand off by slicing the route into contract-banded pieces — `$contract` pins each slice and `$seal` closes it, with execution run per slice through `$delegate` or as a campaign under `$strategic-advance` — the map's Decisions-so-far becomes the handoff input.
+- **Beyond the map**: when the way is clear and the destination is a multi-module build, hand off by slicing the route into independently closable pieces — each slice is implemented under red/green TDD and closed by `$review`, with execution run per slice through `$delegate` or as a campaign under `$strategic-advance` — the map's Decisions-so-far becomes the handoff input.
 
 Skills without a natural map slot (health, evolve, write, …) are not routed — forcing them in dilutes both toolkits. Two rules keep all of this optional: **detection first** — route only to skills actually available in the session, never assume; and **pin the choice** — record the routing in the map's **Notes** so every later session (and parallel session) follows the same routing instead of re-deciding it.
 
@@ -111,7 +111,7 @@ Every ticket is either **HITL** — human in the loop, worked _with_ a human who
 - **Research** (AFK): Reading documentation, third-party APIs, or local resources like knowledge bases to surface a fact a decision waits on. Resolved by a `$research` **subagent**. Use when knowledge outside the current working directory is required.
 - **Prototype** (HITL): Raise the fidelity of the discussion by making a cheap, rough, concrete artifact to react to — an outline, a rough take, a stub, or UI/logic code via `$prototype`. Links the prototype as an asset. Use when "how should it look" or "how should it behave" is the key question.
 - **Grilling** (HITL): Conversation. The default case. Always invoke `$grilling` and `$domain-modeling`.
-- **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be made — nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that _does_ rather than decides — and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
+- **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be made — nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that _does_ rather than decides — and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done, stated as a checkable condition met rather than a state claimed; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
 
 ## Fog of war
 
@@ -132,6 +132,18 @@ Fog only ever gathers _toward_ the destination. The destination fixes the scope,
 
 Out-of-scope work never graduates — the frontier stops at the destination — so it returns only if the destination is redrawn, and then as a fresh effort, not a resumption.
 
+## Wiring a build graph
+
+Applies when the destination is a change made in place over code that has a dependency graph — a version uplift, a rewrite module by module, a data-structure migration. A destination that is a spec or a decision skips this section. When it applies, the charting session pins the chosen order in **Notes** and wires the overrides below as blocking edges between tickets, not as prose:
+
+- **Two default orders.** A rewrite in another technology goes **strangler-fig** — lowest risk and fewest dependencies first, the old system running alongside. A newer version of the same technology goes **leaf-first** — libraries before the applications that use them.
+- **A test harness is a prerequisite, not a leaf.** When the existing suite's runner cannot run on the target, its migration is the first ticket and blocks every build ticket.
+- **A dependency change every consumer shares is one coordinated cut** (an ORM major version, `javax` → `jakarta`): one ticket holding all its consumers, never one ticket per consumer.
+- **A shared node with consumers outside the scope gets its own decision ticket** before any ticket may change it in place: keep it buildable for old and new consumers, widen the scope to include them, or schedule the break. The boundary question from grilling — what outside depends on what inside — is how these nodes surface.
+- **The map is a hypothesis and the first build ticket is a pilot.** Expect it to revise the map — a missed prerequisite, a phase in the wrong order, an environment fact nobody wrote down — and record that revision in Decisions-so-far as the normal path, not as a charting failure.
+
+Whatever is wired, a ticket resolves on a **checkable condition, never a state**: "all P0 rules in slice 1 proven equivalent — 12 of 12 tests ran and passed" resolves it; "P0 rules proven" is a claim and does not.
+
 Ruling something out of scope is a scoping act, not a step on the route. When a ticket that already exists turns out to sit past the destination — mis-scoped in while charting, or exposed by a resolution — **close it** (a closed ticket is unambiguously off the frontier) and leave one line in the **Out of scope** section: the gist plus why it's out of scope, linking the closed ticket. It stays out of **Decisions so far**, which records the route actually walked — a scope boundary isn't a step on it.
 
 ## Invocation
@@ -145,7 +157,7 @@ User invokes with a loose idea.
 1. **Name the destination.** Run a `$grilling` and `$domain-modeling` session to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so it's settled first.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** — the way to the destination is already clear, the whole journey small enough for one session — you don't need a map. Stop and ask the user how they'd like to proceed.
 3. **Create the map**: Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
-4. **Create the tickets you can specify now** as child files of the map — then wire blocking edges in a **second pass** (tickets need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog — the **Not yet specified** section.
+4. **Create the tickets you can specify now** as child files of the map — then wire blocking edges in a **second pass** (tickets need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog — the **Not yet specified** section. For a destination over a dependency graph, the edges follow [Wiring a build graph](#wiring-a-build-graph).
 5. **Fire the research subagents.** For each `research` ticket you just created, spin up a `$research` subagent to resolve it in parallel, with a context pointer from the ticket to wherever its findings land.
 6. **Render the HTML view** (see TRACKER.md), then stop — charting is one session's work; it hand-resolves nothing.
 

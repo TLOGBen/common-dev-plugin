@@ -32,16 +32,13 @@
 /slide-cores/
 /紙-sanity.sh
 
-# --- Generated test runtime (from gen-e2e-* skill output, and any local test run) ---
+# --- Local Node runtime ---
 node_modules/
 reports/
 
-# --- Live auth captures from gen-e2e-test — equal to credentials, NEVER commit ---
+# --- Live auth captures — equal to credentials, NEVER commit ---
 auth.json
 auth.session.json
-
-# --- Recording output from gen-e2e-record ---
-recording.js
 
 # --- Written by `claude --plugin-dir` to point at the build's mod types ---
 /plugins/*/tsconfig.json

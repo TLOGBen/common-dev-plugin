@@ -145,7 +145,7 @@ Record:
 
 If the objective is only "make it work" or "finish everything," make the end state measurable before execution.
 
-An irreversible structural decision the contract does not fix — persistence schema, external API or message shape, state machine, module boundary — is an unresolved decision, not an implementation detail. Before the first mutation that would commit it, pin it through `/baransu:contract` (or the user) and record the result under `constraints`. The executor may propose; it may not decide. Speed of the executor never shortens this step.
+An irreversible structural decision the contract does not fix — persistence schema, external API or message shape, state machine, module boundary — is an unresolved decision, not an implementation detail. Before the first mutation that would commit it, settle it with the user (deliberate under `/baransu:think` when the choice is contested) and record the result under `constraints`. The executor may propose; it may not decide. Speed of the executor never shortens this step.
 
 ### 2. Reconstruct battlefield information
 
@@ -285,6 +285,16 @@ The burden of proof is inverted: dispatching needs no justification; the command
 **Arm what you dispatch.** The briefing carries everything the carrier needs to fight well: the strongest model the move deserves, tool and file access, evidence paths, budget, and the authority to use them. A starved dispatch is not delegation — it manufactures the failure the commander will then be tempted to fix personally.
 
 Observe only the UI, API, database, process, file, and time evidence needed to judge the move. Do not block a world state already proven by an authoritative source merely because a secondary capture failed.
+
+#### Reconnaissance in force before the main body
+
+Applies when one front's remaining transitions are N ≥ 4 units that share one recipe — the same transformation repeated over modules, projects, services or files — and would otherwise go to several carriers at once. A unique unit, or N < 4, is ordinary tactics: skip this subsection. The thresholds below (4, doubling, 2/3) are escape budgets: N, attempted and built are measured; the rest is recorded before the run and may be retuned there, never mid-wave.
+
+1. **Reconnaissance in force — the pilot.** One representative unit, the one that meets the hardest known deltas rather than the easiest, goes end to end under a single carrier until its exit claim is verified. Every surprise the plan did not predict — a build error, an environment fact, a step the tool got wrong — is intelligence for the front's record, not a reason to widen the wave.
+2. **Battle drill — the playbook.** Before a second unit is touched, write `artifacts/drill-<frontId>.md`: the ordered edits for one unit, every error met and its fix, every environment fact that had to be discovered, the exact command that proves a unit done; written for a carrier that has not read this campaign, never holding a credential value. From here the drill is the method every later mission order carries as MAY; intent, acceptance and authority still come from the order.
+3. **Commit by echelon.** Never the whole front in one wave: w₁ = min(4, N−1), then w_{k+1} = min(2·w_k, remaining). One carrier per unit, editing only inside its unit and running that unit's real build before reporting; a unit whose dependency has not built is not attempted, since it would fail for the dependency's reason. The carrier's `built` is MOP: the commander runs the full build across the working set before the front closes.
+4. **Abort criterion — the circuit breaker.** s_k = built_k ÷ attempted_k. s_k < 2/3 stops the run before the next wave and forces reassessment. Never reinforce failure: the answer to a failed wave is a revised drill re-proven on one failed unit in-session, then the remaining units re-queued (failed, blocked, untouched) — not a larger wave and not more carriers.
+5. **Evidence.** One ledger line per wave — wave number, attempted, built, s_k, drill revision — and one line for an abort naming the trigger. The front closes only when the failed and blocked lists are empty and the commander's full build ran.
 
 ### 9. Assess effects and arbitrate sensors
 

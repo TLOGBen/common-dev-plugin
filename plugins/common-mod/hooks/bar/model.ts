@@ -237,7 +237,3 @@ export function suggestionsOf(reply: string, known: ReadonlySet<string> | null):
   }
   return items
 }
-
-export const BRING_BACK =
-  '不要接續工作。這個對話是從主對話分出來的分支；把分出來之後的進展寫成一份給主對話看的精簡回報：' +
-  '問了什麼、查到或做了什麼、結論是什麼、主線要接手的事。用繁體中文，只寫回報本身。'

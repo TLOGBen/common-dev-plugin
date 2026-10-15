@@ -2,7 +2,7 @@
 
 回到 [文件索引](README.md)。
 
-`common-dev` 以 Claude Code marketplace（id：`common-dev`）形式發佈，並附 Codex 版本。四個穩定 plugin（`common`、`analysis-estimation`、`test-utils`、`common-mod`）都設為 `defaultEnabled: true`；Claude 與 Codex marketplace 另提供需自行安裝、裝後即啟用的 `Common Lab（實驗性）`，不會取代穩定版 Common。`common-mod` 只有 Claude Code 版本。
+`common-dev` 以 Claude Code marketplace（id：`common-dev`）形式發佈，並附 Codex 版本。三個穩定 plugin（`common`、`analysis-estimation`、`common-mod`）都設為 `defaultEnabled: true`；Claude 與 Codex marketplace 另提供需自行安裝、裝後即啟用的 `Common Lab（實驗性）`，不會取代穩定版 Common。`common-mod` 只有 Claude Code 版本。
 
 ## Claude Code
 
@@ -17,7 +17,6 @@
 預設啟用的 plugin 加入 marketplace 後即可使用。若既有安裝尚未包含某個 plugin，可明確安裝：
 
 ```text
-/plugin install test-utils@common-dev
 /plugin install analysis-estimation@common-dev
 /plugin install common@common-dev
 /plugin install common-lab@common-dev   # 實驗版
@@ -48,7 +47,6 @@ Claude skill 以 `/<plugin>:<skill>` 呼叫，例如 `/common:delegate`、`/comm
 
 ```bash
 codex plugin marketplace add https://github.com/TLOGBen/common-dev-plugin.git
-codex plugin add test-utils@common-dev
 codex plugin add analysis-estimation@common-dev
 codex plugin add common@common-dev
 codex plugin add common-lab@common-dev
@@ -79,7 +77,7 @@ Codex 有兩份手工維護的 catalog，marketplace id 都是 `common-dev`，�
 mkdir -p /tmp/common-dev-plugin-codex-test
 env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin marketplace add /path/to/common-dev-plugin --json
 env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin list --available --json
-env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin add test-utils@common-dev --json
+env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-codex-test codex plugin add common@common-dev --json
 ```
 
 暫存安裝成功不代表另一個 App／Host 已載入新版；重新開啟對話後，再確認實際載入的技能名稱與版本。
@@ -88,6 +86,5 @@ env HOME=/tmp/common-dev-plugin-codex-test CODEX_HOME=/tmp/common-dev-plugin-cod
 
 | Plugin | 需要 |
 |--------|------|
-| `test-utils` | Node.js；`dev-browser` 另需外部 CLI，見 [test-utils 相依](plugins/test-utils.md#相依) |
-| `common-lab` | TypeSafe Jev 金鑰 `TYPESAFE_API_KEY`，用 `init-jev` 設定，見 [common-lab](plugins/common-lab.md) |
+| `common-lab` | TypeSafe Jev 金鑰 `TYPESAFE_API_KEY`，用 `init-jev` 設定，見 [common-lab](plugins/common-lab.md)；`jev-browser` 另需外部 `dev-browser` CLI（`npm install -g dev-browser && dev-browser install`） |
 | `common-mod` | 只支援 Claude Code（CLI 與桌面版 Code 分頁），見 [common-mod](plugins/common-mod.md) |

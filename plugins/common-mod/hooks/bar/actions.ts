@@ -28,14 +28,12 @@ export type Drawn = Action & { command?: string }
 const ALL: readonly RenderSurface[] = ['terminal', 'desktop', 'vscode']
 
 export const ACTIONS: readonly Action[] = [
-  { key: 'side', label: '側聊', group: 'view', surfaces: ALL },
   { key: 'recall', label: '回想', group: 'view', surfaces: ALL },
   { key: 'diff', label: 'diff', group: 'view', surfaces: ['terminal'], commands: ['diff'] },
   { key: 'artifacts', label: 'artifacts', group: 'view', surfaces: ['terminal'], commands: ['artifacts'] },
   { key: 'explain', label: '看不懂', group: 'ask', surfaces: ALL, commands: ['common:wait-what', 'wait-what'] },
   { key: 'draw', label: '畫給我看', group: 'ask', surfaces: ALL, commands: ['common:show-me', 'show-me'] },
   { key: 'next', label: '下一步', group: 'ask', surfaces: ALL },
-  { key: 'back', label: '帶回主線', group: 'ask', surfaces: ALL },
 ]
 
 // A project's own buttons, from its .claude/common-mod.json:
@@ -77,16 +75,15 @@ export function projectActions(text: string): Action[] {
 }
 
 // The buttons a surface draws now; a failed command list draws them all (on
-// their first choice), and 帶回主線 shows only in a branch window.
+// their first choice).
 export function actionsFor(
   surface: RenderSurface,
   known: ReadonlySet<string> | null,
-  isBranch: boolean,
   project: readonly Action[] = [],
 ): Drawn[] {
   const drawn: Drawn[] = []
   for (const a of [...ACTIONS, ...project]) {
-    if (!a.surfaces.includes(surface) || (a.key === 'back' && !isBranch)) continue
+    if (!a.surfaces.includes(surface)) continue
     if (a.commands === undefined) {
       drawn.push(a)
       continue

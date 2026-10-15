@@ -1,14 +1,12 @@
-import { atom, read, update } from 'claude-code'
+import { atom, update } from 'claude-code'
 import type { EngineInterface, On } from 'claude-code'
 
-import { SIDE_PANE, SIDE_TOO_NARROW } from '../side/side'
 import { actionsFor, projectActions } from './actions'
 import type { Drawn, Hands } from './actions'
 import { drawDesktop } from './desktop'
 import {
   absorbUsage,
   advance,
-  BRING_BACK,
   folderOf,
   NEXT_QUESTION,
   PENDING_MS,
@@ -28,9 +26,8 @@ export { ESCAPES, TAGS } from './model'
 // crosses an import. Each surface draws the same model its own way, so the
 // terminal's look and the desktop's never touch.
 
-// Recall's band opens and closes on this; the session this one branched from.
+// Recall's band opens and closes on this.
 const recallQuery = atom({ plugin: 'common-mod', key: 'recallQuery' } as const, null)
-const branchParent = atom({ plugin: 'common-mod', key: 'branchParent' } as const, null)
 
 const FRAME_MS = 33
 const COUNTDOWN_MS = 30_000
@@ -91,35 +88,15 @@ async function pickNext($: EngineInterface, item: Suggestion) {
   if (!filled?.isFilled) $.ui.toast('沒辦法放進輸入框')
 }
 
-async function bringBack($: EngineInterface, to: string) {
-  $.ui.toast('正在整理分支的進展…')
-  const reply = await $.model.fork({ prompt: BRING_BACK })
-  if (!reply.isAnswered) {
-    $.ui.toast(reply.reason === 'nothing-to-fork' ? '分支裡還沒有回覆，先聊一輪再帶回' : `沒辦法整理：${reply.reason}`)
-    return
-  }
-  const sent = await $.session.send({ to: { sessionId: to }, text: `[分支回報]\n${reply.text}` })
-  $.ui.toast(sent.isDelivered ? '已送回主線' : `送不回主線：${sent.reason}`)
-}
-
-async function openSide($: EngineInterface) {
-  const opened = await $.ui.open(SIDE_PANE)
-  if (!opened.isPlaced) $.ui.toast(SIDE_TOO_NARROW)
-}
-
 // What each button does. Most run the command a person would type, so each
-// opens what that command opens, the way it does. 側聊 and 回想 are this
-// plugin's own, which its `$.command.run` does not reach, so they act here.
-async function act($: EngineInterface, action: Drawn, parent: string | null) {
+// opens what that command opens, the way it does. 回想 is this plugin's own,
+// which its `$.command.run` does not reach, so it acts here.
+async function act($: EngineInterface, action: Drawn) {
   switch (action.key) {
-    case 'side':
-      return openSide($)
     case 'recall':
       return update($, recallQuery, q => (q === null ? '' : null))
     case 'next':
       return askNext($)
-    case 'back':
-      return parent === null ? undefined : bringBack($, parent)
     default:
       if (action.command === undefined) return
       if (action.fill) {
@@ -153,9 +130,9 @@ function clearPending($: EngineInterface) {
 
 // A press that fails says so, rather than doing nothing.
 // A command already on its way is not sent twice.
-function press($: EngineInterface, action: Drawn, parent: string | null) {
+function press($: EngineInterface, action: Drawn) {
   if (action.command !== undefined && !action.fill && state.pending) return
-  void act($, action, parent).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
+  void act($, action).catch(err => $.ui.toast(`${action.label}：${err instanceof Error ? err.message : String(err)}`))
 }
 
 async function toggleGlyphs($: EngineInterface) {
@@ -246,10 +223,9 @@ export function registerBar(on: On) {
     await start($)
     state.isWorking = e.props.isWorking
     state.seen.add(e.surface)
-    const parent = await read($, branchParent)
     const hands: Hands = {
       now: await $.clock.now(),
-      buttons: actionsFor(e.surface, state.known, parent !== null, state.project).map(a => ({ ...a, onPress: () => press($, a, parent) })),
+      buttons: actionsFor(e.surface, state.known, state.project).map(a => ({ ...a, onPress: () => press($, a) })),
       pending: pendingText(),
       pick: item => void pickNext($, item).catch(() => undefined),
       hideNext: () => showNext($, { kind: 'hidden' }),

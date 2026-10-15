@@ -85,7 +85,7 @@ Use it as a second opinion next to wayfinder's own handoff rules; strategic-adva
 
 ## 7. Which skill works this ticket — hand it to suggest-jev
 
-Wayfinder's Ecosystem routing (which skill a grilling, research, prototype, or task ticket goes through — think, read, learn, contract, seal, hunt, review, and the rest) is decided by suggest-jev instead of by reading the list here. When you are about to resolve a ticket, or claim AFK tickets in drain:
+Wayfinder's Ecosystem routing (which skill a grilling, research, prototype, or task ticket goes through — think, read, learn, hunt, review, and the rest) is decided by suggest-jev instead of by reading the list here. When you are about to resolve a ticket, or claim AFK tickets in drain:
 
 1. If the map's Notes already pin a routing for this kind of ticket, follow it — wayfinder's pin rule keeps every session consistent.
 2. Otherwise run suggest-jev's start routing with the ticket as the request: its Question verbatim, its `Type:`, the Destination, and the skills actually available in this session (detection first, as wayfinder requires). Use its `start_skill` (and any other skill above ~0.15) for this ticket, and its subagent suggestion when handing the body to delegate.

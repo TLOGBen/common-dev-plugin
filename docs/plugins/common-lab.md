@@ -4,7 +4,7 @@
 
 <img src="../images/plugin-common-lab.png" alt="common-lab" width="320">
 
-16 個 TypeSafe Jev 實驗技能。已列入 Claude 與 Codex marketplace，需自行選擇安裝；裝後即啟用（`defaultEnabled: true`），不會取代穩定版 Common。不需要可用 `claude plugin disable common-lab` 停用。
+15 個 TypeSafe Jev 實驗技能。已列入 Claude 與 Codex marketplace，需自行選擇安裝；裝後即啟用（`defaultEnabled: true`），不會取代穩定版 Common。不需要可用 `claude plugin disable common-lab` 停用。
 
 - Claude source：`plugins/common-lab/`
 - Codex 移植：`codex/plugins/common-lab/`
@@ -24,7 +24,7 @@
 | `jev-score` | 用 Jev（Score）依有序 rubric 評分，附每個等級的機率。 |
 | `jever` | 找出目前目標中哪些只需要判斷（是非、挑選、評分）的地方可以用 Jev 取代、加速或備援，也說明哪裡不該用 Jev。 |
 | `suggest-jev` | 請求路由：開工前讓 Jev 建議先載入哪個 skill、還需要哪些、流程與完成證明。 |
-| `jev-browser` | 建立在 `test-utils:dev-browser` 上、以 Jev 挑選元素的瀏覽器除錯；只能明確叫用（`/common-lab:jev-browser`）。 |
+| `jev-browser` | 建立在外部 `dev-browser` CLI 上（`npm install -g dev-browser && dev-browser install`）、以 Jev 挑選元素的瀏覽器除錯；只能明確叫用（`/common-lab:jev-browser`）。 |
 | `is-truely-need-to-ask-user-jev` | 問使用者之前，先問 Jev 這個問題是否真的需要使用者，還是自己就能查到或做到。 |
 
 ### 疊加版（`*-jever`）
@@ -38,7 +38,6 @@
 | `wait-what-jever` | `common:wait-what` |
 | `wayfinder-jever` | `common:wayfinder` |
 | `cold-estimation-jever` | `analysis-estimation:cold-estimation` |
-| `contract-jever` | `baransu:contract` |
 | `review-jever` | `baransu:review` |
 | `think-jever` | `baransu:think` |
 
@@ -52,7 +51,8 @@
 - 實驗技能統一由 Common Lab 提供：原 Common、Baransu、Estimate Lab 合併成單一套件，以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。舊版 README 標題寫的是 **Common Lab 0.10.0**，正文寫版本 0.19.0；目前版本以 `plugin.json` 為準。
 - Estimate、define-goal、better-prompts 的 Lab 版已於 0.9.0 淘汰；strategic-advance 的 Lab 版已於 0.10.0 淘汰（請用穩定版）。
 - 0.19.0 退役 ui-jever、seal-jever、show-me-jever、none-stop-jever，以及兩個 Lab delegate 變體與 executor agent；改用 `analysis-estimation:cold-estimation`、`common:define-goal`、`common:better-prompts`、`common:strategic-advance`、`common:delegate`、`baransu:ui`／`baransu:draw`、`baransu:seal` 與 `common:show-me`。
-- 已畢業的技能現在在穩定版：grilling、domain-modeling、research、prototype、wait-what、wayfinder、show-me 在 `common`；think、contract、seal、review 在 baransu。
+- 0.20.0 退役 contract-jever：上游的 contract／seal 技能一併退役，改為直接在紅綠 TDD 下實作，再用 `baransu:review` 獨立重驗證。
+- 已畢業的技能現在在穩定版：grilling、domain-modeling、research、prototype、wait-what、wayfinder、show-me 在 `common`；think、review 在 baransu。
 - 細節見 [CHANGELOG](../../CHANGELOG.md)。
 
 ## 實驗紀錄

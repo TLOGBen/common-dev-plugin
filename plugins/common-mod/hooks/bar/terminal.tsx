@@ -40,7 +40,6 @@ const SPINNER = ['⠋', '⠙', '⠹', '⠸', '⠼', '⠴', '⠦', '⠧', '⠇', 
 // session here; only the terminal reads it. Written as escapes, since the
 // private-use characters are invisible in most editors.
 const ICONS: Record<string, string> = {
-  side: '\uf086',
   recall: '\uf1da',
   diff: '\uf440',
   artifacts: '\uf1b2',
@@ -48,7 +47,6 @@ const ICONS: Record<string, string> = {
   explain: '\uf059',
   draw: '\uf1fc',
   next: '\uf400',
-  back: '\uf112',
   project: '\uf15c',
   ctx: '\uf2db',
   five: '\uf017',
