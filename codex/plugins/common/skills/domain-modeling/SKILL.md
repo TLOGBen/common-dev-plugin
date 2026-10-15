@@ -64,6 +64,8 @@ When domain relationships are being discussed, stress-test them with specific sc
 
 When the user states how something works, check whether the code agrees. If you find a contradiction, surface it: "Your code cancels entire Orders, but you just said partial cancellation is possible. Which is right?"
 
+When the model is drawn from an existing system, find the data first — schemas, DDL, record layouts, message shapes are more truthful than the procedural code — then map who touches each structure; a term enters the glossary from the structure it names, cited by file:line. Admit only business rules: one that would be the same in any language is a business rule; one that exists only because of the technology is not. When the code and the user disagree and neither is confirmed, the term waits outside the glossary as an open question with the one-sentence answer an SME must give; never settle it by guessing.
+
 ### Update CONTEXT.md inline
 
 When a term is resolved, update `CONTEXT.md` right there. Don't batch these up: capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md).

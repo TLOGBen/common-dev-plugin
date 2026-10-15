@@ -21,6 +21,8 @@ Use this reference only as a conceptual and engineering mapping. The cited mater
 | Commander’s Assessment Cycle | Apply bounded PDCA: predeclare the objective-relative criteria, execute one move, check authoritative effects, then block, monitor, pass, pivot, or preserve gains. |
 | Staff and Specialist Review | Dispatch review only under a bounded contract for scope, taxonomy, threshold, evidence bar, budget, and stop condition; one disposition returns to the commander. |
 | Consolidation of Gains | Record checkpoints, authoritative readback, structured cleanup debt, and durable evidence. |
+| Reconnaissance in Force and Rehearsal | Pilot one representative unit end to end before a repeated front fans out; its lessons become the battle drill every later carrier is briefed from. |
+| Echelonment and Abort Criteria | Commit repeated units by escalating waves under a published success-rate floor; a failed wave is answered with a revised drill, never with more carriers. |
 
 ## Primary public sources
 

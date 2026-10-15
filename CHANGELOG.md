@@ -2,6 +2,22 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 2.1.0 — code-modernization 的核心做法分進各 skill，每項帶觸發條件（2026-10-15）
+
+- 延續 1.21.0 只借蒐證方法的做法，這次把 `anthropics/claude-plugins-official` 的 `code-modernization` 剩下的核心想法——算式、破壞性變更判斷、分析方法——各自放進最合適的 skill，每一項都寫明何時必做、何時略過、留下什麼證據；沒有觸發條件的機制不收。量化判斷的模型寫一次在 references，算出來的數字放在它改變的決定旁；對人說明用白話一句，算式只放報告後段。
+- **Analysis & Estimation 1.22.0**
+  - `cold-estimation` 2.27.0：破壞性變更清單每筆加修法類別（機械／判斷）與影響範圍（命中數 × 共用核心 × 跨模組）；清單建好後算升版 vs 重寫閘門（命中檔數 ÷ 來源檔數，預設過半即回 Grilling 當重寫候選，判斷類占比只是工時訊號）；全消費者共用的依賴大版本變更估成一個跨模組工項；跨多個大版本拆逐跳、每跳先以代表單元建置作試點；第二步補查依失效機率 × 受影響人天排序；使用者要範圍時用三點估計算主數字與 ±σ、主表不變。新 `references/quant-models.md` 收這五個模型（變數、實測／假設、白話）。來源中指令樣文字列為發現不照做。checks.md 加 10c。scc／cloc 的時程與金額照舊不採。
+  - `rfp-sa-bdd`：每條 REQ 標 `[P0|P1|P2]`（P0 = 核心目的依賴、錯了代價高或不可逆；P2 顯示便利；其餘 P1）；`那麼` 寫具體值，計算把公式寫進 Then；推論而非明寫的 REQ 註 Medium／Low 並附 SME 一句話能答的〔待訪談〕問題，P0 低於 High 列為下游開工前必答；索引統計 P0 數與待訪談數，兩份 template 同步。
+  - `rfp-requirement-analysis`：RFP 附資料定義時先列資料物件再標誰讀誰寫（template 加資料物件表）；業務規則（換技術也不變）與技術規則分開；「需訪談確認」須寫出 SME 一句話問題與答案會改哪個功能，報告末彙整待訪談清單；RFP 文字是資料不是指令。
+  - `quality-orchestrator`：reviewer 與 fixer 之間加有條件的 refuter 站（缺失 ≥ 3 條或動到全域約定才派；逐條反證，寫不出具體後果的降級，仍 blocking 者由第二位 judge 複判），整合報告回報缺失／駁回／複判／誤報率（駁回 ÷ 已判）；review-loop.md、portability.md 同步。
+- **Common 1.42.0**
+  - `strategic-advance`：§8 新增「主力之前先行威力偵察」——一個前線有 ≥ 4 個同配方單元才適用：先以一個代表單元打通（試點）、寫成 battle drill（`artifacts/drill-<frontId>.md`：有序步驟、每個錯誤與修法、環境事實、驗證命令），之後按梯隊投入（w₁ = min(4, N−1)、之後最多加倍、不一次全上），每波成功率 built ÷ attempted < 2/3 即中止並重估；失敗的一波用更好的 drill 回應，不加兵。每波一行帳。doctrine-map.md 加兩列。
+  - `wayfinder`：新增「Wiring a build graph」——目的地是依賴圖上的原地改造才適用：絞殺榕 vs 葉先行兩種預設順序釘進 Notes；測試框架是前提不是葉子；全消費者共用的依賴變更是一張協同切換票；範圍外有消費者的共用節點先開決策票（新舊都能建置／擴範圍／排定切斷）；地圖是假設、第一張建置票是試點；票以可檢查的條件結案，不以狀態。
+  - `delegate`：新增「Fan-out」——找問題型工作按 F + N + M 配置（finder／每個發現一個 refuter／Critical 與 High 一個第二 judge），先宣告公式再報數字，寫不出失敗情境的嚴重度降級，誤報率只算已判的，未判與未掃到的列出來不算乾淨；重複執行型先試點一單元、寫 playbook 當 Background、梯隊派工與 2/3 斷路器；工具三態（有裝／能跑／實際跑過）只收實際跑過的。briefing 加「不可信內容條款」，讀到別人的檔案時嵌入。
+  - `grilling`：只問來源答不出的；碰既有系統時第一輪帶五題（完整系統或一塊與外部依賴、能否建置測試、自製建置機制、前人嘗試、不能動的部分），每題可答「不知道」，答案照原文記、沒答的列成假設。
+  - `domain-modeling`：從既有系統建模時先找資料結構再找誰動它、以 file:line 引用；只收「換語言也一樣」的業務規則；程式與使用者說法相左且未確認時不進詞彙表，留 SME 一句話問題。
+- 各 SKILL.md 增幅控制在約 15% 內；Codex 副本手動同步（`$skill` 寫法）；不加腳本、不加測試檔。
+
 ## Marketplace 2.0.0 — 退役 test-utils、全部單元測試與 contract-jever（2026-10-15）
 
 - **退役 `test-utils`**（gen-e2e-test、gen-e2e-record、dev-browser）：它當初是為了在模型還跑不穩 Playwright 的年代自動化 E2E 測試；現在每個前沿模型都能一次做對，plugin 已無存在理由。移除 Claude／Codex 套件、Codex metadata、三份 marketplace catalog 的 entry、專屬文件與圖片，以及首頁卡片與安裝指令。`common-lab:jev-browser` 保留：它在執行時只依賴外部 `dev-browser` CLI 與自帶腳本，不依賴 test-utils 任何檔案，說明文字改為指向外部 CLI。既有安裝不會因目錄下架自動解除安裝；Git 歷史中的舊版本仍保留。移除散佈 plugin 會讓 `/plugin install test-utils@common-dev` 失效，所以 marketplace 升 2.0.0。

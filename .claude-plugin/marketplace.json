@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "2.0.0"
+    "version": "2.1.0"
   },
   "plugins": [
     {
@@ -14,7 +14,7 @@
       "source": "./plugins/analysis-estimation",
       "description": "Analysis & estimation suite (enabled by default): rfp-requirement-analysis → rfp-architecture-design → rfp-sa-bdd forms a traceable RFP/SOW pipeline; cold-estimation delivers method-based initial estimates with risk effort for new and existing systems; itemized-estimate turns a locked estimate into a one-page customer-facing itemized sheet in the customer's own Excel template; quality-orchestrator runs a writer→reviewer→fixer checklist loop.",
       "displayName": "分析與評估 (Analysis & Estimation)",
-      "version": "1.21.0",
+      "version": "1.22.0",
       "defaultEnabled": true
     },
     {
@@ -22,7 +22,7 @@
       "source": "./plugins/common",
       "description": "Everyday dev toolkit: token-usage diagnosis, prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
       "displayName": "Common",
-      "version": "1.41.3",
+      "version": "1.42.0",
       "defaultEnabled": true
     },
     {

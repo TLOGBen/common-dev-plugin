@@ -27,7 +27,8 @@ metadata:
 3. **逐 task 跑審查迴圈**：對**每一個 task**——
    - **writer subagent** 依該 producer 的 SKILL.md + template 產出；
    - **reviewer subagent** 對照來源 + 該 producer 的格式/覆蓋標準審查（判準見 `references/review-loop.md`）；
-   - 若未 PASS → **fixer subagent** 依 reviewer 的缺失清單修 → **再 reviewer**；
+   - **refuter 站（有條件）**：reviewer 判 FAIL 且缺失 ≥ 3 條，或任一缺失會改全域約定（命名、REQ 前綴、共用件、包別）時，先派 **refuter subagent** 逐條反證——對照來源證明缺失不成立，或寫不出具體後果（下游哪份產物會因此錯）就降為非 blocking；仍 blocking 的再由**第二位 judge** 複判，兩人都維持才進缺失清單。缺失 ≤ 2 條且只影響本檔時跳過，直接 fixer，錯修由再審抓。角色與回報欄位見 review-loop.md。
+   - 若未 PASS → **fixer subagent** 依（經駁回後的）缺失清單修 → **再 reviewer**；
    - 迴圈**直到 reviewer 判 PASS 才把該 task 勾完成**。設 **max 3 輪**，逾次仍未過則把 task 標為「需人工」並繼續其他 task，不卡死整條產線。
 
 4. **跨 task 整合覆蓋檢查（含修補回路）**：全 checklist 完成後，做一次跨 task 對帳——回到來源確認無缺漏（每個模組/章節都有對應產出、功能數對得上、共用件沒被各 task 重做、命名/編號跨 task 不衝突）。
@@ -63,7 +64,7 @@ metadata:
 3. **建 checklist**：依模組/章節用 create a `task-map.md` record 建可見清單，標註每 task 的 producer / 目標檔 / 來源。
 4. **fan-out + 審查迴圈**：並行派 task；每 task 內走 writer → reviewer →（fixer → reviewer）≤3 輪，PASS 才勾完成，逾次標需人工。迴圈細節見 `references/review-loop.md`。
 5. **整合覆蓋檢查（含修補回路）**：全部回來後做跨 task 對帳。**若發現跨 task 衝突（命名/編號衝突 或 共用件被各 task 重做）→ 把受影響的 task 由 PASS 退回「需修」，重新進入該 task 的 fixer → reviewer 審查迴圈做定點修正（同受 max 3 輪與 PASS 閘約束、以既有 reviewer PASS 判準為唯一收斂閘、只重審受影響 task），修正後重跑整合檢查**，而非僅在報告中記載。衝突清乾淨（或退回逾次）後產整合報告（覆蓋對照表、共用件去重確認、命名/編號衝突修補紀錄、需人工清單）。
-6. **交付**：回報 checklist 最終狀態 + 整合報告 + 任何需人工項。
+6. **交付**：回報 checklist 最終狀態 + 整合報告 + 任何需人工項；整合報告列每 task 的缺失數、駁回數、複判數與誤報率（駁回 ÷ 已判，不含未判），用一句白話說這代表審查抓錯的比例。
 
 ## 可攜性
 
