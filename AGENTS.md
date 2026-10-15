@@ -34,7 +34,7 @@ The two marketplace catalogs are **hand-maintained**. Both use the `common-dev` 
 
 ## Invariants
 
-- 此 plugin 不做任何單元測試。Whether a skill works has nothing to do with unit tests — when skills change it is the tests that break, not the skills — so structural validation (`scripts/validate_marketplace.py`, JSON validity) is the only machine check.
+- 此 plugin 不寫單元測試，但測試照做。Whether a skill works has nothing to do with unit tests — when skills change it is the tests that break, not the skills — so the repo keeps no unit tests. What still runs: structural validation (`scripts/validate_marketplace.py`, JSON validity), each skill's `evals/` through `claude plugin eval` where one exists, and a real dogfood run of the changed skill with its output looked at.
 - Keep skills generic: no project-specific branding, routes, ports, accounts, or private workflow assumptions.
 - Keep `common` Skill instructions in English. Default user-facing prose and generated human-readable artifacts to Traditional Chinese; switch only when the user explicitly requests another language.
 - For Claude source, reference skill-local files through `${CLAUDE_PLUGIN_ROOT}/skills/<skill>/...`; reference plugin-level bundled agents through `${CLAUDE_PLUGIN_ROOT}/agents/<agent>.md`.
