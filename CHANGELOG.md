@@ -2,6 +2,11 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.43.0 — 移除 token-lens（2026-10-16）
+
+- 移除 `token-lens`：刪除 Claude 與 Codex 兩份 skill（含腳本、報表模板、圖示）與 `codex-metadata/common/token-lens/`。
+- 同步更新 plugin 描述、`docs/plugins/common.md`、`docs/development.md`；marketplace 2.3.0。
+
 ## Marketplace 2.2.0 — 退役 common-mod 的 side 側聊（2026-10-15）
 
 - **Common Mod 0.13.0 — 退役 `side` mod**：Claude Code 內建的 `btw` 側問已經夠用，側聊面板沒有存在理由。移除 `hooks/side/` 與只為它服務的 `hooks/branch.ts`（新視窗分支、`branchParent` 狀態與 `session.start` 接手），`types/index.d.ts` 拿掉 `SideEntry`、`sideEntries`、`branchParent`；plugin／marketplace 描述、文件與 README 同步。

@@ -1,8 +1,8 @@
 {
   "name": "common",
   "displayName": "Common",
-  "version": "1.42.0",
-  "description": "Everyday dev toolkit: token-usage diagnosis, prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
+  "version": "1.43.0",
+  "description": "Everyday dev toolkit: prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
   "icon": "./assets/logo.png",
   "author": {
     "name": "ben.tsai",

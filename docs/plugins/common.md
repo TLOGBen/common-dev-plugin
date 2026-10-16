@@ -20,7 +20,6 @@
 | `strategic-advance` | 鎖定可驗收的戰略目標，以即時情報、單一主攻與可驗證的一動持續推進長期任務；內建自含 HTML 沙盤 renderer，直接 render，不另設環境 preflight 或 legacy mode。 |
 | `wait-what` | 停下目前工作，從斷掉的那個連結開始，按「哪裡沒懂」挑講法重講；純文字，圖另叫 show-me；只在明確叫用時觸發。 |
 | `wayfinder` | 把一個 session 裝不下的大工作畫成決策票地圖，逐票或以 drain 模式推進到路線清楚；內建自含 HTML 地圖 renderer。 |
-| `token-lens` | 唯讀分析 Codex session：逐回應 token、重複讀取、巨大輸出與壓縮成本；附可篩選時間線與工項貢獻標記，協助驗證 Skill 改進假設。 |
 | `show-me` | 用最小的視圖（pseudocode、call tree、diff、Mermaid、HTML）講清楚；Mermaid 同時產生並開啟 HTML 預覽。 |
 | `grilling` | Matt Pocock 原版：以設計樹分輪訪談，事實模型自查、決定由人下，直到前線為空。 |
 | `domain-modeling` | 釐清專案領域語言，將共識寫入 `CONTEXT.md`，必要時記錄 ADR。 |

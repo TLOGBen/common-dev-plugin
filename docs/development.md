@@ -14,7 +14,7 @@ common-dev-plugin/
 │   ├── common/
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/               # luna-max-sidekick, sa-scribe
-│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me, token-lens（+ grilling/domain-modeling/research/prototype）
+│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me（+ grilling/domain-modeling/research/prototype）
 │   ├── common-lab/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/               # 15 個 TypeSafe Jev 實驗技能
