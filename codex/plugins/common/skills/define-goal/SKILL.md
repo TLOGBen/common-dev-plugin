@@ -54,6 +54,7 @@ This skill covers goal definition and goal-tool creation only. Do not create int
    - Include scope bounds when they constrain the work.
    - Include a token budget only when the user explicitly requested one.
    - Do not call `create_goal` for an ordinary multi-step task unless the user explicitly asked for goal-backed work.
+   - Once created, treat the goal as the acceptance standard for the work that follows: report completion against its validators, not against effort spent.
 
 ## Goal Quality Bar
 

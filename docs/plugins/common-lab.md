@@ -50,7 +50,7 @@
 
 - 實驗技能統一由 Common Lab 提供：原 Common、Baransu、Estimate Lab 合併成單一套件，以「指引優先，針對反覆失誤設置控制」保留各技能的行為與驗收邊界。舊版 README 標題寫的是 **Common Lab 0.10.0**，正文寫版本 0.19.0；目前版本以 `plugin.json` 為準。
 - Estimate、define-goal、better-prompts 的 Lab 版已於 0.9.0 淘汰；strategic-advance 的 Lab 版已於 0.10.0 淘汰（請用穩定版）。
-- 0.19.0 退役 ui-jever、seal-jever、show-me-jever、none-stop-jever，以及兩個 Lab delegate 變體與 executor agent；改用 `analysis-estimation:cold-estimation`、`common:define-goal`、`common:better-prompts`、`common:strategic-advance`、`common:delegate`、`baransu:ui`／`baransu:draw`、`baransu:seal` 與 `common:show-me`。
+- 0.19.0 退役 ui-jever、seal-jever、show-me-jever、none-stop-jever，以及兩個 Lab delegate 變體與 executor agent；改用 `analysis-estimation:cold-estimation`、`common:define-goal`、`common:better-prompts`、`common:strategic-advance`、`common:delegate`、`baransu:ui`／`baransu:draw`、`baransu:review` 與 `common:show-me`。
 - 0.20.0 退役 contract-jever：上游的 contract／seal 技能一併退役，改為直接在紅綠 TDD 下實作，再用 `baransu:review` 獨立重驗證。
 - 已畢業的技能現在在穩定版：grilling、domain-modeling、research、prototype、wait-what、wayfinder、show-me 在 `common`；think、review 在 baransu。
 - 細節見 [CHANGELOG](../../CHANGELOG.md)。

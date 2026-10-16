@@ -2,6 +2,12 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 2.3.3 — 複查後的殘留與 Codex 落差（2026-10-16）
+
+- **Common 1.43.2**：Codex 版 `define-goal` 補回 Claude 版那句「目標建立後就是驗收標準，依 validators 回報完成，不依投入多少」。
+- **Common Lab 0.20.1**：Codex 版 `define-goal-jever` 補同一句；`jever` 範例（兩版）不再用已退役的 `seal-guard` 當例子名稱。
+- `docs/plugins/common-lab.md` 0.19.0 條目把替代方案 `baransu:seal` 改成 `baransu:review`，與 marketplace 描述一致。
+
 ## Common 1.43.1 — wayfinder 不再指向已退役的 baransu book／design（2026-10-16）
 
 - `wayfinder` 的 baransu 路由段：Research 票的「人讀版」改走 `/baransu:draw`（多圖說明頁走 `/baransu:ui`）；Prototype 票改由 `/baransu:ui` 從參考學設計語言寫到 `.claude/design/reference-<slug>.md`。book 與 design 已重做成 ui 與 draw。Codex 副本同步（`$draw`、`$ui`、`.codex/design/`）；marketplace 2.3.2。
