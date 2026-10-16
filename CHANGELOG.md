@@ -2,6 +2,10 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Common 1.43.1 — wayfinder 不再指向已退役的 baransu book／design（2026-10-16）
+
+- `wayfinder` 的 baransu 路由段：Research 票的「人讀版」改走 `/baransu:draw`（多圖說明頁走 `/baransu:ui`）；Prototype 票改由 `/baransu:ui` 從參考學設計語言寫到 `.claude/design/reference-<slug>.md`。book 與 design 已重做成 ui 與 draw。Codex 副本同步（`$draw`、`$ui`、`.codex/design/`）；marketplace 2.3.2。
+
 ## Analysis & Estimation 1.22.1 — Codex 版 rfp-sa-bdd 同步（2026-10-16）
 
 - Codex 版 `rfp-sa-bdd` 的 SKILL.md 與 `templates/00-索引與覆蓋檢查.md` 還留著已退役的 `/baransu:execute`，改成與 Claude 版一致的「下游 TDD 執行流程」。其餘 Codex 副本逐檔核對過，差異都是 Codex 必要的改寫；marketplace 2.3.1。

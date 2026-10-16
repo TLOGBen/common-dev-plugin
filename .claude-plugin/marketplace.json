@@ -6,7 +6,7 @@
   },
   "metadata": {
     "description": "Common developer toolkit — reusable, project-agnostic Claude Code plugins.",
-    "version": "2.3.1"
+    "version": "2.3.2"
   },
   "plugins": [
     {
@@ -22,7 +22,7 @@
       "source": "./plugins/common",
       "description": "Everyday dev toolkit: prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
       "displayName": "Common",
-      "version": "1.43.0",
+      "version": "1.43.1",
       "defaultEnabled": true
     },
     {
