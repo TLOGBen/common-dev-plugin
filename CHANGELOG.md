@@ -2,6 +2,10 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Analysis & Estimation 1.22.1 — Codex 版 rfp-sa-bdd 同步（2026-10-16）
+
+- Codex 版 `rfp-sa-bdd` 的 SKILL.md 與 `templates/00-索引與覆蓋檢查.md` 還留著已退役的 `/baransu:execute`，改成與 Claude 版一致的「下游 TDD 執行流程」。其餘 Codex 副本逐檔核對過，差異都是 Codex 必要的改寫；marketplace 2.3.1。
+
 ## Common 1.43.0 — 移除 token-lens（2026-10-16）
 
 - 移除 `token-lens`：刪除 Claude 與 Codex 兩份 skill（含腳本、報表模板、圖示）與 `codex-metadata/common/token-lens/`。

@@ -1,10 +1,10 @@
 ---
 name: rfp-sa-bdd
 description: 把第一段的逐功能 API 清單，對每個功能展開成 BDD 驗收規格（Goal / Requirements 三段式 REQ 編號 / 繁中
-  Gherkin Scenario），含 REQ 編號規則與覆蓋檢查，輸出可銜接下游 TDD 執行流程（如 /baransu:execute）的 requirement.md
+  Gherkin Scenario），含 REQ 編號規則與覆蓋檢查，輸出可銜接下游 TDD 執行流程的 requirement.md
   追溯。Use whenever the user has a 功能清單 / 功能 API 分析 / 模組功能 ready and asks for BDD /
   驗收規格 / 驗收條件 / 系統分析 SA / 需求驗收 / Gherkin / 情境 / 測試案例展開 / acceptance criteria / 可驗收需求,
-  or says「出 BDD」「寫驗收規格」「每個功能列驗收條件」「把功能變成 Gherkin 情境」「展開 SA 規格給 execute 用」. This is
+  or says「出 BDD」「寫驗收規格」「每個功能列驗收條件」「把功能變成 Gherkin 情境」「展開 SA 規格給下游 TDD 用」. This is
   the third of three chained stages (requirement-analysis → architecture-design →
   sa-bdd); if no per-function API list exists yet, run rfp-requirement-analysis first.
   繁體中文輸出。
@@ -23,7 +23,7 @@ metadata:
 
 ## 為什麼這樣切
 
-第一段給了「有哪些功能、各自有哪些 API」，但 API 清單不能直接拿去驗收——它沒說「什麼情況下系統該擋、該回什麼、該寫什麼軌跡」。這一段把每個功能轉成**可機械驗收的斷言**：每條 REQ 是一個可測的系統行為，每個 Scenario 是一個可轉成 e2e / BDD 測試骨架的情境。REQ 編號全系統唯一且穩定，正好作為下游 TDD 執行流程（如 `/baransu:execute`）`requirement.md` 的追溯來源，形成「功能 → REQ → 設計 → 測試 → 任務」可追溯鏈。
+第一段給了「有哪些功能、各自有哪些 API」，但 API 清單不能直接拿去驗收——它沒說「什麼情況下系統該擋、該回什麼、該寫什麼軌跡」。這一段把每個功能轉成**可機械驗收的斷言**：每條 REQ 是一個可測的系統行為，每個 Scenario 是一個可轉成 e2e / BDD 測試骨架的情境。REQ 編號全系統唯一且穩定，正好作為下游 TDD 執行流程 `requirement.md` 的追溯來源，形成「功能 → REQ → 設計 → 測試 → 任務」可追溯鏈。
 
 ## 撰寫慣例（務必嚴格遵守，這是格式一致的關鍵）
 
@@ -72,7 +72,7 @@ REQ 與 Scenario 裡提到的資源名、端點、狀態值，**一律沿用第�
 1. **讀第一段輸出**:讀功能 API 分析索引（模組清單、共用 API、命名慣例）+ 每個模組檔（每功能的目標 / API / 頁面操作）。BDD 的功能數與順序必須與來源逐一對齊。
 2. **配 REQ 前綴**:在索引建立「REQ 前綴 ↔ 模組」對照表，確保唯一不碰撞。
 3. **逐模組產 BDD 檔**:用 `templates/單模組BDD.md`。對來源檔的每個功能，寫出 Goal + Requirements（把 API 表/頁面操作裡的規則翻成可驗收 REQ）+ Scenario（正常 + 異常，按上述最低要求）。
-4. **產 `00-索引與覆蓋檢查.md`**:用 `templates/00-索引與覆蓋檢查.md`。含模組清單表（功能數 / REQ 數 / Scenario 數，機械統計）、REQ 前綴對照、撰寫慣例說明、覆蓋檢查結論、給下游執行流程（如 `/baransu:execute`）的接續提示。
+4. **產 `00-索引與覆蓋檢查.md`**:用 `templates/00-索引與覆蓋檢查.md`。含模組清單表（功能數 / REQ 數 / Scenario 數，機械統計）、REQ 前綴對照、撰寫慣例說明、覆蓋檢查結論、給下游執行流程的接續提示。
 
 ## 大量功能時的並行策略
 
@@ -89,7 +89,7 @@ REQ 與 Scenario 裡提到的資源名、端點、狀態值，**一律沿用第�
 - 確認每個 REQ 前綴都實際出現於 BDD 檔；確認每功能皆含 Goal/Requirements/Scenario 三段且 ≥1 正常 + ≥1 異常。**若並行回收的某模組檔缺 ≥1 異常情境，或其子段字母與步驟 2 的「REQ 前綴 ↔ 模組」對照表不符**：把該模組檔退回原模組 subagent，連同對照表中它應使用的子段字母與缺項清單一起重派，要求重產該檔；**主流程不在回收檔上手改**，待重產檔回來後再併入統計與覆蓋檢查。
 - 明確下結論:**無缺漏** 或列出缺漏清單;非功能例外（如採 SSO 故原生密碼政策無對應情境）要標為「已知合理例外」。
 
-## 給下游執行流程的銜接（如 /baransu:execute）
+## 給下游執行流程的銜接
 
 在索引結尾寫接續提示:每條 `<前綴>-NN-NN` 可直接作為 `requirement.md` 條目，設計與測試反向引用 REQ 形成追溯鏈;Scenario 可直接轉驗收測試骨架;P0 REQ 是下游必須先綠、先證明等價的集合;共用服務優先實作一份;建議執行切分順序（共用件先行）;跨模組強耦合檢核點（保留為整合測試）;需訪談確認的非功能/部署面先澄清。
 
@@ -104,4 +104,4 @@ REQ 與 Scenario 裡提到的資源名、端點、狀態值，**一律沿用第�
 ## 模板
 
 - `templates/單模組BDD.md` — 單模組 BDD 骨架（含單功能 Goal/Requirements/Scenario 區塊範本，可重複貼用）。
-- `templates/00-索引與覆蓋檢查.md` — 索引、REQ 前綴對照、撰寫慣例、覆蓋檢查、execute 接續提示骨架。
+- `templates/00-索引與覆蓋檢查.md` — 索引、REQ 前綴對照、撰寫慣例、覆蓋檢查、下游執行接續提示骨架。
