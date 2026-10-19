@@ -31,7 +31,7 @@ Every map and ticket has a **name** — its title. In everything the human reads
 
 ## Ecosystem routing (optional)
 
-Wayfinder is self-contained: its companion skills (`/common:grilling`, `/common:domain-modeling`, `/common:research`, `/common:prototype`) are always the default. But when the **baransu** skill suite is installed in the session, an effort MAY route ticket work through it — richer tools for the same slots:
+Wayfinder is self-contained: its companion skills (`/common:grilling`, `/common:research`, `/common:prototype`, and `/baransu:domain-modeling` from the baransu plugin) are always the default; without baransu installed, grilling keeps the glossary questions itself. But when the **baransu** skill suite is installed in the session, an effort MAY route ticket work through it — richer tools for the same slots:
 
 - **Grilling** tickets whose question is a worth-it / existence judgment (值不值得、有沒有必要) or a design-approach choice → `/baransu:think` (a Kill/Keep/Pivot or A-or-B verdict, or an intent handoff sheet) alongside the grilling round — the human still answers; think structures the judgment.
 - **Research** tickets that need sources captured or digested, not just facts → `/baransu:read` (offline capture) or `/baransu:learn` (structured brief); link the product from the ticket as an asset. When the findings deserve a human-readable rendering, `/baransu:draw` turns them into a browser-ready figure (`/baransu:ui` when several figures belong on one explanatory page).
@@ -107,7 +107,7 @@ Every ticket is either **HITL** — human in the loop, worked _with_ a human who
 
 - **Research** (AFK): Reading documentation, third-party APIs, or local resources like knowledge bases to surface a fact a decision waits on. Resolved by a `/common:research` **subagent**. Use when knowledge outside the current working directory is required.
 - **Prototype** (HITL): Raise the fidelity of the discussion by making a cheap, rough, concrete artifact to react to — an outline, a rough take, a stub, or UI/logic code via the `/common:prototype` skill. Links the prototype as an asset. Use when "how should it look" or "how should it behave" is the key question.
-- **Grilling** (HITL): Conversation. The default case. Always invoke the `/common:grilling` and `/common:domain-modeling` skills.
+- **Grilling** (HITL): Conversation. The default case. Always invoke the `/common:grilling` and `/baransu:domain-modeling` skills.
 - **Task** (HITL or AFK): Manual work that must happen before a _decision_ can be made — nothing to decide, prototype, or research, but the discussion is blocked until it's done. Signing up for a service so its API can be judged, provisioning access, moving data so its shape can be seen. This is the one type that _does_ rather than decides — and it earns its place by unblocking a decision, not by delivering the destination. The agent drives it alone where it can (AFK); otherwise it hands the human a precise checklist (HITL). Resolved when the work is done, stated as a checkable condition met rather than a state claimed; the answer records what was done and any resulting facts (credentials location, new URLs, row counts) later tickets depend on.
 
 ## Fog of war
@@ -151,7 +151,7 @@ Three modes. In Chart and Work modes, **never resolve more than one ticket per s
 
 User invokes with a loose idea.
 
-1. **Name the destination.** Run a `/common:grilling` and `/common:domain-modeling` session to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so it's settled first.
+1. **Name the destination.** Run a `/common:grilling` and `/baransu:domain-modeling` session to pin down what this map is finding its way to — the spec, decision, or change. The destination fixes the scope, so it's settled first.
 2. **Map the frontier.** Grill again, **breadth-first** this time: fan out across the whole space rather than deep on any one thread, surfacing the open decisions and the first steps takeable now. **If this surfaces no fog** — the way to the destination is already clear, the whole journey small enough for one session — you don't need a map. Stop and ask the user how they'd like to proceed.
 3. **Create the map**: Destination and Notes filled in, Decisions-so-far empty, the fog sketched into **Not yet specified**.
 4. **Create the tickets you can specify now** as child files of the map — then wire blocking edges in a **second pass** (tickets need ids before they can reference each other). Wiring sorts them into the frontier and the blocked; everything you can't yet specify stays in the fog — the **Not yet specified** section. For a destination over a dependency graph, the edges follow [Wiring a build graph](#wiring-a-build-graph).
@@ -164,7 +164,7 @@ User invokes with a map (path or effort name). A ticket is **optional** — with
 
 1. Load the **map** — the low-res view, not every ticket body.
 2. Choose the ticket. If the user named one, use it. Otherwise take the first frontier ticket in order. **Claim it** before any work.
-3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/common:grilling` and `/common:domain-modeling`.
+3. Resolve it — **zoom as needed**: fetch the full body of any related or closed ticket on demand; invoke the skills the `## Notes` block names. If in doubt, use `/common:grilling` and `/baransu:domain-modeling`.
 4. Record the resolution: append the answer to the ticket, **close** it, and **append a context pointer** to the map's Decisions-so-far.
 5. Add newly-surfaced tickets (create-then-wire); graduate any fog the answer has made specifiable, clearing each graduated patch from **Not yet specified** so it lives only as its new ticket. If the answer reveals a ticket — this one or another — sits beyond the destination, **rule it out of scope** rather than resolving it on the route. If the decision invalidates other parts of the map, update or delete those tickets.
 6. **Re-render the HTML view** so it reflects the new state of the map.

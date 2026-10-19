@@ -2,6 +2,14 @@
 
 All notable changes to this marketplace and its plugins. Plugin versions are independent; the marketplace version tracks the catalog.
 
+## Marketplace 2.4.0 — show-me 與 domain-modeling 移到 baransu（2026-10-19）
+
+- **Common 1.44.0**：移除 `show-me` 與 `domain-modeling`（Claude、Codex 與 `codex-metadata/common/` 三處）；baransu 有同名且更完整的版本（`/baransu:show-me`、`/baransu:domain-modeling`），兩份並存只會分岔。`wayfinder` 的附屬 skill 改指 `/baransu:domain-modeling`，沒裝 baransu 時由 grilling 自己問用詞；`wait-what` 要圖時改請使用者叫 `/baransu:show-me`。
+- **Analysis & Estimation 1.23.0**：`cold-estimation` 開場的逐題講解改寫在自己的 Skill 裡，不再呼叫 show-me（baransu 的 show-me 只能由使用者叫用，模型叫不到）；形式不變：聊天內的文字流程、前後對照或方案表，不產生 Mermaid／HTML。檢查清單第 12 項同步。
+- **Common Lab 0.20.2**：`wayfinder-jever` 的說明改為「grilling 與 baransu 的 domain-modeling」。
+- **Common Mod 0.13.1**：狀態列「畫給我看」改叫 `/baransu:show-me`（仍會先找專案自己的 show-me）。
+- 文件、marketplace 與 Codex plugin 描述同步。
+
 ## Marketplace 2.3.3 — 複查後的殘留與 Codex 落差（2026-10-16）
 
 - **Common 1.43.2**：Codex 版 `define-goal` 補回 Claude 版那句「目標建立後就是驗收標準，依 validators 回報完成，不依投入多少」。

@@ -22,7 +22,7 @@ Claude Code 專屬的 mod：在 CLI 與桌面版 Code 分頁裡畫出介面元�
 | diff | 開 diff 面板（只在終端機） |
 | artifacts | 開 artifacts（只在終端機） |
 | 看不懂 | 呼叫 `/common:wait-what` |
-| 畫給我看 | 呼叫 `/common:show-me` |
+| 畫給我看 | 呼叫 `/baransu:show-me` |
 | 下一步 | 產生下一步建議，以草稿放進輸入框 |
 
 終端機與桌面版各自繪製：終端機用霓虹儀表與 chip；桌面版用原生按鈕與 SVG 儀表，沒有 diff 與 artifacts。「看不懂」與「畫給我看」會改用專案自己的 wait-what 與 show-me skill（若有）；專案可在 `.claude/common-mod.json` 加自己的按鈕。

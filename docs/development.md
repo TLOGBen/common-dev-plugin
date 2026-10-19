@@ -14,7 +14,7 @@ common-dev-plugin/
 │   ├── common/
 │   │   ├── .claude-plugin/plugin.json
 │   │   ├── agents/               # luna-max-sidekick, sa-scribe
-│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder, show-me（+ grilling/domain-modeling/research/prototype）
+│   │   └── skills/               # better-prompts, delegate, define-goal, strategic-advance, wait-what, wayfinder（+ grilling/research/prototype）
 │   ├── common-lab/
 │   │   ├── .claude-plugin/plugin.json
 │   │   └── skills/               # 15 個 TypeSafe Jev 實驗技能
@@ -80,4 +80,4 @@ python3 scripts/validate_marketplace.py
 
 ## 授權
 
-目前仍在內部測試，repo 本身暫不附授權。部分 `common` skill 目錄帶有上游的 `LICENSE`（第三方來源授權，須保留），例如 [show-me 的來源說明](plugins/common.md#show-me-的來源)。
+目前仍在內部測試，repo 本身暫不附授權。部分 `common` skill 目錄帶有上游的 `LICENSE`（第三方來源授權，須保留），例如 `wayfinder`、`grilling` 等源自 Matt Pocock skills 的目錄。
