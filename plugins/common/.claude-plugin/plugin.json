@@ -1,7 +1,7 @@
 {
   "name": "common",
   "displayName": "Common",
-  "version": "1.43.2",
+  "version": "1.44.0",
   "description": "Everyday dev toolkit: prompt tuning, goal setting, delegation, long-running strategic execution, wayfinder decision maps, and plain-language or visual explainers.",
   "icon": "./assets/logo.png",
   "author": {

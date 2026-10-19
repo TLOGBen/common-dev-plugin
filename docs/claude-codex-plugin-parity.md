@@ -119,7 +119,7 @@
 | 狀態列 | `statusLine`（執行腳本、讀 JSON stdin）；plugin 只能設 `subagentStatusLine`【官方】(C2, C13) | `tui.status_line`：從固定 ID 清單挑選排序，可設 `null` 關閉；用 `/statusline` 互動設定【官方】(O7, O9)。沒有自訂腳本【推論】 | 狀態列功能不移植 |
 | 通知 | `PushNotification`；mod 可用 `$.ui.toast`【官方】(C12, C15) | `notify`（外部指令，收 JSON）、`tui.notifications`【官方】(O7) | 可用 `notify` 或 hook 的 `systemMessage` 做最低限度降級【推論】 |
 | 其他 UI | Artifacts（claude.ai）【官方】(C12) | Plugin Extensions（MCP Apps）：側欄 app、對話面板、設定、檔案檢視器、composer 提及、表單，都在 ChatGPT 介面裡【官方】(O18) | 要做跨平台的互動 UI，比較接近 Codex 的是 MCP App；但成本很高，跟 mod 是完全不同的架構【推論】 |
-| 雙平台建議 | — | — | 1) Codex marketplace（Layout A／B）都不列 mod plugin（本 repo 已這樣做【本機】）。2) Claude README 標明 Claude 專用與最低版本（mods 需 v2.1.287+）。3) mod 按鈕觸發的 skill（例如 `/common:wait-what`、`/common:show-me`）在 Codex 版用 `$common:wait-what` 等方式手動呼叫，在 skill 的 `agents/openai.yaml` 用 `default_prompt` 提示【推論】 |
+| 雙平台建議 | — | — | 1) Codex marketplace（Layout A／B）都不列 mod plugin（本 repo 已這樣做【本機】）。2) Claude README 標明 Claude 專用與最低版本（mods 需 v2.1.287+）。3) mod 按鈕觸發的 skill（例如 `/common:wait-what`、`/baransu:show-me`）在 Codex 版用 `$common:wait-what` 等方式手動呼叫，在 skill 的 `agents/openai.yaml` 用 `default_prompt` 提示【推論】 |
 
 ---
 

@@ -52,7 +52,7 @@ codex plugin add common@common-dev
 codex plugin add common-lab@common-dev
 ```
 
-Codex 沒有 `common-mod` 的對應版本。Codex skill 以 `$<skill>` 呼叫，例如 `$delegate`、`$show-me`。
+Codex 沒有 `common-mod` 的對應版本。Codex skill 以 `$<skill>` 呼叫，例如 `$delegate`、`$wayfinder`。
 
 ### 確認已安裝的版本
 

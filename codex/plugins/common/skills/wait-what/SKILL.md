@@ -23,7 +23,7 @@ Pick the explanation shape that repairs the actual confusion. For example:
 
 Simplify detail, not truth. An explanation must not turn inference into evidence, hide a consequential limitation, invent a decision for the user, or make an unsupported answer more persuasive.
 
-Words only: no HTML, no diagrams, no files. If a picture would carry the point better than prose, say so in one line and leave it there; the user calls show-me when they want one.
+Words only: no HTML, no diagrams, no files. If a picture would carry the point better than prose, say so in one line and leave it there; the user calls `$baransu:show-me` when they want one.
 
 ## Say what you mean
 

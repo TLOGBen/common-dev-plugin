@@ -91,4 +91,4 @@ Wayfinder's Ecosystem routing (which skill a grilling, research, prototype, or t
 2. Otherwise run suggest-jev's start routing with the ticket as the request: its Question verbatim, its `Type:`, the Destination, and the skills actually available in this session (detection first, as wayfinder requires). Use its `start_skill` (and any other skill above ~0.15) for this ticket, and its subagent suggestion when handing the body to delegate.
 3. Record the chosen routing in Notes, as wayfinder asks, so later and parallel sessions follow it instead of re-deciding.
 
-suggest-jev only picks the tool. Wayfinder's rules still bind: HITL tickets are answered by the human, grilling tickets still run grilling and domain-modeling, and acceptance of any returned evidence stays with the operator.
+suggest-jev only picks the tool. Wayfinder's rules still bind: HITL tickets are answered by the human, grilling tickets still run grilling and baransu's domain-modeling, and acceptance of any returned evidence stays with the operator.

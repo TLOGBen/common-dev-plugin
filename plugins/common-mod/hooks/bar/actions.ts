@@ -32,7 +32,7 @@ export const ACTIONS: readonly Action[] = [
   { key: 'diff', label: 'diff', group: 'view', surfaces: ['terminal'], commands: ['diff'] },
   { key: 'artifacts', label: 'artifacts', group: 'view', surfaces: ['terminal'], commands: ['artifacts'] },
   { key: 'explain', label: '看不懂', group: 'ask', surfaces: ALL, commands: ['common:wait-what', 'wait-what'] },
-  { key: 'draw', label: '畫給我看', group: 'ask', surfaces: ALL, commands: ['common:show-me', 'show-me'] },
+  { key: 'draw', label: '畫給我看', group: 'ask', surfaces: ALL, commands: ['baransu:show-me', 'show-me'] },
   { key: 'next', label: '下一步', group: 'ask', surfaces: ALL },
 ]
 

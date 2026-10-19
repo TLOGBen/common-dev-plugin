@@ -1,8 +1,8 @@
 {
   "name": "common-mod",
   "displayName": "Common Mod",
-  "version": "0.13.0",
-  "description": "Claude Code mods (function hooks that draw inside the CLI and the desktop Code tab; no slash commands): recall — typing # in the prompt box or the 回想 button opens a band above the prompt to search past Claude Code, desktop and Cowork conversations; pressing one puts its #chat:<id> token in the prompt box, and sending the prompt attaches that conversation as quoted context; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 回想, diff, artifacts, 看不懂 (/common:wait-what), 畫給我看 (/common:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft); the terminal and the desktop each draw it their own way: the terminal with neon gauges and chips, the desktop with native buttons and SVG gauges and without diff and artifacts; 看不懂 and 畫給我看 fall back to a project's own wait-what and show-me skills, and a project adds its own buttons in .claude/common-mod.json.",
+  "version": "0.13.1",
+  "description": "Claude Code mods (function hooks that draw inside the CLI and the desktop Code tab; no slash commands): recall — typing # in the prompt box or the 回想 button opens a band above the prompt to search past Claude Code, desktop and Cowork conversations; pressing one puts its #chat:<id> token in the prompt box, and sending the prompt attaches that conversation as quoted context; bar — a two-rail status line above the prompt: folder, model and animated ctx, 5h and 7d gauges, then buttons for 回想, diff, artifacts, 看不懂 (/common:wait-what), 畫給我看 (/baransu:show-me) and 下一步 (next-step suggestions put in the prompt box as a draft); the terminal and the desktop each draw it their own way: the terminal with neon gauges and chips, the desktop with native buttons and SVG gauges and without diff and artifacts; 看不懂 and 畫給我看 fall back to a project's own wait-what and show-me skills, and a project adds its own buttons in .claude/common-mod.json.",
   "icon": "./assets/logo.png",
   "author": {
     "name": "ben.tsai",
